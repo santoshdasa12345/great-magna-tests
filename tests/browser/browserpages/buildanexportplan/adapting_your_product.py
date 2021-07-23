@@ -217,14 +217,7 @@ def check_section_complete_yes(driver: WebDriver, element_selector_name: str):
 
 def fill_out_country(driver: WebDriver, country: str):
     driver.implicitly_wait(1)
-    # parent div: //body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]
-    # parent ul: //body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul
 
-    # where to export : country search
-    # //body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]
-    # //body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/ul
-
-    # country
     country_btn = find_element(
         driver, find_selector_by_name(SELECTORS, "add a target market")  # dashboard add country button
     )

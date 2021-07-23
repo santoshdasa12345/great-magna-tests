@@ -74,14 +74,6 @@ SELECTORS = {
             # "//body/main[@id='content']/div[@id='business-objectives-content']/section[4]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[4]/div[1]/textarea[1]"
             , type=ElementType.TEXTAREA
         ),
-        # "delete": Selector(
-        #     By.CSS_SELECTOR, "#objectives-form--objectives > div > div > div.text-center > button > i",
-        #     wait_after_click=False
-        # ),
-        # "add goal": Selector(
-        #     By.CSS_SELECTOR, "#objectives-form--objectives > div > button"#"//*[@id=\"objectives-form--objectives\"]/div/button"
-        #     , wait_after_click=False
-        # ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
         ),
@@ -101,9 +93,6 @@ SELECTORS = {
         "top export plan home": Selector(
             By.XPATH, "//*[@id=\"business-objectives-content\"]/section[1]/div/div/div[2]/a/span"
         ),
-        # "add goal": Selector(
-        #     By.CSS_SELECTOR, "#objectives-form--objectives > div > button"
-        # ),
         "open navigation": Selector(
             By.XPATH,
             "//body/main[@id='content']/div[@id='sidebar-content']/nav[@id='collapseNav']/div[1]/button[1]/i[1]"
