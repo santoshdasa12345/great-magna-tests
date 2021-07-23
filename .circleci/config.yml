@@ -88,20 +88,6 @@ step_install_junit_merge: &step_install_junit_merge
     command: |
       sudo npm install -g junit-merge@2.0.0
 
-step_install_requirements_for_periodic_tasks: &step_install_requirements_for_periodic_tasks
-  run:
-    name: Create virtualenv and install dependencies
-    command: |
-      python3 -m venv venv
-      . venv/bin/activate
-      pip install --upgrade pip
-      pip install -q -r requirements_periodic_tasks.txt
-
-step_cache_periodic_tasks_requirements: &step_cache_periodic_tasks_requirements
-  save_cache:
-    key: periodic-tasks-dependency-cache-{{ .Revision }}
-    paths:
-      - ~/great_magna_tests
 
 step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests: &step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests
   run:
@@ -133,16 +119,6 @@ step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests: &step_prepare_l
 #        features/ \
 #        | grep -v "Supplied path\|Trying base " > scenario_titles.txt
 
-step_install_requirements_for_load_tests: &step_install_requirements_for_load_tests
-  run:
-    name: Create virtualenv and install dependencies
-    command: |
-      python3 -m venv venv
-      . venv/bin/activate
-      pip install --quiet --upgrade pip
-      pip install --quiet -r requirements_load.txt
-
-
 
 step_cache_browser_tests_requirements: &step_cache_browser_tests_requirements
   save_cache:
@@ -150,21 +126,10 @@ step_cache_browser_tests_requirements: &step_cache_browser_tests_requirements
     paths:
       - ~/great_magna_tests
 
-step_cache_load_tests_requirements: &step_cache_load_tests_requirements
-  save_cache:
-    key: load-tests-dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-    paths:
-      - ~/great_magna_tests
-
 step_restore_cached_browser_tests_requirements: &step_restore_cached_browser_tests_requirements
   restore_cache:
     keys:
       - browser-tests-dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-
-step_restore_cached_load_tests_requirements: &step_restore_cached_load_tests_requirements
-  restore_cache:
-    keys:
-      - load-tests-dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
 
 step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
   run:
@@ -234,23 +199,6 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
       echo "Saving environment variables that control test execution"
       ../../save_test_related_env_vars.py
 
-
-step_run_load_tests: &step_run_load_tests
-  run:
-    name: Run load tests
-    command: |
-      . venv/bin/activate
-      python ./env_vars/env_writer.py --env=${TEST_ENV} --config=./env_vars/env.json
-      source ./env_vars/.env_with_export;
-      NUM_USERS=${NUM_USERS} HATCH_RATE=${HATCH_RATE} RUN_TIME=${RUN_TIME} make load_test_${SERVICE}
-
-step_run_geckoboard_updater: &step_run_geckoboard_updater
-  run:
-    name: Run Geckoboard Updater script
-    command: |
-      . venv/bin/activate
-      make geckoboard_updater
-
 # this step requires Java 8+ to work.
 step_merge_junit_xml_reports_from_parallel_browser_tests: &step_merge_junit_xml_reports_from_parallel_browser_tests
   run:
@@ -277,12 +225,6 @@ steps_setup_env_for_parallel_browser_tests_using_circleci: &steps_setup_env_for_
     - *step_checkout_repo
     - *step_install_requirements_for_parallel_browser_tests
     - *step_cache_browser_tests_requirements
-
-steps_setup_env_for_load_tests: &steps_setup_env_for_load_tests
-  steps:
-    - *step_checkout_repo
-    - *step_install_requirements_for_load_tests
-    - *step_cache_load_tests_requirements
 
 steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack: &steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack
   steps:
@@ -315,65 +257,13 @@ steps_run_parallel_browser_tests: &steps_run_parallel_browser_tests
         root: .
         paths:
           - .
-
-steps_run_load_tests: &steps_run_load_tests
-  steps:
-    - *step_restore_cached_load_tests_requirements
-    - *step_run_load_tests
-    - store_artifacts:
-        path: ./reports
-
-step_restore_cached_periodic_tasks_requirements: &step_restore_cached_periodic_tasks_requirements
-  restore_cache:
-    key: periodic-tasks-dependency-cache-{{ .Revision }}
-
-steps_geckoboard_updater: &steps_geckoboard_updater
-  steps:
-    - *step_restore_cached_periodic_tasks_requirements
-    - *step_run_geckoboard_updater
-
-steps_setup_env_for_periodic_tasks: &steps_setup_env_for_periodic_tasks
-  steps:
-    - *step_checkout_repo
-    - *step_install_requirements_for_periodic_tasks
-    - *step_cache_periodic_tasks_requirements
-
-setup_env_for_periodic_tasks: &setup_env_for_periodic_tasks
-  working_directory: ~/great_magna_tests
-  <<: [
-  *machine_python3_clean,
-  *steps_setup_env_for_periodic_tasks,
-  ]
-
 jobs:
-
-  setup_env_for_load_tests:
-    working_directory: ~/great_magna_tests
-    <<: [
-      *machine_python3_node,
-      *steps_setup_env_for_load_tests,
-    ]
 
   setup_env_for_parallel_browser_tests_using_circleci:
     working_directory: ~/great_magna_tests
     <<: [
       *machine_python3_node_browsers,
       *steps_setup_env_for_parallel_browser_tests_using_circleci,
-    ]
-
-  load_domestic_tests_stage:
-    working_directory: ~/great_magna_tests
-    environment:
-      SERVICE: "product_search"
-      TEST_ENV: "stage"
-      <<: [
-        *load_hatch_rate,
-        *load_num_users,
-        *load_run_time,
-      ]
-    <<: [
-      *machine_python3_node,
-      *steps_run_load_tests,
     ]
 
   dev_parallel_browser_tests_using_circleci:
@@ -455,19 +345,6 @@ jobs:
           destination: behave_logs
 
 
-    setup_env_for_periodic_tasks: &setup_env_for_periodic_tasks
-      working_directory: ~/directory-tests
-      <<: [
-      *machine_python3_clean,
-      *steps_setup_env_for_periodic_tasks,
-      ]
-  refresh_geckoboard:
-    working_directory: ~/great_magna_tests
-    <<: [
-      *machine_python3_clean,
-      *steps_geckoboard_updater,
-    ]
-
 workflows:
   version: 2
 
@@ -523,12 +400,6 @@ workflows:
           requires:
             - uat_parallel_browser_tests_using_circleci
 
-  refresh_geckoboard_ad_hoc:
-    jobs:
-      - setup_env_for_periodic_tasks
-      - refresh_geckoboard:
-          requires:
-            - setup_env_for_periodic_tasks
 
   ####################################################################
   ## Scheduled workflows
@@ -600,14 +471,3 @@ workflows:
       - store_behave_logs_from_browser_tests_as_artifacts:
           requires:
             - uat_parallel_browser_tests_using_circleci
-
-
-  refresh_geckoboard_periodically:
-    triggers:
-      - schedule:
-          cron: "0 8,13 * * 1-5"
-          filters:
-            branches:
-              only: master
-    jobs:
-      - refresh_geckoboard
