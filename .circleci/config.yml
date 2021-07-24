@@ -25,7 +25,7 @@ machine_python3_node_browsers: &machine_python3_node_browsers
 
 # Individual (shared) steps.
 step_checkout_repo: &step_checkout_repo
-                      checkout
+  checkout
 
 step_install_requirements_for_parallel_browser_tests: &step_install_requirements_for_parallel_browser_tests
   run:
@@ -104,20 +104,20 @@ step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests: &step_prepare_l
           export BROWSER="firefox";
       fi
       cd tests/browser
-#      PYTHONPATH=. behave \
-#        --dry-run \
-#        --no-source \
-#        --no-summary \
-#        --no-snippets \
-#        --no-skipped \
-#        --tags=~@wip \
-#        --tags=~@fixme \
-#        --tags=~@skip \
-#        --tags=~@eu-exit \
-#        ${TAGS} \
-#        --format=mini \
-#        features/ \
-#        | grep -v "Supplied path\|Trying base " > scenario_titles.txt
+      PYTHONPATH=. behave \
+        --dry-run \
+        --no-source \
+        --no-summary \
+        --no-snippets \
+        --no-skipped \
+        --tags=~@wip \
+        --tags=~@fixme \
+        --tags=~@skip \
+        --tags=~@eu-exit \
+        ${TAGS} \
+        --format=mini \
+        features/ \
+        | grep -v "Supplied path\|Trying base " > scenario_titles.txt
 
 
 step_cache_browser_tests_requirements: &step_cache_browser_tests_requirements
@@ -217,8 +217,8 @@ step_merge_junit_xml_reports_from_parallel_browser_tests: &step_merge_junit_xml_
       cd ../../
       ./print_error_summary.py --report ./tests/browser/junit_report/merged.xml
 
-steps:
-  - *step_checkout_repo
+#steps:
+#  - *step_checkout_repo
 
 steps_setup_env_for_parallel_browser_tests_using_circleci: &steps_setup_env_for_parallel_browser_tests_using_circleci
   steps:
@@ -258,7 +258,6 @@ steps_run_parallel_browser_tests: &steps_run_parallel_browser_tests
         paths:
           - .
 jobs:
-
   setup_env_for_parallel_browser_tests_using_circleci:
     working_directory: ~/great_magna_tests
     <<: [
