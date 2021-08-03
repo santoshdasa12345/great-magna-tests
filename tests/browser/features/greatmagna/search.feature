@@ -12,7 +12,6 @@ Feature: Search product & country in personalisation
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+999888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" should be able to enter products "Vehicle"
     And "Robert" decides to click on Search again on the "GreatMagna - Dashboard" Page
     And "Robert" should be on the "GreatMagna - Dashboard" page
@@ -23,7 +22,6 @@ Feature: Search product & country in personalisation
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+999888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on Product and Search again for "Vehicle" on the "GreatMagna - Dashboard" Page
     And "Robert" decides to click on select and save random product options on the "GreatMagna - Dashboard" Page
 
