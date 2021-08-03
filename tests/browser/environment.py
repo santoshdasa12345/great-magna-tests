@@ -6,7 +6,7 @@ from behave.contrib.scenario_autoretry import patch_scenario_with_autoretry
 from behave.model import Feature, Scenario, Step
 from behave.runner import Context
 
-from great_magna_tests_shared .settings import AUTO_RETRY
+from great_magna_tests_shared.settings import AUTO_RETRY
 from browserpages.common_actions import initialize_scenario_data
 from browserutils.browser import get_driver_capabilities, start_driver_session
 

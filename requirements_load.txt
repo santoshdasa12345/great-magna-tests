@@ -5,66 +5,66 @@
 #    pip-compile requirements_load.in
 #
 -e ./great_magna_tests_shared/
-attrs==19.3.0             # via automat, great-magna-tests-shared, service-identity, twisted
-automat==20.2.0           # via great-magna-tests-shared, twisted
-certifi==2020.4.5.1       # via great-magna-tests-shared, geventhttpclient-wheels, requests
-cffi==1.14.0              # via cryptography, great-magna-tests-shared
-chardet==3.0.4            # via great-magna-tests-shared, requests
+attrs==19.3.0             # via automat, great_magna_tests_shared, service-identity, twisted
+automat==20.2.0           # via great_magna_tests_shared, twisted
+certifi==2020.4.5.1       # via great_magna_tests_shared, geventhttpclient-wheels, requests
+cffi==1.14.0              # via cryptography, great_magna_tests_shared
+chardet==3.0.4            # via great_magna_tests_shared, requests
 click==7.1.2              # via flask
 configargparse==1.2.3     # via locust
-constantly==15.1.0        # via great-magna-tests-shared, twisted
-cryptography==3.3.2         # via great-magna-tests-shared, pyopenssl, scrapy, service-identity
-cssselect==1.1.0          # via great-magna-tests-shared, parsel, scrapy
-django==2.2.20            # via directory-api-client, directory-client-core, directory-constants, great-magna-tests-shared, djangorestframework, sigauth
-djangorestframework==3.11.2  # via great-magna-tests-shared, sigauth
-docopt==0.6.2             # via -r requirements_load.in, great-magna-tests-shared, notifications-python-client
-envparse==0.2.0           # via great-magna-tests-shared
+constantly==15.1.0        # via great_magna_tests_shared, twisted
+cryptography==3.3.2         # via great_magna_tests_shared, pyopenssl, scrapy, service-identity
+cssselect==1.1.0          # via great_magna_tests_shared, parsel, scrapy
+django==2.2.20            # via directory-api-client, directory-client-core, directory-constants, great_magna_tests_shared, djangorestframework, sigauth
+djangorestframework==3.11.2  # via great_magna_tests_shared, sigauth
+docopt==0.6.2             # via -r requirements_load.in, great_magna_tests_shared, notifications-python-client
+envparse==0.2.0           # via great_magna_tests_shared
 flask-basicauth==0.2.0    # via locust
 flask==1.1.2              # via flask-basicauth, locust
-future==0.18.2            # via great-magna-tests-shared, notifications-python-client
+future==0.18.2            # via great_magna_tests_shared, notifications-python-client
 gevent==20.5.0            # via geventhttpclient-wheels, locust
 geventhttpclient-wheels==1.3.1.dev3  # via locust
 greenlet==0.4.15          # via gevent
-hyperlink==19.0.0         # via great-magna-tests-shared, twisted
-idna==2.9                 # via great-magna-tests-shared, hyperlink, requests
-incremental==17.5.0       # via great-magna-tests-shared, twisted
+hyperlink==19.0.0         # via great_magna_tests_shared, twisted
+idna==2.9                 # via great_magna_tests_shared, hyperlink, requests
+incremental==17.5.0       # via great_magna_tests_shared, twisted
 itsdangerous==1.1.0       # via flask
 jinja2==2.11.3            # via flask
 locust==1.4.1             # via -r requirements_load.in
-lxml==4.6.3               # via great-magna-tests-shared, parsel, scrapy
+lxml==4.6.3               # via great_magna_tests_shared, parsel, scrapy
 markupsafe==1.1.1         # via jinja2
-mohawk==0.3.4             # via great-magna-tests-shared, sigauth
-monotonic==1.5            # via directory-client-core, great-magna-tests-shared, notifications-python-client
+mohawk==0.3.4             # via great_magna_tests_shared, sigauth
+monotonic==1.5            # via directory-client-core, great_magna_tests_shared, notifications-python-client
 msgpack==1.0.0            # via locust
-notifications-python-client==5.5.1  # via great-magna-tests-shared
-parse==1.15.0             # via great-magna-tests-shared
-parsel==1.6.0             # via great-magna-tests-shared, scrapy
-pdfminer2==20151206       # via great-magna-tests-shared
-protego==0.1.16           # via great-magna-tests-shared, scrapy
+notifications-python-client==5.5.1  # via great_magna_tests_shared
+parse==1.15.0             # via great_magna_tests_shared
+parsel==1.6.0             # via great_magna_tests_shared, scrapy
+pdfminer2==20151206       # via great_magna_tests_shared
+protego==0.1.16           # via great_magna_tests_shared, scrapy
 psutil==5.7.0             # via locust
-pyasn1-modules==0.2.8     # via great-magna-tests-shared, service-identity
-pyasn1==0.4.8             # via great-magna-tests-shared, pyasn1-modules, service-identity
-pycparser==2.20           # via cffi, great-magna-tests-shared
-pydispatcher==2.0.5       # via great-magna-tests-shared, scrapy
-pyhamcrest==2.0.2         # via great-magna-tests-shared, twisted
-pyjwt==1.7.1              # via great-magna-tests-shared, notifications-python-client
-pyopenssl==19.1.0         # via great-magna-tests-shared, scrapy
-pytz==2020.1              # via great-magna-tests-shared, django
+pyasn1-modules==0.2.8     # via great_magna_tests_shared, service-identity
+pyasn1==0.4.8             # via great_magna_tests_shared, pyasn1-modules, service-identity
+pycparser==2.20           # via cffi, great_magna_tests_shared
+pydispatcher==2.0.5       # via great_magna_tests_shared, scrapy
+pyhamcrest==2.0.2         # via great_magna_tests_shared, twisted
+pyjwt==1.7.1              # via great_magna_tests_shared, notifications-python-client
+pyopenssl==19.1.0         # via great_magna_tests_shared, scrapy
+pytz==2020.1              # via great_magna_tests_shared, django
 pyzmq==19.0.1             # via locust
-queuelib==1.5.0           # via great-magna-tests-shared, scrapy
-requests==2.23.0          # via -r requirements_load.in, directory-api-client, directory-client-core, great-magna-tests-shared, locust, notifications-python-client
-retrying==1.3.3           # via great-magna-tests-shared
-scrapy==2.1.0             # via great-magna-tests-shared
-service-identity==18.1.0  # via great-magna-tests-shared, scrapy
-sigauth==4.1.1            # via directory-client-core, great-magna-tests-shared
-six==1.15.0               # via automat, cryptography, great-magna-tests-shared, geventhttpclient-wheels, mohawk, parsel, pdfminer2, protego, pyopenssl, retrying, w3lib
-sqlparse==0.3.1           # via great-magna-tests-shared, django
-termcolor==1.1.0          # via great-magna-tests-shared
-twisted==20.3.0           # via great-magna-tests-shared, scrapy
-urllib3==1.25.9           # via great-magna-tests-shared, requests
-w3lib==1.22.0             # via directory-client-core, great-magna-tests-shared, parsel, scrapy
+queuelib==1.5.0           # via great_magna_tests_shared, scrapy
+requests==2.23.0          # via -r requirements_load.in, directory-api-client, directory-client-core, great_magna_tests_shared, locust, notifications-python-client
+retrying==1.3.3           # via great_magna_tests_shared
+scrapy==2.1.0             # via great_magna_tests_shared
+service-identity==18.1.0  # via great_magna_tests_shared, scrapy
+sigauth==4.1.1            # via directory-client-core, great_magna_tests_shared
+six==1.15.0               # via automat, cryptography, great_magna_tests_shared, geventhttpclient-wheels, mohawk, parsel, pdfminer2, protego, pyopenssl, retrying, w3lib
+sqlparse==0.3.1           # via great_magna_tests_shared, django
+termcolor==1.1.0          # via great_magna_tests_shared
+twisted==20.3.0           # via great_magna_tests_shared, scrapy
+urllib3==1.25.9           # via great_magna_tests_shared, requests
+w3lib==1.22.0             # via directory-client-core, great_magna_tests_shared, parsel, scrapy
 werkzeug==1.0.1           # via flask
-zope.interface==5.1.0     # via great-magna-tests-shared, scrapy, twisted
+zope.interface==5.1.0     # via great_magna_tests_shared, scrapy, twisted
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
