@@ -13,7 +13,6 @@ Feature: GreatMagna - Dashboard Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "<email address>", password "<password>" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" should see following sections
       | sections             |
       | Learn to export      |
@@ -44,7 +43,6 @@ Feature: GreatMagna - Dashboard Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
      Then "Robert" decides to click "Menu"
     And "Robert" decides to click "Home"
     And "Robert" decides to click "Learn to export"
