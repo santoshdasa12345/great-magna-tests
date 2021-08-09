@@ -1,5 +1,6 @@
 @Great_Magna_Tests
 @funding-and-credit-page
+@Great_Magna_Export_Plan
 @allure.suite:Great_Magna_Export_Plan_F_A_C
 Feature: GreatMagna - Funding and Credit Page
 
@@ -107,8 +108,8 @@ Feature: GreatMagna - Funding and Credit Page
     #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Costs And Pricing"
-     And "Robert" decides to click on element "Nav Getting Paid" on page "Build An Export Plan - Costs And Pricing"
+     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Funding and Credit"
+     And "Robert" decides to click on element "Nav Getting Paid" on page "Build An Export Plan - Funding and Credit"
      And "Robert" should be on the "Build An Export Plan - Getting paid" Page
 
 
@@ -152,24 +153,25 @@ Feature: GreatMagna - Funding and Credit Page
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Funding and Credit"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
-  @allure.link:XOT-1120
-  @Great-Magna-Sign-Up
-  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
-
-  Given "Robert" visited "GreatMagna - Sign Up" page
-  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
-  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
-  Then "Robert" should be on the "GreatMagna - Dashboard" Page
-  Examples: email address and password
-     |      emailaddress                 | password    |
-     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
-  And "Robert" decides to click on "Build an export plan"
-  And "Robert" "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
-  And "Robert" decides to enter product name "oil" on page "Build An Export Plan - Funding and Credit"
-  And "Robert" decides to enter country name "Russia" on the "Build An Export Plan - Funding and Credit" page
+#  @allure.link:XOT-1120
+#  @Great-Magna-Sign-Up
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter product name "oil" on page "Build An Export Plan - Funding and Credit"
+#  And "Robert" decides to enter country name "Russia" on the "Build An Export Plan - Funding and Credit" page
 
    @allure.link:XOT-1121
    @Great_Magna_Export_Plan_12
+     @failed_14
   Scenario:User should be able to click "lesson" on Funding and Credit page and click on dashboard should see "Funding and Credit" as last visited page
 
     Given "Robert" visited "GreatMagna - Login" page

@@ -46,7 +46,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#export-plan-dashboard > div:nth-child(2) > div > a > div.p-t-s.p-b-xs.p-h-xs"
         ),
         "why you want to export example": Selector(
-            By.CSS_SELECTOR, "#objectives-reasons > div > div.learning > div.learning__buttons.m-b-xs > button",
+            By.CSS_SELECTOR, "#objectives-reasons > div > div.learning > div.learning__buttons > button.button-example.button.button--small.button--tertiary.m-r-xxs.m-b-xs", #objectives-reasons > div > div.learning > div.learning__buttons.m-b-xs > button",
             type=ElementType.INPUT
         ),
         "why you want to export": Selector(
@@ -88,10 +88,11 @@ SELECTORS = {
             By.XPATH, "//p[contains(text(),'Is this opportunity right for you?')]"
         ),
         "move from accidental exporting to strategic exporting": Selector(
-            By.XPATH, "//*[@id=\"business-objectives-content\"]/section[4]/div/div[1]/div/a/div/p"
+            By.XPATH, "#learning-content-area-1628106907760 > a > div", #//*[@id=\"business-objectives-content\"]/section[4]/div/div[1]/div/a/div/p"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"business-objectives-content\"]/section[1]/div/div/div[2]/a/span"
+            By.XPATH,
+            "//body[1]/main[1]/div[2]/section[3]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/a[1]"#business-objectives-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
         ),
         "open navigation": Selector(
             By.XPATH,
@@ -148,12 +149,15 @@ def enter_business_objectives_details(driver: WebDriver, position: str, startdat
     find_and_click(driver, element_selector_name="Add goal")
     time.sleep(1)
     # //body/main[@id='content']/div[@id='business-objectives-content']/section[4]/div[1]/div[2]/div[2]/div[1]/div[5]
+    #//body[1]/main[1]/div[2]/section[4]/div[1]/div[2]/div[2]/div[1]/fieldset[1]/div[1]
     # /div[1]/div[1]/div[1]/textarea[1]
 
+
+    #//body/main[@id='content']/div[@id='business-objectives-content']/section[4]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/textarea[1]
     # //body/main[@id='content']/div[@id='business-objectives-content']/section[4]/div[1]/div[2]/div[2]/div[1]/div[5]
     # /div[2]/button[1]
 
-    objective_div_element_xpath = "//body/main[@id='content']/div[@id='business-objectives-content']/section[4]/div[1]/div[2]/div[2]/div[1]/div" + "[" + position + "]"
+    objective_div_element_xpath = "//body[1]/main[1]/div[2]/section[4]/div[1]/div[2]/div[2]/div[1]/fieldset[1]/div" + "[" + position + "]"
     objective_text_ele_xpath = objective_div_element_xpath + "/div[1]/div[1]/div[1]/textarea[1]"
     del_btn_ele_xpath = objective_div_element_xpath + "/div[2]/button[1]"
     start_date_ele_xpath = objective_div_element_xpath + "/div[1]/div[2]/div[1]/div/div[2]/input"

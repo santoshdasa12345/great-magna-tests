@@ -52,7 +52,8 @@ SELECTORS = {
             By.XPATH, "//input[@id='funding_amount_required']", type=ElementType.INPUT
         ),
         "lesson": Selector(
-            By.CSS_SELECTOR, "#finance-funding-credit-options > button"
+            By.CSS_SELECTOR, "#finance-how-much-funding > div > div.learning > div.learning__buttons > button"
+            #"#finance-funding-credit-options > button"
         ),
         "add a funding option": Selector(
             By.XPATH, "//body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tfoot/tr/td/button"
@@ -99,7 +100,7 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"finance-funding-credit-options\"]/a/div/h4"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"funding-and-credit-content\"]/section[1]/div/div/div[2]/a/span"
+            By.XPATH, "//*[@id=\"funding-and-credit-content\"]/section[1]/div/div/div[2]/span/a"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"

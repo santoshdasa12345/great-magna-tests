@@ -96,7 +96,8 @@ SELECTORS = {
         ),
         "contingency plan example": Selector(
             By.CSS_SELECTOR,
-            "#business-risks > div.costs.costs--risks.bg-blue-deep-10.p-v-s.m-b-s > table > tbody > tr:nth-child(4) > td > div.learning > div.learning__buttons.m-b-xs > button"
+            "//*[@id=\"business-risks\"]/div[2]/table/tbody/tr[1]/td/div[1]/div[1]/button"
+            #"#business-risks > div.costs.costs--risks.bg-blue-deep-10.p-v-s.m-b-s > table > tbody > tr:nth-child(4) > td > div.learning > div.learning__buttons.m-b-xs > button"
         ),
         "add a risk": Selector(
             By.CSS_SELECTOR, "#business-risks > button"
@@ -106,7 +107,8 @@ SELECTORS = {
             "//body/main[@id='content']/div[@id='business-risk-content']/section[4]/div[1]/div[1]/div[2]/div[2]/a[1]"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"business-risk-content\"]/section[1]/div/div/div[2]/a/span"
+            By.CSS_SELECTOR, "#business-risk-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
+            #"//*[@id=\"business-risk-content\"]/section[1]/div/div/div[2]/a/span"
         ),
         "open navigation": Selector(
             By.XPATH,
@@ -127,9 +129,9 @@ SELECTORS = {
         "share": Selector(
             By.XPATH, "//body/main/div[1]/nav/div/div[2]/button[1]/i"
         ),
-        "download export plan": Selector(
-            By.XPATH, "//body/main/div[1]/nav/div/div[2]/button[1]/i"
-        ),
+        # "download export plan": Selector(
+        #     By.XPATH, "//body/main/div[1]/nav/div/div[2]/button[1]/i"
+        # ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
         ),

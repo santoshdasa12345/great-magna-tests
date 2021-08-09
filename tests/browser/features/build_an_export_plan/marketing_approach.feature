@@ -1,5 +1,6 @@
 @Great_Magna_Tests
 @marketing-approach-page
+@Great_Magna_Export_Plan
 @allure.suite:Great_Magna_Export_Plan_M_A
 Feature: GreatMagna - Marketing approach Page
  Background:
@@ -143,21 +144,21 @@ Feature: GreatMagna - Marketing approach Page
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Marketing approach"
       And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
-  @allure.link:XOT-1160
-  @Great-Magna-Sign-Up
-  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
-
-  Given "Robert" visited "GreatMagna - Sign Up" page
-  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
-  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
-  Then "Robert" should be on the "GreatMagna - Dashboard" Page
-  Examples: email address and password
-     |      emailaddress                 | password    |
-     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
-  And "Robert" decides to click on "Build an export plan"
-  And "Robert" "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
-  And "Robert" decides to enter product name "Chair" on page "Build An Export Plan - Marketing approach"
-  And "Robert" decides to enter country name "Brazil" on the "Build An Export Plan - Marketing approach" page
+#  @allure.link:XOT-1160
+#  @Great-Magna-Sign-Up
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter product name "Chair" on page "Build An Export Plan - Marketing approach"
+#  And "Robert" decides to enter country name "Brazil" on the "Build An Export Plan - Marketing approach" page
 
     @allure.link:XOT-1161
    @Great_Magna_Export_Plan_115

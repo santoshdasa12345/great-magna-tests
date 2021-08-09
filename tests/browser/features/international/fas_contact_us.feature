@@ -1,6 +1,7 @@
 @domestic
 @contact-us
 @no-sso-email-verification-required
+  @international_2
 @allure.suite:International
 Feature: FAS - Contact us
 

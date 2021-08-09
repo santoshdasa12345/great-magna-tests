@@ -1,6 +1,7 @@
 @domestic
 @header
 @footer
+  @header_footer
 @allure.suite:Domestic
 Feature: Domestic - Header-Footer
 

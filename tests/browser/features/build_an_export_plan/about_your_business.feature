@@ -1,5 +1,6 @@
 @Great_Magna_Tests
 @about-your-business-page
+@Great_Magna_Export_Plan
 @allure.suite:Great_Magna_Export_Plan_A_Y_B_P
 Feature: GreatMagna - About your Business Page
 

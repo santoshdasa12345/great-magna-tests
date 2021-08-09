@@ -1,5 +1,5 @@
 @domestic
-@international
+@international_1
 @allure.suite:International
 Feature: INTL - Updates for non-UK companies on EU Exit
 

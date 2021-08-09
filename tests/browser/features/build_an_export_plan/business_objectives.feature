@@ -1,5 +1,6 @@
 @Great_Magna_Tests
 @business-objectives-page
+@Great_Magna_Export_Plan
 @allure.suite:Great_Magna_Export_Plan_B_O
 Feature: GreatMagna - Business Objectives Page
    Background:
@@ -38,7 +39,7 @@ Feature: GreatMagna - Business Objectives Page
           | 3     | 01/02/2021 | 01/02/2028 | obj3       | obj3-owner   | obj3-plannedreviews |
           | 4     | 01/02/2021 | 01/02/2028 | obj4       | obj4-owner   | obj4-plannedreviews |
           | 5     | 01/02/2021 | 01/02/2028 | obj5       | obj5-owner   | obj5-plannedreviews |
-   
+
    @allure.link:XOT-1053
      @Great_Magna_Export_Plan
    @Great_Magna_Export_Plan_B_O_D_123

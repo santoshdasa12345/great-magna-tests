@@ -35,6 +35,7 @@ from steps.then_impl import (
     actor_decides_to_delete_country_details_on_page,
     actor_decides_to_click_checkbox_section_complete,
     actor_decides_to_select_random_checkbox_on_page,
+    actor_decides_to_click_on_page_with_lesson_link,
     actor_decides_to_enter_value,
     actor_fill_document_details_on_page,
     actor_decides_to_delete_document_details_on_page,
@@ -203,6 +204,13 @@ def then_actor_decides_to_click_on_page_element(
 def then_actor_decides_to_click_on_page_element(
         context, actor_alias, element_name, page_name):
     click_on_page_element_with_wait(context, actor_alias, element_name, page_name=page_name)
+
+
+@then('"{actor_alias}" decides to click on lesson link "{lesson_name}" on page "{page_name}"')
+def then_actor_decides_to_click_on_lesson_link(
+        context, actor_alias, lesson_name, page_name):
+    actor_decides_to_click_on_page_with_lesson_link(context, actor_alias, lesson_name, page_name=page_name)
+
 
 
 @then('"{actor_alias}" decides to click with wait "{wait_for_it}" on section "{element_name}" on page "{page_name}"')

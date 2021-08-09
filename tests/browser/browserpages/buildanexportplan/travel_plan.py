@@ -47,26 +47,26 @@ SELECTORS = {
         "travel information": Selector(
             By.XPATH, "//textarea[@id='travel_information']", type=ElementType.INPUT
         ),
-        "travel information eduactional": Selector(
-            By.CSS_SELECTOR, "#culture-and-rules > div.tooltip.inline-block > div > button > i"
+        "travel information educational": Selector(
+            By.XPATH, "//*[@id=\"culture-and-rules\"]/div[1]/div/button/i"
         ),
         "cultural information": Selector(
             By.XPATH, "//textarea[@id='cultural_information']", type=ElementType.INPUT
         ),
         "languages educational": Selector(
-            By.XPATH, "//*[@id=\"stats-for-target-market\"]/div[1]/div/div/div/div/div/button/i"
+            By.XPATH, "//*[@id=\"stats-for-target-market\"]/div[1]/div/div/div/div/div/div/button/i" #//*[@id=\"stats-for-target-market\"]/div[1]/div/div/div/div/div/button/i"
         ),
         "open datasnapshot": Selector(
             By.XPATH, "//*[@id=\"stats-for-target-market\"]/div/button"
         ),
         "i dont need visa": Selector(
-            By.XPATH, "//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/label"
+            By.XPATH, "//*[@id=\"need-visa-false\"]"#//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/label"
         ),
         "i need a visa": Selector(
-            By.XPATH, "//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[2]/label"
+            By.XPATH, "//*[@id=\"need-visa-true\"]"
         ),
         "planned travel educational": Selector(
-            By.CSS_SELECTOR, "#planned-travel > div > div.learning__buttons.m-b-xs > div > div > button > i",
+            By.XPATH, "//*[@id=\"planned-travel\"]/div/div[1]/div/div/button/i",
             type=ElementType.INPUT
         ),
         "add a trip": Selector(
@@ -85,7 +85,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#notes"
         ),
         "yes checkbox": Selector(
-            By.XPATH, "//input[@id='checkbox_complete']"
+            By.CSS_SELECTOR, "#section-complete > div"#//input[@id='checkbox_complete']"
         ),
         "Selling direct to your customer link": Selector(
             By.CSS_SELECTOR,
@@ -108,7 +108,7 @@ SELECTORS = {
             By.XPATH, "//button[contains(text(),'Add a target market')]"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"travel-plan-content\"]/section[1]/div/div/div[2]/a/span"
+            By.XPATH, "//*[@id=\"travel-plan-content\"]/section[1]/div/div/div[2]/span/a"#//*[@id=\"travel-plan-content\"]/section[1]/div/div/div[2]/a/span"
         ),
         "add a product": Selector(
             By.XPATH, "//button[contains(text(),'Add a product')]"
@@ -129,6 +129,9 @@ SELECTORS = {
         "export plan home": Selector(
             By.CSS_SELECTOR,
             "#travel-plan-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > div.m-t-l > a"
+        ),
+        "business risk": Selector(
+            By.CSS_SELECTOR, "#travel-plan-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > a > span"
         ),
     }
 }
@@ -209,7 +212,7 @@ def delete_all_trip_details(driver: WebDriver, del_button_position: str):
 def select_radio_button(driver: WebDriver, element_name: str):
     # i dont need visa
     driver.implicitly_wait(5)
-    driver.find_element_by_xpath("//body/main/div[2]/section[5]/div/div[2]/div[2]/div/h2")
+    driver.find_element_by_xpath("//body[1]/main[1]/div[2]/section[5]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/input[1]")#//body/main/div[2]/section[5]/div/div[2]/div[2]/div/h2")
     lower_case_element_name = element_name.lower()
     # find_and_click(driver, element_selector_name=element_name)
     # logging.debug(SELECTORS["travel plan"][lower_case_element_name])
@@ -217,6 +220,30 @@ def select_radio_button(driver: WebDriver, element_name: str):
     radio_element_x_path = SELECTORS["travel plan"][lower_case_element_name].value
     radio_i_dont_need_visa_elem = driver.find_element_by_xpath(radio_element_x_path)
     radio_i_dont_need_visa_elem.click()
+
+# def select_radio_button(driver: WebDriver, element_name: str):
+#     # i dont need visa
+#     driver.implicitly_wait(5)
+#     div_radio_button_element = driver.find_element_by_class_name("multiple-choice large")#//body/main/div[2]/section[5]/div/div[2]/div[2]/div/h2")
+#     for multiple_choice_elements in div_radio_button_element
+#         if
+#             need_visa_false == False:
+#             need_visa_false.click()
+#         else
+#             need_visa_true == True
+#
+#
+#         input_element = id_element.find_element_by_tag_name("input")
+#         input_element.click()
+#     div_1_element = find_elements_by_class_name("multiple-choice large")
+#     for multiple_choice_element in multiple_choice_elements
+#     lower_case_element_name = element_name.lower()
+#     # find_and_click(driver, element_selector_name=element_name)
+#     # logging.debug(SELECTORS["travel plan"][lower_case_element_name])
+#     # logging.debug(SELECTORS["travel plan"][lower_case_element_name].value)
+#     radio_element_x_path = SELECTORS["travel plan"][lower_case_element_name].value
+#     radio_i_dont_need_visa_elem = driver.find_element_by_xpath(radio_element_x_path)
+#     radio_i_dont_need_visa_elem.click()
 
 
 def check_section_complete_yes(driver: WebDriver, element_selector_name: str):

@@ -1,5 +1,6 @@
 @Great_Magna_Tests
 @getting-paid-page
+@Great_Magna_Export_Plan
 @allure.suite:Great_Magna_Export_Plan_G_P
 Feature: GreatMagna - Getting Paid Page
 
@@ -39,7 +40,6 @@ Feature: GreatMagna - Getting Paid Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to select random item for "Incoterms" on page "Build An Export Plan - Getting Paid"
@@ -47,17 +47,17 @@ Feature: GreatMagna - Getting Paid Page
 
 
    @allure.link:XOT-1134
-   @Great_Magna_Export_Plan_321
+   @Great_Magna_Export_Plan__lesson_123
   Scenario:User should be able to click lessons link "Choose the right payment method"
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "payment methods lesson" on page "Build An Export Plan - Getting Paid"
-     And "Robert" decides to click on section "Choose the right payment method" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to click on lesson link "Choose the right payment method" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" decides to click on section "Choose the right payment method" on page "Build An Export Plan - Getting Paid"
      And "Robert" should be on the "LearnToExport - Choose the right payment method" page
      And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Choose the right payment method"
 
@@ -69,11 +69,11 @@ Feature: GreatMagna - Getting Paid Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "payment terms lesson" on page "Build An Export Plan - Getting Paid"
-     And "Robert" decides to click on section "Decide when to get paid" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to click on lesson link "Decide when to get paid" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" decides to click on section "Decide when to get paid" on page "Build An Export Plan - Getting Paid"
      And "Robert" should be on the "LearnToExport - Decide when to get paid" page
      And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Decide when to get paid"
 
@@ -88,7 +88,8 @@ Feature: GreatMagna - Getting Paid Page
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "incoterms lesson" on page "Build An Export Plan - Getting Paid"
-     And "Robert" decides to click on section "Choose which incoterms are right for you" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to click on lesson link "Choose which incoterms are right for you" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" decides to click on section "Choose which incoterms are right for you" on page "Build An Export Plan - Getting Paid"
      And "Robert" should be on the "LearnToExport - Choose which incoterms are right for you" page
      And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Choose which incoterms are right for you"
 
@@ -105,7 +106,7 @@ Feature: GreatMagna - Getting Paid Page
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to click on element "Nav Travel Plan" on page "Build An Export Plan - Getting Paid"
-     And "Robert" should be on the "Build An Export Plan - Travel Plan"" Page
+     And "Robert" should be on the "Build An Export Plan - Travel Plan" Page
 
 @allure.link:XOT-1138
    @Great_Magna_Export_Plan
@@ -146,21 +147,21 @@ Feature: GreatMagna - Getting Paid Page
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Getting Paid"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
-
-@allure.link:XOT-1141
-  @Great-Magna-Sign-Up_1
-  Scenario Outline: New User should be able to navigate to Export Plan and click on "Getting paid" Page and enter the "Add a target market"
-
-  Given "Robert" visited "GreatMagna - Sign Up" page
-  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
-  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
-  Then "Robert" should be on the "GreatMagna - Dashboard" Page
-  Examples: email address and password
-     |      emailaddress                 | password    |
-     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
-  And "Robert" decides to click on "Build an export plan"
-  And "Robert" "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
-  And "Robert" decides to enter country name "India" on the "Build An Export Plan - Getting Paid" Page
+#
+#@allure.link:XOT-1141
+#  @Great-Magna-Sign-Up_1
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Getting paid" Page and enter the "Add a target market"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter country name "India" on the "Build An Export Plan - Getting Paid" Page
 
  @allure.link:XOT-1142
    @Great_Magna_Export_Plan_113

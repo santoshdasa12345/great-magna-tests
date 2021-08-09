@@ -1,5 +1,6 @@
 @Great_Magna_Tests
 @adaptation-for-your-target-market-page
+@Great_Magna_Export_Plan
 @allure.suite:Great_Magna_Export_Plan_A_F_Y_T_M
 Feature: GreatMagna - Adapting Your Product Page
    Background:
@@ -19,7 +20,7 @@ Feature: GreatMagna - Adapting Your Product Page
      #And "Robert" decides to click on element "Hide Data Snapshot" on page "Build An Export Plan - Adapting Your Product"
 
    @allure.link:XOT-1032
-   @Great_Magna_Export_Plan_1040
+   @Great_Magna_Export_Plan
  Scenario:User should be able to click lesson link "Adapting your product or service" and click link back to "Adapting your product"
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -95,7 +96,7 @@ Feature: GreatMagna - Adapting Your Product Page
     And "Robert" decides to validate entered text at "UK customs declaration" on page "Build An Export Plan - Adapting Your Product"
 
     @allure.link:XOT-1035
-   @Great_Magna_Export_Plan_Nav
+   @Great_Magna_Export_Plan
   Scenario:User should be able to click on navigation bar and navigate to "Marketing Approach" page
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -137,7 +138,7 @@ Feature: GreatMagna - Adapting Your Product Page
 
 
  @allure.link:XOT-1038
-   @Great_Magna_Export_Plan_112D
+   @Great_Magna_Export_Plan
   Scenario:User should be able to click on "Add another document" and enter the Document name and Notes
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -155,7 +156,7 @@ Feature: GreatMagna - Adapting Your Product Page
           | 5        | Packing List  | Packing List    |
 
     @allure.link:XOT-1039
-   @Great_Magna_Export_Plan_112D
+   @Great_Magna_Export_Plan
    Scenario:User should be able to click on "Add another document" and delete the document and notes
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -185,21 +186,21 @@ Feature: GreatMagna - Adapting Your Product Page
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Adapting Your Product"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
-@allure.link:XOT-1041
-  @Great-Magna-Sign-Up
-  Scenario Outline: New User should be able to navigate to Export Plan and click on "Adapting your product" Page and enter the "Add Product" and "Add Country"
-
-  Given "Robert" visited "GreatMagna - Sign Up" page
-  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
-  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
-  Then "Robert" should be on the "GreatMagna - Dashboard" Page
-  Examples: email address and password
-     |      emailaddress                 | password    |
-     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
-  And "Robert" decides to click on "Build an export plan"
-  And "Robert" "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
-  And "Robert" decides to enter product name "Coffee" on page "Build An Export Plan - Adapting Your Product"
-  And "Robert" decides to enter country name "India" on the "Build An Export Plan - Adapting Your Product" page
+#@allure.link:XOT-1041
+#  @Great-Magna-Sign-Up
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Adapting your product" Page and enter the "Add Product" and "Add Country"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter product name "Coffee" on page "Build An Export Plan - Adapting Your Product"
+#  And "Robert" decides to enter country name "India" on the "Build An Export Plan - Adapting Your Product" page
 
      @allure.link:XOT-1042
    @Great_Magna_Export_Plan

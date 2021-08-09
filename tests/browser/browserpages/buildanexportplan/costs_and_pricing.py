@@ -128,30 +128,31 @@ SELECTORS = {
             By.XPATH, "#average_price_per_unit"
         ),
         "net price example": Selector(
-            By.CSS_SELECTOR,
-            "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(21) > div.learning > div.learning__buttons.m-b-xs > button"
+            By.XPATH, "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[9]/div[2]/div[1]/button"
+            #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(21) > div.learning > div.learning__buttons.m-b-xs > button"
         ),
         "net price educational": Selector(
-            By.CSS_SELECTOR,
-            "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[9]/div[2]/div[1]/div/div/button/i"
+            By.XPATH, "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[9]/div[2]/div[1]/div/div/button"
+            #"//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[9]/div[2]/div[1]/div/div/button/i"
         ),
         "net price": Selector(
             By.XPATH, "//input[@id='net_price']", type=ElementType.INPUT
         ),
         "local taxes example": Selector(
-            By.CSS_SELECTOR,
-            "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.m-b-xs > button"
+            By.CSS_SELECTOR, "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.learning > div.learning__buttons > button.button-example.button.button--small.button--tertiary.m-r-xxs.m-b-xs"
+            #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.m-b-xs > button"
         ),
         "local taxes educational": Selector(
-            By.CSS_SELECTOR,
-            "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.m-b-xs > div > div > button > i"
+            By.XPATH,
+            "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[10]/div[2]/div[1]/div/div/button/i"
+            #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.m-b-xs > div > div > button > i"
         ),
         "local taxes": Selector(
             By.CSS_SELECTOR, "#local_tax_charges", type=ElementType.INPUT
         ),
         "duty educational": Selector(
-            By.CSS_SELECTOR,
-            "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(23) > div.m-b-xs > div > div > button > i"
+            By.CSS_SELECTOR, "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(23) > div.learning > div.learning__buttons > div > div > button > i"
+            #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(23) > div.m-b-xs > div > div > button > i"
         ),
         "duty": Selector(
             By.CSS_SELECTOR, "#duty_per_unit", type=ElementType.INPUT
@@ -222,7 +223,8 @@ SELECTORS = {
             By.XPATH, "//button[contains(text(),'Add a target market')]"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"costs-and-pricing-content\"]/section[1]/div/div/div[2]/a/span"
+            By.XPATH, "//*[@id=\"costs-and-pricing-content\"]/section[1]/div/div/div[2]/span/a"
+            #"//*[@id=\"costs-and-pricing-content\"]/section[1]/div/div/div[2]/span/a/"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
