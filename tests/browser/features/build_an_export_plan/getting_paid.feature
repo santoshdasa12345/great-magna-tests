@@ -63,7 +63,7 @@ Feature: GreatMagna - Getting Paid Page
 
 
    @allure.link:XOT-1135
-   @Great_Magna_Export_Plan_321
+   @Great_Magna_Export_Plan_321b
   Scenario:User should be able to click lessons link "Decide when to get paid"
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -78,7 +78,7 @@ Feature: GreatMagna - Getting Paid Page
      And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Decide when to get paid"
 
    @allure.link:XOT-1136
-   @Great_Magna_Export_Plan_321
+   @Great_Magna_Export_Plan_321c
   Scenario:User should be able to click lessons link "Choose which incoterms are right for you"
 
     Given "Robert" visited "GreatMagna - Login" page

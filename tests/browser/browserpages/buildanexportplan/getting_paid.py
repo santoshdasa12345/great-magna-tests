@@ -294,17 +294,38 @@ def find_and_click_lesson_link(driver: WebDriver,lesson_name:str):
     child_div_elements = parent_div_lesson_element.find_elements_by_class_name("user-form-group")
     lesson_name_found = False
     for user_form_group_element in child_div_elements:
+        section_element = user_form_group_element.find_element_by_class_name("form-group  ")
+        section_label_element = section_element.find_element_by_tag_name("label")
+        logging.debug(section_label_element.text)
         learning_buttons_element = user_form_group_element.find_element_by_class_name("learning__buttons")
         button_element = learning_buttons_element.find_element_by_tag_name("button")
+        logging.debug(button_element.text)
+
+        learning_content_element_temp = user_form_group_element.find_element_by_class_name("learning__content")
+        if learning_content_element_temp.is_displayed():
+            button_element.click()
+            time.sleep(2)
+
         button_element.click()
-        time.sleep(2)
+        driver.implicitly_wait(10)
         learning_content_element = user_form_group_element.find_element_by_class_name("learning__content")
+        learning_content_element.location_once_scrolled_into_view
         title_element = learning_content_element.find_element_by_tag_name("a")
 
-        if lesson_name.lower() in str(title_element.text).lower():
+        title_div_tag_element = title_element.find_element_by_tag_name("div")
+        actual_title_element =title_div_tag_element.find_element_by_tag_name("h4")
+
+        #time.sleep(2)
+        # new Actions(driver).moveToElement(title_element).perform();
+        logging.debug(actual_title_element.text)
+        if lesson_name.lower() in str(actual_title_element.text).lower():
             lesson_name_found = True
             title_element.click()
             break
+        time.sleep(2)
+        button_element.location_once_scrolled_into_view
+        button_element.click()
+        time.sleep(2)
     if lesson_name_found == False:
         raise Exception("lesson could not be found " + str(lesson_name))
 
