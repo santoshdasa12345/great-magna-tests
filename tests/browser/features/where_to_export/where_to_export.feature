@@ -28,7 +28,6 @@ Feature: GreatMagna - Where To Export Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+9878@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Where To Export"
      And "Robert" decides to enter maximum "10" country names with display "3" tabs on page "WhereToExport - Compare Countries"
       | CountryName | CountryPlaceNumber |

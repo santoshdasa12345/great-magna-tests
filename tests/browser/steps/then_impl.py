@@ -1371,6 +1371,7 @@ def generic_search_for_phrase(context: Context, actor_alias: str, phrase: str):
     has_action(page, "search")
     page.search(context.driver, phrase)
 
+
 def actor_decides_to_click_on_page_with_lesson_link(
         context: Context, actor_alias: str, lesson_name: str, *, page_name: str = None, wait_for_it: bool = True
 ):
@@ -1379,5 +1380,4 @@ def actor_decides_to_click_on_page_with_lesson_link(
     else:
         page = get_last_visited_page(context, actor_alias)
     has_action(page, "find_and_click_lesson_link")
-    page.find_and_click_lesson_link(context.driver,lesson_name)
-
+    page.find_and_click_lesson_link(context.driver, lesson_name)

@@ -28,7 +28,7 @@ Feature: GreatMagna - Travel Plan Page
 
    @allure.link:XOT-1192
    @Great_Magna_Export_Plan_D
-     @failed_2
+     @failed_travel_plan_1
   Scenario:User should be able to click on "Visa Information" and "Planned Travel" section and validate
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -42,7 +42,7 @@ Feature: GreatMagna - Travel Plan Page
 
    @allure.link:XOT-1193
    @Great_Magna_Export_Plan_D
-     @failed_3
+     @failed_travel_plan
   Scenario:User should be able to click on "Visa Information" and enter text adn validate
 
     Given "Robert" visited "GreatMagna - Login" page

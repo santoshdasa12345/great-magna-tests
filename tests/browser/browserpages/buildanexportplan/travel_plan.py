@@ -212,9 +212,10 @@ def delete_all_trip_details(driver: WebDriver, del_button_position: str):
 def select_radio_button(driver: WebDriver, element_name: str):
     # i dont need visa
     driver.implicitly_wait(5)
+    #                             //body[1]/main[1]/div[2]/section[5]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/input[1]
     driver.find_element_by_xpath("//body[1]/main[1]/div[2]/section[5]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/input[1]")#//body/main/div[2]/section[5]/div/div[2]/div[2]/div/h2")
     lower_case_element_name = element_name.lower()
-    # find_and_click(driver, element_selector_name=element_name)
+    find_and_click(driver, element_selector_name=element_name)
     # logging.debug(SELECTORS["travel plan"][lower_case_element_name])
     # logging.debug(SELECTORS["travel plan"][lower_case_element_name].value)
     radio_element_x_path = SELECTORS["travel plan"][lower_case_element_name].value
@@ -227,7 +228,7 @@ def select_radio_button(driver: WebDriver, element_name: str):
 #     div_radio_button_element = driver.find_element_by_class_name("multiple-choice large")#//body/main/div[2]/section[5]/div/div[2]/div[2]/div/h2")
 #     for multiple_choice_elements in div_radio_button_element
 #         if
-#             need_visa_false == False:
+#             need_visa_false == False
 #             need_visa_false.click()
 #         else
 #             need_visa_true == True
