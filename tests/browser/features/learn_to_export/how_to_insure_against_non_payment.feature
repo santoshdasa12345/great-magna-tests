@@ -12,7 +12,6 @@
 #    Given "Robert" visited "GreatMagna - Login" page
 #    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
 #    And "Robert" should be on the "GreatMagna - Dashboard" Page
-#    #And "Robert" should be able to click on SkipWalkthrough
 #    Then "Robert" decides to click on "Learn to export"
 #     And "Robert" decides to click on section "Funding finance and getting paid" on page "LearnToExport - Learn Categories"
 #     And "Robert" decides to click on section "How to insure against non payment" on page "LearnToExport - Funding finance and getting paid"
@@ -27,7 +26,6 @@
 #  Given "Robert" visited "GreatMagna - Login" page
 #   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
 #    And "Robert" should be on the "GreatMagna - Dashboard" Page
-#    #And "Robert" should be able to click on SkipWalkthrough
 #   Then "Robert" decides to click on "Learn to export"
 #   And "Robert" decides to click on section "Funding finance and getting paid" on page "LearnToExport - Learn Categories"
 #   And "Robert" decides to click on section "How to insure against non payment" on page "LearnToExport - Funding finance and getting paid"
@@ -42,7 +40,6 @@
 #  Given "Robert" visited "GreatMagna - Login" page
 #   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
 #    And "Robert" should be on the "GreatMagna - Dashboard" Page
-#    #And "Robert" should be able to click on SkipWalkthrough
 #   Then "Robert" decides to click on "Learn to export"
 #   And "Robert" decides to click on section "Funding finance and getting paid" on page "LearnToExport - Learn Categories"
 #    And "Robert" decides to click on section "How to insure against non payment" on page "LearnToExport - Funding finance and getting paid"
@@ -56,7 +53,6 @@
 #  Given "Robert" visited "GreatMagna - Login" page
 #   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
 #    And "Robert" should be on the "GreatMagna - Dashboard" Page
-#    #And "Robert" should be able to click on SkipWalkthrough
 #   Then "Robert" decides to click on "Learn to export"
 #   And "Robert" decides to click on section "Funding finance and getting paid" on page "LearnToExport - Learn Categories"
 #    And "Robert" decides to click on section "How to insure against non payment" on page "LearnToExport - Funding finance and getting paid"

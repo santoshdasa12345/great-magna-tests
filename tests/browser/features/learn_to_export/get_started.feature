@@ -13,7 +13,6 @@ Feature: GreatMagna - Lessons Page
 #    Given "Robert" visits the "GreatMagna - Login" page
 #    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
 #     When "Robert" should be on the "GreatMagna - Dashboard" Page
-#    #When "Robert" should be able to click on SkipWalkthrough
 #    Then "Robert" decides to click on "Learn to export"
 #     And "Robert" decides to click on section "Get Started" on page "LearnToExport - Learn Categories"
 #     And "Robert" decides to click on section "Introduction to lessons and learning" on page "LearnToExport - Get Started"
@@ -26,7 +25,6 @@ Feature: GreatMagna - Lessons Page
 #  Given "Robert" visited "GreatMagna - Login" page
 #   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
 #    When "Robert" should be on the "GreatMagna - Dashboard" Page
-#    #And "Robert" should be able to click on SkipWalkthrough
 #   Then "Robert" decides to click on "Learn to export"
 #   And "Robert" decides to click on section "Get Started" on page "LearnToExport - Learn Categories"
 #    And "Robert" decides to click on section "Introduction to lessons and learning" on page "LearnToExport - Get Started"
@@ -40,7 +38,6 @@ Feature: GreatMagna - Lessons Page
 #  Given "Robert" visited "GreatMagna - Login" page
 #   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
 #    And "Robert" should be on the "GreatMagna - Dashboard" Page
-#    #And "Robert" should be able to click on SkipWalkthrough
 #   Then "Robert" decides to click on "Learn to export"
 #   And "Robert" decides to click on section "Get Started" on page "LearnToExport - Learn Categories"
 #    And "Robert" decides to click on section "Introduction to lessons and learning" on page "LearnToExport - Get Started"
@@ -54,7 +51,6 @@ Feature: GreatMagna - Lessons Page
   Given "Robert" visited "GreatMagna - Login" page
    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
    And "Robert" should be on the "GreatMagna - Dashboard" Page
-   #And "Robert" should be able to click on SkipWalkthrough
    Then "Robert" decides to click on "Learn to export"
    And "Robert" decides to click on section "Get Started" on page "LearnToExport - Learn Categories"
    And "Robert" decides to click on section "What youll find in each lesson" on page "LearnToExport - Get Started"
