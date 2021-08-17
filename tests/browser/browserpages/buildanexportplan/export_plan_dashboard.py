@@ -89,6 +89,9 @@ SELECTORS = {
         "dashboard": Selector(
             By.XPATH, "//a[contains(text(),'Dashboard')]"
         ),
+        "start your free plan": Selector(
+            By.CSS_SELECTOR, "#content > div > div > div > div:nth-child(2) > div > div > a"
+        ),
 
     }
 }

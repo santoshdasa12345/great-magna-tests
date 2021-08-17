@@ -9,13 +9,11 @@ Feature: GreatMagna - Travel Plan Page
 
   @allure.link:XOT-1191
   @Great_Magna_Export_Plan
-    @failed_11
   Scenario:User should be able to enter text at  "Travel Information"  and "Cultural Information"section and validate
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "open datasnapshot" on page "Build An Export Plan - Travel Plan"
@@ -28,13 +26,11 @@ Feature: GreatMagna - Travel Plan Page
 
    @allure.link:XOT-1192
    @Great_Magna_Export_Plan_D
-     @failed_travel_plan_1
   Scenario:User should be able to click on "Visa Information" and "Planned Travel" section and validate
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to select radio button "I dont need visa" on page "Build An Export Plan - Travel Plan"
@@ -42,13 +38,11 @@ Feature: GreatMagna - Travel Plan Page
 
    @allure.link:XOT-1193
    @Great_Magna_Export_Plan_D
-     @failed_travel_plan
   Scenario:User should be able to click on "Visa Information" and enter text adn validate
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to select radio button "I need a visa" on page "Build An Export Plan - Travel Plan"
@@ -65,7 +59,6 @@ Feature: GreatMagna - Travel Plan Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
     And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" fill trip details on page "Build An Export Plan - Travel Plan"
@@ -78,12 +71,12 @@ Feature: GreatMagna - Travel Plan Page
 
   @allure.link:XOT-1195
    @Great_Magna_Export_Plan_tp
+    @failed_exp
    Scenario:User should be able to delete the trip details
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
      Then "Robert" decides to click on "Build an export plan"
     And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to delete trip details on page "Build An Export Plan - Travel Plan"
@@ -101,7 +94,6 @@ Feature: GreatMagna - Travel Plan Page
 Given "Robert" visited "GreatMagna - Login" page
    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
    And "Robert" should be on the "GreatMagna - Dashboard" Page
-   #And "Robert" should be able to click on SkipWalkthrough
    Then "Robert" decides to click on "Build an export plan"
    Then "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click section complete on "Build An Export Plan - Travel Plan"
@@ -116,7 +108,6 @@ Given "Robert" visited "GreatMagna - Login" page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Travel Plan"
@@ -131,7 +122,6 @@ Given "Robert" visited "GreatMagna - Login" page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Travel plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Travel plan"
@@ -144,7 +134,6 @@ Given "Robert" visited "GreatMagna - Login" page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Travel Plan"
@@ -168,7 +157,7 @@ Given "Robert" visited "GreatMagna - Login" page
 #
 
     @allure.link:XOT-1201
-   @Great-Magna-Search-2
+   @Great-Magna-Search-2tp
   Scenario: Visitor should be able to Enter and Save Product
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+999888@gmail.com", password "Testing@123!" and click Login

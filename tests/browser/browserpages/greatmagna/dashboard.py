@@ -93,16 +93,16 @@ SELECTORS = {
             By.XPATH, "//body/main[@id='content']/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]"
         ),
         "top search again": Selector(
-            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/button"
+            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/div/section/button"
         ),
         "bottom search again": Selector(
             By.XPATH, "//body/div[4]/div/div/form/div[2]/div/div/section/button"
         ),
         "search next button": Selector(
-            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/div/button"
+            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/fieldset/button"#//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/div/button"
         ),
         "save product": Selector(
-            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button"
+            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/button"#//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button"
         ),
         "home": Selector(
             By.XPATH, "//span[contains(text(),'Home')]"
@@ -163,6 +163,18 @@ SELECTORS = {
         ),
         "header logo": Selector(
             By.XPATH, "//img[@id='header-logo-exporting-is-great']"
+        ),
+        "my products": Selector(
+            By.CSS_SELECTOR, "#set-product-button > span:nth-child(1) > button > span"
+        ),
+        "add product": Selector(
+            By.CSS_SELECTOR, "#set-product-button > span:nth-child(1) > div > button > i"
+        ),
+        "my markets": Selector(
+            By.CSS_SELECTOR, "#set-country-button > span > span:nth-child(1) > button > span"
+        ),
+        "add market": Selector(
+            By.CSS_SELECTOR, "#set-country-button > span > span:nth-child(1) > div > button"
         ),
 
     },
@@ -443,7 +455,7 @@ def search_select_save_radio(driver: WebDriver):
         save_btn_found = False
         try:
             save_product_btn = driver.find_element_by_xpath(
-                "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button")
+                "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/button")
             save_btn_found = True
         except Exception as ex:
             logging.debug("save button not found.Exception: " + str(ex))
@@ -455,8 +467,8 @@ def search_select_save_radio(driver: WebDriver):
         # look for div's and radio buttons
         parent_1_div_element = driver.find_element_by_xpath(
             "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div")  # ("interaction grid m-v-xs")
-        child_1_div_element = parent_1_div_element.find_element_by_tag_name("div")  # ("c-fullwidth")
-        main_div_element = child_1_div_element.find_element_by_tag_name("div")  # "m-b-xs"
+        #child_1_div_element = parent_1_div_element.find_element_by_tag_name("div")  # ("c-fullwidth")
+        main_div_element = parent_1_div_element.find_element_by_tag_name("div")  # "m-b-xs"
         # radio button labels
         label_elements = main_div_element.find_elements_by_tag_name("label")
         radio_elements = []
@@ -479,13 +491,11 @@ def search_select_save_radio(driver: WebDriver):
             driver, find_selector_by_name(SELECTORS, "search next button")
         )
         search_next_btn.click()
-
         counter += 1
 
 
 def search_select_save_random_next(driver: WebDriver):
     search_select_save_radio(driver)
-    return
 
 
 def find_and_click(driver: WebDriver, *, element_selector_name: str):

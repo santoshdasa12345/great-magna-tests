@@ -96,7 +96,7 @@ SELECTORS = {
         ),
         "contingency plan example": Selector(
             By.CSS_SELECTOR,
-            "//*[@id=\"business-risks\"]/div[2]/table/tbody/tr[1]/td/div[1]/div[1]/button"
+            "//*[@id=\"business-risks\"]/div[2]/table/tbody/tr[4]/td/div[1]/div[1]/button"
             #"#business-risks > div.costs.costs--risks.bg-blue-deep-10.p-v-s.m-b-s > table > tbody > tr:nth-child(4) > td > div.learning > div.learning__buttons.m-b-xs > button"
         ),
         "add a risk": Selector(

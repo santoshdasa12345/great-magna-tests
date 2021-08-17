@@ -80,21 +80,22 @@ Given "Robert" visited "GreatMagna - Login" page
 #    And "Robert" decides to click on section "view all lessons" on page "LearnToExport - Move from accidental exporting to strategic exporting"
 
 
- @allure.link:XOT-031
-  @Great-Magna-Sign-Up_les
-  Scenario Outline: New User should be able to navigate to "Learn to Export" and click on "Learn Categories" Page and enter the "Add Product" and "Add Country"
-
-  Given "Robert" visited "GreatMagna - Sign Up" page
-  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
-  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
-  Then "Robert" should be on the "GreatMagna - Dashboard" Page
-  Examples: email address and password
-     |      emailaddress                 | password    |
-     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
-  And "Robert" decides to click on "Learn to export"
-  And "Robert" "Robert" decides to click on section "Identify opportunities" on page "LearnToExport - Learn Categories"
-  And "Robert" decides to enter product name "Vehicle" on page "Build An Export Plan - Travel Plan"
-  And "Robert" decides to enter country name "Germany" on the "Build An Export Plan - Travel Plan" page
+# @allure.link:XOT-031
+#  @Great-Magna-Sign-Up_les
+#  Scenario Outline: New User should be able to navigate to "Learn to Export" and click on "Learn Categories" Page and enter the "Add Product" and "Add Country"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Learn to export"
+#  And "Robert" "Robert" decides to click on section "Identify opportunities" on page "LearnToExport - Learn Categories"
+#  And "Robert" decides to enter product name "Vehicle" on page "Build An Export Plan - Travel Plan"
+#  And "Robert" decides to enter country name "Germany" on the "Build An Export Plan - Travel Plan" page
+#
 #  And "Robert" decides to click on "Open case study"
 
    @allure.link:XOT-125

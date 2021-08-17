@@ -60,10 +60,10 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"stats-for-target-market\"]/div/button"
         ),
         "i dont need visa": Selector(
-            By.XPATH, "//*[@id=\"need-visa-false\"]"#//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/label"
+            By.XPATH, "//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/div[1]/label" #//*[@id=\"need-visa-false\"]"#//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/label"
         ),
         "i need a visa": Selector(
-            By.XPATH, "//*[@id=\"need-visa-true\"]"
+            By.XPATH, "//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/div[2]/label"
         ),
         "planned travel educational": Selector(
             By.XPATH, "//*[@id=\"planned-travel\"]/div/div[1]/div/div/button/i",
