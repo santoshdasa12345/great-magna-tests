@@ -8,6 +8,7 @@ Feature: GreatMagna - Where To Export Page
 
    @allure.link:XOT-1021
    @Great_Magna_Export_Plan
+     @wte_1
   Scenario Outline:User should be able to "Add place" and " Add Country"
 
     Given "Robert" visited "GreatMagna - Login" page
