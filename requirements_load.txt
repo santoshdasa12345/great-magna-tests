@@ -15,7 +15,7 @@ configargparse==1.2.3     # via locust
 constantly==15.1.0        # via great-magna-tests-shared, twisted
 cryptography==3.3.2         # via great-magna-tests-shared, pyopenssl, scrapy, service-identity
 cssselect==1.1.0          # via great-magna-tests-shared, parsel, scrapy
-django==2.2.20            # via directory-api-client, directory-client-core, directory-constants, great-magna-tests-shared, djangorestframework, sigauth
+django==2.2.24            # via directory-api-client, directory-client-core, directory-constants, great-magna-tests-shared, djangorestframework, sigauth
 djangorestframework==3.11.2  # via great-magna-tests-shared, sigauth
 docopt==0.6.2             # via -r requirements_load.in, great-magna-tests-shared, notifications-python-client
 envparse==0.2.0           # via great-magna-tests-shared
@@ -61,7 +61,7 @@ six==1.15.0               # via automat, cryptography, great-magna-tests-shared,
 sqlparse==0.3.1           # via great-magna-tests-shared, django
 termcolor==1.1.0          # via great-magna-tests-shared
 twisted==20.3.0           # via great-magna-tests-shared, scrapy
-urllib3==1.25.9           # via great-magna-tests-shared, requests
+urllib3==1.26.5           # via great-magna-tests-shared, requests
 w3lib==1.22.0             # via directory-client-core, great-magna-tests-shared, parsel, scrapy
 werkzeug==1.0.1           # via flask
 zope.interface==5.1.0     # via great-magna-tests-shared, scrapy, twisted
