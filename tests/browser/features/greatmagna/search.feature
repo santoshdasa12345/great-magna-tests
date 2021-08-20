@@ -37,21 +37,20 @@ Feature: Search product & country in personalisation
 
 
   @allure.link:XOT-084
-  @Great-Magna-Search
+  @Great-Magna-Search_5
  Scenario Outline: User should be able to search I want to export products in country
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+999888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" should be able to enter products "<products>" and country "<country>"
         Examples: Products and Country
          | products                 | country      |
          | Vehicle                  | India      |
-         | Leather                  | Poland       |
-         | Red Roses                | Netherlands  |
-         | Steel                    | India        |
-         | Shirt                    | South Korea  |
+#         | Leather                  | Poland       |
+#         | Red Roses                | Netherlands  |
+#         | Steel                    | India        |
+#         | Shirt                    | South Korea  |
 
 
 
@@ -62,7 +61,6 @@ Feature: Search product & country in personalisation
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" should be able to enter products "<products>"
     And "Robert" should be able to see error message "No results found for" on the "GreatMagna - Dashboard" Page
     And "Robert" decides to click on "Search again"
