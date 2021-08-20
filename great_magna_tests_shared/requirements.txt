@@ -12,7 +12,7 @@ chardet==3.0.4
 constantly==15.1.0
 cryptography==3.3.2
 cssselect==1.1.0
-django==2.2.24
+django==2.2.20
 djangorestframework==3.11.2
 docopt==0.6.2
 envparse==0.2.0
@@ -46,7 +46,7 @@ six==1.15.0
 sqlparse==0.3.1
 termcolor==1.1.0
 twisted==20.3.0
-urllib3==1.26.5
+urllib3==1.25.9
 w3lib==1.22.0
 zope.interface==5.1.0
 
