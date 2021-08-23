@@ -57,13 +57,13 @@ SELECTORS = {
             By.XPATH, "//button[contains(text(),'Confirm')]"
         ),
         "describe the consumer demand example": Selector(
-            By.CSS_SELECTOR, "#target-markets-research > div:nth-child(1) > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
+            By.XPATH, "//body/main/div[2]/section[4]/div/div[2]/form/div[1]/div[2]/div[1]/button[1]"
         ),
         "describe the consumer demand": Selector(
             By.CSS_SELECTOR, "#demand"
         ),
         "Who are your competitors example": Selector(
-            By.XPATH, "#target-markets-research > div:nth-child(2) > div.learning > div.learning__buttons > button.button-example.button.button--small.button--tertiary.m-r-xxs.m-b-xs"
+            By.CSS_SELECTOR, "#target-markets-research > div:nth-child(2) > div.learning > div.learning__buttons > button.button-example.button.button--small.button--tertiary.m-r-xxs.m-b-xs"
         ),
         "Who are your competitors": Selector(
             By.CSS_SELECTOR, "#competitors"
@@ -96,9 +96,12 @@ SELECTORS = {
         "using what you know": Selector(
             By.XPATH, "//h4[contains(text(),'Using what you know to help inform your positionin')]"
         ),
-        # "work out customer demand": Selector(
-        #     By.XPATH, "//h4[contains(text(),'Work out customer demand – how much might you sell')]"
-        # ),
+        "work out customer demand": Selector(
+            By.XPATH, "//body/main/div[2]/section[4]/div/div[2]/form/div[1]/div[2]/div[2]/a/div/h4" #//h4[contains(text(),'Work out customer demand – how much might you sell')]"
+        ),
+        "work out customer demand lesson": Selector(
+            By.XPATH, "//body/main/div[2]/section[4]/div/div[2]/form/div[1]/div[2]/div[1]/button[2]"
+        ),
         "understand market trends": Selector(
             By.XPATH, "//h4[contains(text(),'Understand market trends')]"
         ),

@@ -94,7 +94,7 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"insurance_certificate\"]", type=ElementType.INPUT
         ),
         "commercial invoice educational": Selector(
-            By.XPATH, "//*[@id=\"documents-for-target-market\"]/div/div/div[3]/div/div[1]/div/div/button/i"
+            By.XPATH, "//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[3]/div/div[1]/div/div/button/i" #//*[@id=\"documents-for-target-market\"]/div/div/div[3]/div/div[1]/div/div/button/i"
         ),
         "commercial invoice": Selector(
             By.XPATH, "//*[@id=\"commercial_invoice\"]", type=ElementType.INPUT
@@ -131,7 +131,7 @@ SELECTORS = {
             By.XPATH, "//button[contains(text(),'Add a target market')]"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"adapting-your-product-content\"]/section[1]/div/div/div[2]/a/span"
+            By.XPATH, "//body/main/div[2]/section[1]/div/div/div[2]/span/a/span" #//*[@id=\"adapting-your-product-content\"]/section[1]/div/div/div[2]/a/span"
         ),
         "open navigation": Selector(
             By.XPATH,

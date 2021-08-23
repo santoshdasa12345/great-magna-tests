@@ -43,52 +43,62 @@ SELECTORS = {
     "costs and pricing": {
         "product cost educational": Selector(
             By.XPATH,
-            "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[1]/table/tbody/tr[1]/td[1]/div/div/button/i"
+            "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[1]/div/div[1]/div/div"
+            #"//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[1]/table/tbody/tr[1]/td[1]/div/div/button/i"
         ),
         "product cost": Selector(
-            By.XPATH, "//input[@id='product_costs']", type=ElementType.INPUT
+            By.XPATH, "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[1]/div/div[2]/div/div[2]/input", type=ElementType.INPUT
         ),
         "labour cost educational": Selector(
             By.XPATH,
-            "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[1]/table/tbody/tr[2]/td[1]/div/div/button/i"
+            "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[2]/div/div[1]/div/div/button"
+            #"//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[1]/table/tbody/tr[2]/td[1]/div/div/button/i"
         ),
         "labour cost": Selector(
-            By.XPATH, "//input[@id='labour_costs']", type=ElementType.INPUT
+            By.XPATH, "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/input", type=ElementType.INPUT
         ),
         "additional margin": Selector(
-            By.XPATH, "//input[@id='other_direct_costs']", type=ElementType.INPUT
+            By.XPATH, "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[3]/div/div[2]/div/div[2]/input", type=ElementType.INPUT
         ),
         "direct costs total": Selector(
             By.XPATH, "//span[@class='body-l-b text-white']"
         ),
         "product adaptation educational": Selector(
             By.XPATH,
-            "//body[1]/main[1]/div[2]/div[1]/section[1]/div[1]/div[2]/div[3]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/div[1]/button[1]/i[1]"
+            "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div[1]/div/div[1]/div/div"
+            #"//body[1]/main[1]/div[2]/div[1]/section[1]/div[1]/div[2]/div[3]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/div[1]/button[1]/i[1]"
         ),
         "product adaptation": Selector(
             By.XPATH, "//input[@id='product_adaption']", type=ElementType.INPUT
         ),
         "freight and logistics educational": Selector(
             By.XPATH,
-            "//body[1]/main[1]/div[2]/div[1]/section[1]/div[1]/div[2]/div[3]/table[1]/tbody[1]/tr[2]/td[1]/div[1]/div[1]/button[1]/i[1]"
+            "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div[2]/div/div[1]/div/div"
+            #"//body[1]/main[1]/div[2]/div[1]/section[1]/div[1]/div[2]/div[3]/table[1]/tbody[1]/tr[2]/td[1]/div[1]/div[1]/button[1]/i[1]"
         ),
         "freight and logistics": Selector(
             By.XPATH, "//input[@id='freight_logistics']", type=ElementType.INPUT
         ),
         "agent and distribution fees educational": Selector(
-            By.XPATH, "//tbody/tr[3]/td[1]/div[1]/div[1]/button[1]/i[1]"
+            By.XPATH,
+            "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div[3]/div/div[1]/div/div"
+            #"//tbody/tr[3]/td[1]/div[1]/div[1]/button[1]/i[1]"
         ),
         "agent and distribution fees": Selector(
             By.XPATH, "//input[@id='agent_distributor_fees']", type=ElementType.INPUT
         ),
         "marketing educational": Selector(
-            By.XPATH, "//tbody/tr[4]/td[1]/div[1]/div[1]/button[1]/i[1]"
+            By.XPATH,
+            "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div[4]/div/div[1]/div/div"
+            #"//tbody/tr[4]/td[1]/div[1]/div[1]/button[1]/i[1]"
         ),
         "marketing": Selector(
             By.CSS_SELECTOR, "#marketing", type=ElementType.INPUT
         ),
         "insurance educational": Selector(
-            By.XPATH, "//tbody/tr[5]/td[1]/div[1]/div[1]/button[1]/i[1]"
+            By.XPATH,
+            "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div[5]/div/div[1]/div/div"
+            #"//tbody/tr[5]/td[1]/div[1]/div[1]/button[1]/i[1]"
         ),
         "insurance": Selector(
             By.CSS_SELECTOR, "#insurance", type=ElementType.INPUT
@@ -187,8 +197,9 @@ SELECTORS = {
             "#marketing-approach-content > section.container.m-b-l > div > div.c-1-4.m-t-s > div > a > div > p"
         ),
         "manage exchange rates": Selector(
-            By.CSS_SELECTOR,
-            "#cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > a > div"
+            By.XPATH,
+            "//body/main/div[2]/div/section[2]/div/div/div[2]/div[1]/div[2]/a"
+            #cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > a > div"
         ),
         "choose the right payment method": Selector(
             By.XPATH,
@@ -203,8 +214,9 @@ SELECTORS = {
             "//h4[contains(text(),'Choose which incoterms are right for you')]"
         ),
         "lesson": Selector(
-            By.CSS_SELECTOR,
-            "#cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > button"
+            By.XPATH,
+            "//body/main/div[2]/div/section[2]/div/div/div[2]/div[1]/div[1]/button"
+            #cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > button"
         ),
         "open navigation": Selector(
             By.XPATH,
@@ -273,29 +285,36 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
 
 def find_and_select_random_item_list(driver: WebDriver, element_selector_name: str):
     number_of_units_btn = driver.find_element_by_css_selector(
-        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
+        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius")
+        #"//body/main/div[2]/div/section[1]/div/div[2]/div[5]/div/div[2]/div/div/div[2]/div[3]")
+        #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--value")
+        #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
     #        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > button")
     number_of_units_btn.click()
     time_frame_btn = driver.find_element_by_css_selector(
         "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(18) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
     #        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(18) > div > div.c-1-3 > div > button")
     time_frame_btn.click()
-    select_currency_btn = driver.find_element_by_css_selector(
-        "#cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-5-12-m.c-1-3-l.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
+    select_currency_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]/div[3]")
+        #cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-5-12-m.c-1-3-l.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
     # cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-5-12-m.c-1-3-l.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input
     select_currency_btn.click()
 
     driver.implicitly_wait(5)
     # select__list body-l bg-white radius
     number_of_units_element = driver.find_element_by_css_selector(
-        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
+        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")
+        #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
     #        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > ul")
     time_frame_element = driver.find_element_by_css_selector(
         "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(18) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
     #        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(18) > div > div.c-1-3 > div > ul")
-    select_currency_element = driver.find_element_by_css_selector(
-        "#cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-5-12-m.c-1-3-l.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
+    select_currency_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]/div[4]/ul")
+        #cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-5-12-m.c-1-3-l.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
     #        "#cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-1-6.m-r-xs > div > div > ul")
+        #//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]/div[4]/ul/li[3]
 
     li_elements = number_of_units_element.find_elements_by_tag_name("li")
     li_elements = time_frame_element.find_elements_by_tag_name("li")
@@ -309,10 +328,10 @@ def find_and_select_random_item_list(driver: WebDriver, element_selector_name: s
 
 
 def enter_direct_costs(driver: WebDriver, productcost: str, labourcost: str, additionalmargin: str):
-    base_element_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/table/tbody/tr"
-    productcost_ele_xpath = base_element_xpath + "[" + "1" + "]/td[2]/div/div[2]/input"
-    labourcost_xpath = base_element_xpath + "[" + "2" + "]/td[2]/div/div[2]/input"
-    additionalmargin_xpath = base_element_xpath + "[" + "3" + "]/td[2]/div/div[2]/input"
+    base_element_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div"
+    productcost_ele_xpath = base_element_xpath + "[" + "1" + "]/div/div[2]/div/div[2]/input"
+    labourcost_xpath = base_element_xpath + "[" + "2" + "]/div/div[2]/div/div[2]/input"
+    additionalmargin_xpath = base_element_xpath + "[" + "3" + "]/div/div[2]/div/div[2]/input"
 
     # clear text
     driver.find_element_by_xpath(productcost_ele_xpath).clear()
@@ -333,7 +352,7 @@ def enter_direct_costs(driver: WebDriver, productcost: str, labourcost: str, add
     # driver.implicitly_wait(5)
     # wait and then check the summation of all fields
     summation = int(productcost) + int(labourcost) + int(additionalmargin)
-    summation_ele_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[2]/table/tbody/tr/td[2]/span[2]"
+    summation_ele_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[2]/span[2]/span[2]"
     summation_ele_value = driver.find_element_by_xpath(summation_ele_xpath).text
     if float(summation) == float(summation_ele_value):
         raise Exception("Direct Costs Summation do not match")
@@ -342,13 +361,23 @@ def enter_direct_costs(driver: WebDriver, productcost: str, labourcost: str, add
 
 def enter_overhead_costs(driver: WebDriver, productadaptation: str, freightandlogistics: str,
                          agentanddistributionfees: str, marketing: str, insurance: str):
-    base_element_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/table/tbody/tr"
+    # base_element_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/table/tbody/tr"
+    #
+    # productadaptation_ele_xpath = base_element_xpath + "[" + "1" + "]/td[2]/div/div[2]/input"
+    # freightandlogistics_xpath = base_element_xpath + "[" + "2" + "]/td[2]/div/div[2]/input"
+    # agentanddistributionfees_xpath = base_element_xpath + "[" + "3" + "]/td[2]/div/div[2]/input"
+    # marketing_xpath = base_element_xpath + "[" + "3" + "]/td[2]/div/div[2]/input"
+    # insurance_xpath = base_element_xpath + "[" + "3" + "]/td[2]/div/div[2]/input"
 
-    productadaptation_ele_xpath = base_element_xpath + "[" + "1" + "]/td[2]/div/div[2]/input"
-    freightandlogistics_xpath = base_element_xpath + "[" + "2" + "]/td[2]/div/div[2]/input"
-    agentanddistributionfees_xpath = base_element_xpath + "[" + "3" + "]/td[2]/div/div[2]/input"
-    marketing_xpath = base_element_xpath + "[" + "3" + "]/td[2]/div/div[2]/input"
-    insurance_xpath = base_element_xpath + "[" + "3" + "]/td[2]/div/div[2]/input"
+    base_element_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div"
+
+    productadaptation_ele_xpath = base_element_xpath + "[" + "1" + "]/div/div[2]/div/div[2]/input"
+    freightandlogistics_xpath = base_element_xpath + "[" + "2" + "]/div/div[2]/div/div[2]/input"
+    agentanddistributionfees_xpath = base_element_xpath + "[" + "3" + "]/div/div[2]/div/div[2]/input"
+    marketing_xpath = base_element_xpath + "[" + "4" + "]/div/div[2]/div/div[2]/input"
+    insurance_xpath = base_element_xpath + "[" + "5" + "]/div/div[2]/div/div[2]/input"
+
+
 
     # clear text
     driver.find_element_by_xpath(productadaptation_ele_xpath).clear()
@@ -378,7 +407,7 @@ def enter_overhead_costs(driver: WebDriver, productadaptation: str, freightandlo
     # wait and then check the summation of all fields
     summation = int(productadaptation) + int(freightandlogistics) + int(agentanddistributionfees) + int(
         marketing) + int(insurance)
-    summation_ele_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[4]/table/tbody/tr/td[2]/span[2]"
+    summation_ele_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[4]/span[2]/span[2]"
     summation_ele_value = driver.find_element_by_xpath(summation_ele_xpath).text
     if float(summation) == float(summation_ele_value):
         raise Exception("Overhead Costs Summation do not match")

@@ -98,7 +98,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#route-to-market > div:nth-child(1) > div.text-center > button > i"
         ),
         "marketing resources example": Selector(
-            By.CSS_SELECTOR,"//*[@id=\"resources\"]/div/div[2]/div[1]/button"
+            By.XPATH,"//*[@id=\"resources\"]/div/div[2]/div[1]/button"
             #"#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
         ),
         "marketing resources text": Selector(
@@ -122,12 +122,14 @@ SELECTORS = {
             By.XPATH, "//h4[contains(text(),'Selling direct to your customer')]"
         ),
         "what marketing resources example": Selector(
-            By.CSS_SELECTOR,
-            "#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
+            By.XPATH,
+            "//body/main/div[2]/section[4]/div/div[2]/div/div[1]/div[3]/div/div[1]/button"
+            #"#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
         ),
         "lesson": Selector(
-            By.CSS_SELECTOR,
-            "#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-lesson.button.button--small.button--tertiary.m-r-xxs"
+            By.XPATH,
+            "//body/main/div[2]/section[4]/div/div[2]/div/div[1]/div[1]/div/div/div[1]/div[1]/button"
+            #"#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-lesson.button.button--small.button--tertiary.m-r-xxs"
         ),
         "nav costs and pricing": Selector(
             By.XPATH, "//a[contains(text(),'Costs and pricing')]"
@@ -153,6 +155,9 @@ SELECTORS = {
         ),
         "dashboard": Selector(
             By.XPATH, "//a[contains(text(),'Dashboard')]"
+        ),
+        "choose the right route to market": Selector(
+            By.XPATH, "//body/main/div[2]/section[4]/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]/a"
         ),
 
     }

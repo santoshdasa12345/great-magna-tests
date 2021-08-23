@@ -88,11 +88,11 @@ SELECTORS = {
             By.XPATH, "//p[contains(text(),'Is this opportunity right for you?')]"
         ),
         "move from accidental exporting to strategic exporting": Selector(
-            By.XPATH, "#learning-content-area-1628106907760 > a > div", #//*[@id=\"business-objectives-content\"]/section[4]/div/div[1]/div/a/div/p"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div[2]/div[2]/a", #//*[@id=\"business-objectives-content\"]/section[4]/div/div[1]/div/a/div/p"
         ),
         "top export plan home": Selector(
             By.XPATH,
-            "//body[1]/main[1]/div[2]/section[3]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/a[1]"#business-objectives-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
+            "//body/main/div[2]/section[1]/div/div/div[2]/span/a/span" #business-objectives-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
         ),
         "open navigation": Selector(
             By.XPATH,
@@ -107,6 +107,10 @@ SELECTORS = {
         "dashboard": Selector(
             By.XPATH, "//a[contains(text(),'Dashboard')]"
         ),
+        "lesson": Selector(
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div[2]/div[1]/button[2]"
+        ),
+
     }
 }
 
