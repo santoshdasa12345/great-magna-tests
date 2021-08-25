@@ -94,7 +94,8 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"insurance_certificate\"]", type=ElementType.INPUT
         ),
         "commercial invoice educational": Selector(
-            By.XPATH, "//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[3]/div/div[1]/div/div/button/i" #//*[@id=\"documents-for-target-market\"]/div/div/div[3]/div/div[1]/div/div/button/i"
+            By.XPATH, "//*[@id=\"documents-for-target-market\"]/div/div/div[3]/div/div[1]/div/div/button"
+            #"//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[3]/div/div[1]/div/div/button/span"
         ),
         "commercial invoice": Selector(
             By.XPATH, "//*[@id=\"commercial_invoice\"]", type=ElementType.INPUT

@@ -268,7 +268,8 @@ SELECTORS = {
             By.XPATH, "//p[contains(text(),'Learn to identify opportunities abroad and find th')]"
         ),
         "prepare to sell": Selector(
-            By.XPATH, "//*[@id=\"learn-root\"]/section/a[3]/article"
+            By.XPATH, "//*[@id=\"learn-root\"]/section/article[3]/a"
+            #"//*[@id=\"learn-root\"]/section/a[3]/article"
         ),
         "regulations licensing and logistics": Selector(
             By.XPATH, "//*[@id=\"learn-root\"]/section/a[4]/article"

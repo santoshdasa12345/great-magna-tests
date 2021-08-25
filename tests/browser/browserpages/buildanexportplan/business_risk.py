@@ -354,8 +354,8 @@ def enter_risk_details(driver: WebDriver, position: str, risktext : str , contin
 
     position = int(position)
     risktext_position = int((int(position) * 5) - 4)
-    risk_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/table/tbody/tr" + "[" + str(risktext_position) + "]"
-    risk_text_ele_xpath = risk_div_element_xpath + "/td/div[2]/textarea"
+    risk_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/div" + "[" + str(risktext_position) + "]"
+    risk_text_ele_xpath = risk_div_element_xpath + "/div[1]/div[2]/textarea"
     driver.find_element_by_xpath(risk_text_ele_xpath).send_keys(risktext)
     logging.debug(risk_text_ele_xpath)
     logging.debug(risktext)
@@ -372,10 +372,35 @@ def enter_risk_details(driver: WebDriver, position: str, risktext : str , contin
                                     + "/td/div[2]/div"+ "[" + str(random.randint(1, 5)) + "]" + "/label"
     driver.find_element_by_xpath(risk_impact_button_element_xpath).click()
 
-    contingencyplan_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/table/tbody/tr" \
+    contingencyplan_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/div" \
                                         + "[" + str(risktext_position + 3) + "]"
-    contingencyplan_text_element_xpath = contingencyplan_div_element_xpath + "//td/div[2]/textarea"
+    contingencyplan_text_element_xpath = contingencyplan_div_element_xpath + "/div[4]/div[2]/textarea"
     driver.find_element_by_xpath(contingencyplan_text_element_xpath).send_keys(contingencyplan)
+
+    #risk imapact
+
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[1]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[2]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[3]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[4]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[5]/label
+
+    #risk likelihood
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[1]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[2]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[3]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[4]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[5]/label
+
+
+
+
+
+
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[1]/div[4]/div[2]/textarea
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[2]/div[4]/div[2]/textarea
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[4]/div[2]/textarea
 
     time.sleep(5)
 

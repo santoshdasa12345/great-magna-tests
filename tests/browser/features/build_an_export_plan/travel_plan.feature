@@ -53,7 +53,7 @@ Feature: GreatMagna - Travel Plan Page
 #
 #
     @allure.link:XOT-1194
-   @Great_Magna_Export_Plan_tp
+   @Great_Magna_Export_Plan_tp_1
   Scenario:User should be able to click another trip and enter trip details and delete "Trip details"
 
     Given "Robert" visited "GreatMagna - Login" page

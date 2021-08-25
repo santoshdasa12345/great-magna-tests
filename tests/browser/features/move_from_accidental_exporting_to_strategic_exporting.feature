@@ -98,14 +98,14 @@ Given "Robert" visited "GreatMagna - Login" page
 #
 #  And "Robert" decides to click on "Open case study"
 
-   @allure.link:XOT-125
-   @Great-Magna-Lessons_case
- Scenario:User should be able to open Case study
-
-  Given "Robert" visited "GreatMagna - Login" page
-   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-#    And "Robert" should be able to enter products "<products>" and country "<country>"
+#   @allure.link:XOT-125
+#   @Great-Magna-Lessons_case
+# Scenario:User should be able to open Case study
+#
+#  Given "Robert" visited "GreatMagna - Login" page
+#   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+##    And "Robert" should be able to enter products "<products>" and country "<country>"
 #        Examples: Products and Country
 #         | products                 | country        |
 #         | Precious stone           | United States  |
@@ -124,7 +124,7 @@ Given "Robert" visited "GreatMagna - Login" page
 #      | UK Export Finance         | Domestic - Get Finance         |
 #      | Find events and visits    | Events - Home                  |
 #      | Get an EORI number        | EORI - Home                    |
-   Then "Robert" decides to click on "Learn to export"
-    And "Robert" decides to click on section "Is this opportunity right for you" on page "LearnToExport - Identify opportunities"
-     And "Robert" decides to click open "case study" in all lessons "50" times from page "LearnToExport - Is this opportunity right for you" until it reaches "managing-exchange-rates"
-    And "Robert" decides to click continue for maximum "50" times from page "LearnToExport - Is this opportunity right for you" until it reaches "managing-exchange-rates"
+#   Then "Robert" decides to click on "Learn to export"
+#    And "Robert" decides to click on section "Is this opportunity right for you" on page "LearnToExport - Identify opportunities"
+#     And "Robert" decides to click open "case study" in all lessons "50" times from page "LearnToExport - Is this opportunity right for you" until it reaches "managing-exchange-rates"
+#    And "Robert" decides to click continue for maximum "50" times from page "LearnToExport - Is this opportunity right for you" until it reaches "managing-exchange-rates"

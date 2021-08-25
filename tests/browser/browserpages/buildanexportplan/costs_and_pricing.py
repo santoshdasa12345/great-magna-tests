@@ -171,7 +171,7 @@ SELECTORS = {
         #     By.CSS_SELECTOR, "#cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-1-6.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
         # ),
         "gross price per unit": Selector(
-            By.CSS_SELECTOR, "#gross_price_per_unit_invoicing"
+            By.CSS_SELECTOR, "#gross_price_per_unit_invoicing" ,type=ElementType.INPUT
         ),
         "profit per unit": Selector(
             By.XPATH,
@@ -284,47 +284,51 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
 
 
 def find_and_select_random_item_list(driver: WebDriver, element_selector_name: str):
-    number_of_units_btn = driver.find_element_by_css_selector(
-        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius")
-        #"//body/main/div[2]/div/section[1]/div/div[2]/div[5]/div/div[2]/div/div/div[2]/div[3]")
-        #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--value")
-        #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
-    #        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > button")
-    number_of_units_btn.click()
-    time_frame_btn = driver.find_element_by_css_selector(
-        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(18) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
-    #        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(18) > div > div.c-1-3 > div > button")
-    time_frame_btn.click()
+    driver.implicitly_wait(5)
+    # number_of_units_btn = driver.find_element_by_xpath(
+    #     "//body/main/div[2]/div/section[1]/div/div[2]/div[5]/div/div[2]/div/div/div[2]/div[3]")
+    # number_of_units_btn.click()
+    # time_frame_btn = driver.find_element_by_xpath(
+    #     "//body/main/div[2]/div/section[1]/div/div[2]/div[6]/div/div[2]/div/div/div[2]")
+    # time_frame_btn.click()
     select_currency_btn = driver.find_element_by_xpath(
-        "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]/div[3]")
-        #cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-5-12-m.c-1-3-l.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
-    # cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-5-12-m.c-1-3-l.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input
+        "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]")
     select_currency_btn.click()
 
-    driver.implicitly_wait(5)
+
     # select__list body-l bg-white radius
-    number_of_units_element = driver.find_element_by_css_selector(
-        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")
-        #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
-    #        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(16) > div > div.c-1-3 > div > ul")
-    time_frame_element = driver.find_element_by_css_selector(
-        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(18) > div > div.c-1-3 > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
-    #        "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(18) > div > div.c-1-3 > div > ul")
+    # number_of_units_element = driver.find_element_by_xpath(
+    #     "//body/main/div[2]/div/section[1]/div/div[2]/div[5]/div/div[2]/div/div/div[2]/div[4]/ul")
+    # time_frame_element = driver.find_element_by_xpath(
+    #     "//body/main/div[2]/div/section[1]/div/div[2]/div[6]/div/div[2]/div/div/div[2]/div[4]/ul")
     select_currency_element = driver.find_element_by_xpath(
         "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]/div[4]/ul")
-        #cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-5-12-m.c-1-3-l.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
-    #        "#cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-1-6.m-r-xs > div > div > ul")
-        #//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]/div[4]/ul/li[3]
 
-    li_elements = number_of_units_element.find_elements_by_tag_name("li")
-    li_elements = time_frame_element.find_elements_by_tag_name("li")
-    li_elements = select_currency_element.find_elements_by_tag_name("li")
-    logging.debug("list elements")
-    logging.debug(li_elements)
+
+    # nou_li_elements = number_of_units_element.find_elements_by_tag_name("li")
+    # random_number = 0
+    # if len(nou_li_elements) > 0:
+    #     if len(nou_li_elements) > 2:
+    #         random_number = random.randint(1, len(nou_li_elements) - 1)
+    #     random_li_element = nou_li_elements[random_number]
+    #     random_li_element.click()
+    #
+    # time_li_elements = time_frame_element.find_elements_by_tag_name("li")
+    # random_number = 0
+    # if len(time_li_elements) > 0:
+    #     if len(time_li_elements) > 2:
+    #         random_number = random.randint(1, len(time_li_elements) - 1)
+    #     random_li_element = time_li_elements[random_number]
+    #     random_li_element.click()
+
+    currency_li_elements = select_currency_element.find_elements_by_tag_name("li")
+
     random_number = 0
-    if len(li_elements) > 2:
-        random_number = random.randint(1, len(li_elements) - 1)
-    random_li_element = li_elements[random_number]
+    if len(currency_li_elements) > 0:
+        if len(currency_li_elements) > 2:
+            random_number = random.randint(1, len(currency_li_elements) - 1)
+        random_li_element = currency_li_elements[random_number]
+        random_li_element.click()
 
 
 def enter_direct_costs(driver: WebDriver, productcost: str, labourcost: str, additionalmargin: str):
