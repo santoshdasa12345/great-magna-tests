@@ -70,7 +70,7 @@ SELECTORS = {
             type=ElementType.INPUT
         ),
         "add a trip": Selector(
-            By.CSS_SELECTOR, "#planned-travel > button"
+            By.XPATH, "//body/main/div[2]/section[6]/div/div[2]/div/button"
         ),
         "delete message": Selector(
             By.XPATH, "//body/div[12]/div/div/div/div[2]/div[2]/button[1]/i"
@@ -173,17 +173,21 @@ def enter_trip_details(driver: WebDriver, position: str, trip_name: str):
     # every call of this function, click on Add Goal
     find_and_click(driver, element_selector_name="Add a trip")
     time.sleep(2)
-    document_div_element_xpath = "/html/body/main/div[2]/section[6]/div/div[2]/div/div[2]/table/tbody/tr" + "[" + position + "]"
-    document_text_ele_xpath = document_div_element_xpath + "/td/div/textarea"
+    document_div_element_xpath = "//body/main/div[2]/section[6]/div/div[2]/div/div[2]/div" + "[" + position + "]"
+    document_text_ele_xpath = document_div_element_xpath + "/div[1]/div/textarea"
     driver.find_element_by_xpath(document_text_ele_xpath).send_keys(trip_name)
     time.sleep(2)
-
+    #//body/main/div[2]/section[6]/div/div[2]/div/div[2]/table/tbody/tr[1]/td/div/textarea
+    #//body/main/div[2]/section[6]/div/div[2]/div/div[2]/div/div[1]/div/textarea
+    #//body/main/div[2]/section[6]/div/div[2]/div/div[2]/div[2]/div[1]/div/textarea
 
 def delete_all_trip_details(driver: WebDriver, del_button_position: str):
+    driver.implicitly_wait(4)
     # 1,3,5,7,......
-    trip_text_area_element_index = int(del_button_position) - 1
-    trip_text_area_element_x_path = "/html/body/main/div[2]/section[6]/div/div[2]/div/div[2]/table/tbody/tr" \
-                                    + "[" + str(trip_text_area_element_index) + "]" + "/td/div/textarea"
+    #//body/main/div[2]/section[6]/div/div[2]/div/div[2]/div[5]/div[2]/button
+    trip_text_area_element_index = int(del_button_position)
+    trip_text_area_element_x_path = "//body/main/div[2]/section[6]/div/div[2]/div/div[2]/div" \
+                                    + "[" + str(trip_text_area_element_index) + "]" + "/div[2]/button"
     trip_text_area_text_exists = True
     try:
         trip_text_area_text = driver.find_element_by_xpath(trip_text_area_element_x_path).text
@@ -192,18 +196,23 @@ def delete_all_trip_details(driver: WebDriver, del_button_position: str):
     except:
         trip_text_area_text_exists = False
 
-    # del_button_position: 2,4,6,8,10,.....
-    document_div_element_xpath = "/html/body/main/div[2]/section[6]/div/div[2]/div/div[2]/table/tbody/tr" + "[" + del_button_position + "]"
-    del_btn_ele_xpath = document_div_element_xpath + "/td/button/i"
+    # del_button_position: 2,4,6,8,10,..... 1,2,3,4,5
+    document_div_element_xpath = "//body/main/div[2]/section[6]/div/div[2]/div/div[2]/div" + "[" + del_button_position + "]"
+    del_btn_ele_xpath = document_div_element_xpath + "/div[2]/button/i"
+    print(del_btn_ele_xpath)
     driver.find_element_by_xpath(del_btn_ele_xpath).click()
 
     if trip_text_area_text_exists == True:
         driver.implicitly_wait(1)
+        #15,14,13,12,11
+        #
+        #//body/div[11]/div/div/div/div[2]/div[2]/button[1]
+        #//body/div[12]/div/div/div/div[2]/div[2]/button[1]/i
         # 12,13,14,15.......
         # 12 + (2/2 - 1), 12 + (4/2 - 1), 12 + (6/2 - 1), 12 + (8/2 - 1),.........
-        delete_msg_yes_index = int(12 + (int((int(del_button_position) / 2)) - 1))
+        delete_msg_yes_index = int(11 + (int((int(del_button_position))) - 1))
         delete_message_yes_element_xpath = "//body/div" + "[" + str(
-            delete_msg_yes_index) + "]" + "/div/div/div/div[2]/div[2]/button[1]"
+            delete_msg_yes_index) + "]" + "/div/div/div/div[2]/div[2]/button[1]/i"
         delete_message_yes_element = driver.find_element_by_xpath(delete_message_yes_element_xpath)
         delete_message_yes_element.click()
         time.sleep(1)

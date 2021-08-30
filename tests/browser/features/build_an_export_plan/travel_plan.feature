@@ -64,10 +64,10 @@ Feature: GreatMagna - Travel Plan Page
     And "Robert" fill trip details on page "Build An Export Plan - Travel Plan"
           | Position | TripName  |
           | 1        | Trip1- India    |
-          | 3        | Trip2- Nigeria  |
-          | 5        | Trip3- Ghana      |
-          | 7       | Trip4- Bangladesh |
-          | 9        | Trip5- Indonesia  |
+          | 2        | Trip2- Nigeria  |
+          | 3        | Trip3- Ghana      |
+          | 4       | Trip4- Bangladesh |
+          | 5        | Trip5- Indonesia  |
 
   @allure.link:XOT-1195
    @Great_Magna_Export_Plan_tp
@@ -81,11 +81,11 @@ Feature: GreatMagna - Travel Plan Page
     And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to delete trip details on page "Build An Export Plan - Travel Plan"
           | Position |
-          | 2     |
+          | 5     |
           | 4     |
-          | 6     |
-          | 8     |
-          | 10     |
+#          | 3     |
+#          | 2     |
+#          | 1     |
 
    @allure.link:XOT-1196
    @Great-Magna-Export_Plan-progress-bar-test

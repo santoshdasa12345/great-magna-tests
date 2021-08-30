@@ -47,21 +47,23 @@ SELECTORS = {
             "#getting-paid > div > div:nth-child(1) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
         ),
         "payment methods notes": Selector(
-            By.XPATH, "//textarea[@id='method_notes']", type=ElementType.INPUT
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[2]/textarea[1]", type=ElementType.INPUT
+                        #//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[2]/textarea
         ),
         "payment terms": Selector(
             By.CSS_SELECTOR,
             "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
         ),
         "payment terms notes": Selector(
-            By.XPATH, "//textarea[@id='payments_notes']", type=ElementType.INPUT
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[2]/textarea", #//textarea[@id='payments_notes']",
+            type=ElementType.INPUT
         ),
         "incoterms": Selector(
             By.CSS_SELECTOR,
             "#getting-paid > div > div:nth-child(3) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
         ),
         "incoterms notes": Selector(
-            By.XPATH, "//textarea[@id='incoterms_notes']", type=ElementType.INPUT
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[2]/textarea"#//textarea[@id='incoterms_notes']",type=ElementType.INPUT
         ),
         "section complete": Selector(
             By.XPATH, "//label[contains(text(),'Yes')]"
@@ -95,8 +97,9 @@ SELECTORS = {
             By.CSS_SELECTOR, "#section-complete > div > label"
         ),
         "dashboard": Selector(
-            By.XPATH, "//a[contains(text(),'Dashboard')]"
-        ), "choose the right payment method": Selector(
+            By.XPATH, "//body/header/div/nav/ul/li/a"
+        ),
+        "choose the right payment method": Selector(
             By.XPATH,
             "//body[1]/main[1]/div[2]/section[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]/div[1]"
             # //h4[contains(text(),'Choose the right payment method')]"
@@ -140,6 +143,7 @@ def enter_text(driver: WebDriver, element_name: str):
     text_element = find_element(
         driver, find_selector_by_name(SELECTORS, element_name)
     )
+    print(text_element)
     text_element.clear()
     text_element.send_keys("Automated tests")
 
@@ -172,9 +176,8 @@ def enter_business_objectives_details(driver: WebDriver, startdate: str, enddate
 
 
 def find_and_select_random_item_list(driver: WebDriver, element_selector_name: str):
-    payment_methods_btn = driver.find_element_by_css_selector(
-        "#getting-paid > div > div:nth-child(1) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--value")
-    # "#getting-paid > div > div:nth-child(1) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
+    payment_methods_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[3]" )
     payment_methods_btn.click()
     payment_terms_btn = driver.find_element_by_css_selector(
         "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--value")
@@ -186,9 +189,8 @@ def find_and_select_random_item_list(driver: WebDriver, element_selector_name: s
     incoterms_btn.click()
     driver.implicitly_wait(5)
     # select__list body-l bg-white radius
-    payment_methods_element = driver.find_element_by_css_selector(
-        "#getting-paid > div > div:nth-child(1) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")
-    # "#getting-paid > div > div:nth-child(1) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
+    payment_methods_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[4]")
     payment_terms_element = driver.find_element_by_css_selector(
         "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")
     # "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
@@ -220,24 +222,7 @@ def check_section_complete_yes(driver: WebDriver, element_selector_name: str):
 
 def fill_out_country(driver: WebDriver, country: str):
     driver.implicitly_wait(1)
-    # parent div: //body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]
-    # parent ul: //body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul
 
-    # where to export : country search
-    # //body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]
-    # //body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/ul
-
-    # country
-    # country_btn = find_element(
-    #     driver, find_selector_by_name(SELECTORS, "country-btn")  # dashboard add country button
-    # )
-    # country_btn.click()
-
-    # try:
-    #     if driver.find_element_by_xpath("//button[contains(text(),'Got it')]").is_displayed():
-    #         driver.find_element_by_xpath("//button[contains(text(),'Got it')]").click()
-    # except:
-    #     pass
     driver.find_element_by_xpath("//button[contains(text(),'Add a target market')]").click()
     if 0 == len(country):
         # if country name is not provided from the test case, then select one of the random 5 countries listed on the browser
@@ -301,37 +286,41 @@ def find_and_click_lesson_link(driver: WebDriver, lesson_name: str):
     child_div_elements = parent_div_lesson_element.find_elements_by_class_name("user-form-group")
     lesson_name_found = False
     for user_form_group_element in child_div_elements:
-        section_element = user_form_group_element.find_element_by_class_name("form-group  ")
-        section_label_element = section_element.find_element_by_tag_name("label")
-        logging.debug(section_label_element.text)
-        learning_buttons_element = user_form_group_element.find_element_by_class_name("learning__buttons")
-        button_element = learning_buttons_element.find_element_by_tag_name("button")
-        logging.debug(button_element.text)
+        #select_mbl_element = user_form_group_element.find_element_by_class_name("select m-b-l ")
+        form_group_section_elements = user_form_group_element.find_elements_by_class_name("form-group  ")
+        for section_element in form_group_section_elements:
+            section_label_element = section_element.find_element_by_tag_name("label")
+            logging.debug(section_label_element.text)
+            if "Add" in section_label_element.text:
+                continue
+            learning_buttons_element = section_element.find_element_by_class_name("learning__buttons")
+            button_element = learning_buttons_element.find_element_by_tag_name("button")
+            logging.debug(button_element.text)
 
-        learning_content_element_temp = user_form_group_element.find_element_by_class_name("learning__content")
-        if learning_content_element_temp.is_displayed():
+            learning_content_element_temp = section_element.find_element_by_class_name("learning__content")
+            if learning_content_element_temp.is_displayed():
+                button_element.click()
+                time.sleep(2)
+
+            button_element.click()
+            driver.implicitly_wait(5)
+            learning_content_element = section_element.find_element_by_class_name("learning__content")
+            learning_content_element.location_once_scrolled_into_view
+            title_element = learning_content_element.find_element_by_tag_name("a")
+
+            title_div_tag_element = title_element.find_element_by_tag_name("div")
+            actual_title_element = title_div_tag_element.find_element_by_tag_name("h4")
+
+            # time.sleep(2)
+            # new Actions(driver).moveToElement(title_element).perform();
+            logging.debug(actual_title_element.text)
+            if lesson_name.lower() in str(actual_title_element.text).lower():
+                lesson_name_found = True
+                title_element.click()
+                break
+            time.sleep(2)
+            button_element.location_once_scrolled_into_view
             button_element.click()
             time.sleep(2)
-
-        button_element.click()
-        driver.implicitly_wait(5)
-        learning_content_element = user_form_group_element.find_element_by_class_name("learning__content")
-        learning_content_element.location_once_scrolled_into_view
-        title_element = learning_content_element.find_element_by_tag_name("a")
-
-        title_div_tag_element = title_element.find_element_by_tag_name("div")
-        actual_title_element = title_div_tag_element.find_element_by_tag_name("h4")
-
-        # time.sleep(2)
-        # new Actions(driver).moveToElement(title_element).perform();
-        logging.debug(actual_title_element.text)
-        if lesson_name.lower() in str(actual_title_element.text).lower():
-            lesson_name_found = True
-            title_element.click()
-            break
-        time.sleep(2)
-        button_element.location_once_scrolled_into_view
-        button_element.click()
-        time.sleep(2)
     if lesson_name_found == False:
         raise Exception("lesson could not be found " + str(lesson_name))

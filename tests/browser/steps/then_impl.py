@@ -68,7 +68,6 @@ from browserutils.gtm import (
     replace_string_representations,
 )
 
-
 def should_be_on_page(context: Context, actor_alias: str, page_name: str):
     page = get_page_object(page_name)
     page_source = context.driver.page_source
@@ -557,7 +556,8 @@ def actor_should_see_country_details_on_page(context, actor_alias, page_name, on
 def actor_should_see_last_visited_page_under_section_on_page(context, actor_alias, text_to_see, section_name,
                                                              page_name):
     page = get_last_visited_page(context, actor_alias)
-    # page_to_be_landed = get_page_object(page_name)
+    page_to_be_landed = get_page_object(page_name)
+    print(page.NAME)
     if page.NAME != text_to_see:
         raise Exception("Last visited page is incorrect - " + str(page.NAME))
 

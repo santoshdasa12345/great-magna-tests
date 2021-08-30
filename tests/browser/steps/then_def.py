@@ -212,7 +212,6 @@ def then_actor_decides_to_click_on_lesson_link(
     actor_decides_to_click_on_page_with_lesson_link(context, actor_alias, lesson_name, page_name=page_name)
 
 
-
 @then('"{actor_alias}" decides to click with wait "{wait_for_it}" on section "{element_name}" on page "{page_name}"')
 def then_actor_decides_to_click_on_page_element_with_wait(
         context, actor_alias, element_name, page_name, wait_for_it):
@@ -933,10 +932,14 @@ def then_should_not_see_sections(context, actor_alias):
 @then(
     '"{actor_alias}" decides to click open "{element_name}" in all lessons "{max_number_pages}" times from page "{from_page_name}" until it reaches "{page_name}"')
 def then_actor_decides_to_click_open_case_study_in_all_lessons_for_number_of_times_until_it_reaches_required_page(
-        context, actor_alias, max_number_pages, from_page_name, page_name,element_name):
-    actor_decides_to_click_open_case_study_in_all_lessons_for_number_of_times_until_it_reaches_required_page(context, actor_alias,
-                                                                                       max_number_pages, from_page_name,
-                                                                                       page_name,element_name)
+        context, actor_alias, max_number_pages, from_page_name, page_name, element_name):
+    actor_decides_to_click_open_case_study_in_all_lessons_for_number_of_times_until_it_reaches_required_page(context,
+                                                                                                             actor_alias,
+                                                                                                             max_number_pages,
+                                                                                                             from_page_name,
+                                                                                                             page_name,
+                                                                                                             element_name)
+
 
 @then('"{actor_alias}" decides to enter email address "{email_address}", password "{password}" and click Login')
 def when_actor_decides_to_enter_email_address_and_click_login(

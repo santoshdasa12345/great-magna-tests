@@ -7,7 +7,6 @@ Feature: GreatMagna - Funding and Credit Page
    Background:
    Given test authentication is done
 
-
    @allure.link:XOT-1111
    @Great_Magna_Export_Plan
   Scenario:User should be able to enter "How much funding you need"
@@ -22,6 +21,7 @@ Feature: GreatMagna - Funding and Credit Page
 
    @allure.link:XOT-1112
    @Great_Magna_Export_Plan_FUNDING
+     @failed_exp_3
   Scenario:User should be able to click on "Add a funding option" and select random option and enter value
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -43,6 +43,7 @@ Feature: GreatMagna - Funding and Credit Page
 
      @allure.link:XOT-1113
    @Great_Magna_Export_Plan_FUNDING
+       @failed_exp
   Scenario:User should be able to delete added funding options
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -63,23 +64,9 @@ Feature: GreatMagna - Funding and Credit Page
           | 2       |
 
 
-
-  @allure.link:XOT-1114
-   @Great_Magna_Export_Plan_lesson_link
-  Scenario:User should be able to click lessons link "Avoid cashflow challenges when exporting"
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Funding and Credit"
-     And "Robert" decides to click on section "Avoid cashflow challenges when exporting" on page "Build An Export Plan - Funding and Credit"
-     And "Robert" should be on the "LearnToExport - Avoid cashflow challenges when exporting" page
-     And "Robert" decides to click on section "Funding and Credit" on page "LearnToExport - Avoid cashflow challenges when exporting"
-
   @allure.link:XOT-1115
   @Great_Magna_Export_Plan
+    @failed_exp_2
   Scenario:User should be able to click lessons link "Choose the right funding and credit options"
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -162,7 +149,7 @@ Feature: GreatMagna - Funding and Credit Page
 
    @allure.link:XOT-1121
    @Great_Magna_Export_Plan_12
-     @failed_14
+     @failed_exp_fc
   Scenario:User should be able to click "lesson" on Funding and Credit page and click on dashboard should see "Funding and Credit" as last visited page
 
     Given "Robert" visited "GreatMagna - Login" page

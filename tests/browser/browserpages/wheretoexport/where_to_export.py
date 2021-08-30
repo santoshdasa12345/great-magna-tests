@@ -70,7 +70,8 @@ SELECTORS = {
             By.XPATH, "//body/div[7]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button"
         ),
         "add a place": Selector(
-            By.XPATH, "//body/main/div[1]/section/div/div/div[1]/div/div[2]/button"
+            By.XPATH, #"#cta-container > button"
+            "//body/main/div[1]/section/div/div/div[1]/div/div[2]/button"
         ),
         "search country": Selector(
             By.XPATH, "//body/div[8]/div/div/div/div/div/div[1]/div[3]/div[1]/div/label/div/input"
@@ -103,30 +104,7 @@ SELECTORS = {
         "where to export": Selector(
             By.XPATH, "#header-link-markets"
         ),
-        "country 1": Selector(
-            By.XPATH, "//body/main/div[3]/span/div[2]/span/table/tbody/tr[1]/th/div"
-        ),
-        "country 2": Selector(
-            By.XPATH, "//body/main/div[3]/span/div[2]/span/table/tbody/tr[2]/th/div"
-        ),
-        "country 3": Selector(
-            By.XPATH, "//body/main/div[3]/span/div[2]/span/table/tbody/tr[3]/th/div"
-        ),
-        "religion 1": Selector(
-            By.XPATH, "//body/main/div[3]/span/div[2]/span/table/tbody/tr[1]/td[1]/div[1]"
-        ),
-        "religion 2": Selector(
-            By.XPATH, "//body/main/div[3]/span/div[2]/span/table/tbody/tr[2]/td[1]/div[1]"
-        ),
-        "religion 3": Selector(
-            By.XPATH, "//body/main/div[3]/span/div[2]/span/table/tbody/tr[3]/td[1]/div[1]"
-        ),
-        "language 1": Selector(
-            By.XPATH, "//body/main/div[3]/span/div[2]/span/table/tbody/tr[3]/td[1]/div[1]"
-        ),
-        "language 2": Selector(
-            By.XPATH, "//body/main/div[3]/span/div[2]/span/table/tbody/tr[3]/td[1]/div[1]"
-        ),
+
         "rule of law making educational": Selector(
             By.XPATH, "//body/main/div[3]/span/div[2]/span/table/thead/tr/th[4]/div/div/div/button/i"
         ),
@@ -281,29 +259,38 @@ def fill_out_country(driver: WebDriver, country: str):
 
     # look out for the list displayed after entering country name and select random/provided country
     ul_list_element = driver.find_element_by_xpath(
-        "//body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/ul")
+        "//body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div")
 
     section_elements = ul_list_element.find_elements_by_tag_name("section")
     logging.debug("length of section elements " + str(len(section_elements)))
     # select random section element and within that select a country
+
     index_random_element_to_be_selected = random.randint(0, len(section_elements) - 1)
     logging.debug("Index of section elements " + str(index_random_element_to_be_selected))
     section_element_selected = section_elements[index_random_element_to_be_selected]
     logging.debug(section_element_selected)
-
+    #//body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section/div[2]/ol/li/button
     div_elements = section_element_selected.find_elements_by_tag_name("div")  # 2 has to be present
-    logging.debug("length of div elements " + str(len(div_elements)))
-    level_1_div_element = div_elements[
-        1]  # section_element_selected.find_element_by_class_name("p-t-s expand-section open")
-    level_2_div_element = level_1_div_element.find_element_by_tag_name("div")
-    span_elements = level_2_div_element.find_elements_by_tag_name("span")
-    logging.debug("length of span elements " + str(len(span_elements)))
+    #logging.debug("length of div elements " + str(len(div_elements)))
+    for ol_element in div_elements:
+        #level_1_div_element = div_elements.find_element_by_tag_name("div")
+    # level_1_div_element = div_elements[
+    #     1]# section_element_selected.find_element_by_class_name("p-t-s expand-section open")
+    #level_2_div_element = level_1_div_element.find_element_by_tag_name("div")
+        ol_element_selected = ol_element.find_elements_by_tag_name("ol")
+    logging.debug("length of ol elements " + str(len(ol_element_selected)))
+    #span_elements = level_2_div_element.find_elements_by_tag_name("span")
+    #logging.debug("length of span elements " + str(len(span_elements)))
     # select random span element and within that select a country
-    index_random_element_to_be_selected = random.randint(0, len(span_elements) - 1)
-    span_element_selected = span_elements[index_random_element_to_be_selected]
-    li_element = span_element_selected.find_element_by_tag_name("li")
+    # index_random_element_to_be_selected = random.randint(0, len(ol_elements) - 1)
+    #index_random_element_to_be_selected = random.randint(0, len(span_elements) - 1)
+    # ol_element_selected = ol_elements[index_random_element_to_be_selected]
+    #span_element_selected = span_elements[index_random_element_to_be_selected]
+    for li_element in ol_element_selected:
+        li_store_element = li_element.find_element_by_tag_name("li")
+    #li_element = span_element_selected.find_element_by_tag_name("li")
     # finally arrived at country name button(s)
-    buttons_elements = li_element.find_elements_by_tag_name("button")
+    buttons_elements = li_store_element.find_elements_by_tag_name("button")
     logging.debug("length of country button elements " + str(len(buttons_elements)))
     country_name_found = False
     for button_element in buttons_elements:
@@ -315,12 +302,12 @@ def fill_out_country(driver: WebDriver, country: str):
         raise Exception("Country name could not be found " + str(country))
 
 
-def fill_out_country_and_validate_ui(driver: WebDriver, country: str, display_tab_count: int = 4):
+def fill_out_country_and_validate_ui(driver: WebDriver, country: str, display_tab_count: int = 5):
     # fill out country name
     fill_out_country(driver, country)
 
     # after entering the country name, check if there are required tabs displayed on the UI
-    tabs_element = driver.find_element_by_xpath("//body/main/div[3]/span/div[1]/div/ol")
+    tabs_element = driver.find_element_by_xpath("//body/main/div[3]/span/div[1]/div")
     tab_button_elements = tabs_element.find_elements_by_tag_name("button")
     logging.debug(tab_button_elements)
     logging.debug(len(tab_button_elements))
@@ -331,9 +318,9 @@ def enter_country_details(driver: WebDriver, country_name: str, country_place_nu
                           , country_max: int = 10
                           , display_tab_count: int = 4):
     driver.implicitly_wait(1)
-    # logging.debug("country_place_number " + str(country_place_number))
-    # logging.debug("country_max " + str(country_max))
-    # logging.debug("display_tab_count " + str(display_tab_count))
+    logging.debug("country_place_number " + str(country_place_number))
+    logging.debug("country_max " + str(country_max))
+    logging.debug("display_tab_count " + str(display_tab_count))
     table_element = None
     try:
         # check if the country table already exists
@@ -343,6 +330,7 @@ def enter_country_details(driver: WebDriver, country_name: str, country_place_nu
         if (country_place_number == 1):
             find_and_click(driver, element_selector_name="add a place")
     except Exception as e:
+        logging.debug(e)
         table_element = None
         find_and_click(driver, element_selector_name="add a place")
 
@@ -400,7 +388,7 @@ def check_country_details(driver: WebDriver, on_all_tabs: bool = False):
         if len(data_not_available_countries) != 0:
             raise Exception("Country missing details " + str(data_not_available_countries))
     else:
-        country_tab_elements = driver.find_element_by_xpath("//body/main/div[3]/span/div[1]/div/ol")
+        country_tab_elements = driver.find_element_by_xpath("//body/main/div[3]/span/div[1]/div")
         tab_elements = country_tab_elements.find_elements_by_tag_name("button")
 
         data_not_available_tabs = {}
