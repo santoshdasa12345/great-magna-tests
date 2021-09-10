@@ -302,34 +302,9 @@ def fill_out_product(driver: WebDriver, products: str):
         pass
 
     try:
-        # time.sleep(2)
-        # driver.find_element_by_xpath("/html/body/div[3]/div/div/form/div[2]/div/div/section/div/div[2]/label/div[2]/div/i").click()
-        # driver.find_element_by_xpath(
-        #     "/html/body/div[3]/div/div/form/div[2]/div/div/section/div/div[2]/label/div[2]/div/i").click()
 
-        # driver.find_element_by_xpath(
-        #     "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").sendKeys(Keys.CONTROL + "a");
-        # driver.find_element_by_xpath(
-        #     "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").send_keys(u'\ue009' + u'\ue003')
-        # driver.find_element_by_xpath(
-        #     "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").sendKeys(Keys.DELETE);
-        # time.sleep(2)
-        # driver.find_element_by_xpath(
-        #     "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").clear()
         product_input_text = driver.find_element_by_xpath("//input[@id='input-commodity-name']").text
         logging.debug("product_input_text -> " + product_input_text)
-        # actions = action_chains(driver)
-        # driver.find_element_by_xpath("//input[@id='input-commodity-name']").click()
-        # for i in range(len(product_input_text)):
-        #     actions.sendKeys(Keys.ARROW_LEFT)
-        #
-        # actions.build().perform()
-        #
-        # for i in range(len(product_input_text)):
-        #     actions.sendKeys(Keys.DELETE)
-        #
-        # time.sleep(1);
-        # actions.build().perform()
 
         for i in range(len(product_input_text)):
             driver.find_element_by_xpath(
