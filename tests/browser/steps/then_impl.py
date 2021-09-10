@@ -1381,3 +1381,8 @@ def actor_decides_to_click_on_page_with_lesson_link(
         page = get_last_visited_page(context, actor_alias)
     has_action(page, "find_and_click_lesson_link")
     page.find_and_click_lesson_link(context.driver, lesson_name)
+
+def actor_decides_to_enter_product_name_on_export_plan(context, actor_alias, product_name, page_name):
+    page = get_page_object(page_name)
+    has_action(page, "choose a product")
+    page.choose_a_product(context.driver, product_name)

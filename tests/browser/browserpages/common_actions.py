@@ -1219,40 +1219,40 @@ def fill_out_email_address(driver: WebDriver, details: dict):
     fill_input_list = find_element(driver, find_selector_by_name(SELECTORS, "login button"))
     fill_input_list.click()
 
-# def generic_set_basic_auth_creds(driver: WebDriver, *, service_name: str = None):
-#     if service_name == "ERP":
-#         base_url = URLs.ERP_LANDING.absolute
-#     else:
-#         base_url = URLs.GREAT_MAGNA_START.absolute
-#     parsed = urlparse(base_url)
-#     logging.debug(parsed)
-#     #with_creds = f"{parsed.scheme}://{BASICAUTH_USER}:{BASICAUTH_PASS}@{parsed.netloc}{parsed.path}"
-#     with_creds = f"{parsed.scheme}://{parsed.netloc}/login?enc=gAAAAABgF-Gia1slIhrlp4r6x3BdqsFCnpp1VRANWAhb6fDX_VnPi8iDIaXNYceAq-Z7e234b77gF-_HlPmQue6L47pnvKr46xU6s22ZC-4m8En3V4uISwY="
-#     logging.debug(f"Doing basic auth")
-#     beta_user_token = "gAAAAABfsppja2o9NnJuOzzlW76Alej9q6u96Pj_S7jfHuyWiR5rD3QRnncKCARpoN0c5A8aNPfBn7bzvNf42xiiyvCDXa5YfgnyNewjqymHFXKR4cqESOY="
-#     with wait_for_page_load_after_action(driver):
-#         #driver.add_cookie(({'name' : 'beta-user', 'value' : beta_user_token}))
-#         driver.get(with_creds)
-#     #driver.add_cookie({'name': 'beta-user', 'value': beta_user_token})
-#     #driver.add_cookie({'name':'csrftoken', 'value': 'zNbUFyadpZzFKXqUFwTqy537f2ygmVQLnQwsKLGaFC7eEI4TbTB2YKEbUfKcQ2qP'})
-#     #logging.debug(driver.get_cookies())
-#     assertion_msg = f"Access is still denied after authentication attempt → {base_url}"
-#     with selenium_action(driver, assertion_msg):
-#         assert "ok" in driver.page_source
-
 def generic_set_basic_auth_creds(driver: WebDriver, *, service_name: str = None):
     if service_name == "ERP":
         base_url = URLs.ERP_LANDING.absolute
     else:
         base_url = URLs.GREAT_MAGNA_START.absolute
     parsed = urlparse(base_url)
-    with_creds = f"{parsed.scheme}://{BASICAUTH_USER}:{BASICAUTH_PASS}@{parsed.netloc}/automated-test-auth"
+    logging.debug(parsed)
+    #with_creds = f"{parsed.scheme}://{BASICAUTH_USER}:{BASICAUTH_PASS}@{parsed.netloc}{parsed.path}"
+    with_creds = f"{parsed.scheme}://{parsed.netloc}/login?enc=gAAAAABgF-Gia1slIhrlp4r6x3BdqsFCnpp1VRANWAhb6fDX_VnPi8iDIaXNYceAq-Z7e234b77gF-_HlPmQue6L47pnvKr46xU6s22ZC-4m8En3V4uISwY="
     logging.debug(f"Doing basic auth")
+    beta_user_token = "gAAAAABfsppja2o9NnJuOzzlW76Alej9q6u96Pj_S7jfHuyWiR5rD3QRnncKCARpoN0c5A8aNPfBn7bzvNf42xiiyvCDXa5YfgnyNewjqymHFXKR4cqESOY="
     with wait_for_page_load_after_action(driver):
+        #driver.add_cookie(({'name' : 'beta-user', 'value' : beta_user_token}))
         driver.get(with_creds)
+    #driver.add_cookie({'name': 'beta-user', 'value': beta_user_token})
+    #driver.add_cookie({'name':'csrftoken', 'value': 'zNbUFyadpZzFKXqUFwTqy537f2ygmVQLnQwsKLGaFC7eEI4TbTB2YKEbUfKcQ2qP'})
+    #logging.debug(driver.get_cookies())
     assertion_msg = f"Access is still denied after authentication attempt → {base_url}"
     with selenium_action(driver, assertion_msg):
         assert "ok" in driver.page_source
+
+# def generic_set_basic_auth_creds(driver: WebDriver, *, service_name: str = None):
+#     if service_name == "ERP":
+#         base_url = URLs.ERP_LANDING.absolute
+#     else:
+#         base_url = URLs.GREAT_MAGNA_START.absolute
+#     parsed = urlparse(base_url)
+#     with_creds = f"{parsed.scheme}://{BASICAUTH_USER}:{BASICAUTH_PASS}@{parsed.netloc}/automated-test-auth"
+#     logging.debug(f"Doing basic auth")
+#     with wait_for_page_load_after_action(driver):
+#         driver.get(with_creds)
+#     assertion_msg = f"Access is still denied after authentication attempt → {base_url}"
+#     with selenium_action(driver, assertion_msg):
+#         assert "ok" in driver.page_source
 
 def revisit_page_on_access_denied(driver: WebDriver, page: ModuleType, page_name: str):
     if access_was_denied(driver.page_source):

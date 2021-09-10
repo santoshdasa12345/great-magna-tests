@@ -3,7 +3,7 @@ import logging
 
 from requests import Response, Session
 
-from directory_tests_shared.utils import check_for_errors
+from great_magna_tests_shared.utils import check_for_errors
 from tests.functional.pages import fas
 from tests.functional.utils.generic import get_number_of_search_result_pages
 

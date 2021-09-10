@@ -43,6 +43,7 @@ from steps.then_impl import (
     actor_enters_overhead_costs_on_page,
     actor_decides_to_select_funding_options_on_page,
     actor_decides_to_enter_product_name,
+    actor_decides_to_enter_product_name_on_export_plan,
     actor_should_be_able_to_click_on_skipwalkthrough,
     actor_should_be_able_to_click_on_i_have_exported_in_the_last_12_months,
     actor_decides_to_click_on_search_again,
@@ -945,3 +946,8 @@ def then_actor_decides_to_click_open_case_study_in_all_lessons_for_number_of_tim
 def when_actor_decides_to_enter_email_address_and_click_login(
         context, actor_alias, email_address, password):
     actor_decides_to_enter_email_address_and_click_login(context, actor_alias, email_address, password)
+
+@then('"{actor_alias}" decides to enter product name on export plan "{product_name}" on page "{page_name}"')
+def then_actor_decides_to_enter_product_name_on_export_plan(
+        context, actor_alias, product_name, *, form_name: str = None, page_name):
+    actor_decides_to_enter_product_name_on_export_plan(context, actor_alias, product_name, page_name)

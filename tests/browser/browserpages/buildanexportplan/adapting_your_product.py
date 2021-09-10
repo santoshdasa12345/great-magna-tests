@@ -111,7 +111,7 @@ SELECTORS = {
         #     "#documents-for-target-market > div > div > div.target-market-documents-form > div > div.form-delete.m-b-xs > button > i"
         # ),
         "add another document": Selector(
-            By.XPATH, "//*[@id=\"documents-for-target-market\"]/div/div/button"
+            By.XPATH, "//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/button"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
@@ -349,13 +349,14 @@ def fill_out_product(driver: WebDriver, product_name: str):
 
 def delete_all_document_details(driver: WebDriver, del_button_position:str):
     # 1,3,5,7,......
-
+    #//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[5]/div[5]
     # del_button_position: 5,4,3,2,1
-    document_div_element_xpath = "//body/main/div[2]/section[6]/div/div[2]/div/form/div/div/div[5]/div" + "[" + del_button_position + "]"
+    document_div_element_xpath = "//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[5]/div" + "[" + del_button_position + "]"
     del_btn_ele_xpath = document_div_element_xpath + "/div[3]/button"
     driver.find_element_by_xpath(del_btn_ele_xpath).click()
     logging.debug("del_button_position " + str(del_button_position))
 
+    #//body/div[12]/div/div/div/div[2]/div[2]/button[1]
     driver.implicitly_wait(1)
     delete_msg_yes_index = int(12 + (int(del_button_position) - 1))
     delete_message_yes_element_xpath = "//body/div" + "[" + str(

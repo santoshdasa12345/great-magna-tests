@@ -1223,7 +1223,7 @@ class URLs(Enum):
     GREAT_MAGNA_SIGNUP = GreatMagnaUrl("signup/", template="/signup/")
     GREAT_MAGNA_SIGNUP_LEARN_TO_EXPORT = GreatMagnaUrl("signup/", template="/signup/?next=/learn/categories/")
     GREAT_MAGNA_SIGNUP_WHERE_TO_EXPORT = GreatMagnaUrl("signup/", template="/signup/?next=/where-to-export/")
-    GREAT_MAGNA_SIGNUP_MAKE_AN_EXPORT_PLAN = GreatMagnaUrl("signup/", template="/signup/?next=/export-plan/dashboard/")
+    GREAT_MAGNA_SIGNUP_MAKE_AN_EXPORT_PLAN = GreatMagnaUrl("signup/", template="/signup/?next=/export-plan/start/")
 
     GREAT_MAGNA_LOGIN = GreatMagnaUrl("login/")
     GREAT_MAGNA_FORGOTTEN_PASSWORD = GreatMagnaUrl("https://great.staging.uktrade.digital/sso/accounts/password/reset/")
@@ -1382,6 +1382,10 @@ class URLs(Enum):
         "learn/categories/funding-financing-and-getting-paid/get-paid/payment-methods-exporters/")
     GREAT_MAGNA_LESSONS_MANAGE_EXCHANGE_RATES = GreatMagnaUrl(
         "learn/categories/funding-financing-and-getting-paid/exchange-rates-and-moving-money/managing-exchange-rates/")
+
+    GREAT_MAGNA_START_PRODUCT_MAKE_AN_EXPORT_PLAN = GreatMagnaUrl("export-plan/start/#/")
+    GREAT_MAGNA_START_MARKET_MAKE_AN_EXPORT_PLAN = GreatMagnaUrl("export-plan/start/#/market")
+    GREAT_MAGNA_NEW_EXPORT_PLAN = GreatMagnaUrl("export-plan/{page_id}/", template="export-plan/{page_id}/")
 
     GREAT_MAGNA_EXPORT_PLAN_DASHBOARD = GreatMagnaUrl("export-plan/dashboard/")
     GREAT_MAGNA_UPLOAD_LOGO = GreatMagnaUrl("export-plan/logo")

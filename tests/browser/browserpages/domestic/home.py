@@ -110,7 +110,10 @@ SELECTORS = {
         ),
         "make an export plan": Selector(
             By.CSS_SELECTOR,
-            "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > a > div > span",
+            #"#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > div > a.card__link.card__link--focused > div"
+            #"#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > div > a.card__link.card__link--focused > div > h3"
+            #"#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > a > div > span",
+            "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > div > a.card__link.card__link--focused > div"
         ),
     }
 }

@@ -24,7 +24,7 @@ Feature: Domestic - Great site search
     When "Robert" searches using "<phrase>"
 
     Then "Robert" should see search results page number "1" for "<phrase>"
-    And "Robert" should see search results in following order "Article, Service, Event, Opportunity"
+#    And "Robert" should see search results in following order "Article, Service, Event, Opportunity"
 
     Examples: event, market, service and opportunity
       | specific        | phrase    |

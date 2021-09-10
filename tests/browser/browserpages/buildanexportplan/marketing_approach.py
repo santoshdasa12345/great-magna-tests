@@ -42,7 +42,7 @@ PAGE_TITLE = "Marketing Approach Page"
 SELECTORS = {
     "marketing approach": {
         "open": Selector(
-            By.XPATH, "//*[@id=\"target-age-groups\"]/div[1]/div/button/i"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div/div[2]/div/div[1]/div/button"
             #"//span[contains(text(),'open')]"
         ),
         "close": Selector(
@@ -52,7 +52,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#target-age-groups > form > ul > li:nth-child(1) > label"
         ),
         "0-14 year olds": Selector(
-            By.CSS_SELECTOR, "#target-age-groups > form > ul > li:nth-child(1) > label"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div/div[2]/div/ul/li[1]/input"
         ),
         "15-19": Selector(
             By.XPATH, "//label[contains(text(),'15-19 year olds')]"
@@ -157,7 +157,7 @@ SELECTORS = {
             By.XPATH, "//a[contains(text(),'Dashboard')]"
         ),
         "choose the right route to market": Selector(
-            By.XPATH, "//body/main/div[2]/section[4]/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]/a"
+            By.XPATH, "//body/main/div[2]/section[4]/div/div[2]/div/div/div[1]/div/div/div[1]/div[2]/a"
         ),
 
     }

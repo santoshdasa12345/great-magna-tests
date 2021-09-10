@@ -37,7 +37,7 @@ DOMESTIC_HEADER = {
         ),
         # global header
         "global header": Selector(By.ID, "great-global-header"),
-        "great global logo": Selector(By.ID, "great-global-header-logo"),
+        "great global logo": Selector(By.ID, "great-header-logo"),
         "for uk businesses": Selector(By.ID, "great-global-header-domestic-link"),
         "for international businesses": Selector(
             By.ID, "great-global-header-international-link"
