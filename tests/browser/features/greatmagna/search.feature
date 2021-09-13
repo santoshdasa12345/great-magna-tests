@@ -66,7 +66,7 @@ Feature: Search product & country in personalisation
     And "Robert" decides to click on "Search again"
     Examples: Products and Country
          | products                 | country       |
-         | @@@@@@                   | !!!!!!!       |
-         | ILoveLondonIwanttotest   | ££££££££      |
-         | 123456789                | %%%%%%%%      |
+#         | @@@@@@                   | !!!!!!!       |
+#         | ILoveLondonIwanttotest   | ££££££££      |
+#         | 123456789                | %%%%%%%%      |
 #         |           .,//           | ±±±__<>:"{}_  |
