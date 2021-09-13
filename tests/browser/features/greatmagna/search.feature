@@ -62,10 +62,10 @@ Feature: Search product & country in personalisation
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" should be able to enter products "<products>"
-    And "Robert" should be able to see error message "No results found for" on the "GreatMagna - Dashboard" Page
-    And "Robert" decides to click on "Search again"
-    Examples: Products and Country
-         | products                 | country       |
+#    And "Robert" should be able to see error message "No results found for" on the "GreatMagna - Dashboard" Page
+#    And "Robert" decides to click on "Search again"
+#    Examples: Products and Country
+#         | products                 | country       |
 #         | @@@@@@                   | !!!!!!!       |
 #         | ILoveLondonIwanttotest   | ££££££££      |
 #         | 123456789                | %%%%%%%%      |
