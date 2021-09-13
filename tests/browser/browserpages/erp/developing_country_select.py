@@ -6,10 +6,10 @@ from typing import List, Union
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from directory_tests_shared import URLs
-from directory_tests_shared.enums import PageType, Service
-from pages import ElementType, common_selectors
-from pages.common_actions import (
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from browserpages import ElementType, common_selectors
+from browserpages.common_actions import (
     Actor,
     Selector,
     check_for_sections,
@@ -21,8 +21,8 @@ from pages.common_actions import (
     pick_one_option_and_submit,
     submit_form,
 )
-from pages.erp import product_search
-from pages.erp.autocomplete_callbacks import autocomplete_country
+from browserpages.erp import product_search
+from browserpages.erp.autocomplete_callbacks import autocomplete_country
 
 NAME = "Select country (Developing country)"
 SERVICE = Service.ERP

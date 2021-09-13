@@ -12,12 +12,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
 
-from directory_tests_shared import URLs
-from directory_tests_shared.enums import PageType, Service
-from directory_tests_shared.exceptions import PageLoadTimeout
-from directory_tests_shared.utils import evaluate_comparison
-from pages import common_selectors
-from pages.common_actions import (
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.exceptions import PageLoadTimeout
+from great_magna_tests_shared.utils import evaluate_comparison
+from browserpages import common_selectors
+from browserpages.common_actions import (
     Selector,
     check_for_sections,
     check_url,
@@ -28,7 +28,7 @@ from pages.common_actions import (
     is_element_present,
     wait_for_page_load_after_action,
 )
-from pages.erp import product_detail
+from browserpages.erp import product_detail
 
 NAME = "Product search"
 SERVICE = Service.ERP

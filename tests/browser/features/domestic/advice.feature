@@ -20,7 +20,7 @@ Feature: Domestic - Advice articles
       | Breadcrumbs              |
       | Advice & Guidance tiles  |
       | Error reporting          |
-      | Footer                   |
+#      | Footer                   |
 #      | Upskill now             |
 
 
@@ -41,8 +41,8 @@ Feature: Domestic - Advice articles
       | Breadcrumbs              |
       | List of articles         |
       | Error reporting          |
-      | Footer                   |
-      | Upskill now              |
+#      | Footer                   |
+#      | Upskill now              |
 
 
   @allure.link:CMS-686
@@ -62,7 +62,7 @@ Feature: Domestic - Advice articles
       | Share buttons   |
       | Article         |
       | Error reporting |
-      | Footer          |
+#      | Footer          |
 #      | Upskill now     |
 
     Examples:
@@ -117,6 +117,6 @@ Feature: Domestic - Advice articles
 
     Examples:
       | breadcrumb   | target              |
-      | great.gov.uk | Home                |
-#      | Advice       | Advice Landing      |
-#      | Article list | Advice article list |
+#      | great.gov.uk | Home                |
+      | Advice       | Advice Landing      |
+      | Article list | Advice article list |

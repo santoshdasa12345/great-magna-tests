@@ -176,6 +176,15 @@ SELECTORS = {
         "add market": Selector(
             By.CSS_SELECTOR, "#set-country-button > span > span:nth-child(1) > div > button"
         ),
+        "vfm close": Selector(
+            By.XPATH, "//body/div[7]/div/div/button"
+        ),
+        "not now": Selector(
+            By.XPATH, "//body/div[7]/div/div/div/div[2]/button[1]"
+        ),
+        "vfm continue": Selector(
+            By.XPATH, "//body/div[7]/div/div/div/div[2]/button[2]"
+        ),
 
     },
 }

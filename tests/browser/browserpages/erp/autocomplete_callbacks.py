@@ -7,8 +7,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from directory_tests_shared.utils import extract_by_css
-from pages.common_actions import Selector, assertion_msg, find_element, find_elements
+from great_magna_tests_shared.utils import extract_by_css
+from browserpages.common_actions import Selector, assertion_msg, find_element, find_elements
 
 
 def autocomplete_uk_region(driver: WebDriver, *, value):

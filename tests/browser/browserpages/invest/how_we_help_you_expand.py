@@ -6,10 +6,10 @@ from typing import List
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from directory_tests_shared import URLs
-from directory_tests_shared.enums import PageType, Service
-from pages import ElementType, common_selectors
-from pages.common_actions import Selector, check_for_sections, check_url, go_to_url
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from browserpages import ElementType, common_selectors
+from browserpages.common_actions import Selector, check_for_sections, check_url, go_to_url
 
 NAME = "How we help you expand"
 SERVICE = Service.INVEST

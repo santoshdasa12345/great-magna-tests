@@ -24,7 +24,7 @@ Feature: Domestic - Sharing on Social Media and via emails
     Examples:
       | social_media |
       | Facebook     |
-      | Twitter      |
+#      | Twitter      |
 
 
   @allure.link:CMS-686

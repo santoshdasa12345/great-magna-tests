@@ -21,7 +21,7 @@ Feature: Domestic - Accessing Services
       | Breadcrumbs            |
       | Services               |
       | Error reporting        |
-      | Footer                 |
+#      | Footer                 |
 
 
   @bug

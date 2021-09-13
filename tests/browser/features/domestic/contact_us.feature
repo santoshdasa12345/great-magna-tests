@@ -456,10 +456,10 @@ Feature: Domestic - Contact us
     Examples:
       | selected                    | expected                                                |
       | Expanding to the UK         | Invest - Contact us                                     |
-      | Investing capital in the UK | International - Contact the Capital Investment team     |
-      | Find a UK business partner  | International - Find a UK business partner - Contact us |
-      | The transition period       | International - Transition period enquiries             |
-      | Other                       | International - Contact us                              |
+#      | Investing capital in the UK | International - Contact the Capital Investment team     |
+#      | Find a UK business partner  | International - Find a UK business partner - Contact us |
+#      | The transition period       | International - Transition period enquiries             |
+#      | Other                       | International - Contact us                              |
 
 
   @allure.link:TT-758

@@ -25,6 +25,7 @@ DOMESTIC_HERO_WO_LINK = {
     "hero": {
         "hero banner": Selector(By.ID, "hero"),
         "title": Selector(By.CSS_SELECTOR, "#hero h1"),
+        # "upskill now":Selector(By.CSS_SELECTOR, "#content > div:nth-child(3) > div > div.cta-container > a"),
     }
 }
 
@@ -105,6 +106,129 @@ ERROR_REPORTING = {
         "itself": Selector(By.CSS_SELECTOR, "section.error-reporting"),
         "report a problem with the page": Selector(
             By.ID, "error-reporting-section-contact-us"
+        ),
+    }
+}
+
+ERP_HEADER = {
+    "header": {
+        "header itself": Selector(By.CSS_SELECTOR, "header.govuk-header"),
+        "skip-link": Selector(
+            By.ID, "skip-link", type=ElementType.LINK, is_visible=False
+        ),
+        "home link": Selector(By.CSS_SELECTOR, "header.govuk-header a"),
+        "gov uk logo": Selector(By.CSS_SELECTOR, "header.govuk-header a svg"),
+    }
+}
+ERP_BACK = {
+    "go back": {
+        "go back": Selector(
+            By.CSS_SELECTOR,
+            "#content form[method=post] a.govuk-back-link",
+            type=ElementType.LINK,
+        )
+    }
+}
+ERP_BETA = {
+    "beta bar": {
+        "beta bar itself": Selector(By.CSS_SELECTOR, "#content div.govuk-phase-banner"),
+        "beta": Selector(By.CSS_SELECTOR, "#content div.govuk-phase-banner p strong"),
+        "text": Selector(By.CSS_SELECTOR, "#content div.govuk-phase-banner p span"),
+        "feedback": Selector(By.CSS_SELECTOR, "#content div.govuk-phase-banner p a"),
+    }
+}
+ERP_BETA_SHORT = {
+    "beta bar": {
+        "beta bar itself": Selector(By.CSS_SELECTOR, "#content div.govuk-phase-banner"),
+        "beta": Selector(By.CSS_SELECTOR, "#content div.govuk-phase-banner p strong"),
+        "text": Selector(By.CSS_SELECTOR, "#content div.govuk-phase-banner p span"),
+    }
+}
+ERP_BREADCRUMBS = {
+    "breadcrumbs": {
+        "breadcrumbs bar": Selector(By.CSS_SELECTOR, "#content nav.breadcrumbs"),
+        "first": Selector(
+            By.CSS_SELECTOR, "#content nav.breadcrumbs ol li:nth-child(1) a"
+        ),
+        "second": Selector(
+            By.CSS_SELECTOR, "#content nav.breadcrumbs ol li:nth-child(2)"
+        ),
+    }
+}
+ERP_SAVE_FOR_LATER = {
+    "save for later": {
+        "save for later": Selector(
+            By.CSS_SELECTOR,
+            "button[name=wizard_save_for_later]",
+            type=ElementType.BUTTON,
+        )
+    }
+}
+ERP_HIERARCHY_CODES = {
+    "hierarchy codes": {
+        "hierarchy codes heading": Selector(By.ID, "hierarchy-browser"),
+        "first level": Selector(
+            By.CSS_SELECTOR, "ul.app-hierarchy-tree li.app-hierarchy-tree__section"
+        ),
+    }
+}
+ERP_SEARCH_FORM = {
+    "form": {
+        "form itself": Selector(By.CSS_SELECTOR, "#content form[method='post']"),
+        "step counter": Selector(
+            By.CSS_SELECTOR, "form[method=post] span.govuk-caption-l"
+        ),
+        "heading": Selector(By.CSS_SELECTOR, "form[method=post] h1"),
+        "find a commodity code information page": Selector(
+            By.CSS_SELECTOR, "form[method=post] div.govuk-inset-text a"
+        ),
+        "search": Selector(By.ID, "id_product-search-term", type=ElementType.INPUT),
+        "search button": Selector(
+            By.CSS_SELECTOR,
+            "#id_product-search-term ~ button[form=search-form]",
+            type=ElementType.BUTTON,
+        ),
+        "submit": Selector(
+            By.CSS_SELECTOR,
+            "#content > form button.govuk-button",
+            type=ElementType.BUTTON,
+        ),
+    }
+}
+ERP_SEARCH_RESULTS = {
+    "search results": {
+        "expand to select": Selector(
+            By.CSS_SELECTOR, "h2#search-results-title ~ section a"
+        ),
+        "select product code": Selector(
+            By.CSS_SELECTOR, "h2#search-results-title ~ section button"
+        ),
+    }
+}
+ERP_PRODUCT_DETAIL_FORM = {
+    "form": {
+        "selection form": Selector(By.CSS_SELECTOR, "#content form[method='post']"),
+        "step counter": Selector(
+            By.CSS_SELECTOR, "form[method=post] span.govuk-caption-l"
+        ),
+        "heading": Selector(By.CSS_SELECTOR, "form[method=post] h1"),
+        "change goods": Selector(
+            By.CSS_SELECTOR, "#selected-values-container a", type=ElementType.LINK
+        ),
+        "continue": Selector(
+            By.CSS_SELECTOR,
+            "#content > form button.govuk-button",
+            type=ElementType.SUBMIT,
+        ),
+    }
+}
+ERP_FOOTER = {
+    "footer": {
+        "footer itself": Selector(By.CSS_SELECTOR, "footer.govuk-footer"),
+        "ogl logo": Selector(By.CSS_SELECTOR, "footer.govuk-footer svg"),
+        "licence note": Selector(By.CSS_SELECTOR, "footer.govuk-footer span"),
+        "crown logo": Selector(
+            By.CSS_SELECTOR, "footer.govuk-footer a.govuk-footer__copyright-logo"
         ),
     }
 }
@@ -212,6 +336,52 @@ INTERNATIONAL_HERO = {
     }
 }
 
+
+
+INVEST_HEADER = {
+    "header": {
+        # sub menu
+        "header sub menu": Selector(By.CSS_SELECTOR, "nav.sub-nav"),
+        "overview": Selector(By.PARTIAL_LINK_TEXT, "Overview", type=ElementType.LINK),
+        "how we help": Selector(
+            By.PARTIAL_LINK_TEXT, "How we help", type=ElementType.LINK
+        ),
+        "how to expand to the uk": Selector(
+            By.PARTIAL_LINK_TEXT, "How to expand to the UK", type=ElementType.LINK
+        ),
+        "find a uk specialist": Selector(
+            By.PARTIAL_LINK_TEXT, "Find a UK specialist", type=ElementType.LINK
+        ),
+        "contact us": Selector(
+            By.PARTIAL_LINK_TEXT, "Contact us", type=ElementType.LINK
+        ),
+    }
+}
+# merge Invest header sub-menu with main International header
+INVEST_HEADER["header"] = {**INVEST_HEADER["header"], **INTERNATIONAL_HEADER["header"]}
+
+INVEST_HERO = {
+    "hero": {
+        "self": Selector(By.ID, "hero"),
+        "heading": Selector(By.CSS_SELECTOR, "#hero h1"),
+        "get in touch": Selector(
+            By.CSS_SELECTOR, "#hero a.button", type=ElementType.LINK
+        ),
+    }
+}
+
+INVEST_FOOTER = {
+    "footer": {
+        "great footer logo": Selector(By.ID, "great-footer-great-logo"),
+        "contact us": Selector(By.ID, "footer-contact"),
+        "privacy and cookies": Selector(By.ID, "footer-privacy-and-cookies"),
+        "terms and conditions": Selector(By.ID, "footer-terms-and-conditions"),
+        "department for international trade on gov.uk": Selector(By.ID, "footer-dit"),
+        "go to the page for uk businesses": Selector(By.ID, "footer-domestic"),
+        "dit footer logo": Selector(By.ID, "great-global-footer-logo"),
+        "copyright notice": Selector(By.ID, "great-footer-copyright"),
+    }
+}
 
 ABOUT_UK_SUBHEADER = {
     "about the uk subheader": {
