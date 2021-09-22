@@ -1217,6 +1217,7 @@ class URLs(Enum):
 
     # Great Magna Pages
     GREAT_MAGNA_LANDING = GreatMagnaUrl("https://great.dev.uktrade.digital/")
+    GREAT_MAGNA_HOME = GreatMagnaUrl("https://great.dev.uktrade.digital/")
     # GREAT_MAGNA_HOME = GreatMagnaUrl("https://great-magna.staging.uktrade.digital/")
     # GREAT_MAGNA_HOME = GreatMagnaUrl("https://magna-beta.great.uktrade.digital/")
     GREAT_MAGNA_START = GreatMagnaUrl("")

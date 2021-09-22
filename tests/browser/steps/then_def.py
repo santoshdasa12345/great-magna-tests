@@ -23,6 +23,7 @@ from steps.then_impl import (
     actor_should_be_able_to_enter_products_and_country,
     actor_should_be_able_to_enter_products,
     actor_decides_to_click_checkbox_yes_for_lesson_complete,
+    actor_decides_to_click_continue_on_page,
     actor_decides_to_click_continue_for_number_of_times_until_it_reaches_required_page,
     actor_decides_to_click_open_case_study_in_all_lessons_for_number_of_times_until_it_reaches_required_page,
     actor_should_be_able_to_see_progress_bar_for_section,
@@ -43,7 +44,6 @@ from steps.then_impl import (
     actor_enters_overhead_costs_on_page,
     actor_decides_to_select_funding_options_on_page,
     actor_decides_to_enter_product_name,
-    actor_decides_to_enter_product_name_on_export_plan,
     actor_should_be_able_to_click_on_skipwalkthrough,
     actor_should_be_able_to_click_on_i_have_exported_in_the_last_12_months,
     actor_decides_to_click_on_search_again,
@@ -52,6 +52,7 @@ from steps.then_impl import (
     actor_fill_trip_details_on_page,
     actor_decides_to_delete_trip_details_on_page,
     actor_decides_to_select_radio_button,
+    actor_decides_to_select_random_product_on_page,
     actor_decides_to_enter_country_details,
     actor_decides_to_enter_country_name,
     generic_fill_out_and_submit_form,
@@ -947,7 +948,12 @@ def when_actor_decides_to_enter_email_address_and_click_login(
         context, actor_alias, email_address, password):
     actor_decides_to_enter_email_address_and_click_login(context, actor_alias, email_address, password)
 
-@then('"{actor_alias}" decides to enter product name on export plan "{product_name}" on page "{page_name}"')
-def then_actor_decides_to_enter_product_name_on_export_plan(
-        context, actor_alias, product_name, *, form_name: str = None, page_name):
-    actor_decides_to_enter_product_name_on_export_plan(context, actor_alias, product_name, page_name)
+@then('"{actor_alias}" decides to click continue on "{page_name}" page')
+def then_actor_decides_to_click_continue_on_page(
+        context, actor_alias, page_name):
+    actor_decides_to_click_continue_on_page(context, page_name)
+
+@then('"{actor_alias}" decides to select random product on "{page_name}"')
+def then_actor_decides_to_select_random_product_on_page(
+        context, actor_alias, page_name):
+    actor_decides_to_select_random_product_on_page(context, page_name)

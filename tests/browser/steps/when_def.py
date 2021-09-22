@@ -442,3 +442,7 @@ def then_actor_decides_to_click_on_page_element(
 def when_actor_fills_out_and_submits_the_form(context: Context, actor_alias: str):
     generic_fill_out_and_submit_form(context, actor_alias, custom_details_table=context.table, retry_on_errors=True,
                                      go_back=True)
+
+@when('"{actor_alias}" visited "{page_name}" page')
+def given_actor_visits_page(context, actor_alias, page_name):
+    visit_page(context, actor_alias, page_name)

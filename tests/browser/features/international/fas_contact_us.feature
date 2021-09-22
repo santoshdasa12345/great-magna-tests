@@ -1,5 +1,6 @@
 @domestic
 @contact-us
+  @international
 @no-sso-email-verification-required
   @international_2
 @allure.suite:International

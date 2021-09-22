@@ -180,7 +180,7 @@ Feature: GreatMagna - Target Markets Research Page
 
 #@allure.link:XOT-1184
 #  @Great-Magna-Sign-Up
-#  @Great_Magna_Export_Plan
+#  @Great_Magna_Export_Plan_tmr_sign
 #  Scenario Outline: New User should be able to navigate to Export Plan and click on "Target Markets Research" Page and enter "Add Product" and "Add Country"
 #
 #  Given "Robert" visited "GreatMagna - Sign Up" page

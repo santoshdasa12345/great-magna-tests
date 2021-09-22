@@ -397,7 +397,9 @@ def actor_decides_to_select_funding_options_on_page(context, actor_alias, positi
 
 
 def actor_decides_to_enter_product_name(context, actor_alias, product_name, page_name):
+    logging.debug(f"Page name = {page_name}")
     page = get_page_object(page_name)
+    logging.debug(f"Page name = {page.NAME}")
     has_action(page, "fill_out_product")
     page.fill_out_product(context.driver, product_name)
 
@@ -1382,7 +1384,13 @@ def actor_decides_to_click_on_page_with_lesson_link(
     has_action(page, "find_and_click_lesson_link")
     page.find_and_click_lesson_link(context.driver, lesson_name)
 
-def actor_decides_to_enter_product_name_on_export_plan(context, actor_alias, product_name, page_name):
+def actor_decides_to_click_continue_on_page(context:Context,page_name):
     page = get_page_object(page_name)
-    has_action(page, "choose a product")
-    page.choose_a_product(context.driver, product_name)
+    has_action(page, "click_on_continue")
+    page.click_on_continue(context.driver)
+
+def actor_decides_to_select_random_product_on_page(
+        context, actor_alias):
+    page = get_last_visited_page(context, actor_alias)
+    has_action(page, "find_and_select_random_product_and_click_continue")
+    page.find_and_select_random_product_and_click_continue(context.driver)
