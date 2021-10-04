@@ -953,7 +953,7 @@ def then_actor_decides_to_click_continue_on_page(
         context, actor_alias, page_name):
     actor_decides_to_click_continue_on_page(context, page_name)
 
-@then('"{actor_alias}" decides to select random product on "{page_name}"')
+@then('"{actor_alias}" decides to select random product on "{page_name}" page')
 def then_actor_decides_to_select_random_product_on_page(
         context, actor_alias, page_name):
     actor_decides_to_select_random_product_on_page(context, page_name)

@@ -895,7 +895,7 @@ def selectors_by_group(form_selectors: Dict[str, Selector]) -> Dict[str, Selecto
 
 
 def assert_catcha_in_dev_mode(driver: WebDriver):
-    dev_site_key = "6LcuZsQZAAAAAKWWm_ZF-H17wTR-H0fV0juoQ8jU"#"6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+    dev_site_key = "P0l23UFBIiMtCxkK8cjupfVzPa7LVtAJminOINLxNLK319WfVac28mnvbJuGG6sO"#6LcuZsQZAAAAAKWWm_ZF-H17wTR-H0fV0juoQ8jU"#"6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
     try:
         g_recaptcha = find_element(
             driver,

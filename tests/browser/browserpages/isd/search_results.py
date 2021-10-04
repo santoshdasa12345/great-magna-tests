@@ -22,10 +22,10 @@ SELECTORS = {
         "number of results": Selector(By.CSS_SELECTOR, "#hero-container h2")
     },
     "search form": {
-        "itself": Selector(By.ID, "-container"),
+        "itself": Selector(By.ID, "#id_q-container"),
         "search box label": Selector(By.CSS_SELECTOR, "label[for=id_q]"),
-        "search box": Selector(By.ID, "id_q"),
-        # "search button": Selector(By.CSS_SELECTOR, ""),  see BUG TT-1513
+        "search box": Selector(By.CSS_SELECTOR, "#id_q"),
+        # "search button": Selector(By.CSS_SELECTOR, ""),
     },
     "filters": {
         "itself": Selector(By.ID, "filter-column"),
@@ -72,4 +72,7 @@ def should_be_here(driver: WebDriver):
 
 
 def should_see_sections(driver: WebDriver, names: List[str]):
+    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
+
+def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

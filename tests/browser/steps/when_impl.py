@@ -31,6 +31,7 @@ from browserpages import (
     get_page_object,
     greatmagna,
     learntoexport,
+    fas,
     soo,
     profile,
     sso,
@@ -235,8 +236,8 @@ def generic_fill_out_and_submit_form(
         form_name: str = None,
         check_captcha_dev_mode: bool = False,
 ):
-    if check_captcha_dev_mode:
-        assert_catcha_in_dev_mode(context.driver)
+    # if check_captcha_dev_mode:
+    #     assert_catcha_in_dev_mode(context.driver)
     actor = get_actor(context, actor_alias)
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "generate_form_details")
@@ -384,6 +385,12 @@ def generic_country_name_to_fill_country_and_click_on_continue(
     has_action(page, "searchcontinue")
     page.searchcontinue(context.driver)
 
+def generic_open_industry_page(context: Context, actor_alias: str, industry_name: str):
+    page = get_last_visited_page(context, actor_alias)
+    has_action(page, "open_industry")
+    page.open_industry(context.driver, industry_name)
+    update_actor(context, actor_alias, visited_page=page)
+    logging.debug("%s opened '%s' page on %s", actor_alias, industry_name, page.URL)
 
 def generic_product_name_to_fill_country_and_click_on_continue(
         context, actor_alias, element_name, form_name):
@@ -1170,3 +1177,81 @@ def profile_start_registration_as(
     should_be_on_page(
         context, actor_alias, f"{second_page.SERVICE} - {second_page.NAME}"
     )
+
+def fas_search_for_companies(
+    context: Context, actor_alias: str, *, keyword: str = None, sector: str = None
+):
+    page = get_last_visited_page(context, actor_alias)
+    has_action(page, "search")
+    optional_parameter_keywords = ["n/a", "no", "empty", "without", "any"]
+    if keyword and keyword.lower() in optional_parameter_keywords:
+        keyword = None
+    if sector and sector.lower() in optional_parameter_keywords:
+        sector = None
+    page.search(context.driver, keyword=keyword, sector=sector)
+    logging.debug(
+        "%s will visit '%s' page using: '%s'", actor_alias, page.NAME, page.URL
+    )
+
+def fas_searched_for_companies(
+    context: Context, actor_alias: str, *, keyword: str = None, sector: str = None
+):
+    visit_page(context, actor_alias, f"{fas.landing.SERVICE} - {fas.landing.NAME}")
+    fas_search_for_companies(context, actor_alias, keyword=keyword, sector=sector)
+    should_be_on_page(
+        context,
+        actor_alias,
+        f"{fas.search_results.SERVICE} - {fas.search_results.NAME}",
+    )
+
+def language_selector_change_to(
+    context: Context, actor_alias: str, preferred_language: str
+):
+    page = get_last_visited_page(context, actor_alias)
+    logging.debug(
+        f"{actor_alias} decided to change language on {visit_page} to"
+        f" {preferred_language}"
+    )
+    common_language_selector.open(context.driver, page=page)
+    common_language_selector.change_to(context.driver, page, preferred_language)
+
+
+
+def fas_view_selected_company_profile(
+    context: Context, actor_alias: str, profile_number: str
+):
+    number = NUMBERS[profile_number]
+    page = get_last_visited_page(context, actor_alias)
+    has_action(page, "open_profile")
+    page.open_profile(context.driver, number)
+    logging.debug(
+        "%s clicked on '%s' button on %s",
+        actor_alias,
+        profile_number,
+        context.driver.current_url,
+    )
+
+
+def fas_view_article(context: Context, actor_alias: str, article_number: str):
+    number = NUMBERS[article_number]
+    page = get_last_visited_page(context, actor_alias)
+    has_action(page, "open_article")
+    page.open_article(context.driver, number)
+    logging.debug(
+        "%s clicked on '%s' article on %s",
+        actor_alias,
+        article_number,
+        context.driver.current_url,
+    )
+
+def generic_remove_previous_field_selections(
+    context: Context, actor_alias: str, selector_name: str
+):
+    page = get_last_visited_page(context, actor_alias)
+    selector = find_selector_by_name(page.SELECTORS, selector_name)
+    untick_selected_checkboxes(context.driver, selector)
+
+def language_selector_close(context: Context, actor_alias: str):
+    logging.debug("%s decided to close language selector", actor_alias)
+    page = get_last_visited_page(context, actor_alias)
+    common_language_selector.close(context.driver, page=page)

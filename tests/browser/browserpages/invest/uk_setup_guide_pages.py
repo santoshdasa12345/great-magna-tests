@@ -64,13 +64,13 @@ SELECTORS.update(common_selectors.INVEST_FOOTER)
 SubURLs = {
     # Dev & UAT
     "access finance in the uk": URLs.INVEST_UK_SETUP_GUIDE_ACCESS_FINANCE.absolute,
-    "dit's guide to uk capital gains tax": URLs.INVEST_UK_SETUP_GUIDE_DIT_CAPITAL_GAINS.absolute,
-    "dit's guide to uk corporation tax": URLs.INVEST_UK_SETUP_GUIDE_DIT_CORPORATION_TAX.absolute,
-    "dit's guide to uk venture capital schemes": URLs.INVEST_UK_SETUP_GUIDE_DIT_VENTURE_CAPITAL.absolute,
+    # "dit's guide to uk capital gains tax": URLs.INVEST_UK_SETUP_GUIDE_DIT_CAPITAL_GAINS.absolute,
+    # "dit's guide to uk corporation tax": URLs.INVEST_UK_SETUP_GUIDE_DIT_CORPORATION_TAX.absolute,
+    # "dit's guide to uk venture capital schemes": URLs.INVEST_UK_SETUP_GUIDE_DIT_VENTURE_CAPITAL.absolute,
     "establish a uk business base": URLs.INVEST_UK_SETUP_GUIDE_ESTABLISH_A_BASE.absolute,
     "register a company in the uk": URLs.INVEST_UK_SETUP_GUIDE_REGISTER_A_COMPANY.absolute,
     "uk innovation": URLs.INVEST_UK_SETUP_GUIDE_UK_INNOVATION.absolute,
-    "uk infrastructure": URLs.INVEST_UK_SETUP_GUIDE_UK_INFRASTRUCTURE.absolute,
+    # "uk infrastructure": URLs.INVEST_UK_SETUP_GUIDE_UK_INFRASTRUCTURE.absolute,
     "uk talent and labour": URLs.INVEST_UK_SETUP_GUIDE_HIRE_SKILLED_WORKERS.absolute,
     # Not in use
     "uk income tax": URLs.INVEST_UK_SETUP_GUIDE_UK_INCOME_TAX.absolute,

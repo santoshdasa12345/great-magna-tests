@@ -94,9 +94,9 @@ Feature: FAS - Landing page
     Then "Robert" should be on the "International - Industries" page
 
 
-  @bug
+
   @allure.issue:TT-1512
-  @fixed
+  @fas_landing_4
   @search
   Scenario: Buyers should be able to find UK suppliers using arbitrary search term
     Given "Robert" visits the "Find a Supplier - Landing" page

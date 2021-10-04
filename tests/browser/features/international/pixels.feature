@@ -1,5 +1,5 @@
 @international
-@pixels
+@pixels_invest
 @allure.suite:International
 Feature: INTL - Pixels
 

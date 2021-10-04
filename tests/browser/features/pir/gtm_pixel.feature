@@ -1,4 +1,4 @@
-@gtm
+@gtm_isd
 @pixels
 @allure.suite:PIR
 Feature: PIR - Google Tag Manager

@@ -1,6 +1,7 @@
 @international
 @international-page
 @contact-us
+  @transition-period
 @allure.suite:International
 Feature: INTL - Transition period - Contact us
 

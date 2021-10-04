@@ -21,25 +21,17 @@ NAME = "landing"
 URL = URLs.INVEST_LANDING.absolute
 SERVICE = Service.INVEST
 TYPE = PageType.LANDING
-PAGE_TITLE = "Invest in Great Britain - Home"
+PAGE_TITLE = "Invest Atlas in Great Britain - Home"
 
 SELECTORS = {
     "benefits": {
-        "self": Selector(By.ID, "benefits"),
+        "invest in the uk": Selector(By.ID, "#content > div.atlas-landing__hero"),
         "heading": Selector(By.CSS_SELECTOR, "#benefits h2"),
-        "sub-section headings": Selector(By.CSS_SELECTOR, "#benefits h3"),
-        "text": Selector(By.CSS_SELECTOR, "#benefits p"),
-        "image": Selector(By.CSS_SELECTOR, "#benefits img"),
-    },
-    "landing": {
-        "invest in the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
-        "buy from the uk header": Selector(By.PARTIAL_LINK_TEXT, "Buy from the UK", type=ElementType.LINK),
-        "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
-        "get started": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > div > a"),
-        "find investment opportunities": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)"),
-        "find a uk specialist": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)"),
-        "buy from the uk": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)"),
-        "contact dit": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(4)"),
+        "uk sectors": Selector(By.CSS_SELECTOR, "#content > div:nth-child(5)"),
+        "why invest in the uk": Selector(By.CSS_SELECTOR, "#content > div:nth-child(4)"),
+        "uk nations and regions": Selector(By.CSS_SELECTOR, "#content > div:nth-child(6)"),
+        "find your investment opportunities": Selector(By.CSS_SELECTOR, "#content > div:nth-child(7)"),
+        "how we can help": Selector(By.CSS_SELECTOR, "#content > div:nth-child(8)"),
     },
     "sectors": {
         "self": Selector(By.ID, "industries"),

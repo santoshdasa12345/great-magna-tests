@@ -1,4 +1,5 @@
 @international
+  @fas_search
 @allure.link:ED-3183
 @allure.link:ED-4259
 @no-sso-email-verification-required
@@ -30,8 +31,8 @@ Feature: FAS - Search
     Examples: Industries
       | following  | specific                               |
       | plants     | Agriculture horticulture and fisheries |
-      | digital    | Creative and media                     |
-      | surgery    | Healthcare and medical                 |
+#      | digital    | Creative and media                     |
+#      | surgery    | Healthcare and medical                 |
 
     @full
     Examples: Industries

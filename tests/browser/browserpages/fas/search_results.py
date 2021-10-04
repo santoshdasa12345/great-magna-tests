@@ -40,7 +40,7 @@ SECTOR_FILTERS = Selector(
 PROFILE_LINKS = Selector(
     By.CSS_SELECTOR, "#companies-column li > a:not(.button-ghost-blue):not(.button)"
 )
-FILTER_TOGGLE = Selector(By.ID, "toggle_id_industries")
+FILTER_TOGGLE = Selector(By.CSS_SELECTOR, "#toggle_id_industries")
 SELECTORS = {
     "search form": {
         "itself": Selector(By.CSS_SELECTOR, "#content form"),
@@ -71,16 +71,16 @@ SELECTORS = {
     },
     "subscribe for email updates": {
         "itself": Selector(
-            By.CSS_SELECTOR, "section div.subscription-form-container form"
+            By.XPATH, "//*[@id=\"content\"]/section[1]"
         ),
-        "full name": Selector(By.ID, "id_full_name", type=ElementType.INPUT),
-        "email": Selector(By.ID, "id_email_address", type=ElementType.INPUT),
-        "industry": Selector(By.ID, "id_sector", type=ElementType.SELECT),
-        "company name": Selector(By.ID, "id_company_name", type=ElementType.INPUT),
-        "country": Selector(By.ID, "id_country", type=ElementType.SELECT),
+        "full name": Selector(By.XPATH, "//*[@id=\"id_full_name\"]", type=ElementType.INPUT),
+        "email": Selector(By.XPATH, "//*[@id=\"id_email_address\"]", type=ElementType.INPUT),
+        "industry": Selector(By.XPATH, "//*[@id=\"id_sector\"]", type=ElementType.SELECT),
+        "company name": Selector(By.XPATH, "//*[@id=\"id_company_name\"]", type=ElementType.INPUT),
+        "country": Selector(By.XPATH, "//*[@id=\"id_country\"]", type=ElementType.SELECT),
         "t&c": Selector(
-            By.ID,
-            "id_terms",
+            By.CSS_SELECTOR,
+            "#id_terms-container > div > div",
             type=ElementType.CHECKBOX,
             is_visible=False,
             alternative_visibility_check=True,
@@ -88,7 +88,7 @@ SELECTORS = {
         "captcha": Selector(By.ID, "id_captcha"),
         "send": Selector(
             By.CSS_SELECTOR,
-            "#id_terms-container ~ button",
+            "#content > section.subscription.background-stone-30.padding-top-90.padding-bottom-60 > div > div > div > div > div:nth-child(2) > form > div:nth-child(4) > div > button",
             type=ElementType.SUBMIT,
             next_page=thank_you_for_registering,
         ),
@@ -201,3 +201,7 @@ def open_profile(driver: WebDriver, number: int):
     link.click()
 
     take_screenshot(driver, NAME + " after clicking on company profile link")
+
+
+def should_see_following_sections(driver: WebDriver, names: List[str]):
+    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

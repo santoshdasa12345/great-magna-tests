@@ -37,10 +37,10 @@ from browserpages import (
     common_language_selector,
     domestic,
     # erp,
-    # fas,
+    fas,
     get_page_object,
-    ##invest,
-    # profile,
+    invest,
+    profile,
 )
 from browserpages.common_actions import (
     accept_all_cookies,
@@ -483,8 +483,8 @@ def generic_fill_out_and_submit_form(
         form_name: str = None,
         check_captcha_dev_mode: bool = True,
 ):
-    # if check_captcha_dev_mode:
-    #     assert_catcha_in_dev_mode(context.driver)
+    if check_captcha_dev_mode:
+        assert_catcha_in_dev_mode(context.driver)
     actor = get_actor(context, actor_alias)
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "generate_form_details")

@@ -1,12 +1,13 @@
 @invest
-@header-footer
+@header-footer-invest
+  @invest_1
 @allure.suite:Invest
 Feature: Invest - Header-Footer
 
   Background:
     Given test authentication is done
 
-
+@invest_2
   @allure.link:CMS-158
   @logo
   @header
@@ -21,25 +22,25 @@ Feature: Invest - Header-Footer
 
     Examples:
       | selected                         |
-      | Landing                          |
-      | Contact Us                       |
-      | How to set up in the UK          |
-      | Access finance in the UK - guide |
+#      | Landing                          |
+#      | Contact Us                       |
+      | How we can help        |
+#      | Access finance in the UK - guide |
 
     @full
     @dev-only
     Examples: UK setup guides
       | selected                                          |
       | DIT's guide to UK Capital Gains Tax - guide       |
-      | DIT's guide to UK Corporation Tax - guide         |
-      | DIT's Guide to UK Venture Capital Schemes - guide |
-      | Establish a UK business base - guide              |
-      | Register a company in the UK - guide              |
-      | UK infrastructure - guide                         |
-      | UK innovation - guide                             |
-      | UK talent and labour - guide                      |
+#      | DIT's guide to UK Corporation Tax - guide         |
+#      | DIT's Guide to UK Venture Capital Schemes - guide |
+#      | Establish a UK business base - guide              |
+#      | Register a company in the UK - guide              |
+#      | UK infrastructure - guide                         |
+#      | UK innovation - guide                             |
+#      | UK talent and labour - guide                      |
 
-
+@invest_3
   @stage-only
   @allure.link:CMS-158
   @logo
@@ -59,7 +60,7 @@ Feature: Invest - Header-Footer
       | Lightweight structures            |
       | Rail infrastructure               |
 
-
+@invest_4
   @allure.link:CMS-158
   @header
   @footer
@@ -80,7 +81,7 @@ Feature: Invest - Header-Footer
       | How we help             | Invest - How we help you expand  |
       | Contact us              | Invest - Contact us              |
 
-
+@invest_5
   @allure.link:CMS-158
   @logo
   @header

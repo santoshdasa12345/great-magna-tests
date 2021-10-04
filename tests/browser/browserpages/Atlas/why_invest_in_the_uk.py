@@ -17,29 +17,22 @@ from browserpages.common_actions import (
     go_to_url,
 )
 
-NAME = "landing"
+NAME = "Why invest in the uk"
 URL = URLs.INVEST_LANDING.absolute
 SERVICE = Service.INVEST
 TYPE = PageType.LANDING
 PAGE_TITLE = "Invest in Great Britain - Home"
 
 SELECTORS = {
-    "benefits": {
-        "self": Selector(By.ID, "benefits"),
-        "heading": Selector(By.CSS_SELECTOR, "#benefits h2"),
-        "sub-section headings": Selector(By.CSS_SELECTOR, "#benefits h3"),
-        "text": Selector(By.CSS_SELECTOR, "#benefits p"),
-        "image": Selector(By.CSS_SELECTOR, "#benefits img"),
-    },
-    "landing": {
-        "invest in the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
-        "buy from the uk header": Selector(By.PARTIAL_LINK_TEXT, "Buy from the UK", type=ElementType.LINK),
-        "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
-        "get started": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > div > a"),
-        "find investment opportunities": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)"),
-        "find a uk specialist": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)"),
-        "buy from the uk": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)"),
-        "contact dit": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(4)"),
+    "why invest in the uk": {
+        "hero": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero"),
+        "atlas hero heading": Selector(By.ID, "#content > div.atlas-hero__heading"),
+        "why invest in th euk content": Selector(By.CSS_SELECTOR, "#content > div.atlas-container"),
+        "uk strengths": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light"),
+        "tax and incentives": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(1) > h3 > a"),
+        "talent and labour": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(2) > h3 > a"),
+        "find your investment opportunities": Selector(By.CSS_SELECTOR, "#content > div:nth-child(7)"),
+        "how we can help": Selector(By.CSS_SELECTOR, "#content > div:nth-child(8)"),
     },
     "sectors": {
         "self": Selector(By.ID, "industries"),

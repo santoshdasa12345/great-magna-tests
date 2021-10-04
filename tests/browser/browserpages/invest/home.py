@@ -18,20 +18,21 @@ from browserpages.common_actions import (
 )
 
 NAME = "landing"
-URL = URLs.INVEST_LANDING.absolute
+URL = URLs.INVEST_HOME.absolute
 SERVICE = Service.INVEST
 TYPE = PageType.LANDING
 PAGE_TITLE = "Invest in Great Britain - Home"
 
 SELECTORS = {
-    "benefits": {
-        "self": Selector(By.ID, "benefits"),
-        "heading": Selector(By.CSS_SELECTOR, "#benefits h2"),
-        "sub-section headings": Selector(By.CSS_SELECTOR, "#benefits h3"),
-        "text": Selector(By.CSS_SELECTOR, "#benefits p"),
-        "image": Selector(By.CSS_SELECTOR, "#benefits img"),
+    "header": {
+        "self": Selector(By.ID, "body > header > div.atlas-header__main"),
+        "logo": Selector(By.XPATH, "//body/header/div[2]/div/a/img"),
+        "invest in the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
+        "buy from the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(2) > a"),
+        "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
+        "dit logo": Selector(By.ID, "body > header > div.atlas-header__global > div > img"),
     },
-    "landing": {
+    "home": {
         "invest in the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
         "buy from the uk header": Selector(By.PARTIAL_LINK_TEXT, "Buy from the UK", type=ElementType.LINK),
         "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
@@ -41,50 +42,43 @@ SELECTORS = {
         "buy from the uk": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)"),
         "contact dit": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(4)"),
     },
-    "sectors": {
-        "self": Selector(By.ID, "industries"),
-        "heading": Selector(By.CSS_SELECTOR, "#industries h2"),
-        "heading text": Selector(By.CSS_SELECTOR, "#industries h2 ~ div > p"),
-        "first": Selector(By.CSS_SELECTOR, "#industries div:nth-child(1) > div > a"),
-        "second": Selector(By.CSS_SELECTOR, "#industries div:nth-child(2) > div > a"),
-        "third": Selector(By.CSS_SELECTOR, "#industries div:nth-child(3) > div > a"),
-        "see more industries": Selector(By.ID, "see-more-industries"),
+    "sub heading": {
+        "self": Selector(By.ID, "body > header > div.atlas-subnav > div > nav"),
+        "why invest in the uk": Selector(By.CSS_SELECTOR, "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(1) > a"),
+        "uk nations and regions": Selector(By.CSS_SELECTOR, "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(2) > a"),
+        "sectors": Selector(By.CSS_SELECTOR, "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(3) > a"),
+        "investment opportunities": Selector(By.CSS_SELECTOR, "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(4) > a"),
+        "how we can help": Selector(By.CSS_SELECTOR, "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(5) > a"),
+        "invest in the uk": Selector(By.CSS_SELECTOR, "#content > div.atlas-landing__hero"),
+
     },
-    "high-potential opportunities": {
-        "hpo - section": Selector(By.ID, "high-potential-opportunities"),
-        "hpo - headings": Selector(By.CSS_SELECTOR, "#high-potential-opportunities h2"),
-        "hpo - texts": Selector(
-            By.CSS_SELECTOR, "#high-potential-opportunities h2 ~ div > p"
-        ),
-        "aquaculture": Selector(By.PARTIAL_LINK_TEXT, "Aquaculture"),
-        "high productivity food production": Selector(
-            By.PARTIAL_LINK_TEXT, "High productivity food production"
-        ),
-        "high productivity food production (dev)": Selector(
-            By.PARTIAL_LINK_TEXT, "High productivity food production"
-        ),
-        "high productivity food production (staging)": Selector(
-            By.PARTIAL_LINK_TEXT, "High productivity food production"
-        ),
-        "lightweight structures": Selector(
-            By.PARTIAL_LINK_TEXT, "Lightweight structures"
-        ),
-        "photonics and microelectronics": Selector(
-            By.PARTIAL_LINK_TEXT, "Photonics and Microelectronics"
-        ),
-        "rail infrastructure": Selector(By.PARTIAL_LINK_TEXT, "Rail infrastructure"),
-        "space": Selector(By.PARTIAL_LINK_TEXT, "Space"),
-        "sustainable packaging": Selector(
-            By.PARTIAL_LINK_TEXT, "Sustainable packaging"
-        ),
+
+    "why invest in the uk": {
+        "why invest in the section": Selector(By.CSS_SELECTOR, "#content > div:nth-child(4)"),
+        "reason": Selector(By.CSS_SELECTOR, "#content > div:nth-child(4) > div > div.atlas-grid.atlas-grid--masonry > div:nth-child(3) > a"),
+
     },
-    "how we help": {
-        "how we help - section": Selector(By.ID, "how-we-help"),
-        "how we help - icons": Selector(By.CSS_SELECTOR, "#how-we-help ul li img"),
-        "how we help - texts": Selector(By.CSS_SELECTOR, "#how-we-help ul li p"),
-        "find out more": Selector(
-            By.CSS_SELECTOR, "#how-we-help a", type=ElementType.LINK
-        ),
+    "uk sectors": {
+        "uk sectors section": Selector(By.CSS_SELECTOR, "#content > div:nth-child(5)"),
+        "uk sectors": Selector(By.CSS_SELECTOR,
+                           "#content > div:nth-child(5) > div > div.atlas-grid.atlas-grid--masonry > div:nth-child(3) > a"),
+
+    },
+    "uk regions": {
+        "uk regions section": Selector(By.CSS_SELECTOR, "#with-regions-map"),
+        "regions": Selector(By.CSS_SELECTOR,
+                           "#with-regions-map > div > div.atlas-grid.atlas-grid--masonry > div:nth-child(3) > a"),
+
+    },
+    "investment opportunities": {
+        "investment opportunities section": Selector(By.CSS_SELECTOR, "#content > div:nth-child(7)"),
+        "investment opportunities": Selector(By.CSS_SELECTOR,
+                           "#content > div:nth-child(7) > div > div.atlas-grid.atlas-grid--masonry > div:nth-child(3) > a"),
+
+    },
+    "how we can help": {
+        "how we can help section": Selector(By.CSS_SELECTOR, "#content > div:nth-child(8)"),
+        "how we can help": Selector(By.CSS_SELECTOR, "#content > div:nth-child(8) > div > div.atlas-grid.atlas-grid--masonry > div:nth-child(3) > a"),
     },
     "contact us": {
         "self": Selector(By.ID, "get-in-touch"),

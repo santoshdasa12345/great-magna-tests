@@ -1,5 +1,4 @@
 @international
-@dev-only
 @regional-pages
 @allure.suite:International
 Feature: International - Regional pages
@@ -9,6 +8,7 @@ Feature: International - Regional pages
 
 
   @allure.link:CMS-215
+    #removed error reporting and breadcrumbs
   Scenario: Visitors should be able to see all expected sections on "International - Regions" page
     Given "Robert" visits the "International - Regions" page
 
@@ -16,11 +16,11 @@ Feature: International - Regional pages
       | Sections         |
       | Header           |
       | Hero             |
-      | Breadcrumbs      |
+#      | Breadcrumbs      |
       | Regions list     |
       | The UK map       |
       | Contact us       |
-      | Error reporting  |
+#      | Error reporting  |
       | Footer           |
 
 
@@ -37,7 +37,7 @@ Feature: International - Regional pages
       | Sections         |
       | Header           |
       | Hero             |
-      | Error reporting  |
+#      | Error reporting  |
       | Footer           |
     And "Robert" should see content specific to "International - <region> - region" page
 
@@ -65,7 +65,7 @@ Feature: International - Regional pages
       | Sections         |
       | Header           |
       | Hero             |
-      | Error reporting  |
+#      | Error reporting  |
       | Footer           |
     And "Robert" should see content specific to "International - <region> - region" page
 
@@ -78,25 +78,25 @@ Feature: International - Regional pages
       | Midlands         |
       | South of England |
 
-
-  @allure.link:CMS-215
-  @breadcrumbs
-  Scenario Outline: Visitors should be able to go back to the "Regions" page via breadcrumb on "<region>" page
-    Given "Robert" visits the "International - <region> - region" page
-
-    When "Robert" decides to find out more about "regions"
-
-    Then "Robert" should be on the "International - Regions" page
-
-    Examples: UK Regions
-      | region           |
-      | Northern Ireland |
-      | North of England |
-      | South of England |
-      | Midlands         |
-      | Wales            |
-
-    @wip
-    Examples: Other regional pages without breadcrumbs
-      | region           |
-      | Scotland         |
+# breadcrmb has been removed for now
+#  @allure.link:CMS-215
+#  @breadcrumbs
+#  Scenario Outline: Visitors should be able to go back to the "Regions" page via breadcrumb on "<region>" page
+#    Given "Robert" visits the "International - <region> - region" page
+#
+#    When "Robert" decides to find out more about "regions"
+#
+#    Then "Robert" should be on the "International - Regions" page
+#
+#    Examples: UK Regions
+#      | region           |
+#      | Northern Ireland |
+#      | North of England |
+#      | South of England |
+#      | Midlands         |
+#      | Wales            |
+#
+#    @wip
+#    Examples: Other regional pages without breadcrumbs
+#      | region           |
+#      | Scotland         |

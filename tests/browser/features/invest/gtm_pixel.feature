@@ -1,5 +1,5 @@
 @invest
-@gtm
+@invest_gtm
 @pixels
 @allure.suite:Invest
 Feature: Invest - Google Tag Manager
@@ -25,7 +25,7 @@ Feature: Invest - Google Tag Manager
       | Contact us              | Invest       | False       | en-gb        | Contact     | Empty string   | None   |
       | How to set up in the UK | Invest       | False       | en-gb        | Guide       | ListingPage    | None   |
 
-    @hpo
+#    @hpo
     @dev-only
     Examples: High-potential opportunities in Dev
       | selected                                | businessUnit | loginStatus | siteLanguage | siteSection                | siteSubsection | userId |
@@ -33,7 +33,7 @@ Feature: Invest - Google Tag Manager
       | Lightweight structures - HPO            | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
       | Rail infrastructure - HPO               | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
 
-    @hpo
+#    @hpo
     @stage-only
     Examples: High-potential opportunities in Staging
       | selected                                | businessUnit | loginStatus | siteLanguage | siteSection                | siteSubsection | userId |

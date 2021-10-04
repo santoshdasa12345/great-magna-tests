@@ -27,6 +27,7 @@ Feature: INTL - Landing page
 
   @allure.link:ED-3136
   @dev-only
+    @international_expected
   @external-service
   @<expected_service>
   Scenario Outline: Visitors should be able to go to "<expected_service>" page from the International page

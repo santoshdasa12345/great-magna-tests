@@ -18,6 +18,7 @@ from steps.when_impl import (
     domestic_search_for_phrase_on_page,
     domestic_search_result_has_more_than_one_page,
     domestic_search_finder_should_see_page_number,
+    fas_searched_for_companies,
     contact_us_get_to_page_via,
     contact_us_navigate_through_options,
     soo_find_and_open_random_marketplace,
@@ -159,3 +160,9 @@ def when_actor_clears_the_cookies(context, actor_alias):
 @given('"{actor_alias}" is signed in')
 def given_actor_is_signed_in(context, actor_alias):
     sign_in(context, actor_alias)
+
+@given('"{actor_alias}" searched for companies using "{keyword}" keyword in "{sector}" sector')
+def fas_when_actor_searches_for_companies(
+        context: Context, actor_alias: str, keyword: str, sector: str):
+    fas_searched_for_companies(
+        context, actor_alias, keyword=keyword, sector=sector)

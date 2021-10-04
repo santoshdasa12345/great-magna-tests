@@ -105,6 +105,9 @@ class InvestUrl(Url):
     def __init__(self, endpoint: str, *, template: str = None):
         super().__init__(INVEST_URL, endpoint, template=template)
 
+class InvestAtlasUrl(Url):
+    def __init__(self, endpoint: str, *, template: str = None):
+        super().__init__(INVEST_URL, endpoint, template=template)
 
 class LegacyInvestUrl(Url):
     def __init__(self, endpoint: str, *, template: str = None):
@@ -171,6 +174,10 @@ class URLs(Enum):
     @property
     def absolute_template(self) -> Union[str, None]:
         return self.value.absolute_template
+
+    #Atlas
+    # INVEST_ATLAS = InvestAtlasUrl("https://great.uat.uktrade.digital/international/")
+    # INVEST_ATLAS_HOW_WE_HELP_EXPAND = InvestAtlasUrl("content/trade/how-we-help-you-buy/")
 
     # CMS API endpoints
     CMS_API_HEALTHCHECK = CMSApiUrl("healthcheck/")
@@ -711,13 +718,14 @@ class URLs(Enum):
         "trade/how-we-help-you-buy/why-buy-from-the-uk/"
     )
     INTERNATIONAL_INDUSTRIES = InternationalUrl(
-        "content/about-uk/industries/",
-        template="content/about-uk/industries/{industry}/",
+        "content/investment/sectors/",
+        template="content/investment/sectors/{industry}/",
     )
     INTERNATIONAL_INDUSTRIES_STAGING = InternationalUrl(
         "content/industries/", template="content/industries/{industry}/"
     )
     INTERNATIONAL_BREXIT_NEWS = InternationalUrl("eu-exit-news/?lang=en")
+    INTERNATIONAL_BUY_FROM_THE_UK_CONTACT = InternationalUrl("trade/contact/")
     INTERNATIONAL_CAPITAL_INVEST = InternationalUrl("content/capital-invest/")
     INTERNATIONAL_CAPITAL_INVEST_CONTACT = InternationalUrl(
         "content/capital-invest/contact/"
@@ -732,188 +740,258 @@ class URLs(Enum):
         "content/opportunities/"
     )
     INTERNATIONAL_INDUSTRY_ADVANCED_MANUFACTURING = InternationalUrl(
-        "content/about-uk/industries/advanced-manufacturing/"
+        "content/investment/sectors/advanced-manufacturing/"
     )
     INTERNATIONAL_INDUSTRY_AEROSPACE = InternationalUrl(
-        "content/about-uk/industries/aerospace/"
+        "content/investment/sectors/aerospace/"
     )
     INTERNATIONAL_INDUSTRY_AGRI_TECH = InternationalUrl(
-        "content/about-uk/industries/agri-tech/"
+        "content/investment/sectors/agri-tech/"
     )
     INTERNATIONAL_INDUSTRY_AGRICULTURAL_TECHNOLOGY = InternationalUrl(
-        "content/about-uk/industries/agricultural-technology/"
+        "content/investment/sectors/agricultural-technology/"
     )
     INTERNATIONAL_INDUSTRY_ASSET_MANAGEMENT = InternationalUrl(
-        "content/about-uk/industries/asset-management/"
+        "content/investment/sectors/asset-management/"
     )
     INTERNATIONAL_INDUSTRY_AUTOMOTIVE = InternationalUrl(
-        "content/about-uk/industries/automotive/"
+        "content/investment/sectors/automotive/"
     )
     INTERNATIONAL_INDUSTRY_AUTOMOTIVE_RESEARCH_AND_DEVELOPMENT = InternationalUrl(
-        "content/about-uk/industries/automotive-research-and-development/"
+        "content/investment/sectors/automotive-research-and-development/"
     )
     INTERNATIONAL_INDUSTRY_AUTOMOTIVE_SUPPLY_CHAIN = InternationalUrl(
-        "content/about-uk/industries/automotive-supply-chain/"
+        "content/investment/sectors/automotive-supply-chain/"
+    )
+    INTERNATIONAL_INDUSTRY_CARBON_CAPTURE_USAGE_AND_STORAGE = InternationalUrl(
+        "content/investment/sectors/carbon-capture-usage-and-storage/"
     )
     INTERNATIONAL_INDUSTRY_CHEMICALS = InternationalUrl(
-        "content/about-uk/industries/chemicals/"
+        "content/investment/sectors/chemicals/"
+    )
+    INTERNATIONAL_INDUSTRY_GREEN_FINANCE = InternationalUrl(
+        "content/investment/sectors/green-finance/"
+    )
+    INTERNATIONAL_INDUSTRY_GREENER_BUILDINGS = InternationalUrl(
+        "content/investment/sectors/greener-buildings/"
+    )
+    INTERNATIONAL_INDUSTRY_HYDROGEN = InternationalUrl(
+        "content/investment/sectors/hydrogen/"
+    )
+    INTERNATIONAL_INDUSTRY_JET_ZERO_AND_GREEN_SHIPS = InternationalUrl(
+        "content/investment/sectors/jet-zero-and-green-ships/"
+    )
+    INTERNATIONAL_INDUSTRY_SUSTAINABLE_INFRASTRUCTURE = InternationalUrl(
+        "content/investment/sectors/sustainable-infrastructure/"
+    )
+    INTERNATIONAL_INDUSTRY_SCOTLAND = InternationalUrl(
+        "content/investment/sectors/scotland/"
     )
     INTERNATIONAL_INDUSTRY_CREATIVE_CONTENT_AND_PRODUCTION = InternationalUrl(
-        "content/about-uk/industries/creative-content-and-production/"
+        "content/investment/sectors/creative-content-and-production/"
     )
     INTERNATIONAL_INDUSTRY_CREATIVE_INDUSTRIES = InternationalUrl(
-        "content/about-uk/industries/creative-industries/"
+        "content/investment/sectors/creative-industries/"
     )
     INTERNATIONAL_INDUSTRY_CYBER_SECURITY = InternationalUrl(
-        "content/about-uk/industries/cyber-security/"
+        "content/investment/sectors/cyber-security/"
     )
     INTERNATIONAL_INDUSTRY_DATA_ANALYTICS = InternationalUrl(
-        "content/about-uk/industries/data-analytics/"
+        "content/investment/sectors/data-analytics/"
     )
     INTERNATIONAL_INDUSTRY_DIGITAL_MEDIA = InternationalUrl(
-        "content/about-uk/industries/digital-media/"
+        "content/investment/sectors/digital-media/"
     )
     INTERNATIONAL_INDUSTRY_EDUCATION = InternationalUrl(
-        "content/about-uk/industries/education/"
+        "content/investment/sectors/education/"
     )
     INTERNATIONAL_INDUSTRY_ELECTRICAL_NETWORKS = InternationalUrl(
-        "content/about-uk/industries/electrical-networks/"
+        "content/investment/sectors/electrical-networks/"
     )
     INTERNATIONAL_INDUSTRY_ENERGY = InternationalUrl(
-        "content/about-uk/industries/energy/"
+        "content/investment/sectors/energy/"
     )
     INTERNATIONAL_INDUSTRY_ENERGY_WASTE = InternationalUrl(
-        "content/about-uk/industries/energy-waste/"
+        "content/investment/sectors/energy-waste/"
     )
     INTERNATIONAL_INDUSTRY_ENGINEERING_AND_MANUFACTURING = InternationalUrl(
-        "content/about-uk/industries/engineering-and-manufacturing/"
+        "content/investment/sectors/engineering-and-manufacturing/"
     )
     INTERNATIONAL_INDUSTRY_FINANCIAL_SERVICES = InternationalUrl(
-        "content/about-uk/industries/financial-services/"
+        "content/investment/sectors/financial-services/"
     )
     INTERNATIONAL_INDUSTRY_FINANCIAL_AND_PROFESSIONAL_SERVICES = InternationalUrl(
-        "content/about-uk/industries/financial-and-professional-services/"
+        "content/investment/sectors/financial-and-professional-services/"
     )
     INTERNATIONAL_INDUSTRY_FINANCIAL_TECHNOLOGY = InternationalUrl(
-        "content/about-uk/industries/financial-technology/"
+        "content/investment/sectors/financial-technology/"
     )
     INTERNATIONAL_INDUSTRY_FOOD_AND_DRINK = InternationalUrl(
-        "content/about-uk/industries/food-and-drink/"
+        "content/investment/sectors/food-and-drink/"
     )
     INTERNATIONAL_INDUSTRY_FOOD_SERVICE_AND_CATERING = InternationalUrl(
-        "content/about-uk/industries/food-service-and-catering/"
+        "content/investment/sectors/food-service-and-catering/"
     )
     INTERNATIONAL_INDUSTRY_FREE_FOODS = InternationalUrl(
-        "content/about-uk/industries/free-foods/"
+        "content/investment/sectors/free-foods/"
     )
     INTERNATIONAL_INDUSTRY_LEGAL_SERVICES = InternationalUrl(
-        "content/about-uk/industries/legal-services/"
+        "content/investment/sectors/legal-services/"
     )
     INTERNATIONAL_INDUSTRY_HEALTH_AND_LIFE_SCIENCES = InternationalUrl(
-        "content/about-uk/industries/health-and-life-sciences/"
+        "content/investment/sectors/health-and-life-sciences/"
     )
     INTERNATIONAL_INDUSTRY_MARITIME = InternationalUrl(
-        "content/about-uk/industries/maritime/"
+        "content/investment/sectors/maritime/"
     )
     INTERNATIONAL_INDUSTRY_MEAT_POULTRY_AND_DAIRY = InternationalUrl(
-        "content/about-uk/industries/meat-poultry-and-dairy/"
+        "content/investment/sectors/meat-poultry-and-dairy/"
     )
     INTERNATIONAL_INDUSTRY_MEDICAL_TECHNOLOGY = InternationalUrl(
-        "content/about-uk/industries/medical-technology/"
+        "content/investment/sectors/medical-technology/"
     )
     INTERNATIONAL_INDUSTRY_MOTORSPORT = InternationalUrl(
-        "content/about-uk/industries/motorsport/"
+        "content/investment/sectors/motorsport/"
     )
     INTERNATIONAL_INDUSTRY_NUCLEAR_ENERGY = InternationalUrl(
-        "content/about-uk/industries/nuclear-energy/"
+        "content/investment/sectors/nuclear-energy/"
     )
     INTERNATIONAL_INDUSTRY_OFFSHORE_WIND_ENERGY = InternationalUrl(
-        "content/about-uk/industries/offshore-wind-energy/"
+        "content/investment/sectors/offshore-wind-energy/"
     )
     INTERNATIONAL_INDUSTRY_OIL_AND_GAS = InternationalUrl(
-        "content/about-uk/industries/oil-and-gas/"
+        "content/investment/sectors/oil-and-gas/"
     )
     INTERNATIONAL_INDUSTRY_PHARMACEUTICAL_MANUFACTURING = InternationalUrl(
-        "content/about-uk/industries/pharmaceutical-manufacturing/"
+        "content/investment/sectors/pharmaceutical-manufacturing/"
     )
     INTERNATIONAL_INDUSTRY_REAL_ESTATE = InternationalUrl(
-        "content/about-uk/industries/real-estate/"
+        "content/investment/sectors/real-estate/"
     )
     INTERNATIONAL_INDUSTRY_RETAIL = InternationalUrl(
-        "content/about-uk/industries/retail/"
+        "content/investment/sectors/retail/"
     )
     INTERNATIONAL_INDUSTRY_SPACE = InternationalUrl(
-        "content/about-uk/industries/space/"
+        "content/investment/sectors/space/"
     )
     INTERNATIONAL_INDUSTRY_SPORTS_ECONOMY = InternationalUrl(
-        "content/about-uk/industries/sports-economy/"
+        "content/investment/sectors/sports-economy/"
     )
     INTERNATIONAL_INDUSTRY_TECHNOLOGY = InternationalUrl(
-        "content/about-uk/industries/technology/"
+        "content/investment/sectors/technology/"
     )
     INTERNATIONAL_HEALTHCHECK_FORMS_API = InternationalUrl("healthcheck/forms-api/")
     INTERNATIONAL_HEALTHCHECK_SENTRY = InternationalUrl("healthcheck/sentry/")
-    INTERNATIONAL_REGIONS = InternationalUrl("content/about-uk/regions/")
-    INTERNATIONAL_REGIONS_LONDON = InternationalUrl("content/about-uk/regionslondon/")
+    INTERNATIONAL_REGIONS = InternationalUrl("content/investment/regions/")
+    INTERNATIONAL_REGIONS_LONDON = InternationalUrl("content/investment/regionslondon/")
     INTERNATIONAL_REGIONS_MIDLANDS = InternationalUrl(
-        "content/about-uk/regions/midlands/"
+        "content/investment/regions/midlands/"
     )
     INTERNATIONAL_REGIONS_NORTHERN_IRELAND = InternationalUrl(
-        "content/about-uk/regions/northern-ireland/"
+        "content/investment/regions/northern-ireland/"
     )
     INTERNATIONAL_REGIONS_SOUTH_ENGLAND = InternationalUrl(
-        "content/about-uk/regions/south-england/"
+        "content/investment/regions/south-england/"
     )
     INTERNATIONAL_REGIONS_NORTH_ENGLAND = InternationalUrl(
-        "content/about-uk/regions/north-england/"
+        "content/investment/regions/north-england/"
     )
-    INTERNATIONAL_REGIONS_WALES = InternationalUrl("content/about-uk/regions/wales/")
+    INTERNATIONAL_REGIONS_WALES = InternationalUrl("content/investment/regions/wales/")
 
     # Invest site
     INVEST_LANDING = InvestUrl("")
     INVEST_HEALTHCHECK = InvestUrl("healthcheck/")
     INVEST_CONTACT = InvestUrl("contact/")
     INVEST_CONTACT_SUCCESS = InvestUrl("contact/success/")
-    INVEST_HOW_WE_HELP_EXPAND = InternationalUrl(
-        "content/invest/how-we-help-you-expand/"
-    )
     INVEST_SITEMAP = InvestUrl("sitemap.xml")
     INVEST_PIR = InvestUrl("perfectfit/")
     INVEST_PIR_SUCCESS = InvestUrl("perfectfit/success/")
+    INVEST_HOME = InvestUrl("international/investment/")
+    INVEST_HOW_WE_HELP_YOU_EXPAND = InvestUrl("")
+    INVEST_HOW_WE_HELP_YOU = InvestUrl("content/investment/how-we-can-help/")
     INVEST_HPO = InvestUrl("#high-potential-opportunities")
     INVEST_HPO_CONTACT = InternationalUrl(
         "content/invest/high-potential-opportunities/contact/"
     )
+    INVEST_HOW_WE_HELP_EXPAND = InvestUrl("content/capital-invest/how-we-help-you-invest-capital/")
     INVEST_HPO_CONTACT_THANK_YOU = InternationalUrl(
         "content/invest/high-potential-opportunities/contact/success/"
     )
     INVEST_HPO_RAIL = InternationalUrl(
-        "content/invest/high-potential-opportunities/rail-infrastructure/"
+        "content/investment/opportunities/rail-in-doncaster/"
     )
     INVEST_HPO_FOOD = InternationalUrl(
-        "content/invest/high-potential-opportunities/food-production/"
+        "content/investment/opportunities/food-production/"
     )
     INVEST_HPO_HIGH_PRODUCTIVITY_FOOD = InternationalUrl(
-        "content/invest/high-potential-opportunities/high-productivity-food-production/"
+        "content/investment/opportunities/high-productivity-food-production/"
     )
     INVEST_HPO_LIGHTWEIGHT = InternationalUrl(
-        "content/invest/high-potential-opportunities/lightweight-structures/"
+        "content/investment/opportunities/lightweight-structures-in-greater-manchester/"
     )
     INVEST_HPO_AQUACULTURE = InternationalUrl(
-        "content/invest/high-potential-opportunities/aquaculture/"
+        "content/investment/opportunities/sustainable-aquaculture-in-dorset/"
     )
     INVEST_HPO_PHOTONICS = InternationalUrl(
-        "content/invest/high-potential-opportunities/photonics-and-microelectronics/"
+        "content/investment/opportunities/photonics-in-the-south-west/"
     )
     INVEST_HPO_SPACE = InternationalUrl(
-        "content/invest/high-potential-opportunities/space/"
+        "content/investment/opportunities/space/"
     )
     INVEST_HPO_SUSTAINABLE_PACKAGING = InternationalUrl(
-        "content/invest/high-potential-opportunities/sustainable-packaging/"
+        "content/investment/opportunities/sustainable-packaging/"
+    )
+    INVEST_HPO_CHEMICALS_IN_THE_HUMBER = InternationalUrl(
+        "content/investment/opportunities/chemicals-in-the-humber/"
+    )
+    INVEST_HPO_CARBON_FIBRE_IN_TEES_VALLEY = InternationalUrl(
+        "content/investment/opportunities/carbon-fibre-in-tees-valley/"
+    )
+    INVEST_HPO_CIRCULAR_ECONOMY_IN_TELFORD = InternationalUrl(
+        "content/investment/opportunities/circular-economy-in-telford/"
+    )
+    INVEST_HPO_COMPOUND_SEMICONDUCTORS = InternationalUrl(
+        "content/investment/opportunities/compound-semiconductors-and-applications-in-south-wales/"
+    )
+    INVEST_HPO_FOOD_PROCESSING_AUTOMATION = InternationalUrl(
+        "content/investment/opportunities/food-processing-automation-in-greater-lincolnshire/"
+    )
+    INVEST_HPO_FUSION_ENERGY = InternationalUrl(
+        "content/investment/opportunities/fusion-energy-in-oxfordshire/"
+    )
+    INVEST_HPO_HEAT_NETWORKS = InternationalUrl(
+        "content/investment/opportunities/heat-networks-in-the-north-east-and-tees-valley/"
+    )
+    INVEST_HPO_HYDROGEN = InternationalUrl(
+        "content/investment/opportunities/hydrogen-in-north-east-scotland/"
+    )
+    INVEST_HPO_IMMERSIVE_TECHNOLOGY = InternationalUrl(
+        "content/investment/opportunities/immersive-technology-in-the-north-east/"
+    )
+    INVEST_HPO_INNOVATION_IN_ANIMAL_HEALTH = InternationalUrl(
+        "content/investment/opportunities/carbon-fibre-in-tees-valley/"
+    )
+    INVEST_HPO_MARINE_AUTONOMY = InternationalUrl(
+        "content/investment/opportunities/marine-autonomy-in-the-south-west/"
+    )
+    INVEST_HPO_NET_ZERO_TRANSPORT = InternationalUrl(
+        "content/investment/opportunities/net-zero-transport-in-coventry-and-warwickshire/"
+    )
+    INVEST_HPO_PLANT_BASED_PROTEIN_PRODUCTS = InternationalUrl(
+        "content/investment/opportunities/plant-based-and-alternative-protein-products-in-the-north-east/"
+    )
+    INVEST_HPO_PRECISION_FARMING = InternationalUrl(
+        "content/investment/opportunities/precision-farming-in-telford/"
+    )
+    INVEST_HPO_SMART_AND_SUSTAINABLE_AVIATION = InternationalUrl(
+        "content/investment/opportunities/smart-and-sustainable-aviation-in-south-west-england/"
+    )
+    INVEST_HPO_SPALDING_BATTERY_ENERGY_STORAGE_SYSTEM= InternationalUrl(
+        "content/investment/opportunities/spalding-battery-energy-storage-system-in-lincolnshire/"
     )
     #
     INVEST_INDUSTRIES = LegacyInvestUrl("industries/")
-    INVEST_REGIONS_SCOTLAND = InternationalUrl("content/invest/uk-regions/scotland/")
+    INVEST_REGIONS_SCOTLAND = InternationalUrl("content/investment/regions/scotland/")
     INVEST_LEGACY_UK_SETUP_GUIDE = LegacyInvestUrl("uk-setup-guide/")
     INVEST_LEGACY_UK_SETUP_GUIDE_UK_VISAS = LegacyInvestUrl(
         "uk-setup-guide/apply-uk-visa/"
@@ -977,6 +1055,7 @@ class URLs(Enum):
     INVEST_UK_SETUP_GUIDE_UK_INNOVATION = InternationalUrl(
         "content/invest/how-to-setup-in-the-uk/research-and-development-rd-support-in-the-uk/"
     )
+    INVEST_WHY_INVEST_IN_THE_UK =InvestUrl("international/content/investment/why-invest-in-the-uk/")
 
     INVEST_LEGACY_REGIONS_MIDLANDS = LegacyInvestUrl("uk-regions/midlands/")
     INVEST_LEGACY_REGIONS_NORTHERN_IRELAND = LegacyInvestUrl(
@@ -1049,6 +1128,8 @@ class URLs(Enum):
     )
     INVEST_INDUSTRIES_RETAIL = LegacyInvestUrl("industries/retail/")
     INVEST_INDUSTRIES_TECHNOLOGY = LegacyInvestUrl("industries/technology/")
+    INVEST_SECTORS = InvestUrl("content/investment/sectors/")
+    INVEST_UK_NATIONS_AND_REGIONS = InvestUrl("content/investment/regions/")
 
     # ISD -
     ISD_LANDING = ISDUrl("")

@@ -25,11 +25,28 @@ NAME = "HPO"
 NAMES = [
     "Aquaculture",
     "High productivity food production",
-    "Lightweight structures",
-    "Photonics and microelectronics",
-    "Rail infrastructure",
+    "Lightweight",
+    "Photonics",
+    "Rail",
     "Space",
     "Sustainable packaging",
+    "chemicals in the humber",
+    "carbon fibre in tees valley",
+    "circular economy",
+    "compound semiconductors and application",
+    "food processing automation",
+    "fusion energy",
+    "heat networks",
+    "hydrogen",
+    "immersive technology",
+    "marine autonomy",
+    "net zero transport",
+    "plant based and alternative protein products",
+    "precision farming",
+    "smart and sustainable avaiation",
+    "spalding battery energy storage system",
+    "innovation in animal health",
+
 ]
 SERVICE = Service.INVEST
 TYPE = PageType.HPO
@@ -40,17 +57,34 @@ PAGE_TITLE = "high potential"
 SubURLs = {
     "aquaculture": URLs.INVEST_HPO_AQUACULTURE.absolute,
     "high productivity food production": URLs.INVEST_HPO_HIGH_PRODUCTIVITY_FOOD.absolute,
-    "lightweight structures": URLs.INVEST_HPO_LIGHTWEIGHT.absolute,
-    "photonics and microelectronics": URLs.INVEST_HPO_PHOTONICS.absolute,
-    "rail infrastructure": URLs.INVEST_HPO_RAIL.absolute,
+    "lightweight": URLs.INVEST_HPO_LIGHTWEIGHT.absolute,
+    "photonics": URLs.INVEST_HPO_PHOTONICS.absolute,
+    "rail": URLs.INVEST_HPO_RAIL.absolute,
     "space": URLs.INVEST_HPO_SPACE.absolute,
     "sustainable packaging": URLs.INVEST_HPO_SUSTAINABLE_PACKAGING.absolute,
+    "chemicals in the humber": URLs.INVEST_HPO_CHEMICALS_IN_THE_HUMBER.absolute,
+    "carbon fibre in tees valley": URLs.INVEST_HPO_CARBON_FIBRE_IN_TEES_VALLEY.absolute,
+    "circular economy": URLs.INVEST_HPO_CIRCULAR_ECONOMY_IN_TELFORD.absolute,
+    "compound semiconductors and application": URLs.INVEST_HPO_COMPOUND_SEMICONDUCTORS.absolute,
+    "food processing automation": URLs.INVEST_HPO_FOOD_PROCESSING_AUTOMATION.absolute,
+    "fusion energy": URLs.INVEST_HPO_FUSION_ENERGY.absolute,
+    "heat networks": URLs.INVEST_HPO_HEAT_NETWORKS.absolute,
+    "hydrogen": URLs.INVEST_HPO_HYDROGEN.absolute,
+    "immersive technology": URLs.INVEST_HPO_IMMERSIVE_TECHNOLOGY.absolute,
+    "marine autonomy": URLs.INVEST_HPO_MARINE_AUTONOMY.absolute,
+    "net zero transport": URLs.INVEST_HPO_NET_ZERO_TRANSPORT.absolute,
+    "plant based and alternative protein products": URLs.INVEST_HPO_PLANT_BASED_PROTEIN_PRODUCTS.absolute,
+    "precision farming": URLs.INVEST_HPO_PRECISION_FARMING.absolute,
+    "smart and sustainable avaiation": URLs.INVEST_HPO_SMART_AND_SUSTAINABLE_AVIATION.absolute,
+    "spalding battery energy storage system": URLs.INVEST_HPO_SPALDING_BATTERY_ENERGY_STORAGE_SYSTEM.absolute,
+    "innovation in animal health": URLs.INVEST_HPO_INNOVATION_IN_ANIMAL_HEALTH.absolute,
+
 }
 
 
 SELECTORS = {
     "hero": {
-        "self": Selector(By.ID, "hero"),
+        "self": Selector(By.ID, "#content > div.atlas-hero"),
         "heading": Selector(By.CSS_SELECTOR, "#hero h1"),
     },
     "contact us": {
@@ -61,10 +95,10 @@ SELECTORS = {
     "proposition one": {
         "self": Selector(By.ID, "proposition-one"),
         "heading": Selector(By.CSS_SELECTOR, "#proposition-one h2"),
-        "view video transcript": Selector(
-            By.CSS_SELECTOR, "#proposition-one details summary", type=ElementType.BUTTON
-        ),
-        "video transcript": Selector(By.CSS_SELECTOR, "#proposition-one details p"),
+        # "view video transcript": Selector(
+        #     By.CSS_SELECTOR, "#proposition-one details summary", type=ElementType.BUTTON
+        # ),
+        # "video transcript": Selector(By.CSS_SELECTOR, "#proposition-one details p"),
     },
     "opportunity list": {"self": Selector(By.ID, "opportunity-list")},
     "proposition two": {
@@ -115,33 +149,33 @@ SELECTORS = {
     "case studies": {
         "self": Selector(By.ID, "case-studies"),
         "heading": Selector(By.CSS_SELECTOR, "#case-studies h2"),
-        "first case study": Selector(
-            By.CSS_SELECTOR,
-            "#case-studies details:nth-child(1)",
-            type=ElementType.BUTTON,
-        ),
+        # "first case study": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#case-studies details:nth-child(1)",
+        #     type=ElementType.BUTTON,
+        # ),
         "first - heading": Selector(
             By.CSS_SELECTOR, "#case-studies details:nth-child(1) h3"
         ),
         "first - text": Selector(
             By.CSS_SELECTOR, "#case-studies details:nth-child(1) p"
         ),
-        "second case study": Selector(
-            By.CSS_SELECTOR,
-            "#case-studies details:nth-child(2)",
-            type=ElementType.BUTTON,
-        ),
+        # "second case study": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#case-studies details:nth-child(2)",
+        #     type=ElementType.BUTTON,
+        # ),
         "second - heading": Selector(
             By.CSS_SELECTOR, "#case-studies details:nth-child(2) h3"
         ),
         "second - text": Selector(
             By.CSS_SELECTOR, "#case-studies details:nth-child(2) p"
         ),
-        "third case study": Selector(
-            By.CSS_SELECTOR,
-            "#case-studies details:nth-child(3)",
-            type=ElementType.BUTTON,
-        ),
+        # "third case study": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#case-studies details:nth-child(3)",
+        #     type=ElementType.BUTTON,
+        # ),
         "third - heading": Selector(
             By.CSS_SELECTOR, "#case-studies details:nth-child(3) h3"
         ),
@@ -152,11 +186,21 @@ SELECTORS = {
     "other opportunities": {
         "self": Selector(By.ID, "other-opportunities"),
         "first opportunity": Selector(
-            By.CSS_SELECTOR, "#other-opportunities div:nth-child(1) > div > a"
+            By.CSS_SELECTOR, "#content > section.atlas-bg.atlas-bg--grey-light > div > div > div:nth-child(1) > a"
         ),
         "second opportunity": Selector(
-            By.CSS_SELECTOR, "#other-opportunities div:nth-child(2) > div > a"
+            By.CSS_SELECTOR, "#content > section.atlas-bg.atlas-bg--grey-light > div > div > div:nth-child(2) > a"
         ),
+        "third opportunity": Selector(
+            By.CSS_SELECTOR, "#content > section.atlas-bg.atlas-bg--grey-light > div > div > div:nth-child(3) > a"
+        ),
+        "fourth opportunity": Selector(
+            By.CSS_SELECTOR, "#content > section.atlas-bg.atlas-bg--grey-light > div > div > div:nth-child(4) > a > div"
+        ),
+        "fifth opportunity": Selector(
+            By.CSS_SELECTOR, "#content > section.atlas-bg.atlas-bg--grey-light > div > div > div:nth-child(5) > a > div"
+        ),
+
     },
 }
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
@@ -221,3 +265,6 @@ def unfold_elements_in_section(driver: WebDriver, section_name: str):
         else:
             logging.debug(f"Unfolding closed element: {name}")
             element.click()
+
+def should_see_following_sections(driver: WebDriver, names: List[str]):
+    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

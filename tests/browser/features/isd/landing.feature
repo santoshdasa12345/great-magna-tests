@@ -11,11 +11,11 @@ Feature: ISD - Landing
 
     Then "Robert" should see following sections
       | Sections          |
-      | Header            |
-      | Search form       |
-      | Breadcrumbs       |
-      | Benefits          |
-      | Search categories |
+#     | Header            |
+     | Search form       |
+     | Breadcrumbs       |
+     | Benefits          |
+     | Search categories |
       | Error reporting   |
       | Footer            |
 
@@ -28,11 +28,11 @@ Feature: ISD - Landing
     Then "Robert" should be on the "ISD - Search results" page
     And "Robert" should see following sections
       | Sections         |
-      | Header           |
+#      | Header           |
       | Breadcrumbs      |
       | Results summary  |
       | Search form      |
       | Filters          |
       | Search Results   |
       | Error reporting  |
-      | Footer           |
+#      | Footer           |

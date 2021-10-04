@@ -59,7 +59,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#industries-section ul li:nth-child(3) > a"
         ),
         "see more industries": Selector(
-            By.CSS_SELECTOR, "#industries-section a.button"
+            By.CSS_SELECTOR, "#services-section > div > a"
         ),
     },
     "how we can help": {
@@ -130,3 +130,6 @@ def open_any_article(driver: WebDriver) -> str:
     with wait_for_page_load_after_action(driver):
         link.click()
     return link_text
+
+def should_see_following_sections(driver: WebDriver, names: List[str]):
+    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

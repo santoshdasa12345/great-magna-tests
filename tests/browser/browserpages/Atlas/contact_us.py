@@ -30,7 +30,7 @@ from browserpages.invest import contact_us_thank_you
 NAME = "Contact us"
 SERVICE = Service.INVEST
 TYPE = PageType.CONTACT_US
-URL = URLs.INTERNATIONAL_BUY_FROM_THE_UK_CONTACT.absolute
+URL = URLs.INVEST_CONTACT.absolute
 PAGE_TITLE = ""
 
 SELECTORS = {
@@ -42,14 +42,10 @@ SELECTORS = {
         "itself": Selector(By.CSS_SELECTOR, "#content form"),
         "given name": Selector(By.ID, "id_given_name", type=ElementType.INPUT),
         "family name": Selector(By.ID, "id_family_name", type=ElementType.INPUT),
-        # "job title": Selector(By.ID, "id_job_title", type=ElementType.INPUT),
-        "email": Selector(By.CSS_SELECTOR, "#id_email_address", type=ElementType.INPUT),
+        "job title": Selector(By.ID, "id_job_title", type=ElementType.INPUT),
+        "email": Selector(By.ID, "id_email", type=ElementType.INPUT),
         "phone": Selector(By.ID, "id_phone_number", type=ElementType.INPUT),
-        # "your industry": Selector(By.ID, "id_company_name", type=ElementType.INPUT),
-        "your organisation name": Selector(By.XPATH, "//*[@id=\"id_organisation_name\"]", type=ElementType.INPUT),
-        "your country": Selector(By.CSS_SELECTOR, "#js-country-select", type=ElementType.INPUT),
         "company name": Selector(By.ID, "id_company_name", type=ElementType.INPUT),
-        "describe what products or services": Selector(By.CSS_SELECTOR, "#id_body", type=ElementType.INPUT),
         "website url": Selector(By.ID, "id_company_website", type=ElementType.INPUT),
         "company hq address": Selector(
             By.ID, "id_company_hq_address", type=ElementType.INPUT
@@ -61,19 +57,19 @@ SELECTORS = {
             is_visible=False,
             autocomplete_callback=js_country_select,
         ),
-        "your industry": Selector(
-            By.ID, "id_sector", type=ElementType.SELECT, is_visible=False
+        "industry": Selector(
+            By.ID, "id_industry", type=ElementType.SELECT, is_visible=False
         ),
-        # "feeling": Selector(
-        #     By.ID, "id_expanding_to_uk", type=ElementType.SELECT, is_visible=False
-        # ),
-        # "your plans": Selector(By.ID, "id_description", type=ElementType.TEXTAREA),
-        # "arrange call yes": Selector(
-        #     By.ID, "id_arrange_callback_0", type=ElementType.RADIO
-        # ),
-        # "arrange call no": Selector(
-        #     By.ID, "id_arrange_callback_1", type=ElementType.RADIO
-        # ),
+        "feeling": Selector(
+            By.ID, "id_expanding_to_uk", type=ElementType.SELECT, is_visible=False
+        ),
+        "your plans": Selector(By.ID, "id_description", type=ElementType.TEXTAREA),
+        "arrange call yes": Selector(
+            By.ID, "id_arrange_callback_0", type=ElementType.RADIO
+        ),
+        "arrange call no": Selector(
+            By.ID, "id_arrange_callback_1", type=ElementType.RADIO
+        ),
         "how did you hear": Selector(
             By.ID, "id_how_did_you_hear", type=ElementType.SELECT, is_visible=False
         ),
@@ -114,20 +110,16 @@ def generate_form_details(actor: Actor, *, custom_details: dict = None) -> dict:
     details = {
         "given name": actor.company_name or "Automated test",
         "family name": actor.company_name or "Automated test",
-        # "job title": "QA @ DIT",
+        "job title": "QA @ DIT",
         "email": actor.email,
         "phone": "0123456789",
-        # "company name": actor.company_name or "Automated test - company name",
-        # "website url": "https://example.com",
-        # "company hq address": "Far, far away",
-        # "country": True,
-        "your industry": None,
-        "your organisation name" : "Automated test",
-        "size of your organisation":None,
-        # "feeling": None,
-        "your country" : None,
+        "company name": actor.company_name or "Automated test - company name",
+        "website url": "https://example.com",
+        "company hq address": "Far, far away",
+        "country": True,
+        "industry": None,
+        "feeling": None,
         "your plans": "This is a test message sent via automated tests",
-        "describe what products or services" :" This is a test message",
         "arrange call yes": arrange_call,
         "arrange call no": not arrange_call,
         "how did you hear": None,
