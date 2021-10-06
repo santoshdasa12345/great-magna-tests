@@ -32,16 +32,16 @@ PAGE_TITLE = "great.gov.uk international"
 
 SELECTORS = {
     "subscribe for email updates": {
-        "full name": Selector(By.ID, "id_full_name", type=ElementType.INPUT),
-        "email": Selector(By.ID, "id_email_address", type=ElementType.INPUT),
-        "industry": Selector(By.ID, "id_sector", type=ElementType.SELECT),
-        "company name": Selector(By.ID, "id_company_name", type=ElementType.INPUT),
-        "country": Selector(By.ID, "id_country", type=ElementType.SELECT),
-        "t&c": Selector(By.ID, "id_terms", type=ElementType.CHECKBOX),
-        "captcha": Selector(By.ID, "id_captcha"),
+        "full name": Selector(By.CSS_SELECTOR, "#id_full_name", type=ElementType.INPUT),
+        "email": Selector(By.CSS_SELECTOR, "#id_email_address", type=ElementType.INPUT),
+        "industry": Selector(By.CSS_SELECTOR, "#id_sector", type=ElementType.SELECT),
+        "company name": Selector(By.CSS_SELECTOR, "#id_company_name", type=ElementType.INPUT),
+        "country": Selector(By.CSS_SELECTOR, "#id_country", type=ElementType.SELECT),
+        "t&c": Selector(By.CSS_SELECTOR, "#id_terms", type=ElementType.CHECKBOX),
+        # "captcha": Selector(By.ID, "#id_captcha"),
         "send": Selector(
             By.CSS_SELECTOR,
-            "#id_terms-container ~ button",
+            "#content > section:nth-child(2) > div > div > form > button",
             type=ElementType.SUBMIT,
             next_page=thank_you_for_registering,
         ),
@@ -83,7 +83,7 @@ def fill_out(driver: WebDriver, contact_us_details: dict):
     fill_out_input_fields(driver, form_selectors, contact_us_details)
     pick_option(driver, form_selectors, contact_us_details)
     tick_checkboxes(driver, form_selectors, contact_us_details)
-    tick_captcha_checkbox(driver)
+    # tick_captcha_checkbox(driver)
 
 
 def submit(driver: WebDriver) -> Union[ModuleType, None]:

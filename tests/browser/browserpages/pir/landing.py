@@ -50,7 +50,7 @@ SELECTORS = {
         ),
     },
 }
-SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
+# SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
 SELECTORS.update(common_selectors.INTERNATIONAL_FOOTER)
 
 

@@ -110,15 +110,28 @@ SELECTORS = {
         "section 7": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(6)"),
 
     },
-    "next steps": {
-        # "next steps": Selector(By.ID, "sector-next-steps-section"),
-        # "i want to invest in the uk": Selector(
-        #     By.CSS_SELECTOR, "#sector-next-steps-section div:nth-child(1) > a"
-        # ),
-        # "i want to buy from the uk": Selector(
-        #     By.CSS_SELECTOR, "#sector-next-steps-section div:nth-child(2) > a"
-        # ),
-    },
+    "opportunity highlights": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(2)"),
+        },
+    "commercial maturity": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(3)"),
+        },
+    "key uk assets": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(4)"),
+        },
+    "r&d capability": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(5)"),
+        },
+    "business and government support": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(6)"),
+        },
+    "case studies": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(7)"),
+        },
+    "early potential opportunities": {
+        "itself": Selector(By.ID, "#content > section"),
+        },
+
 }
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER)
 SELECTORS.update(common_selectors.INTERNATIONAL_HERO)

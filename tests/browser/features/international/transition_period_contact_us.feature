@@ -1,4 +1,5 @@
 @international
+  @invest
 @international-page
 @contact-us
   @transition-period

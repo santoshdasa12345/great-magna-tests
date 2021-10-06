@@ -9,6 +9,7 @@ import parse
 from steps.then_impl import (
     should_be_on_page,
     domestic_search_finder_should_see_page_number,
+
 )
 from steps.when_impl import (
     articles_open_any,
@@ -496,3 +497,8 @@ def when_actor_opens_up_language_selector(context, actor_alias):
 @when('"{actor_alias}" closes the language selector')
 def when_actor_closes_language_selector(context, actor_alias):
     language_selector_close(context, actor_alias)
+
+@when('"{actor_alias}" decides to click "{element_name}"')
+def then_actor_decides_to_click_continue(
+        context, actor_alias, element_name):
+    click_on_page_element(context, actor_alias, element_name)

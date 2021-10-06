@@ -683,6 +683,8 @@ class URLs(Enum):
     FAS_SITEMAP = FASUrl("sitemap.xml")
     FAS_SUBSCRIBE = FASUrl("subscribe/")
     FAS_SUBSCRIBE_SUCCESS = FASUrl("subscribe/success/")
+    FAS_SUBSCRIBE_AGRICULTURE_PLANTS= FASUrl("search/?q=plants&industries=AGRICULTURE_HORTICULTURE_AND_FISHERIES")
+
     FAS_SUPPLIER = FASUrl("suppliers/", template="suppliers/{ch_number}/")
     FAS_SUPPLIERS = FASUrl("suppliers/", template="suppliers/{ch_number}/{slug}/")
     FAS_INCOMING_REDIRECT = FASUrl("incoming/", template="incoming/{endpoint}")
@@ -909,6 +911,10 @@ class URLs(Enum):
     INVEST_HOME = InvestUrl("international/investment/")
     INVEST_HOW_WE_HELP_YOU_EXPAND = InvestUrl("")
     INVEST_HOW_WE_HELP_YOU = InvestUrl("content/investment/how-we-can-help/")
+    INVEST_HOW_WE_CAN_HELP = InternationalUrl(
+        "content/investment/how-we-can-help/",
+        template="content/investment/how-we-can-help/{guide}/",
+    )
     INVEST_HPO = InvestUrl("#high-potential-opportunities")
     INVEST_HPO_CONTACT = InternationalUrl(
         "content/invest/high-potential-opportunities/contact/"
@@ -1055,8 +1061,9 @@ class URLs(Enum):
     INVEST_UK_SETUP_GUIDE_UK_INNOVATION = InternationalUrl(
         "content/invest/how-to-setup-in-the-uk/research-and-development-rd-support-in-the-uk/"
     )
-    INVEST_WHY_INVEST_IN_THE_UK =InvestUrl("international/content/investment/why-invest-in-the-uk/")
+    # INVEST_WHY_INVEST_IN_THE_UK =InvestUrl("/international/content/investment/why-invest-in-the-uk/")
 
+    INVEST_WHY_INVEST_IN_THE_UK = InvestUrl("investment/")
     INVEST_LEGACY_REGIONS_MIDLANDS = LegacyInvestUrl("uk-regions/midlands/")
     INVEST_LEGACY_REGIONS_NORTHERN_IRELAND = LegacyInvestUrl(
         "uk-regions/northern-ireland/"

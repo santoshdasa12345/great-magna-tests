@@ -166,3 +166,8 @@ def fas_when_actor_searches_for_companies(
         context: Context, actor_alias: str, keyword: str, sector: str):
     fas_searched_for_companies(
         context, actor_alias, keyword=keyword, sector=sector)
+
+@given('"{actor_alias}" got in touch with us via "{page_name}" page')
+def given_actor_got_in_touch_with_us(
+        context: Context, actor_alias: str, page_name: str):
+    generic_get_in_touch(context, actor_alias, page_name, custom_details_table=context.table)

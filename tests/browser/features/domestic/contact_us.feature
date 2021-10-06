@@ -74,7 +74,7 @@ Feature: Domestic - Contact us
     Examples: postcodes and trade offices
       | post-code | appropriate                  | city       |
       | AL10 8EP  | DIT East of England          | Hatfield   |
-      | SW1A 2AA  | DIT London                   | London     |
+      | E14 9ET | DIT London                   | London     |
       | DH1 1SQ   | DIT North East               | Durham     |
       | M15 6PQ   | DIT North West               | Manchester |
       | PO15 5DE  | DIT South East               | Fareham    |

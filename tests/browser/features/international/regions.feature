@@ -1,5 +1,7 @@
 @international
+  @invest
 @regional-pages
+@investment_atlas
 @allure.suite:International
 Feature: International - Regional pages
 
@@ -37,7 +39,9 @@ Feature: International - Regional pages
       | Sections         |
       | Header           |
       | Hero             |
+#      | The UK map     |
 #      | Error reporting  |
+#      | Contact us       |
       | Footer           |
     And "Robert" should see content specific to "International - <region> - region" page
 
@@ -50,10 +54,11 @@ Feature: International - Regional pages
       | Midlands         |
       | South of England |
 
-
+#
   @allure.link:CMS-215
   @link
   @map
+    @regional_map
   @skip-in-firefox
   Scenario Outline: Visitors should be able to find out more about "<region>" using links on UK map
     Given "Robert" visits the "International - Regions" page
@@ -66,7 +71,7 @@ Feature: International - Regional pages
       | Header           |
       | Hero             |
 #      | Error reporting  |
-      | Footer           |
+        | Footer           |
     And "Robert" should see content specific to "International - <region> - region" page
 
     Examples: Regions
@@ -77,6 +82,11 @@ Feature: International - Regional pages
       | Wales            |
       | Midlands         |
       | South of England |
+
+
+
+
+
 
 # breadcrmb has been removed for now
 #  @allure.link:CMS-215

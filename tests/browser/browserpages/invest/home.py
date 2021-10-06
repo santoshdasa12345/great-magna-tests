@@ -27,9 +27,9 @@ SELECTORS = {
     "header": {
         "self": Selector(By.ID, "body > header > div.atlas-header__main"),
         "logo": Selector(By.XPATH, "//body/header/div[2]/div/a/img"),
-        "invest in the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
-        "buy from the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(2) > a"),
-        "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
+        # "invest in the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
+        # "buy from the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(2) > a"),
+        # "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
         "dit logo": Selector(By.ID, "body > header > div.atlas-header__global > div > img"),
     },
     "home": {

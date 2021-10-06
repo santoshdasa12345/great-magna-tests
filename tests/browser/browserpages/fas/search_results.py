@@ -11,6 +11,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
+from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -31,7 +32,7 @@ from browserpages.fas import thank_you_for_registering
 NAME = "Search results"
 SERVICE = Service.FAS
 TYPE = PageType.SEARCH_RESULTS
-URL = URLs.FAS_SEARCH.absolute
+URL = URLs.FAS_SEARCH.template
 PAGE_TITLE = "Search the database of UK suppliers' trade profiles - trade.great.gov.uk"
 
 SECTOR_FILTERS = Selector(
@@ -44,7 +45,7 @@ FILTER_TOGGLE = Selector(By.CSS_SELECTOR, "#toggle_id_industries")
 SELECTORS = {
     "search form": {
         "itself": Selector(By.CSS_SELECTOR, "#content form"),
-        "q": Selector(By.ID, "id_q", type=ElementType.INPUT),
+        "q": Selector(By.CSS_SELECTOR, "#id_q", type=ElementType.INPUT),
         "industries": Selector(
             By.CSS_SELECTOR,
             "#checkbox-industry-expertise li input",
@@ -66,18 +67,18 @@ SELECTORS = {
         ),
     },
     "results": {
-        "itself": Selector(By.ID, "companies-column"),
+        "itself": Selector(By.CSS_SELECTOR, "#companies-column"),
         "number of results": Selector(By.CSS_SELECTOR, "#hero-container h2"),
     },
     "subscribe for email updates": {
         "itself": Selector(
-            By.XPATH, "//*[@id=\"content\"]/section[1]"
+            By.CSS_SELECTOR, "#content > section.subscription.background-stone-30.padding-top-90.padding-bottom-60"
         ),
-        "full name": Selector(By.XPATH, "//*[@id=\"id_full_name\"]", type=ElementType.INPUT),
-        "email": Selector(By.XPATH, "//*[@id=\"id_email_address\"]", type=ElementType.INPUT),
-        "industry": Selector(By.XPATH, "//*[@id=\"id_sector\"]", type=ElementType.SELECT),
-        "company name": Selector(By.XPATH, "//*[@id=\"id_company_name\"]", type=ElementType.INPUT),
-        "country": Selector(By.XPATH, "//*[@id=\"id_country\"]", type=ElementType.SELECT),
+        "full name": Selector(By.CSS_SELECTOR, "#id_full_name", type=ElementType.INPUT),
+        "email": Selector(By.CSS_SELECTOR, "#id_email_address", type=ElementType.INPUT),
+        "industry": Selector(By.CSS_SELECTOR, "#id_sector", type=ElementType.SELECT),
+        "company name": Selector(By.CSS_SELECTOR, "#id_company_name", type=ElementType.INPUT),
+        "country": Selector(By.CSS_SELECTOR, "#id_country", type=ElementType.SELECT),
         "t&c": Selector(
             By.CSS_SELECTOR,
             "#id_terms-container > div > div",
@@ -94,15 +95,27 @@ SELECTORS = {
         ),
     },
 }
+SELECTORS.update(common_selectors.FAS_HERO)
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
 SELECTORS.update(common_selectors.INTERNATIONAL_FOOTER)
 
+SubURLs = {
+    "plants agriculture": URLs.FAS_SUBSCRIBE_AGRICULTURE_PLANTS.absolute,
 
-def should_be_here(driver: WebDriver):
-    show_filters(driver)
-    check_url(driver, URL, exact_match=False)
-    logging.debug("All expected elements are visible on '%s' page", NAME)
+}
 
+# def should_be_here(driver: WebDriver):
+#     show_filters(driver)
+#     check_url(driver, URL, exact_match=False)
+#     logging.debug("All expected elements are visible on '%s' page", NAME)
+
+def should_be_here(driver: WebDriver, *, page_name: str = None):
+    if page_name:
+        url = SubURLs[page_name]
+        logging.debug(f"Export Plan - visit url info -> {url} {page_name}")
+        check_url_path_matches_template(url, driver.current_url)
+    else:
+        check_url(driver, URL, exact_match=False)
 
 def should_see_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
@@ -176,7 +189,7 @@ def fill_out(driver: WebDriver, form_details: dict, form_name: str = None):
         fill_out_input_fields(driver, form_selectors, form_details)
         pick_option(driver, form_selectors, form_details)
         tick_checkboxes(driver, form_selectors, form_details)
-        tick_captcha_checkbox(driver)
+        # tick_captcha_checkbox(driver)
     elif form_name == "search form":
         form_selectors = SELECTORS[form_name]
         fill_out_input_fields(driver, form_selectors, form_details)

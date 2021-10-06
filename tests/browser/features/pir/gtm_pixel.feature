@@ -1,4 +1,5 @@
 @gtm_isd
+  @invest
 @pixels
 @allure.suite:PIR
 Feature: PIR - Google Tag Manager

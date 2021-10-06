@@ -1255,3 +1255,11 @@ def language_selector_close(context: Context, actor_alias: str):
     logging.debug("%s decided to close language selector", actor_alias)
     page = get_last_visited_page(context, actor_alias)
     common_language_selector.close(context.driver, page=page)
+
+def generic_get_in_touch(
+    context: Context, actor_alias: str, page_name: str, custom_details_table: Table
+):
+    visit_page(context, actor_alias, page_name)
+    generic_fill_out_and_submit_form(
+        context, actor_alias, custom_details_table=custom_details_table
+    )

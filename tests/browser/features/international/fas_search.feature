@@ -1,4 +1,5 @@
 @international
+  @invest
   @fas_search
 @allure.link:ED-3183
 @allure.link:ED-4259
@@ -12,6 +13,7 @@ Feature: FAS - Search
 
   @allure.link:ED-4263
   @search
+    @invest_fix
   Scenario Outline: Buyers should be able to find UK suppliers from "<specific> Industry"
     Given "Robert" visits the "Find a Supplier - Landing" page
 
@@ -31,8 +33,8 @@ Feature: FAS - Search
     Examples: Industries
       | following  | specific                               |
       | plants     | Agriculture horticulture and fisheries |
-#      | digital    | Creative and media                     |
-#      | surgery    | Healthcare and medical                 |
+      | digital    | Creative and media                     |
+      | surgery    | Healthcare and medical                 |
 
     @full
     Examples: Industries
@@ -45,6 +47,7 @@ Feature: FAS - Search
 
   @allure.link:ED-4263
   @search
+    @invest_fix
   Scenario Outline: Buyers should be able to change their initial search criteria to find UK suppliers in "<other industry> Industry"
     Given "Robert" searched for companies using "<following>" keyword in "<specific>" sector
 

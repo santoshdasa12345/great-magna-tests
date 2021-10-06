@@ -1,5 +1,8 @@
 @international
+  @invest
 @allure.link:ED-3580
+  @fas-landing_page
+  @investment_atlas
 @fas-home-page
 @no-sso-email-verification-required
 @allure.suite:International
@@ -19,8 +22,8 @@ Feature: FAS - Landing page
       | Sections        |
       | Header          |
       | FAS Header      |
-      | Hero            |
-      | Breadcrumbs     |
+#      | Hero            |
+#      | Breadcrumbs     |
       | Teaser          |
       | eBook           |
       | Services        |
@@ -42,7 +45,7 @@ Feature: FAS - Landing page
       | Find a supplier | Find a Supplier - landing                       |
       | Contact us      | International - Find a UK business partner      |
 
-
+#
   @allure.link:ED-4242
   Scenario: Buyers should be able to view "Find a Supplier home" page
     Given "Robert" visits the "Find a Supplier - Landing" page
@@ -50,13 +53,13 @@ Feature: FAS - Landing page
     Then "Robert" should see following sections
       | Sections          |
       | Header            |
-      | Hero              |
+#      | Hero              |
       | Find UK Suppliers |
       | Contact us        |
-      | UK Industries     |
+#      | UK Industries     |
       | How we can help   |
       | Footer            |
-
+#
 
   @allure.link:ED-4245
   @search
@@ -70,44 +73,47 @@ Feature: FAS - Landing page
     Examples:
       | following | specific       | expected                               |
       | no        | any            | Find a Supplier - Empty search results |
-      | Food      | any            | Find a Supplier - Search results       |
-      | no        | Mining         | Find a Supplier - Search results       |
+#      | Food      | any            | Find a Supplier - Search results       |
+#      | no        | Mining         | Find a Supplier - Search results       |
 
 
-  @allure.link:ED-4248
-  @industry-page
-  Scenario: Buyers should be able to find out more about featured industries from the "Find a Supplier - Landing" page
-    Given "Robert" visits the "Find a Supplier - Landing" page
+#  @allure.link:ED-4248
+#  @industry-page
+#  @invest_fix
+#  Scenario: Buyers should be able to find out more about featured industries from the "Find a Supplier - Landing" page
+#    Given "Robert" visits the "Find a Supplier - Landing" page
+#
+#    When "Robert" decides to read about one of listed industries
+#
+#    Then "Robert" should be on the "International - Industry" page
+##
 
-    When "Robert" decides to read about one of listed industries
-
-    Then "Robert" should be on the "International - Industry" page
-
-
-  @allure.link:ED-4249
-  @industries-page
-  Scenario: Buyers should be able to see more UK industries from the "Find a Supplier - Landing" page
-    Given "Robert" visits the "Find a Supplier - Landing" page
-
-    When "Robert" decides to "see more industries"
-
-    Then "Robert" should be on the "International - Industries" page
+#  @allure.link:ED-4249
+#  @industries-page
+#  @invest_fix
+#  Scenario: Buyers should be able to see more UK industries from the "Find a Supplier - Landing" page
+#    Given "Robert" visits the "Find a Supplier - Landing" page
+#
+#    When "Robert" decides to "see more industries"
+#
+#    Then "Robert" should be on the "International - Industries" page
+##
 
 
-
-  @allure.issue:TT-1512
-  @fas_landing_4
-  @search
-  Scenario: Buyers should be able to find UK suppliers using arbitrary search term
-    Given "Robert" visits the "Find a Supplier - Landing" page
-
-    When "Robert" searches for companies using "food" keyword
-
-    Then "Robert" should be on the "Find a Supplier - Search results" page
-    And "Robert" should see following sections
-      | Sections        |
-      | Header          |
-      | Search form     |
-      | Filters         |
-      | Results         |
-      | Footer          |
+#  @allure.issue:TT-1512
+#  @fas_landing_4
+#  @search
+#  @invest_fix
+#  Scenario: Buyers should be able to find UK suppliers using arbitrary search term
+#    Given "Robert" visits the "Find a Supplier - Landing" page
+#
+#    When "Robert" searches for companies using "food" keyword
+#
+#    Then "Robert" should be on the "Find a Supplier - Search results" page
+#    And "Robert" should see following sections
+#      | Sections        |
+#      | Header          |
+#      | Search form     |
+#      | Filters         |
+#      | Results         |
+#      | Footer          |

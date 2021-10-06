@@ -15,6 +15,7 @@ from browserpages.common_actions import (
     check_url,
     find_element,
     go_to_url,
+    find_selector_by_name,
 )
 
 NAME = "landing"
@@ -32,6 +33,20 @@ SELECTORS = {
     "get in touch": {
         "get in touch section": Selector(By.CSS_SELECTOR, "#content > section"),
         "get in touch": Selector(By.CSS_SELECTOR,"#content > section > div > a"),
+    },
+    "content": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light"),
+        "heading": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > h2"),
+        "section 1": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(1) > h3 > a"),
+        "section 2": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(2) > h3"),
+        "section 3": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(3) > h3"),
+        "section 4": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(4) > h3"),
+        "section 5": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(5) > h3"),
+        "section 6": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(6) > h3 > a"),
+
+    },
+    "logo": {
+        "itself":Selector(By.XPATH, "//body/header/div[2]/div/a"),
     },
 }
 SELECTORS.update(common_selectors.INVEST_HEADER)
@@ -76,3 +91,9 @@ def open_guide(driver: WebDriver, guide_name: str):
     logging.debug("Looking for: {}".format(guide_name))
     guide = find_element(driver, selector, element_name="Guide card", wait_for_it=False)
     guide.click()
+
+def find_and_click(driver: WebDriver, *, element_selector_name: str):
+    find_and_click = find_element(
+        driver, find_selector_by_name(SELECTORS, element_selector_name)
+    )
+    find_and_click.click()

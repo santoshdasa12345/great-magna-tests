@@ -17,7 +17,7 @@ from browserpages.common_actions import (
 
 NAME = "Language selector"
 
-LANGUAGE_SELECTOR = Selector(By.ID, "great-header-language-select")
+# LANGUAGE_SELECTOR = Selector(By.ID, "great-header-language-select")
 ELEMENTS_ON = {
     "domestic - home": {
         "English": "en-gb",

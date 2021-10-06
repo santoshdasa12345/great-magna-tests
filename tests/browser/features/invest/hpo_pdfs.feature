@@ -16,8 +16,8 @@ Feature: Invest - HPO PDFs sent after
     Given "Peter Alder" got in touch with us via "Invest - <selected> - Contact us" page
       | field                             | value     |
       | High productivity food production | checked   |
-      | Lightweight structures            | unchecked |
-      | Rail infrastructure               | unchecked |
+      | Lightweight        | unchecked |
+      | Rail            | unchecked |
     And "Peter Alder" is on the "Invest - Thank you for your enquiry - Contact us" page
 
     When "Peter Alder" downloads all visible PDFs
@@ -39,8 +39,8 @@ Feature: Invest - HPO PDFs sent after
     Given "Peter Alder" got in touch with us via "Invest - <selected> - Contact us" page
       | field                             | value     |
       | High productivity food production | unchecked |
-      | Lightweight structures            | checked   |
-      | Rail infrastructure               | unchecked |
+      | Lightweight          | checked   |
+      | Rail            | unchecked |
     And "Peter Alder" is on the "Invest - Thank you for your enquiry - Contact us" page
 
     When "Peter Alder" downloads all visible PDFs
@@ -62,8 +62,8 @@ Feature: Invest - HPO PDFs sent after
     Given "Peter Alder" got in touch with us via "Invest - <selected> - Contact us" page
       | field                             | value     |
       | High productivity food production | unchecked |
-      | Lightweight structures            | unchecked |
-      | Rail infrastructure               | checked   |
+      | Lightweight           | unchecked |
+      | Rail              | checked   |
     And "Peter Alder" is on the "Invest - Thank you for your enquiry - Contact us" page
 
     When "Peter Alder" downloads all visible PDFs

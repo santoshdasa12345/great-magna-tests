@@ -15,6 +15,7 @@ from browserpages.common_actions import (
     check_url,
     find_element,
     go_to_url,
+    find_selector_by_name,
 )
 
 NAME = "landing"
@@ -36,10 +37,14 @@ SELECTORS = {
         "buy from the uk header": Selector(By.PARTIAL_LINK_TEXT, "Buy from the UK", type=ElementType.LINK),
         "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
         "get started": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > div > a"),
-        "find investment opportunities": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)"),
-        "find a uk specialist": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)"),
-        "buy from the uk": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)"),
-        "contact dit": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(4)"),
+        "find investment opportunities": Selector(By.CSS_SELECTOR,
+                                                  "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)"),
+        "find a uk specialist": Selector(By.CSS_SELECTOR,
+                                         "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)"),
+        "buy from the uk": Selector(By.CSS_SELECTOR,
+                                    "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)"),
+        "contact dit": Selector(By.CSS_SELECTOR,
+                                "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(4)"),
     },
     "sectors": {
         "self": Selector(By.ID, "industries"),
@@ -94,6 +99,9 @@ SELECTORS = {
             By.CSS_SELECTOR, "#get-in-touch a", type=ElementType.LINK
         ),
     },
+    "logo": Selector(
+        By.XPATH, "//body/header/div[2]/div/a"
+    ),
 }
 SELECTORS.update(common_selectors.INVEST_HEADER)
 SELECTORS.update(common_selectors.INVEST_HERO)
@@ -114,8 +122,10 @@ def should_be_here(driver: WebDriver):
 def should_see_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
 
+
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
+
 
 def clean_name(name: str) -> str:
     return name.split(" - ")[1].strip()
@@ -137,3 +147,6 @@ def open_guide(driver: WebDriver, guide_name: str):
     logging.debug("Looking for: {}".format(guide_name))
     guide = find_element(driver, selector, element_name="Guide card", wait_for_it=False)
     guide.click()
+
+
+

@@ -69,6 +69,7 @@ SELECTORS = {
         ),
     },
 }
+SELECTORS.update(common_selectors.FAS_HERO)
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER)
 SELECTORS.update(common_selectors.INTERNATIONAL_FOOTER)
 

@@ -1,4 +1,4 @@
-@international-page
+@international-landing-page
  @international
 @allure.suite:International
 Feature: INTL - Landing page
@@ -45,70 +45,70 @@ Feature: INTL - Landing page
       | Visit the UK     | Visit Britain - Home                            |
 
 
-  @allure.link:ED-3149
-  @dev-only
-  @language-selector
-  Scenario Outline: Visitors should be able to view International page in "<preferred_language>"
-    Given "Robert" visits the "International - Landing" page
-
-    When "Robert" decides to view the page in "<preferred_language>"
-
-    Then "Robert" should be on the "International - Landing" page
-    And "Robert" should see the page in "<preferred_language>"
-
-    Examples: available languages
-      | preferred_language |
-      | English            |
-      | Deutsch            |
-      | Français           |
-      | español            |
-      | Português          |
-      | 简体中文            |
-
-    @wip
-    Examples: Missing translations
-      | preferred_language |
-      | 日本語              |
-
-  @bug
-  @allure.issue:CMS-1263
-  @fixme
-    Examples: 500 ISE
-      | preferred_language |
-      | العربيّة            |
-
-
-  @allure.link:ED-3083
-  @dev-only
-  @language-selector
-  Scenario: Visitor should be able to open and close the language selector on "International - Landing" page
-    Given "Robert" visits the "International - Landing" page
-
-    When "Robert" opens up the language selector
-    Then "Robert" should see the language selector
-
-    When "Robert" closes the language selector
+#  @allure.link:ED-3149
+#  @dev-only
+#  @language-selector
+#  Scenario Outline: Visitors should be able to view International page in "<preferred_language>"
+#    Given "Robert" visits the "International - Landing" page
+#
+#    When "Robert" decides to view the page in "<preferred_language>"
+#
+#    Then "Robert" should be on the "International - Landing" page
+#    And "Robert" should see the page in "<preferred_language>"
+#
+#    Examples: available languages
+#      | preferred_language |
+#      | English            |
+#      | Deutsch            |
+#      | Français           |
+#      | español            |
+#      | Português          |
+#      | 简体中文            |
+#
+#    @wip
+#    Examples: Missing translations
+#      | preferred_language |
+#      | 日本語              |
+#
+#  @bug
+#  @allure.issue:CMS-1263
+#  @fixme
+#    Examples: 500 ISE
+#      | preferred_language |
+#      | العربيّة            |
 
 
-  @allure.link:ED-3083
-  @dev-only
-  @language-selector
-  @accessibility
-  Scenario: Keyboard users should be able to open and close the language selector using just the keyboard on "International - Landing" page
-    Given "Robert" visits the "International - Landing" page
+#  @allure.link:ED-3083
+#  @dev-only
+#  @language-selector
+#  Scenario: Visitor should be able to open and close the language selector on "International - Landing" page
+#    Given "Robert" visits the "International - Landing" page
+#
+#    When "Robert" opens up the language selector
+#    Then "Robert" should see the language selector
+#
+#    When "Robert" closes the language selector
+#
 
-    When "Robert" opens up the language selector using his keyboard
-    Then "Robert" should see the language selector
+#  @allure.link:ED-3083
+#  @dev-only
+#  @language-selector
+#  @accessibility
+#  Scenario: Keyboard users should be able to open and close the language selector using just the keyboard on "International - Landing" page
+#    Given "Robert" visits the "International - Landing" page
+#
+#    When "Robert" opens up the language selector using his keyboard
+#    Then "Robert" should see the language selector
+#
+#    When "Robert" closes the language selector using his keyboard
 
-    When "Robert" closes the language selector using his keyboard
-
-
-  @allure.link:ED-3149
-  @dev-only
-  Scenario: Visitors should be able to "get advice and services to help them export" from International page
-    Given test authentication is done
-    Given "Robert" visits the "International - Landing" page
-
-    When "Robert" decides to find out more about "For UK Businesses"
-
-    Then "Robert" should be on the "Domestic - Home" page
+#
+#  @allure.link:ED-3149
+#  @dev-only
+#  Scenario: Visitors should be able to "get advice and services to help them export" from International page
+#    Given test authentication is done
+#    Given "Robert" visits the "International - Landing" page
+#
+#    When "Robert" decides to find out more about "For UK Businesses"
+#
+#    Then "Robert" should be on the "Domestic - Home" page

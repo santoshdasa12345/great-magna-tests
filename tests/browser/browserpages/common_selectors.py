@@ -253,7 +253,7 @@ SIGN_IN_LINK = Selector(By.ID, "header-sign-in-link")
 LOGOS = {
     "eig": {"selector": EIG_LOGO, "md5": MD5_CHECKSUM_EIG_LOGO},
     "great - header": {
-        "selector": Selector(By.CSS_SELECTOR, "#great-header-logo img"),
+        "selector": Selector(By.CSS_SELECTOR, "body > header > div.atlas-header__main > div > a"),
         "md5": MD5_CHECKSUM_GREAT_LOGO,
     },
     "great - footer": {
@@ -290,7 +290,7 @@ INTERNATIONAL_HEADER = {
         # Logo
         "invest in great logo": Selector(By.XPATH, "//body/header/div[2]/div/a"),
         #language selector
-        "language selector": Selector(By.ID, "great-header-language-select", type=ElementType.SELECT),
+        # "language selector": Selector(By.ID, "great-header-language-select", type=ElementType.SELECT),
         # main menu
         "header menu": Selector(By.CSS_SELECTOR, "body > header > div.atlas-header__main"),
         "invest in the uk": Selector(By.LINK_TEXT, "Invest in the UK", type=ElementType.LINK),
@@ -307,7 +307,7 @@ INTERNATIONAL_HEADER = {
     }
 }
 INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR = copy.deepcopy(INTERNATIONAL_HEADER)
-INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR["header"].pop("language selector")
+# INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR["header"].pop("language selector")
 
 INTERNATIONAL_FOOTER = {
     "footer": {
@@ -327,7 +327,7 @@ INTERNATIONAL_FOOTER = {
 INTERNATIONAL_HERO = {
     "hero": {
         "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero > img"),
-        "heading": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero__heading > div > h1"),
+        "heading": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero__heading"),
     }
 }
 
@@ -360,10 +360,10 @@ INVEST_HEADER["header"] = {**INVEST_HEADER["header"], **INTERNATIONAL_HEADER["he
 
 INVEST_HERO = {
     "hero": {
-        "self": Selector(By.ID, "#content > div.atlas-hero"),
-        "heading": Selector(By.CSS_SELECTOR, "#hero h1"),
+        "self": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero"),
+        "heading": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero__heading"),
         "get in touch": Selector(
-            By.CSS_SELECTOR, "#hero a.button", type=ElementType.LINK
+            By.CSS_SELECTOR, "#content > section.atlas-bg.atlas-bg--dark-blue.atlas-colour--white > div > a", type=ElementType.LINK
         ),
     }
 }
@@ -437,5 +437,12 @@ INVEST_IN_THE_UK = {
         "investment opportunities" : Selector(By.CSS_SELECTOR,"body > header > div.atlas-subnav > div > nav > ul > li:nth-child(4) > a"),
         "how we can help" : Selector(By.CSS_SELECTOR,"body > header > div.atlas-subnav > div > nav > ul > li:nth-child(5) > a"),
 
+    }
+}
+
+FAS_HERO = {
+    "hero": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero"),
+        "heading": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero__heading"),
     }
 }

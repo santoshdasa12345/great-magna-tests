@@ -1,4 +1,4 @@
-@invest
+@investment_atlas
 @contact-us_invest
 @allure.suite:Invest
 Feature: Invest - Contact us and Leave feedback
@@ -64,26 +64,26 @@ Feature: Invest - Contact us and Leave feedback
 #      | The transition period       | International - Transition period enquiries             |
 #      | Other                       | International - Contact us                              |
 
-
-  @allure.link:TT-758
-    @going-back
-    @contact-us_26
-    @failed
-  Scenario Outline: Enquirers should be able to navigate back to previous pages from "<path>" back to "<expected>" page
-    Given "Robert" navigates via "<path>"
-
-    When "Robert" decides to use "back" link
-
-    Then "Robert" should be on the "<expected>" page
-
-    Examples:
-      | path                                                                                | expected                                                    |
-      | The UK                                                                              | Domestic - Contact us                                       |
-      | Outside the UK                                                                      | Domestic - Contact us                                       |
-      | The UK -> Great.gov.uk account and services support                                 | Domestic - What can we help you with? - Domestic Contact us |
-      | The UK -> Great.gov.uk account and services support -> Export opportunities service | Domestic - Great.gov.uk account and services support        |
-      | The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk | Domestic - Great.gov.uk account and services support        |
-
+#there is no back link
+#  @allure.link:TT-758
+#    @going-back
+#    @contact-us_26
+#    @failed
+#  Scenario Outline: Enquirers should be able to navigate back to previous pages from "<path>" back to "<expected>" page
+#    Given "Robert" navigates via "<path>"
+#
+#    When "Robert" decides to use "back" link
+#
+#    Then "Robert" should be on the "<expected>" page
+#
+#    Examples:
+#      | path                                                                                | expected                                                    |
+#      | The UK                                                                              | Domestic - Contact us                                       |
+#      | Outside the UK                                                                      | Domestic - Contact us                                       |
+#      | The UK -> Great.gov.uk account and services support                                 | Domestic - What can we help you with? - Domestic Contact us |
+#      | The UK -> Great.gov.uk account and services support -> Export opportunities service | Domestic - Great.gov.uk account and services support        |
+#      | The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk | Domestic - Great.gov.uk account and services support        |
+#
 
  @allure.link:TT-758
   @international_invest_contactus

@@ -21,7 +21,7 @@ from browserpages.common_actions import (
 NAME = "How to set up in the UK"
 SERVICE = Service.INVEST
 TYPE = PageType.LANDING
-URL = URLs.INVEST_HOW_WE_HELP_YOU.absolute
+URL = URLs.INVEST_HOW_WE_CAN_HELP.absolute
 PAGE_TITLE = "Invest In Great Britain - How we help you"
 
 

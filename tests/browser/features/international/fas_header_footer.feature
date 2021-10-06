@@ -1,6 +1,8 @@
 @international
+  @invest
 @fas
 @header-footer-fas
+  @investment_atlas
 @allure.suite:International
 Feature: FAS - Common header & Footer
 
@@ -21,7 +23,8 @@ Feature: FAS - Common header & Footer
       | Landing              |
       | Empty search results |
 
-
+#@header-footer-fas_1
+#  @invest_fix
 #  Scenario: Buyers should be able to see correct header & footer on "Find a Supplier - Search results" page
 #    Given "Robert" visits the "Find a Supplier - Landing" page
 #
@@ -34,7 +37,8 @@ Feature: FAS - Common header & Footer
 #      | Subscribe for email updates |
 #      | Footer                      |
 #
-#
+#@header-footer-fas_2
+#  @invest_fix
 #  Scenario: Buyers should see correct header & footer on "Company Profile" page
 #    Given "Robert" searched for companies using "food" keyword in "any" sector
 #

@@ -1,4 +1,5 @@
 @international
+@investment_atlas
 @allure.link:ED-3190
 @industries-page
 @no-sso-email-verification-required
@@ -17,28 +18,29 @@ Feature: INTL - Industries page
       | Sections         |
       | Header           |
       | Hero             |
-      | Breadcrumbs      |
+#      | Breadcrumbs      |
       | Industries       |
-      | Error reporting  |
+#      | Error reporting  |
+      | Contact us       |
       | Footer           |
 
+#doesn't exist anymore
+#  @allure.link:ED-4255
+#  @breadcrumbs
+#  Scenario: Buyers should be able to go back to the "International - Landing" page via breadcrumbs on the "International - Industries" page
+#    Given "Robert" visits the "International - Industries" page
+#
+#    When "Robert" decides to click on "great.gov.uk international"
+#
+#    Then "Robert" should be on the "International - Landing" page
 
-  @allure.link:ED-4255
-  @breadcrumbs
-  Scenario: Buyers should be able to go back to the "International - Landing" page via breadcrumbs on the "International - Industries" page
-    Given "Robert" visits the "International - Industries" page
-
-    When "Robert" decides to click on "great.gov.uk international"
-
-    Then "Robert" should be on the "International - Landing" page
-
-
-  @allure.link:ED-4258
-  @report-this-page
-  Scenario: Buyers should be able to report a problem with the "International - Industries" page
-    Given test authentication is done
-    Given "Robert" visits the "International - Industries" page
-
-    When "Robert" decides to "report a problem with the page"
-
-    Then "Robert" should be on the "Domestic - Feedback" page
+#error reporting doesn't exist anymore
+#  @allure.link:ED-4258
+#  @report-this-page
+#  Scenario: Buyers should be able to report a problem with the "International - Industries" page
+#    Given test authentication is done
+#    Given "Robert" visits the "International - Industries" page
+#
+#    When "Robert" decides to "report a problem with the page"
+#
+#    Then "Robert" should be on the "Domestic - Feedback" page

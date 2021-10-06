@@ -29,11 +29,11 @@ PAGE_TITLE = ""
 SELECTORS = {
     "search form": {
         "itself": Selector(By.CSS_SELECTOR, "#hero form"),
-        "search box": Selector(By.ID, "id_q"),
+        "search box": Selector(By.CSS_SELECTOR, "#id_q"),
         "search button": Selector(By.CSS_SELECTOR, "#hero form button"),
     },
     "benefits": {
-        "itself": Selector(By.ID, "benefits"),
+        "itself": Selector(By.CSS_SELECTOR, "#benefits"),
         "heading": Selector(By.CSS_SELECTOR, "#benefits h2"),
         "list of benefits": Selector(By.CSS_SELECTOR, "#benefits ul li"),
     },

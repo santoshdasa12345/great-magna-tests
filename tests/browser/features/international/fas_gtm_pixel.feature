@@ -1,4 +1,5 @@
 @gtm
+  @invest_gtm
  @international
 @pixels
 @allure.suite:International

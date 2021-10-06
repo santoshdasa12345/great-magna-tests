@@ -1,4 +1,5 @@
 @international
+@investment_atlas
 @allure.link:ED-3183
 @allure.link:ED-4259
 @industry-pages
@@ -16,15 +17,23 @@ Feature: INTL - Industry pages
 
     Then "Robert" should see following sections
       | Sections                |
+      | Header                        |
       | Hero                    |
 #      | Breadcrumbs             |
 #      | Industry Breadcrumbs    |
 #      | Content                 |
 #      | Next steps              |
+    | Opportunity highlights          |
+#    | Early potential opportunities   |
+    | Case studies                    |
+    | Business and government support |
+    | Key uk assets                   |
+    | Commercial maturity             |
+    | R&d capability                  |
 
     Examples: common industries
       | specific                            |
-      | Creative industries                 |
+#      | Creative industries                 |
 
 #    @full
 #    @dev-only
@@ -43,15 +52,15 @@ Feature: INTL - Industry pages
     @dev-only
     Examples: promoted industries
       | specific                            |
-      | Agritech                         |
+#      | Agritech                         |
       | Carbon capture usage and storage         |
-      | Chemicals                          |
-      | Green Finance       |
-      | Greener Buildings       |
-      | Hydrogen                      |
-      | Jet Zero and green ships                         |
-      | Scotland                              |
-      | Sustainable infrastructure                         |
+#      | Chemicals                          |
+#      | Green Finance       |
+#      | Greener Buildings       |
+#      | Hydrogen                      |
+#      | Jet Zero and green ships                         |
+##      | Scotland                              |
+#      | Sustainable infrastructure                         |
 #
 #    @full
 #    @stage-only

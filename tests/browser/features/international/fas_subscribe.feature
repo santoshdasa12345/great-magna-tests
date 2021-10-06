@@ -1,5 +1,7 @@
 @international
+  @invest
   @fas-subscribe
+  @investment_atlas
 @no-sso-email-verification-required
 @allure.suite:International
 Feature: FAS - Search
@@ -21,22 +23,22 @@ Feature: FAS - Search
     And "Robert" should be signed up for email updates of the latest UK companies in selected industry
 
 
-  @allure.link:TT-2194
-  @bug
-  @allure.issue:TT-2186
-  @fixed
-  @search
-  @subscribe
-  @dev-only
-  @captcha
-  Scenario Outline: Buyers should be able to subscribe to receive email updates of the latest UK companies in "<specific>" sector
-    Given "Robert" searched for companies using "<following>" keyword in "<specific>" sector
-
-    When "Robert" fills out and submits "subscribe for email updates" form
-
-    Then "Robert" should be on the "Find a Supplier - Thank you for registering" page
-    And "Robert" should be signed up for email updates of the latest UK companies in selected industry
-
-    Examples: Industries
-      | following  | specific                               |
-      | plants     | Agriculture horticulture and fisheries |
+#  @allure.link:TT-2194
+#  @allure.issue:TT-2186
+#  @invest_fix
+#  @fixed
+#  @search
+#  @subscribe
+#  @dev-only
+#  @captcha
+#  Scenario Outline: Buyers should be able to subscribe to receive email updates of the latest UK companies in "<specific>" sector
+#    Given "Robert" searched for companies using "<following>" keyword in "<specific>" sector
+#
+#    When "Robert" fills out and submits "subscribe for email updates" form
+#
+#    Then "Robert" should be on the "Find a Supplier - Thank you for registering" page
+#    And "Robert" should be signed up for email updates of the latest UK companies in selected industry
+#
+#    Examples: Industries
+#      | following  | specific                               |
+#      | plants     | Agriculture horticulture and fisheries |

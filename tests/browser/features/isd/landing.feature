@@ -1,4 +1,6 @@
 @isd
+  @invest
+@investment_atlas
 @allure.suite:ISD
 Feature: ISD - Landing
 
@@ -23,7 +25,7 @@ Feature: ISD - Landing
   Scenario: User comes through the content page - it means that the directory is pre-filtered for the matching content page (industry)
     Given "Robert" visits the "ISD - Landing" page
 
-    When "Robert" searches for companies using "tax" keyword
+    When "Robert" searches for companies using "food" keyword
 
     Then "Robert" should be on the "ISD - Search results" page
     And "Robert" should see following sections
@@ -31,8 +33,8 @@ Feature: ISD - Landing
 #      | Header           |
       | Breadcrumbs      |
       | Results summary  |
-      | Search form      |
+#      | Search form      |
       | Filters          |
       | Search Results   |
       | Error reporting  |
-#      | Footer           |
+      | Footer           |

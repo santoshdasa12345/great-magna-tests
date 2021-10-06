@@ -49,7 +49,7 @@ SELECTORS = {
         "get in touch": Selector(By.CSS_SELECTOR, "#contact-us-section a"),
     },
 }
-SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
+# SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
 SELECTORS.update(common_selectors.FAS_HEADER)
 SELECTORS.update(common_selectors.INTERNATIONAL_HERO)
 SELECTORS.update(common_selectors.BREADCRUMBS)
