@@ -1,5 +1,5 @@
 @invest
-@hpo
+@hpo_pdfs
 @pdf
 @stage-only
 @allure.suite:Invest
@@ -15,7 +15,7 @@ Feature: Invest - HPO PDFs sent after
   Scenario Outline: Check PDFs listed on "Thank you for your enquiry" page for "<selected>" HPO
     Given "Peter Alder" got in touch with us via "Invest - <selected> - Contact us" page
       | field                             | value     |
-      | High productivity food production | checked   |
+#      | High productivity food production | checked   |
       | Lightweight        | unchecked |
       | Rail            | unchecked |
     And "Peter Alder" is on the "Invest - Thank you for your enquiry - Contact us" page
@@ -38,7 +38,7 @@ Feature: Invest - HPO PDFs sent after
   Scenario Outline: Check PDFs listed on "Thank you for your enquiry" page for "<selected>" HPO
     Given "Peter Alder" got in touch with us via "Invest - <selected> - Contact us" page
       | field                             | value     |
-      | High productivity food production | unchecked |
+#      | High productivity food production | unchecked |
       | Lightweight          | checked   |
       | Rail            | unchecked |
     And "Peter Alder" is on the "Invest - Thank you for your enquiry - Contact us" page
@@ -52,7 +52,7 @@ Feature: Invest - HPO PDFs sent after
 
     Examples:
       | selected               |
-      | Lightweight structures |
+      | Lightweight  |
 
 
   @allure.link:TT-444
@@ -61,7 +61,7 @@ Feature: Invest - HPO PDFs sent after
   Scenario Outline: Check PDFs listed on "Thank you for your enquiry" page for "<selected>" HPO
     Given "Peter Alder" got in touch with us via "Invest - <selected> - Contact us" page
       | field                             | value     |
-      | High productivity food production | unchecked |
+#      | High productivity food production | unchecked |
       | Lightweight           | unchecked |
       | Rail              | checked   |
     And "Peter Alder" is on the "Invest - Thank you for your enquiry - Contact us" page
@@ -75,4 +75,4 @@ Feature: Invest - HPO PDFs sent after
 
     Examples:
       | selected            |
-      | Rail infrastructure |
+      | Rail  |

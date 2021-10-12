@@ -21,25 +21,32 @@ from browserpages.common_actions import (
 
 NAME = "How to set up in the UK"
 NAMES = [
-    "Access finance in the UK",
-    "Access finance in the UK (Staging)",
-    "Brexit webinars for EU businesses (UAT)",
-    "DIT's guide to UK Capital Gains Tax",
-    "DIT's guide to UK Corporation Tax",
-    "DIT's Guide to UK Venture Capital Schemes",
     "Establish a UK business base",
-    "Get support to move your tech business to the UK (UAT)",
-    "Hire skilled workers for your UK operations (UAT)",
+    "Access finance in the UK",
     "Open a UK business bank account",
-    "Open a UK business bank account (Staging)",
+    "Research and development support in the UK"
+    "UK visas and migration"
+    "Get support to move your tech business to the UK",
     "Register a company in the UK",
-    "UK Income Tax",
-    "UK innovation",
-    "UK infrastructure",
-    "UK talent and labour",
-    "UK tax and incentives",
-    "UK tax and incentives (Staging)",
-    "UK visas and migration (UAT)",
+    "Hire skilled workers for your UK operations",
+    # "Access finance in the UK (Staging)",
+    # "Brexit webinars for EU businesses (UAT)",
+    # "DIT's guide to UK Capital Gains Tax",
+    # "DIT's guide to UK Corporation Tax",
+    # "DIT's Guide to UK Venture Capital Schemes",
+    # "Establish a UK business base",
+    # "Get support to move your tech business to the UK (UAT)",
+    # "Hire skilled workers for your UK operations (UAT)",
+    # "Open a UK business bank account",
+    # "Open a UK business bank account (Staging)",
+    # "Register a company in the UK",
+    # "UK Income Tax",
+    # "UK innovation",
+    # "UK infrastructure",
+    # "UK talent and labour",
+    # "UK tax and incentives",
+    # "UK tax and incentives (Staging)",
+    # "UK visas and migration (UAT)",
 ]
 SERVICE = Service.INVEST
 TYPE = PageType.GUIDE
@@ -63,18 +70,18 @@ SELECTORS.update(common_selectors.INVEST_FOOTER)
 
 SubURLs = {
     # Dev & UAT
-    "access finance in the uk": URLs.INVEST_UK_SETUP_GUIDE_ACCESS_FINANCE.absolute,
-    # "dit's guide to uk capital gains tax": URLs.INVEST_UK_SETUP_GUIDE_DIT_CAPITAL_GAINS.absolute,
-    # "dit's guide to uk corporation tax": URLs.INVEST_UK_SETUP_GUIDE_DIT_CORPORATION_TAX.absolute,
-    # "dit's guide to uk venture capital schemes": URLs.INVEST_UK_SETUP_GUIDE_DIT_VENTURE_CAPITAL.absolute,
     "establish a uk business base": URLs.INVEST_UK_SETUP_GUIDE_ESTABLISH_A_BASE.absolute,
-    "register a company in the uk": URLs.INVEST_UK_SETUP_GUIDE_REGISTER_A_COMPANY.absolute,
-    "uk innovation": URLs.INVEST_UK_SETUP_GUIDE_UK_INNOVATION.absolute,
-    # "uk infrastructure": URLs.INVEST_UK_SETUP_GUIDE_UK_INFRASTRUCTURE.absolute,
-    "uk talent and labour": URLs.INVEST_UK_SETUP_GUIDE_HIRE_SKILLED_WORKERS.absolute,
+    "access finance in the uk": URLs.INVEST_UK_SETUP_GUIDE_ACCESS_FINANCE.absolute,
+    "open a UK business bank account": URLs.INVEST_UK_SETUP_GUIDE_OPEN_BUSINESS_BANK_ACCOUNT.absolute,
+    "research and development support in the uk": URLs.INVEST_UK_SETUP_GUIDE_RESEARCH_AND_DEVELOPMENT.absolute,
+    "uk visas and migration": URLs.INVEST_UK_SETUP_GUIDE_UK_VISAS.absolute,
+    "get support to move your tech business to the UK" : URLs.INVEST_UK_SETUP_GUIDE_GET_SUPPORT_TO_MOVE_YOUR_TECH_BUSINESS_TO_THE_UK.absolute,
+    "register a company in the uk": URLs.INVEST_UK_SETUP_GUIDE_REGISTER_A_COMPANY_IN_THE_UK.absolute,
+    # "uk innovation": URLs.INVEST_UK_SETUP_GUIDE_UK_INNOVATION.absolute,
+    "hire skilled workers for your UK operations": URLs.INVEST_UK_SETUP_GUIDE_HIRE_SKILLED_WORKERS.absolute,
     # Not in use
-    "uk income tax": URLs.INVEST_UK_SETUP_GUIDE_UK_INCOME_TAX.absolute,
-    "uk tax and incentives": URLs.INVEST_UK_SETUP_GUIDE_UK_TAX.absolute,
+    # "uk income tax": URLs.INVEST_UK_SETUP_GUIDE_UK_INCOME_TAX.absolute,
+    # "uk tax and incentives": URLs.INVEST_UK_SETUP_GUIDE_UK_TAX.absolute,
     # Staging
     "access finance in the uk (staging)": urljoin(
         URL_STAGING, "access-finance-in-the-uk/"
@@ -84,16 +91,16 @@ SubURLs = {
     ),
     "uk tax and incentives (staging)": urljoin(URL_STAGING, "uk-tax-and-incentives/"),
     # UAT
-    "Brexit webinars for EU businesses (UAT)": urljoin(
-        URL_STAGING, "brexit-readiness-webinars-for-eu-businesses/"
-    ),
+    # "Brexit webinars for EU businesses (UAT)": urljoin(
+    #     URL_STAGING, "brexit-readiness-webinars-for-eu-businesses/"
+    # ),
     "Get support to move your tech business to the UK (UAT)": urljoin(
         URL_STAGING, "global-entrepreneur-program/"
     ),
     "Hire skilled workers for your UK operations (UAT)": urljoin(
         URL_STAGING, "hire-skilled-workers-for-your-uk-operations/"
     ),
-    "UK visas and migration (UAT)": urljoin(URL_STAGING, "uk-visas-and-migration/"),
+    "uk visas and migration (UAT)": urljoin(URL_STAGING, "uk-visas-and-migration/"),
 }
 
 

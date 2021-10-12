@@ -1,7 +1,10 @@
 @functional
-@fas_functional_1
+@fas_search_1
 @allure.suite:FAS
 Feature: Find a Supplier
+
+   Background:
+    Given test authentication is done
 
 
   @bug

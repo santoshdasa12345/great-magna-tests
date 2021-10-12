@@ -30,16 +30,16 @@ Feature: Invest - Google Tag Manager
     Examples: High-potential opportunities in Dev
       | selected                                | businessUnit | loginStatus | siteLanguage | siteSection                | siteSubsection | userId |
       | High productivity food production - HPO | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
-      | Lightweight structures - HPO            | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
-      | Rail infrastructure - HPO               | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
+      | Lightweight - HPO            | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
+      | Rail - HPO               | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
 
 #    @hpo
     @stage-only
     Examples: High-potential opportunities in Staging
       | selected                                | businessUnit | loginStatus | siteLanguage | siteSection                | siteSubsection | userId |
       | High productivity food production - HPO | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
-      | Lightweight structures - HPO            | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
-      | Rail infrastructure - HPO               | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
+      | Lightweight  - HPO            | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
+      | Rail - HPO               | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
 
 
   @bug

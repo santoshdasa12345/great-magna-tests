@@ -62,22 +62,22 @@ SELECTORS = {
             By.CSS_SELECTOR, "#high-potential-opportunities h2 ~ div > p"
         ),
         "aquaculture": Selector(By.PARTIAL_LINK_TEXT, "Aquaculture"),
-        "high productivity food production": Selector(
-            By.PARTIAL_LINK_TEXT, "High productivity food production"
-        ),
-        "high productivity food production (dev)": Selector(
-            By.PARTIAL_LINK_TEXT, "High productivity food production"
-        ),
-        "high productivity food production (staging)": Selector(
-            By.PARTIAL_LINK_TEXT, "High productivity food production"
-        ),
-        "lightweight structures": Selector(
+        # "high productivity food production": Selector(
+        #     By.PARTIAL_LINK_TEXT, "High productivity food production"
+        # ),
+        # "high productivity food production (dev)": Selector(
+        #     By.PARTIAL_LINK_TEXT, "High productivity food production"
+        # ),
+        # "high productivity food production (staging)": Selector(
+        #     By.PARTIAL_LINK_TEXT, "High productivity food production"
+        # ),
+        "lightweight": Selector(
             By.PARTIAL_LINK_TEXT, "Lightweight structures"
         ),
-        "photonics and microelectronics": Selector(
+        "photonics": Selector(
             By.PARTIAL_LINK_TEXT, "Photonics and Microelectronics"
         ),
-        "rail infrastructure": Selector(By.PARTIAL_LINK_TEXT, "Rail infrastructure"),
+        "rail": Selector(By.PARTIAL_LINK_TEXT, "Rail infrastructure"),
         "space": Selector(By.PARTIAL_LINK_TEXT, "Space"),
         "sustainable packaging": Selector(
             By.PARTIAL_LINK_TEXT, "Sustainable packaging"

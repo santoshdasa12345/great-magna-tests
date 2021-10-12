@@ -105,3 +105,6 @@ def pick_radio_option_and_submit(driver: WebDriver, name: str) -> ModuleType:
     choose_one_form_option(driver, radio_selectors, name)
     submit_form(driver, SELECTORS["form"])
     return POs[name.lower()]
+
+def should_see_following_sections(driver: WebDriver, names: List[str]):
+    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

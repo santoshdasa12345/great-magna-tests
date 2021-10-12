@@ -27,6 +27,7 @@ from steps.when_impl import (
     generic_at_least_n_news_articles,
     sso_actor_received_email_confirmation_code,
     generic_fill_out_and_submit_form,
+    generic_get_in_touch,
     registration_create_and_verify_account,
     profile_start_registration_as,
     clear_the_cookies,
@@ -171,3 +172,6 @@ def fas_when_actor_searches_for_companies(
 def given_actor_got_in_touch_with_us(
         context: Context, actor_alias: str, page_name: str):
     generic_get_in_touch(context, actor_alias, page_name, custom_details_table=context.table)
+
+#####
+

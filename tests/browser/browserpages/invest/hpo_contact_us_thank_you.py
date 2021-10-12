@@ -22,8 +22,8 @@ TYPE = PageType.CONTACT_US
 URL = URLs.INVEST_HPO_CONTACT_THANK_YOU.absolute
 SubURLs = {
     "advanced food production": URL,
-    "lightweight structures": URL,
-    "rail infrastructure": URL,
+    "lightweight": URL,
+    "rail": URL,
 }
 PAGE_TITLE = "High Potential Opportunities - great.gov.uk"
 

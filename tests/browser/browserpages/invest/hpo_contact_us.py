@@ -25,93 +25,189 @@ from browserpages.common_actions import (
     submit_form,
     tick_captcha_checkbox,
     tick_checkboxes,
+    check_random_radio,
+    check_radio,
+
 )
 from browserpages.common_autocomplete_callbacks import js_country_select
 
 NAME = "HPO Contact us"
 NAMES = [
     "High productivity food production",
-    "Lightweight structures",
-    "Rail infrastructure",
+    "Lightweight",
+    "Rail",
 ]
 SERVICE = Service.INVEST
 TYPE = PageType.CONTACT_US
 URL = URLs.INVEST_HPO_CONTACT.absolute
 SubURLs = {
     "high productivity food production": URL,
-    "lightweight structures": URL,
-    "rail infrastructure": URL,
+    "lightweight": URL,
+    "rail": URL,
 }
 PAGE_TITLE = ""
 
 SELECTORS = {
     "form": {
         "itself": Selector(By.CSS_SELECTOR, "#content form"),
-        "full name": Selector(By.ID, "id_full_name", type=ElementType.INPUT),
-        "job title": Selector(By.ID, "id_role_in_company", type=ElementType.INPUT),
-        "email": Selector(By.ID, "id_email_address", type=ElementType.INPUT),
-        "phone": Selector(By.ID, "id_phone_number", type=ElementType.INPUT),
-        "company name": Selector(By.ID, "id_company_name", type=ElementType.INPUT),
-        "website url": Selector(By.ID, "id_website_url", type=ElementType.INPUT),
+        "given name": Selector(By.CSS_SELECTOR, "#id_given_name", type=ElementType.INPUT),
+        "family name": Selector(By.CSS_SELECTOR, "#id_family_name", type=ElementType.INPUT),
+        "job title": Selector(By.CSS_SELECTOR, "#id_job_title", type=ElementType.INPUT),
+        "work email": Selector(By.CSS_SELECTOR, "#id_email_address", type=ElementType.INPUT),
+        "phone": Selector(By.CSS_SELECTOR, "#id_phone_number", type=ElementType.INPUT),
+        "company name": Selector(By.CSS_SELECTOR, "#id_company_name", type=ElementType.INPUT),
+        "company website": Selector(By.CSS_SELECTOR, "#id_website_url", type=ElementType.INPUT),
+        "company address": Selector(By.CSS_SELECTOR, "#id_company_address", type=ElementType.INPUT),
         "country": Selector(
-            By.ID,
-            "js-country-select-select",
+            By.CSS_SELECTOR,
+            "#js-country-select",
             type=ElementType.INPUT,
             is_visible=False,
             autocomplete_callback=js_country_select,
         ),
-        "organisation size": Selector(
-            By.ID, "id_company_size", type=ElementType.SELECT
-        ),
-        "aquaculture": Selector(
-            By.ID,
-            "checkbox-multiple-aquaculture",
+        # "organisation size": Selector(
+        #     By.ID, "id_company_size", type=ElementType.SELECT
+        # ),
+        # "cam modelling": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-cam-modelling-and-simulation-in-oxfordshire-and-the-midlands-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "carbon fibre in tees valley": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-carbon-fibre-in-tees-valley-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        "chemicals in the humber": Selector(
+            By.CSS_SELECTOR,
+            "#checkbox-multiple-chemicals-in-the-humber-label",
             type=ElementType.CHECKBOX,
             is_visible=False,
             alternative_visibility_check=True,
         ),
-        "high productivity food production": Selector(
-            By.ID,
-            "checkbox-multiple-high-productivity-food-production",
-            type=ElementType.CHECKBOX,
-            is_visible=False,
-            alternative_visibility_check=True,
-        ),
-        "rail infrastructure": Selector(
-            By.ID,
-            "checkbox-multiple-rail-infrastructure",
-            type=ElementType.CHECKBOX,
-            is_visible=False,
-            alternative_visibility_check=True,
-        ),
-        "lightweight structures": Selector(
-            By.ID,
-            "checkbox-multiple-lightweight-structures",
-            type=ElementType.CHECKBOX,
-            is_visible=False,
-            alternative_visibility_check=True,
-        ),
-        "photonics and microelectronics": Selector(
-            By.ID,
-            "checkbox-multiple-photonics-and-microelectronics",
-            type=ElementType.CHECKBOX,
-            is_visible=False,
-            alternative_visibility_check=True,
-        ),
-        "space": Selector(
-            By.ID,
-            "checkbox-multiple-space",
-            type=ElementType.CHECKBOX,
-            is_visible=False,
-            alternative_visibility_check=True,
-        ),
-        "sustainable packaging": Selector(
-            By.ID,
-            "checkbox-multiple-sustainable-packaging",
-            type=ElementType.CHECKBOX,
-            is_visible=False,
-            alternative_visibility_check=True,
-        ),
+        # "circular economy": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-circular-economy-in-telford-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "compund semiconductors": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-compound-semiconductors-and-applications-in-south-wales-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "controlled environment agriculture": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-controlled-environment-agriculture-in-north-and-west-yorkshire-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "food processing automation": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-food-processing-automation-in-greater-lincolnshire-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "heat networks": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-heat-networks-in-the-north-east-and-tees-valley-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "hydrogen": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-hydrogen-in-north-east-scotland-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "immersive technology": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-immersive-technology-in-the-north-east",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "innovation in animal health": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-innovation-in-animal-health-in-surrey-and-hampshire-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "lightweight": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-lightweight-structures-in-greater-manchester-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "marine autonomy": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-marine-autonomy-in-the-south-west-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "mining": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-mining-in-cornwall-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "offshore wind floating": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-offshore-wind-floating-substructures-in-scotland-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "photonics": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-photonics-in-the-south-west-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "plant based protein products": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-plant-based-and-alternative-protein-products-in-the-north-east-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "precision farming": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-precision-farming-in-telford-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "rail": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-rail-in-doncaster-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
+        # "aquaculture": Selector(
+        #     By.CSS_SELECTOR,
+        #     "#checkbox-multiple-sustainable-aquaculture-in-dorset-label",
+        #     type=ElementType.CHECKBOX,
+        #     is_visible=False,
+        #     alternative_visibility_check=True,
+        # ),
         "terms and conditions": Selector(
             By.ID,
             "id_terms_agreed",
@@ -119,14 +215,41 @@ SELECTORS = {
             is_visible=False,
             alternative_visibility_check=True,
         ),
-        "comment": Selector(By.ID, "id_comment", type=ElementType.TEXTAREA),
-        "terms and conditions link": Selector(
-            By.CSS_SELECTOR, "#id_terms_agreed-label a"
+        "how can we help": Selector(
+            By.CSS_SELECTOR,
+            "#id_how_can_we_help_1",
+            type=ElementType.RADIO,
+            is_visible=False,
+            # alternative_visibility_check=True,
+        ),
+        "information email": Selector(
+            By.CSS_SELECTOR,
+            "#id_email_contact_consent-label",
+            type=ElementType.CHECKBOX,
+            is_visible=False,
+            alternative_visibility_check=True,
+        ),
+        "industry": Selector(
+            By.CSS_SELECTOR, "#id_industry", type=ElementType.SELECT
+        ),
+        "tell us about your plans": Selector(By.CSS_SELECTOR, "#id_your_plans", type=ElementType.TEXTAREA),
+        # "comment": Selector(By.ID, "id_comment", type=ElementType.TEXTAREA),
+        # "terms and conditions link": Selector(
+        #     By.CSS_SELECTOR, "#id_terms_agreed-label a"
+        # ),
+        "how did you hear about us": Selector(
+            By.CSS_SELECTOR, "#id_how_did_you_hear", type=ElementType.SELECT
+        ),
+        "i would like to receive additional information by email" : Selector(
+            By.CSS_SELECTOR, "#id_email_contact_consent-label",
+            type=ElementType.CHECKBOX,
+            is_visible=False,
+            alternative_visibility_check=True,
         ),
         "captcha": Selector(
             By.CSS_SELECTOR, "#form-container iframe", type=ElementType.IFRAME
         ),
-        "submit": Selector(By.ID, "submit-button", type=ElementType.SUBMIT),
+        "submit": Selector(By.CSS_SELECTOR, "#form-container > form > button", type=ElementType.SUBMIT),
     },
 }
 SELECTORS.update(common_selectors.INVEST_HEADER)
@@ -160,23 +283,31 @@ def check_state_of_form_element(
 
 def generate_form_details(actor: Actor, *, custom_details: dict = None) -> dict:
     details = {
-        "full name": str(uuid4()),
+        "given name": str(uuid4()),
+        "family name": str(uuid4()),
         "job title": "QA @ DIT",
-        "email": actor.email,
+        "work email": actor.email,
         "phone": "0123456789",
         "company name": actor.company_name or "Automated test - company name",
-        "website url": "https://browser.tests.com",
+        "company website": "https://browser.tests.com",
+        "company address" : "Test whitehall place",
         "country": True,
-        "organisation size": None,
+        # "organisation size": None,
         "comment": "This form was submitted by Automated test",
-        "aquaculture": True,
-        "advanced food production": True,
-        "lightweight structures": True,
-        "rail infrastructure": True,
-        "photonics and microelectronics": True,
-        "space": True,
-        "sustainable packaging": True,
-        "terms and conditions": True,
+        # "aquaculture": True,
+        # "advanced food production": True,
+        # "lightweight": True,
+        # "rail": True,
+        # "photonics": True,
+        # "space": True,
+        "chemicals in the humber":True,
+        # "sustainable packaging": True,
+        "industry" : None,
+        "how can we help": True,
+        "tell us about your plans" : "Automated tests",
+        "how did you hear about us" : None,
+        "i would like to receive additional information by email":True,
+        # "terms and conditions": True,
     }
     if custom_details:
         details.update(custom_details)
@@ -190,7 +321,8 @@ def fill_out(driver: WebDriver, details: dict):
     fill_out_textarea_fields(driver, form_selectors, details)
     pick_option(driver, form_selectors, details)
     tick_checkboxes(driver, form_selectors, details)
-    tick_captcha_checkbox(driver)
+    check_radio(driver,form_selectors,details)
+    # tick_captcha_checkbox(driver)
 
 
 def submit(driver: WebDriver) -> Union[ModuleType, None]:

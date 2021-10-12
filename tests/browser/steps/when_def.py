@@ -502,3 +502,6 @@ def when_actor_closes_language_selector(context, actor_alias):
 def then_actor_decides_to_click_continue(
         context, actor_alias, element_name):
     click_on_page_element(context, actor_alias, element_name)
+
+###############################
+

@@ -1,5 +1,5 @@
 @pixels
-@invest
+@invest_pixels
 @allure.suite:Invest
 Feature: Invest - Pixels
 
@@ -28,19 +28,19 @@ Feature: Invest - Pixels
     @stage-only
     Examples: HPO pages
       | selected                               |
-      | High productivity food production - HPO|
-      | Lightweight structures - HPO           |
-      | Rail infrastructure - HPO              |
+#      | High productivity food production - HPO|
+      | Lightweight - HPO           |
+      | Rail - HPO              |
 
     @dev-only
     Examples: UK Setup Guides
-      | selected                                          |
-      | DIT's Guide to UK Venture Capital Schemes - guide |
-      | DIT's guide to UK Capital Gains Tax - guide       |
-      | UK infrastructure - guide                         |
-      | DIT's guide to UK Corporation Tax - guide         |
-      | Access finance in the UK - guide                  |
-      | Register a company in the UK - guide              |
-      | UK talent and labour - guide                      |
-      | Establish a UK business base - guide              |
-      | UK innovation - guide                             |
+      | selected                                                  |
+      | Establish a UK business base -guide                       |
+      | Get support to move your tech business to the UK - guide  |
+      | Register a company in the UK - guide                     |
+      | Open a UK business bank account - guide                   |
+      | Access finance in the UK - guide                          |
+      | Research and development support in the UK - guide        |
+      | UK visas and migration - guide                            |
+      | Hire skilled workers for your UK operations - guide       |
+      | UK tax and incentives - guide                             |
