@@ -7,10 +7,10 @@ from setuptools import find_packages, setup
 setup(
     name="great_magna_tests_shared",
     version="1.1",
-    url="https://github.com/uktrade/great_magna_tests_sharedtests",
+    url="https://github.com/uktrade/great-magna-tests",
     license="MIT",
     author="Department for International Trade",
-    description="Shared resources for Directory Tests",
+    description="Shared resources for Great Magna Tests",
     packages=find_packages(exclude=["tests.*", "tests"]),
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
