@@ -139,3 +139,7 @@ def open_guide(driver: WebDriver, guide_name: str):
     guide = find_element(driver, selector, element_name="Guide card", wait_for_it=False)
     guide.click()
     take_screenshot(driver, PAGE_TITLE + " after opening " + guide_name)
+
+
+
+

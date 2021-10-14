@@ -1,5 +1,6 @@
 @international
 @header-footer
+  @invest
 @allure.suite:International
 Feature: INTL - Header-Footer
 

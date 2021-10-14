@@ -6,6 +6,6 @@ __all__ = [
     "login",
     "logout",
     "password_reset",
-    "register",
+    "signup",
     "verify_your_email",
 ]

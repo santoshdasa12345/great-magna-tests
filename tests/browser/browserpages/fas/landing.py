@@ -58,7 +58,7 @@ SELECTORS = {
         "third industry": Selector(
             By.CSS_SELECTOR, "#industries-section ul li:nth-child(3) > a"
         ),
-        "see more industries": Selector(
+        "see more services": Selector(
             By.CSS_SELECTOR, "#services-section > div > a"
         ),
     },
@@ -67,6 +67,16 @@ SELECTORS = {
         "help options": Selector(
             By.CSS_SELECTOR, "#services-section div.column-quarter-xl"
         ),
+    },
+    "filters": {
+        "itself": Selector(By.ID, "filter-column"),
+        "title": Selector(By.CSS_SELECTOR, "#filter-column section span"),
+        "filter list labels": Selector(
+            By.CSS_SELECTOR, "#checkbox-industry-expertise li label"
+        ),
+    },
+        "error reporting": {
+        "itself": Selector(By.CSS_SELECTOR, "#error-reporting-section-contact-us"),
     },
 }
 SELECTORS.update(common_selectors.FAS_HERO)

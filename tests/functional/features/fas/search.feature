@@ -1,9 +1,9 @@
 @functional
-@fas_functional_1
+@fas_functional
 @allure.suite:FAS
 Feature: Find a Supplier
 
-
+@fas_search_12
   @bug
   @allure.issue:TT-1438
   @fixed
@@ -46,7 +46,7 @@ Feature: Find a Supplier
       | website                   |
 #      | keywords                  |
 
-
+@fas_search_13
   @allure.link:ED-1746
   @case-study
   @profile
@@ -75,7 +75,7 @@ Feature: Find a Supplier
     And "Annette Geissinger" should be able to find company "Y" on FAS using any part of case study "no 2"
     And "Annette Geissinger" should be able to find company "Y" on FAS using any part of case study "no 3"
 
-
+@fas_search_14
   @allure.link:ED-1746
   @case-study
   @profile
@@ -100,7 +100,7 @@ Feature: Find a Supplier
 
     Then "Annette Geissinger" should NOT be able to find company "Y" on FAS by using any part of case study "no 1"
 
-
+@fas_search_15
   @allure.link:ED-1967
   @bug
   @allure.issue:TT-1256
@@ -143,7 +143,7 @@ Feature: Find a Supplier
 #      | number         | see TT-1514
 #      | website        |
 
-
+@fas_search_16
   @allure.link:ED-2000
   @search
   @no-sso-email-verification-required
@@ -154,7 +154,7 @@ Feature: Find a Supplier
 
     Then "Annette Geissinger" should be told to enter a search term or use the filters
 
-
+@fas_search_17
   @dev-only
   @allure.link:ED-2020
   @search
@@ -169,7 +169,7 @@ Feature: Find a Supplier
       | CANbus displays          | CAN bus Instrumentation | NMEA2000          | CANTRONIK LTD           |
     Then "Annette Geissinger" should be able to find all sought companies
 
-
+@fas_search_18
   @stage-only
   @allure.link:ED-2020
   @search
@@ -184,7 +184,7 @@ Feature: Find a Supplier
       | CANbus displays          | CAN bus Instrumentation | NMEA2000          | CANTRONIK LTD           |
     Then "Annette Geissinger" should be able to find all sought companies
 
-
+@fas_search_19
   @uat-only
   @allure.link:ED-2020
   @search
@@ -199,7 +199,7 @@ Feature: Find a Supplier
       | CANbus displays | CAN bus Instrumentation | NMEA2000 | CANTRONIK LTD           |
     Then "Annette Geissinger" should be able to find all sought companies
 
-
+@fas_search_20
   @allure.link:ED-2017
   @filter
   @sector
@@ -212,7 +212,7 @@ Feature: Find a Supplier
 
     Then "Annette Geissinger" should see search results filtered by appropriate sector
 
-
+@fas_search_21
   @allure.link:ED-2018
   @filter
   @sector
@@ -225,7 +225,7 @@ Feature: Find a Supplier
 
     Then "Annette Geissinger" should see search results filtered by appropriate sectors
 
-
+@fas_search_22
   @allure.link:ED-2018
   @filter
   @sector
@@ -239,7 +239,7 @@ Feature: Find a Supplier
 
     Then "Annette Geissinger" should be told that the search did not match any UK trade profiles
 
-
+@fas_search_23
   @allure.link:ED-2019
   @filter
   @sector
@@ -254,7 +254,7 @@ Feature: Find a Supplier
     Then "Annette Geissinger" should be told to enter a search term or use the filters
     And "Annette Geissinger" should see that FAS search results are not filtered by any sector
 
-
+@fas_search_24
   @allure.link:ED-1824
   @filter
   @sector
@@ -268,7 +268,7 @@ Feature: Find a Supplier
 
     Then "Annette Geissinger" should see company "Y" only once on browsed search result pages
 
-
+@fas_search_25
   @allure.link:ED-1983
   @search
   @contextual
@@ -285,7 +285,7 @@ Feature: Find a Supplier
       | sweets   |
       | metal    |
 
-
+@fas_search_26
   @allure.link:TT-1258
   @profile
   @verified

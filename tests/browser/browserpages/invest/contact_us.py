@@ -30,7 +30,7 @@ from browserpages.invest import contact_us_thank_you
 NAME = "Contact us"
 SERVICE = Service.INVEST
 TYPE = PageType.CONTACT_US
-URL = URLs.INTERNATIONAL_BUY_FROM_THE_UK_CONTACT.absolute
+URL = URLs.INVEST_UK_SETUP_GUIDE.absolute
 PAGE_TITLE = ""
 
 SELECTORS = {

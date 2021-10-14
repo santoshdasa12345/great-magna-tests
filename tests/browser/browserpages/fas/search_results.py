@@ -21,6 +21,7 @@ from browserpages.common_actions import (
     fill_out_input_fields,
     find_element,
     find_elements,
+    go_to_url,
     pick_option,
     submit_form,
     take_screenshot,
@@ -32,7 +33,7 @@ from browserpages.fas import thank_you_for_registering
 NAME = "Search results"
 SERVICE = Service.FAS
 TYPE = PageType.SEARCH_RESULTS
-URL = URLs.FAS_SEARCH.template
+URL = URLs.FAS_SEARCH.absolute
 PAGE_TITLE = "Search the database of UK suppliers' trade profiles - trade.great.gov.uk"
 
 SECTOR_FILTERS = Selector(
@@ -42,6 +43,10 @@ PROFILE_LINKS = Selector(
     By.CSS_SELECTOR, "#companies-column li > a:not(.button-ghost-blue):not(.button)"
 )
 FILTER_TOGGLE = Selector(By.CSS_SELECTOR, "#toggle_id_industries")
+SubURLs = {
+    "search results" : URLs.FAS_SEARCH.absolute_template,
+    # "search results industries" : URLs.FAS_SEARCH.absolute_template
+}
 SELECTORS = {
     "search form": {
         "itself": Selector(By.CSS_SELECTOR, "#content form"),
@@ -86,7 +91,7 @@ SELECTORS = {
             is_visible=False,
             alternative_visibility_check=True,
         ),
-        "captcha": Selector(By.ID, "id_captcha"),
+        # "captcha": Selector(By.CSS_SELECTOR, "#id_captcha"),
         "send": Selector(
             By.CSS_SELECTOR,
             "#content > section.subscription.background-stone-30.padding-top-90.padding-bottom-60 > div > div > div > div > div:nth-child(2) > form > div:nth-child(4) > div > button",
@@ -99,10 +104,9 @@ SELECTORS.update(common_selectors.FAS_HERO)
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
 SELECTORS.update(common_selectors.INTERNATIONAL_FOOTER)
 
-SubURLs = {
-    "plants agriculture": URLs.FAS_SUBSCRIBE_AGRICULTURE_PLANTS.absolute,
-
-}
+def visit(driver: WebDriver, *, page_name: str = None):
+    url = SubURLs[page_name] if page_name else URL
+    go_to_url(driver, url, page_name or NAME)
 
 # def should_be_here(driver: WebDriver):
 #     show_filters(driver)

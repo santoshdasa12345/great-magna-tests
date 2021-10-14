@@ -1,4 +1,5 @@
 @international
+  @investment_atlas
   @invest
   @fas_search
 @allure.link:ED-3183
@@ -13,7 +14,7 @@ Feature: FAS - Search
 
   @allure.link:ED-4263
   @search
-    @invest_fix
+    @invest_fix_1
   Scenario Outline: Buyers should be able to find UK suppliers from "<specific> Industry"
     Given "Robert" visits the "Find a Supplier - Landing" page
 
@@ -47,7 +48,7 @@ Feature: FAS - Search
 
   @allure.link:ED-4263
   @search
-    @invest_fix
+    @invest_fix_2
   Scenario Outline: Buyers should be able to change their initial search criteria to find UK suppliers in "<other industry> Industry"
     Given "Robert" searched for companies using "<following>" keyword in "<specific>" sector
 

@@ -1,5 +1,6 @@
 @investment_atlas
 @contact-us_invest
+  @invest
 @allure.suite:Invest
 Feature: Invest - Contact us and Leave feedback
 

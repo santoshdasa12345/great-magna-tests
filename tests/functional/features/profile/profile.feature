@@ -7,6 +7,7 @@ Feature: Profile pages
   @sso
   @account
   @no-sso-email-verification-required
+    @func_profile_1
   Scenario: Users should be able to view Profile Landing page without authentication
     Given "Peter Alder" is an unauthenticated supplier
 
@@ -19,6 +20,7 @@ Feature: Profile pages
   @sso
   @account
   @no-sso-email-verification-required
+    @func_profile_2
   Scenario Outline: Users who visited Profile landing page should not be able to view "<other Profile>" page without authentication
     Given "Peter Alder" is an unauthenticated supplier
 
@@ -29,9 +31,9 @@ Feature: Profile pages
 
     Examples: Profile pages
       | other Profile                     | expected        |
-      | Profile - Export Opportunities    | SSO - Login     |
-      | Profile - Business Profile        | Profile - Enrol |
-      | Profile - Selling Online Overseas | SSO - Login     |
+      | Profile - Export Opportunities    | SSO - SignUp     |
+#      | Profile - Business Profile        | Profile - Enrol |
+#      | Profile - Selling Online Overseas | SSO - Login     |
 
 
   @allure.link:ED-2266

@@ -3,7 +3,7 @@
 @allure.suite:FAS
 Feature: Contact a Supplier
 
-
+@fas_search_11
   @allure.link:ED-2011
   @contact
   @captcha

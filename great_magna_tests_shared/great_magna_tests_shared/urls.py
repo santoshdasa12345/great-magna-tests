@@ -712,8 +712,11 @@ class URLs(Enum):
     INTERNATIONAL_ABOUT_UK = InternationalUrl("content/about-uk/")
     INTERNATIONAL_ABOUT_US = InternationalUrl("content/about-us/")
     INTERNATIONAL_FAS = InternationalUrl("/trade/")
-    INTERNATIONAL_FAS_CONTACT = InternationalUrl("/trade/contact/")
+    INTERNATIONAL_FAS_CONTACT = InternationalUrl("/invest/contact/")
     INTERNATIONAL_FAS_BUY_FROM_THE_UK = InternationalUrl(
+        "content/trade/how-we-help-you-buy/"
+    )
+    INTERNATIONAL_FAS_HOW_WE_HELP_YOU_BUY = InternationalUrl(
         "content/trade/how-we-help-you-buy/"
     )
     INTERNATIONAL_FAS_TRADE_WHY_BUY_FROM_THE_UK = InternationalUrl(
@@ -727,7 +730,7 @@ class URLs(Enum):
         "content/industries/", template="content/industries/{industry}/"
     )
     INTERNATIONAL_BREXIT_NEWS = InternationalUrl("eu-exit-news/?lang=en")
-    INTERNATIONAL_BUY_FROM_THE_UK_CONTACT = InternationalUrl("trade/contact/")
+    INTERNATIONAL_BUY_FROM_THE_UK_CONTACT = InternationalUrl("contact/")
     INTERNATIONAL_CAPITAL_INVEST = InternationalUrl("content/capital-invest/")
     INTERNATIONAL_CAPITAL_INVEST_CONTACT = InternationalUrl(
         "content/capital-invest/contact/"
@@ -915,23 +918,26 @@ class URLs(Enum):
         "content/investment/how-we-can-help/",
         template="content/investment/how-we-can-help/{guide}/",
     )
-    INVEST_HPO = InvestUrl("#high-potential-opportunities")
+    INVEST_HPO = InvestUrl("investment/opportunities")
     INVEST_HPO_CONTACT = InternationalUrl(
-        "content/invest/high-potential-opportunities/contact/"
+        "content/investment/foreign-direct-investment-contact/"
     )
-    INVEST_HOW_WE_HELP_EXPAND = InvestUrl("content/capital-invest/how-we-help-you-invest-capital/")
+    INVEST_HOW_WE_HELP_EXPAND = InvestUrl("content/capital-investment/how-we-help-you-invest-capital/")
     INVEST_HPO_CONTACT_THANK_YOU = InternationalUrl(
-        "content/invest/high-potential-opportunities/contact/success/"
+        "content/investment/foreign-direct-investment-contact/success/"
+    )
+    INVEST_HPO_AMIDS = InternationalUrl(
+        "content/investment/opportunities/advanced-manufacturing-innovation-district-scotland-amids/"
     )
     INVEST_HPO_RAIL = InternationalUrl(
         "content/investment/opportunities/rail-in-doncaster/"
     )
-    INVEST_HPO_FOOD = InternationalUrl(
-        "content/investment/opportunities/food-production/"
-    )
-    INVEST_HPO_HIGH_PRODUCTIVITY_FOOD = InternationalUrl(
-        "content/investment/opportunities/high-productivity-food-production/"
-    )
+    # INVEST_HPO_FOOD = InternationalUrl(
+    #     "content/investment/opportunities/food-production/"
+    # )
+    # INVEST_HPO_HIGH_PRODUCTIVITY_FOOD = InternationalUrl(
+    #     "content/investment/opportunities/high-productivity-food-production/"
+    # )
     INVEST_HPO_LIGHTWEIGHT = InternationalUrl(
         "content/investment/opportunities/lightweight-structures-in-greater-manchester/"
     )
@@ -956,6 +962,12 @@ class URLs(Enum):
     INVEST_HPO_CIRCULAR_ECONOMY_IN_TELFORD = InternationalUrl(
         "content/investment/opportunities/circular-economy-in-telford/"
     )
+    INVEST_HPO_CONNECTED_AND_AUTOMATED_MOBILITY= InternationalUrl(
+        "content/investment/opportunities/cam-modelling-and-simulation-in-oxfordshire/"
+    )
+    INVEST_HPO_CONTROLLED_ENVIRONMENT_AGRICULTURE = InternationalUrl(
+        "content/investment/opportunities/controlled-environment-agriculture-in-yorkshire/"
+    )
     INVEST_HPO_COMPOUND_SEMICONDUCTORS = InternationalUrl(
         "content/investment/opportunities/compound-semiconductors-and-applications-in-south-wales/"
     )
@@ -971,17 +983,26 @@ class URLs(Enum):
     INVEST_HPO_HYDROGEN = InternationalUrl(
         "content/investment/opportunities/hydrogen-in-north-east-scotland/"
     )
+    INVEST_HPO_HOWBERY_BUSINESS_PARK = InternationalUrl(
+        "content/investment/opportunities/howbery-business-park-in-wallingford-oxfordshire/"
+    )
     INVEST_HPO_IMMERSIVE_TECHNOLOGY = InternationalUrl(
         "content/investment/opportunities/immersive-technology-in-the-north-east/"
     )
     INVEST_HPO_INNOVATION_IN_ANIMAL_HEALTH = InternationalUrl(
-        "content/investment/opportunities/carbon-fibre-in-tees-valley/"
+        "content/investment/opportunities/innovation-in-animal-health-surrey-and-hampshire/"
     )
     INVEST_HPO_MARINE_AUTONOMY = InternationalUrl(
         "content/investment/opportunities/marine-autonomy-in-the-south-west/"
     )
+    INVEST_HPO_MINING = InternationalUrl(
+        "content/investment/opportunities/mining-in-cornwall/"
+    )
     INVEST_HPO_NET_ZERO_TRANSPORT = InternationalUrl(
         "content/investment/opportunities/net-zero-transport-in-coventry-and-warwickshire/"
+    )
+    INVEST_HPO_OFFSHORE_WIND_FLOATING = InternationalUrl(
+        "content/investment/opportunities/offshore-wind-floating-substructures-in-scotland/"
     )
     INVEST_HPO_PLANT_BASED_PROTEIN_PRODUCTS = InternationalUrl(
         "content/investment/opportunities/plant-based-and-alternative-protein-products-in-the-north-east/"
@@ -995,6 +1016,10 @@ class URLs(Enum):
     INVEST_HPO_SPALDING_BATTERY_ENERGY_STORAGE_SYSTEM= InternationalUrl(
         "content/investment/opportunities/spalding-battery-energy-storage-system-in-lincolnshire/"
     )
+    INVEST_HPO_WASTEFRONT_RECYCLING_PLANT = InternationalUrl(
+        "content/investment/opportunities/wastefront-recycling-plant-in-sunderland/"
+    )
+
     #
     INVEST_INDUSTRIES = LegacyInvestUrl("industries/")
     INVEST_REGIONS_SCOTLAND = InternationalUrl("content/investment/regions/scotland/")
@@ -1019,47 +1044,55 @@ class URLs(Enum):
     )
 
     INVEST_UK_SETUP_GUIDE = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/",
-        template="content/invest/how-to-setup-in-the-uk/{guide}/",
+        "content/investment/how-we-can-help/",
+        template="content/investment/how-we-can-help/{guide}/",
     )
     INVEST_UK_SETUP_GUIDE_UK_VISAS = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/uk-visas-and-migration/"
+        "content/investment/how-we-can-help/uk-visas-and-migration/"
     )
     INVEST_UK_SETUP_GUIDE_ACCESS_FINANCE = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/access-finance-in-the-uk/"
+        "content/investment/how-we-can-help/access-finance-in-the-uk/"
     )
     INVEST_UK_SETUP_GUIDE_ESTABLISH_A_BASE = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/establish-a-base-for-business-in-the-uk/"
+        "content/investment/how-we-can-help/establish-a-base-for-business-in-the-uk/"
     )
     INVEST_UK_SETUP_GUIDE_HIRE_SKILLED_WORKERS = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/hire-skilled-workers-for-your-uk-operations/"  # noqa
+        "content/investment/how-we-can-help/hire-skilled-workers-for-your-uk-operations/"  # noqa
     )
     INVEST_UK_SETUP_GUIDE_OPEN_BANK_ACCOUNT = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/open-a-uk-business-bank-account/"
-    )
-    INVEST_UK_SETUP_GUIDE_REGISTER_A_COMPANY = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/register-a-company-in-the-uk/"
+        "content/investment/how-we-can-help/open-a-uk-business-bank-account/"
     )
     INVEST_UK_SETUP_GUIDE_UK_TAX = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/uk-tax-and-incentives/"
+        "content/investment/how-we-can-help/uk-tax-and-incentives/"
     )
-    INVEST_UK_SETUP_GUIDE_DIT_CAPITAL_GAINS = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/uk-capital-gains-tax/"
+    INVEST_UK_SETUP_GUIDE_GET_SUPPORT_TO_MOVE_YOUR_TECH_BUSINESS_TO_THE_UK = InternationalUrl(
+        "content/investment/how-we-can-help/global-entrepreneur-program/"
     )
-    INVEST_UK_SETUP_GUIDE_DIT_CORPORATION_TAX = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/uk-corporation-tax/"
+    INVEST_UK_SETUP_GUIDE_REGISTER_A_COMPANY_IN_THE_UK = InternationalUrl(
+        "content/investment/how-we-can-help/register-a-company-in-the-uk/"  # noqa
     )
-    INVEST_UK_SETUP_GUIDE_DIT_VENTURE_CAPITAL = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/uk-venture-capital-schemes/"
+    INVEST_UK_SETUP_GUIDE_OPEN_BUSINESS_BANK_ACCOUNT = InternationalUrl(
+        "content/investment/how-we-can-help/open-a-uk-business-bank-account/"
     )
-    INVEST_UK_SETUP_GUIDE_UK_INCOME_TAX = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/uk-income-tax/"
-    )
-    INVEST_UK_SETUP_GUIDE_UK_INFRASTRUCTURE = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/uk-infrastructure/"
-    )
-    INVEST_UK_SETUP_GUIDE_UK_INNOVATION = InternationalUrl(
-        "content/invest/how-to-setup-in-the-uk/research-and-development-rd-support-in-the-uk/"
+
+
+    # INVEST_UK_SETUP_GUIDE_DIT_CAPITAL_GAINS = InternationalUrl(
+    #     "content/invest/how-to-setup-in-the-uk/uk-capital-gains-tax/"
+    # )
+    # INVEST_UK_SETUP_GUIDE_DIT_CORPORATION_TAX = InternationalUrl(
+    #     "content/invest/how-to-setup-in-the-uk/uk-corporation-tax/"
+    # )
+    # INVEST_UK_SETUP_GUIDE_DIT_VENTURE_CAPITAL = InternationalUrl(
+    #     "content/invest/how-to-setup-in-the-uk/uk-venture-capital-schemes/"
+    # )
+    # INVEST_UK_SETUP_GUIDE_UK_INCOME_TAX = InternationalUrl(
+    #     "content/invest/how-to-setup-in-the-uk/uk-income-tax/"
+    # )
+    # INVEST_UK_SETUP_GUIDE_UK_INFRASTRUCTURE = InternationalUrl(
+    #     "content/invest/how-to-setup-in-the-uk/uk-infrastructure/"
+    # )
+    INVEST_UK_SETUP_GUIDE_RESEARCH_AND_DEVELOPMENT = InternationalUrl(
+        "content/investment/how-we-can-help/research-and-development-rd-support-in-the-uk/"
     )
     # INVEST_WHY_INVEST_IN_THE_UK =InvestUrl("/international/content/investment/why-invest-in-the-uk/")
 

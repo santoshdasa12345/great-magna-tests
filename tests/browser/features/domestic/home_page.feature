@@ -130,20 +130,25 @@ Feature: Domestic - Home Page
 #    And "Robert" should be on the "GreatMagna - Dashboard" Page
 
 
-#      @sections
-#   @sign_in_required_4
-#  Scenario: Visitor should able to login with make an export plan section on the home page
-#    Given "Robert" visits the "Domestic - Home" page
-#
-#    When "Robert" decides to click on "Make An Export Plan"
-#
-#    And "Robert" decides to click on element "Top Create a new plan" on page "Build An Export Plan - Export Plan"
-#
-#    Then "Robert" should be on the "GreatMagna - Sign Up" page
-#    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
-#    And "Robert" visited "GreatMagna - Login" page
-#    And "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-#    And "Robert" should be on the "Build An Export Plan - Export Plan" Page
+      @sections
+   @sign_in_required_4
+  Scenario: Visitor should able to login with make an export plan section on the home page
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to click on "Make An Export Plan"
+
+    And "Robert" decides to click on element "Top Create a new plan" on page "Build An Export Plan - Export Plan"
+
+    Then "Robert" should be on the "GreatMagna - Sign Up" page
+    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
+    And "Robert" visited "GreatMagna - Login" page
+    And "Robert" decides to enter email address "santoshtesting10008+9019@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "Build An Export Plan - Export Plan" Page
+    And "Robert" decides to enter product name "Vehicle" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click continue on "Build An Export Plan - Export Plan" Page
+    And "Robert" decides to enter country name "South Africa" on the "Build An Export Plan - Export Plan" page
+
+
 #
 #@sections
 #   @sign_up_required_5
@@ -156,27 +161,29 @@ Feature: Domestic - Home Page
 #  And "Robert" visited "GreatMagna - Sign Up" page
 #  And "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
 #  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
-#  And "Robert" should be on the "GreatMagna - Dashboard" Page
+#  And "Robert" should be on the "Build An Export Plan - Export Plan" Page
 #  Examples: email address and password
 #     |      emailaddress                 | password    |
 #     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
 #
 #    And "Robert" should be on the "GreatMagna - Sign Up" page
 #    And "Robert" should be on the "Build An Export Plan - Export Plan" Page
+
 #
-#
-#  @sections
-#   @sign_in_required_6
-#  Scenario: Visitor should able to login with make an export plan section on the home page
-#    Given "Robert" visits the "Domestic - Home" page
-#
-#    When "Robert" decides to click on "Make An Export Plan"
-#
-#    And "Robert" decides to click on element "Top Create a new plan" on page "Build An Export Plan - Export Plan"
-#
-#    Then "Robert" should be on the "GreatMagna - Sign Up" page
-#    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
-#    And "Robert" visited "GreatMagna - Login" page
-#    And "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-#    And "Robert" should be on the "Build An Export Plan - Export Plan" Page
-##    And "Robert" decides to enter product name on export plan "Coffee" on page "Build An Export Plan - Export Plan"
+   @sections
+   @sign_in_required_6
+  Scenario: Visitor should able to login with make an export plan section on the home page
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to click on "Make An Export Plan"
+
+    And "Robert" decides to click on element "Top Create a new plan" on page "Build An Export Plan - Export Plan"
+
+    Then "Robert" should be on the "GreatMagna - Sign Up" page
+    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
+    And "Robert" visited "GreatMagna - Login" page
+    And "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "Build An Export Plan - Export Plan" Page
+    And "Robert" decides to select random product on "Build An Export Plan - Export Plan" Page
+#    And "Robert" decides to enter random country on page "Build An Export Plan - Export Plan"
+#    And "Robert" decides to click on "create export plan" on "Build An Export Plan - Export Plan" Page

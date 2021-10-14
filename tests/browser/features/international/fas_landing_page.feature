@@ -88,32 +88,32 @@ Feature: FAS - Landing page
 #    Then "Robert" should be on the "International - Industry" page
 ##
 
-#  @allure.link:ED-4249
-#  @industries-page
-#  @invest_fix
-#  Scenario: Buyers should be able to see more UK industries from the "Find a Supplier - Landing" page
-#    Given "Robert" visits the "Find a Supplier - Landing" page
-#
-#    When "Robert" decides to "see more industries"
-#
-#    Then "Robert" should be on the "International - Industries" page
-##
+  @allure.link:ED-4249
+  @industries-page
+  @invest_fix_4
+  Scenario: Buyers should be able to see more services from the "Find a Supplier - Landing" page
+    Given "Robert" visits the "Find a Supplier - Landing" page
+
+    When "Robert" decides to "see more services"
+
+    Then "Robert" should be on the "International - How we help you buy" page
 
 
-#  @allure.issue:TT-1512
-#  @fas_landing_4
-#  @search
-#  @invest_fix
-#  Scenario: Buyers should be able to find UK suppliers using arbitrary search term
-#    Given "Robert" visits the "Find a Supplier - Landing" page
-#
-#    When "Robert" searches for companies using "food" keyword
-#
-#    Then "Robert" should be on the "Find a Supplier - Search results" page
-#    And "Robert" should see following sections
-#      | Sections        |
-#      | Header          |
-#      | Search form     |
-#      | Filters         |
-#      | Results         |
-#      | Footer          |
+
+  @allure.issue:TT-1512
+  @fas_landing_4
+  @search
+  @invest_fix_5
+  Scenario: Buyers should be able to find UK suppliers using arbitrary search term
+    Given "Robert" visits the "Find a Supplier - Landing" page
+
+    When "Robert" searches for companies using "food" keyword
+
+    Then "Robert" should be on the "Find a Supplier - Search results" page
+    And "Robert" should see following sections
+      | Sections        |
+      | Header          |
+      | Search form     |
+      | Filters         |
+      | Results         |
+      | Footer          |

@@ -1,5 +1,6 @@
 @international-landing-page
  @international
+  @invest
 @allure.suite:International
 Feature: INTL - Landing page
 

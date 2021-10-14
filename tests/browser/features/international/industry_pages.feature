@@ -1,4 +1,5 @@
 @international
+  @invest
 @investment_atlas
 @allure.link:ED-3183
 @allure.link:ED-4259

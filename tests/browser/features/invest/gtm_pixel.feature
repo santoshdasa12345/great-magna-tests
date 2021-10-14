@@ -29,7 +29,7 @@ Feature: Invest - Google Tag Manager
     @dev-only
     Examples: High-potential opportunities in Dev
       | selected                                | businessUnit | loginStatus | siteLanguage | siteSection                | siteSubsection | userId |
-      | High productivity food production - HPO | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
+#      | High productivity food production - HPO | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
       | Lightweight - HPO            | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
       | Rail - HPO               | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
 
@@ -37,7 +37,7 @@ Feature: Invest - Google Tag Manager
     @stage-only
     Examples: High-potential opportunities in Staging
       | selected                                | businessUnit | loginStatus | siteLanguage | siteSection                | siteSubsection | userId |
-      | High productivity food production - HPO | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
+#      | High productivity food production - HPO | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
       | Lightweight  - HPO            | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
       | Rail - HPO               | Invest       | False       | en-gb        | HighPotentialOpportunities | DetailPage     | None   |
 
@@ -58,8 +58,8 @@ Feature: Invest - Google Tag Manager
 
     Examples: Various pages
       | selected | preferred_language | businessUnit | loginStatus | siteLanguage | siteSection | siteSubsection | userId |
-      | Landing  | Deutsch            | Invest       | False       | de           | HomePage    | Empty string   | None   |
-      | Landing  | Français           | Invest       | False       | fr           | HomePage    | Empty string   | None   |
-      | Landing  | español            | Invest       | False       | es           | HomePage    | Empty string   | None   |
-      | Landing  | Português          | Invest       | False       | pt           | HomePage    | Empty string   | None   |
-      | Landing  | 简体中文            | Invest       | False       | zh-hans      | HomePage    | Empty string   | None   |
+#      | Landing  | Deutsch            | Invest       | False       | de           | HomePage    | Empty string   | None   |
+#      | Landing  | Français           | Invest       | False       | fr           | HomePage    | Empty string   | None   |
+#      | Landing  | español            | Invest       | False       | es           | HomePage    | Empty string   | None   |
+#      | Landing  | Português          | Invest       | False       | pt           | HomePage    | Empty string   | None   |
+#      | Landing  | 简体中文            | Invest       | False       | zh-hans      | HomePage    | Empty string   | None   |

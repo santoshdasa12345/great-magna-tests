@@ -10,7 +10,7 @@ from tests.functional.utils.context_utils import Actor
 from tests.functional.utils.request import Method, check_response, make_request
 
 SERVICE = Service.SSO
-NAME = "Register"
+NAME = "SignUp"
 TYPE = PageType.FORM
 URL = URLs.SSO_SIGNUP.absolute
 EXPECTED_STRINGS = [

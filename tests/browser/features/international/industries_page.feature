@@ -1,4 +1,5 @@
 @international
+  @invest
 @investment_atlas
 @allure.link:ED-3190
 @industries-page

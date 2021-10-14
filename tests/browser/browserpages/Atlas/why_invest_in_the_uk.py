@@ -26,7 +26,7 @@ PAGE_TITLE = "Invest in Great Britain - Home"
 SELECTORS = {
     "why invest in the uk": {
         "hero": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero"),
-        "atlas hero heading": Selector(By.ID, "#content > div.atlas-hero__heading"),
+        "atlas hero heading": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero__heading"),
         "why invest in th euk content": Selector(By.CSS_SELECTOR, "#content > div.atlas-container"),
         "uk strengths": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light"),
         "tax and incentives": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(1) > h3 > a"),
@@ -41,7 +41,7 @@ SELECTORS = {
         "first": Selector(By.CSS_SELECTOR, "#industries div:nth-child(1) > div > a"),
         "second": Selector(By.CSS_SELECTOR, "#industries div:nth-child(2) > div > a"),
         "third": Selector(By.CSS_SELECTOR, "#industries div:nth-child(3) > div > a"),
-        "see more industries": Selector(By.ID, "see-more-industries"),
+        "see more services": Selector(By.CSS_SELECTOR, "#services-section > div > a"),
     },
     "high-potential opportunities": {
         "hpo - section": Selector(By.ID, "high-potential-opportunities"),
@@ -62,10 +62,10 @@ SELECTORS = {
         "lightweight structures": Selector(
             By.PARTIAL_LINK_TEXT, "Lightweight structures"
         ),
-        "photonics and microelectronics": Selector(
+        "photonics": Selector(
             By.PARTIAL_LINK_TEXT, "Photonics and Microelectronics"
         ),
-        "rail infrastructure": Selector(By.PARTIAL_LINK_TEXT, "Rail infrastructure"),
+        "rail": Selector(By.PARTIAL_LINK_TEXT, "Rail infrastructure"),
         "space": Selector(By.PARTIAL_LINK_TEXT, "Space"),
         "sustainable packaging": Selector(
             By.PARTIAL_LINK_TEXT, "Sustainable packaging"
