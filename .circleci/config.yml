@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  browser-tools: circleci/browser-tools@1.2.3
+
 # Variables
 load_hatch_rate: &load_hatch_rate
   HATCH_RATE: 3
