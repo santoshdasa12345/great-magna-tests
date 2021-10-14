@@ -1,5 +1,6 @@
 @Great_Magna_Tests
 @business-risk-page
+@Great_Magna_Export_Plan
 @allure.suite:Great_Magna_Export_Plan_B_R
 
 Feature: GreatMagna - Business Risk Page
@@ -15,7 +16,6 @@ Feature: GreatMagna - Business Risk Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on element "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Back" on page "Build An Export Plan - Export Plan Dashboard"
@@ -28,12 +28,12 @@ Feature: GreatMagna - Business Risk Page
 
 @allure.link:XOT-1072
    @Great_Magna_Export_Plan
+
   Scenario:User should be able to click on Top Export plan home in Business Risk and should be on Export plan dashboard page
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Business Risk"
@@ -47,27 +47,10 @@ Feature: GreatMagna - Business Risk Page
 #Given "Robert" visited "GreatMagna - Login" page
 #   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
 #   And "Robert" should be on the "GreatMagna - Dashboard" Page
-#   #And "Robert" should be able to click on SkipWalkthrough
 #   Then "Robert" decides to click on "Build an export plan"
 #   Then "Robert" decides to click on section "Business risk" on page "Build An Export Plan - Export Plan Dashboard"
 #    And "Robert" decides to click section complete on "Build An Export Plan - Business risk"
 #    And "Robert" decides to click on section "Download export plan" on page "Build An Export Plan - Business risk"
-
-
-       @allure.link:XOT-1074
-   @Great_Magna_Export_Plan
-  Scenario:User should be able to click on navigation bar and navigate to "Download export plan"
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
-    Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Business risk" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Business risk"
-      And "Robert" decides to click on element "Nav Download export plan" on page "Build An Export Plan - Business risk"
-     And "Robert" decides to click on element "Share" on page "Build An Export Plan - Business risk"
-
 
 
     @allure.link:XOT-1075
@@ -77,28 +60,27 @@ Feature: GreatMagna - Business Risk Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
        And "Robert" decides to click section complete on "Build An Export Plan - Business Risk"
      And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Business Risk"
     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
-@allure.link:XOT-1076
-  @Great-Magna-Sign-Up
-  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
-
-  Given "Robert" visited "GreatMagna - Sign Up" page
-  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
-  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
-  Then "Robert" should be on the "GreatMagna - Dashboard" Page
-  Examples: email address and password
-     |      emailaddress                 | password    |
-     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
-  And "Robert" decides to click on "Build an export plan"
-  And "Robert" "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
-  And "Robert" decides to enter product name "Sofa" on page "Build An Export Plan - Business Risk"
-
+#@allure.link:XOT-1076
+#  @Great-Magna-Sign-Up
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter product name "Sofa" on page "Build An Export Plan - Business Risk"
+#
 
  @allure.link:XOT-1076
    @Great_Magna_Export_Plan_B_O_D_123_add
@@ -108,7 +90,6 @@ Feature: GreatMagna - Business Risk Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-   #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
     And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" fill risk details on page "Build An Export Plan - Business Risk"
@@ -127,7 +108,6 @@ Feature: GreatMagna - Business Risk Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    #And "Robert" should be able to click on SkipWalkthrough
      Then "Robert" decides to click on "Build an export plan"
     And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to delete risk details on page "Build An Export Plan - Business Risk"
@@ -144,7 +124,6 @@ Feature: GreatMagna - Business Risk Page
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-   #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
     And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" should be on the "Build An Export Plan - Business Risk" Page
@@ -156,12 +135,12 @@ Feature: GreatMagna - Business Risk Page
    @allure.link:XOT-1079
    @Great_Magna_Export_Plan_B_R_1_111
    @Great_Magna_Export_Plan
+     @failed_exp
   Scenario:User should be able to click on "Add A Risk" and click on Examples and educational moment
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-   #And "Robert" should be able to click on SkipWalkthrough
     Then "Robert" decides to click on "Build an export plan"
     And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Add A Risk" on page "Build An Export Plan - Business Risk"

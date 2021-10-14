@@ -32,8 +32,12 @@ SELECTORS = {
         )
     },
     "industries": {
-        "itself": Selector(By.CSS_SELECTOR, "section.topic-list-section"),
-        "industry cards": Selector(By.CSS_SELECTOR, "section.topic-list-section a"),
+        "itself": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2)"),
+        "industry cards": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) a"),
+    },
+    "contact us": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg.atlas-bg--dark-blue.atlas-colour--white"),
+
     },
 }
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER)
@@ -64,3 +68,6 @@ def open_industry(driver: WebDriver, industry_name: str):
     )
     industry_link.click()
     take_screenshot(driver, NAME + " after opening " + industry_name + " page")
+
+def should_see_following_sections(driver: WebDriver, names: List[str]):
+    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

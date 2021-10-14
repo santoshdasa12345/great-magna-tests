@@ -46,7 +46,8 @@ SELECTORS = {
             By.XPATH, "//span[contains(text(),'Choose the right route to market')]"
         ),
         "Selling direct to your customer": Selector(
-            By.XPATH, "//span[contains(text(),'Selling direct to your customer')]"
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[3]/a"
+            #"//span[contains(text(),'Selling direct to your customer')]"
         ),
         "sell with international e commerce": Selector(
             By.XPATH, "//span[contains(text(),'Selling with international e-commerce')]"

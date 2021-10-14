@@ -35,7 +35,7 @@ SELECTORS = {
     "registration form": {
         "itself": Selector(By.CSS_SELECTOR, "section form"),
         "email": Selector(
-            By.ID, "id_user-account-email", type=ElementType.INPUT, is_visible=False
+            By.XPATH, "//body/main/section/div/div[1]/form/div[2]/div[1]/input", type=ElementType.INPUT, is_visible=False
         ),
         "password": Selector(
             By.ID, "id_user-account-password", type=ElementType.INPUT, is_visible=False
@@ -98,3 +98,6 @@ def fill_out(driver: WebDriver, details: dict):
 
 def submit(driver: WebDriver) -> Union[ModuleType, None]:
     return submit_form(driver, SELECTORS["registration form"])
+
+def should_see_following_sections(driver: WebDriver, names: List[str]):
+    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

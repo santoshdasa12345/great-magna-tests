@@ -18,6 +18,7 @@ from steps.when_impl import (
     domestic_search_for_phrase_on_page,
     domestic_search_result_has_more_than_one_page,
     domestic_search_finder_should_see_page_number,
+    fas_searched_for_companies,
     contact_us_get_to_page_via,
     contact_us_navigate_through_options,
     soo_find_and_open_random_marketplace,
@@ -26,6 +27,7 @@ from steps.when_impl import (
     generic_at_least_n_news_articles,
     sso_actor_received_email_confirmation_code,
     generic_fill_out_and_submit_form,
+    generic_get_in_touch,
     registration_create_and_verify_account,
     profile_start_registration_as,
     clear_the_cookies,
@@ -159,3 +161,17 @@ def when_actor_clears_the_cookies(context, actor_alias):
 @given('"{actor_alias}" is signed in')
 def given_actor_is_signed_in(context, actor_alias):
     sign_in(context, actor_alias)
+
+@given('"{actor_alias}" searched for companies using "{keyword}" keyword in "{sector}" sector')
+def fas_when_actor_searches_for_companies(
+        context: Context, actor_alias: str, keyword: str, sector: str):
+    fas_searched_for_companies(
+        context, actor_alias, keyword=keyword, sector=sector)
+
+@given('"{actor_alias}" got in touch with us via "{page_name}" page')
+def given_actor_got_in_touch_with_us(
+        context: Context, actor_alias: str, page_name: str):
+    generic_get_in_touch(context, actor_alias, page_name, custom_details_table=context.table)
+
+#####
+

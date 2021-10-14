@@ -19,6 +19,15 @@ from browserpages.common_actions import (
 
 NAME = "Industry"
 NAMES = [
+    "Agritech",
+    "Carbon capture usage and storage",
+    "Chemicals",
+    "Green finance",
+    "Greener buildings",
+    "Hydrogen",
+    "Jet zero and green ships",
+    "Scotland",
+    "sustainable infrastructure",
     "Aerospace",
     "Agricultural technology",
     "Automotive",
@@ -50,6 +59,15 @@ PAGE_TITLE = "great.gov.uk International - "
 
 SubURLs = {
     "industry": URL,
+    "agritech": URLs.INTERNATIONAL_INDUSTRY_AGRI_TECH.absolute,
+    "carbon capture usage and storage": URLs.INTERNATIONAL_INDUSTRY_CARBON_CAPTURE_USAGE_AND_STORAGE.absolute,
+    "chemicals": URLs.INTERNATIONAL_INDUSTRY_CHEMICALS.absolute,
+    "green finance": URLs.INTERNATIONAL_INDUSTRY_GREEN_FINANCE.absolute,
+    "greener buildings": URLs.INTERNATIONAL_INDUSTRY_GREENER_BUILDINGS.absolute,
+    "hydrogen": URLs.INTERNATIONAL_INDUSTRY_HYDROGEN.absolute,
+    "jet zero and green ships": URLs.INTERNATIONAL_INDUSTRY_JET_ZERO_AND_GREEN_SHIPS.absolute,
+    "scotland": URLs.INTERNATIONAL_INDUSTRY_SCOTLAND.absolute,
+    "sustainable infrastructure": URLs.INTERNATIONAL_INDUSTRY_SUSTAINABLE_INFRASTRUCTURE.absolute,
     "aerospace": URLs.INTERNATIONAL_INDUSTRY_AEROSPACE.absolute,
     "agricultural technology": URLs.INTERNATIONAL_INDUSTRY_AGRICULTURAL_TECHNOLOGY.absolute,
     "automotive": URLs.INTERNATIONAL_INDUSTRY_AUTOMOTIVE.absolute,
@@ -75,27 +93,45 @@ SubURLs = {
 
 SELECTORS = {
     "industry breadcrumbs": {
-        "great.gov.uk international": Selector(
-            By.CSS_SELECTOR, "#breadcrumb-section ol > li:nth-child(1) > a"
-        ),
-        "industries": Selector(
-            By.CSS_SELECTOR, "#breadcrumb-section ol > li:nth-child(2) > a"
-        ),
+        # "great.gov.uk international": Selector(
+        #     By.CSS_SELECTOR, "#breadcrumb-section ol > li:nth-child(1) > a"
+        # ),
+        # "industries": Selector(
+        #     By.CSS_SELECTOR, "#breadcrumb-section ol > li:nth-child(2) > a"
+        # ),
     },
     "content": {
-        "section 1": Selector(By.ID, "sector-section-one"),
-        "section 2": Selector(By.ID, "sector-section-two"),
-        "section statistics": Selector(By.ID, "sector-statistics-section"),
+        "section 1": Selector(By.CSS_SELECTOR, "#content > div.atlas-container > div.atlas-grid.atlas-grid--masonry"),
+        "section 2": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(1)"),
+        "section 3": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(2)"),
+        "section 4": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(3)"),
+        "section 5": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(4)"),
+        "section 6": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(5)"),
+        "section 7": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(6)"),
+
     },
-    "next steps": {
-        "next steps": Selector(By.ID, "sector-next-steps-section"),
-        "i want to invest in the uk": Selector(
-            By.CSS_SELECTOR, "#sector-next-steps-section div:nth-child(1) > a"
-        ),
-        "i want to buy from the uk": Selector(
-            By.CSS_SELECTOR, "#sector-next-steps-section div:nth-child(2) > a"
-        ),
-    },
+    "opportunity highlights": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(2)"),
+        },
+    "commercial maturity": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(3)"),
+        },
+    "key uk assets": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(4)"),
+        },
+    "r&d capability": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(5)"),
+        },
+    "business and government support": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(6)"),
+        },
+    "case studies": {
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(7)"),
+        },
+    "early potential opportunities": {
+        "itself": Selector(By.ID, "#content > section"),
+        },
+
 }
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER)
 SELECTORS.update(common_selectors.INTERNATIONAL_HERO)
@@ -133,3 +169,6 @@ def should_see_content_for(driver: WebDriver, industry_name: str):
         driver.current_url,
     ):
         assert industry_name.lower() in source.lower()
+
+def should_see_following_sections(driver: WebDriver, names: List[str]):
+    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

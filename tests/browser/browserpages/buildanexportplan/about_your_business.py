@@ -46,28 +46,28 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"export-plan-dashboard\"]/div[1]/div/a/div[2]/h3"
         ),
         "how you started example": Selector(
-            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(1) > div > div.learning__buttons.m-b-xs > button"
+            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(1) > div > div.learning__buttons > button"
         ),
         "how you started educational": Selector(
-            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(1) > div > div.learning__buttons.m-b-xs > div > div > button > i"
+            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(1) > div > div.learning__buttons > div > div > button > i"#about-your-business-form > div:nth-child(1) > div > div.learning__buttons.m-b-xs > div > div > button > i"
         ),
         "how you started": Selector(
             By.XPATH, "//*[@id=\"story\"]", type=ElementType.INPUT
         ),
         "where you're based example": Selector(
-            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(2) > div > div.learning__buttons.m-b-xs > button"
+            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(2) > div > div.learning__buttons > button"
         ),
         "where you're based": Selector(
             By.XPATH, "//*[@id=\"location\"]", type=ElementType.INPUT
         ),
         "how you make your products example": Selector(
-            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(3) > div > div.learning__buttons.m-b-xs > button"
+            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(3) > div > div.learning__buttons > button"
         ),
         "how you make your products": Selector(
             By.XPATH, "//*[@id=\"processes\"]", type=ElementType.INPUT
         ),
         "your product packaging example": Selector(
-            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(4) > div > div.learning__buttons.m-b-xs > button"
+            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(4) > div > div.learning__buttons > button"
         ),
         "your product packaging": Selector(
             By.XPATH, "//*[@id=\"packaging\"]", type=ElementType.INPUT
@@ -101,7 +101,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#section-complete > div > label"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"about-your-business-content\"]/section[1]/div/div/div[2]/a/span"
+            By.CSS_SELECTOR, "#about-your-business-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
         ),
         "dashboard": Selector(
             By.XPATH, "//a[contains(text(),'Dashboard')]"
@@ -145,12 +145,13 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
 def find_and_select_random_item_list(driver: WebDriver, element_selector_name: str):
     # about-your-business-form > div.select.m-b-l > button
     drop_down_btn = driver.find_element_by_css_selector(
-        "#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
+        "#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--value")
+        #"#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
     drop_down_btn.click()
     driver.implicitly_wait(5)
     # select__list body-l bg-white radius
     # about-your-business-form > div.select.m-b-l > ul
-    drop_down_element = driver.find_element_by_css_selector("#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
+    drop_down_element = driver.find_element_by_css_selector("#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
     li_elements = drop_down_element.find_elements_by_tag_name("li")
     logging.debug("list elements")
     logging.debug(li_elements)
@@ -301,34 +302,9 @@ def fill_out_product(driver: WebDriver, products: str):
         pass
 
     try:
-        # time.sleep(2)
-        # driver.find_element_by_xpath("/html/body/div[3]/div/div/form/div[2]/div/div/section/div/div[2]/label/div[2]/div/i").click()
-        # driver.find_element_by_xpath(
-        #     "/html/body/div[3]/div/div/form/div[2]/div/div/section/div/div[2]/label/div[2]/div/i").click()
 
-        # driver.find_element_by_xpath(
-        #     "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").sendKeys(Keys.CONTROL + "a");
-        # driver.find_element_by_xpath(
-        #     "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").send_keys(u'\ue009' + u'\ue003')
-        # driver.find_element_by_xpath(
-        #     "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").sendKeys(Keys.DELETE);
-        # time.sleep(2)
-        # driver.find_element_by_xpath(
-        #     "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").clear()
         product_input_text = driver.find_element_by_xpath("//input[@id='input-commodity-name']").text
         logging.debug("product_input_text -> " + product_input_text)
-        # actions = action_chains(driver)
-        # driver.find_element_by_xpath("//input[@id='input-commodity-name']").click()
-        # for i in range(len(product_input_text)):
-        #     actions.sendKeys(Keys.ARROW_LEFT)
-        #
-        # actions.build().perform()
-        #
-        # for i in range(len(product_input_text)):
-        #     actions.sendKeys(Keys.DELETE)
-        #
-        # time.sleep(1);
-        # actions.build().perform()
 
         for i in range(len(product_input_text)):
             driver.find_element_by_xpath(

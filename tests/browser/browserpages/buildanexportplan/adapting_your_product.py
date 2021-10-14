@@ -94,7 +94,8 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"insurance_certificate\"]", type=ElementType.INPUT
         ),
         "commercial invoice educational": Selector(
-            By.XPATH, "//*[@id=\"documents-for-target-market\"]/div/div/div[3]/div/div[1]/div/div/button/i"
+            By.XPATH, "//*[@id=\"documents-for-target-market\"]/div/div/div[3]/div/div[1]/div/div/button"
+            #"//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[3]/div/div[1]/div/div/button/span"
         ),
         "commercial invoice": Selector(
             By.XPATH, "//*[@id=\"commercial_invoice\"]", type=ElementType.INPUT
@@ -110,7 +111,7 @@ SELECTORS = {
         #     "#documents-for-target-market > div > div > div.target-market-documents-form > div > div.form-delete.m-b-xs > button > i"
         # ),
         "add another document": Selector(
-            By.XPATH, "//*[@id=\"documents-for-target-market\"]/div/div/button"
+            By.XPATH, "//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/button"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
@@ -131,7 +132,7 @@ SELECTORS = {
             By.XPATH, "//button[contains(text(),'Add a target market')]"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"adapting-your-product-content\"]/section[1]/div/div/div[2]/a/span"
+            By.XPATH, "//body/main/div[2]/section[1]/div/div/div[2]/span/a/span" #//*[@id=\"adapting-your-product-content\"]/section[1]/div/div/div[2]/a/span"
         ),
         "open navigation": Selector(
             By.XPATH,
@@ -217,14 +218,7 @@ def check_section_complete_yes(driver: WebDriver, element_selector_name: str):
 
 def fill_out_country(driver: WebDriver, country: str):
     driver.implicitly_wait(1)
-    # parent div: //body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]
-    # parent ul: //body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul
 
-    # where to export : country search
-    # //body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]
-    # //body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/ul
-
-    # country
     country_btn = find_element(
         driver, find_selector_by_name(SELECTORS, "add a target market")  # dashboard add country button
     )
@@ -355,13 +349,14 @@ def fill_out_product(driver: WebDriver, product_name: str):
 
 def delete_all_document_details(driver: WebDriver, del_button_position:str):
     # 1,3,5,7,......
-
+    #//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[5]/div[5]
     # del_button_position: 5,4,3,2,1
-    document_div_element_xpath = "//body/main/div[2]/section[6]/div/div[2]/div/form/div/div/div[5]/div" + "[" + del_button_position + "]"
+    document_div_element_xpath = "//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[5]/div" + "[" + del_button_position + "]"
     del_btn_ele_xpath = document_div_element_xpath + "/div[3]/button"
     driver.find_element_by_xpath(del_btn_ele_xpath).click()
     logging.debug("del_button_position " + str(del_button_position))
 
+    #//body/div[12]/div/div/div/div[2]/div[2]/button[1]
     driver.implicitly_wait(1)
     delete_msg_yes_index = int(12 + (int(del_button_position) - 1))
     delete_message_yes_element_xpath = "//body/div" + "[" + str(

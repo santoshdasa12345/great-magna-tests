@@ -96,7 +96,8 @@ SELECTORS = {
         ),
         "contingency plan example": Selector(
             By.CSS_SELECTOR,
-            "#business-risks > div.costs.costs--risks.bg-blue-deep-10.p-v-s.m-b-s > table > tbody > tr:nth-child(4) > td > div.learning > div.learning__buttons.m-b-xs > button"
+            "//*[@id=\"business-risks\"]/div[2]/table/tbody/tr[4]/td/div[1]/div[1]/button"
+            #"#business-risks > div.costs.costs--risks.bg-blue-deep-10.p-v-s.m-b-s > table > tbody > tr:nth-child(4) > td > div.learning > div.learning__buttons.m-b-xs > button"
         ),
         "add a risk": Selector(
             By.CSS_SELECTOR, "#business-risks > button"
@@ -106,7 +107,8 @@ SELECTORS = {
             "//body/main[@id='content']/div[@id='business-risk-content']/section[4]/div[1]/div[1]/div[2]/div[2]/a[1]"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"business-risk-content\"]/section[1]/div/div/div[2]/a/span"
+            By.CSS_SELECTOR, "#business-risk-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
+            #"//*[@id=\"business-risk-content\"]/section[1]/div/div/div[2]/a/span"
         ),
         "open navigation": Selector(
             By.XPATH,
@@ -127,9 +129,9 @@ SELECTORS = {
         "share": Selector(
             By.XPATH, "//body/main/div[1]/nav/div/div[2]/button[1]/i"
         ),
-        "download export plan": Selector(
-            By.XPATH, "//body/main/div[1]/nav/div/div[2]/button[1]/i"
-        ),
+        # "download export plan": Selector(
+        #     By.XPATH, "//body/main/div[1]/nav/div/div[2]/button[1]/i"
+        # ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
         ),
@@ -352,8 +354,8 @@ def enter_risk_details(driver: WebDriver, position: str, risktext : str , contin
 
     position = int(position)
     risktext_position = int((int(position) * 5) - 4)
-    risk_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/table/tbody/tr" + "[" + str(risktext_position) + "]"
-    risk_text_ele_xpath = risk_div_element_xpath + "/td/div[2]/textarea"
+    risk_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/div" + "[" + str(risktext_position) + "]"
+    risk_text_ele_xpath = risk_div_element_xpath + "/div[1]/div[2]/textarea"
     driver.find_element_by_xpath(risk_text_ele_xpath).send_keys(risktext)
     logging.debug(risk_text_ele_xpath)
     logging.debug(risktext)
@@ -370,10 +372,35 @@ def enter_risk_details(driver: WebDriver, position: str, risktext : str , contin
                                     + "/td/div[2]/div"+ "[" + str(random.randint(1, 5)) + "]" + "/label"
     driver.find_element_by_xpath(risk_impact_button_element_xpath).click()
 
-    contingencyplan_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/table/tbody/tr" \
+    contingencyplan_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/div" \
                                         + "[" + str(risktext_position + 3) + "]"
-    contingencyplan_text_element_xpath = contingencyplan_div_element_xpath + "//td/div[2]/textarea"
+    contingencyplan_text_element_xpath = contingencyplan_div_element_xpath + "/div[4]/div[2]/textarea"
     driver.find_element_by_xpath(contingencyplan_text_element_xpath).send_keys(contingencyplan)
+
+    #risk imapact
+
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[1]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[2]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[3]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[4]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[5]/label
+
+    #risk likelihood
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[1]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[2]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[3]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[4]/label
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[5]/label
+
+
+
+
+
+
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[1]/div[4]/div[2]/textarea
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[2]/div[4]/div[2]/textarea
+    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[4]/div[2]/textarea
 
     time.sleep(5)
 

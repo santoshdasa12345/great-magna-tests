@@ -36,7 +36,7 @@ from browserpages.common_actions import (
 NAME = "Adapting Your Product"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
 TYPE = PageType.BUILD_AN_EXPORT_PLAN
-URL = URLs.GREAT_MAGNA_EXPORT_PLAN_ADAPTATION_FOR_YOUR_TARGET_MARKET.absolute
+URL = URLs.GREAT_MAGNA_EXPORT_PLAN_ADAPTING_YOUR_PRODUCT.absolute
 PAGE_TITLE = "Adapting Your Product Page"
 
 SELECTORS = {

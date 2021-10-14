@@ -7,6 +7,7 @@ from envparse import env
 
 GREAT_MAGNA_URL = env.str("GREAT_MAGNA_URL", default="https://great.dev.uktrade.digital/")
 GREAT_MAGNA_URL_LANDING = env.str("GREAT_MAGNA_URL_LANDING", default="https://great.dev.uktrade.digital/dashboard")
+# INVEST_ATLAS_URL = env.str("INVEST_ATLAS_URL",default="https://great.uat.uktrade.digital/international/")
 
 # GREAT_MAGNA_URL = env.str("GREAT_MAGNA_URL", default="https://great-magna.dev.uktrade.digital/")
 # GREAT_MAGNA_URL_LANDING = env.str("GREAT_MAGNA_URL_LANDING", default="https://great-magna.dev.uktrade.digital/dashboard")

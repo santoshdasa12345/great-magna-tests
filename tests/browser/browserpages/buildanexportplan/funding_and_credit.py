@@ -52,10 +52,13 @@ SELECTORS = {
             By.XPATH, "//input[@id='funding_amount_required']", type=ElementType.INPUT
         ),
         "lesson": Selector(
-            By.CSS_SELECTOR, "#finance-funding-credit-options > button"
+            By.CSS_SELECTOR, "#finance-funding-credit-options > div.learning > div.learning__buttons > button"
+            #"#finance-how-much-funding > div > div.learning > div.learning__buttons > button"
+            #"#finance-funding-credit-options > button"
         ),
         "add a funding option": Selector(
-            By.XPATH, "//body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tfoot/tr/td/button"
+            By.XPATH, "//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div/button"
+            #"//body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tfoot/tr/td/button"
         ),
         "select option": Selector(
             By.XPATH, "//tbody/tr[1]/td[1]/div[1]/button[1]"
@@ -96,10 +99,11 @@ SELECTORS = {
             By.CSS_SELECTOR, "#finance-how-much-funding > div > div.learning > div.learning__content > a > div"
         ),
         "choose the right funding": Selector(
-            By.XPATH, "//*[@id=\"finance-funding-credit-options\"]/a/div/h4"
+            By.XPATH, "//body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/div[2]/a"
+            #"//*[@id=\"finance-funding-credit-options\"]/a/div/h4"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"funding-and-credit-content\"]/section[1]/div/div/div[2]/a/span"
+            By.XPATH, "//*[@id=\"funding-and-credit-content\"]/section[1]/div/div/div[2]/span/a"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
@@ -175,29 +179,34 @@ def find_and_select_random_funding_options(driver: WebDriver, position: str, amo
     if int(position) != 1:
         actual_positon = int(position) + (int(position) - 1)
 
-    # funding_option_element_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tbody/tr" + "[" + str(actual_positon) + "]"
-    # funding_option_1_element = funding_option_element_xpath + "/td[1]/div/div/div[2]/button"
-    # driver.find_element_by_xpath(funding_option_1_element).click()
-    # driver.implicitly_wait(5)
-    #
-    # #driver.implicitly_wait(5)
-    # #/html/body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tbody/tr[1]/td[1]/div/div/ul/li[3]
-    # ulist_funding_options_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tbody/tr[1]/td[1]/div/div/ul"
-    # ulist_funding_options_element = driver.find_element_by_xpath(ulist_funding_options_xpath)
-    # funding_options_elements = ulist_funding_options_element.find_elements_by_tag_name("li")
-    #
-    # random_number = 0
-    # if len(funding_options_elements) > 2:
-    #     random_number = random.randint(1, len(funding_options_elements) - 1)
-    # #random_li_element = funding_options_elements[random_number]
-    # #random_li_element.click()
-    # random_li_element = driver.find_element_by_xpath(ulist_funding_options_xpath + "/li[" + str(random_number) + "]")
-    # random_li_element.click()
-    # time.sleep(2)
+                                    #//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div[4]/div/div[1]/div/div/div[2]/div[3]
+    funding_option_element_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div" + "[" + str(actual_positon) + "]"
+    funding_option_1_element = funding_option_element_xpath + "/div/div[1]/div/div/div[2]/div[3]"#/td[1]/div/div/div[2]/button"
+    driver.find_element_by_xpath(funding_option_1_element).click()
+    driver.implicitly_wait(5)
 
-    gbp_elem_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tbody/tr" + "[" + str(
+    #driver.implicitly_wait(5)
+    #/html/body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tbody/tr[1]/td[1]/div/div/ul/li[3]
+    #//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div[4]/div/div[1]/div/div/div[2]/div[4]
+    ulist_funding_options_xpath = "/body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div" + "[" + str(actual_positon) + "]"
+    ulist_funding_options_element = ulist_funding_options_xpath + "/div/div[1]/div/div/div[2]/div[4]"
+    driver.find_element_by_xpath(ulist_funding_options_element).click()
+    #ulist_funding_options_element = driver.find_element_by_xpath(ulist_funding_options_xpath)
+    funding_options_elements = ulist_funding_options_element.find_elements_by_tag_name("li")
+
+    random_number = 0
+    if len(funding_options_elements) > 2:
+        random_number = random.randint(1, len(funding_options_elements) - 1)
+    #random_li_element = funding_options_elements[random_number]
+    #random_li_element.click()
+    random_li_element = driver.find_element_by_xpath(ulist_funding_options_xpath + "/li[" + str(random_number) + "]")
+    random_li_element.click()
+    time.sleep(2)
+
+                      #//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div[3]/div/div[2]/div/div[2]/input
+    gbp_elem_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div" + "[" + str(
         actual_positon) + "]"
-    gbp_text_elem_xpath = gbp_elem_xpath + "/td[2]/div/div[2]/input"
+    gbp_text_elem_xpath = gbp_elem_xpath + "/div/div[2]/div/div[2]/input" #/td[2]/div/div[2]/input"
     driver.find_element_by_xpath(gbp_text_elem_xpath).clear()
     driver.find_element_by_xpath(gbp_text_elem_xpath).send_keys(amount)
     time.sleep(2)

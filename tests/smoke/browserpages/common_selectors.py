@@ -36,15 +36,13 @@ DOMESTIC_HEADER = {
             By.CSS_SELECTOR, "#header-cookie-notice a", is_visible=False
         ),
         # global header
-        "global header": Selector(By.ID, "great-global-header"),
-        "great global logo": Selector(By.ID, "great-global-header-logo"),
-        "for uk businesses": Selector(By.ID, "great-global-header-domestic-link"),
-        "for international businesses": Selector(
-            By.ID, "great-global-header-international-link"
-        ),
+        "global header": Selector(By.ID, "body > header > div.atlas-header__main > div > a > img"),
+        "great global logo": Selector(By.CSS_SELECTOR, "body > header > div.atlas-header__main > div > a > img"),
+        # "for uk businesses": Selector(By.ID, "great-global-header-domestic-link"),
+        # "for international businesses": Selector(By.ID, "great-global-header-international-link"),
         # header menu
         "header menu": Selector(By.CSS_SELECTOR, ".menu"),
-        "invest in great logo": Selector(By.ID, "great-header-logo"),
+        "invest in great logo": Selector(By.ID, "body > header > div.atlas-header__main > div > a > img"),
         "advice": Selector(By.ID, "header-advice", type=ElementType.LINK),
         "markets": Selector(By.ID, "header-markets", type=ElementType.LINK),
         "services": Selector(By.ID, "header-services", type=ElementType.LINK),

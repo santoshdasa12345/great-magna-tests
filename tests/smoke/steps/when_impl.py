@@ -589,6 +589,7 @@ def actor_decides_to_enter_email_address_and_click_login(
     email_address = str(email_address).strip()  # trimming
     password = str(password).strip()  # trimming
     page.login(context.driver, email_address=email_address, password=password)
+    time.sleep(100)
 
 
 def actor_decides_to_enter_email_address_and_click_sign_up(

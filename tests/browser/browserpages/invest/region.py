@@ -46,15 +46,15 @@ SubURLs = {
 
 SELECTORS = {
     "regional breadcrumbs": {
-        "great.gov.uk international": Selector(
-            By.CSS_SELECTOR, "nav.breadcrumbs ol > li:nth-child(1) > a"
-        ),
-        "about the uk": Selector(
-            By.CSS_SELECTOR, "nav.breadcrumbs ol > li:nth-child(2) > a"
-        ),
-        "regions": Selector(
-            By.CSS_SELECTOR, "nav.breadcrumbs ol > li:nth-child(3) > a"
-        ),
+        # "great.gov.uk international": Selector(
+        #     By.CSS_SELECTOR, "nav.breadcrumbs ol > li:nth-child(1) > a"
+        # ),
+        # "about the uk": Selector(
+        #     By.CSS_SELECTOR, "nav.breadcrumbs ol > li:nth-child(2) > a"
+        # ),
+        # "regions": Selector(
+        #     By.CSS_SELECTOR, "nav.breadcrumbs ol > li:nth-child(3) > a"
+        # ),
     }
 }
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
@@ -92,3 +92,6 @@ def should_see_content_for(driver: WebDriver, region_name: str):
         driver.current_url,
     ):
         assert region_name.lower() in source.lower()
+
+def should_see_following_sections(driver: WebDriver, names: List[str]):
+    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

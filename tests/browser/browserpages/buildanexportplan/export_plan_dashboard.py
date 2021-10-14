@@ -45,7 +45,8 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"export-plan-dashboard\"]/div[1]/div/a/div[2]/h3"
         ),
         "business objectives": Selector(
-            By.CSS_SELECTOR, "#export-plan-dashboard > div:nth-child(2) > div > a > div.p-t-s.p-b-xs.p-h-xs"
+            By.CSS_SELECTOR, "#export-plan-dashboard > div:nth-child(2) > div > a > div.section-list__image-container > img"
+            #"#export-plan-dashboard > div:nth-child(2) > div > a > div.p-t-s.p-b-xs.p-h-xs"
         ),
         "target markets research": Selector(
             By.XPATH, "//*[@id=\"export-plan-dashboard\"]/div[3]/div/a/div[2]"
@@ -60,7 +61,7 @@ SELECTORS = {
             By.XPATH, "//h3[contains(text(),'Costs and pricing')]"
         ),
         "funding and credit": Selector(
-            By.CSS_SELECTOR, "#export-plan-dashboard > div:nth-child(7) > div > a > div.p-t-s.p-b-xs.p-h-xs > p"
+            By.CSS_SELECTOR, "#export-plan-dashboard > div:nth-child(7) > div > a > div.p-xs" #export-plan-dashboard > div:nth-child(7) > div > a > div.p-t-s.p-b-xs.p-h-xs > p"
         ),
         "getting paid": Selector(
             By.XPATH, "//h3[contains(text(),'Getting paid')]"
@@ -88,6 +89,9 @@ SELECTORS = {
         ),
         "dashboard": Selector(
             By.XPATH, "//a[contains(text(),'Dashboard')]"
+        ),
+        "start your free plan": Selector(
+            By.CSS_SELECTOR, "#content > div > div > div > div:nth-child(2) > div > div > a"
         ),
 
     }

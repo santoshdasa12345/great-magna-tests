@@ -42,7 +42,8 @@ PAGE_TITLE = "Marketing Approach Page"
 SELECTORS = {
     "marketing approach": {
         "open": Selector(
-            By.XPATH, "//span[contains(text(),'open')]"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div/div[2]/div/div[1]/div/button"
+            #"//span[contains(text(),'open')]"
         ),
         "close": Selector(
             By.XPATH, "//span[contains(text(),'close')]"
@@ -51,7 +52,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#target-age-groups > form > ul > li:nth-child(1) > label"
         ),
         "0-14 year olds": Selector(
-            By.CSS_SELECTOR, "#target-age-groups > form > ul > li:nth-child(1) > label"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div/div[2]/div/ul/li[1]/input"
         ),
         "15-19": Selector(
             By.XPATH, "//label[contains(text(),'15-19 year olds')]"
@@ -97,8 +98,8 @@ SELECTORS = {
             By.CSS_SELECTOR, "#route-to-market > div:nth-child(1) > div.text-center > button > i"
         ),
         "marketing resources example": Selector(
-            By.CSS_SELECTOR,
-            "#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
+            By.XPATH,"//*[@id=\"resources\"]/div/div[2]/div[1]/button"
+            #"#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
         ),
         "marketing resources text": Selector(
             By.XPATH, "//textarea[@id='resources']"
@@ -121,12 +122,14 @@ SELECTORS = {
             By.XPATH, "//h4[contains(text(),'Selling direct to your customer')]"
         ),
         "what marketing resources example": Selector(
-            By.CSS_SELECTOR,
-            "#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
+            By.XPATH,
+            "//body/main/div[2]/section[4]/div/div[2]/div/div[1]/div[3]/div/div[1]/button"
+            #"#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
         ),
         "lesson": Selector(
-            By.CSS_SELECTOR,
-            "#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-lesson.button.button--small.button--tertiary.m-r-xxs"
+            By.XPATH,
+            "//body/main/div[2]/section[4]/div/div[2]/div/div[1]/div[1]/div/div/div[1]/div[1]/button"
+            #"#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-lesson.button.button--small.button--tertiary.m-r-xxs"
         ),
         "nav costs and pricing": Selector(
             By.XPATH, "//a[contains(text(),'Costs and pricing')]"
@@ -141,7 +144,8 @@ SELECTORS = {
             By.XPATH, "//button[contains(text(),'Add a target market')]"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"marketing-approach-content\"]/section[1]/div/div/div[2]/a/span"
+            By.XPATH, "//*[@id=\"marketing-approach-content\"]/section[1]/div/div/div[2]/span/a"
+            #"//*[@id=\"getting-paid-content\"]/section[1]/div/div/div[2]/span/a"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
@@ -151,6 +155,9 @@ SELECTORS = {
         ),
         "dashboard": Selector(
             By.XPATH, "//a[contains(text(),'Dashboard')]"
+        ),
+        "choose the right route to market": Selector(
+            By.XPATH, "//body/main/div[2]/section[4]/div/div[2]/div/div/div[1]/div/div/div[1]/div[2]/a"
         ),
 
     }

@@ -1,5 +1,6 @@
 @domestic
 @markets
+  @markets_1
 @allure.suite:Domestic
 
 Feature: Domestic - Market guides

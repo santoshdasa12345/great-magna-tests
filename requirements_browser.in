@@ -7,6 +7,7 @@ directory-api-client
 directory-cms-client
 directory-sso-api-client
 docopt
+langdetect
 notifications-python-client
 pillow
 requests

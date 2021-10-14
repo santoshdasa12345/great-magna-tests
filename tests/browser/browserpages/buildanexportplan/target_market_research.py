@@ -57,19 +57,19 @@ SELECTORS = {
             By.XPATH, "//button[contains(text(),'Confirm')]"
         ),
         "describe the consumer demand example": Selector(
-            By.CSS_SELECTOR, "#target-markets-research > div:nth-child(1) > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
+            By.XPATH, "//body/main/div[2]/section[4]/div/div[2]/form/div[1]/div[2]/div[1]/button[1]"
         ),
         "describe the consumer demand": Selector(
             By.CSS_SELECTOR, "#demand"
         ),
         "Who are your competitors example": Selector(
-            By.CSS_SELECTOR, "#target-markets-research > div:nth-child(2) > div.learning > div.learning__buttons.m-b-xs > button"
+            By.CSS_SELECTOR, "#target-markets-research > div:nth-child(2) > div.learning > div.learning__buttons > button.button-example.button.button--small.button--tertiary.m-r-xxs.m-b-xs"
         ),
         "Who are your competitors": Selector(
             By.CSS_SELECTOR, "#competitors"
         ),
         "What are the product trends example": Selector(
-            By.CSS_SELECTOR, "#target-markets-research > div:nth-child(3) > div.learning > div.learning__buttons.m-b-xs > button"
+            By.XPATH, "//*[@id=\"target-markets-research\"]/div[3]/div[2]/div[1]/button"
         ),
         "What are the product trends": Selector(
             By.CSS_SELECTOR, "#trend"
@@ -78,7 +78,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#resources > div > div.m-b-xs > button"
         ),
         "What’s your unique selling proposition example": Selector(
-            By.CSS_SELECTOR, "#target-markets-research > div:nth-child(4) > div.learning > div.learning__buttons.m-b-xs > button"
+            By.CSS_SELECTOR, "#target-markets-research > div:nth-child(4) > div.learning > div.learning__buttons > button"
         ),
         "What’s your unique selling proposition": Selector(
             By.CSS_SELECTOR, "#unqiue_selling_proposition"
@@ -88,7 +88,7 @@ SELECTORS = {
         ),
         "export plan home": Selector(
             By.XPATH,
-            "//*[@id=\"adapting-your-product-content\"]/section[7]/div/div/div[2]/div[2]/a/span"
+            "//*[@id=\"target-markets-research-content\"]/section[5]/div/div/div[2]/div[2]/a" #//*[@id=\"adapting-your-product-content\"]/section[7]/div/div/div[2]/div[2]/a/span"
         ),
         "what’s the average price for your product": Selector(
             By.CSS_SELECTOR, "#average_price", type=ElementType.INPUT
@@ -97,7 +97,10 @@ SELECTORS = {
             By.XPATH, "//h4[contains(text(),'Using what you know to help inform your positionin')]"
         ),
         "work out customer demand": Selector(
-            By.XPATH, "//h4[contains(text(),'Work out customer demand – how much might you sell')]"
+            By.XPATH, "//body/main/div[2]/section[4]/div/div[2]/form/div[1]/div[2]/div[2]/a/div/h4" #//h4[contains(text(),'Work out customer demand – how much might you sell')]"
+        ),
+        "work out customer demand lesson": Selector(
+            By.XPATH, "//body/main/div[2]/section[4]/div/div[2]/form/div[1]/div[2]/div[1]/button[2]"
         ),
         "understand market trends": Selector(
             By.XPATH, "//h4[contains(text(),'Understand market trends')]"
@@ -114,7 +117,8 @@ SELECTORS = {
         ),
         "lesson": Selector(
             By.CSS_SELECTOR,
-            "#target-markets-research > div:nth-child(1) > div.learning > div.learning__buttons.m-b-xs > button.button-lesson.button.button--small.button--tertiary.m-r-xxs"
+            "#target-markets-research > div:nth-child(1) > div.learning > div.learning__buttons > button.button-lesson.button.button--small.button--tertiary.m-r-xxs.m-b-xs"
+            #"#target-markets-research > div:nth-child(1) > div.learning > div.learning__buttons.m-b-xs > button.button-lesson.button.button--small.button--tertiary.m-r-xxs"
         ),
         "add a product": Selector(
             By.XPATH, "//button[contains(text(),'Add a product')]", type=ElementType.INPUT
@@ -129,7 +133,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#search-input", type=ElementType.INPUT
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"target-markets-research-content\"]/section[1]/div/div/div[2]/a/span"
+            By.XPATH, "//*[@id=\"target-markets-research-content\"]/section[1]/div/div/div[2]/span/a"
         ),
         "search next button" : Selector(
             By.XPATH, "//body/div[9]/div/div/form/div[2]/div/span/div/section/div/div/button"
@@ -342,4 +346,23 @@ def fill_out_product(driver: WebDriver, product_name: str):
         search_next_btn.click()
 
         counter += 1
+
+def find_and_click_lesson_link(driver: WebDriver,lesson_name:str):
+    parent_div_lesson_element = driver.find_element_by_id("target-market-research")
+    child_div_elements = parent_div_lesson_element.find_elements_by_class_name("form-group")
+    lesson_name_found = False
+    for form_group_element in child_div_elements:
+        learning_buttons_element = form_group_element.find_element_by_class_name("learning")
+        button_element = learning_buttons_element.find_element_by_tag_name("button")
+        button_element.click()
+        time.sleep(2)
+        learning_content_element = form_group_element.find_element_by_class_name("learning__content")
+        lesson_element = learning_content_element.find_element_by_tag_name("a")
+
+        if lesson_name.lower() in str(lesson_element.text).lower():
+            lesson_name_found = True
+            lesson_element.click()
+            break
+    if lesson_name_found == False:
+        raise Exception("lesson could not be found " + str(lesson_name))
 

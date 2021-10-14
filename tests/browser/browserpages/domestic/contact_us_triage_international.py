@@ -26,7 +26,7 @@ from browserpages.international import (
     international_transition_period_enquiries_contact_us,
     trade_contact_us,
 )
-#from browserpages.invest import contact_us as invest_contact_us
+from browserpages.invest import contact_us as invest_contact_us
 
 NAME = "What would you like to know more about?"
 SERVICE = Service.DOMESTIC
@@ -41,26 +41,26 @@ SELECTORS = {
     "form": {
         "itself": Selector(By.CSS_SELECTOR, "#lede form"),
         "expanding to the uk": Selector(
-            By.ID, "id_choice_0", type=ElementType.RADIO, is_visible=False
+            By.CSS_SELECTOR, "#id_choice_0", type=ElementType.RADIO, is_visible=False
         ),
         "investing capital in the uk": Selector(
-            By.ID, "id_choice_1", type=ElementType.RADIO, is_visible=False
+            By.CSS_SELECTOR, "#id_choice_1", type=ElementType.RADIO, is_visible=False
         ),
         "find a uk business partner": Selector(
-            By.ID, "id_choice_2", type=ElementType.RADIO, is_visible=False
+            By.CSS_SELECTOR, "#id_choice_2", type=ElementType.RADIO, is_visible=False
         ),
         "the transition period": Selector(
-            By.ID, "id_choice_3", type=ElementType.RADIO, is_visible=False
+            By.CSS_SELECTOR, "#id_choice_3", type=ElementType.RADIO, is_visible=False
         ),
         "other": Selector(
-            By.ID, "id_choice_4", type=ElementType.RADIO, is_visible=False
+            By.CSS_SELECTOR, "#id_choice_4", type=ElementType.RADIO, is_visible=False
         ),
         "submit": SUBMIT_BUTTON,
         "back": Selector(By.PARTIAL_LINK_TEXT, "Back", type=ElementType.LINK),
     }
 }
 POs = {
-    #"expanding to the uk": invest_contact_us,
+    "expanding to the uk": invest_contact_us,
     "investing capital in the uk": international_contact_us_capital_invest,
     "find a uk business partner": trade_contact_us,
     "the transition period": international_transition_period_enquiries_contact_us,

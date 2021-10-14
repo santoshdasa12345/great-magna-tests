@@ -37,10 +37,10 @@ from browserpages import (
     common_language_selector,
     domestic,
     # erp,
-    # fas,
+    fas,
     get_page_object,
-    ##invest,
-    # profile,
+    invest,
+    profile,
 )
 from browserpages.common_actions import (
     accept_all_cookies,
@@ -67,7 +67,6 @@ from browserutils.gtm import (
     get_gtm_data_layer_properties,
     replace_string_representations,
 )
-
 
 def should_be_on_page(context: Context, actor_alias: str, page_name: str):
     page = get_page_object(page_name)
@@ -398,7 +397,9 @@ def actor_decides_to_select_funding_options_on_page(context, actor_alias, positi
 
 
 def actor_decides_to_enter_product_name(context, actor_alias, product_name, page_name):
+    logging.debug(f"Page name = {page_name}")
     page = get_page_object(page_name)
+    logging.debug(f"Page name = {page.NAME}")
     has_action(page, "fill_out_product")
     page.fill_out_product(context.driver, product_name)
 
@@ -482,8 +483,8 @@ def generic_fill_out_and_submit_form(
         form_name: str = None,
         check_captcha_dev_mode: bool = True,
 ):
-    # if check_captcha_dev_mode:
-    #     assert_catcha_in_dev_mode(context.driver)
+    if check_captcha_dev_mode:
+        assert_catcha_in_dev_mode(context.driver)
     actor = get_actor(context, actor_alias)
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "generate_form_details")
@@ -557,7 +558,8 @@ def actor_should_see_country_details_on_page(context, actor_alias, page_name, on
 def actor_should_see_last_visited_page_under_section_on_page(context, actor_alias, text_to_see, section_name,
                                                              page_name):
     page = get_last_visited_page(context, actor_alias)
-    # page_to_be_landed = get_page_object(page_name)
+    page_to_be_landed = get_page_object(page_name)
+    print(page.NAME)
     if page.NAME != text_to_see:
         raise Exception("Last visited page is incorrect - " + str(page.NAME))
 
@@ -1370,3 +1372,25 @@ def generic_search_for_phrase(context: Context, actor_alias: str, phrase: str):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "search")
     page.search(context.driver, phrase)
+
+
+def actor_decides_to_click_on_page_with_lesson_link(
+        context: Context, actor_alias: str, lesson_name: str, *, page_name: str = None, wait_for_it: bool = True
+):
+    if page_name:
+        page = get_page_object(page_name)
+    else:
+        page = get_last_visited_page(context, actor_alias)
+    has_action(page, "find_and_click_lesson_link")
+    page.find_and_click_lesson_link(context.driver, lesson_name)
+
+def actor_decides_to_click_continue_on_page(context:Context,page_name):
+    page = get_page_object(page_name)
+    has_action(page, "click_on_continue")
+    page.click_on_continue(context.driver)
+
+def actor_decides_to_select_random_product_on_page(
+        context, actor_alias):
+    page = get_last_visited_page(context, actor_alias)
+    has_action(page, "find_and_select_random_product_and_click_continue")
+    page.find_and_select_random_product_and_click_continue(context.driver)

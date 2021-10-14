@@ -895,7 +895,7 @@ def selectors_by_group(form_selectors: Dict[str, Selector]) -> Dict[str, Selecto
 
 
 def assert_catcha_in_dev_mode(driver: WebDriver):
-    dev_site_key = "6LcuZsQZAAAAAKWWm_ZF-H17wTR-H0fV0juoQ8jU"#"6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+    dev_site_key = "P0l23UFBIiMtCxkK8cjupfVzPa7LVtAJminOINLxNLK319WfVac28mnvbJuGG6sO"#6LcuZsQZAAAAAKWWm_ZF-H17wTR-H0fV0juoQ8jU"#"6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
     try:
         g_recaptcha = find_element(
             driver,
@@ -1244,7 +1244,7 @@ def generic_set_basic_auth_creds(driver: WebDriver, *, service_name: str = None)
 #     if service_name == "ERP":
 #         base_url = URLs.ERP_LANDING.absolute
 #     else:
-#         base_url = URLs.DOMESTIC_LANDING.absolute
+#         base_url = URLs.GREAT_MAGNA_START.absolute
 #     parsed = urlparse(base_url)
 #     with_creds = f"{parsed.scheme}://{BASICAUTH_USER}:{BASICAUTH_PASS}@{parsed.netloc}/automated-test-auth"
 #     logging.debug(f"Doing basic auth")
@@ -1253,7 +1253,7 @@ def generic_set_basic_auth_creds(driver: WebDriver, *, service_name: str = None)
 #     assertion_msg = f"Access is still denied after authentication attempt → {base_url}"
 #     with selenium_action(driver, assertion_msg):
 #         assert "ok" in driver.page_source
-#
+
 def revisit_page_on_access_denied(driver: WebDriver, page: ModuleType, page_name: str):
     if access_was_denied(driver.page_source):
         logging.debug(
