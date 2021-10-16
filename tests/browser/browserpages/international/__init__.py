@@ -15,8 +15,6 @@ __all__ = [
     "international_transition_period_enquiries_contact_us_thank_you",
     "news_international",
     "news_international_article",
-    "region",
-    "regions_landing",
     "trade_contact_us",
     "trade_contact_us_thank_you",
 ]

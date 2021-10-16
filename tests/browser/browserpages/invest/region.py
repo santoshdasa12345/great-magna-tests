@@ -55,7 +55,27 @@ SELECTORS = {
         # "regions": Selector(
         #     By.CSS_SELECTOR, "nav.breadcrumbs ol > li:nth-child(3) > a"
         # ),
-    }
+    },
+    "expanding your business": {
+        "itself": Selector(
+            By.CSS_SELECTOR, "#content > section:nth-child(4)"
+        ),
+    },
+    "related opportunities": {
+        "itself": Selector(
+            By.CSS_SELECTOR, "#content > section:nth-child(5)"
+        ),
+    },
+    "strategic markets": {
+        "itself": Selector(
+            By.CSS_SELECTOR, "#content > section:nth-child(6)"
+        ),
+    },
+    "case study": {
+        "itself": Selector(
+            By.CSS_SELECTOR, "#content > section:nth-child(7)"
+        ),
+    },
 }
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
 SELECTORS.update(common_selectors.INTERNATIONAL_HERO)

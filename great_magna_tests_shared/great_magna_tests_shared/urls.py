@@ -801,6 +801,9 @@ class URLs(Enum):
     INTERNATIONAL_INDUSTRY_CYBER_SECURITY = InternationalUrl(
         "content/investment/sectors/cyber-security/"
     )
+    INTERNATIONAL_INDUSTRY_CIVIL_NUCLEAR = InternationalUrl(
+        "content/investment/sectors/civil-nuclear/"
+    )
     INTERNATIONAL_INDUSTRY_DATA_ANALYTICS = InternationalUrl(
         "content/investment/sectors/data-analytics/"
     )
@@ -861,8 +864,8 @@ class URLs(Enum):
     INTERNATIONAL_INDUSTRY_NUCLEAR_ENERGY = InternationalUrl(
         "content/investment/sectors/nuclear-energy/"
     )
-    INTERNATIONAL_INDUSTRY_OFFSHORE_WIND_ENERGY = InternationalUrl(
-        "content/investment/sectors/offshore-wind-energy/"
+    INTERNATIONAL_INDUSTRY_OFFSHORE_WIND = InternationalUrl(
+        "content/investment/sectors/offshore-wind/"
     )
     INTERNATIONAL_INDUSTRY_OIL_AND_GAS = InternationalUrl(
         "content/investment/sectors/oil-and-gas/"
@@ -884,6 +887,9 @@ class URLs(Enum):
     )
     INTERNATIONAL_INDUSTRY_TECHNOLOGY = InternationalUrl(
         "content/investment/sectors/technology/"
+    )
+    INTERNATIONAL_INDUSTRY_ZERO_EMISSION_VEHICLES = InternationalUrl(
+        "content/investment/sectors/zero-emission-vehicles/"
     )
     INTERNATIONAL_HEALTHCHECK_FORMS_API = InternationalUrl("healthcheck/forms-api/")
     INTERNATIONAL_HEALTHCHECK_SENTRY = InternationalUrl("healthcheck/sentry/")

@@ -10,5 +10,7 @@ __all__ = [
     "hpo_contact_us",
     "hpo_contact_us_thank_you",
     "pixels",
+    "region",
+    "regions_landing",
     "uk_setup_guide_pages",
 ]

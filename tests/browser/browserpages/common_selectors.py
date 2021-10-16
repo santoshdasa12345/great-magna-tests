@@ -328,7 +328,7 @@ INTERNATIONAL_FOOTER = {
 
 INTERNATIONAL_HERO = {
     "hero": {
-        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero > img"),
+        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero"),
         "heading": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero__heading"),
     }
 }
