@@ -59,7 +59,7 @@ step_save_test_related_env_vars: &step_save_test_related_env_vars
   run:
     name: Saving environment variables that control test execution
     when: always
-      command: |
+    command: |
       . venv/bin/activate
       echo "Saving environment variables that control test execution"
       ./save_test_related_env_vars.py
@@ -214,10 +214,10 @@ steps_setup_env_for_parallel_browser_tests_using_circleci: &steps_setup_env_for_
     - browser-tools/install-chrome
     - browser-tools/install-chromedriver
     - run:
-  command: |
-  google-chrome --version
-  chromedriver --version
-  name: Check install
+        command: |
+          google-chrome --version
+          chromedriver --version
+        name: Check install
     - *step_checkout_repo
     - *step_install_requirements_for_parallel_browser_tests
     - *step_cache_browser_tests_requirements
@@ -249,17 +249,17 @@ steps_run_parallel_browser_tests: &steps_run_parallel_browser_tests
     - browser-tools/install-chrome
     - browser-tools/install-chromedriver
     - run:
-  command: |
-  google-chrome --version
-  chromedriver --version
-  name: Check install
-          - *step_restore_cached_browser_tests_requirements
-          - *step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests
-          - *step_run_browser_tests_in_parallel
-          - persist_to_workspace:
-  root: .
-  paths:
-    - .
+        command: |
+          google-chrome --version
+          chromedriver --version
+        name: Check install
+    - *step_restore_cached_browser_tests_requirements
+    - *step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests
+    - *step_run_browser_tests_in_parallel
+    - persist_to_workspace:
+        root: .
+        paths:
+          - .
 jobs:
   setup_env_for_parallel_browser_tests_using_circleci:
     working_directory: ~/great_magna_tests
