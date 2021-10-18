@@ -55,10 +55,10 @@ SELECTORS = {
             By.XPATH, "//label[contains(text(),'Yes')]"
         ),
         "open case study" :Selector(
-            By.XPATH, "//button[contains(text(),'Open case study')]"
+            By.XPATH, "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button"
         ),
         "close case study": Selector(
-            By.XPATH, "//*[@id=\"case_study\"]/div/button"
+            By.XPATH, "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button"
         ),
         "view all lessons": Selector(
             By.XPATH, "//a[contains(text(),'View all lessons')]"

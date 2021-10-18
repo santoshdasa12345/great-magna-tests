@@ -66,7 +66,7 @@ SELECTORS = {
             By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[2]/textarea"#//textarea[@id='incoterms_notes']",type=ElementType.INPUT
         ),
         "section complete": Selector(
-            By.XPATH, "//label[contains(text(),'Yes')]"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "travel plan": Selector(
             By.XPATH, "//*[@id=\"getting-paid-content\"]/section[4]/div/div/div[2]/a/span"

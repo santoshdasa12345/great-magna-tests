@@ -70,7 +70,7 @@ SELECTORS = {
             By.XPATH, "//tbody/tr[2]/td[1]/button[1]/i[1]"
         ),
         "section complete": Selector(
-            By.XPATH, "//label[contains(text(),'Yes')]"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "getting paid": Selector(
             By.XPATH, "//span[contains(text(),'Getting paid')]"

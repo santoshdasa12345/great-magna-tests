@@ -49,34 +49,34 @@ SELECTORS = {
             By.XPATH, "//span[contains(text(),'Understand duties and taxes')]"
         ),
         "understand local market regulations for products": Selector(
-            By.CSS_SELECTOR, "#\31 05 > ul > li:nth-child(3) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[3]/a"
         ),
         "using harmonised system or commodity codes": Selector(
-            By.CSS_SELECTOR, "#\31 05 > ul > li:nth-child(4) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[4]/a"
         ),
         "applying rules sof orgin to your product": Selector(
-            By.CSS_SELECTOR, "#\31 05 > ul > li:nth-child(4) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[5]/a"
         ),
         "choose which incoterms are right for you": Selector(
-            By.XPATH, "//span[contains(text(),'Choose which Incoterms are right for you')]"
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[1]/a"
         ),
         "using freight forwarders": Selector(
-            By.CSS_SELECTOR, "#\31 10 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[2]/a"
         ),
         "regulations around ecommerce": Selector(
-            By.CSS_SELECTOR, "#\31 12 > ul > li:nth-child(1) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[3]/div/ul/li[1]/a"
         ),
         "regulations around supplying a service": Selector(
-            By.CSS_SELECTOR, "#\31 12 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[3]/div/ul/li[2]/a"
         ),
         "understand data regulations and data protection": Selector(
-            By.CSS_SELECTOR, "#\31 12 > ul > li:nth-child(3) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[3]/div/ul/li[3]/a"
         ),
         "how to make uk customs declaration": Selector(
-            By.CSS_SELECTOR, "#\31 22 > ul > li:nth-child(1) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[1]/a"
         ),
         "understand export licensing": Selector(
-            By.CSS_SELECTOR, "#\31 22 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[2]/a"
         ),
     }
 }

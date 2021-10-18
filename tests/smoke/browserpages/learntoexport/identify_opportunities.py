@@ -70,7 +70,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#content > div > div.bg-blue-deep-80 > a > i"
         ),
         "top back": Selector(
-            By.XPATH, "//*[@id=\"content\"]/div/a/i"
+            By.XPATH, "//body/main/div/div[1]/div/div[1]/a"
         ),
         "understand market barriers": Selector(
             By.XPATH, "//span[contains(text(),'Understand market barriers')]"

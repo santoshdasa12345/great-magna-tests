@@ -43,7 +43,7 @@ PAGE_TITLE = "Adapting your product or service"
 SELECTORS = {
     "adapting your product or service": {
         "lesson yes checkbox": Selector(
-            By.XPATH, "//label[contains(text(),'Yes')]"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "continue learning": Selector(
             By.XPATH, "//a[contains(text(),'Continue learning')]"
@@ -52,13 +52,13 @@ SELECTORS = {
             By.CSS_SELECTOR, "#content > div > div.bg-blue-deep-80 > a > i"
         ),
         "top back": Selector(
-            By.XPATH, "//*[@id=\"content\"]/div/a/i"
+            By.XPATH, "//body/main/div/div[1]/div/div[1]/a"
         ),
         "open case study": Selector(
-            By.XPATH, "//button[contains(text(),'Open case study')]"
+            By.XPATH, "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button"
         ),
         "close case study": Selector(
-            By.XPATH, "//*[@id=\"case_study\"]/div/button"
+            By.XPATH, "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button"
         ),
         "view all lessons": Selector(
             By.XPATH, "//a[contains(text(),'View all lessons')]"

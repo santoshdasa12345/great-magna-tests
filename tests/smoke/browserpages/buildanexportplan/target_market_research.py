@@ -110,7 +110,7 @@ SELECTORS = {
             By.XPATH, "//a[contains(text(),'Adapting Your Product')]"
         ),
         "yes checkbox": Selector(
-            By.XPATH, "//label[contains(text(),'Yes')]"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "lesson": Selector(
             By.CSS_SELECTOR,

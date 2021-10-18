@@ -49,22 +49,22 @@ SELECTORS = {
             By.XPATH, "//span[contains(text(),'Choosing the right export opportunities')]"
         ),
         "move from accidental exporting to strategic exporting": Selector(
-            By.CSS_SELECTOR, "#\35 5 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[2]/a"
         ),
         "in market research": Selector(
             By.XPATH, "//span[contains(text(),'In-market research')]"
         ),
         "online research": Selector(
-            By.CSS_SELECTOR, "#\35 6 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[2]/a"
         ),
         "Work out customer demand": Selector(
-            By.CSS_SELECTOR, "#\35 9 > ul > li:nth-child(1) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[3]/div/ul/li[1]/a"
         ),
         "understand your market size and its segments": Selector(
-            By.CSS_SELECTOR, "#\35 9 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[3]/div/ul/li[2]/a"
         ),
         "understanding the competition": Selector(
-            By.CSS_SELECTOR, "#\36 4 > ul > li > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li/a"
         ),
         "module_progress": Selector(
             By.CSS_SELECTOR, "#learn-root > section.learn__single-category-header > div > div > div:nth-child(1) > div.learn__single-category-header-content > div.learn__category-progress-container"
@@ -82,25 +82,25 @@ SELECTORS = {
             By.CSS_SELECTOR, "#learn-root > span > a"
         ),
         "research current market conditions": Selector(
-            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(1) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[1]/a"
         ),
         "ease of entry into a new market": Selector(
-            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[2]/a"
         ),
         "research local infrastructure": Selector(
-            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(3) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[3]/a"
         ),
         "adapting your product or service": Selector(
-            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(4) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[4]/a"
         ),
         "information you need to choose a target country": Selector(
-            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(5) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[5]/a"
         ),
         "customer demand vs ease of entry": Selector(
-            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(6) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[6]/a"
         ),
         "research free trade agreements": Selector(
-            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(7) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[7]/a"
         ),
         "placeholder lesson": Selector(
             By.XPATH, "//*[@id=\"64\"]/ul/li[2]/a"

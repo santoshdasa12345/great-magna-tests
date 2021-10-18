@@ -182,7 +182,7 @@ SELECTORS = {
             "#cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.grid > div:nth-child(2) > div > h3"
         ),
         "section complete": Selector(
-            By.XPATH, "//label[contains(text(),'Yes')]"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "funding and credit": Selector(
             By.CSS_SELECTOR,

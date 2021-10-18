@@ -82,7 +82,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#about-your-business-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > div.m-t-l > a"
         ),
         "move from accidental exporting to strategic exporting": Selector(
-            By.XPATH, "//*[@id=\"about-your-business-content\"]/section[3]/div/div[1]/div/a/div/p"
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[2]/a/span[1]"
         ),
         "your business performance label": Selector(
             By.CSS_SELECTOR, "#about-your-business-form > div.select.m-b-l > div > label"

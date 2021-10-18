@@ -109,7 +109,7 @@ SELECTORS = {
             "//body/main[@id='content']/div[@id='sidebar-content']/nav[@id='collapseNav']/div[1]/button[1]/i[1]"
         ),
         "section complete": Selector(
-            By.XPATH, "//label[contains(text(),'Yes')]"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "costs and pricing": Selector(
             By.XPATH, "//span[contains(text(),'Costs and pricing')]"

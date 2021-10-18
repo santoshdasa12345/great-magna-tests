@@ -68,7 +68,7 @@ SELECTORS = {
             By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[8]/a"
         ),
         "understand the local business culture": Selector(
-            By.CSS_SELECTOR, "#\37 9 > ul > li > a"
+            By.CSS_SELECTOR, "//body/main/div/section[2]/ol/li[2]/div/ul/li/a"
         ),
         "understand product liability": Selector(
             By.XPATH, "//span[contains(text(),'Understand product liability')]"
@@ -77,13 +77,13 @@ SELECTORS = {
             By.XPATH, "//span[contains(text(),'Protect your intellectual property abroad')]"
         ),
         "prepare for a trade mission": Selector(
-            By.CSS_SELECTOR, "#\38 5 > ul > li:nth-child(1) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[1]/a"
         ),
         "prepare for a trade show as an attendee": Selector(
-            By.CSS_SELECTOR, "#\38 5 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[2]/a"
         ),
         "prepare for a trade show as an exhibitor": Selector(
-            By.CSS_SELECTOR, "#\38 5 > ul > li:nth-child(3) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[3]/a"
         ),
         "module_progress": Selector(
             By.CSS_SELECTOR, "#learn-root > section.learn__single-category-header > div > div > div:nth-child(1) > div.learn__single-category-header-content > div.learn__category-progress-container"
@@ -95,22 +95,22 @@ SELECTORS = {
             By.CSS_SELECTOR, "#learn-root > section > a:nth-child(3) > article > div > div.learn__category-content.learn__category-content--progress-bar > div.learn__category-progress-container > div"
         ),
         "pitching and tendering ina new market": Selector(
-            By.CSS_SELECTOR, "#\31 00 > ul > li:nth-child(1) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[6]/div/ul/li[1]/a"
         ),
         "how to draft a contract": Selector(
             By.XPATH, "//span[contains(text(),'How to draft a contract')]"
         ),
         "using samples demos and prototypes": Selector(
-            By.CSS_SELECTOR, "#\31 00 > ul > li:nth-child(3) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[6]/div/ul/li[3]/a"
         ),
         "how to handle price negotiations": Selector(
-            By.CSS_SELECTOR, "#\31 00 > ul > li:nth-child(4) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[6]/div/ul/li[4]/a"
         ),
         "protect your business from bribery and corruption": Selector(
             By.XPATH, "//span[contains(text(),'Protect your business from bribery and corruption')]"
         ),
         "how to operate with business integrity": Selector(
-            By.XPATH, "//*[@id=\"95\"]/ul/li[2]/a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[2]/a"
         ),
         "protect your data abroad": Selector(
             By.XPATH, "//span[contains(text(),'Protect your data abroad')]"
@@ -125,34 +125,34 @@ SELECTORS = {
             By.XPATH, "//button[contains(text(),'Ok')]"
         ),
         "adapting your website for export": Selector(
-            By.CSS_SELECTOR, "#\33 92 > ul > li:nth-child(1) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[1]/a"
         ),
         "how to increase sales on your ecommerce website": Selector(
-            By.CSS_SELECTOR, "#\33 92 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[2]/a"
         ),
         "understanding ecommerce platforms": Selector(
-            By.CSS_SELECTOR, "#\33 92 > ul > li:nth-child(3) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[3]/a"
         ),
         "using online marketplaces": Selector(
-            By.CSS_SELECTOR, "#\33 92 > ul > li:nth-child(4) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[4]/a"
         ),
         "how to localise your online market place": Selector(
-            By.CSS_SELECTOR, "#\33 92 > ul > li:nth-child(5) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[5]/a"
         ),
         "how to manage your inventory for multiple online channels": Selector(
-            By.CSS_SELECTOR, "#\33 92 > ul > li:nth-child(6) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[6]/a"
         ),
         "how to prepare for b2b crossborder sales": Selector(
-            By.CSS_SELECTOR, "#\33 92 > ul > li:nth-child(7) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[7]/a"
         ),
         "how to create digital marketing strategy": Selector(
-            By.CSS_SELECTOR, "#\34 00 > ul > li:nth-child(1) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[8]/div/ul/li[1]/a"
         ),
         "using social media to promote and sell internationally": Selector(
-            By.CSS_SELECTOR, "#\34 00 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[8]/div/ul/li[2]/a"
         ),
         "using email marketing for international audiences": Selector(
-            By.CSS_SELECTOR, "#\34 00 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[8]/div/ul/li[3]/a"
         ),
     }
 }

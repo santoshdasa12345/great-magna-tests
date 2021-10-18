@@ -28,7 +28,7 @@ SELECTORS = {
         "dit logo": Selector(By.CSS_SELECTOR, "body > header > div.atlas-header__global > div > img"),
         "great logo": Selector(By.CSS_SELECTOR, "body > header > div.atlas-header__main > div > a > img"),
         "header": Selector(By.CSS_SELECTOR, "body > header > div.atlas-header__main"),
-        "get started": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > div > a"),
+        "get started": Selector(By.CSS_SELECTOR, "#learn-root > section > article:nth-child(2) > a"),
         "invest in the uk": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)"),
         "buy from the uk": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)"),
         "contact dit": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)"),

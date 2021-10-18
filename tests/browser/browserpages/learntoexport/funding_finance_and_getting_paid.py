@@ -46,22 +46,22 @@ SELECTORS = {
             By.XPATH, "//span[contains(text(),'Choose the right funding and credit options')]"
         ),
         "avoid cashflow challenges when exporting": Selector(
-            By.CSS_SELECTOR, "#\31 18 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[2]/a"
         ),
         "insure against non payment": Selector(
-            By.CSS_SELECTOR, "#\31 20 > ul > li:nth-child(1) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[1]/a"
         ),
         "create an export invoice": Selector(
-            By.CSS_SELECTOR, "#\31 20 > ul > li:nth-child(2) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[2]/a"
         ),
         "decide when to get paid": Selector(
-            By.CSS_SELECTOR, "#\31 20 > ul > li:nth-child(3) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[3]/a"
         ),
         "choose the right payment method": Selector(
             By.XPATH, "//span[contains(text(),'Choose the right payment method')]"
         ),
         "adapting ecommerce payment methods for lcoal markets": Selector(
-            By.CSS_SELECTOR, "#\31 20 > ul > li:nth-child(5) > a"
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[5]/a"
         ),
         "manage exchange rates": Selector(
             By.XPATH, "//span[contains(text(),'Manage exchange rates')]"
