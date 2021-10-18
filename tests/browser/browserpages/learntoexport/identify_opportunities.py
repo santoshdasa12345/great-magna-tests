@@ -49,43 +49,58 @@ SELECTORS = {
             By.XPATH, "//span[contains(text(),'Choosing the right export opportunities')]"
         ),
         "move from accidental exporting to strategic exporting": Selector(
-            By.XPATH, "//span[contains(text(),'Move from accidental exporting to strategic export')]"
+            By.CSS_SELECTOR, "#\35 5 > ul > li:nth-child(2) > a"
         ),
         "in market research": Selector(
             By.XPATH, "//span[contains(text(),'In-market research')]"
         ),
+        "online research": Selector(
+            By.CSS_SELECTOR, "#\35 6 > ul > li:nth-child(2) > a"
+        ),
         "Work out customer demand": Selector(
-            By.XPATH, "//span[contains(text(),'Quantify customer demand – how much might you sell')]"
+            By.CSS_SELECTOR, "#\35 9 > ul > li:nth-child(1) > a"
+        ),
+        "understand your market size and its segments": Selector(
+            By.CSS_SELECTOR, "#\35 9 > ul > li:nth-child(2) > a"
+        ),
+        "understanding the competition": Selector(
+            By.CSS_SELECTOR, "#\36 4 > ul > li > a"
         ),
         "module_progress": Selector(
-            By.XPATH, "#learn-root > section.learn__single-category-header > div > div > div:nth-child(1) > div.learn__single-category-header-content > div.learn__category-progress-container"
+            By.CSS_SELECTOR, "#learn-root > section.learn__single-category-header > div > div > div:nth-child(1) > div.learn__single-category-header-content > div.learn__category-progress-container"
         ),
         "lessons_progress_bar": Selector(
             By.XPATH, "//*[@id=\"55\"]/div/p"
         ),
         "lesson_categories_progress": Selector(
-            By.CSS_SELECTOR, "4. #learn-root > section > a:nth-child(3) > article > div > div.learn__category-content.learn__category-content--progress-bar > div.learn__category-progress-container > div"
+            By.CSS_SELECTOR, "#learn-root > section > a:nth-child(3) > article > div > div.learn__category-content.learn__category-content--progress-bar > div.learn__category-progress-container > div"
         ),
         "bottom back": Selector(
             By.CSS_SELECTOR, "#content > div > div.bg-blue-deep-80 > a > i"
         ),
         "top back": Selector(
-            By.XPATH, "//*[@id=\"content\"]/div/a/i"
+            By.CSS_SELECTOR, "#learn-root > span > a"
         ),
-        "understand market barriers": Selector(
-            By.XPATH, "//span[contains(text(),'Understand market barriers')]"
+        "research current market conditions": Selector(
+            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(1) > a"
         ),
-        "how to assess ease of entry into a new market": Selector(
-            By.XPATH, "//span[contains(text(),'How to assess ease of entry into a new market')]"
+        "ease of entry into a new market": Selector(
+            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(2) > a"
         ),
-        "local infrastructure": Selector(
-            By.XPATH, "//span[contains(text(),'Local infrastructure')]"
+        "research local infrastructure": Selector(
+            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(3) > a"
         ),
-        "understand how you may need to adapt your product": Selector(
-            By.XPATH, "//span[contains(text(),'Understand how you may need to adapt your product ')]"
+        "adapting your product or service": Selector(
+            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(4) > a"
         ),
         "information you need to choose a target country": Selector(
-            By.XPATH, "//span[contains(text(),'Information you need to choose a target country')]"
+            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(5) > a"
+        ),
+        "customer demand vs ease of entry": Selector(
+            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(6) > a"
+        ),
+        "research free trade agreements": Selector(
+            By.CSS_SELECTOR, "#\36 6 > ul > li:nth-child(7) > a"
         ),
         "placeholder lesson": Selector(
             By.XPATH, "//*[@id=\"64\"]/ul/li[2]/a"
