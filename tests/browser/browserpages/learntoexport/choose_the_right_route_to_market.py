@@ -47,7 +47,7 @@ CLOSE_VIDEO = Selector(By.ID, "campaign-section-videoplayer-close")
 SELECTORS = {
     "choose the right route to market": {
         "lesson yes checkbox": Selector(
-            By.CSS_SELECTOR, "#markascomplete_checkbox"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
             #"//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "continue learning": Selector(

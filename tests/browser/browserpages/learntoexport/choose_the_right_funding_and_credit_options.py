@@ -43,13 +43,13 @@ PAGE_TITLE = "Choose the right funding"
 SELECTORS = {
     "Choose the right funding": {
         "lesson yes checkbox": Selector(
-            By.CSS_SELECTOR, "#markascomplete_checkbox"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "continue learning": Selector(
             By.XPATH, "//a[contains(text(),'Continue learning')]"
         ),
         "bottom back": Selector(
-            By.CSS_SELECTOR, "#content > div > div.bg-blue-deep-80 > a > i"
+            By.XPATH, "//body/main/div/div[2]/span/a"
         ),
         "top back": Selector(
             By.XPATH, "//body/main/div/div[1]/div/div[1]/a"

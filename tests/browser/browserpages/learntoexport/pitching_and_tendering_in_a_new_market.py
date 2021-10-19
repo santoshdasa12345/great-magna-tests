@@ -46,7 +46,7 @@ SELECTORS = {
             By.XPATH, "//a[contains(text(),'Continue learning')]"
         ),
         "bottom back": Selector(
-            By.CSS_SELECTOR, "#content > div > div.bg-blue-deep-80 > a > i"
+            By.XPATH, "//body/main/div/div[2]/span/a"
         ),
         "top back": Selector(
             By.XPATH, "//body/main/div/div[1]/div/div[1]/a"

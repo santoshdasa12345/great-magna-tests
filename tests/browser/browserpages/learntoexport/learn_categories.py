@@ -35,6 +35,34 @@ from browserpages.common_actions import (
 )
 
 NAME = "Learn Categories"
+# CASESTUDY = [
+#     "Drinks company creates two new products to serve north american and asian markets",
+#     "Drinks company visits asia to gain invaluable market insights",
+#     "Drink company discovers the benefits of strategic exporting",
+#     "Health supplement maker assessess readiness for overseas markets",
+#     "Food company discovers unexpected demand in the middle east",
+#     "Food company eyes competitors before entering an export market",
+#     "How a food company chose its first target market for europe",
+#     "Mens skincare and grooming brand finds route to success in north american market",
+#     "Listing an global ecommerce sites gives clothing company a flying start",
+#     "Food company benefits from selling direct to large middle east retailer",
+#     "Food company takes its time to choose the right distributor in europe",
+#     "Collaboration sees drink company get its brand into the usa market",
+#     "Drinks company gets proactive to protect its intellectual property in asia",
+#     "Games company discovers new markets at a trade mission",
+#     "Food company gets more out of attending overseas trade shows",
+#     "Food company takes strategic view on global trade shows",
+#     "Drink company knows the importance of logistics for international buyers",
+#     "Games company on setting up international contracts",
+#     "Games company has a clear strategy for price negotiations",
+#     "Food company modifies its packaging to succeed in middle east market",
+#     "Clothing company varies how it covers and pays export duties",
+#     "Food company meets local regulations for middle east and north america",
+#     "Retail company adapts to global customers shipping needs",
+#     "Games company use grants for global expansion",
+#     "Drinks company takes a varied approach to getting paid in different markets",
+#
+# ]
 SERVICE = Service.LEARNTOEXPORT
 TYPE = PageType.LESSON
 URL = URLs.GREAT_MAGNA_LEARN_TO_EXPORT.absolute
@@ -269,7 +297,7 @@ SELECTORS = {
         ),
         "prepare to sell": Selector(
             By.CSS_SELECTOR, "#learn-root > section > article:nth-child(4) > a"
-            #"//*[@id=\"learn-root\"]/section/a[3]/article"
+            # "//*[@id=\"learn-root\"]/section/a[3]/article"
         ),
         "regulations licensing and logistics": Selector(
             By.CSS_SELECTOR, "#learn-root > section > article:nth-child(5) > a"
@@ -278,9 +306,12 @@ SELECTORS = {
             By.CSS_SELECTOR, "#learn-root > section > article:nth-child(6) > a"
         ),
         "continue learning": Selector(
-            By.XPATH, "#learn-root > section > article:nth-child(3) > a"
+            By.CSS_SELECTOR, "#learn-root > section > article:nth-child(3) > a"
         ),
 
+    },
+    "export academy": {
+        "itself": Selector(By.CSS_SELECTOR, "#learn-root > section > div > img"),
     },
     "benefits": {
         "self": Selector(By.ID, "benefits"),
@@ -293,7 +324,7 @@ SELECTORS = {
         "invest in the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
         "buy from the uk header": Selector(By.PARTIAL_LINK_TEXT, "Buy from the UK", type=ElementType.LINK),
         "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
-        #"get started": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > div > a"),
+        # "get started": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > div > a"),
         "find investment opportunities": Selector(By.CSS_SELECTOR,
                                                   "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)"),
         "find a uk specialist": Selector(By.CSS_SELECTOR,
@@ -339,22 +370,19 @@ SELECTORS = {
             By.CSS_SELECTOR, "#how-we-help a", type=ElementType.LINK
         ),
     },
-    "contact us": {
-        "self": Selector(By.ID, "get-in-touch"),
-        "heading": Selector(By.CSS_SELECTOR, "#get-in-touch h2"),
-        "text": Selector(By.CSS_SELECTOR, "#get-in-touch p"),
-        "speak to us": Selector(
-            By.CSS_SELECTOR, "#get-in-touch a", type=ElementType.LINK
-        ),
-    },
-    "logo": Selector(
-        By.XPATH, "//body/header/div[2]/div/a"
-    ),
+    # "contact us": {
+    #     "self": Selector(By.ID, "get-in-touch"),
+    #     "heading": Selector(By.CSS_SELECTOR, "#get-in-touch h2"),
+    #     "text": Selector(By.CSS_SELECTOR, "#get-in-touch p"),
+    #     "speak to us": Selector(
+    #         By.CSS_SELECTOR, "#get-in-touch a", type=ElementType.LINK
+    #     ),
+    # },
+    # "logo": Selector(
+    #     By.XPATH, "//body/header/div[2]/div/a"
+    # ),
 }
-SELECTORS.update(common_selectors.INVEST_HEADER)
-SELECTORS.update(common_selectors.INVEST_HERO)
-SELECTORS.update(common_selectors.BREADCRUMBS)
-SELECTORS.update(common_selectors.ERROR_REPORTING)
+SELECTORS.update(common_selectors.GREAT_MAGNA_HEADER)
 SELECTORS.update(common_selectors.INTERNATIONAL_FOOTER)
 
 
@@ -395,8 +423,6 @@ def open_guide(driver: WebDriver, guide_name: str):
     logging.debug("Looking for: {}".format(guide_name))
     guide = find_element(driver, selector, element_name="Guide card", wait_for_it=False)
     guide.click()
-
-
 
 
 def visit(driver: WebDriver, *, page_name: str = None):

@@ -454,3 +454,46 @@ FAS_HERO = {
         "heading": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero__heading"),
     }
 }
+
+GREAT_MAGNA_HEADER = {
+    "header": {
+        # great magna header
+        "great magna header": Selector(By.CSS_SELECTOR, "#header > div.container.container-fluid"),
+        "great magna logo": Selector(By.CSS_SELECTOR, "#header-logo-link"),
+        # header menu
+        "header menu": Selector(By.CSS_SELECTOR, "#header-link-user-profile > div > button"),
+        "dashbaord": Selector(By.CSS_SELECTOR, "#header > div.container.container-fluid > nav > ul > li > a"),
+        "learn to export": Selector(By.ID, "header-link-learning", type=ElementType.LINK),
+        "where to export": Selector(By.ID, "header-link-markets", type=ElementType.LINK),
+        "make an export plan": Selector(By.ID, "header-link-exporting-plan", type=ElementType.LINK),
+        "search box": Selector(
+            By.ID, "magna-header-search-box", type=ElementType.INPUT
+        ),
+        "search button": Selector(
+            By.CSS_SELECTOR,
+            "#magna-header-search-form > button",
+            type=ElementType.BUTTON,
+        ),
+        # sub nav menu
+        "personalisation bar": Selector(By.CSS_SELECTOR, "#header > div.bg-blue-deep-80.shared-personalisation-bar"),
+        "my products": Selector(By.CSS_SELECTOR, "#set-product-button > span:nth-child(1) > button"),
+        "my markets": Selector(By.CSS_SELECTOR, "#set-country-button > span > span > button"),
+    }
+}
+
+GREAT_MAGNA_FOOTER = {
+    "footer": {
+        "itself": Selector(By.CSS_SELECTOR, "#footer"),
+        "contact us": Selector(By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(1) > a"),
+        "privacy and cookies": Selector(By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(2) > a"),
+        "terms and conditions": Selector(By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(3) > a"),
+        "accessibility": Selector(By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(4) > a"),
+        "performance": Selector(By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(5) > a"),
+        "department for international trade on gov.uk": Selector(By.CSS_SELECTOR,
+                                                                 "#footer > nav > ul > li:nth-child(6) > a"),
+        "go to the page for international businesses": Selector(By.ID,
+                                                                "#footer > nav > ul > li:nth-child(7) > a"),
+        "dit footer logo": Selector(By.ID, "#footer > div > div.magna-footer__dit-logo > img"),
+        "copyright notice": Selector(By.CSS_SELECTOR, "#footer > div > div.magna-footer__copy > p"),
+    }
+}

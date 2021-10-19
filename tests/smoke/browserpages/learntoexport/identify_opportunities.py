@@ -67,7 +67,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "4. #learn-root > section > a:nth-child(3) > article > div > div.learn__category-content.learn__category-content--progress-bar > div.learn__category-progress-container > div"
         ),
         "bottom back": Selector(
-            By.CSS_SELECTOR, "#content > div > div.bg-blue-deep-80 > a > i"
+            By.XPATH, "//body/main/div/div[2]/span/a"
         ),
         "top back": Selector(
             By.XPATH, "//body/main/div/div[1]/div/div[1]/a"

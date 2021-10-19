@@ -122,25 +122,25 @@ Feature: GreatMagna - Lessons Page
       | Footer           |
 
 
-  @landing-page
-  @<specific>
-    @cheese_india
-  Scenario Outline: Visitors should be able to find out more about "<specific topic>" and get to "<expected>" page
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Learn to export"
-
-    Given "Robert" visits the "Invest - landing" page
-
-    When "Robert" decides to find out more about "<specific topic>"
-
-    Then "Robert" should be on the "<expected>" page
-
-    Examples:
-      | specific topic          | expected                         |
-      | Choose the right export opportunities                | How a dairy company adapts its cheese for the Chinese market - landing                 |
-      | Move from accidental to strategic exporting | How a dairy company adapts its cheese for the Chinese market - How to set up in the UK |
-      | Find a UK specialist    | ISD - Landing                    |
-      | How we help             | Invest - How we help you expand  |
-      | Contact us              | Invest - Contact us              |
+#  @landing-page
+#  @<specific>
+#    @cheese_india
+#  Scenario Outline: Visitors should be able to find out more about "<specific topic>" and get to "<expected>" page
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Learn to export"
+#
+#    Given "Robert" visits the "Invest - landing" page
+#
+#    When "Robert" decides to find out more about "<specific topic>"
+#
+#    Then "Robert" should be on the "<expected>" page
+#
+#    Examples:
+#      | specific topic          | expected                         |
+#      | Choose the right export opportunities                | How a dairy company adapts its cheese for the Chinese market - landing                 |
+#      | Move from accidental to strategic exporting | How a dairy company adapts its cheese for the Chinese market - How to set up in the UK |
+#      | Find a UK specialist    | ISD - Landing                    |
+#      | How we help             | Invest - How we help you expand  |
+#      | Contact us              | Invest - Contact us              |

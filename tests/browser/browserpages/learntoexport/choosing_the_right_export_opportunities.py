@@ -46,13 +46,13 @@ SELECTORS = {
             By.XPATH, "//a[contains(text(),'Continue learning')]"
         ),
         "bottom back": Selector(
-            By.CSS_SELECTOR, "#content > div > div.bg-blue-deep-80 > a > i"
+            By.XPATH, "//body/main/div/div[2]/span/a"
         ),
         "top back": Selector(
             By.XPATH, "//body/main/div/div[1]/div/div[1]/a"
         ),
         "lesson yes checkbox": Selector(
-            By.CSS_SELECTOR, "#markascomplete_checkbox"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "open case study" :Selector(
             By.XPATH, "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button"

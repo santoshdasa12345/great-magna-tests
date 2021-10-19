@@ -75,6 +75,9 @@ SELECTORS = {
         "create export plan": Selector(
             By.XPATH, "//body/main/div/div[1]/div[2]/button"
         ),
+        "exporting plan 1": Selector(
+            By.CSS_SELECTOR, "#content > div.container > div > div > nav > ul > li:nth-child(1) > article > a"
+        ),
 
 
     }
