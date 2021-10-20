@@ -528,3 +528,18 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
 def fills_out_submit(driver: WebDriver, page_name):
     driver.find_element_by_css_selector("#id_comment").clear()
     driver.find_element_by_css_selector("#id_comment").send_keys("Automated Tests")
+
+def find_and_select_random_export_plan(driver: WebDriver):
+    div_list_export_plan_xpath = driver.find_element_by_xpath("//body/main/div/div/div[1]/div")
+    export_plan_xpath_div_1_elements = div_list_export_plan_xpath.find_elements_by_tag_name("div[1]")
+    random_number = 1
+    if len(export_plan_xpath_div_1_elements) > 2:
+        random_number = random.randint(1, len(export_plan_xpath_div_1_elements) - 1)
+    random_li_element = export_plan_xpath_div_1_elements[random_number]
+    export_plan_xpath_div_2_elements = export_plan_xpath_div_1_elements.find_element_by_tag_name("div")
+    article_element= random_li_element.find_element_by_tag_name("article")
+    article_element.find_element_by_tag_name("a").click()
+
+
+#/html/body/main/div/div/div[1]/div/div[2]/article/a
+#/html/body/main/div/div/div[1]/div/div[3]/article/a

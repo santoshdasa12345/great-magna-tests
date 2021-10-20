@@ -40,14 +40,15 @@ TYPE = PageType.LESSON
 URL = URLs.GREAT_MAGNA_LESSONS_CHOOSE_THE_RIGHT_ROUTE_TO_MARKET.absolute
 PAGE_TITLE = "Choose the right route to market"
 PROMO_VIDEO = Selector(By.CSS_SELECTOR,
-                       "#content > div > div.bg-white > div > div.grid.lesson-body.p-t-xl > div.c-1-2 > div.lesson-hero.media-section > video")
+                       "#content > div > div.bg-white > div > div.grid.lesson-body.p-t-s > div.c-1-2 > div.lesson-hero.media-section > video")
+                       #"#content > div > div.bg-white > div > div.grid.lesson-body.p-t-xl > div.c-1-2 > div.lesson-hero.media-section > video")
                        #"#content > div > div:nth-child(2) > div > div > div > div.c-1-2 > div.lesson-hero.media-section > video")
 CLOSE_VIDEO = Selector(By.ID, "campaign-section-videoplayer-close")
 
 SELECTORS = {
     "choose the right route to market": {
         "lesson yes checkbox": Selector(
-            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
+            By.CSS_SELECTOR, "#mark_as_complete > div > div"
             #"//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "continue learning": Selector(

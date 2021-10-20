@@ -386,13 +386,13 @@ SELECTORS.update(common_selectors.GREAT_MAGNA_HEADER)
 SELECTORS.update(common_selectors.INTERNATIONAL_FOOTER)
 
 
-def visit(driver: WebDriver):
-    go_to_url(driver, URL, NAME)
+# def visit(driver: WebDriver):
+#     go_to_url(driver, URL, NAME)
 
 
-def should_be_here(driver: WebDriver):
-    check_url(driver, URL)
-    logging.debug("All expected elements are visible on '%s' page", PAGE_TITLE)
+# def should_be_here(driver: WebDriver):
+#     check_url(driver, URL)
+#     logging.debug("All expected elements are visible on '%s' page", PAGE_TITLE)
 
 
 def should_see_sections(driver: WebDriver, names: List[str]):

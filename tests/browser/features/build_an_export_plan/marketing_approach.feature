@@ -15,7 +15,8 @@ Feature: GreatMagna - Marketing approach Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
 #     And "Robert" decides to click on element "Add route to market" on page "Build An Export Plan - Marketing approach"
      And "Robert" decides to select random item for "Route to market" on page "Build An Export Plan - Marketing approach"
 
@@ -28,7 +29,8 @@ Feature: GreatMagna - Marketing approach Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" fill business objective details on page "Build An Export Plan - Business Objectives"
           | Position | Startdate  | Enddate    | Objectives | Owner        | PlannedReviews   |
           | 1     | 01/02/2021 | 01/02/2028 | obj1       | obj1-owner   | obj1-plannedreviews |
@@ -46,6 +48,7 @@ Feature: GreatMagna - Marketing approach Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
      Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to delete route to market on page "Build An Export Plan - Marketing approach"
           | Position |
@@ -56,19 +59,21 @@ Feature: GreatMagna - Marketing approach Page
           | 1    |
 
    @allure.link:XOT-1154
-   @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_les_ma
   Scenario:User should be able to click lessons link "Selling direct to your customer"
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "What Marketing resources example" on page "Build An Export Plan - Marketing approach"
+     And "Robert" decides to click on element "Add route to market" on page "Build An Export Plan - Marketing approach"
      And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Marketing approach"
-     And "Robert" decides to click on section "Selling direct to your customer" on page "Build An Export Plan - Marketing approach"
-     And "Robert" should be on the "LearnToExport - Selling direct to your customer" page
-     And "Robert" decides to click on section "Marketing approach" on page "LearnToExport - Selling direct to your customer"
+     And "Robert" decides to click on section "Choose the right route to market" on page "Build An Export Plan - Marketing approach"
+     And "Robert" should be on the "LearnToExport - Choose the right route to market" page
+     And "Robert" decides to click on section "Marketing approach" on page "LearnToExport - Choose the right route to market"
 
    @allure.link:XOT-1155
    @Great_Magna_Export_Plan
@@ -78,6 +83,7 @@ Feature: GreatMagna - Marketing approach Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "open" on page "Build An Export Plan - Marketing approach"
      And "Robert" decides to click on element "0-14 year olds" on page "Build An Export Plan - Marketing approach"
@@ -91,6 +97,7 @@ Feature: GreatMagna - Marketing approach Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Marketing approach"
      And "Robert" decides to click on element "Nav Costs And Pricing" on page "Build An Export Plan - Marketing approach"
@@ -104,7 +111,8 @@ Feature: GreatMagna - Marketing approach Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click section complete on "Build An Export Plan - Marketing approach"
     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Marketing approach"
     And "Robert" should be on the "Build An Export Plan - Costs And Pricing" page
@@ -117,6 +125,7 @@ Feature: GreatMagna - Marketing approach Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Marketing approach"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
@@ -131,7 +140,8 @@ Feature: GreatMagna - Marketing approach Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Marketing approach"
       And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
@@ -159,8 +169,9 @@ Feature: GreatMagna - Marketing approach Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" should be on the "Build An Export Plan - Marketing approach" Page
     And "Robert" decides to click on element "Add route to market" on page "Build An Export Plan - Marketing approach"
    And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Marketing approach"
-     And "Robert" should see "Marketing approach" text under section "Export Plan" on page "GreatMagna - Dashboard"
+#     And "Robert" should see "Marketing approach" text under section "Export Plan" on page "GreatMagna - Dashboard"

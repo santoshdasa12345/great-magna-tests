@@ -14,7 +14,8 @@ Feature: GreatMagna - Adapting Your Product Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Open Data Snapshot" on page "Build An Export Plan - Adapting Your Product"
      #And "Robert" decides to click on element "Hide Data Snapshot" on page "Build An Export Plan - Adapting Your Product"
 
@@ -26,6 +27,7 @@ Feature: GreatMagna - Adapting Your Product Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Adapting Your Product"
      And "Robert" decides to click on section "Adapting your product or service" on page "Build An Export Plan - Adapting Your Product"
@@ -41,7 +43,8 @@ Feature: GreatMagna - Adapting Your Product Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Labelling educational" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" decides to enter text at "Labelling" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" decides to validate entered text at "Labelling" on page "Build An Export Plan - Adapting Your Product"
@@ -74,7 +77,8 @@ Feature: GreatMagna - Adapting Your Product Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Certificate of origin educational" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" decides to enter text at "Certificate of origin" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" decides to validate entered text at "Certificate of origin" on page "Build An Export Plan - Adapting Your Product"
@@ -99,7 +103,8 @@ Feature: GreatMagna - Adapting Your Product Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Adapting Your Product"
      And "Robert" decides to click on element "Nav Marketing Approach" on page "Build An Export Plan - Adapting Your Product"
      And "Robert" should be on the "Build An Export Plan - Marketing Approach" Page
@@ -112,7 +117,8 @@ Feature: GreatMagna - Adapting Your Product Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click section complete on "Build An Export Plan - Adapting Your Product"
      And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Adapting Your Product"
      And "Robert" should be on the "Build An Export Plan - Marketing approach" page
@@ -125,7 +131,8 @@ Feature: GreatMagna - Adapting Your Product Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
@@ -138,7 +145,8 @@ Feature: GreatMagna - Adapting Your Product Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" fill document details on page "Build An Export Plan - Adapting Your Product"
           | Position | DocumentName  |   Notes         |
           | 1        | Vat certif    | Vat certificate |
@@ -155,7 +163,8 @@ Feature: GreatMagna - Adapting Your Product Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
      Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to delete document details on page "Build An Export Plan - Adapting Your Product"
           | Position |
           | 5     |
@@ -172,7 +181,8 @@ Feature: GreatMagna - Adapting Your Product Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Adapting Your Product"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
@@ -193,15 +203,16 @@ Feature: GreatMagna - Adapting Your Product Page
 #  And "Robert" decides to enter country name "India" on the "Build An Export Plan - Adapting Your Product" page
 
      @allure.link:XOT-1042
-   @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_last
   Scenario:User should be able to click on "Open DataSnapshot" on Adapting Your Product page and click on dashboard should see "Adapting Your Product" as last visited page
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" should be on the "Build An Export Plan - Adapting Your Product" Page
-   And "Robert" decides to click on element "Open Data Snapshot" on page "Build An Export Plan - Adapting Your Product"
-     And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Adapting Your Product"
-     And "Robert" should see "Adapting Your Product" text under section "Export Plan" on page "GreatMagna - Dashboard"
+    And "Robert" should be on the "Build An Export Plan - Adapting Your Product" Page
+    And "Robert" decides to click on element "Open Data Snapshot" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Adapting Your Product"
+#    And "Robert" should see "Adapting Your Product" text under section "Export Plan" on page "GreatMagna - Dashboard"

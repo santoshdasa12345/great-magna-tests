@@ -43,13 +43,13 @@ PAGE_TITLE = "How lessons can help"
 SELECTORS = {
     "How lessons can help": {
         "lesson yes checkbox": Selector(
-            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
+            By.CSS_SELECTOR, "#mark_as_complete > div > div"
         ),
         "continue learning": Selector(
             By.XPATH, "//a[contains(text(),'Continue learning')]"
         ),
         "bottom back": Selector(
-            By.XPATH, "//body/main/div/div[2]/span/a"
+            By.CSS_SELECTOR, "#content > div > div.bg-blue-deep-80 > div.container.p-v-s > a"
         ),
         "top back": Selector(
             By.XPATH, "//body/main/div/div[1]/div/div[1]/a"

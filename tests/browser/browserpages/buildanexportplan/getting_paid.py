@@ -37,7 +37,7 @@ from browserpages.common_actions import (
 NAME = "Getting Paid"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
 TYPE = PageType.BUILD_AN_EXPORT_PLAN
-URL = URLs.GREAT_MAGNA_EXPORT_PLAN_GETTING_PAID.absolute
+URL = URLs.GREAT_MAGNA_EXPORT_PLAN_GETTING_PAID.absolute_template
 PAGE_TITLE = "Getting Paid Page"
 
 SELECTORS = {
@@ -101,16 +101,16 @@ SELECTORS = {
         ),
         "choose the right payment method": Selector(
             By.XPATH,
-            "//body[1]/main[1]/div[2]/section[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]/div[1]"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[3]/div[1]/div/div[1]/div[2]/a"
             # //h4[contains(text(),'Choose the right payment method')]"
         ),
         "decide when to get paid": Selector(
             By.XPATH,
-            "//h4[contains(text(),'Decide when to get paid')]"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[1]/div[2]/a"
         ),
         "choose which incoterms are right for you": Selector(
             By.XPATH,
-            "//h4[contains(text(),'Choose which incoterms are right for you')]"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[3]/div[1]/div/div[1]/div[2]/a"
         ),
         "incoterms lesson": Selector(
             By.XPATH,
@@ -135,9 +135,11 @@ def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
 
-def should_be_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=False)
+# def should_be_here(driver: WebDriver):
+#     check_url(driver, URL, exact_match=False)
 
+def should_be_here(driver: WebDriver):
+    check_url_path_matches_template( URL,driver.current_url)
 
 def enter_text(driver: WebDriver, element_name: str):
     text_element = find_element(

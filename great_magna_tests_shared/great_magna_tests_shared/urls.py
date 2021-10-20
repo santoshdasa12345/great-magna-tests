@@ -1518,22 +1518,22 @@ class URLs(Enum):
     GREAT_MAGNA_EXPORT_PLAN_DASHBOARD = GreatMagnaUrl("export-plan/dashboard/")
     GREAT_MAGNA_UPLOAD_LOGO = GreatMagnaUrl("export-plan/logo")
     GREAT_MAGNA_EXPORT_PLAN_ABOUT_YOUR_BUSINESS = GreatMagnaUrl(
-        "export-plan/section/about-your-business/")
+        "export-plan/{page_id}/about-your-business/" , template="export-plan/{page_id}/")
     GREAT_MAGNA_EXPORT_PLAN_BUSINESS_OBJECTIVES = GreatMagnaUrl(
-        "export-plan/section/business-objectives/")
+        "export-plan/{page_id}/business-objectives/" , template="export-plan/{page_id}/")
     GREAT_MAGNA_EXPORT_PLAN_MARKETING_APPROACH = GreatMagnaUrl(
-        "export-plan/section/marketing-approach/")
+        "export-plan/{page_id}/marketing-approach/" , template="export-plan/{page_id}/")
     GREAT_MAGNA_EXPORT_PLAN_TARGET_MARKET_RESEARCH = GreatMagnaUrl(
-        "export-plan/section/target-markets-research/")
+        "export-plan/{page_id}/target-markets-research/" , template="export-plan/{page_id}/")
     GREAT_MAGNA_EXPORT_PLAN_ADAPTING_YOUR_PRODUCT = GreatMagnaUrl(
-        "export-plan/section/adapting-your-product/")
+        "export-plan/{page_id}/adapting-your-product/", template="export-plan/{page_id}/")
     GREAT_MAGNA_EXPORT_PLAN_COSTS_AND_PRICING = GreatMagnaUrl(
-        "export-plan/section/costs-and-pricing/")
+        "export-plan/{page_id}/costs-and-pricing/", template="export-plan/{page_id}/")
     GREAT_MAGNA_EXPORT_PLAN_FUNDING_AND_CREDIT = GreatMagnaUrl(
-        "export-plan/section/funding-and-credit/")
+        "export-plan/{page_id}/funding-and-credit/", template="export-plan/{page_id}/")
     GREAT_MAGNA_EXPORT_PLAN_GETTING_PAID = GreatMagnaUrl(
-        "export-plan/section/getting-paid/")
+        "export-plan/{page_id}/getting-paid/", template="export-plan/{page_id}/")
     GREAT_MAGNA_EXPORT_PLAN_TRAVEL_PLAN = GreatMagnaUrl(
-        "export-plan/section/travel-plan/")
+        "export-plan/{page_id}/travel-plan/" , template="export-plan/{page_id}/")
     GREAT_MAGNA_EXPORT_PLAN_BUSINESS_RISK = GreatMagnaUrl(
-        "export-plan/section/business-risk/")
+        "export-plan/{page_id}/business-risk/", template="export-plan/{page_id}/")

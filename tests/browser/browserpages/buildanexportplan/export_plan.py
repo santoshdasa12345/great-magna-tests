@@ -401,3 +401,13 @@ def find_and_select_random_product_and_click_continue(driver: WebDriver):
         driver, find_selector_by_name(SELECTORS, "continue")
     )
     product_continue_btn.click()
+
+def find_and_select_random_export_plan(driver: WebDriver):
+    ulist_export_plan_xpath = driver.find_element_by_xpath("//body/main/div[3]/div/div/nav/ul")
+    export_plan_xpath_li_elements = ulist_export_plan_xpath.find_elements_by_tag_name("li")
+    random_number = 0
+    if len(export_plan_xpath_li_elements) > 2:
+        random_number = random.randint(1, len(export_plan_xpath_li_elements) - 1)
+    random_li_element = export_plan_xpath_li_elements[random_number]
+    article_element= random_li_element.find_element_by_tag_name("article")
+    article_element.find_element_by_tag_name("a").click()

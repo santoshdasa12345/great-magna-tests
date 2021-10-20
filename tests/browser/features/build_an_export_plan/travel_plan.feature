@@ -15,7 +15,8 @@ Feature: GreatMagna - Travel Plan Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "open datasnapshot" on page "Build An Export Plan - Travel Plan"
      And "Robert" decides to click on element "languages educational" on page "Build An Export Plan - Travel Plan"
      And "Robert" decides to click on element "travel information educational" on page "Build An Export Plan - Travel Plan"
@@ -32,6 +33,7 @@ Feature: GreatMagna - Travel Plan Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to select radio button "I dont need visa" on page "Build An Export Plan - Travel Plan"
      And "Robert" decides to click on element "Planned Travel educational" on page "Build An Export Plan - Travel Plan"
@@ -44,6 +46,7 @@ Feature: GreatMagna - Travel Plan Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to select radio button "I need a visa" on page "Build An Export Plan - Travel Plan"
      And "Robert" decides to enter text at "How and where" on page "Build An Export Plan - Travel Plan"
@@ -60,7 +63,8 @@ Feature: GreatMagna - Travel Plan Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" fill trip details on page "Build An Export Plan - Travel Plan"
           | Position | TripName  |
           | 1        | Trip1- India    |
@@ -78,6 +82,7 @@ Feature: GreatMagna - Travel Plan Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
      Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to delete trip details on page "Build An Export Plan - Travel Plan"
           | Position |
@@ -95,7 +100,8 @@ Given "Robert" visited "GreatMagna - Login" page
    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
    And "Robert" should be on the "GreatMagna - Dashboard" Page
    Then "Robert" decides to click on "Build an export plan"
-   Then "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     Then "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click section complete on "Build An Export Plan - Travel Plan"
     And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Travel Plan"
     And "Robert" should be on the "Build An Export Plan - Business Risk" page
@@ -109,7 +115,8 @@ Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Travel Plan"
      And "Robert" decides to click on element "Nav Business Risk" on page "Build An Export Plan - Travel Plan"
      And "Robert" should be on the "Build An Export Plan - Business Risk" Page
@@ -123,7 +130,8 @@ Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Travel plan" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Travel plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Travel plan"
     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
@@ -135,7 +143,8 @@ Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Travel Plan"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
@@ -173,7 +182,8 @@ Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" should be on the "Build An Export Plan - Travel Plan" Page
     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Travel plan"
    And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Travel Plan"

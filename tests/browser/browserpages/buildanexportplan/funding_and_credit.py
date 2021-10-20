@@ -37,7 +37,7 @@ from browserpages.common_actions import (
 NAME = "Funding and credit"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
 TYPE = PageType.BUILD_AN_EXPORT_PLAN
-URL = URLs.GREAT_MAGNA_EXPORT_PLAN_FUNDING_AND_CREDIT.absolute
+URL = URLs.GREAT_MAGNA_EXPORT_PLAN_FUNDING_AND_CREDIT.absolute_template
 PAGE_TITLE = "Funding and credit Page"
 
 SELECTORS = {
@@ -84,7 +84,7 @@ SELECTORS = {
             "//body/main[@id='content']/div[@id='sidebar-content']/nav[@id='collapseNav']/div[1]/button[1]/i[1]"
         ),
         "nav getting paid": Selector(
-            By.XPATH, "//a[contains(text(),'Getting paid')]"
+            By.CSS_SELECTOR, "#collapseNav > div > ul > li:nth-child(8) > a"
         ),
         "back": Selector(
             By.XPATH, "//body/div[10]/div/div/div/div[1]/a"
@@ -122,9 +122,11 @@ def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
 
-def should_be_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=False)
+# def should_be_here(driver: WebDriver):
+#     check_url(driver, URL, exact_match=False)
 
+def should_be_here(driver: WebDriver):
+    check_url_path_matches_template( URL,driver.current_url)
 
 def enter_text(driver: WebDriver, element_name: str):
     text_element = find_element(
@@ -179,15 +181,17 @@ def find_and_select_random_funding_options(driver: WebDriver, position: str, amo
     if int(position) != 1:
         actual_positon = int(position) + (int(position) - 1)
 
+                                    #//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div[1]/div/div[1]/div/div/div[2]
                                     #//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div[4]/div/div[1]/div/div/div[2]/div[3]
     funding_option_element_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div" + "[" + str(actual_positon) + "]"
-    funding_option_1_element = funding_option_element_xpath + "/div/div[1]/div/div/div[2]/div[3]"#/td[1]/div/div/div[2]/button"
+    funding_option_1_element = funding_option_element_xpath + "/div/div[1]/div/div/div[2]"#/td[1]/div/div/div[2]/button"
     driver.find_element_by_xpath(funding_option_1_element).click()
     driver.implicitly_wait(5)
 
     #driver.implicitly_wait(5)
     #/html/body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tbody/tr[1]/td[1]/div/div/ul/li[3]
     #//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div[4]/div/div[1]/div/div/div[2]/div[4]
+                                 #//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div[1]/div/div[1]/div/div/div[2]/div[4]
     ulist_funding_options_xpath = "/body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div" + "[" + str(actual_positon) + "]"
     ulist_funding_options_element = ulist_funding_options_xpath + "/div/div[1]/div/div/div[2]/div[4]"
     driver.find_element_by_xpath(ulist_funding_options_element).click()
@@ -204,6 +208,7 @@ def find_and_select_random_funding_options(driver: WebDriver, position: str, amo
     time.sleep(2)
 
                       #//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div[3]/div/div[2]/div/div[2]/input
+                      #//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div[1]/div/div[2]/div/div[2]/input
     gbp_elem_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div" + "[" + str(
         actual_positon) + "]"
     gbp_text_elem_xpath = gbp_elem_xpath + "/div/div[2]/div/div[2]/input" #/td[2]/div/div[2]/input"

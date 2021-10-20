@@ -37,7 +37,7 @@ from browserpages.common_actions import (
 NAME = "Business Objectives"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
 TYPE = PageType.BUILD_AN_EXPORT_PLAN
-URL = URLs.GREAT_MAGNA_EXPORT_PLAN_BUSINESS_OBJECTIVES.absolute
+URL = URLs.GREAT_MAGNA_EXPORT_PLAN_BUSINESS_OBJECTIVES.absolute_template
 PAGE_TITLE = "Business Objectives Page"
 
 SELECTORS = {
@@ -118,9 +118,12 @@ SELECTORS = {
 def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
+#
+# def should_be_here(driver: WebDriver):
+#     check_url(driver, URL, exact_match=False)
 
 def should_be_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=False)
+    check_url_path_matches_template( URL,driver.current_url)
 
 
 def enter_text(driver: WebDriver, element_name: str):

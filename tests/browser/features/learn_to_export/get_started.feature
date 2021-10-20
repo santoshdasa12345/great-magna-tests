@@ -46,7 +46,7 @@ Feature: GreatMagna - Lessons Page
    @allure.link:XOT-104
    @Great-Magna-Lessons
     @get_started_6
- Scenario:User should be able to view Lesson page "What youll find in each lesson" and click continue 40 times
+ Scenario:User should be able to view Lesson page "What youll find in each lesson" and click continue 70 times
 
   Given "Robert" visited "GreatMagna - Login" page
    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login

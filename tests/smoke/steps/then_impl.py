@@ -1370,3 +1370,8 @@ def generic_search_for_phrase(context: Context, actor_alias: str, phrase: str):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "search")
     page.search(context.driver, phrase)
+
+def actor_decides_to_select_random_export_plan_on_page(context, actor_alias,page_name):
+    page = get_page_object(page_name)
+    has_action(page, "find_and_select_random_export_plan")
+    page.find_and_select_random_export_plan(context.driver)

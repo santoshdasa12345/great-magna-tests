@@ -36,7 +36,7 @@ from browserpages.common_actions import (
 NAME = "Marketing Approach"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
 TYPE = PageType.BUILD_AN_EXPORT_PLAN
-URL = URLs.GREAT_MAGNA_EXPORT_PLAN_MARKETING_APPROACH.absolute
+URL = URLs.GREAT_MAGNA_EXPORT_PLAN_MARKETING_APPROACH.absolute_template
 PAGE_TITLE = "Marketing Approach Page"
 
 SELECTORS = {
@@ -132,7 +132,7 @@ SELECTORS = {
             #"#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-lesson.button.button--small.button--tertiary.m-r-xxs"
         ),
         "nav costs and pricing": Selector(
-            By.XPATH, "//a[contains(text(),'Costs and pricing')]"
+            By.XPATH, "//body/main/div[1]/nav/div/ul/li[6]/a"
         ),
         "back": Selector(
             By.XPATH, "//body/div[10]/div/div/div/div[1]/a"
@@ -168,9 +168,11 @@ def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
 
-def should_be_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=False)
+# def should_be_here(driver: WebDriver):
+#     check_url(driver, URL, exact_match=False)
 
+def should_be_here(driver: WebDriver):
+    check_url_path_matches_template( URL,driver.current_url)
 
 def enter_text(driver: WebDriver, element_name: str):
     text_element = find_element(

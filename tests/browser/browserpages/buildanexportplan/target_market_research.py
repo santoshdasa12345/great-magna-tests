@@ -36,7 +36,7 @@ from browserpages.common_actions import (
 NAME = "Target Markets Research"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
 TYPE = PageType.BUILD_AN_EXPORT_PLAN
-URL = URLs.GREAT_MAGNA_EXPORT_PLAN_TARGET_MARKET_RESEARCH.absolute
+URL = URLs.GREAT_MAGNA_EXPORT_PLAN_TARGET_MARKET_RESEARCH.absolute_template
 PAGE_TITLE = "Target Markets Research Page"
 
 SELECTORS = {
@@ -150,9 +150,11 @@ def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
 
-def should_be_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=False)
+# def should_be_here(driver: WebDriver):
+#     check_url(driver, URL, exact_match=False)
 
+def should_be_here(driver: WebDriver):
+    check_url_path_matches_template( URL,driver.current_url)
 
 def fill_out_products(driver: WebDriver, products: str):
     fill_out_input_fields(driver, products)

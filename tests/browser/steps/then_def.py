@@ -31,6 +31,7 @@ from steps.then_impl import (
     actor_decides_to_enter_value,
     actor_decides_to_validate_entered_text,
     actor_decides_to_select_random_item_list_on_page,
+    actor_decides_to_select_random_export_plan_on_page,
     actor_fill_business_objectives_details_on_page,
     actor_decides_to_delete_business_objectives_on_page,
     actor_decides_to_delete_country_details_on_page,
@@ -957,3 +958,9 @@ def then_actor_decides_to_click_continue_on_page(
 def then_actor_decides_to_select_random_product_on_page(
         context, actor_alias, page_name):
     actor_decides_to_select_random_product_on_page(context, page_name)
+
+@then('"{actor_alias}" decides to select random export plan on page "{page_name}"')
+def then_actor_decides_to_select_random_export_plan_on_page(context, actor_alias, page_name):
+    # input_data_table = context.table
+    # for row in input_data_table:
+    actor_decides_to_select_random_export_plan_on_page(context, actor_alias, page_name)

@@ -36,7 +36,7 @@ from browserpages.common_actions import (
 NAME = "Adapting your Product"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
 TYPE = PageType.BUILD_AN_EXPORT_PLAN
-URL = URLs.GREAT_MAGNA_EXPORT_PLAN_ADAPTING_YOUR_PRODUCT.absolute
+URL = URLs.GREAT_MAGNA_EXPORT_PLAN_ADAPTING_YOUR_PRODUCT.absolute_template
 PAGE_TITLE = "Adapting your Product"
 
 SELECTORS = {
@@ -66,7 +66,7 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"size\"]", type=ElementType.INPUT
         ),
         "product changes to comply educational": Selector(
-            By.XPATH, "//*[@id=\"changes-to-product\"]/div[2]/div/div[4]/div/div[1]/div/div/button/i"
+            By.CSS_SELECTOR, "#changes-to-product > div.form-table.bg-blue-deep-10.radius.p-h-s.p-v-xs > div > div:nth-child(4) > div > div.learning__buttons > div > div > button"
         ),
         "product changes to comply": Selector(
             By.XPATH, "//*[@id=\"standards\"]", type=ElementType.INPUT
@@ -94,7 +94,7 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"insurance_certificate\"]", type=ElementType.INPUT
         ),
         "commercial invoice educational": Selector(
-            By.XPATH, "//*[@id=\"documents-for-target-market\"]/div/div/div[3]/div/div[1]/div/div/button"
+            By.CSS_SELECTOR, "#documents-for-target-market > div.form-table.bg-blue-deep-10.radius.p-h-s.p-v-xs > div > div:nth-child(3) > div > div.learning__buttons > div > div > button"
             #"//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[3]/div/div[1]/div/div/button/span"
         ),
         "commercial invoice": Selector(
@@ -164,7 +164,7 @@ def visit(driver: WebDriver, *, page_name: str = None):
 
 
 def should_be_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=False)
+    check_url_path_matches_template( URL,driver.current_url)
 
 
 def enter_text(driver: WebDriver, element_name: str):

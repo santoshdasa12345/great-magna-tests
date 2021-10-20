@@ -15,15 +15,15 @@ load_run_time: &load_run_time
 # Machines configs
 machine_python3_clean: &machine_python3_clean
   docker:
-    - image: circleci/python:3.8.0
+    - image: circleci/python:3.9
 
 machine_python3_node: &machine_python3_node
   docker:
-    - image: circleci/python:3.8.0-node
+    - image: circleci/python:3.9-node
 
 machine_python3_node_browsers: &machine_python3_node_browsers
   docker:
-    - image: circleci/python:3.8.0-node-browsers
+    - image: circleci/python:3.9-node-browsers
 
 # Individual (shared) steps.
 step_checkout_repo: &step_checkout_repo
@@ -322,7 +322,7 @@ jobs:
 
   merge_junit_results_from_parallel_browser_tests:
     docker:
-      - image: circleci/python:3.8.0-node-browsers
+      - image: circleci/python:3.9-node-browsers
     working_directory: ~/great_magna_tests
     steps:
       - *step_install_junit_merge

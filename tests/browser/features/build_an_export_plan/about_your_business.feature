@@ -32,6 +32,7 @@ Feature: GreatMagna - About your Business Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Where you're based example" on page "Build An Export Plan - About Your Business"
     And "Robert" decides to enter text at "Where you're based" on page "Build An Export Plan - About Your Business"
@@ -46,6 +47,7 @@ Feature: GreatMagna - About your Business Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "How you make your products example" on page "Build An Export Plan - About Your Business"
     And "Robert" decides to enter text at "How you make your products" on page "Build An Export Plan - About Your Business"
@@ -60,6 +62,7 @@ Feature: GreatMagna - About your Business Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "About your Business" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Your product packaging example" on page "Build An Export Plan - About Your Business"
     And "Robert" decides to enter text at "Your product packaging" on page "Build An Export Plan - About Your Business"
@@ -74,6 +77,7 @@ Feature: GreatMagna - About your Business Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click section complete on "Build An Export Plan - About Your Business"
     And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - About Your Business"
@@ -88,6 +92,7 @@ Feature: GreatMagna - About your Business Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - About Your Business"
     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
@@ -101,6 +106,7 @@ Feature: GreatMagna - About your Business Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to select random item for "Your business performance dropdown" on page "Build An Export Plan - About Your business"
 
@@ -113,6 +119,7 @@ Feature: GreatMagna - About your Business Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - About Your Business"
     And "Robert" decides to click on element "Nav Business Objectives" on page "Build An Export Plan - About Your Business"
@@ -128,6 +135,7 @@ Feature: GreatMagna - About your Business Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     Then "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click section complete on "Build An Export Plan - About Your Business"
     And "Robert" decides to click on "Build an export plan"
@@ -140,7 +148,8 @@ Feature: GreatMagna - About your Business Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - About Your Business"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
@@ -154,6 +163,7 @@ Feature: GreatMagna - About your Business Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" should be on the "Build An Export Plan - About Your Business" Page
     And "Robert" decides to click on element "Your product packaging example" on page "Build An Export Plan - About Your Business"

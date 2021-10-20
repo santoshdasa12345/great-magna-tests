@@ -43,7 +43,7 @@ PAGE_TITLE = "Adapting your website for an International audience"
 SELECTORS = {
     "adapting your website for an International audience": {
         "lesson yes checkbox": Selector(
-            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
+            By.CSS_SELECTOR, "#mark_as_complete > div > div"
         ),
         "continue learning": Selector(
             By.XPATH, "//a[contains(text(),'Continue learning')]"

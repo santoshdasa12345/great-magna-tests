@@ -17,7 +17,8 @@ Feature: GreatMagna - Business Risk Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on element "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+       And "Robert" decides to click on element "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Back" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" Page
     And "Robert" decides to click on element "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
@@ -35,7 +36,8 @@ Feature: GreatMagna - Business Risk Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Business Risk"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
@@ -61,7 +63,8 @@ Feature: GreatMagna - Business Risk Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
        And "Robert" decides to click section complete on "Build An Export Plan - Business Risk"
      And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Business Risk"
     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
@@ -91,7 +94,8 @@ Feature: GreatMagna - Business Risk Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" fill risk details on page "Build An Export Plan - Business Risk"
           | Position | Risktext  | Contingencyplan |
           | 1     | Risk-1 | Contingencyplan-1 |
@@ -109,6 +113,7 @@ Feature: GreatMagna - Business Risk Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
      Then "Robert" decides to click on "Build an export plan"
+        And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to delete risk details on page "Build An Export Plan - Business Risk"
           | Position |
@@ -125,7 +130,8 @@ Feature: GreatMagna - Business Risk Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+       And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" should be on the "Build An Export Plan - Business Risk" Page
     And "Robert" decides to click section complete on "Build An Export Plan - Business Risk"
      And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Business Risk"
@@ -142,7 +148,8 @@ Feature: GreatMagna - Business Risk Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Add A Risk" on page "Build An Export Plan - Business Risk"
     And "Robert" decides to click on element "Risk example" on page "Build An Export Plan - Business Risk"
     And "Robert" decides to click on element "Risk educational" on page "Build An Export Plan - Business Risk"

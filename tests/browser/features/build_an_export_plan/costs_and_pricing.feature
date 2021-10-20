@@ -15,7 +15,8 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Costs And Pricing"
      And "Robert" decides to click on element "Nav Funding and credit" on page "Build An Export Plan - Costs And Pricing"
      And "Robert" should be on the "Build An Export Plan - Funding and credit" Page
@@ -28,7 +29,8 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click section complete on "Build An Export Plan - Costs And Pricing"
     And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" should be on the "Build An Export Plan - Funding and Credit" page
@@ -41,6 +43,7 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Costs And Pricing"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
@@ -53,6 +56,7 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to enter value in "Number of units" on page "Build An Export Plan - Costs And Pricing"
      And "Robert" decides to select random item for "Number of units" on page "Build An Export Plan - Costs And Pricing"
@@ -68,7 +72,8 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Product Cost educational" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" decides to click on element "Labour Cost educational" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" enters direct costs price on page "Build An Export Plan - Costs And Pricing"
@@ -85,7 +90,8 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on element "Product Adaptation educational" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" decides to click on element "Freight and Logistics educational" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" decides to click on element "Agent and Distribution fees educational" on page "Build An Export Plan - Costs And Pricing"
@@ -105,7 +111,8 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Net Price educational" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" decides to click on element "Net Price example" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" decides to enter value in "Net Price" on page "Build An Export Plan - Costs And Pricing"
@@ -123,7 +130,8 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Net Price educational" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" decides to click on element "Net Price example" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" decides to enter value in "Net Price" on page "Build An Export Plan - Costs And Pricing"
@@ -141,7 +149,8 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" decides to click on section "Manage Exchange Rates" on page "Build An Export Plan - Costs And Pricing"
     And "Robert" should be on the "LearnToExport - Manage Exchange Rates" page
@@ -158,7 +167,8 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Costs And Pricing"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
@@ -187,7 +197,8 @@ Feature: GreatMagna - Costs And Pricing Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+        And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" should be on the "Build An Export Plan - Costs And Pricing" Page
     And "Robert" decides to click on element "Net Price example" on page "Build An Export Plan - Costs And Pricing"
      And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Costs And Pricing"

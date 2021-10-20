@@ -43,7 +43,7 @@ PAGE_TITLE = "Using freight forwarders"
 SELECTORS = {
     "using freight forwarders": {
         "lesson yes checkbox": Selector(
-            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div/input" , type=ElementType.CHECKBOX
+            By.XPATH, "#mark_as_complete > div > div/input" , type=ElementType.CHECKBOX
         ),
         "continue learning": Selector(
             By.XPATH, "//a[contains(text(),'Continue learning')]"

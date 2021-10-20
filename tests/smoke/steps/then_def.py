@@ -59,6 +59,7 @@ from steps.then_impl import (
     actor_decides_to_delete_route_to_market_on_page,
     actor_decides_to_delete_funding_options_on_page,
     actor_decides_to_validate_entered_country_details_and_change_from_the_list,
+    actor_decides_to_select_random_export_plan_on_page,
     actor_fills_out_and_submits_the_form,
     actor_decides_to_delete_risk_details_on_page,
     generic_should_be_on_one_of_the_pages,
@@ -934,3 +935,9 @@ def then_actor_decides_to_click_open_case_study_in_all_lessons_for_number_of_tim
 def when_actor_decides_to_enter_email_address_and_click_login(
         context, actor_alias, email_address, password):
     actor_decides_to_enter_email_address_and_click_login(context, actor_alias, email_address, password)
+
+@then('"{actor_alias}" decides to select random export plan on page "{page_name}"')
+def then_actor_decides_to_select_random_export_plan_on_page(context, actor_alias, page_name):
+    # input_data_table = context.table
+    # for row in input_data_table:
+    actor_decides_to_select_random_export_plan_on_page(context, actor_alias, page_name)

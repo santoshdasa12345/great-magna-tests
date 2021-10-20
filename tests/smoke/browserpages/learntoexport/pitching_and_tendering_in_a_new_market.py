@@ -52,7 +52,7 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"content\"]/div/a/i"
         ),
         "lesson yes checkbox": Selector(
-            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
+            By.CSS_SELECTOR, "#mark_as_complete > div > div"
         ),
         "open case study" :Selector(
             By.XPATH, "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button"

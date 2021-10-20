@@ -236,12 +236,13 @@ def actor_decides_to_click_continue_for_number_of_times_until_it_reaches_require
     counter = 0
     while counter < int(max_number_pages):
         page = get_page_object(from_page_name)
-        # logging.debug("visiting page  - "+ page.NAME)
+        logging.debug("visiting page  - "+ page.NAME)
         has_action(page, "find_and_click")
         page.find_and_click(context.driver, element_selector_name="continue learning")
+        time.sleep(1)
         current_page_url = str(context.driver.current_url)
-        # logging.debug("Last visited page - "+current_page_url)
-        # time.sleep(1)
+        logging.debug("Last visited page - " + current_page_url)
+        logging.debug("to_page_name - " + to_page_name)
         counter += 1
         if to_page_name in current_page_url:
             break
@@ -1394,3 +1395,8 @@ def actor_decides_to_select_random_product_on_page(
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "find_and_select_random_product_and_click_continue")
     page.find_and_select_random_product_and_click_continue(context.driver)
+
+def actor_decides_to_select_random_export_plan_on_page(context, actor_alias,page_name):
+    page = get_page_object(page_name)
+    has_action(page, "find_and_select_random_export_plan")
+    page.find_and_select_random_export_plan(context.driver)

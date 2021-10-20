@@ -52,7 +52,7 @@ SELECTORS = {
             By.XPATH, "//body/main/div/div[1]/div/div[1]/a"
         ),
         "lesson yes checkbox": Selector(
-            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
+            By.CSS_SELECTOR, "#mark_as_complete > div > div"
         ),
         "open case study": Selector(
             By.CSS_SELECTOR, "#case_study > div > button"
