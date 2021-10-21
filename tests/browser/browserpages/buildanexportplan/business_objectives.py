@@ -110,7 +110,7 @@ SELECTORS = {
         "lesson": Selector(
             By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div[2]/div[1]/button[2]"
         ),
-        "move form accidental lesson": Selector(
+        "move from accidental lesson": Selector(
             By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div[2]/div[1]/button[2]"
         ),
 

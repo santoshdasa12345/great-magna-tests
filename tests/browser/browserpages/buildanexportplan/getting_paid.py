@@ -101,7 +101,7 @@ SELECTORS = {
         ),
         "choose the right payment method": Selector(
             By.XPATH,
-            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[3]/div[1]/div/div[1]/div[2]/a"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[1]/div[2]/a/div"
             # //h4[contains(text(),'Choose the right payment method')]"
         ),
         "decide when to get paid": Selector(

@@ -343,7 +343,7 @@ jobs:
 
 
 workflows:
-  version: 2
+  version: 2.1
 
   ####################################################################
   ## Ad hoc workflows - these are run every time you push a change

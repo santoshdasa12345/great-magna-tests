@@ -110,7 +110,7 @@ SELECTORS = {
             "//body/main[@id='content']/div[@id='sidebar-content']/nav[@id='collapseNav']/div[1]/button[1]/i[1]"
         ),
         "nav adapting Your Product": Selector(
-            By.XPATH, "//a[contains(text(),'Adapting your product')]"
+            By.XPATH, "//body/main/div[1]/nav/div/ul/li[4]/a"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
