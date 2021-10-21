@@ -70,7 +70,8 @@ Feature: GreatMagna - Business Objectives Page
     Then "Robert" decides to click on "Build an export plan"
   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
   And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on section "Move from accidental exporting to strategic exporting" on page "Build An Export Plan - Business Objectives"
+  And "Robert" decides to click on element "move form accidental lesson" on page "Build An Export Plan - Business Objectives"
+  And "Robert" decides to click on section "Move from accidental exporting to strategic exporting" on page "Build An Export Plan - Business Objectives"
      And "Robert" should be on the "LearnToExport - Move from accidental exporting to strategic exporting" page
      And "Robert" decides to click on section "Business Objectives" on page "LearnToExport - Move from accidental exporting to strategic exporting"
 

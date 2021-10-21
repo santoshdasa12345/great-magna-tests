@@ -15,15 +15,15 @@ load_run_time: &load_run_time
 # Machines configs
 machine_python3_clean: &machine_python3_clean
   docker:
-    - image: circleci/python:3.9
+    - image: circleci/python:3.8.0
 
 machine_python3_node: &machine_python3_node
   docker:
-    - image: circleci/python:3.9-node
+    - image: circleci/python:3.8.0-node
 
 machine_python3_node_browsers: &machine_python3_node_browsers
   docker:
-    - image: circleci/python:3.9-node-browsers
+    - image: circleci/python:3.8.0-node-browsers
 
 # Individual (shared) steps.
 step_checkout_repo: &step_checkout_repo
@@ -150,11 +150,6 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
 
       echo "Current instance of ${BROWSER} is going to run `cat tests-to-run${SPLIT_FILE_SUFFIX} | wc -l` scenarios:"
       cat tests-to-run${SPLIT_FILE_SUFFIX}
-
-
-      if [ -d "/home/circleci/great_magna_tests/tests/browser/reports" ]; then rm -Rf "/home/circleci/great_magna_tests/tests/browser/reports"; fi
-
-      mkdir /home/circleci/great_magna_tests/tests/browser/reports
 
       cat tests-to-run${SPLIT_FILE_SUFFIX} | while IFS=$'\r' read -r title ; do
         echo -e "\n\n${BROWSER} run: ${title}"

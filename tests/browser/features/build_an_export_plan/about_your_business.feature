@@ -169,4 +169,4 @@ Feature: GreatMagna - About your Business Page
     And "Robert" decides to click on element "Your product packaging example" on page "Build An Export Plan - About Your Business"
    #And "Robert" decides to select random item for "Your business performance dropdown" on page "Build An Export Plan - About Your business"
     And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - About Your Business"
-    And "Robert" should see "About Your Business" text under section "Export Plan" on page "GreatMagna - Dashboard"
+#    And "Robert" should see "About Your Business" text under section "Export Plan" on page "GreatMagna - Dashboard"

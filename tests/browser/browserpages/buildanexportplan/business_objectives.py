@@ -88,7 +88,7 @@ SELECTORS = {
             By.XPATH, "//p[contains(text(),'Is this opportunity right for you?')]"
         ),
         "move from accidental exporting to strategic exporting": Selector(
-            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div[2]/div[2]/a", #//*[@id=\"business-objectives-content\"]/section[4]/div/div[1]/div/a/div/p"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/a", #//*[@id=\"business-objectives-content\"]/section[4]/div/div[1]/div/a/div/p"
         ),
         "top export plan home": Selector(
             By.XPATH,
@@ -99,7 +99,7 @@ SELECTORS = {
             "//body/main[@id='content']/div[@id='sidebar-content']/nav[@id='collapseNav']/div[1]/button[1]/i[1]"
         ),
         "nav target markets research": Selector(
-            By.XPATH, "//a[contains(text(),'Target markets research')]"
+            By.XPATH, "//body/main/div[1]/nav/div/ul/li[3]/a"
         ),
         "add goal": Selector(
             By.CSS_SELECTOR, "#objectives-form--objectives > div > button"
@@ -108,6 +108,9 @@ SELECTORS = {
             By.XPATH, "//a[contains(text(),'Dashboard')]"
         ),
         "lesson": Selector(
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div[2]/div[1]/button[2]"
+        ),
+        "move form accidental lesson": Selector(
             By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div[2]/div[1]/button[2]"
         ),
 
