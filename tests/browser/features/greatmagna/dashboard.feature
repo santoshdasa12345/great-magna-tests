@@ -86,6 +86,16 @@ Feature: GreatMagna - Dashboard Page
   And "Robert" decides to enter product name "Televisions" on page "Build An Export Plan - Travel Plan"
   And "Robert" decides to enter country name "Angola" on the "Build An Export Plan - Travel Plan" page
 
+  @allure.link:XOT-1113
+   @Great_Magna_Export_Plan_wte_dash
+
+  Scenario:User should be able to click on Dashboard and select compare places
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Dashboard Where to Export"
+    And "Robert" should be on the "WhereToExport - Compare Countries" Page
 
 
 

@@ -131,7 +131,7 @@ SELECTORS = {
         "learn to export button": Selector(
             By.XPATH, "//a[contains(text(),'Learn to Export')]"
         ),
-        "where to export button": Selector(
+        "dashboard where to export": Selector(
             By.XPATH, "//a[contains(text(),'Compare places')]"
         ),
         "go to export plan button": Selector(

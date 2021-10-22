@@ -69,9 +69,9 @@ SELECTORS = {
         "save product": Selector(
             By.XPATH, "//body/div[7]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button"
         ),
-        "add a place": Selector(
-            By.XPATH, #"#cta-container > button"
-            "//body/main/div[1]/section/div/div/div[1]/div/div[2]/button"
+        "add market": Selector(
+            By.XPATH,  # "#cta-container > button"
+            "//body/main/div[1]/section/div/div/div[1]/div/div[2]/div/button"
         ),
         "search country": Selector(
             By.XPATH, "//body/div[8]/div/div/div/div/div/div[1]/div[3]/div[1]/div/label/div/input"
@@ -79,9 +79,6 @@ SELECTORS = {
         ),
         "delete": Selector(
             By.CSS_SELECTOR, "#market-India > th > button > i"
-        ),
-        "add a second place": Selector(
-            By.XPATH, "//body/main/div[3]/span/div[2]/button"
         ),
         "cpi educational": Selector(
             By.CSS_SELECTOR, "//body/main/div[3]/span/div[2]/span/table/thead/tr/th[6]/div/div/div/button/i"
@@ -104,27 +101,19 @@ SELECTORS = {
         "where to export": Selector(
             By.XPATH, "#header-link-markets"
         ),
-
         "rule of law making educational": Selector(
             By.XPATH, "//body/main/div[3]/span/div[2]/span/table/thead/tr/th[4]/div/div/div/button/i"
-        ),
-        "country 1 bottom": Selector(
-            By.XPATH, "//body/main/div[4]/div/section/div[2]/ul/li[1]/button"
-        ),
-        "country 2 bottom": Selector(
-            By.XPATH, "//body/main/div[4]/div/section/div[2]/ul/li[2]/button"
-        ),
-        "country 3 bottom": Selector(
-            By.XPATH, "//body/main/div[4]/div/section/div[2]/ul/li[3]/button"
         ),
         "country list item": Selector(
             By.XPATH, "//li[@id='origin_country__option--0']"
         ),
-        "learn to export": Selector(
-            By.XPATH, "//*[@id=\"comparison-market-selector\"]/div/section[2]/div/article[1]/div/div/div[3]/a"
+        "learn to export in next steps": Selector(
+            By.CSS_SELECTOR,
+            "#compare-markets > section > div > article:nth-child(1) > div > div > div.c-full.p-h-0 > a"
         ),
-        "view your export plan": Selector(
-            By.XPATH, "//*[@id=\"comparison-market-selector\"]/div/section[2]/div/article[2]/div/div/div[3]/a"
+        "view your export plan in next steps": Selector(
+            By.CSS_SELECTOR,
+            "#compare-markets > section > div > article:nth-child(2) > div > div > div.c-full.p-h-0 > a"
         ),
         "un comtrade": Selector(
             By.XPATH, "//body/main[@id='content']/div[@id='open-product-finder']/span[1]/div[2]/span[1]/p[1]/a[1]"
@@ -269,26 +258,26 @@ def fill_out_country(driver: WebDriver, country: str):
     logging.debug("Index of section elements " + str(index_random_element_to_be_selected))
     section_element_selected = section_elements[index_random_element_to_be_selected]
     logging.debug(section_element_selected)
-    #//body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section/div[2]/ol/li/button
+    # //body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section/div[2]/ol/li/button
     div_elements = section_element_selected.find_elements_by_tag_name("div")  # 2 has to be present
-    #logging.debug("length of div elements " + str(len(div_elements)))
+    # logging.debug("length of div elements " + str(len(div_elements)))
     for ol_element in div_elements:
-        #level_1_div_element = div_elements.find_element_by_tag_name("div")
-    # level_1_div_element = div_elements[
-    #     1]# section_element_selected.find_element_by_class_name("p-t-s expand-section open")
-    #level_2_div_element = level_1_div_element.find_element_by_tag_name("div")
+        # level_1_div_element = div_elements.find_element_by_tag_name("div")
+        # level_1_div_element = div_elements[
+        #     1]# section_element_selected.find_element_by_class_name("p-t-s expand-section open")
+        # level_2_div_element = level_1_div_element.find_element_by_tag_name("div")
         ol_element_selected = ol_element.find_elements_by_tag_name("ol")
     logging.debug("length of ol elements " + str(len(ol_element_selected)))
-    #span_elements = level_2_div_element.find_elements_by_tag_name("span")
-    #logging.debug("length of span elements " + str(len(span_elements)))
+    # span_elements = level_2_div_element.find_elements_by_tag_name("span")
+    # logging.debug("length of span elements " + str(len(span_elements)))
     # select random span element and within that select a country
     # index_random_element_to_be_selected = random.randint(0, len(ol_elements) - 1)
-    #index_random_element_to_be_selected = random.randint(0, len(span_elements) - 1)
+    # index_random_element_to_be_selected = random.randint(0, len(span_elements) - 1)
     # ol_element_selected = ol_elements[index_random_element_to_be_selected]
-    #span_element_selected = span_elements[index_random_element_to_be_selected]
+    # span_element_selected = span_elements[index_random_element_to_be_selected]
     for li_element in ol_element_selected:
         li_store_element = li_element.find_element_by_tag_name("li")
-    #li_element = span_element_selected.find_element_by_tag_name("li")
+    # li_element = span_element_selected.find_element_by_tag_name("li")
     # finally arrived at country name button(s)
     buttons_elements = li_store_element.find_elements_by_tag_name("button")
     logging.debug("length of country button elements " + str(len(buttons_elements)))
@@ -307,12 +296,13 @@ def fill_out_country_and_validate_ui(driver: WebDriver, country: str, display_ta
     fill_out_country(driver, country)
 
     # after entering the country name, check if there are required tabs displayed on the UI
-    tabs_element = driver.find_element_by_xpath("//body/main/div[3]/span/div[1]/div")
+    tabs_element = driver.find_element_by_xpath("//body/main/div[3]/div[1]/div")
     tab_button_elements = tabs_element.find_elements_by_tag_name("button")
     logging.debug(tab_button_elements)
     logging.debug(len(tab_button_elements))
     if len(tab_button_elements) != display_tab_count:
         raise Exception("Invalid Tab count")
+
 
 def enter_country_details(driver: WebDriver, country_name: str, country_place_number: int = 1
                           , country_max: int = 10
@@ -324,35 +314,36 @@ def enter_country_details(driver: WebDriver, country_name: str, country_place_nu
     table_element = None
     try:
         # check if the country table already exists
-        #table_element = driver.find_element_by_xpath("/html/body/main/div[3]/span/div[2]/span/table")
+        # table_element = driver.find_element_by_xpath("/html/body/main/div[3]/span/div[2]/span/table")
         # if table doesnt not exists then "add a place" button must exists
-        #if table_element == None:
+        # if table_element == None:
         if (country_place_number == 1):
-            find_and_click(driver, element_selector_name="add a place")
+            find_and_click(driver, element_selector_name="add market")
     except Exception as e:
         logging.debug(e)
         table_element = None
-        find_and_click(driver, element_selector_name="add a place")
+        find_and_click(driver, element_selector_name="add market")
 
-    #logging.debug("table_element " + str(table_element))
+    # logging.debug("table_element " + str(table_element))
 
-    if (country_place_number == 1):# and table_element == None):
+    if (country_place_number == 1):  # and table_element == None):
         fill_out_country_and_validate_ui(driver, country_name, display_tab_count=display_tab_count)
         return
 
     if country_place_number <= country_max:
         # if table already exists, then "add place (x) of (y)" button must exists
-        add_place_num_btn_element = driver.find_element_by_xpath("//body/main/div[3]/span/div[2]/button")
+        add_place_num_btn_element = driver.find_element_by_xpath("//body/main/div[3]/div[2]/div[2]/button")
         button_text = add_place_num_btn_element.text
-        user_entered_button_text = "Add place " + str(country_place_number) + " of " + str(country_max)
+        user_entered_button_text = "Add market " + str(country_place_number) + " of " + str(country_max)
         if button_text != user_entered_button_text:
-            raise Exception("Invalid Add Place button index - " + str(button_text) + " vs "  +  str(user_entered_button_text))
+            raise Exception(
+                "Invalid Add market button index - " + str(button_text) + " vs " + str(user_entered_button_text))
 
         # if proper button index found, then click the button to add the country place name
         add_place_num_btn_element.click()
 
         fill_out_country_and_validate_ui(driver, country_name, display_tab_count=display_tab_count)
-        time.sleep(2)
+        time.sleep(4)
     else:
         logging.debug(
             "Country " + str(country_name) + " cannot be added as the CountryPlaceNumber exceeding max limit.")

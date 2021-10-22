@@ -150,6 +150,10 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
 
       echo "Current instance of ${BROWSER} is going to run `cat tests-to-run${SPLIT_FILE_SUFFIX} | wc -l` scenarios:"
       cat tests-to-run${SPLIT_FILE_SUFFIX}
+      if [ -d "/home/circleci/great_magna_tests/tests/browser/reports" ]; then rm -Rf "/home/circleci/great_magna_tests/tests/browser/reports";
+      fi
+
+      mkdir /home/circleci/great_magna_tests/tests/browser/reports
 
       cat tests-to-run${SPLIT_FILE_SUFFIX} | while IFS=$'\r' read -r title ; do
         echo -e "\n\n${BROWSER} run: ${title}"
