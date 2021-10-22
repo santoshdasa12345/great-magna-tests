@@ -97,7 +97,7 @@ SELECTORS = {
         "contingency plan example": Selector(
             By.CSS_SELECTOR,
             "//*[@id=\"business-risks\"]/div[2]/table/tbody/tr[4]/td/div[1]/div[1]/button"
-            #"#business-risks > div.costs.costs--risks.bg-blue-deep-10.p-v-s.m-b-s > table > tbody > tr:nth-child(4) > td > div.learning > div.learning__buttons.m-b-xs > button"
+            # "#business-risks > div.costs.costs--risks.bg-blue-deep-10.p-v-s.m-b-s > table > tbody > tr:nth-child(4) > td > div.learning > div.learning__buttons.m-b-xs > button"
         ),
         "add a risk": Selector(
             By.CSS_SELECTOR, "#business-risks > button"
@@ -107,8 +107,9 @@ SELECTORS = {
             "//body/main[@id='content']/div[@id='business-risk-content']/section[4]/div[1]/div[1]/div[2]/div[2]/a[1]"
         ),
         "top export plan home": Selector(
-            By.CSS_SELECTOR, "#business-risk-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
-            #"//*[@id=\"business-risk-content\"]/section[1]/div/div/div[2]/a/span"
+            By.CSS_SELECTOR,
+            "#business-risk-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
+            # "//*[@id=\"business-risk-content\"]/section[1]/div/div/div[2]/a/span"
         ),
         "open navigation": Selector(
             By.XPATH,
@@ -156,7 +157,8 @@ def visit(driver: WebDriver, *, page_name: str = None):
 #     check_url(driver, URL, exact_match=False)
 
 def should_be_here(driver: WebDriver):
-    check_url_path_matches_template( URL,driver.current_url)
+    check_url_path_matches_template(URL, driver.current_url)
+
 
 def enter_text(driver: WebDriver, element_name: str):
     text_element = find_element(
@@ -349,14 +351,16 @@ def fill_out_product(driver: WebDriver, product_name: str):
 
         counter += 1
 
-def enter_risk_details(driver: WebDriver, position: str, risktext : str , contingencyplan : str ):
+
+def enter_risk_details(driver: WebDriver, position: str, risktext: str, contingencyplan: str):
     # every call of this function, click on Add Goal
     find_and_click(driver, element_selector_name="Add a risk")
     time.sleep(1)
 
     position = int(position)
     risktext_position = int((int(position) * 5) - 4)
-    risk_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/div" + "[" + str(risktext_position) + "]"
+    risk_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/div" + "[" + str(
+        risktext_position) + "]"
     risk_text_ele_xpath = risk_div_element_xpath + "/div[1]/div[2]/textarea"
     driver.find_element_by_xpath(risk_text_ele_xpath).send_keys(risktext)
     logging.debug(risk_text_ele_xpath)
@@ -370,8 +374,8 @@ def enter_risk_details(driver: WebDriver, position: str, risktext : str , contin
     driver.find_element_by_xpath(path_random_risk_likelihood_button_ele_xpath).click()
     time.sleep(1)
     risk_impact_button_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/table/tbody/tr" \
-                                    + "[" + str(risktext_position + 2) + "]" \
-                                    + "/td/div[2]/div"+ "[" + str(random.randint(1, 5)) + "]" + "/label"
+                                       + "[" + str(risktext_position + 2) + "]" \
+                                       + "/td/div[2]/div" + "[" + str(random.randint(1, 5)) + "]" + "/label"
     driver.find_element_by_xpath(risk_impact_button_element_xpath).click()
 
     contingencyplan_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/div" \
@@ -379,50 +383,47 @@ def enter_risk_details(driver: WebDriver, position: str, risktext : str , contin
     contingencyplan_text_element_xpath = contingencyplan_div_element_xpath + "/div[4]/div[2]/textarea"
     driver.find_element_by_xpath(contingencyplan_text_element_xpath).send_keys(contingencyplan)
 
-    #risk imapact
+    # risk imapact
 
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[1]/label
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[2]/label
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[3]/label
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[4]/label
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[5]/label
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[1]/label
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[2]/label
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[3]/label
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[4]/label
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[5]/label
 
-    #risk likelihood
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[1]/label
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[2]/label
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[3]/label
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[4]/label
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[5]/label
+    # risk likelihood
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[1]/label
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[2]/label
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[3]/label
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[4]/label
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[5]/label
 
-
-
-
-
-
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[1]/div[4]/div[2]/textarea
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[2]/div[4]/div[2]/textarea
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[4]/div[2]/textarea
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[1]/div[4]/div[2]/textarea
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[2]/div[4]/div[2]/textarea
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[4]/div[2]/textarea
 
     time.sleep(5)
 
+
 def delete_all_risk_details(driver: WebDriver, del_button_position: str):
     # 1,3,5,7,......
-    #/html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/table/tbody/tr[5]/td/button/i
+    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/table/tbody/tr[5]/td/button/i
     # del_button_position: 5,10,15,20,25
     driver.implicitly_wait(5)
     time.sleep(5)
     del_button_index = int(del_button_position) * 5
-    risk_detail_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/table/tbody/tr" + "[" + str(del_button_index) + "]"
+    risk_detail_div_element_xpath = "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/table/tbody/tr" + "[" + str(
+        del_button_index) + "]"
     risk_btn_ele_xpath = risk_detail_div_element_xpath + "/td/button/i"
     driver.find_element_by_xpath(risk_btn_ele_xpath).click()
-    #logging.debug("del_button_position " + str(del_button_position))
+    # logging.debug("del_button_position " + str(del_button_position))
     time.sleep(5)
     driver.implicitly_wait(5)
 
-        # 12,13,14,15.......
-        # 12 + (1 - 1), 12 + (2 - 1), 12 + (3 - 1), 12 + (4 - 1),.........
-        #//body/div[12]/div/div/div/div[2]/div[2]/button[1]/span
+    # 12,13,14,15.......
+    # 12 + (1 - 1), 12 + (2 - 1), 12 + (3 - 1), 12 + (4 - 1),.........
+    # //body/div[12]/div/div/div/div[2]/div[2]/button[1]/span
     delete_msg_yes_index = int(12 + (int(del_button_position) - 1))
     delete_message_yes_element_xpath = "//body/div" + "[" + str(
         delete_msg_yes_index) + "]" + "/div/div/div/div[2]/div[2]/button[1]/span"

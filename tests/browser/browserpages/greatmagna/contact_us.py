@@ -82,6 +82,7 @@ def find_and_click_change_link(driver: WebDriver, element_selector_name: str):
 def submit(driver: WebDriver) -> Union[ModuleType, None]:
     return submit_form(driver, SELECTORS["form"])
 
+
 def fills_out_submit(driver: WebDriver):
     driver.find_element_by_css_selector("#id_comment").clear()
     driver.find_element_by_css_selector("#id_comment").send_keys("Automated Tests")

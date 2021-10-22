@@ -205,7 +205,7 @@ def fill_out_product(driver: WebDriver, products: str):
 
     driver.find_element_by_xpath(
         "//body/div[2]/nav/span[2]/span/button")
-        #"//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").send_keys(products)
+    # "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").send_keys(products)
 
     driver.find_element_by_xpath(
         "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/button[1]/i[1]").click()

@@ -44,21 +44,24 @@ SELECTORS = {
         "product cost educational": Selector(
             By.XPATH,
             "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[1]/div/div[1]/div/div"
-            #"//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[1]/table/tbody/tr[1]/td[1]/div/div/button/i"
+            # "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[1]/table/tbody/tr[1]/td[1]/div/div/button/i"
         ),
         "product cost": Selector(
-            By.XPATH, "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[1]/div/div[2]/div/div[2]/input", type=ElementType.INPUT
+            By.XPATH, "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[1]/div/div[2]/div/div[2]/input",
+            type=ElementType.INPUT
         ),
         "labour cost educational": Selector(
             By.XPATH,
             "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[2]/div/div[1]/div/div/button"
-            #"//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[1]/table/tbody/tr[2]/td[1]/div/div/button/i"
+            # "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[1]/table/tbody/tr[2]/td[1]/div/div/button/i"
         ),
         "labour cost": Selector(
-            By.XPATH, "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/input", type=ElementType.INPUT
+            By.XPATH, "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/input",
+            type=ElementType.INPUT
         ),
         "additional margin": Selector(
-            By.XPATH, "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[3]/div/div[2]/div/div[2]/input", type=ElementType.INPUT
+            By.XPATH, "//body/main/div[2]/div/section[1]/div/div[2]/div[1]/div[3]/div/div[2]/div/div[2]/input",
+            type=ElementType.INPUT
         ),
         "direct costs total": Selector(
             By.XPATH, "//span[@class='body-l-b text-white']"
@@ -66,7 +69,7 @@ SELECTORS = {
         "product adaptation educational": Selector(
             By.XPATH,
             "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div[1]/div/div[1]/div/div"
-            #"//body[1]/main[1]/div[2]/div[1]/section[1]/div[1]/div[2]/div[3]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/div[1]/button[1]/i[1]"
+            # "//body[1]/main[1]/div[2]/div[1]/section[1]/div[1]/div[2]/div[3]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/div[1]/button[1]/i[1]"
         ),
         "product adaptation": Selector(
             By.XPATH, "//input[@id='product_adaption']", type=ElementType.INPUT
@@ -74,7 +77,7 @@ SELECTORS = {
         "freight and logistics educational": Selector(
             By.XPATH,
             "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div[2]/div/div[1]/div/div"
-            #"//body[1]/main[1]/div[2]/div[1]/section[1]/div[1]/div[2]/div[3]/table[1]/tbody[1]/tr[2]/td[1]/div[1]/div[1]/button[1]/i[1]"
+            # "//body[1]/main[1]/div[2]/div[1]/section[1]/div[1]/div[2]/div[3]/table[1]/tbody[1]/tr[2]/td[1]/div[1]/div[1]/button[1]/i[1]"
         ),
         "freight and logistics": Selector(
             By.XPATH, "//input[@id='freight_logistics']", type=ElementType.INPUT
@@ -82,7 +85,7 @@ SELECTORS = {
         "agent and distribution fees educational": Selector(
             By.XPATH,
             "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div[3]/div/div[1]/div/div"
-            #"//tbody/tr[3]/td[1]/div[1]/div[1]/button[1]/i[1]"
+            # "//tbody/tr[3]/td[1]/div[1]/div[1]/button[1]/i[1]"
         ),
         "agent and distribution fees": Selector(
             By.XPATH, "//input[@id='agent_distributor_fees']", type=ElementType.INPUT
@@ -90,7 +93,7 @@ SELECTORS = {
         "marketing educational": Selector(
             By.XPATH,
             "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div[4]/div/div[1]/div/div"
-            #"//tbody/tr[4]/td[1]/div[1]/div[1]/button[1]/i[1]"
+            # "//tbody/tr[4]/td[1]/div[1]/div[1]/button[1]/i[1]"
         ),
         "marketing": Selector(
             By.CSS_SELECTOR, "#marketing", type=ElementType.INPUT
@@ -98,7 +101,7 @@ SELECTORS = {
         "insurance educational": Selector(
             By.XPATH,
             "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div[5]/div/div[1]/div/div"
-            #"//tbody/tr[5]/td[1]/div[1]/div[1]/button[1]/i[1]"
+            # "//tbody/tr[5]/td[1]/div[1]/div[1]/button[1]/i[1]"
         ),
         "insurance": Selector(
             By.CSS_SELECTOR, "#insurance", type=ElementType.INPUT
@@ -139,30 +142,32 @@ SELECTORS = {
         ),
         "net price example": Selector(
             By.XPATH, "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[9]/div[2]/div[1]/button"
-            #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(21) > div.learning > div.learning__buttons.m-b-xs > button"
+            # "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(21) > div.learning > div.learning__buttons.m-b-xs > button"
         ),
         "net price educational": Selector(
             By.XPATH, "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[9]/div[2]/div[1]/div/div/button"
-            #"//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[9]/div[2]/div[1]/div/div/button/i"
+            # "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[9]/div[2]/div[1]/div/div/button/i"
         ),
         "net price": Selector(
             By.XPATH, "//input[@id='net_price']", type=ElementType.INPUT
         ),
         "local taxes example": Selector(
-            By.CSS_SELECTOR, "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.learning > div.learning__buttons > button.button-example.button.button--small.button--tertiary.m-r-xxs.m-b-xs"
-            #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.m-b-xs > button"
+            By.CSS_SELECTOR,
+            "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.learning > div.learning__buttons > button.button-example.button.button--small.button--tertiary.m-r-xxs.m-b-xs"
+            # "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.m-b-xs > button"
         ),
         "local taxes educational": Selector(
             By.XPATH,
             "//*[@id=\"cost-and-pricing\"]/section[1]/div/div[2]/div[10]/div[2]/div[1]/div/div/button/i"
-            #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.m-b-xs > div > div > button > i"
+            # "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(22) > div.m-b-xs > div > div > button > i"
         ),
         "local taxes": Selector(
             By.CSS_SELECTOR, "#local_tax_charges", type=ElementType.INPUT
         ),
         "duty educational": Selector(
-            By.CSS_SELECTOR, "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(23) > div.learning > div.learning__buttons > div > div > button > i"
-            #"#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(23) > div.m-b-xs > div > div > button > i"
+            By.CSS_SELECTOR,
+            "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(23) > div.learning > div.learning__buttons > div > div > button > i"
+            # "#cost-and-pricing > section.container > div > div.c-1-1.c-2-3-m.c-1-2-xl > div:nth-child(23) > div.m-b-xs > div > div > button > i"
         ),
         "duty": Selector(
             By.CSS_SELECTOR, "#duty_per_unit", type=ElementType.INPUT
@@ -171,7 +176,7 @@ SELECTORS = {
         #     By.CSS_SELECTOR, "#cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-1-6.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
         # ),
         "gross price per unit": Selector(
-            By.CSS_SELECTOR, "#gross_price_per_unit_invoicing" ,type=ElementType.INPUT
+            By.CSS_SELECTOR, "#gross_price_per_unit_invoicing", type=ElementType.INPUT
         ),
         "profit per unit": Selector(
             By.XPATH,
@@ -199,7 +204,7 @@ SELECTORS = {
         "manage exchange rates": Selector(
             By.XPATH,
             "//body/main/div[2]/div/section[2]/div/div/div[2]/div[1]/div[2]/a"
-            #cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > a > div"
+            # cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > a > div"
         ),
         "choose the right payment method": Selector(
             By.XPATH,
@@ -216,7 +221,7 @@ SELECTORS = {
         "lesson": Selector(
             By.XPATH,
             "//body/main/div[2]/div/section[2]/div/div/div[2]/div[1]/div[1]/button"
-            #cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > button"
+            # cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > button"
         ),
         "open navigation": Selector(
             By.XPATH,
@@ -236,7 +241,7 @@ SELECTORS = {
         ),
         "top export plan home": Selector(
             By.XPATH, "//*[@id=\"costs-and-pricing-content\"]/section[1]/div/div/div[2]/span/a"
-            #"//*[@id=\"costs-and-pricing-content\"]/section[1]/div/div/div[2]/span/a/"
+            # "//*[@id=\"costs-and-pricing-content\"]/section[1]/div/div/div[2]/span/a/"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
@@ -259,7 +264,8 @@ def visit(driver: WebDriver, *, page_name: str = None):
 #     check_url(driver, URL, exact_match=False)
 
 def should_be_here(driver: WebDriver):
-    check_url_path_matches_template( URL,driver.current_url)
+    check_url_path_matches_template(URL, driver.current_url)
+
 
 def enter_text(driver: WebDriver, element_name: str):
     text_element = find_element(
@@ -297,7 +303,6 @@ def find_and_select_random_item_list(driver: WebDriver, element_selector_name: s
         "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]")
     select_currency_btn.click()
 
-
     # select__list body-l bg-white radius
     # number_of_units_element = driver.find_element_by_xpath(
     #     "//body/main/div[2]/div/section[1]/div/div[2]/div[5]/div/div[2]/div/div/div[2]/div[4]/ul")
@@ -305,7 +310,6 @@ def find_and_select_random_item_list(driver: WebDriver, element_selector_name: s
     #     "//body/main/div[2]/div/section[1]/div/div[2]/div[6]/div/div[2]/div/div/div[2]/div[4]/ul")
     select_currency_element = driver.find_element_by_xpath(
         "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]/div[4]/ul")
-
 
     # nou_li_elements = number_of_units_element.find_elements_by_tag_name("li")
     # random_number = 0
@@ -382,8 +386,6 @@ def enter_overhead_costs(driver: WebDriver, productadaptation: str, freightandlo
     agentanddistributionfees_xpath = base_element_xpath + "[" + "3" + "]/div/div[2]/div/div[2]/input"
     marketing_xpath = base_element_xpath + "[" + "4" + "]/div/div[2]/div/div[2]/input"
     insurance_xpath = base_element_xpath + "[" + "5" + "]/div/div[2]/div/div[2]/input"
-
-
 
     # clear text
     driver.find_element_by_xpath(productadaptation_ele_xpath).clear()

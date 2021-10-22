@@ -43,7 +43,7 @@ SELECTORS = {
     "marketing approach": {
         "open": Selector(
             By.XPATH, "//body/main/div[2]/section[3]/div/div/div[2]/div/div[1]/div/button"
-            #"//span[contains(text(),'open')]"
+            # "//span[contains(text(),'open')]"
         ),
         "close": Selector(
             By.XPATH, "//span[contains(text(),'close')]"
@@ -98,8 +98,8 @@ SELECTORS = {
             By.CSS_SELECTOR, "#route-to-market > div:nth-child(1) > div.text-center > button > i"
         ),
         "marketing resources example": Selector(
-            By.XPATH,"//*[@id=\"resources\"]/div/div[2]/div[1]/button"
-            #"#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
+            By.XPATH, "//*[@id=\"resources\"]/div/div[2]/div[1]/button"
+            # "#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
         ),
         "marketing resources text": Selector(
             By.XPATH, "//textarea[@id='resources']"
@@ -124,12 +124,12 @@ SELECTORS = {
         "what marketing resources example": Selector(
             By.XPATH,
             "//body/main/div[2]/section[4]/div/div[2]/div/div[1]/div[3]/div/div[1]/button"
-            #"#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
+            # "#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-example.button.button--small.button--tertiary.m-r-xxs"
         ),
         "lesson": Selector(
             By.XPATH,
             "//body/main/div[2]/section[4]/div/div[2]/div/div[1]/div[1]/div/div/div[1]/div[1]/button"
-            #"#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-lesson.button.button--small.button--tertiary.m-r-xxs"
+            # "#resources > div > div.learning > div.learning__buttons.m-b-xs > button.button-lesson.button.button--small.button--tertiary.m-r-xxs"
         ),
         "nav costs and pricing": Selector(
             By.XPATH, "//body/main/div[1]/nav/div/ul/li[6]/a"
@@ -145,7 +145,7 @@ SELECTORS = {
         ),
         "top export plan home": Selector(
             By.XPATH, "//*[@id=\"marketing-approach-content\"]/section[1]/div/div/div[2]/span/a"
-            #"//*[@id=\"getting-paid-content\"]/section[1]/div/div/div[2]/span/a"
+            # "//*[@id=\"getting-paid-content\"]/section[1]/div/div/div[2]/span/a"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
@@ -172,7 +172,8 @@ def visit(driver: WebDriver, *, page_name: str = None):
 #     check_url(driver, URL, exact_match=False)
 
 def should_be_here(driver: WebDriver):
-    check_url_path_matches_template( URL,driver.current_url)
+    check_url_path_matches_template(URL, driver.current_url)
+
 
 def enter_text(driver: WebDriver, element_name: str):
     text_element = find_element(
@@ -199,11 +200,11 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
 
 
 def find_and_select_random_item_list(driver: WebDriver, element_selector_name: str):
-    #//body/main/div[2]/section[4]/div/div[2]/div/button
+    # //body/main/div[2]/section[4]/div/div[2]/div/button
     find_and_click(driver, element_selector_name="Add route to market")
     drop_down_btn = driver.find_element_by_xpath(
         "//body/main/div[2]/section[4]/div/div[2]/div/div[1]/div[1]/div/div/div[2]/button"
-        )
+    )
     drop_down_btn.click()
     # promote_your_product_btn = driver.find_element_by_xpath(
     #     "//body/main/div[2]/section[4]/div/div[2]/div/div/div[2]/div/div/div[3]/div[1]")

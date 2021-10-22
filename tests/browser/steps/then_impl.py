@@ -290,12 +290,12 @@ def actor_decides_to_select_random_item_list_on_page(context, actor_alias, eleme
     page.find_and_select_random_item_list(context.driver, element_name)
 
 
-def actor_fill_business_objectives_details_on_page(context, actor_alias, position, startdate, enddate, objectives,
-                                                   owner, plannedreviews, page_name):
+def actor_fill_business_objectives_details_on_page(context, actor_alias, position,objectives,
+                                                   owner, plannedreviews, page_name,element_name):
     page = get_page_object(page_name)
     has_action(page, "enter_business_objectives_details")
-    page.enter_business_objectives_details(context.driver, position, startdate, enddate, objectives, owner,
-                                           plannedreviews)
+    page.enter_business_objectives_details(context.driver, position,objectives, owner,
+                                           plannedreviews,element_name)
 
 
 def actor_decides_to_delete_business_objectives_on_page(context, actor_alias, position, page_name):

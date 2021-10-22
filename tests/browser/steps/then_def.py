@@ -422,12 +422,11 @@ def then_actor_decides_to_select_random_item_list_on_page(context, actor_alias, 
 
 
 @then('"{actor_alias}" fill business objective details on page "{page_name}"')
-def then_actor_fill_business_objectives_details_on_page(context, actor_alias, page_name):
+def then_actor_fill_business_objectives_details_on_page(context, actor_alias, page_name,element_name):
     input_data_table = context.table
     for row in input_data_table:
-        actor_fill_business_objectives_details_on_page(context, actor_alias, row["Position"], row["Startdate"],
-                                                       row["Enddate"], row["Objectives"], row["Owner"],
-                                                       row["PlannedReviews"], page_name)
+        actor_fill_business_objectives_details_on_page(context, actor_alias, row["Position"], row["Objectives"], row["Owner"],
+                                                       row["PlannedReviews"], page_name,element_name)
 
 
 @then('"{actor_alias}" decides to delete business objectives on page "{page_name}"')

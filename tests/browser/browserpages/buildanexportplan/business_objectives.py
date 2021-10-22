@@ -46,7 +46,9 @@ SELECTORS = {
             By.CSS_SELECTOR, "#export-plan-dashboard > div:nth-child(2) > div > a > div.p-t-s.p-b-xs.p-h-xs"
         ),
         "why you want to export example": Selector(
-            By.CSS_SELECTOR, "#objectives-reasons > div > div.learning > div.learning__buttons > button.button-example.button.button--small.button--tertiary.m-r-xxs.m-b-xs", #objectives-reasons > div > div.learning > div.learning__buttons.m-b-xs > button",
+            By.CSS_SELECTOR,
+            "#objectives-reasons > div > div.learning > div.learning__buttons > button.button-example.button.button--small.button--tertiary.m-r-xxs.m-b-xs",
+            # objectives-reasons > div > div.learning > div.learning__buttons.m-b-xs > button",
             type=ElementType.INPUT
         ),
         "why you want to export": Selector(
@@ -88,11 +90,13 @@ SELECTORS = {
             By.XPATH, "//p[contains(text(),'Is this opportunity right for you?')]"
         ),
         "move from accidental exporting to strategic exporting": Selector(
-            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/a", #//*[@id=\"business-objectives-content\"]/section[4]/div/div[1]/div/a/div/p"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/a",
+            # //*[@id=\"business-objectives-content\"]/section[4]/div/div[1]/div/a/div/p"
         ),
         "top export plan home": Selector(
             By.XPATH,
-            "//body/main/div[2]/section[1]/div/div/div[2]/span/a/span" #business-objectives-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
+            "//body/main/div[2]/section[1]/div/div/div[2]/span/a/span"
+            # business-objectives-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
         ),
         "open navigation": Selector(
             By.XPATH,
@@ -121,12 +125,13 @@ SELECTORS = {
 def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
+
 #
 # def should_be_here(driver: WebDriver):
 #     check_url(driver, URL, exact_match=False)
 
 def should_be_here(driver: WebDriver):
-    check_url_path_matches_template( URL,driver.current_url)
+    check_url_path_matches_template(URL, driver.current_url)
 
 
 def enter_text(driver: WebDriver, element_name: str):
@@ -153,31 +158,24 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
     find_and_click.click()
 
 
-def enter_business_objectives_details(driver: WebDriver, position: str, startdate: str, enddate: str, objectives: str,
-                                      owner: str, plannedreviews: str):
+def enter_business_objectives_details(driver: WebDriver, position: str, objectives: str,
+                                      owner: str, plannedreviews: str, element_selector_name: str):
     # every call of this function, click on Add Goal
     find_and_click(driver, element_selector_name="Add goal")
     time.sleep(1)
-    # //body/main[@id='content']/div[@id='business-objectives-content']/section[4]/div[1]/div[2]/div[2]/div[1]/div[5]
-    #//body[1]/main[1]/div[2]/section[4]/div[1]/div[2]/div[2]/div[1]/fieldset[1]/div[1]
-    # /div[1]/div[1]/div[1]/textarea[1]
-
-
-    #//body/main[@id='content']/div[@id='business-objectives-content']/section[4]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/textarea[1]
-    # //body/main[@id='content']/div[@id='business-objectives-content']/section[4]/div[1]/div[2]/div[2]/div[1]/div[5]
-    # /div[2]/button[1]
-
-    objective_div_element_xpath = "//body[1]/main[1]/div[2]/section[4]/div[1]/div[2]/div[2]/div[1]/fieldset[1]/div" + "[" + position + "]"
-    objective_text_ele_xpath = objective_div_element_xpath + "/div[1]/div[1]/div[1]/textarea[1]"
-    del_btn_ele_xpath = objective_div_element_xpath + "/div[2]/button[1]"
-    start_date_ele_xpath = objective_div_element_xpath + "/div[1]/div[2]/div[1]/div/div[2]/input"
-    end_date_ele_xpath = objective_div_element_xpath + "/div[1]/div[2]/div[2]/div/div[2]/input"
-    owner_ele_xpath = objective_div_element_xpath + "/div[1]/div[3]/div[1]/div[2]/input[1]"
-    planned_reviews_ele_xpath = objective_div_element_xpath + "/div[1]/div[4]/div[1]/textarea[1]"
+    objective_div_element_xpath = "//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset" + "[" + position + "]"
+    objective_text_ele_xpath = objective_div_element_xpath + "div/div[1]/div/textarea"
+    del_btn_ele_xpath = objective_div_element_xpath + "div/div[5]/button"
+    find_and_select_random_month_list(driver, element_selector_name)
+    find_and_select_random_year_list(driver, element_selector_name)
+    # month_ele_xpath = objective_div_element_xpath + "/div[1]/div[2]/div[1]/div/div[2]/input"
+    # year_ele_xpath = objective_div_element_xpath + "/div[1]/div[2]/div[2]/div/div[2]/input"
+    owner_ele_xpath = objective_div_element_xpath + "/div/div[3]/div/div[2]/input"
+    planned_reviews_ele_xpath = objective_div_element_xpath + "/div/div[4]/div/textarea"
 
     driver.find_element_by_xpath(objective_text_ele_xpath).send_keys(objectives)
-    driver.find_element_by_xpath(start_date_ele_xpath).send_keys(startdate)
-    driver.find_element_by_xpath(end_date_ele_xpath).send_keys(enddate)
+    # driver.find_element_by_xpath(month_ele_xpath).send_keys(startdate)
+    # driver.find_element_by_xpath(year_ele_xpath).send_keys(enddate)
     driver.find_element_by_xpath(owner_ele_xpath).send_keys(owner)
     driver.find_element_by_xpath(planned_reviews_ele_xpath).send_keys(plannedreviews)
 
@@ -188,6 +186,46 @@ def enter_business_objectives_details(driver: WebDriver, position: str, startdat
     #
     # text_area_details_dict = {"objective text": objectives, "planned review": plannedreviews}
     # fill_out_textarea_fields(driver, input_field_selectors, text_area_details_dict)
+
+
+def find_and_select_random_month_list(driver: WebDriver, element_selector_name: str):
+    drop_down_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[1]/div/div/div[2]")
+    drop_down_btn.click()
+    driver.implicitly_wait(5)
+    drop_down_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[1]/div/div/div[2]/div[4]/ul")
+    li_elements = drop_down_element.find_elements_by_tag_name("li")
+    logging.debug("list elements")
+    logging.debug(li_elements)
+    random_number = 0
+    if len(li_elements) > 2:
+        random_number = random.randint(1, len(li_elements) - 1)
+    random_li_element = li_elements[random_number]
+    logging.debug(random_number)
+    logging.debug(random_li_element.tag_name)
+    logging.debug(random_li_element)
+    time.sleep(2)
+
+
+def find_and_select_random_year_list(driver: WebDriver, element_selector_name: str):
+    drop_down_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[2]/div/div/div[2]")
+    drop_down_btn.click()
+    driver.implicitly_wait(5)
+    drop_down_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[2]/div/div/div[2]/div[4]/ul")
+    li_elements = drop_down_element.find_elements_by_tag_name("li")
+    logging.debug("list elements")
+    logging.debug(li_elements)
+    random_number = 0
+    if len(li_elements) > 2:
+        random_number = random.randint(1, len(li_elements) - 1)
+    random_li_element = li_elements[random_number]
+    logging.debug(random_number)
+    logging.debug(random_li_element.tag_name)
+    logging.debug(random_li_element)
+    time.sleep(2)
 
 
 # def delete_all_business_objectives(driver: WebDriver, position: str):
@@ -219,7 +257,7 @@ def delete_all_business_objectives(driver: WebDriver, del_button_position: str):
     # planned_reviews_ele_xpath = objective_div_element_xpath + "/div[1]/div[4]/div[1]/textarea[1]"
 
     objective_text_area_element_index = int(del_button_position)
-    #//body/main/div[2]/section[4]/div/div[2]/div[2]/div/div[5]/div[1]/div[1]/div/textarea
+    # //body/main/div[2]/section[4]/div/div[2]/div[2]/div/div[5]/div[1]/div[1]/div/textarea
     objective_text_area_element_x_path = "//body/main/div[2]/section[4]/div/div[2]/div[2]/div/div" \
                                          + "[" + str(
         objective_text_area_element_index) + "]" + "/div[1]/div[1]/div/textarea"
@@ -234,35 +272,34 @@ def delete_all_business_objectives(driver: WebDriver, del_button_position: str):
     except Exception as e:
         logging.error(e)
         objective_text_area_text_exists = False
-    #/html/body/main/div[2]/section[4]/div/div[2]/div[2]/div/div[15]/div[2]/button/i
-    #/html/body/main/div[2]/section[4]/div/div[2]/div[2]/div/div[5]/div[2]/button/i
-    #/html/body/main/div[2]/section[4]/div/div[2]/div[2]/div/div[1]/div[2]/button/i
+    # /html/body/main/div[2]/section[4]/div/div[2]/div[2]/div/div[15]/div[2]/button/i
+    # /html/body/main/div[2]/section[4]/div/div[2]/div[2]/div/div[5]/div[2]/button/i
+    # /html/body/main/div[2]/section[4]/div/div[2]/div[2]/div/div[1]/div[2]/button/i
     # del_button_position: 5,4,3,2,1
     objective_div_element_xpath = "//body/main/div[2]/section[4]/div/div[2]/div[2]/div/div" + "[" + del_button_position + "]"
     del_btn_ele_xpath = objective_div_element_xpath + "/div[2]/button"
     driver.find_element_by_xpath(del_btn_ele_xpath).click()
-    #logging.debug("del_button_position " + str(del_button_position))
-    #time.sleep(2)
+    # logging.debug("del_button_position " + str(del_button_position))
+    # time.sleep(2)
     if objective_text_area_text_exists == True:
         driver.implicitly_wait(1)
         # 12,13,14,15.......
         # 12 + (1 - 1), 12 + (2 - 1), 12 + (3 - 1), 12 + (4 - 1),.........
-        #/html/body/div[16]/div/div/div/div[2]/div[2]/button[1]/i
-        #/html/body/div[13]/div/div/div/div[2]/div[2]/button[1]
+        # /html/body/div[16]/div/div/div/div[2]/div[2]/button[1]/i
+        # /html/body/div[13]/div/div/div/div[2]/div[2]/button[1]
         delete_msg_yes_index = int(12 + (int(del_button_position) - 1))
         delete_message_yes_element_xpath = "//body/div" + "[" + str(
             delete_msg_yes_index) + "]" + "/div/div/div/div[2]/div[2]/button[1]"
         logging.debug(delete_message_yes_element_xpath)
         delete_message_yes_element = driver.find_element_by_xpath(delete_message_yes_element_xpath)
         delete_message_yes_element.click()
-        #time.sleep(1)
+        # time.sleep(1)
     else:
-        logging.debug("objective_text_area_text_exists is False for del_button_position " +str(del_button_position))
+        logging.debug("objective_text_area_text_exists is False for del_button_position " + str(del_button_position))
+
 
 def check_section_complete_yes(driver: WebDriver, element_selector_name: str):
     check_yes_link = find_element(
         driver, find_selector_by_name(SELECTORS, element_selector_name)
     )
     check_yes_link.click()
-
-
