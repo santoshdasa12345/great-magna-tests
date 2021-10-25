@@ -131,7 +131,7 @@ def flag_browserstack_session_as_failed(session_id: str, reason: str):
 
 @retry(stop_max_attempt_number=3)
 def start_driver_session(
-    session_name: str, capabilities: dict, *, mobile: bool = False
+        session_name: str, capabilities: dict, *, mobile: bool = False
 ) -> WebDriver:
     from great_magna_tests_shared.settings import BROWSER_HEADLESS, HUB_URL
 

@@ -37,7 +37,7 @@ from browserpages.common_actions import (
 NAME = "Getting Paid"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
 TYPE = PageType.BUILD_AN_EXPORT_PLAN
-URL = URLs.GREAT_MAGNA_EXPORT_PLAN_GETTING_PAID.absolute
+URL = URLs.GREAT_MAGNA_EXPORT_PLAN_GETTING_PAID.absolute_template
 PAGE_TITLE = "Getting Paid Page"
 
 SELECTORS = {
@@ -47,15 +47,15 @@ SELECTORS = {
             "#getting-paid > div > div:nth-child(1) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
         ),
         "payment methods notes": Selector(
-            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[2]/textarea[1]", type=ElementType.INPUT
-                        #//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[2]/textarea
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[2]/textarea[1]",
+            type=ElementType.INPUT
         ),
         "payment terms": Selector(
-            By.CSS_SELECTOR,
-            "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
+            By.XPATH,
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[2]/textarea"
         ),
         "payment terms notes": Selector(
-            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[2]/textarea", #//textarea[@id='payments_notes']",
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[2]/textarea",
             type=ElementType.INPUT
         ),
         "incoterms": Selector(
@@ -63,10 +63,10 @@ SELECTORS = {
             "#getting-paid > div > div:nth-child(3) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
         ),
         "incoterms notes": Selector(
-            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[2]/textarea"#//textarea[@id='incoterms_notes']",type=ElementType.INPUT
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[3]/div[2]/textarea"
         ),
         "section complete": Selector(
-            By.XPATH, "//label[contains(text(),'Yes')]"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "travel plan": Selector(
             By.XPATH, "//*[@id=\"getting-paid-content\"]/section[4]/div/div/div[2]/a/span"
@@ -74,14 +74,13 @@ SELECTORS = {
         "export plan home": Selector(
             By.XPATH,
             "//*[@id=\"getting-paid-content\"]/section[4]/div/div/div[2]/div[2]/a"
-            # costs-and-pricing-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > div.m-t-l > a"
         ),
         "open navigation": Selector(
             By.XPATH,
             "//body/main[@id='content']/div[@id='sidebar-content']/nav[@id='collapseNav']/div[1]/button[1]/i[1]"
         ),
         "nav travel plan": Selector(
-            By.XPATH, "//*[@id=\"collapseNav\"]/div/ul/li[9]/a"  # //*[@id=\"collapseNav\"]/div/ul/li[9]/a"
+            By.XPATH, "//*[@id=\"collapseNav\"]/div/ul/li[9]/a"
         ),
         "back": Selector(
             By.XPATH, "//body/div[10]/div/div/div/div[1]/a"
@@ -91,7 +90,6 @@ SELECTORS = {
         ),
         "top export plan home": Selector(
             By.XPATH, "//*[@id=\"getting-paid-content\"]/section[1]/div/div/div[2]/span/a"
-            # //*[@id=\"getting-paid-content\"]/section[1]/div/div/div[2]/a/span"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
@@ -101,31 +99,27 @@ SELECTORS = {
         ),
         "choose the right payment method": Selector(
             By.XPATH,
-            "//body[1]/main[1]/div[2]/section[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]/div[1]"
-            # //h4[contains(text(),'Choose the right payment method')]"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[1]/div[2]/a/div"
         ),
         "decide when to get paid": Selector(
             By.XPATH,
-            "//h4[contains(text(),'Decide when to get paid')]"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[1]/div[2]/a"
         ),
         "choose which incoterms are right for you": Selector(
             By.XPATH,
-            "//h4[contains(text(),'Choose which incoterms are right for you')]"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[3]/div[1]/div/div[1]/div[2]/a"
         ),
         "incoterms lesson": Selector(
             By.XPATH,
             "//*[@id=\"getting-paid\"]/div/div[3]/div[1]/div/div[1]/div[1]/button"
-            # getting-paid > div > div:nth-child(3) > div.select.m-b-l > div > div.learning > div.learning__buttons.m-b-xs > button"
         ),
         "payment terms lesson": Selector(
             By.XPATH,
             "//*[@id=\"getting-paid\"]/div/div[2]/div[1]/div/div[1]/div[1]/button"
-            # getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.learning > div.learning__buttons.m-b-xs > button"
         ),
         "payment methods lesson": Selector(
             By.XPATH,
             "//*[@id=\"getting-paid\"]/div/div[2]/div[1]/div/div[1]/div[1]/button"
-            # //*[@id=\"getting-paid\"]/div/div[1]/div[1]/div/div[1]/div[1]/button"
         ),
     }
 }
@@ -135,8 +129,11 @@ def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
 
+# def should_be_here(driver: WebDriver):
+#     check_url(driver, URL, exact_match=False)
+
 def should_be_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=False)
+    check_url_path_matches_template(URL, driver.current_url)
 
 
 def enter_text(driver: WebDriver, element_name: str):
@@ -145,6 +142,7 @@ def enter_text(driver: WebDriver, element_name: str):
     )
     print(text_element)
     text_element.clear()
+    time.sleep(2)
     text_element.send_keys("Automated tests")
 
 
@@ -177,30 +175,38 @@ def enter_business_objectives_details(driver: WebDriver, startdate: str, enddate
 
 def find_and_select_random_item_list(driver: WebDriver, element_selector_name: str):
     payment_methods_btn = driver.find_element_by_xpath(
-        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[3]" )
+        #//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[3]")
+        #//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[4]/ul
     payment_methods_btn.click()
-    payment_terms_btn = driver.find_element_by_css_selector(
-        "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--value")
-    # "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
-    payment_terms_btn.click()
-    incoterms_btn = driver.find_element_by_css_selector(
-        "#getting-paid > div > div:nth-child(3) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--value")
-    # "#getting-paid > div > div:nth-child(3) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
-    incoterms_btn.click()
     driver.implicitly_wait(5)
     # select__list body-l bg-white radius
-    payment_methods_element = driver.find_element_by_xpath(
-        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[4]")
-    payment_terms_element = driver.find_element_by_css_selector(
-        "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")
-    # "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
-    incoterms_element = driver.find_element_by_css_selector(
-        "#getting-paid > div > div:nth-child(3) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")
-    # "#getting-paid > div > div:nth-child(3) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
+    payment_methods_drop_down_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[4]/ul")
+    li_elements = payment_methods_drop_down_element.find_elements_by_tag_name("li")
+    logging.debug("list elements")
+    logging.debug(li_elements)
+    random_number = 0
+    if len(li_elements) > 2:
+        random_number = random.randint(1, len(li_elements) - 1)
+    random_li_element = li_elements[random_number]
+    logging.debug(random_number)
+    logging.debug(random_li_element.tag_name)
+    logging.debug(random_li_element)
+    random_li_element.click()
+    time.sleep(2)
 
-    li_elements = payment_methods_element.find_elements_by_tag_name("li")
+
+def find_and_select_random_payment_terms(driver: WebDriver,element_selector_name: str):
+    payment_terms_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]")
+    payment_terms_btn.click()
+
+    driver.implicitly_wait(5)
+    # select__list body-l bg-white radius
+    payment_terms_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/div[4]/ul")
     li_elements = payment_terms_element.find_elements_by_tag_name("li")
-    li_elements = incoterms_element.find_elements_by_tag_name("li")
     logging.debug("list elements")
     logging.debug(li_elements)
     random_number = 0
@@ -212,6 +218,25 @@ def find_and_select_random_item_list(driver: WebDriver, element_selector_name: s
     logging.debug(random_li_element)
     time.sleep(2)
 
+def find_and_select_random_incoterms(driver: WebDriver,element_selector_name: str):
+    incoterms_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]")
+    incoterms_btn.click()
+    driver.implicitly_wait(5)
+    # select__list body-l bg-white radius
+    incoterms_element = driver.find_element_by_css_selector(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/div[4]/ul")
+    li_elements = incoterms_element.find_elements_by_tag_name("li")
+    logging.debug("list elements")
+    logging.debug(li_elements)
+    random_number = 0
+    if len(li_elements) > 2:
+        random_number = random.randint(1, len(li_elements) - 1)
+    random_li_element = li_elements[random_number]
+    logging.debug(random_number)
+    logging.debug(random_li_element.tag_name)
+    logging.debug(random_li_element)
+    time.sleep(2)
 
 def check_section_complete_yes(driver: WebDriver, element_selector_name: str):
     check_yes_link = find_element(
@@ -236,8 +261,7 @@ def fill_out_country(driver: WebDriver, country: str):
 
         # look out for the list displayed after entering country name and select random/provided country
         ul_list_element = driver.find_element_by_xpath(
-            "/html/body/div[11]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul")
-        #            "//body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul")
+            "//body/div[11]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul")
 
         section_elements = ul_list_element.find_elements_by_tag_name("section")
         logging.debug("length of section elements " + str(len(section_elements)))
@@ -276,17 +300,12 @@ def fill_out_country(driver: WebDriver, country: str):
 #
 #     fill_out_country(driver, country)
 
-
-# //body[1]/main[1]/div[2]/section[3]/div[1]/div[2]/div[1]/div[1]/div[1]--target market documents form
-# //body[1]/main[1]/div[2]/section[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]--user-form-group
-# //body[1]/main[1]/div[2]/section[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]--lesson link
-
 def find_and_click_lesson_link(driver: WebDriver, lesson_name: str):
     parent_div_lesson_element = driver.find_element_by_class_name("target-market-documents-form")
     child_div_elements = parent_div_lesson_element.find_elements_by_class_name("user-form-group")
     lesson_name_found = False
     for user_form_group_element in child_div_elements:
-        #select_mbl_element = user_form_group_element.find_element_by_class_name("select m-b-l ")
+        # select_mbl_element = user_form_group_element.find_element_by_class_name("select m-b-l ")
         form_group_section_elements = user_form_group_element.find_elements_by_class_name("form-group  ")
         for section_element in form_group_section_elements:
             section_label_element = section_element.find_element_by_tag_name("label")

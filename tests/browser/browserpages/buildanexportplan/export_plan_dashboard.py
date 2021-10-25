@@ -39,14 +39,19 @@ TYPE = PageType.BUILD_AN_EXPORT_PLAN
 URL = URLs.GREAT_MAGNA_EXPORT_PLAN_DASHBOARD.absolute
 PAGE_TITLE = "Export Plan Dashboard"
 
+SubURLs = {
+    "export plan dashboard": URLs.GREAT_MAGNA_NEW_EXPORT_PLAN.absolute_template,
+}
+
 SELECTORS = {
     "Export Plan Dashboard": {
         "about your business": Selector(
             By.XPATH, "//*[@id=\"export-plan-dashboard\"]/div[1]/div/a/div[2]/h3"
         ),
         "business objectives": Selector(
-            By.CSS_SELECTOR, "#export-plan-dashboard > div:nth-child(2) > div > a > div.section-list__image-container > img"
-            #"#export-plan-dashboard > div:nth-child(2) > div > a > div.p-t-s.p-b-xs.p-h-xs"
+            By.CSS_SELECTOR,
+            "#export-plan-dashboard > div:nth-child(2) > div > a > div.section-list__image-container > img"
+            # "#export-plan-dashboard > div:nth-child(2) > div > a > div.p-t-s.p-b-xs.p-h-xs"
         ),
         "target markets research": Selector(
             By.XPATH, "//*[@id=\"export-plan-dashboard\"]/div[3]/div/a/div[2]"
@@ -61,7 +66,8 @@ SELECTORS = {
             By.XPATH, "//h3[contains(text(),'Costs and pricing')]"
         ),
         "funding and credit": Selector(
-            By.CSS_SELECTOR, "#export-plan-dashboard > div:nth-child(7) > div > a > div.p-xs" #export-plan-dashboard > div:nth-child(7) > div > a > div.p-t-s.p-b-xs.p-h-xs > p"
+            By.CSS_SELECTOR, "#export-plan-dashboard > div:nth-child(7) > div > a > div.p-xs"
+            # export-plan-dashboard > div:nth-child(7) > div > a > div.p-t-s.p-b-xs.p-h-xs > p"
         ),
         "getting paid": Selector(
             By.XPATH, "//h3[contains(text(),'Getting paid')]"
@@ -102,8 +108,19 @@ def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
 
-def should_be_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=False)
+# def should_be_here(driver: WebDriver):
+#     check_url(driver, URL, exact_match=False)
+
+# def should_be_here(driver: WebDriver):
+#     check_url_path_matches_template( URL,driver.current_url)
+
+def should_be_here(driver: WebDriver, *, page_name: str = None):
+    if page_name:
+        url = SubURLs[page_name]
+        logging.debug(f"visit url info -> {url} {page_name}")
+        check_url_path_matches_template(url, driver.current_url)
+    else:
+        check_url(driver, URL, exact_match=False)
 
 
 def find_and_click(driver: WebDriver, *, element_selector_name: str):

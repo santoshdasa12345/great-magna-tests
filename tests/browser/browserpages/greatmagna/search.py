@@ -49,9 +49,9 @@ SELECTORS = {
             By.XPATH, "//body/nav[@id='personalisation-bar']/span[@id='set-country-button']/span[1]/button[1]",
             type=ElementType.INPUT
         ),
-        "skipwalkthrough": Selector(
-            By.XPATH, "//*[@id=\"page-tour-skip\"]"
-        ),
+        # "skipwalkthrough": Selector(
+        #     By.XPATH, "//*[@id=\"page-tour-skip\"]"
+        # ),
         "searchagain": Selector(
             By.XPATH, "//button[@class='back-button m-f-l m-t-m']"
         ),

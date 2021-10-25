@@ -93,6 +93,7 @@ SECTORS = [
     "FOOD_AND_DRINK",
     "GIFTWARE_JEWELLERY_AND_TABLEWARE",
     "GLOBAL_SPORTS_INFRASTRUCTURE",
+    "GREEN FINANCE",
     "HEALTHCARE_AND_MEDICAL",
     "HOUSEHOLD_GOODS_FURNITURE_AND_FURNISHINGS",
     "LIFE_SCIENCES",
@@ -104,6 +105,7 @@ SECTORS = [
     "METALS_MINERALS_AND_MATERIALS",
     "MINING",
     "OIL_AND_GAS",
+    "OFFSHORE WIND",
     "PORTS_AND_LOGISTICS",
     "POWER",
     "RAILWAYS",
@@ -113,6 +115,7 @@ SECTORS = [
     "SOFTWARE_AND_COMPUTER_SERVICES",
     "TEXTILES_INTERIOR_TEXTILES_AND_CARPETS",
     "WATER",
+    "ZERO EMISSION VEHICLES",
 ]
 
 SECTORS_WITH_LABELS = {
@@ -135,8 +138,10 @@ SECTORS_WITH_LABELS = {
     "FOOD_AND_DRINK": "Food and drink",
     "GIFTWARE_JEWELLERY_AND_TABLEWARE": "Giftware, jewellery and tableware",
     "GLOBAL_SPORTS_INFRASTRUCTURE": "Global sports infrastructure",
+    "GREEN FINANCE" : "Green finance",
     "HEALTHCARE_AND_MEDICAL": "Healthcare and medical",
     "HOUSEHOLD_GOODS_FURNITURE_AND_FURNISHINGS": "Household goods, furniture and furnishings",
+    "OFFSHORE WIND": "Offshore wind",
     "LIFE_SCIENCES": "Life sciences",
     "LEISURE_AND_TOURISM": "Leisure and tourism",
     "LEGAL_SERVICES": "Legal services",
@@ -155,6 +160,7 @@ SECTORS_WITH_LABELS = {
     "SOFTWARE_AND_COMPUTER_SERVICES": "Software and computer services",
     "TEXTILES_INTERIOR_TEXTILES_AND_CARPETS": "Textiles, interior textiles and carpets",
     "WATER": "Water",
+    "ZERO EMISSION VEHICLES" : "Zero emission vehicles",
 }
 
 COUNTRIES = {

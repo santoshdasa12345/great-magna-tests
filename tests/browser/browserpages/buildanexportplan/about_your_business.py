@@ -37,7 +37,7 @@ from browserpages.common_actions import (
 NAME = "About Your business"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
 TYPE = PageType.BUILD_AN_EXPORT_PLAN
-URL = URLs.GREAT_MAGNA_EXPORT_PLAN_ABOUT_YOUR_BUSINESS.absolute
+URL = URLs.GREAT_MAGNA_EXPORT_PLAN_ABOUT_YOUR_BUSINESS.absolute_template
 PAGE_TITLE = "About Your business Page"
 
 SELECTORS = {
@@ -49,7 +49,9 @@ SELECTORS = {
             By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(1) > div > div.learning__buttons > button"
         ),
         "how you started educational": Selector(
-            By.CSS_SELECTOR, "#about-your-business-form > div:nth-child(1) > div > div.learning__buttons > div > div > button > i"#about-your-business-form > div:nth-child(1) > div > div.learning__buttons.m-b-xs > div > div > button > i"
+            By.CSS_SELECTOR,
+            "#about-your-business-form > div:nth-child(1) > div > div.learning__buttons > div > div > button > i"
+            # about-your-business-form > div:nth-child(1) > div > div.learning__buttons.m-b-xs > div > div > button > i"
         ),
         "how you started": Selector(
             By.XPATH, "//*[@id=\"story\"]", type=ElementType.INPUT
@@ -76,13 +78,15 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"about-your-business-form\"]/div[5]/button"
         ),
         "business objectives": Selector(
-            By.CSS_SELECTOR, "#about-your-business-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > a > span"
+            By.CSS_SELECTOR,
+            "#about-your-business-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > a > span"
         ),
         "export plan home": Selector(
-            By.CSS_SELECTOR, "#about-your-business-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > div.m-t-l > a"
+            By.CSS_SELECTOR,
+            "#about-your-business-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > div.m-t-l > a"
         ),
         "move from accidental exporting to strategic exporting": Selector(
-            By.XPATH, "//*[@id=\"about-your-business-content\"]/section[3]/div/div[1]/div/a/div/p"
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[2]/a/span[1]"
         ),
         "your business performance label": Selector(
             By.CSS_SELECTOR, "#about-your-business-form > div.select.m-b-l > div > label"
@@ -95,13 +99,14 @@ SELECTORS = {
             "//body/main[@id='content']/div[@id='sidebar-content']/nav[@id='collapseNav']/div[1]/button[1]/i[1]"
         ),
         "nav business objectives": Selector(
-            By.XPATH, "//a[contains(text(),'Business objectives')]"
+            By.XPATH, "//body/main/div[1]/nav/div/ul/li[2]/a"
         ),
         "yes checkbox": Selector(
             By.CSS_SELECTOR, "#section-complete > div > label"
         ),
         "top export plan home": Selector(
-            By.CSS_SELECTOR, "#about-your-business-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
+            By.CSS_SELECTOR,
+            "#about-your-business-content > section.section--intro.bg-blue-deep-90 > div > div > div.c-2-3-m.c-1-2-xl.p-t-xl.p-b-s.text-white > span > a > span"
         ),
         "dashboard": Selector(
             By.XPATH, "//a[contains(text(),'Dashboard')]"
@@ -114,8 +119,11 @@ def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
 
+# def should_be_here(driver: WebDriver):
+#     check_url(driver, URL, exact_match=False)
+
 def should_be_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=False)
+    check_url_path_matches_template(URL, driver.current_url)
 
 
 def enter_text(driver: WebDriver, element_name: str):
@@ -146,12 +154,13 @@ def find_and_select_random_item_list(driver: WebDriver, element_selector_name: s
     # about-your-business-form > div.select.m-b-l > button
     drop_down_btn = driver.find_element_by_css_selector(
         "#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--value")
-        #"#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
+    # "#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--input")
     drop_down_btn.click()
     driver.implicitly_wait(5)
     # select__list body-l bg-white radius
     # about-your-business-form > div.select.m-b-l > ul
-    drop_down_element = driver.find_element_by_css_selector("#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
+    drop_down_element = driver.find_element_by_css_selector(
+        "#about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")  # about-your-business-form > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > ul")
     li_elements = drop_down_element.find_elements_by_tag_name("li")
     logging.debug("list elements")
     logging.debug(li_elements)
@@ -193,6 +202,7 @@ def search_again_top_bottom(driver: WebDriver):
         except:
             pass
 
+
 def select_product_search_again_top_bottom(driver: WebDriver, product_name: str):
     product_btn = find_element(
         driver, find_selector_by_name(SELECTORS, "product-btn")
@@ -201,7 +211,8 @@ def select_product_search_again_top_bottom(driver: WebDriver, product_name: str)
     search_again_top_bottom(driver)
     driver.implicitly_wait(1)
     driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").clear()
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").send_keys(product_name)
+    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").send_keys(
+        product_name)
     driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/button").click()
 
 
@@ -212,7 +223,7 @@ def search_select_save_random_next(driver: WebDriver):
         try:
             driver.implicitly_wait(1)
             logging.debug('Counter -> ' + str(counter))
-            #//body/div[7]/div/div/form/div[2]/div/span/div/section[1]/div/div/div
+            # //body/div[7]/div/div/form/div[2]/div/span/div/section[1]/div/div/div
             parent_div_element = driver.find_element_by_xpath(
                 "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/div/div")
             logging.debug(parent_div_element)
@@ -225,7 +236,7 @@ def search_select_save_random_next(driver: WebDriver):
                     radio_ele = label_element.find_element_by_tag_name("input")
                     radio_elements.append(radio_ele)
                 except Exception as ex:
-                    #logging.error('Érror selecting correct label -> ' + str(ex))
+                    # logging.error('Érror selecting correct label -> ' + str(ex))
                     pass
 
             random_label_index = random.randint(0, len(radio_elements) - 1)
@@ -255,7 +266,6 @@ def search_select_save_random_next(driver: WebDriver):
         except Exception as ex:
             logging.error(str(ex))
             break
-
 
 
 def find_and_select_random_radio_and_click_next(driver: WebDriver):
@@ -405,6 +415,7 @@ def fill_out_products_and_country(driver: WebDriver, products: str, country: str
     fill_out_product(driver, products)
 
     fill_out_country(driver, country)
+
 
 def fill_out_products(driver: WebDriver, products: str):
     # details_dict = {"emailaddress": products}

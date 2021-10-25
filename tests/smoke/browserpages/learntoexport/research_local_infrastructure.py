@@ -43,19 +43,19 @@ PAGE_TITLE = "Research local infrastructure"
 SELECTORS = {
     "research local infrastructure": {
         "lesson yes checkbox": Selector(
-            By.XPATH, "//label[contains(text(),'Yes')]"
+            By.CSS_SELECTOR, "#mark_as_complete > div > div"
         ),
         "continue learning": Selector(
             By.XPATH, "//a[contains(text(),'Continue learning')]"
         ),
         "bottom back": Selector(
-            By.XPATH, "//body/main[@id='content']/div[1]/div[3]/a[1]/i[1]"
+            By.XPATH, "//body/main/div/div[2]/span/a"
         ),
         "top back": Selector(
-            By.XPATH, "//*[@id=\"content\"]/div/a/i"
+            By.XPATH, "//body/main/div/div[1]/div/div[1]/a"
         ),
         "open case study" :Selector(
-            By.XPATH, "//button[contains(text(),'Open case study')]"
+            By.XPATH, "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button"
         ),
         "close case study": Selector(
             By.XPATH, "//*[@id=\"case_study\"]/div/button"

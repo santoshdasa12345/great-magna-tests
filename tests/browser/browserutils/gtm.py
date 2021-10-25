@@ -180,7 +180,7 @@ def get_selector_and_on_what_action(raw_code: str) -> tuple:
     event_function_start = ", function"
     if ").on(" in raw_code.strip():
         selector_start = (
-            raw_code.index(selector_line_start) + len(selector_line_start) + 1
+                raw_code.index(selector_line_start) + len(selector_line_start) + 1
         )
         selector_end = raw_code.index(register_event_call) - 1
         selector = raw_code[selector_start:selector_end]
@@ -252,7 +252,7 @@ def get_gtm_events_from_raw_js(raw_code: str) -> dict:
 
 
 def get_gtm_event_definitions(
-    driver: WebDriver, tagging_package: str, *, event_group: str = None
+        driver: WebDriver, tagging_package: str, *, event_group: str = None
 ) -> dict:
     """Extracts details of all GTM events from a specific JS DIT tagging package.
     ATM. it supports both: dit.tagging.domestic & dit.tagging.domesticHeader packages
@@ -316,6 +316,6 @@ def trigger_js_event(driver: WebDriver, event: dict):
         f"'{selector}'"
     )
     with selenium_action(
-        driver, f"Failed to trigger '{on_what}' event for '{selector}'"
+            driver, f"Failed to trigger '{on_what}' event for '{selector}'"
     ):
         driver.execute_script(js)

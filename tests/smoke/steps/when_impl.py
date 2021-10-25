@@ -19,13 +19,22 @@ from selenium.common.exceptions import (
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
+from great_magna_tests_shared.gov_notify import (
+    get_email_verification_code,
+    get_verification_link,
+
+)
 from great_magna_tests_shared.utils import check_for_errors
 from browserpages import (
     # search,
+    common_language_selector,
     get_page_object,
     greatmagna,
     learntoexport,
+    fas,
     soo,
+    profile,
+    sso,
 )
 from browserpages import (
     domestic,
@@ -227,8 +236,8 @@ def generic_fill_out_and_submit_form(
         form_name: str = None,
         check_captcha_dev_mode: bool = False,
 ):
-    if check_captcha_dev_mode:
-        assert_catcha_in_dev_mode(context.driver)
+    # if check_captcha_dev_mode:
+    #     assert_catcha_in_dev_mode(context.driver)
     actor = get_actor(context, actor_alias)
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "generate_form_details")
@@ -376,6 +385,12 @@ def generic_country_name_to_fill_country_and_click_on_continue(
     has_action(page, "searchcontinue")
     page.searchcontinue(context.driver)
 
+def generic_open_industry_page(context: Context, actor_alias: str, industry_name: str):
+    page = get_last_visited_page(context, actor_alias)
+    has_action(page, "open_industry")
+    page.open_industry(context.driver, industry_name)
+    update_actor(context, actor_alias, visited_page=page)
+    logging.debug("%s opened '%s' page on %s", actor_alias, industry_name, page.URL)
 
 def generic_product_name_to_fill_country_and_click_on_continue(
         context, actor_alias, element_name, form_name):
@@ -589,7 +604,7 @@ def actor_decides_to_enter_email_address_and_click_login(
     email_address = str(email_address).strip()  # trimming
     password = str(password).strip()  # trimming
     page.login(context.driver, email_address=email_address, password=password)
-    time.sleep(100)
+    time.sleep(2)
 
 
 def actor_decides_to_enter_email_address_and_click_sign_up(
@@ -846,6 +861,29 @@ def generic_unfold_elements_in_section(
     page.unfold_elements_in_section(context.driver, section_name)
 
 
+def registration_should_get_verification_email(context: Context, actor_alias: str):
+    """Will check if the Exporter received an email verification message."""
+    logging.debug("Searching for an email verification message...")
+    actor = get_actor(context, actor_alias)
+    link = get_verification_link(actor.email)
+    update_actor(context, actor_alias, email_confirmation_link=link)
+
+
+def registration_open_email_confirmation_link(context: Context, actor_alias: str):
+    """Given Supplier has received a message with email confirmation link
+    Then Supplier has to click on that link.
+    """
+    actor = get_actor(context, actor_alias)
+    link = actor.email_confirmation_link
+
+    # Step 1 - open confirmation link
+    context.driver.get(link)
+
+    # Step 3 - confirm that Supplier is on SSO Confirm Your Email page
+    sso.confirm_your_email.should_be_here(context.driver)
+    logging.debug("Supplier is on the SSO Confirm your email address page")
+
+
 def registration_submit_form_and_verify_account(
         context: Context, actor_alias: str, *, fake_verification: bool = True
 ):
@@ -1081,4 +1119,147 @@ def generic_create_great_account(
 
     should_be_on_page(
         context, actor_alias, f"Profile - Account created ({business_type})"
+    )
+
+
+def generic_at_least_n_news_articles(
+        context: Context, n: int, visitor_type: str, service: str
+):
+    context.articles = get_news_articles(service, visitor_type)
+    error = (
+        f"Expected to find at least {n} news articles on {service} but "
+        f"got {len(context.articles)}"
+    )
+    assert len(context.articles) >= n, error
+
+
+def sso_actor_received_email_confirmation_code(
+        context: Context, actor_alias: str, business_type: str
+):
+    page_name = (
+        f"Profile - Enter your email address and set a password ({business_type})"
+    )
+    visit_page(context, actor_alias, page_name)
+    generic_fill_out_and_submit_form(context, actor_alias)
+    end_page_name = f"Profile - Enter your confirmation code ({business_type})"
+    should_be_on_page(context, actor_alias, end_page_name)
+    generic_get_verification_code(context, actor_alias)
+
+
+def generic_get_verification_code(
+        context: Context, actor_alias: str, *, resent_code: bool = False
+):
+    """Will check if the Exporter received an email verification message."""
+    logging.debug("Searching for an email verification message...")
+    actor = get_actor(context, actor_alias)
+    code = get_email_verification_code(actor.email, resent_code=resent_code)
+    update_actor(context, actor_alias, email_confirmation_code=code)
+
+
+def registration_create_and_verify_account(
+        context: Context, actor_alias: str, *, fake_verification: bool = True
+):
+    visit_page(context, actor_alias, "SSO - Registration")
+    registration_submit_form_and_verify_account(
+        context, actor_alias, fake_verification=fake_verification
+    )
+
+
+def profile_start_registration_as(
+        context: Context, actor_alias: str, business_type: str
+):
+    if not get_actor(context, actor_alias):
+        add_actor(context, unauthenticated_actor(actor_alias))
+    profile.enrol_select_business_type.visit(context.driver)
+    second_page = profile.enrol_select_business_type.pick_radio_option_and_submit(
+        context.driver, name=business_type
+    )
+    should_be_on_page(
+        context, actor_alias, f"{second_page.SERVICE} - {second_page.NAME}"
+    )
+
+def fas_search_for_companies(
+    context: Context, actor_alias: str, *, keyword: str = None, sector: str = None
+):
+    page = get_last_visited_page(context, actor_alias)
+    has_action(page, "search")
+    optional_parameter_keywords = ["n/a", "no", "empty", "without", "any"]
+    if keyword and keyword.lower() in optional_parameter_keywords:
+        keyword = None
+    if sector and sector.lower() in optional_parameter_keywords:
+        sector = None
+    page.search(context.driver, keyword=keyword, sector=sector)
+    logging.debug(
+        "%s will visit '%s' page using: '%s'", actor_alias, page.NAME, page.URL
+    )
+
+def fas_searched_for_companies(
+    context: Context, actor_alias: str, *, keyword: str = None, sector: str = None
+):
+    visit_page(context, actor_alias, f"{fas.landing.SERVICE} - {fas.landing.NAME}")
+    fas_search_for_companies(context, actor_alias, keyword=keyword, sector=sector)
+    should_be_on_page(
+        context,
+        actor_alias,
+        f"{fas.search_results.SERVICE} - {fas.search_results.NAME}",
+    )
+
+def language_selector_change_to(
+    context: Context, actor_alias: str, preferred_language: str
+):
+    page = get_last_visited_page(context, actor_alias)
+    logging.debug(
+        f"{actor_alias} decided to change language on {visit_page} to"
+        f" {preferred_language}"
+    )
+    common_language_selector.open(context.driver, page=page)
+    common_language_selector.change_to(context.driver, page, preferred_language)
+
+
+
+def fas_view_selected_company_profile(
+    context: Context, actor_alias: str, profile_number: str
+):
+    number = NUMBERS[profile_number]
+    page = get_last_visited_page(context, actor_alias)
+    has_action(page, "open_profile")
+    page.open_profile(context.driver, number)
+    logging.debug(
+        "%s clicked on '%s' button on %s",
+        actor_alias,
+        profile_number,
+        context.driver.current_url,
+    )
+
+
+def fas_view_article(context: Context, actor_alias: str, article_number: str):
+    number = NUMBERS[article_number]
+    page = get_last_visited_page(context, actor_alias)
+    has_action(page, "open_article")
+    page.open_article(context.driver, number)
+    logging.debug(
+        "%s clicked on '%s' article on %s",
+        actor_alias,
+        article_number,
+        context.driver.current_url,
+    )
+
+def generic_remove_previous_field_selections(
+    context: Context, actor_alias: str, selector_name: str
+):
+    page = get_last_visited_page(context, actor_alias)
+    selector = find_selector_by_name(page.SELECTORS, selector_name)
+    untick_selected_checkboxes(context.driver, selector)
+
+def language_selector_close(context: Context, actor_alias: str):
+    logging.debug("%s decided to close language selector", actor_alias)
+    page = get_last_visited_page(context, actor_alias)
+    common_language_selector.close(context.driver, page=page)
+
+def generic_get_in_touch(
+    context: Context, actor_alias: str, page_name: str, custom_details_table: Table
+):
+    visit_page(context, actor_alias, page_name)
+    generic_fill_out_and_submit_form(
+        context, actor_alias, custom_details_table=custom_details_table
     )

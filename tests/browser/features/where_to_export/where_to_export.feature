@@ -22,7 +22,7 @@ Feature: GreatMagna - Where To Export Page
       | Coffee |
 
    @allure.link:XOT-1022
-   @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_add_place
   Scenario:User should be able to "Add a place"
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -32,27 +32,27 @@ Feature: GreatMagna - Where To Export Page
      And "Robert" decides to enter maximum "10" country names with display "5" tabs on page "WhereToExport - Compare Countries"
       | CountryName | CountryPlaceNumber |
       | India       | 1 |
-      | Nigeria     | 2 |
-      | Indonesia   | 3 |
-      | Israel      | 4 |
-      | Bangladesh  | 5 |
-      | Spain       | 6 |
-      | Argentina   | 7 |
-      | Venezuela   | 8 |
-      | Germany     | 9 |
-      | Italy       | 10 |
-     And "Robert" decides to delete country details on page "WhereToExport - Compare Countries"
-      | Position |
-      | 10 |
-      | 9 |
-      | 8 |
-      | 7 |
-      | 6 |
-      | 5 |
-      | 4 |
-      | 3 |
-      | 2 |
-     | 1 |
+#      | Nigeria     | 2 |
+#      | Indonesia   | 3 |
+#      | Israel      | 4 |
+#      | Bangladesh  | 5 |
+#      | Spain       | 6 |
+#      | Argentina   | 7 |
+#      | Venezuela   | 8 |
+#      | Germany     | 9 |
+#      | Italy       | 10 |
+#     And "Robert" decides to delete country details on page "WhereToExport - Compare Countries"
+#      | Position |
+#      | 10 |
+#      | 9 |
+#      | 8 |
+#      | 7 |
+#      | 6 |
+#      | 5 |
+#      | 4 |
+#      | 3 |
+#      | 2 |
+#     | 1 |
 
   @allure.link:XOT-1023
    @Great_Magna_Export_Plan_WTE_Default_Tab
@@ -65,27 +65,27 @@ Feature: GreatMagna - Where To Export Page
       | CountryName | CountryPlaceNumber |
       | Kosovo       | 1 |
       | Latvia     | 2 |
-      | Liechtenstein   | 3 |
-      | Lithuania      | 4 |
-      | Luxembourg  | 5 |
-      | Malta       | 6 |
-      | Monaco   | 7 |
-      | Montenegro   | 8 |
-      | Netherlands     | 9 |
-      | North Macedonia       | 10 |
-#    And "Robert" should see country details on page "WhereToExport - Compare Countries"
-  And "Robert" decides to delete country details on page "WhereToExport - Compare Countries"
-      | Position |
-      | 10 |
-      | 9 |
-      | 8 |
-      | 7 |
-      | 6 |
-      | 5 |
-      | 4 |
-      | 3 |
-      | 2 |
-      | 1 |
+#      | Liechtenstein   | 3 |
+#      | Lithuania      | 4 |
+#      | Luxembourg  | 5 |
+#      | Malta       | 6 |
+#      | Monaco   | 7 |
+#      | Montenegro   | 8 |
+#      | Netherlands     | 9 |
+#      | North Macedonia       | 10 |
+##    And "Robert" should see country details on page "WhereToExport - Compare Countries"
+#  And "Robert" decides to delete country details on page "WhereToExport - Compare Countries"
+#      | Position |
+#      | 10 |
+#      | 9 |
+#      | 8 |
+#      | 7 |
+#      | 6 |
+#      | 5 |
+#      | 4 |
+#      | 3 |
+#      | 2 |
+#      | 1 |
   @allure.link:XOT-1024
    @Great_Magna_Export_Plan_WTE_Europe_ALL_Tabs
   Scenario:User should be able to see the country and data in the table in all tabs
@@ -875,3 +875,29 @@ Feature: GreatMagna - Where To Export Page
 
 
       #if the table exists delete the table details
+
+    @allure.link:XOT-1113
+   @Great_Magna_Export_Plan_wte_next_lessons
+
+  Scenario:User should be able to click on where to export and select learn to export
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Where to Export"
+    And "Robert" should be on the "WhereToExport - Compare Countries" Page
+    And "Robert" decides to click on "Learn to export in next steps"
+    And "Robert" should be on the "LearnToExport - Learn Categories" Page
+
+    @allure.link:XOT-1113
+   @Great_Magna_Export_Plan_wte_next_exportplan
+
+  Scenario:User should be able to click on where to export and select view your export plan
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Where to Export"
+    And "Robert" should be on the "WhereToExport - Compare Countries" Page
+    And "Robert" decides to click on "view your export plan in next steps"
+    And "Robert" should be on the "Build An Export Plan - Export Plan" Page

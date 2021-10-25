@@ -36,7 +36,7 @@ from browserpages.common_actions import (
 NAME = "Travel Plan"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
 TYPE = PageType.BUILD_AN_EXPORT_PLAN
-URL = URLs.GREAT_MAGNA_EXPORT_PLAN_TRAVEL_PLAN.absolute
+URL = URLs.GREAT_MAGNA_EXPORT_PLAN_TRAVEL_PLAN.absolute_template
 PAGE_TITLE = "Travel Plan Page"
 
 SELECTORS = {
@@ -54,13 +54,15 @@ SELECTORS = {
             By.XPATH, "//textarea[@id='cultural_information']", type=ElementType.INPUT
         ),
         "languages educational": Selector(
-            By.XPATH, "//*[@id=\"stats-for-target-market\"]/div[1]/div/div/div/div/div/div/button/i" #//*[@id=\"stats-for-target-market\"]/div[1]/div/div/div/div/div/button/i"
+            By.XPATH, "//*[@id=\"stats-for-target-market\"]/div[1]/div/div/div/div/div/div/button/i"
+            # //*[@id=\"stats-for-target-market\"]/div[1]/div/div/div/div/div/button/i"
         ),
         "open datasnapshot": Selector(
             By.XPATH, "//*[@id=\"stats-for-target-market\"]/div/button"
         ),
         "i dont need visa": Selector(
-            By.XPATH, "//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/div[1]/label" #//*[@id=\"need-visa-false\"]"#//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/label"
+            By.XPATH, "//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/div[1]/label"
+            # //*[@id=\"need-visa-false\"]"#//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/label"
         ),
         "i need a visa": Selector(
             By.XPATH, "//body/main/div[2]/section[5]/div/div[2]/div[2]/div/div[1]/div[2]/label"
@@ -85,7 +87,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#notes"
         ),
         "yes checkbox": Selector(
-            By.CSS_SELECTOR, "#section-complete > div"#//input[@id='checkbox_complete']"
+            By.CSS_SELECTOR, "#section-complete > div"  # //input[@id='checkbox_complete']"
         ),
         "Selling direct to your customer link": Selector(
             By.CSS_SELECTOR,
@@ -108,7 +110,8 @@ SELECTORS = {
             By.XPATH, "//button[contains(text(),'Add a target market')]"
         ),
         "top export plan home": Selector(
-            By.XPATH, "//*[@id=\"travel-plan-content\"]/section[1]/div/div/div[2]/span/a"#//*[@id=\"travel-plan-content\"]/section[1]/div/div/div[2]/a/span"
+            By.XPATH, "//*[@id=\"travel-plan-content\"]/section[1]/div/div/div[2]/span/a"
+            # //*[@id=\"travel-plan-content\"]/section[1]/div/div/div[2]/a/span"
         ),
         "add a product": Selector(
             By.XPATH, "//button[contains(text(),'Add a product')]"
@@ -131,7 +134,8 @@ SELECTORS = {
             "#travel-plan-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > div.m-t-l > a"
         ),
         "business risk": Selector(
-            By.CSS_SELECTOR, "#travel-plan-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > a > span"
+            By.CSS_SELECTOR,
+            "#travel-plan-content > section.p-v-m.bg-blue-deep-80 > div > div > div.c-2-3-m.c-1-2-xl > a > span"
         ),
     }
 }
@@ -141,8 +145,11 @@ def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
 
+# def should_be_here(driver: WebDriver):
+#     check_url(driver, URL, exact_match=False)
+
 def should_be_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=False)
+    check_url_path_matches_template(URL, driver.current_url)
 
 
 def enter_text(driver: WebDriver, element_name: str):
@@ -177,14 +184,15 @@ def enter_trip_details(driver: WebDriver, position: str, trip_name: str):
     document_text_ele_xpath = document_div_element_xpath + "/div[1]/div/textarea"
     driver.find_element_by_xpath(document_text_ele_xpath).send_keys(trip_name)
     time.sleep(2)
-    #//body/main/div[2]/section[6]/div/div[2]/div/div[2]/table/tbody/tr[1]/td/div/textarea
-    #//body/main/div[2]/section[6]/div/div[2]/div/div[2]/div/div[1]/div/textarea
-    #//body/main/div[2]/section[6]/div/div[2]/div/div[2]/div[2]/div[1]/div/textarea
+    # //body/main/div[2]/section[6]/div/div[2]/div/div[2]/table/tbody/tr[1]/td/div/textarea
+    # //body/main/div[2]/section[6]/div/div[2]/div/div[2]/div/div[1]/div/textarea
+    # //body/main/div[2]/section[6]/div/div[2]/div/div[2]/div[2]/div[1]/div/textarea
+
 
 def delete_all_trip_details(driver: WebDriver, del_button_position: str):
     driver.implicitly_wait(4)
     # 1,3,5,7,......
-    #//body/main/div[2]/section[6]/div/div[2]/div/div[2]/div[5]/div[2]/button
+    # //body/main/div[2]/section[6]/div/div[2]/div/div[2]/div[5]/div[2]/button
     trip_text_area_element_index = int(del_button_position)
     trip_text_area_element_x_path = "//body/main/div[2]/section[6]/div/div[2]/div/div[2]/div" \
                                     + "[" + str(trip_text_area_element_index) + "]" + "/div[2]/button"
@@ -204,10 +212,10 @@ def delete_all_trip_details(driver: WebDriver, del_button_position: str):
 
     if trip_text_area_text_exists == True:
         driver.implicitly_wait(1)
-        #15,14,13,12,11
+        # 15,14,13,12,11
         #
-        #//body/div[11]/div/div/div/div[2]/div[2]/button[1]
-        #//body/div[12]/div/div/div/div[2]/div[2]/button[1]/i
+        # //body/div[11]/div/div/div/div[2]/div[2]/button[1]
+        # //body/div[12]/div/div/div/div[2]/div[2]/button[1]/i
         # 12,13,14,15.......
         # 12 + (2/2 - 1), 12 + (4/2 - 1), 12 + (6/2 - 1), 12 + (8/2 - 1),.........
         delete_msg_yes_index = int(11 + (int((int(del_button_position))) - 1))
@@ -222,7 +230,8 @@ def select_radio_button(driver: WebDriver, element_name: str):
     # i dont need visa
     driver.implicitly_wait(5)
     #                             //body[1]/main[1]/div[2]/section[5]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/input[1]
-    driver.find_element_by_xpath("//body[1]/main[1]/div[2]/section[5]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/input[1]")#//body/main/div[2]/section[5]/div/div[2]/div[2]/div/h2")
+    driver.find_element_by_xpath(
+        "//body[1]/main[1]/div[2]/section[5]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/input[1]")  # //body/main/div[2]/section[5]/div/div[2]/div[2]/div/h2")
     lower_case_element_name = element_name.lower()
     find_and_click(driver, element_selector_name=element_name)
     # logging.debug(SELECTORS["travel plan"][lower_case_element_name])
@@ -230,6 +239,7 @@ def select_radio_button(driver: WebDriver, element_name: str):
     radio_element_x_path = SELECTORS["travel plan"][lower_case_element_name].value
     radio_i_dont_need_visa_elem = driver.find_element_by_xpath(radio_element_x_path)
     radio_i_dont_need_visa_elem.click()
+
 
 # def select_radio_button(driver: WebDriver, element_name: str):
 #     # i dont need visa

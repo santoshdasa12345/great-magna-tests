@@ -55,7 +55,7 @@ SELECTORS = {
             By.XPATH, "//span[contains(text(),'How to create an export invoice')]"
         ),
         "decide when to get paid": Selector(
-            By.XPATH, "//span[contains(text(),'Decide when to get paid')]"
+            By.XPATH, "#\31 20 > ul > li:nth-child(3) > a"
         ),
         "choose the right payment method": Selector(
             By.XPATH, "//span[contains(text(),'Choose the right payment method')]"

@@ -8,7 +8,7 @@ Feature: International - Regional pages
   Background:
     Given test authentication is done
 
-
+@regional-pages_1
   @allure.link:CMS-215
     #removed error reporting and breadcrumbs
   Scenario: Visitors should be able to see all expected sections on "International - Regions" page
@@ -18,14 +18,14 @@ Feature: International - Regional pages
       | Sections         |
       | Header           |
       | Hero             |
-#      | Breadcrumbs      |
+##      | Breadcrumbs      |
       | Regions list     |
       | The UK map       |
       | Contact us       |
-#      | Error reporting  |
+##      | Error reporting  |
       | Footer           |
 
-
+@regional-pages_2
   @allure.link:CMS-215
   @link
   @anchor
@@ -40,7 +40,10 @@ Feature: International - Regional pages
       | Header           |
       | Hero             |
 #      | The UK map     |
-#      | Error reporting  |
+       | Expanding your business |
+      | Related opportunities   |
+      | Strategic markets       |
+      | Case study              |
 #      | Contact us       |
       | Footer           |
     And "Robert" should see content specific to "International - <region> - region" page
@@ -54,7 +57,7 @@ Feature: International - Regional pages
       | Midlands         |
       | South of England |
 
-#
+@regional-pages_3
   @allure.link:CMS-215
   @link
   @map
@@ -67,11 +70,15 @@ Feature: International - Regional pages
 
     Then "Robert" should be on the "International - <region> - region" page
     And "Robert" should see following sections
-      | Sections         |
-      | Header           |
-      | Hero             |
+      | Sections               |
+      | Header                 |
+      | Hero                   |
 #      | Error reporting  |
-        | Footer           |
+      | Expanding your business |
+      | Related opportunities   |
+      | Strategic markets       |
+      | Case study              |
+      | Footer                  |
     And "Robert" should see content specific to "International - <region> - region" page
 
     Examples: Regions
@@ -82,10 +89,6 @@ Feature: International - Regional pages
       | Wales            |
       | Midlands         |
       | South of England |
-
-
-
-
 
 
 # breadcrmb has been removed for now

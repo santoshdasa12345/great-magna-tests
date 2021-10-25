@@ -14,6 +14,7 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Data Snapshot" on page "Build An Export Plan - Target Markets Research"
     And "Robert" decides to select random checkbox "Age Group" on page "Build An Export Plan - Target Markets Research"
@@ -39,6 +40,7 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Describe the consumer demand example" on page "Build An Export Plan - Target Markets Research"
      And "Robert" decides to enter text at "Describe the consumer demand" on page "Build An Export Plan - Target Markets Research"
@@ -52,7 +54,8 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Who are your competitors example" on page "Build An Export Plan - Target Markets Research"
      And "Robert" decides to enter text at "Who are your competitors" on page "Build An Export Plan - Target Markets Research"
      And "Robert" decides to validate entered text at "Who are your competitors" on page "Build An Export Plan - Target Markets Research"
@@ -67,6 +70,7 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "What are the product trends example" on page "Build An Export Plan - Target Markets Research"
      And "Robert" decides to enter text at "What are the product trends" on page "Build An Export Plan - Target Markets Research"
@@ -81,6 +85,7 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "What’s your unique selling proposition example" on page "Build An Export Plan - Target Markets Research"
      And "Robert" decides to enter text at "What’s your unique selling proposition" on page "Build An Export Plan - Target Markets Research"
@@ -94,6 +99,7 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to enter value in "What’s the average price for your product" on page "Build An Export Plan - Target Markets Research"
 
@@ -107,6 +113,7 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Target Markets Research"
      And "Robert" decides to click on section "Work out customer demand" on page "Build An Export Plan - Target Markets Research"
@@ -122,6 +129,7 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click section complete on "Build An Export Plan - Target Markets Research"
      And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Target Markets Research"
@@ -135,7 +143,8 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Target Markets Research"
     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
@@ -148,6 +157,7 @@ Feature: GreatMagna - Target Markets Research Page
      When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
      And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Target Markets Research"
      And "Robert" decides to click on element "Nav Adapting Your Product" on page "Build An Export Plan - Target Markets Research"
@@ -161,7 +171,8 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Target Markets Research"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 
@@ -174,6 +185,7 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to enter value in "What’s the average price for your product" on page "Build An Export Plan - Target Markets Research"
 
@@ -204,6 +216,7 @@ Feature: GreatMagna - Target Markets Research Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" should be on the "Build An Export Plan - Target Markets Research" Page
     And "Robert" decides to enter value in "What’s the average price for your product" on page "Build An Export Plan - Target Markets Research"

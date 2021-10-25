@@ -46,7 +46,8 @@ PAGE_TITLE = "Login Page "
 SELECTORS = {
     "login": {
         "forgotten_password": Selector(
-            By.CSS_SELECTOR, "#login > div > div.signup__steps-panel > form > a.text-red-80.inline-block"  # //a[contains(text(),'Forgotten password?')]
+            By.CSS_SELECTOR, "#login > div > div.signup__steps-panel > form > a.text-red-80.inline-block"
+            # //a[contains(text(),'Forgotten password?')]
         ),
         "emailaddress": Selector(
             By.XPATH, "//input[@id='email']", type=ElementType.INPUT
@@ -84,7 +85,6 @@ def should_be_here(driver: WebDriver):
 def login(driver: WebDriver, email_address: str, password: str):
     details_dict = {"emailaddress": email_address, "password": password}
     fill_out_email_address(driver, details_dict)
-
 
 
 def find_and_click_change_link(driver: WebDriver, element_selector_name: str):

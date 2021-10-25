@@ -19,9 +19,10 @@ from browserpages.common_actions import (
 
 NAME = "Industry"
 NAMES = [
-    "Agritech",
+    "Clean agritech",
     "Carbon capture usage and storage",
     "Chemicals",
+    "Civil nuclear"
     "Green finance",
     "Greener buildings",
     "Hydrogen",
@@ -45,11 +46,13 @@ NAMES = [
     "Legal services",
     "Maritime",
     "Nuclear energy",
+    "Offshore Wind"
     "Real Estate",
     "Retail",
     "Space",
     "Sports economy",
     "Technology",
+    "Zero emission vehicles"
 ]
 SERVICE = Service.INTERNATIONAL
 TYPE = PageType.INDUSTRY
@@ -59,36 +62,39 @@ PAGE_TITLE = "great.gov.uk International - "
 
 SubURLs = {
     "industry": URL,
-    "agritech": URLs.INTERNATIONAL_INDUSTRY_AGRI_TECH.absolute,
+    "clean agritech": URLs.INTERNATIONAL_INDUSTRY_AGRI_TECH.absolute,
     "carbon capture usage and storage": URLs.INTERNATIONAL_INDUSTRY_CARBON_CAPTURE_USAGE_AND_STORAGE.absolute,
     "chemicals": URLs.INTERNATIONAL_INDUSTRY_CHEMICALS.absolute,
+    "civil nuclear" : URLs.INTERNATIONAL_INDUSTRY_CIVIL_NUCLEAR.absolute,
     "green finance": URLs.INTERNATIONAL_INDUSTRY_GREEN_FINANCE.absolute,
     "greener buildings": URLs.INTERNATIONAL_INDUSTRY_GREENER_BUILDINGS.absolute,
     "hydrogen": URLs.INTERNATIONAL_INDUSTRY_HYDROGEN.absolute,
     "jet zero and green ships": URLs.INTERNATIONAL_INDUSTRY_JET_ZERO_AND_GREEN_SHIPS.absolute,
-    "scotland": URLs.INTERNATIONAL_INDUSTRY_SCOTLAND.absolute,
+    "offshore wind" : URLs.INTERNATIONAL_INDUSTRY_OFFSHORE_WIND.absolute,
+    # "scotland": URLs.INTERNATIONAL_INDUSTRY_SCOTLAND.absolute,
     "sustainable infrastructure": URLs.INTERNATIONAL_INDUSTRY_SUSTAINABLE_INFRASTRUCTURE.absolute,
-    "aerospace": URLs.INTERNATIONAL_INDUSTRY_AEROSPACE.absolute,
-    "agricultural technology": URLs.INTERNATIONAL_INDUSTRY_AGRICULTURAL_TECHNOLOGY.absolute,
-    "automotive": URLs.INTERNATIONAL_INDUSTRY_AUTOMOTIVE.absolute,
-    "creative industries": URLs.INTERNATIONAL_INDUSTRY_CREATIVE_INDUSTRIES.absolute,
-    "cyber security": URLs.INTERNATIONAL_INDUSTRY_CYBER_SECURITY.absolute,
-    "education": URLs.INTERNATIONAL_INDUSTRY_EDUCATION.absolute,
-    "energy": URLs.INTERNATIONAL_INDUSTRY_ENERGY.absolute,
-    "engineering and manufacturing": URLs.INTERNATIONAL_INDUSTRY_ENGINEERING_AND_MANUFACTURING.absolute,
-    "financial and professional services": URLs.INTERNATIONAL_INDUSTRY_FINANCIAL_AND_PROFESSIONAL_SERVICES.absolute,
-    "financial services": URLs.INTERNATIONAL_INDUSTRY_FINANCIAL_SERVICES.absolute,
-    "food and drink": URLs.INTERNATIONAL_INDUSTRY_FOOD_AND_DRINK.absolute,
-    "health and life sciences": URLs.INTERNATIONAL_INDUSTRY_HEALTH_AND_LIFE_SCIENCES.absolute,
-    "healthcare and life sciences": URLs.INTERNATIONAL_INDUSTRY_HEALTH_AND_LIFE_SCIENCES.absolute,
-    "legal services": URLs.INTERNATIONAL_INDUSTRY_LEGAL_SERVICES.absolute,
-    "maritime": URLs.INTERNATIONAL_INDUSTRY_MARITIME.absolute,
-    "nuclear energy": URLs.INTERNATIONAL_INDUSTRY_NUCLEAR_ENERGY.absolute,
-    "real estate": URLs.INTERNATIONAL_INDUSTRY_REAL_ESTATE.absolute,
-    "retail": URLs.INTERNATIONAL_INDUSTRY_RETAIL.absolute,
-    "space": URLs.INTERNATIONAL_INDUSTRY_SPACE.absolute,
-    "sports economy": URLs.INTERNATIONAL_INDUSTRY_SPORTS_ECONOMY.absolute,
-    "technology": URLs.INTERNATIONAL_INDUSTRY_TECHNOLOGY.absolute,
+    # "aerospace": URLs.INTERNATIONAL_INDUSTRY_AEROSPACE.absolute,
+    # "agricultural technology": URLs.INTERNATIONAL_INDUSTRY_AGRICULTURAL_TECHNOLOGY.absolute,
+    # "automotive": URLs.INTERNATIONAL_INDUSTRY_AUTOMOTIVE.absolute,
+    # "creative industries": URLs.INTERNATIONAL_INDUSTRY_CREATIVE_INDUSTRIES.absolute,
+    # "cyber security": URLs.INTERNATIONAL_INDUSTRY_CYBER_SECURITY.absolute,
+    # "education": URLs.INTERNATIONAL_INDUSTRY_EDUCATION.absolute,
+    # "energy": URLs.INTERNATIONAL_INDUSTRY_ENERGY.absolute,
+    # "engineering and manufacturing": URLs.INTERNATIONAL_INDUSTRY_ENGINEERING_AND_MANUFACTURING.absolute,
+    # "financial and professional services": URLs.INTERNATIONAL_INDUSTRY_FINANCIAL_AND_PROFESSIONAL_SERVICES.absolute,
+    # "financial services": URLs.INTERNATIONAL_INDUSTRY_FINANCIAL_SERVICES.absolute,
+    # "food and drink": URLs.INTERNATIONAL_INDUSTRY_FOOD_AND_DRINK.absolute,
+    # "health and life sciences": URLs.INTERNATIONAL_INDUSTRY_HEALTH_AND_LIFE_SCIENCES.absolute,
+    # "healthcare and life sciences": URLs.INTERNATIONAL_INDUSTRY_HEALTH_AND_LIFE_SCIENCES.absolute,
+    # "legal services": URLs.INTERNATIONAL_INDUSTRY_LEGAL_SERVICES.absolute,
+    # "maritime": URLs.INTERNATIONAL_INDUSTRY_MARITIME.absolute,
+    # "nuclear energy": URLs.INTERNATIONAL_INDUSTRY_NUCLEAR_ENERGY.absolute,
+    # "real estate": URLs.INTERNATIONAL_INDUSTRY_REAL_ESTATE.absolute,
+    # "retail": URLs.INTERNATIONAL_INDUSTRY_RETAIL.absolute,
+    # "space": URLs.INTERNATIONAL_INDUSTRY_SPACE.absolute,
+    # "sports economy": URLs.INTERNATIONAL_INDUSTRY_SPORTS_ECONOMY.absolute,
+    # "technology": URLs.INTERNATIONAL_INDUSTRY_TECHNOLOGY.absolute,
+    "zero emission vehicles" : URLs.INTERNATIONAL_INDUSTRY_ZERO_EMISSION_VEHICLES.absolute,
 }
 
 SELECTORS = {
@@ -101,15 +107,20 @@ SELECTORS = {
         # ),
     },
     "content": {
-        "section 1": Selector(By.CSS_SELECTOR, "#content > div.atlas-container > div.atlas-grid.atlas-grid--masonry"),
-        "section 2": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(1)"),
-        "section 3": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(2)"),
-        "section 4": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(3)"),
-        "section 5": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(4)"),
-        "section 6": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(5)"),
-        "section 7": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(6)"),
+        "carbon capture usage and storage": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(1) > a"),
+        "chemicals": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(2) > a"),
+        "civil nuclear": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(3) > a"),
+        "clean agritech": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(4) > a"),
+        "green finance": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(5) > a"),
+        "greener buildings": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(6) > a"),
+        "hydrogen": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(7) > a"),
+        "jet zero and green ships": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(8) > a"),
+        "offshore wind": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(9) > a"),
+        "sustainable infrastructure": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(10 > a)"),
+        "zero emission vehicles": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(11) > a"),
 
     },
+
     "opportunity highlights": {
         "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(2)"),
         },
@@ -129,7 +140,7 @@ SELECTORS = {
         "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(7)"),
         },
     "early potential opportunities": {
-        "itself": Selector(By.ID, "#content > section"),
+        "itself": Selector(By.CSS_SELECTOR, "#content > section"),
         },
 
 }

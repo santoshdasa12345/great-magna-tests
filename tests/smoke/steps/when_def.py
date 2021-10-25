@@ -9,6 +9,7 @@ import parse
 from steps.then_impl import (
     should_be_on_page,
     domestic_search_finder_should_see_page_number,
+
 )
 from steps.when_impl import (
     articles_open_any,
@@ -33,11 +34,15 @@ from steps.when_impl import (
     promo_video_watch,
     promo_video_close,
     actor_should_be_able_to_click_on_i_have_exported_in_the_last_12_months,
+    fas_search_for_companies,
+    fas_view_selected_company_profile,
     generic_report_problem_with_page,
     generic_click_on_random_marketplace,
     generic_click_on_random_element,
     generic_open_any_tag,
+    generic_open_industry_page,
     generic_download_all_pdfs,
+    generic_remove_previous_field_selections,
     generic_submit_form,
     generic_visit_current_page_with_lang_parameter,
     generic_open_news_article,
@@ -46,6 +51,9 @@ from steps.when_impl import (
     generic_pick_random_radio_option_and_submit,
     soo_look_for_marketplace,
     generic_search_for_phrase,
+    language_selector_change_to,
+    language_selector_close,
+    language_selector_open,
     contact_us_navigate_through_options,
     domestic_find_more_about_search_result_type,
     generic_trigger_all_gtm_events,
@@ -143,6 +151,10 @@ def when_actor_decides_to_fill_country_and_click_on_page_element(
         context, actor_alias, element_name, *, form_name: str = None):
     generic_country_name_to_fill_country_and_click_on_continue(context, actor_alias, element_name, form_name)
 
+@when('"{actor_alias}" decides to find out out more about "{industry_name}"')
+def fas_when_actor_opens_industry_page(
+        context: Context, actor_alias: str, industry_name: str):
+    generic_open_industry_page(context, actor_alias, industry_name)
 
 @when('"{actor_alias}" decides to enter product name and click "{element_name}"')
 def when_actor_decides_to_fill_product_and_click_on_page_element(
@@ -166,7 +178,7 @@ def when_actor_decides_to_enter_blank_spaces_click_on_continue(
 def when_actor_decides_to_enter_email_address_and_click_login(
         context, actor_alias, email_address, password):
     actor_decides_to_enter_email_address_and_click_login(context, actor_alias, email_address, password)
-    time.sleep(2)
+
 
 @when('"{actor_alias}" should be on the "{page_name}" page')
 def when_actor_should_be_on_page(
@@ -426,11 +438,70 @@ def when_actor_open_tag(context: Context, actor_alias: str):
 def when_actor_shares_article(context, actor_alias, social_media):
     articles_share_on_social_media(context, actor_alias, social_media)
 
+
 @when('"{actor_alias}" should be able to enter products "{products}" and country "{country}"')
 def then_actor_should_be_able_to_enter_products_and_country(context, actor_alias, products, country):
     actor_should_be_able_to_enter_products_and_country(context, products, country)
+
 
 @when('"{actor_alias}" decides to click on element "{element_name}" on page "{page_name}"')
 def then_actor_decides_to_click_on_page_element(
         context, actor_alias, element_name, page_name):
     click_on_link_element_in_page(context, actor_alias, element_name, page_name=page_name)
+
+
+@when('"{actor_alias}" fills out and submits the form (and go 1 page back on error)')
+def when_actor_fills_out_and_submits_the_form(context: Context, actor_alias: str):
+    generic_fill_out_and_submit_form(context, actor_alias, custom_details_table=context.table, retry_on_errors=True,
+                                     go_back=True)
+
+@when('"{actor_alias}" visited "{page_name}" page')
+def given_actor_visits_page(context, actor_alias, page_name):
+    visit_page(context, actor_alias, page_name)
+
+@when('"{actor_alias}" searches for companies using "{keyword}" keyword')
+def fas_when_actor_searches_for_companies(
+        context: Context, actor_alias: str, keyword: str):
+    fas_search_for_companies(
+        context, actor_alias, keyword=keyword)
+
+@when('"{actor_alias}" searches for companies using "{keyword}" keyword in "{sector}" sector')
+def fas_when_actor_searches_for_companies(
+        context: Context, actor_alias: str, keyword: str, sector: str):
+    fas_search_for_companies(
+        context, actor_alias, keyword=keyword, sector=sector)
+
+@when('"{actor_alias}" decides to view "{profile_number}" company profile')
+def fas_when_actor_views_selected_company_profile(
+        context: Context, actor_alias: str, profile_number: str):
+    fas_view_selected_company_profile(context, actor_alias, profile_number)
+
+@when('"{actor_alias}" decides to view the page in "{preferred_language}"')
+def when_actor_views_page_in_selected_language(
+        context, actor_alias, preferred_language):
+    language_selector_change_to(context, actor_alias, preferred_language)
+
+@when('"{actor_alias}" removed previous "{selector_name}" selections')
+def when_actor_removes_previous_form_selections(
+        context: Context, actor_alias: str, selector_name: str
+):
+    generic_remove_previous_field_selections(
+        context, actor_alias, selector_name
+    )
+
+@when('"{actor_alias}" opens up the language selector')
+def when_actor_opens_up_language_selector(context, actor_alias):
+    language_selector_open(context, actor_alias)
+
+@when('"{actor_alias}" closes the language selector using his keyboard')
+@when('"{actor_alias}" closes the language selector')
+def when_actor_closes_language_selector(context, actor_alias):
+    language_selector_close(context, actor_alias)
+
+@when('"{actor_alias}" decides to click "{element_name}"')
+def then_actor_decides_to_click_continue(
+        context, actor_alias, element_name):
+    click_on_page_element(context, actor_alias, element_name)
+
+###############################
+

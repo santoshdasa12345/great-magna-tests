@@ -76,15 +76,15 @@ Scenario:User should be able to view Lesson page "Choose the right route to mark
     And "Robert" decides to click on element "view transcript" on page "LearnToExport - Choose the right route to market"
 
 
-#    @allure.link:XOT-246
-#   @Great-Magna-Lessons
-# Scenario:User should be able to view Lesson pages for topic "Choose the right route to market" and click view all lessons
-#
-#  Given "Robert" visited "GreatMagna - Login" page
-#   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-#    And "Robert" should be on the "GreatMagna - Dashboard" Page
-#   Then "Robert" decides to click on "Learn to export"
-#   And "Robert" decides to click on section "Prepare to sell" on page "LearnToExport - Learn Categories"
-#    And "Robert" decides to click on section "Choose the right route to market" on page "LearnToExport - Prepare to sell"
+    @allure.link:XOT-246
+   @Great-Magna-Lessons
+ Scenario:User should be able to view Lesson pages for topic "Choose the right route to market" and click view all lessons
+
+  Given "Robert" visited "GreatMagna - Login" page
+   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+   Then "Robert" decides to click on "Learn to export"
+   And "Robert" decides to click on section "Prepare to sell" on page "LearnToExport - Learn Categories"
+    And "Robert" decides to click on section "Choose the right route to market" on page "LearnToExport - Prepare to sell"
 #    And "Robert" decides to click on section "view all lessons" on page "LearnToExport - Choose the right route to market"
 

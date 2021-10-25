@@ -36,7 +36,7 @@ SELECTORS = {
         "invest in the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
         "buy from the uk header": Selector(By.PARTIAL_LINK_TEXT, "Buy from the UK", type=ElementType.LINK),
         "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
-        "get started": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > div > a"),
+        "get started": Selector(By.CSS_SELECTOR, "#learn-root > section > article:nth-child(2) > a"),
         "find investment opportunities": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)"),
         "find a uk specialist": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)"),
         "buy from the uk": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)"),

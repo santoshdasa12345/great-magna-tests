@@ -45,7 +45,7 @@ PAGE_TITLE = "Sign up Page"
 
 SubURLs = {
     "sign up": URL,
-    #Sign up learn to export,where to export, make an export plan
+    # Sign up learn to export,where to export, make an export plan
     "/signup/?next=/learn/categories/": URLs.GREAT_MAGNA_SIGNUP_LEARN_TO_EXPORT.absolute_template,
     "?next=/where-to-export/": URLs.GREAT_MAGNA_SIGNUP_WHERE_TO_EXPORT.absolute_template,
     "?next=/export-plan/dashboard/": URLs.GREAT_MAGNA_SIGNUP_MAKE_AN_EXPORT_PLAN.absolute_template,
@@ -94,13 +94,14 @@ SubURLs = {
         URLs.GREAT_MAGNA_SIGNUP.absolute_template,
 }
 
+
 def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
 
 
 def should_be_here(driver: WebDriver, *, page_name: str = None):
     check_url(driver, URL, exact_match=False)
-    #check_url_path_matches_template(URL, driver.current_url)
+    # check_url_path_matches_template(URL, driver.current_url)
     # url = SubURLs[page_name.lower()] if page_name else URL
     # check_url(driver, url, exact_match=False)
     # msg = f"Got 404 on {driver.current_url}"
@@ -177,16 +178,15 @@ def should_be_error_message(driver: WebDriver, element_name: str, expected_error
 
 
 def fill_out_country(driver: WebDriver, country: str):
-
     driver.find_element_by_xpath("add a target market").click()
 
     driver.find_element_by_css_selector("#search-input").clear()
     driver.find_element_by_css_selector("#search-input").send_keys(country)
 
     input_elements = driver.find_elements_by_tag_name("input")
-         # logging.debug(input_elements)
+    # logging.debug(input_elements)
     for input_element in input_elements:
-             # logging.debug(input_element.text)
+        # logging.debug(input_element.text)
         if input_element.text == country.lower():
             input_element.click()
 

@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.2.3
 
 # Variables
 load_hatch_rate: &load_hatch_rate
@@ -25,7 +27,7 @@ machine_python3_node_browsers: &machine_python3_node_browsers
 
 # Individual (shared) steps.
 step_checkout_repo: &step_checkout_repo
-  checkout
+                      checkout
 
 step_install_requirements_for_parallel_browser_tests: &step_install_requirements_for_parallel_browser_tests
   run:
@@ -97,14 +99,15 @@ step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests: &step_prepare_l
       python ./env_vars/env_writer.py --env=${TEST_ENV} --config=./env_vars/env.json
       source ./env_vars/.env_with_export
       export PATH=$PATH:$HOME/bin
-      if [ 0 = 0 ];
+      if [ $(( ${CIRCLE_NODE_INDEX} % 2 )) = 0 ];
       then
-          export BROWSER="chrome";
+      export BROWSER="chrome";
       else
-          export BROWSER="firefox";
+      export BROWSER="firefox";
       fi
       cp tests/chromedriver $HOME/bin
       cd tests/browser
+
 
 step_cache_browser_tests_requirements: &step_cache_browser_tests_requirements
   save_cache:
@@ -126,12 +129,12 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
       export PATH=$PATH:$HOME/bin
       if [ $(( ${CIRCLE_NODE_INDEX} % 2 )) = 0 ];
       then
-          export BROWSER="chrome";
-          google-chrome --version;
+        export BROWSER="chrome";
+        google-chrome --version;
       else
-          export BROWSER="firefox";
-          firefox --version;
-          export TAGS="${TAGS} --tags=~@skip-in-firefox"
+        export BROWSER="firefox";
+        firefox --version;
+      export TAGS="${TAGS} --tags=~@skip-in-firefox"
       fi
 
       cd tests/browser
@@ -147,14 +150,13 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
 
       echo "Current instance of ${BROWSER} is going to run `cat tests-to-run${SPLIT_FILE_SUFFIX} | wc -l` scenarios:"
       cat tests-to-run${SPLIT_FILE_SUFFIX}
-
-
-      if [ -d "/home/circleci/great_magna_tests/tests/browser/reports" ]; then rm -Rf "/home/circleci/great_magna_tests/tests/browser/reports"; fi
+      if [ -d "/home/circleci/great_magna_tests/tests/browser/reports" ]; then rm -Rf "/home/circleci/great_magna_tests/tests/browser/reports";
+      fi
 
       mkdir /home/circleci/great_magna_tests/tests/browser/reports
 
       cat tests-to-run${SPLIT_FILE_SUFFIX} | while IFS=$'\r' read -r title ; do
-        echo -e "\n\n${BROWSER} run:    ${title}"
+        echo -e "\n\n${BROWSER} run: ${title}"
         PYTHONPATH=. \
         LOG_FILE="reports/behave_${BROWSER}_${CIRCLE_NODE_INDEX}.log" \
         timeout --verbose --preserve-status --kill-after=5s 5m \
@@ -204,10 +206,17 @@ step_merge_junit_xml_reports_from_parallel_browser_tests: &step_merge_junit_xml_
       ./print_error_summary.py --report ./tests/browser/junit_report/merged.xml
 
 #steps:
-#  - *step_checkout_repo
+# - *step_checkout_repo
 
 steps_setup_env_for_parallel_browser_tests_using_circleci: &steps_setup_env_for_parallel_browser_tests_using_circleci
   steps:
+    - browser-tools/install-chrome
+    - browser-tools/install-chromedriver
+    - run:
+        command: |
+          google-chrome --version
+          chromedriver --version
+        name: Check install
     - *step_checkout_repo
     - *step_install_requirements_for_parallel_browser_tests
     - *step_cache_browser_tests_requirements
@@ -236,6 +245,13 @@ steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack: &
 
 steps_run_parallel_browser_tests: &steps_run_parallel_browser_tests
   steps:
+    - browser-tools/install-chrome
+    - browser-tools/install-chromedriver
+    - run:
+        command: |
+          google-chrome --version
+          chromedriver --version
+        name: Check install
     - *step_restore_cached_browser_tests_requirements
     - *step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests
     - *step_run_browser_tests_in_parallel
@@ -256,7 +272,7 @@ jobs:
     parallelism: 12
     environment:
       TEST_ENV: "dev"
-      AUTO_RETRY: "false"
+      AUTO_RETRY: "true"
       TAKE_SCREENSHOTS: "true"
       TAGS: "--tags=~@stage-only --tags=~@uat-only --tags=~@erp"
       BROWSER_ENVIRONMENT: "local"
@@ -305,7 +321,7 @@ jobs:
 
   merge_junit_results_from_parallel_browser_tests:
     docker:
-      - image: circleci/python:3.8.0-node-browsers
+      - image: circleci/python:3.9-node-browsers
     working_directory: ~/great_magna_tests
     steps:
       - *step_install_junit_merge
@@ -331,7 +347,7 @@ jobs:
 
 
 workflows:
-  version: 2
+  version: 2.1
 
   ####################################################################
   ## Ad hoc workflows - these are run every time you push a change

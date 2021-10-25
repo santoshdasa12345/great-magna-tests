@@ -45,15 +45,30 @@ SELECTORS = {
         "choose the right route to market": Selector(
             By.XPATH, "//span[contains(text(),'Choose the right route to market')]"
         ),
-        "Selling direct to your customer": Selector(
-            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[3]/a"
+        "using ecommerce as a route to market": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[2]/a"
             #"//span[contains(text(),'Selling direct to your customer')]"
         ),
-        "sell with international e commerce": Selector(
-            By.XPATH, "//span[contains(text(),'Selling with international e-commerce')]"
+        "selling direct to your customer": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[3]/a"
+        ),
+        "using an agent or distributor": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[4]/a"
+        ),
+        "using licensing": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[5]/a"
+        ),
+        "setting up joint ventures abroad": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[6]/a"
+        ),
+        "setting up a franchise abroad": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[7]/a"
+        ),
+        "setting up a business abroad": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[8]/a"
         ),
         "understand the local business culture": Selector(
-            By.XPATH, "//span[contains(text(),'Understand the local business culture in your targ')]"
+            By.CSS_SELECTOR, "//body/main/div/section[2]/ol/li[2]/div/ul/li/a"
         ),
         "understand product liability": Selector(
             By.XPATH, "//span[contains(text(),'Understand product liability')]"
@@ -61,62 +76,83 @@ SELECTORS = {
         "protect your intellectual property abroad": Selector(
             By.XPATH, "//span[contains(text(),'Protect your intellectual property abroad')]"
         ),
-        "decide whether to use licensing": Selector(
-            By.XPATH, "//span[contains(text(),'Decide whether to use licensing')]"
+        "prepare for a trade mission": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[1]/a"
         ),
-        "set up joint ventures abroad": Selector(
-            By.XPATH, "//span[contains(text(),'Set up joint ventures abroad')]"
+        "prepare for a trade show as an attendee": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[2]/a"
         ),
-        "setting up a franchise abroad": Selector(
-            By.XPATH, "//span[contains(text(),'Setting up a franchise abroad')]"
-        ),
-        "how to set up a business abroad": Selector(
-            By.XPATH, "//span[contains(text(),'How to set up a business abroad')]"
-        ),
-        "how to adapt your website for an international audience": Selector(
-            By.XPATH, "//span[contains(text(),'How to adapt your website for an international aud')]"
+        "prepare for a trade show as an exhibitor": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[3]/a"
         ),
         "module_progress": Selector(
-            By.XPATH, "#learn-root > section.learn__single-category-header > div > div > div:nth-child(1) > div.learn__single-category-header-content > div.learn__category-progress-container"
+            By.CSS_SELECTOR, "#learn-root > section.learn__single-category-header > div > div > div:nth-child(1) > div.learn__single-category-header-content > div.learn__category-progress-container"
         ),
         "lessons_progress_bar": Selector(
             By.XPATH, "//*[@id=\"55\"]/div/p"
         ),
         "lesson_categories_progress": Selector(
-            By.CSS_SELECTOR, "4. #learn-root > section > a:nth-child(3) > article > div > div.learn__category-content.learn__category-content--progress-bar > div.learn__category-progress-container > div"
+            By.CSS_SELECTOR, "#learn-root > section > a:nth-child(3) > article > div > div.learn__category-content.learn__category-content--progress-bar > div.learn__category-progress-container > div"
         ),
-        "how to prepare for a trade mission": Selector(
-            By.XPATH, "//span[contains(text(),'How to prepare for a trade mission')]"
-        ),
-        "how to prepare for a trade show as an attendee": Selector(
-            By.XPATH, "//span[contains(text(),'How to prepare for a trade show as an attendee')]"
-        ),
-        "how to prepare for a trade show as an exhibitor": Selector(
-            By.XPATH, "//span[contains(text(),'How to prepare for a trade show as an exhibitor')]"
-        ),
-        "understand digital marketing": Selector(
-            By.XPATH, "//span[contains(text(),'Understand digital marketing')]"
+        "pitching and tendering ina new market": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[6]/div/ul/li[1]/a"
         ),
         "how to draft a contract": Selector(
             By.XPATH, "//span[contains(text(),'How to draft a contract')]"
         ),
-        "operating with business integrity": Selector(
-            By.XPATH, "//span[contains(text(),'Operating with business integrity')]"
+        "using samples demos and prototypes": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[6]/div/ul/li[3]/a"
+        ),
+        "how to handle price negotiations": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[6]/div/ul/li[4]/a"
         ),
         "protect your business from bribery and corruption": Selector(
             By.XPATH, "//span[contains(text(),'Protect your business from bribery and corruption')]"
         ),
+        "how to operate with business integrity": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[2]/a"
+        ),
         "protect your data abroad": Selector(
             By.XPATH, "//span[contains(text(),'Protect your data abroad')]"
         ),
-        "placeholder lesson": Selector(
-            By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[1]/a/span"
-        ),
+        # "placeholder lesson": Selector(
+        #     By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[1]/a/span"
+        # ),
         "back" : Selector(
-            By.XPATH, "//body/div[7]/div/div/div/div[1]/a"
+            By.CSS_SELECTOR, "#learn-root > span > a"
         ),
         "ok button": Selector(
             By.XPATH, "//button[contains(text(),'Ok')]"
+        ),
+        "adapting your website for export": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[1]/a"
+        ),
+        "how to increase sales on your ecommerce website": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[2]/a"
+        ),
+        "understanding ecommerce platforms": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[3]/a"
+        ),
+        "using online marketplaces": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[4]/a"
+        ),
+        "how to localise your online market place": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[5]/a"
+        ),
+        "how to manage your inventory for multiple online channels": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[6]/a"
+        ),
+        "how to prepare for b2b crossborder sales": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[7]/a"
+        ),
+        "how to create digital marketing strategy": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[8]/div/ul/li[1]/a"
+        ),
+        "using social media to promote and sell internationally": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[8]/div/ul/li[2]/a"
+        ),
+        "using email marketing for international audiences": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[8]/div/ul/li[3]/a"
         ),
     }
 }

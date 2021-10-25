@@ -45,23 +45,29 @@ SELECTORS = {
         "choose the right funding": Selector(
             By.XPATH, "//span[contains(text(),'Choose the right funding and credit options')]"
         ),
-        "how to avoid cashflow challenges when exporting": Selector(
-            By.XPATH, "//span[contains(text(),'How to avoid cashflow challenges when exporting')]"
+        "avoid cashflow challenges when exporting": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[2]/a"
         ),
-        "how to insure against non payment": Selector(
-            By.XPATH, "//span[contains(text(),'How to insure against non-payment')]"
+        "insure against non payment": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[1]/a"
         ),
-        "how to create an export invoice": Selector(
-            By.XPATH, "//span[contains(text(),'How to create an export invoice')]"
+        "create an export invoice": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[2]/a"
         ),
         "decide when to get paid": Selector(
-            By.XPATH, "//span[contains(text(),'Decide when to get paid')]"
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[3]/a"
         ),
         "choose the right payment method": Selector(
             By.XPATH, "//span[contains(text(),'Choose the right payment method')]"
         ),
+        "adapting ecommerce payment methods for lcoal markets": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[5]/a"
+        ),
         "manage exchange rates": Selector(
             By.XPATH, "//span[contains(text(),'Manage exchange rates')]"
+        ),
+        "top back": Selector(
+            By.CSS_SELECTOR, "#learn-root > span > a"
         )
     }
 }

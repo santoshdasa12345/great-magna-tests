@@ -16,6 +16,7 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to select random item for "Payment Methods" on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to enter text at "Payment Methods Notes" on page "Build An Export Plan - Getting Paid"
@@ -29,8 +30,9 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to select random item for "Payment Terms" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to select random item for payment terms "Payment terms" on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to enter text at "Payment Terms Notes" on page "Build An Export Plan - Getting Paid"
 
    @allure.link:XOT-1133
@@ -42,8 +44,9 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to select random item for "Incoterms" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to select random item for incoterms "Incoterms" on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to enter text at "Incoterms Notes" on page "Build An Export Plan - Getting Paid"
 
 
@@ -56,6 +59,7 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "payment methods lesson" on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to click on lesson link "Choose the right payment method" on page "Build An Export Plan - Getting Paid"
@@ -72,6 +76,7 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "payment terms lesson" on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to click on lesson link "Decide when to get paid" on page "Build An Export Plan - Getting Paid"
@@ -87,6 +92,7 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "incoterms lesson" on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to click on lesson link "Choose which incoterms are right for you" on page "Build An Export Plan - Getting Paid"
@@ -103,7 +109,8 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to click on element "Nav Travel Plan" on page "Build An Export Plan - Getting Paid"
      And "Robert" should be on the "Build An Export Plan - Travel Plan" Page
@@ -116,7 +123,8 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
   And "Robert" decides to click section complete on "Build An Export Plan - Getting Paid"
   And "Robert" decides to click on section "Travel plan" on page "Build An Export Plan - Getting Paid"
   And "Robert" should be on the "Build An Export Plan - Travel plan" page
@@ -129,6 +137,7 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Getting Paid"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
@@ -141,7 +150,8 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Getting Paid"
      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
 #
@@ -168,7 +178,8 @@ Feature: GreatMagna - Getting Paid Page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" should be on the "Build An Export Plan - Getting Paid" Page
     And "Robert" decides to select random item for "Incoterms" on page "Build An Export Plan - Getting Paid"
    And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Getting Paid"

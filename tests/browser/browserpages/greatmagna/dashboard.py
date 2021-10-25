@@ -99,10 +99,12 @@ SELECTORS = {
             By.XPATH, "//body/div[4]/div/div/form/div[2]/div/div/section/button"
         ),
         "search next button": Selector(
-            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/fieldset/button"#//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/div/button"
+            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/fieldset/button"
+            # //body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/div/button"
         ),
         "save product": Selector(
-            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/button"#//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button"
+            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/button"
+            # //body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button"
         ),
         "home": Selector(
             By.XPATH, "//span[contains(text(),'Home')]"
@@ -131,7 +133,7 @@ SELECTORS = {
         "learn to export button": Selector(
             By.XPATH, "//a[contains(text(),'Learn to Export')]"
         ),
-        "where to export button": Selector(
+        "dashboard where to export": Selector(
             By.XPATH, "//a[contains(text(),'Compare places')]"
         ),
         "go to export plan button": Selector(
@@ -476,7 +478,7 @@ def search_select_save_radio(driver: WebDriver):
         # look for div's and radio buttons
         parent_1_div_element = driver.find_element_by_xpath(
             "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div")  # ("interaction grid m-v-xs")
-        #child_1_div_element = parent_1_div_element.find_element_by_tag_name("div")  # ("c-fullwidth")
+        # child_1_div_element = parent_1_div_element.find_element_by_tag_name("div")  # ("c-fullwidth")
         main_div_element = parent_1_div_element.find_element_by_tag_name("div")  # "m-b-xs"
         # radio button labels
         label_elements = main_div_element.find_elements_by_tag_name("label")
@@ -528,3 +530,18 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
 def fills_out_submit(driver: WebDriver, page_name):
     driver.find_element_by_css_selector("#id_comment").clear()
     driver.find_element_by_css_selector("#id_comment").send_keys("Automated Tests")
+
+
+def find_and_select_random_export_plan(driver: WebDriver):
+    div_list_export_plan_xpath = driver.find_element_by_xpath("//body/main/div/div/div[1]/div")
+    export_plan_xpath_div_1_elements = div_list_export_plan_xpath.find_elements_by_tag_name("div[1]")
+    random_number = 1
+    if len(export_plan_xpath_div_1_elements) > 2:
+        random_number = random.randint(1, len(export_plan_xpath_div_1_elements) - 1)
+    random_li_element = export_plan_xpath_div_1_elements[random_number]
+    export_plan_xpath_div_2_elements = export_plan_xpath_div_1_elements.find_element_by_tag_name("div")
+    article_element = random_li_element.find_element_by_tag_name("article")
+    article_element.find_element_by_tag_name("a").click()
+
+# /html/body/main/div/div/div[1]/div/div[2]/article/a
+# /html/body/main/div/div/div[1]/div/div[3]/article/a

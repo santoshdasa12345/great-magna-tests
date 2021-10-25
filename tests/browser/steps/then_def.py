@@ -31,11 +31,17 @@ from steps.then_impl import (
     actor_decides_to_enter_value,
     actor_decides_to_validate_entered_text,
     actor_decides_to_select_random_item_list_on_page,
+    actor_decides_to_select_random_export_plan_on_page,
     actor_fill_business_objectives_details_on_page,
     actor_decides_to_delete_business_objectives_on_page,
     actor_decides_to_delete_country_details_on_page,
     actor_decides_to_click_checkbox_section_complete,
     actor_decides_to_select_random_checkbox_on_page,
+    actor_decides_to_select_random_unit_list_on_page,
+    actor_decides_to_select_random_payment_terms_on_page,
+    actor_decides_to_select_random_time_from_list_on_page,
+    actor_decides_to_select_random_currency_from_list_on_page,
+    actor_decides_to_select_random_item_incoterms,
     actor_decides_to_click_on_page_with_lesson_link,
     actor_decides_to_enter_value,
     actor_fill_document_details_on_page,
@@ -417,16 +423,35 @@ def then_actor_decides_to_validate_entered_text(context, actor_alias, element_na
 
 @then('"{actor_alias}" decides to select random item for "{element_name}" on page "{page_name}"')
 def then_actor_decides_to_select_random_item_list_on_page(context, actor_alias, element_name, page_name):
-    actor_decides_to_select_random_item_list_on_page(context, actor_alias, element_name, page_name)
+    actor_decides_to_select_random_item_list_on_page(context,element_name, page_name)
+
+@then('"{actor_alias}" decides to select random item for payment terms "{element_name}" on page "{page_name}"')
+def then_actor_decides_to_select_random_payment_terms_on_page(context, actor_alias, element_name, page_name):
+    actor_decides_to_select_random_payment_terms_on_page(context, actor_alias, element_name, page_name)
+
+@then('"{actor_alias}" decides to select random item for incoterms "{element_name}" on page "{page_name}"')
+def then_actor_decides_to_select_random_item_incoterms(context,actor_alias, element_name, page_name):
+    actor_decides_to_select_random_item_incoterms(context,actor_alias,element_name,page_name)
+
+@then('"{actor_alias}" decides to select random unit for "{element_name}" on page "{page_name}"')
+def then_actor_decides_to_select_random_unit_list_on_page(context, actor_alias, element_name, page_name):
+    actor_decides_to_select_random_unit_list_on_page(context, actor_alias, element_name, page_name)
+
+@then('"{actor_alias}" decides to select random time from "{element_name}" on page "{page_name}"')
+def then_actor_decides_to_select_random_time_from_list_on_page(context, actor_alias, element_name, page_name):
+    actor_decides_to_select_random_time_from_list_on_page(context, actor_alias, element_name, page_name)
+
+@then('"{actor_alias}" decides to select random currency in "{element_name}" on page "{page_name}"')
+def then_actor_decides_to_select_random_currency_from_list_on_page(context, actor_alias, element_name, page_name):
+    actor_decides_to_select_random_currency_from_list_on_page(context, actor_alias, element_name, page_name)
 
 
 @then('"{actor_alias}" fill business objective details on page "{page_name}"')
-def then_actor_fill_business_objectives_details_on_page(context, actor_alias, page_name):
+def then_actor_fill_business_objectives_details_on_page(context, actor_alias, page_name,element_name):
     input_data_table = context.table
     for row in input_data_table:
-        actor_fill_business_objectives_details_on_page(context, actor_alias, row["Position"], row["Startdate"],
-                                                       row["Enddate"], row["Objectives"], row["Owner"],
-                                                       row["PlannedReviews"], page_name)
+        actor_fill_business_objectives_details_on_page(context, actor_alias, row["Position"], row["Objectives"], row["Owner"],
+                                                       row["PlannedReviews"], page_name,element_name)
 
 
 @then('"{actor_alias}" decides to delete business objectives on page "{page_name}"')
@@ -957,3 +982,9 @@ def then_actor_decides_to_click_continue_on_page(
 def then_actor_decides_to_select_random_product_on_page(
         context, actor_alias, page_name):
     actor_decides_to_select_random_product_on_page(context, page_name)
+
+@then('"{actor_alias}" decides to select random export plan on page "{page_name}"')
+def then_actor_decides_to_select_random_export_plan_on_page(context, actor_alias, page_name):
+    # input_data_table = context.table
+    # for row in input_data_table:
+    actor_decides_to_select_random_export_plan_on_page(context, actor_alias, page_name)

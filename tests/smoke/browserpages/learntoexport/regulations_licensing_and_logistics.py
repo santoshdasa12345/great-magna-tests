@@ -51,7 +51,7 @@ SELECTORS = {
         "Regulations around supplying a service": Selector(
             By.XPATH, "//span[contains(text(),'Understand regulations around supplying a service')]"
         ),
-        "freight forwarders": Selector(
+        "using freight forwarders": Selector(
             By.XPATH, "//span[contains(text(),'Freight forwarders')]"
         ),
         "understand data regulations and data protection": Selector(

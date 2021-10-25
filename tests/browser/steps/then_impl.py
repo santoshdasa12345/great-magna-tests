@@ -68,6 +68,7 @@ from browserutils.gtm import (
     replace_string_representations,
 )
 
+
 def should_be_on_page(context: Context, actor_alias: str, page_name: str):
     page = get_page_object(page_name)
     page_source = context.driver.page_source
@@ -236,12 +237,13 @@ def actor_decides_to_click_continue_for_number_of_times_until_it_reaches_require
     counter = 0
     while counter < int(max_number_pages):
         page = get_page_object(from_page_name)
-        # logging.debug("visiting page  - "+ page.NAME)
+        logging.debug("visiting page  - " + page.NAME)
         has_action(page, "find_and_click")
         page.find_and_click(context.driver, element_selector_name="continue learning")
+        time.sleep(1)
         current_page_url = str(context.driver.current_url)
-        # logging.debug("Last visited page - "+current_page_url)
-        # time.sleep(1)
+        logging.debug("Last visited page - " + current_page_url)
+        logging.debug("to_page_name - " + to_page_name)
         counter += 1
         if to_page_name in current_page_url:
             break
@@ -283,18 +285,48 @@ def actor_decides_to_validate_entered_text(context, element_name, page_name):
         assert False, error
 
 
-def actor_decides_to_select_random_item_list_on_page(context, actor_alias, element_name, page_name):
+def actor_decides_to_select_random_item_list_on_page(context, element_name, page_name):
     page = get_page_object(page_name)
     has_action(page, "find_and_select_random_item_list")
     page.find_and_select_random_item_list(context.driver, element_name)
 
 
-def actor_fill_business_objectives_details_on_page(context, actor_alias, position, startdate, enddate, objectives,
-                                                   owner, plannedreviews, page_name):
+def actor_decides_to_select_random_payment_terms_on_page(context, element_name, page_name):
+    page = get_page_object(page_name)
+    has_action(page, "find_and_select_random_payment_terms")
+    page.find_and_select_random_payment_terms(context.driver, element_name)
+
+
+def actor_decides_to_select_random_item_incoterms(context, element_name, page_name):
+    page = get_page_object(page_name)
+    has_action(page, "find_and_select_random_incoterms")
+    page.find_and_select_random_incoterms(context.driver,element_name)
+
+
+def actor_decides_to_select_random_unit_list_on_page(context, actor_alias, element_name, page_name):
+    page = get_page_object(page_name)
+    has_action(page, "find_and_select_random_unit_list")
+    page.find_and_select_random_unit_list(context.driver, element_name)
+
+
+def actor_decides_to_select_random_time_from_list_on_page(context, actor_alias, element_name, page_name):
+    page = get_page_object(page_name)
+    has_action(page, "find_and_select_random_time_list")
+    page.find_and_select_random_time_list(context.driver, element_name)
+
+
+def actor_decides_to_select_random_currency_from_list_on_page(context, actor_alias, element_name, page_name):
+    page = get_page_object(page_name)
+    has_action(page, "find_and_select_random_currency_list")
+    page.find_and_select_random_currency_list(context.driver, element_name)
+
+
+def actor_fill_business_objectives_details_on_page(context, actor_alias, position, objectives,
+                                                   owner, plannedreviews, page_name, element_name):
     page = get_page_object(page_name)
     has_action(page, "enter_business_objectives_details")
-    page.enter_business_objectives_details(context.driver, position, startdate, enddate, objectives, owner,
-                                           plannedreviews)
+    page.enter_business_objectives_details(context.driver, position, objectives, owner,
+                                           plannedreviews, element_name)
 
 
 def actor_decides_to_delete_business_objectives_on_page(context, actor_alias, position, page_name):
@@ -1384,13 +1416,21 @@ def actor_decides_to_click_on_page_with_lesson_link(
     has_action(page, "find_and_click_lesson_link")
     page.find_and_click_lesson_link(context.driver, lesson_name)
 
-def actor_decides_to_click_continue_on_page(context:Context,page_name):
+
+def actor_decides_to_click_continue_on_page(context: Context, page_name):
     page = get_page_object(page_name)
     has_action(page, "click_on_continue")
     page.click_on_continue(context.driver)
+
 
 def actor_decides_to_select_random_product_on_page(
         context, actor_alias):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "find_and_select_random_product_and_click_continue")
     page.find_and_select_random_product_and_click_continue(context.driver)
+
+
+def actor_decides_to_select_random_export_plan_on_page(context, actor_alias, page_name):
+    page = get_page_object(page_name)
+    has_action(page, "find_and_select_random_export_plan")
+    page.find_and_select_random_export_plan(context.driver)

@@ -43,13 +43,13 @@ PAGE_TITLE = "Get Started Page "
 SELECTORS = {
     "get started": {
         "what youll find in each lesson": Selector(
-            By.XPATH, "//*[@id=\"330\"]/ul/li[1]/a/span"
+            By.XPATH, "//body/main/div/section[2]/ol/li/div/ul/li[1]/a"
         ),
         "how lessons can help": Selector(
             By.XPATH, "//span[contains(text(),'How lessons can help you make an export plan')]"
         ),
         "top back": Selector(
-            By.XPATH, "//body/main[@id='content']/div[@id='learn-root']/a[1]/i[1]"
+            By.XPATH, "//body/main/div/span/a"
         ),
 
     },

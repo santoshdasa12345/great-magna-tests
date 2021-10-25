@@ -359,6 +359,7 @@ def fill_out_products_and_country(driver: WebDriver, products: str, country: str
 
     fill_out_country(driver, country)
 
+
 def fill_out_products(driver: WebDriver, products: str):
     # details_dict = {"emailaddress": products}
     # product_selectors = SELECTORS["dashboard"]
@@ -384,6 +385,7 @@ def click_on_i_have_exported_in_the_last_12_months(driver: WebDriver):
     )
     save.click()
 
+
 def search_again_top_bottom(driver: WebDriver):
     try:
         search_again_top_btn = find_element(
@@ -399,6 +401,7 @@ def search_again_top_bottom(driver: WebDriver):
         except:
             pass
 
+
 def select_product_search_again_top_bottom(driver: WebDriver, product_name: str):
     product_btn = find_element(
         driver, find_selector_by_name(SELECTORS, "product-btn")
@@ -407,7 +410,8 @@ def select_product_search_again_top_bottom(driver: WebDriver, product_name: str)
     search_again_top_bottom(driver)
     driver.implicitly_wait(1)
     driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").clear()
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").send_keys(product_name)
+    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").send_keys(
+        product_name)
     driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/button").click()
 
 
@@ -447,7 +451,7 @@ def search_select_save_random_next(driver: WebDriver):
                             )
                             search_next_btn.click()
                         except Exception as ex:
-                            logging.error('Exception while clicking Next button - '+ str(ex))
+                            logging.error('Exception while clicking Next button - ' + str(ex))
                             break
                         counter += 1
         except Exception as ex:

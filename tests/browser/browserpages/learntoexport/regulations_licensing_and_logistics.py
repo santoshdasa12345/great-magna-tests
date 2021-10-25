@@ -48,17 +48,35 @@ SELECTORS = {
         "understand duties and taxes": Selector(
             By.XPATH, "//span[contains(text(),'Understand duties and taxes')]"
         ),
-        "Regulations around supplying a service": Selector(
-            By.XPATH, "//span[contains(text(),'Understand regulations around supplying a service')]"
+        "understand local market regulations for products": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[3]/a"
         ),
-        "freight forwarders": Selector(
-            By.XPATH, "//span[contains(text(),'Freight forwarders')]"
+        "using harmonised system or commodity codes": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[4]/a"
         ),
-        "understand data regulations and data protection": Selector(
-            By.XPATH, "//span[contains(text(),'Understand data regulations and data protection')]"
+        "applying rules sof orgin to your product": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[5]/a"
         ),
         "choose which incoterms are right for you": Selector(
-            By.XPATH, "//span[contains(text(),'Choose which Incoterms are right for you')]"
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[1]/a"
+        ),
+        "using freight forwarders": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[2]/div/ul/li[2]/a"
+        ),
+        "regulations around ecommerce": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[3]/div/ul/li[1]/a"
+        ),
+        "regulations around supplying a service": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[3]/div/ul/li[2]/a"
+        ),
+        "understand data regulations and data protection": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[3]/div/ul/li[3]/a"
+        ),
+        "how to make uk customs declaration": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[1]/a"
+        ),
+        "understand export licensing": Selector(
+            By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[2]/a"
         ),
     }
 }
