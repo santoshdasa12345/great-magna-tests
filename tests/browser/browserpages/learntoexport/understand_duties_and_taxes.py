@@ -66,6 +66,9 @@ SELECTORS = {
         "view transcript": Selector(
             By.XPATH, "//span[contains(text(),'View transcript')]"
         ),
+        "costs and pricing": Selector(
+            By.XPATH, "//body/main/div/div[1]/div/div[2]/div[3]/div/div/a"
+        ),
 
     },
 }

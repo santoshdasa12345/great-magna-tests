@@ -53,12 +53,12 @@ SELECTORS = {
         ),
         "lesson": Selector(
             By.CSS_SELECTOR, "#finance-funding-credit-options > div.learning > div.learning__buttons > button"
-            # "#finance-how-much-funding > div > div.learning > div.learning__buttons > button"
-            # "#finance-funding-credit-options > button"
+        ),
+        "avoid cashflow lesson": Selector(
+            By.XPATH, "//body/main/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div[1]/button"
         ),
         "add a funding option": Selector(
             By.XPATH, "//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div/button"
-            # "//body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tfoot/tr/td/button"
         ),
         "select option": Selector(
             By.XPATH, "//tbody/tr[1]/td[1]/div[1]/button[1]"
@@ -100,7 +100,6 @@ SELECTORS = {
         ),
         "choose the right funding": Selector(
             By.XPATH, "//body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/div[2]/a"
-            # "//*[@id=\"finance-funding-credit-options\"]/a/div/h4"
         ),
         "top export plan home": Selector(
             By.XPATH, "//*[@id=\"funding-and-credit-content\"]/section[1]/div/div/div[2]/span/a"
@@ -186,9 +185,9 @@ def find_and_select_random_funding_options(driver: WebDriver, position: str, amo
     funding_option_1_element = funding_option_element_xpath + "/div/div[1]/div/div/div[2]"  # /td[1]/div/div/div[2]/button"
     driver.find_element_by_xpath(funding_option_1_element).click()
     driver.implicitly_wait(5)
-    ulist_funding_options_xpath = "/body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div" + "[" + str(
+    ulist_funding_options_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div" + "[" + str(
         actual_positon) + "]"
-    ulist_funding_options_element = ulist_funding_options_xpath + "/div/div[1]/div/div/div[2]/div[4]"
+    ulist_funding_options_element = ulist_funding_options_xpath + "/div/div[1]/div/div/div[2]/div[4]/ul"
     driver.find_element_by_xpath(ulist_funding_options_element).click()
     # ulist_funding_options_element = driver.find_element_by_xpath(ulist_funding_options_xpath)
     funding_options_elements = ulist_funding_options_element.find_elements_by_tag_name("li")
@@ -222,8 +221,8 @@ def delete_all_funding_options(driver: WebDriver, del_button_position: str):
     # 1,3,5,7,......
     time.sleep(1)
 
-    funding_options_div_element_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[1]/table/tbody/tr" + "[" + del_button_position + "]"
-    del_btn_ele_xpath = funding_options_div_element_xpath + "/td/button"
+    funding_options_div_element_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div" + "[" + del_button_position + "]"
+    del_btn_ele_xpath = funding_options_div_element_xpath + "/div/div[3]/button"
     driver.find_element_by_xpath(del_btn_ele_xpath).click()
 
     driver.implicitly_wait(2)

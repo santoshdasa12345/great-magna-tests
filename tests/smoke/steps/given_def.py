@@ -18,11 +18,20 @@ from steps.when_impl import (
     domestic_search_for_phrase_on_page,
     domestic_search_result_has_more_than_one_page,
     domestic_search_finder_should_see_page_number,
+    fas_searched_for_companies,
     contact_us_get_to_page_via,
     contact_us_navigate_through_options,
     soo_find_and_open_random_marketplace,
     generic_create_great_account,
     soo_look_for_marketplaces_from_home_page,
+    generic_at_least_n_news_articles,
+    sso_actor_received_email_confirmation_code,
+    generic_fill_out_and_submit_form,
+    generic_get_in_touch,
+    registration_create_and_verify_account,
+    profile_start_registration_as,
+    clear_the_cookies,
+    sign_in,
 )
 
 
@@ -36,6 +45,11 @@ def given_user_did_basic_auth(context: Context, *, service_name: str = None):
 def given_actor_has_small_screen(context, actor_alias):
     set_small_screen(context)
 
+@given('at least "{no_articles:d}" published "{visitor_type}" news articles on "{service}"')
+@given('at least "{no_articles:d}" published "{visitor_type}" news article on "{service}"')
+def given_min_number_of_articles(
+        context: Context, no_articles: int, visitor_type: str, service: str):
+    generic_at_least_n_news_articles(context, no_articles, visitor_type, service)
 
 @given('"{actor_alias}" went to the "{page_name}" page')
 @given('"{actor_alias}" goes to the "{page_name}" page')
@@ -116,3 +130,48 @@ def given_actor_looks_for_marketplace_using_countries_and_products(
     soo_look_for_marketplaces_from_home_page(
         context, actor_alias, country, category
     )
+
+@given('"{actor_alias}" has received the email confirmation code by opting to register as "{business_type}"')
+def given_actor_received_email_confirmation_code(
+        context: Context, actor_alias: str, business_type: str
+):
+    sso_actor_received_email_confirmation_code(
+        context, actor_alias, business_type
+    )
+
+@given('"{actor_alias}" filled out and submitted the form')
+def given_actor_fills_out_and_submits_the_form(context: Context, actor_alias: str):
+    generic_fill_out_and_submit_form(context, actor_alias, custom_details_table=context.table)
+
+@given('"{actor_alias}" has a verified standalone SSO/great.gov.uk account')
+@given('"{actor_alias}" is a registered and verified user')
+def given_actor_is_registered_and_verified(context, actor_alias):
+    registration_create_and_verify_account(
+        context, actor_alias, fake_verification=True)
+
+@given('"{actor_name}" decided to create a great.gov.uk account as "{business_type}"')
+def given_actor_wants_to_register_as(context: Context, actor_name: str, business_type: str):
+    profile_start_registration_as(context, actor_name, business_type)
+
+@given('"{actor_alias}" cleared the cookies')
+@given('"{actor_alias}" quickly signed out')
+def when_actor_clears_the_cookies(context, actor_alias):
+    clear_the_cookies(context, actor_alias)
+
+@given('"{actor_alias}" is signed in')
+def given_actor_is_signed_in(context, actor_alias):
+    sign_in(context, actor_alias)
+
+@given('"{actor_alias}" searched for companies using "{keyword}" keyword in "{sector}" sector')
+def fas_when_actor_searches_for_companies(
+        context: Context, actor_alias: str, keyword: str, sector: str):
+    fas_searched_for_companies(
+        context, actor_alias, keyword=keyword, sector=sector)
+
+@given('"{actor_alias}" got in touch with us via "{page_name}" page')
+def given_actor_got_in_touch_with_us(
+        context: Context, actor_alias: str, page_name: str):
+    generic_get_in_touch(context, actor_alias, page_name, custom_details_table=context.table)
+
+#####
+

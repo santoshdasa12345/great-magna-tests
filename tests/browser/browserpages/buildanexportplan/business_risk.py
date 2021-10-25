@@ -45,7 +45,7 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"business-risks\"]/div[2]/table/tbody/tr[1]/td/div[1]/div[1]/div/div/button/i"
         ),
         "risk example": Selector(
-            By.XPATH, "//*[@id=\"business-risks\"]/div[2]/table/tbody/tr[1]/td/div[1]/div[1]/button"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div[2]/div/div[1]/div[1]/div[1]/button"
         ),
         "risk": Selector(
             By.XPATH,
@@ -100,7 +100,7 @@ SELECTORS = {
             # "#business-risks > div.costs.costs--risks.bg-blue-deep-10.p-v-s.m-b-s > table > tbody > tr:nth-child(4) > td > div.learning > div.learning__buttons.m-b-xs > button"
         ),
         "add a risk": Selector(
-            By.CSS_SELECTOR, "#business-risks > button"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/button"
         ),
         "export plan home": Selector(
             By.XPATH,
@@ -382,26 +382,6 @@ def enter_risk_details(driver: WebDriver, position: str, risktext: str, continge
                                         + "[" + str(risktext_position + 3) + "]"
     contingencyplan_text_element_xpath = contingencyplan_div_element_xpath + "/div[4]/div[2]/textarea"
     driver.find_element_by_xpath(contingencyplan_text_element_xpath).send_keys(contingencyplan)
-
-    # risk imapact
-
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[1]/label
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[2]/label
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[3]/label
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[4]/label
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[3]/div[2]/div[5]/label
-
-    # risk likelihood
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[1]/label
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[2]/label
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[3]/label
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[4]/label
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[5]/label
-
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[1]/div[4]/div[2]/textarea
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[2]/div[4]/div[2]/textarea
-    # /html/body/main/div[2]/section[3]/div/div[2]/div/div[2]/div[3]/div[4]/div[2]/textarea
 
     time.sleep(5)
 

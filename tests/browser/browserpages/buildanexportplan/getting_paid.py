@@ -51,8 +51,8 @@ SELECTORS = {
             type=ElementType.INPUT
         ),
         "payment terms": Selector(
-            By.CSS_SELECTOR,
-            "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
+            By.XPATH,
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[2]/textarea"
         ),
         "payment terms notes": Selector(
             By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[2]/textarea",
@@ -63,7 +63,7 @@ SELECTORS = {
             "#getting-paid > div > div:nth-child(3) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
         ),
         "incoterms notes": Selector(
-            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[2]/textarea"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[3]/div[2]/textarea"
         ),
         "section complete": Selector(
             By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
@@ -142,6 +142,7 @@ def enter_text(driver: WebDriver, element_name: str):
     )
     print(text_element)
     text_element.clear()
+    time.sleep(2)
     text_element.send_keys("Automated tests")
 
 
@@ -174,26 +175,38 @@ def enter_business_objectives_details(driver: WebDriver, startdate: str, enddate
 
 def find_and_select_random_item_list(driver: WebDriver, element_selector_name: str):
     payment_methods_btn = driver.find_element_by_xpath(
+        #//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]
         "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[3]")
+        #//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[4]/ul
     payment_methods_btn.click()
-    payment_terms_btn = driver.find_element_by_css_selector(
-        "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--value")
-    payment_terms_btn.click()
-    incoterms_btn = driver.find_element_by_css_selector(
-        "#getting-paid > div > div:nth-child(3) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__placeholder--value")
-    incoterms_btn.click()
     driver.implicitly_wait(5)
     # select__list body-l bg-white radius
-    payment_methods_element = driver.find_element_by_xpath(
-        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[4]")
-    payment_terms_element = driver.find_element_by_css_selector(
-        "#getting-paid > div > div:nth-child(2) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")
-    incoterms_element = driver.find_element_by_css_selector(
-        "#getting-paid > div > div:nth-child(3) > div.select.m-b-l > div > div.select__placeholder.text-blue-deep-60.bg-white.radius > div.select__list.body-l.bg-white.radius.select__list--open")
+    payment_methods_drop_down_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[4]/ul")
+    li_elements = payment_methods_drop_down_element.find_elements_by_tag_name("li")
+    logging.debug("list elements")
+    logging.debug(li_elements)
+    random_number = 0
+    if len(li_elements) > 2:
+        random_number = random.randint(1, len(li_elements) - 1)
+    random_li_element = li_elements[random_number]
+    logging.debug(random_number)
+    logging.debug(random_li_element.tag_name)
+    logging.debug(random_li_element)
+    random_li_element.click()
+    time.sleep(2)
 
-    li_elements = payment_methods_element.find_elements_by_tag_name("li")
+
+def find_and_select_random_payment_terms(driver: WebDriver,element_selector_name: str):
+    payment_terms_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]")
+    payment_terms_btn.click()
+
+    driver.implicitly_wait(5)
+    # select__list body-l bg-white radius
+    payment_terms_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/div[4]/ul")
     li_elements = payment_terms_element.find_elements_by_tag_name("li")
-    li_elements = incoterms_element.find_elements_by_tag_name("li")
     logging.debug("list elements")
     logging.debug(li_elements)
     random_number = 0
@@ -205,6 +218,25 @@ def find_and_select_random_item_list(driver: WebDriver, element_selector_name: s
     logging.debug(random_li_element)
     time.sleep(2)
 
+def find_and_select_random_incoterms(driver: WebDriver,element_selector_name: str):
+    incoterms_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]")
+    incoterms_btn.click()
+    driver.implicitly_wait(5)
+    # select__list body-l bg-white radius
+    incoterms_element = driver.find_element_by_css_selector(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/div[4]/ul")
+    li_elements = incoterms_element.find_elements_by_tag_name("li")
+    logging.debug("list elements")
+    logging.debug(li_elements)
+    random_number = 0
+    if len(li_elements) > 2:
+        random_number = random.randint(1, len(li_elements) - 1)
+    random_li_element = li_elements[random_number]
+    logging.debug(random_number)
+    logging.debug(random_li_element.tag_name)
+    logging.debug(random_li_element)
+    time.sleep(2)
 
 def check_section_complete_yes(driver: WebDriver, element_selector_name: str):
     check_yes_link = find_element(

@@ -172,6 +172,9 @@ SELECTORS = {
         "duty": Selector(
             By.CSS_SELECTOR, "#duty_per_unit", type=ElementType.INPUT
         ),
+        "duty lesson": Selector(
+            By.XPATH, "//body/main/div[2]/div/section[1]/div/div[2]/div[11]/div[2]/div[1]/button"
+        ),
         # "select currency": Selector(
         #     By.CSS_SELECTOR, "#cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > div.bg-white.radius.p-xs.c-full.m-b-s.gross-price > div:nth-child(3) > div > div > div.c-1-6.m-r-xs > div > div > div.select__placeholder.text-blue-deep-60.bg-white.radius"
         # ),
@@ -204,7 +207,6 @@ SELECTORS = {
         "manage exchange rates": Selector(
             By.XPATH,
             "//body/main/div[2]/div/section[2]/div/div/div[2]/div[1]/div[2]/a"
-            # cost-and-pricing > section.bg-blue-deep-10.m-t-l.p-v-s > div > div > div.c-1-1.c-2-3-m.c-1-2-xl > a > div"
         ),
         "choose the right payment method": Selector(
             By.XPATH,
@@ -252,6 +254,15 @@ SELECTORS = {
         "dashboard": Selector(
             By.XPATH, "//a[contains(text(),'Dashboard')]"
         ),
+        "understand duties and taxes": Selector(
+            By.XPATH,"//body/main/div[2]/div/section[1]/div/div[2]/div[11]/div[2]/div[2]/a"
+        ),
+        "local taxes understand duties and taxes": Selector(
+            By.XPATH,"//body/main/div[2]/div/section[1]/div/div[2]/div[10]/div[2]/div[2]/a"
+        ),
+        "local taxes lesson": Selector(
+            By.XPATH,"//body/main/div[2]/div/section[1]/div/div[2]/div[10]/div[2]/div[1]/button[2]"
+        ),
     }
 }
 
@@ -291,42 +302,41 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
     find_and_click.click()
 
 
-def find_and_select_random_item_list(driver: WebDriver, element_selector_name: str):
+def find_and_select_random_unit_list(driver: WebDriver, element_selector_name: str):
     driver.implicitly_wait(5)
-    # number_of_units_btn = driver.find_element_by_xpath(
-    #     "//body/main/div[2]/div/section[1]/div/div[2]/div[5]/div/div[2]/div/div/div[2]/div[3]")
-    # number_of_units_btn.click()
-    # time_frame_btn = driver.find_element_by_xpath(
-    #     "//body/main/div[2]/div/section[1]/div/div[2]/div[6]/div/div[2]/div/div/div[2]")
-    # time_frame_btn.click()
-    select_currency_btn = driver.find_element_by_xpath(
-        "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]")
-    select_currency_btn.click()
+    number_of_units_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/div/section[1]/div/div[2]/div[5]/div/div[2]/div/div/div[2]")
+        # "//body/main/div[2]/div/section[1]/div/div[2]/div[5]/div/div[2]/div/div/div[2]/div[3]")
+    number_of_units_btn.click()
 
     # select__list body-l bg-white radius
-    # number_of_units_element = driver.find_element_by_xpath(
-    #     "//body/main/div[2]/div/section[1]/div/div[2]/div[5]/div/div[2]/div/div/div[2]/div[4]/ul")
-    # time_frame_element = driver.find_element_by_xpath(
-    #     "//body/main/div[2]/div/section[1]/div/div[2]/div[6]/div/div[2]/div/div/div[2]/div[4]/ul")
+    number_of_units_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/div/section[1]/div/div[2]/div[5]/div/div[2]/div/div/div[2]/div[4]/ul")
+    nou_li_elements = number_of_units_element.find_elements_by_tag_name("li")
+    random_number = 0
+    if len(nou_li_elements) > 0:
+        if len(nou_li_elements) > 2:
+            random_number = random.randint(1, len(nou_li_elements) - 1)
+        random_li_element = nou_li_elements[random_number]
+        logging.debug("length of li elements " + str(len(nou_li_elements)))
+        logging.debug("list elements")
+        logging.debug(random_number)
+        logging.debug(random_li_element.tag_name)
+        logging.debug(random_li_element)
+        time.sleep(2)
+        random_li_element.click()
+        time.sleep(2)
+
+
+def find_and_select_random_currency_list(driver: WebDriver, element_selector_name: str):
+    driver.implicitly_wait(5)
+    select_currency_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]")
+        # "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]")
+    select_currency_btn.click()
     select_currency_element = driver.find_element_by_xpath(
         "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]/div[4]/ul")
-
-    # nou_li_elements = number_of_units_element.find_elements_by_tag_name("li")
-    # random_number = 0
-    # if len(nou_li_elements) > 0:
-    #     if len(nou_li_elements) > 2:
-    #         random_number = random.randint(1, len(nou_li_elements) - 1)
-    #     random_li_element = nou_li_elements[random_number]
-    #     random_li_element.click()
-    #
-    # time_li_elements = time_frame_element.find_elements_by_tag_name("li")
-    # random_number = 0
-    # if len(time_li_elements) > 0:
-    #     if len(time_li_elements) > 2:
-    #         random_number = random.randint(1, len(time_li_elements) - 1)
-    #     random_li_element = time_li_elements[random_number]
-    #     random_li_element.click()
-
+        # "//body/main/div[2]/div/section[2]/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[2]/div[4]/ul")
     currency_li_elements = select_currency_element.find_elements_by_tag_name("li")
 
     random_number = 0
@@ -335,6 +345,25 @@ def find_and_select_random_item_list(driver: WebDriver, element_selector_name: s
             random_number = random.randint(1, len(currency_li_elements) - 1)
         random_li_element = currency_li_elements[random_number]
         random_li_element.click()
+        time.sleep(2)
+#
+def find_and_select_random_time_list(driver: WebDriver, element_selector_name: str):
+    driver.implicitly_wait(5)
+    time_frame_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/div/section[1]/div/div[2]/div[6]/div/div[2]/div/div/div[2]")
+    time_frame_btn.click()
+    # select__list body-l bg-white radius
+    time_frame_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/div/section[1]/div/div[2]/div[6]/div/div[2]/div/div/div[2]/div[4]/ul")
+    time_li_elements = time_frame_element.find_elements_by_tag_name("li")
+    random_number = 0
+    if len(time_li_elements) > 0:
+        if len(time_li_elements) > 2:
+            random_number = random.randint(1, len(time_li_elements) - 1)
+        random_li_element = time_li_elements[random_number]
+        random_li_element.click()
+        time.sleep(2)
+
 
 
 def enter_direct_costs(driver: WebDriver, productcost: str, labourcost: str, additionalmargin: str):
@@ -366,19 +395,11 @@ def enter_direct_costs(driver: WebDriver, productcost: str, labourcost: str, add
     summation_ele_value = driver.find_element_by_xpath(summation_ele_xpath).text
     if float(summation) == float(summation_ele_value):
         raise Exception("Direct Costs Summation do not match")
-    # //body/main/div[2]/div/section[1]/div/div[2]/div[4]/table/tbody/tr/td[2]/span[2]
+
 
 
 def enter_overhead_costs(driver: WebDriver, productadaptation: str, freightandlogistics: str,
                          agentanddistributionfees: str, marketing: str, insurance: str):
-    # base_element_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/table/tbody/tr"
-    #
-    # productadaptation_ele_xpath = base_element_xpath + "[" + "1" + "]/td[2]/div/div[2]/input"
-    # freightandlogistics_xpath = base_element_xpath + "[" + "2" + "]/td[2]/div/div[2]/input"
-    # agentanddistributionfees_xpath = base_element_xpath + "[" + "3" + "]/td[2]/div/div[2]/input"
-    # marketing_xpath = base_element_xpath + "[" + "3" + "]/td[2]/div/div[2]/input"
-    # insurance_xpath = base_element_xpath + "[" + "3" + "]/td[2]/div/div[2]/input"
-
     base_element_xpath = "//body/main/div[2]/div/section[1]/div/div[2]/div[3]/div"
 
     productadaptation_ele_xpath = base_element_xpath + "[" + "1" + "]/div/div[2]/div/div[2]/input"
@@ -428,7 +449,7 @@ def enter_value(driver: WebDriver, element_name: str):
         driver, find_selector_by_name(SELECTORS, element_name)
     )
     value_element.clear()
-    value_element.send_keys("20")
+    value_element.send_keys("12450")
     time.sleep(2)
 
 

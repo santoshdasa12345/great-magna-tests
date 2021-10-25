@@ -144,13 +144,12 @@ Feature: GreatMagna - Business Objectives Page
    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
    And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" fill business objective details on page "Build An Export Plan - Business Objectives"
-          | Position | Startdate  | Enddate    | Objectives | Owner        | PlannedReviews   |
-          | 1     | 01/02/2021 | 01/02/2028 | obj1       | obj1-owner   | obj1-plannedreviews |
-          | 2     | 01/02/2021 | 01/02/2028 | obj2       | obj2-owner   | obj2-plannedreviews |
-          | 3     | 01/02/2021 | 01/02/2028 | obj3       | obj3-owner   | obj3-plannedreviews |
-          | 4     | 01/02/2021 | 01/02/2028 | obj4       | obj4-owner   | obj4-plannedreviews |
-          | 5     | 01/02/2021 | 01/02/2028 | obj5       | obj5-owner   | obj5-plannedreviews |
-          | 6     | 01/02/2021 | 01/02/2028 | obj5       | obj5-owner   | obj5-plannedreviews |
+          | Position | Objectives | Owner        | PlannedReviews      |
+          | 1        | obj1       | obj1-owner   | obj1-plannedreviews |
+          | 2        | obj2       | obj2-owner   | obj2-plannedreviews |
+          | 3        | obj3       | obj3-owner   | obj3-plannedreviews |
+          | 4        | obj4       | obj4-owner   | obj4-plannedreviews |
+          | 5        | obj5       | obj5-owner   | obj5-plannedreviews |
 
 
    @allure.link:XOT-1060
