@@ -164,15 +164,15 @@ Given "Robert" visited "GreatMagna - Login" page
 #  And "Robert" decides to enter product name "Televisions" on page "Build An Export Plan - Travel Plan"
 #  And "Robert" decides to enter country name "Angola" on the "Build An Export Plan - Travel Plan" page
 #
-
-    @allure.link:XOT-1201
-   @Great-Magna-Search-2tp
-  Scenario: Visitor should be able to Enter and Save Product
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+999888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on Product and Search again for "Vehicle" on the "GreatMagna - Dashboard" Page
-    And "Robert" decides to click on select and save random product options on the "GreatMagna - Dashboard" Page
+#
+#    @allure.link:XOT-1201
+#   @Great-Magna-Search-2tp
+#  Scenario: Visitor should be able to Enter and Save Product
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+999888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on Product and Search again for "Vehicle" on the "GreatMagna - Dashboard" Page
+#    And "Robert" decides to click on select and save random product options on the "GreatMagna - Dashboard" Page
 
  @allure.link:XOT-1202
    @Great_Magna_Export_Plan_118

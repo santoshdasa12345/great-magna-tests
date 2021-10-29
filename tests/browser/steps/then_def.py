@@ -41,6 +41,7 @@ from steps.then_impl import (
     actor_decides_to_select_random_payment_terms_on_page,
     actor_decides_to_select_random_time_from_list_on_page,
     actor_decides_to_select_random_currency_from_list_on_page,
+    actor_decides_to_select_random_payment_methods_list_on_page,
     actor_decides_to_select_random_item_incoterms,
     actor_decides_to_click_on_page_with_lesson_link,
     actor_decides_to_enter_value,
@@ -425,13 +426,17 @@ def then_actor_decides_to_validate_entered_text(context, actor_alias, element_na
 def then_actor_decides_to_select_random_item_list_on_page(context, actor_alias, element_name, page_name):
     actor_decides_to_select_random_item_list_on_page(context,element_name, page_name)
 
-@then('"{actor_alias}" decides to select random item for payment terms "{element_name}" on page "{page_name}"')
-def then_actor_decides_to_select_random_payment_terms_on_page(context, actor_alias, element_name, page_name):
-    actor_decides_to_select_random_payment_terms_on_page(context, actor_alias, element_name, page_name)
+@then('"{actor_alias}" decides to select random item for payment methods on page "{page_name}"')
+def then_actor_decides_to_select_random_payment_methods_list_on_page(context, actor_alias,page_name):
+    actor_decides_to_select_random_payment_methods_list_on_page(context, page_name)
 
-@then('"{actor_alias}" decides to select random item for incoterms "{element_name}" on page "{page_name}"')
-def then_actor_decides_to_select_random_item_incoterms(context,actor_alias, element_name, page_name):
-    actor_decides_to_select_random_item_incoterms(context,actor_alias,element_name,page_name)
+@then('"{actor_alias}" decides to select random item for payment terms on page "{page_name}"')
+def then_actor_decides_to_select_random_payment_terms_on_page(context, actor_alias,page_name):
+    actor_decides_to_select_random_payment_terms_on_page(context,page_name)
+
+@then('"{actor_alias}" decides to select random item for incoterms on page "{page_name}"')
+def then_actor_decides_to_select_random_item_incoterms(context,actor_alias, page_name):
+    actor_decides_to_select_random_item_incoterms(context,page_name)
 
 @then('"{actor_alias}" decides to select random unit for "{element_name}" on page "{page_name}"')
 def then_actor_decides_to_select_random_unit_list_on_page(context, actor_alias, element_name, page_name):
@@ -451,7 +456,7 @@ def then_actor_fill_business_objectives_details_on_page(context, actor_alias, pa
     input_data_table = context.table
     for row in input_data_table:
         actor_fill_business_objectives_details_on_page(context, actor_alias, row["Position"], row["Objectives"], row["Owner"],
-                                                       row["PlannedReviews"], page_name,element_name)
+                                                       row["PlannedReviews"],page_name,element_name)
 
 
 @then('"{actor_alias}" decides to delete business objectives on page "{page_name}"')

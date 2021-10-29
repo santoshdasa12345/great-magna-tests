@@ -99,6 +99,12 @@ SELECTORS = {
         "start your free plan": Selector(
             By.CSS_SELECTOR, "#content > div > div > div > div:nth-child(2) > div > div > a"
         ),
+        "download plan": Selector(
+            By.XPATH, "//body/main/section/aside/a"
+        ),
+        "delete plan": Selector(
+            By.XPATH, "//body/main/section/aside/div[2]/button"
+        ),
 
     }
 }

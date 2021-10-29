@@ -36,7 +36,7 @@ Feature: GreatMagna - Adapting Your Product Page
 
 
    @allure.link:XOT-1033
-   @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_changing
   Scenario:User should be able to view tool tip and enter relevant text in "Changing your product to adapt to your target market"
 
     Given "Robert" visited "GreatMagna - Login" page

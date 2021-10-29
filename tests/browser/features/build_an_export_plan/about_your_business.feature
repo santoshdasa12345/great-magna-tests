@@ -141,7 +141,7 @@ Feature: GreatMagna - About your Business Page
     And "Robert" decides to click on "Build an export plan"
 
 @allure.link:XOT-1020
-   @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_aybp
   Scenario:User should be able to click on Top Export plan home in "About your business" and should be on Export plan dashboard page
 
     Given "Robert" visited "GreatMagna - Login" page

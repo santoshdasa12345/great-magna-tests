@@ -11,10 +11,11 @@ Feature: GreatMagna -  Forgotten Password Page
 
   Given "Robert" visited "GreatMagna - Login" page
   When "Robert" decides to click on "forgotten_password"
-  And "Robert" decides to accept all cookies
+  And "Robert" accepts all cookies
   Then "Robert" decides to enter emailaddress "<emailaddress>" and click on reset password
   And "Robert" should be able to click on reset password link from email "<emailaddress>", "<password>" and enters new password "<newpassword>" and confirm
   And "Robert" should be on the "GreatMagna - About" Page
   Examples: email address and password
      |      emailaddress                 | password    | newpassword  |
-     | santoshtesting10008+777@gmail.com | Testing@123!| Test@1234568 |
+     | santoshtesting10008@gmail.com | Testing@123!| Testing@123! |
+

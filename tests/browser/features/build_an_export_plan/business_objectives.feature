@@ -61,7 +61,7 @@ Feature: GreatMagna - Business Objectives Page
 
 
 @allure.link:XOT-1054
-   @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_lesson
  Scenario:User should be able to click lessons "Move from accidental exporting to strategic exporting" and click back link "Business Objectives"
 
     Given "Robert" visited "GreatMagna - Login" page
