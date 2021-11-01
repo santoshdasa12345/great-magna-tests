@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 # Variables
 load_hatch_rate: &load_hatch_rate
@@ -140,6 +140,21 @@ step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests: &step_prepare_l
           export BROWSER="firefox";
       fi
       cd tests/browser
+      PYTHONPATH=. behave \
+        --dry-run \
+        --no-source \
+        --no-summary \
+        --no-snippets \
+        --no-skipped \
+        --tags=~@wip \
+        --tags=~@fixme \
+        --tags=~@skip \
+        --tags=~@eu-exit \
+        ${TAGS} \
+        --format=mini \
+        features/ \
+        | grep -v "Supplied path\|Trying base directory" > scenario_titles.txt
+
 
 step_install_requirements_for_load_tests: &step_install_requirements_for_load_tests
   run:
