@@ -21,7 +21,7 @@ Feature: GreatMagna - Lessons Page
 
 
    @allure.link:XOT-112
-   @Great-Magna-Lessons-progress-bar-test
+   @Great-Magna-Lessons-progress-bar-test_2
  Scenario:User should be able to view Lesson page "Choosing the right export opportunities" and click continue and back to check the progress bar on lessons and module and lesson categories section
   Given "Robert" visited "GreatMagna - Login" page
    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login

@@ -9,8 +9,8 @@ Feature: GreatMagna - Where To Export Page
 
   @allure.link:XOT-1021
     @Great_Magna_Export_Plan
-    @wte_1
-  Scenario:User should be able to "Add place" and " Add Country"
+  @wte_1
+  Scenario:User should be able to "Add product"
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
@@ -27,7 +27,7 @@ Feature: GreatMagna - Where To Export Page
   Scenario:User should be able to "Add a place"
 
     Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    When "Robert" decides to enter email address "santoshtesting10008+999@gmail.com", password "!@£$%^&*()" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
     Then "Robert" decides to click on "Where To Export"
     And "Robert" decides to enter maximum "10" country names with display "5" tabs on page "WhereToExport - Compare Countries"
@@ -846,14 +846,14 @@ Feature: GreatMagna - Where To Export Page
       | CountryName  | CountryPlaceNumber |
       | Senegal      | 1                  |
       | Seychelles   | 2                  |
-      | Sierra Leone | 3                  |
-      | Somalia      | 4                  |
-      | South Africa | 5                  |
-      | South Sudan  | 6                  |
-      | Sudan        | 7                  |
-      | Tanzania     | 8                  |
-      | The Gambia   | 9                  |
-      | Togo         | 10                 |
+#      | Sierra Leone | 3                  |
+#      | Somalia      | 4                  |
+#      | South Africa | 5                  |
+#      | South Sudan  | 6                  |
+#      | Sudan        | 7                  |
+#      | Tanzania     | 8                  |
+#      | The Gambia   | 9                  |
+#      | Togo         | 10                 |
     And "Robert" decides to click on "Learn to Export"
     And "Robert" should be on the "LearnToExport - Learn Categories" Page
     And "Robert" should be on the "GreatMagna - Dashboard" Page
@@ -919,12 +919,12 @@ Feature: GreatMagna - Where To Export Page
       | Andorra                | 2                  |
       | Austria                | 3                  |
       | Belgium                | 4                  |
-      | Bosnia and herzegovina | 5                  |
-      | Bulgaria               | 6                  |
-      | Croatia                | 7                  |
-      | Cyprus                 | 8                  |
-      | Czechia                | 9                  |
-      | Denmark                | 10                 |
+#      | Bosnia and herzegovina | 5                  |
+#      | Bulgaria               | 6                  |
+#      | Croatia                | 7                  |
+#      | Cyprus                 | 8                  |
+#      | Czechia                | 9                  |
+#      | Denmark                | 10                 |
     And "Robert" decides to click on "favourites"
 
 

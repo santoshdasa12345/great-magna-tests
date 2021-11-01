@@ -251,14 +251,9 @@ def search_select_save_random_next(driver: WebDriver):
         search_next_btn.click()
 
         counter += 1
-
-#India-#//body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section/div[2]/ol/li/button
-#nigeria-//body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section/div[2]/ol/li/button
-#indonesia-//body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section/div[2]/ol/li/button
-
 #/html/body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section[1]/div[1]
 #/html/body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section[2]/div[1]
-
+#//body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section/div[2]/ol/li/button
 def fill_out_country(driver: WebDriver, country: str):
     # search using the provide country name from the test case
     driver.find_element_by_css_selector("#search-input").clear()
@@ -266,10 +261,7 @@ def fill_out_country(driver: WebDriver, country: str):
 
     # look out for the list displayed after entering country name and select random/provided country
     ul_list_element = driver.find_element_by_xpath(
-        "//body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div")
-    # //body/main/div[1]/section/div/div/div[1]/div/div[2]/div/button
-    # //body/main/div[3]/div[2]/div[2]/button
-    # //section/div[2]/ol/li/button
+        "//body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div")
 
     section_elements = ul_list_element.find_elements_by_tag_name("section")
     logging.debug("length of section elements " + str(len(section_elements)))

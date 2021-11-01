@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 
 # Variables
 load_hatch_rate: &load_hatch_rate
@@ -1243,7 +1243,7 @@ jobs:
 
 
 workflows:
-  version: 2.1
+  version: 2
 
   ####################################################################
   ## Ad hoc workflows - these are run every time you push a change
