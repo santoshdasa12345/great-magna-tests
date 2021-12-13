@@ -5,76 +5,216 @@
 #    pip-compile requirements_functional.in
 #
 -e ./great_magna_tests_shared/
-allure-behave==2.8.15     # via -r requirements_functional.in
-allure-python-commons==2.8.15  # via allure-behave
-attrs==19.3.0             # via allure-python-commons, automat, great_magna_tests_shared, jsonschema, pytest, service-identity, twisted
-automat==20.2.0           # via great_magna_tests_shared, twisted
-beautifulsoup4==4.9.1     # via -r requirements_functional.in
-behave==1.2.6             # via -r requirements_functional.in, allure-behave
-certifi==2020.4.5.1       # via great_magna_tests_shared, requests
-cffi==1.14.0              # via cryptography, great_magna_tests_shared
-chardet==3.0.4            # via great_magna_tests_shared, requests
-constantly==15.1.0        # via great_magna_tests_shared, twisted
-cryptography==3.3.2         # via great_magna_tests_shared, pyopenssl, scrapy, service-identity
-cssselect==1.1.0          # via great_magna_tests_shared, parsel, scrapy
-directory-api-client==21.8.0  # via -r requirements_functional.in, great_magna_tests_shared
-directory-client-core==6.1.0  # via directory-api-client, directory-cms-client, directory-forms-api-client, directory-sso-api-client, great_magna_tests_shared
-directory-cms-client==11.1.1  # via great_magna_tests_shared
-directory-constants==20.11.0  # via -r requirements_functional.in
-directory-forms-api-client==5.3.0  # via great-magna-tests-shared
-directory-sso-api-client==6.3.0  # via -r requirements_functional.in, great-magna-tests-shared
-django>=2.2.10,<3.0a1           # via directory-api-client, directory-client-core, directory-constants, great-magna-tests-shared, djangorestframework, sigauth
-djangorestframework==3.11.2  # via great-magna-tests-shared, sigauth
-docopt==0.6.2             # via -r requirements_functional.in, great-magna-tests-shared, notifications-python-client
-envparse==0.2.0           # via great-magna-tests-shared
-future==0.18.2            # via great-magna-tests-shared, notifications-python-client
-hyperlink==19.0.0         # via great-magna-tests-shared, twisted
-idna==2.9                 # via great-magna-tests-shared, hyperlink, requests
-importlib-metadata==1.6.0  # via jsonschema, pluggy, pytest
-incremental==17.5.0       # via great_magna_tests_shared, twisted
-jsonschema==3.2.0         # via -r requirements_functional.in
-langdetect==1.0.8         # via -r requirements_functional.in
-lxml==4.6.3               # via great_magna_tests_shared, parsel, scrapy
-mohawk==0.3.4             # via great_magna_tests_shared, sigauth
-monotonic==1.5            # via directory-client-core, great_magna_tests_shared, notifications-python-client
-more-itertools==8.3.0     # via pytest
-notifications-python-client==5.5.1  # via -r requirements_functional.in, great_magna_tests_shared
-packaging==20.4           # via pytest
-parse-type==0.5.2         # via behave
-parse==1.15.0             # via behave, great_magna_tests_shared, parse-type
-parsel==1.6.0             # via great_magna_tests_shared, scrapy
-pdfminer2==20151206       # via great_magna_tests_shared
-pluggy==0.13.1            # via allure-python-commons, pytest
-protego==0.1.16           # via great_magna_tests_shared, scrapy
-py==1.10.0                # via pytest
-pyasn1-modules==0.2.8     # via great_magna_tests_shared, service-identity
-pyasn1==0.4.8             # via great_magna_tests_shared, pyasn1-modules, service-identity
-pycparser==2.20           # via cffi, great_magna_tests_shared
-pydispatcher==2.0.5       # via great_magna_tests_shared, scrapy
-pyhamcrest==2.0.2         # via great_magna_tests_shared, twisted
-pyjwt==1.7.1              # via great_magna_tests_shared, notifications-python-client
-pyopenssl==19.1.0         # via great_magna_tests_shared, scrapy
-pyparsing==2.4.7          # via packaging
-pyrsistent==0.16.0        # via jsonschema
-pytest==5.4.2             # via -r requirements_functional.in
-pytz==2020.1              # via great-magna-tests-shared, django
-queuelib==1.5.0           # via great-magna-tests-shared, scrapy
-requests==2.23.0          # via -r requirements_functional.in, directory-api-client, directory-client-core, great-magna-tests-shared, notifications-python-client
-retrying==1.3.3           # via -r requirements_functional.in, great-magna-tests-shared
-scrapy==2.5.1             # via -r requirements_functional.in, great-magna-tests-shared
-service-identity==18.1.0  # via great-magna-tests-shared, scrapy
-sigauth==4.1.1            # via -r requirements_functional.in, directory-client-core, great-magna-tests-shared
-six==1.15.0               # via allure-python-commons, automat, behave, cryptography, great-magna-tests-shared, jsonschema, langdetect, mohawk, packaging, parse-type, parsel, pdfminer2, protego, pyopenssl, pyrsistent, retrying, w3lib
-soupsieve==2.0.1          # via beautifulsoup4
-sqlparse==0.3.1           # via great_magna_tests_shared, django
-termcolor==1.1.0          # via -r requirements_functional.in, great_magna_tests_shared
-twisted==20.3.0           # via great_magna_tests_shared, scrapy
-urllib3==1.25.9           # via great_magna_tests_shared, requests
-w3lib==1.22.0             # via directory-client-core, great_magna_tests_shared, parsel, scrapy
-wcwidth==0.1.9            # via pytest
-xmltodict==0.12.0         # via -r requirements_functional.in
-zipp==3.1.0               # via importlib-metadata
-zope.interface==5.1.0     # via great_magna_tests_shared, scrapy, twisted
+    # via -r requirements_functional.in
+allure-behave==2.8.15
+    # via -r requirements_functional.in
+allure-python-commons==2.8.15
+    # via allure-behave
+attrs==19.3.0
+    # via
+    #   allure-python-commons
+    #   automat
+    #   jsonschema
+    #   pytest
+    #   service-identity
+    #   twisted
+automat==20.2.0
+    # via twisted
+beautifulsoup4==4.9.1
+    # via -r requirements_functional.in
+behave==1.2.6
+    # via
+    #   -r requirements_functional.in
+    #   allure-behave
+certifi==2020.4.5.1
+    # via requests
+cffi==1.14.0
+    # via cryptography
+chardet==3.0.4
+    # via requests
+constantly==15.1.0
+    # via twisted
+cryptography==3.3.2
+    # via
+    #   pyopenssl
+    #   scrapy
+    #   service-identity
+cssselect==1.1.0
+    # via
+    #   parsel
+    #   scrapy
+directory-api-client==21.8.0
+    # via -r requirements_functional.in
+directory-client-core==6.1.0
+    # via
+    #   directory-api-client
+    #   directory-sso-api-client
+directory-constants==20.11.0
+    # via -r requirements_functional.in
+directory-sso-api-client==6.3.0
+    # via -r requirements_functional.in
+django==2.2.25
+    # via
+    #   directory-api-client
+    #   directory-client-core
+    #   directory-constants
+    #   djangorestframework
+    #   sigauth
+djangorestframework==3.11.2
+    # via sigauth
+docopt==0.6.2
+    # via
+    #   -r requirements_functional.in
+    #   notifications-python-client
+future==0.18.2
+    # via notifications-python-client
+h2==3.2.0
+    # via
+    #   scrapy
+    #   twisted
+hpack==3.0.0
+    # via h2
+hyperframe==5.2.0
+    # via h2
+hyperlink==19.0.0
+    # via twisted
+idna==2.9
+    # via
+    #   hyperlink
+    #   requests
+incremental==17.5.0
+    # via twisted
+itemadapter==0.4.0
+    # via
+    #   itemloaders
+    #   scrapy
+itemloaders==1.0.4
+    # via scrapy
+jmespath==0.10.0
+    # via itemloaders
+jsonschema==3.2.0
+    # via -r requirements_functional.in
+langdetect==1.0.8
+    # via -r requirements_functional.in
+lxml==4.6.5
+    # via
+    #   parsel
+    #   scrapy
+mohawk==0.3.4
+    # via sigauth
+monotonic==1.5
+    # via
+    #   directory-client-core
+    #   notifications-python-client
+more-itertools==8.3.0
+    # via pytest
+notifications-python-client==5.5.1
+    # via -r requirements_functional.in
+packaging==20.4
+    # via pytest
+parse==1.15.0
+    # via
+    #   behave
+    #   parse-type
+parse-type==0.5.2
+    # via behave
+parsel==1.6.0
+    # via
+    #   itemloaders
+    #   scrapy
+pluggy==0.13.1
+    # via
+    #   allure-python-commons
+    #   pytest
+priority==1.3.0
+    # via twisted
+protego==0.1.16
+    # via scrapy
+py==1.10.0
+    # via pytest
+pyasn1==0.4.8
+    # via
+    #   pyasn1-modules
+    #   service-identity
+pyasn1-modules==0.2.8
+    # via service-identity
+pycparser==2.20
+    # via cffi
+pydispatcher==2.0.5
+    # via scrapy
+pyhamcrest==2.0.2
+    # via twisted
+pyjwt==1.7.1
+    # via notifications-python-client
+pyopenssl==19.1.0
+    # via scrapy
+pyparsing==2.4.7
+    # via packaging
+pyrsistent==0.16.0
+    # via jsonschema
+pytest==5.4.2
+    # via -r requirements_functional.in
+pytz==2020.1
+    # via django
+queuelib==1.5.0
+    # via scrapy
+requests==2.23.0
+    # via
+    #   -r requirements_functional.in
+    #   directory-api-client
+    #   directory-client-core
+    #   notifications-python-client
+retrying==1.3.3
+    # via -r requirements_functional.in
+scrapy==2.5.1
+    # via -r requirements_functional.in
+service-identity==18.1.0
+    # via scrapy
+sigauth==4.1.1
+    # via
+    #   -r requirements_functional.in
+    #   directory-client-core
+six==1.15.0
+    # via
+    #   allure-python-commons
+    #   automat
+    #   behave
+    #   cryptography
+    #   jsonschema
+    #   langdetect
+    #   mohawk
+    #   packaging
+    #   parse-type
+    #   parsel
+    #   protego
+    #   pyopenssl
+    #   pyrsistent
+    #   retrying
+    #   w3lib
+soupsieve==2.0.1
+    # via beautifulsoup4
+sqlparse==0.3.1
+    # via django
+termcolor==1.1.0
+    # via -r requirements_functional.in
+twisted[http2]==20.3.0
+    # via scrapy
+urllib3==1.25.9
+    # via requests
+w3lib==1.22.0
+    # via
+    #   directory-client-core
+    #   itemloaders
+    #   parsel
+    #   scrapy
+wcwidth==0.1.9
+    # via pytest
+xmltodict==0.12.0
+    # via -r requirements_functional.in
+zope.interface==5.1.0
+    # via
+    #   scrapy
+    #   twisted
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
