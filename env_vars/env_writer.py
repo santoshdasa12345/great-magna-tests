@@ -41,9 +41,9 @@ class DockerComposeEnvWriter:
         configuration: dict, all_env_vars: dict, env_prefix: str, export_mode: bool
     ):
         if export_mode:
-            filename = "{}_with_export".format(configuration["file_path"])
+            filename = "{}_with_export.txt".format(configuration["file_path"])
         else:
-            filename = "{}_without_export".format(configuration["file_path"])
+            filename = "{}_without_export.txt".format(configuration["file_path"])
         with open(filename, "w") as destination:
             for var in all_env_vars:
                 # Get value of the prefixed host env var

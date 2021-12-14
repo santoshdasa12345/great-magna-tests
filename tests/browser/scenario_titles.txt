@@ -1,8 +1,11 @@
+@Great_Magna_Tests @lessons-page @allure.suite:Great_Magna_Lessons
+Feature: GreatMagna - Lessons Page
 
+  Background:
   @allure.link:CMS-686 @advice_3 @bug_domestic @articles @full
-  Scenario Outline: Any Exporter should be able to get to "Create an export plan" Advice article -- @2.1
+  Scenario Outline: Any Exporter should be able to get to "Find an export market" Advice article -- @2.2
     Given test authentication is done
-    Given "Robert" visits the "Domestic - Create an export plan - Article list" page
+    Given "Robert" visits the "Domestic - Find an export market - Article list" page
     When "Robert" opens any article on the list
     Then "Robert" should be on the "Domestic - Advice article" page
     And "Robert" should see following sections
@@ -12,5 +15,3 @@
       | Share buttons   |
       | Article         |
       | Error reporting |
-      | Footer          |
-      | Upskill now     |
