@@ -253,12 +253,15 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
           export TAGS="${TAGS} --tags=~@skip-in-firefox"
       fi
 
+      echo "Creating results output directory"
+      mkdir results_${BROWSER}_${CIRCLE_NODE_INDEX}
+
       cd tests/browser
       echo "Found `wc -l < scenario_titles.txt` scenarios to run"
       # cat scenario_titles.txt | circleci tests split > /tmp/tests-to-run
       # calculate number of lines after which list of scenarios will be split
       #      SPLIT_AFTER_LINES=$(( $(wc -l < scenario_titles.txt) / $((${CIRCLE_NODE_TOTAL} / 2)) ))
-      SPLIT_AFTER_LINES=$(( $(wc -l < scenario_titles.txt) / $((2 / 2)) ))
+      SPLIT_AFTER_LINES=$(( $(wc -l < scenario_titles.txt)))
       #       split list of scenarios into equal parts (equal to half on number of nodes)
       # as half of nodes run tests in Chrome & the other half in Firefox
       split -d --suffix-length=1 --lines ${SPLIT_AFTER_LINES} scenario_titles.txt tests-to-run
@@ -266,13 +269,15 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
       #SPLIT_FILE_SUFFIX=$(( ${CIRCLE_NODE_INDEX} / 2 ))
       SPLIT_FILE_SUFFIX=$(( ${CIRCLE_NODE_INDEX} / 2 ))
 
+      echo "Creating results output directory inside tests/browser"
+      mkdir results_${BROWSER}_${CIRCLE_NODE_INDEX}/
       echo "Current instance of ${BROWSER} is going to run `cat tests-to-run${SPLIT_FILE_SUFFIX} | wc -l` scenarios:"
       cat tests-to-run${SPLIT_FILE_SUFFIX}
 
       cat tests-to-run${SPLIT_FILE_SUFFIX} | while IFS=$'\r' read -r title ; do
         echo -e "\n\n${BROWSER} run:    ${title}"
         PYTHONPATH=. \
-        LOG_FILE="reports/behave_${BROWSER}_${CIRCLE_NODE_INDEX}.log" \
+        LOG_FILE="reports/behave.log" \
         timeout --verbose --preserve-status --kill-after=5s 5m \
         behave features/ \
         --format=allure_behave.formatter:AllureFormatter \
