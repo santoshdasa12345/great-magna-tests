@@ -31,7 +31,7 @@ incremental==17.5.0       # via great_magna_tests_shared, twisted
 itsdangerous==1.1.0       # via flask
 jinja2==2.11.3            # via flask
 locust==1.4.1             # via -r requirements_load.in
-lxml==4.6.3               # via great_magna_tests_shared, parsel, scrapy
+lxml==4.6.5               # via great_magna_tests_shared, parsel, scrapy
 markupsafe==1.1.1         # via jinja2
 mohawk==0.3.4             # via great_magna_tests_shared, sigauth
 monotonic==1.5            # via directory-client-core, great_magna_tests_shared, notifications-python-client

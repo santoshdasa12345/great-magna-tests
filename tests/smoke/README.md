@@ -49,8 +49,8 @@ To run smoke tests against specific `TEST_ENV` choose one of the following optio
 ```bash
 TEST_ENV=DEV PYTEST_ARGS='-m "not stage and not uat and not prod"' make smoke_tests
 TEST_ENV=STAGE PYTEST_ARGS='-m "not dev and not uat and not prod"' make smoke_tests
-TEST_ENV=BETA PYTEST_ARGS='-m "not dev and not stage and not prod"' make smoke_tests
-#TEST_ENV=PROD PYTEST_ARGS='-m "not dev and not stage and not uat"' make smoke_tests
+TEST_ENV=UAT PYTEST_ARGS='-m "not dev and not stage and not prod"' make smoke_tests
+TEST_ENV=PROD PYTEST_ARGS='-m "not dev and not stage and not uat"' make smoke_tests
 ```
 
 ### How to rum smoke tests with pytest command
