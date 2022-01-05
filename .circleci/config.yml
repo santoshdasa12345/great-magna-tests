@@ -253,6 +253,7 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
           export TAGS="${TAGS} --tags=~@skip-in-firefox"
       fi
 
+
       echo "Creating results output directory"
       mkdir results_${BROWSER}_${CIRCLE_NODE_INDEX}
 
