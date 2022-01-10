@@ -1,33 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Env var writer
-Creates .env_* files in two forms:
-1) with `export ` prefix (.env_with_export), for `source ` or `. ` shell commands
-2) without `export ` prefix (.env_without_export), for docker-compose from prefixed host env vars
-
-Example config:
-    {
-      "file_path": ".env-postgres",
-      "env_vars": {
-        "required": [
-          "POSTGRES_DB",
-          "POSTGRES_USER",
-          "POSTGRES_PASSWORD"
-        ],
-        "optional": []
-      }
-    }
-
-Usage:
-  env_writer.py (--env=dev | --env=stage | --env=prod) [--config=ENV_FILE]
-  env_writer.py (-h | --help)
-  env_writer.py --version
-
-Options:
-  -h --help             Show this screen.
-  --config=ENV_FILE     Specify input config file [default: ./env_vars/env.json]
-  --env=ENV             Use environment variables prefixed with "ENV_"
-  --version             Show version.
-"""
 import json
 import os
 import sys
@@ -41,9 +11,9 @@ class DockerComposeEnvWriter:
         configuration: dict, all_env_vars: dict, env_prefix: str, export_mode: bool
     ):
         if export_mode:
-            filename = "{}_with_export.txt".format(configuration["file_path"])
+            filename = "{}_with_export".format(configuration["file_path"])
         else:
-            filename = "{}_without_export.txt".format(configuration["file_path"])
+            filename = "{}_without_export".format(configuration["file_path"])
         with open(filename, "w") as destination:
             for var in all_env_vars:
                 # Get value of the prefixed host env var
