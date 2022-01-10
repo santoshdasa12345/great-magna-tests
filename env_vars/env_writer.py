@@ -1,3 +1,33 @@
+# -*- coding: utf-8 -*-
+"""Env var writer
+Creates .env_* files in two forms:
+1) with `export ` prefix (.env_with_export), for `source ` or `. ` shell commands
+2) without `export ` prefix (.env_without_export), for docker-compose from prefixed host env vars
+
+Example config:
+    {
+      "file_path": ".env-postgres",
+      "env_vars": {
+        "required": [
+          "POSTGRES_DB",
+          "POSTGRES_USER",
+          "POSTGRES_PASSWORD"
+        ],
+        "optional": []
+      }
+    }
+
+Usage:
+  env_writer.py (--env=dev | --env=stage | --env=prod) [--config=ENV_FILE]
+  env_writer.py (-h | --help)
+  env_writer.py --version
+
+Options:
+  -h --help             Show this screen.
+  --config=ENV_FILE     Specify input config file [default: ./env_vars/env.json]
+  --env=ENV             Use environment variables prefixed with "ENV_"
+  --version             Show version.
+"""
 import json
 import os
 import sys
