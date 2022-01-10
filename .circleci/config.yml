@@ -254,7 +254,8 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
     name: Run browser tests in parallel
     command: |
       . venv/bin/activate
-      source ./env_vars/.env_with_export
+      python ./env_vars/env_writer.py --env=${TEST_ENV} --config=./env_vars/env.json
+      source ./env_vars/.env_with_export;
       export PATH=$PATH:$HOME/bin
       if [ $(( ${CIRCLE_NODE_INDEX} % 2 )) = 0 ];
       then
