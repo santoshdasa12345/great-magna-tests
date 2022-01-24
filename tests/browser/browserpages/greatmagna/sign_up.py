@@ -65,7 +65,6 @@ SELECTORS = {
         ),
         "code": Selector(
             By.XPATH, "//input[@id='code']", type=ElementType.INPUT
-
         ),
         "submit": Selector(
             By.XPATH, "//button[@id='signup-modal-submit-code']"
@@ -84,6 +83,9 @@ SELECTORS = {
         ),
         "sign in": Selector(
             By.CSS_SELECTOR, "#signup-modal-log-in"
+        ),
+        "get in touch": Selector(
+            By.XPATH, "//body/main/div/div/div[1]/p/a"
         ),
 
     },

@@ -170,7 +170,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#set-product-button > span:nth-child(1) > button > span"
         ),
         "add product": Selector(
-            By.CSS_SELECTOR, "#set-product-button > span:nth-child(1) > div > button > i"
+            By.XPATH, "//body/header/div[2]/nav/span[1]/span[1]/div/button"
         ),
         "my markets": Selector(
             By.CSS_SELECTOR, "#set-country-button > span > span:nth-child(1) > button > span"
@@ -224,11 +224,11 @@ def should_see_following_sections(driver: WebDriver, names: List[str]):
             check_if_element_is_visible(element, element_name=key)
 
 
-def click_skip_walk_through(driver: WebDriver):
-    skip_link = find_element(
-        driver, find_selector_by_name(SELECTORS, "skipwalkthrough")
-    )
-    skip_link.click()
+# def click_skip_walk_through(driver: WebDriver):
+#     skip_link = find_element(
+#         driver, find_selector_by_name(SELECTORS, "skipwalkthrough")
+#     )
+#     skip_link.click()
 
 
 def click_signout(driver: WebDriver):
@@ -276,49 +276,127 @@ def nextbtnclick(driver: WebDriver):
     driver.find_element_by_xpath("//button[contains(text(),'Next')]").click()
 
 
-def fill_out_product(driver: WebDriver, products: str):
+# def fill_out_product(driver: WebDriver, products: str):
+#     product_btn = find_element(
+#         driver, find_selector_by_name(SELECTORS, "product-btn")
+#     )
+#     product_btn.click()
+#     add_product_btn = find_element(driver, find_selector_by_name(SELECTORS, "add product"))
+#     add_product_btn.click()
+#
+#     # try:
+#     #     if driver.find_element_by_css_selector("body > div:nth-child(11) > div > div > button").is_displayed():
+#     #         driver.find_element_by_css_selector("body > div:nth-child(11) > div > div > button").click()
+#     # except:
+#     #     pass
+#
+#     try:
+#
+#         product_input_text = driver.find_element_by_xpath("//body/div[3]/div/div/form/div[2]/div/div/div[1]/label/div/input").text
+#         logging.debug("product_input_text -> " + product_input_text)
+#
+#         for i in range(len(product_input_text)):
+#             driver.find_element_by_xpath(
+#                 "//body/div[3]/div/div/form/div[2]/div/div/div[1]/label/div/input").sendKeys(
+#                 Keys.BACKSPACE)
+#         driver.find_element_by_xpath(
+#             "//body/div[3]/div/div/form/div[2]/div/div/div[1]/label/div/input").send_keys("")
+#         driver.find_element_by_xpath(
+#             "//body/div[3]/div/div/form/div[2]/div/div/div[1]/label/div/input").send_keys(products)
+#         driver.find_element_by_xpath(
+#             "//body/div[3]/div/div/form/div[2]/div/div/div[1]/button").click()
+#
+#         while True:
+#             find_and_select_random_radio_and_click_next(driver)
+#             time.sleep(1)  # seconds
+#             # try:
+#             #     if driver.find_element_by_xpath("//button[contains(text(),'Save product')]").is_displayed():
+#             #         driver.find_element_by_xpath("//button[contains(text(),'Save product')]").click()
+#             #         break
+#             #     else:
+#             #         continue
+#             # except:
+#             #     pass
+#     except Exception as ex:
+#         logging.debug("Exception in product input " + str(ex))
+#         driver.find_element_by_xpath("//body/div[3]/div/div/form/div[2]/div/div/div[1]/label/div/input").send_keys(products)
+#         driver.find_element_by_xpath("//body/div[3]/div/div/form/div[2]/div/div/section/div/button").click()
+
+def fill_out_product(driver: WebDriver, product_name: str):
     product_btn = find_element(
         driver, find_selector_by_name(SELECTORS, "product-btn")
     )
     product_btn.click()
+    add_product_btn = find_element(driver, find_selector_by_name(SELECTORS, "add product"))
+    add_product_btn.click()
+    #/html/body/div[6]/div/div/form/div[2]/div/div/div[2]/label/div/input
+    #/html/body/div[6]/div/div/form/div[2]/div/span/div/section[1]/div/fieldset
+    #next-/html/body/div[6]/div/div/form/div[2]/div/span/div/section[1]/div/fieldset/button
+    # product_btn.click()
+    # search_again_top_bottom(driver)
+    driver.implicitly_wait(1)
+    time.sleep(2)
+    driver.find_element_by_xpath("//body/div[3]/div/div/form/div[2]/div/div/div[1]/label/div/input").clear()
+    driver.find_element_by_xpath("//body/div[3]/div/div/form/div[2]/div/div/div[1]/label/div/input").send_keys(
+        product_name)
+    driver.find_element_by_xpath("//body/div[3]/div/div/form/div[2]/div/div/div[1]/button").click()
 
-    try:
-        if driver.find_element_by_css_selector("body > div:nth-child(11) > div > div > button").is_displayed():
-            driver.find_element_by_css_selector("body > div:nth-child(11) > div > div > button").click()
-    except:
-        pass
+    # Inorder to copy this code, 3 elements to be copied
+    # as per the element path on the browser
+    # save_product_btn, parent_1_div_element, search next button
+    # def search_select_save_radio(driver: WebDriver):
+    counter = 0
+    while True:
 
-    try:
+        if counter >= 50:
+            break
+        # logging.debug("Counter: " + str(counter))
 
-        product_input_text = driver.find_element_by_xpath("//input[@id='input-commodity-name']").text
-        logging.debug("product_input_text -> " + product_input_text)
+        driver.implicitly_wait(1)
 
-        for i in range(len(product_input_text)):
-            driver.find_element_by_xpath(
-                "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").sendKeys(
-                Keys.BACKSPACE)
-        driver.find_element_by_xpath(
-            "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").send_keys("")
-        driver.find_element_by_xpath(
-            "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").send_keys(products)
-        driver.find_element_by_xpath(
-            "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/button[1]/i[1]").click()
+        # check for save button
+        save_btn_found = False
+        try:
+            save_product_btn = driver.find_element_by_xpath(
+                "//body/div[3]/div/div/form/div[2]/div/span/div/section[1]/button")
+            save_btn_found = True
+        except Exception as ex:
+            logging.debug("save button not found.Exception: " + str(ex))
 
-        while True:
-            find_and_select_random_radio_and_click_next(driver)
-            time.sleep(1)  # seconds
+        if save_btn_found == True:
+            logging.debug("Save button found")
+            save_product_btn.click()
+            return
+        # look for div's and radio buttons
+        parent_1_div_element = driver.find_element_by_xpath(
+            "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/div")  # ("interaction grid m-v-xs")
+        child_1_div_element = parent_1_div_element.find_element_by_tag_name("fieldset")  # ("c-fullwidth")
+        main_div_element = child_1_div_element.find_element_by_tag_name("div")  # "m-b-xs"
+        # radio button labels
+        label_elements = main_div_element.find_elements_by_tag_name("label")
+        radio_elements = []
+        for label_element in label_elements:
+            radio_ele = None
             try:
-                if driver.find_element_by_xpath("//button[contains(text(),'Save product')]").is_displayed():
-                    driver.find_element_by_xpath("//button[contains(text(),'Save product')]").click()
-                    break
-                else:
-                    continue
-            except:
-                pass
-    except Exception as ex:
-        logging.debug("Exception in product input " + str(ex))
-        driver.find_element_by_css_selector("#input-commodity-name").send_keys(products)
-        driver.find_element_by_xpath("/html/body/div[3]/div/div/form/div[2]/div/div/section/div/button").click()
+                radio_ele = label_element.find_element_by_tag_name("input")
+            except Exception as e:
+                continue
+            radio_elements.append(radio_ele)
+        # logging.debug('number of labels - ' + str(len(radio_elements)))
+        random_label_index = random.randint(0, len(radio_elements) - 1)
+        # logging.debug('Index of radio buttons to be selected -> ' + str(random_label_index))
+
+        radio_btn_selected = radio_elements[random_label_index]
+        radio_btn_selected.click()
+
+        driver.implicitly_wait(1)
+        search_next_btn = find_element(
+            driver, find_selector_by_name(SELECTORS, "next button")
+        )
+        search_next_btn.click()
+
+        counter += 1
+    driver.find_element_by_xpath("//body/main/div/div[1]/div[2]/div[2]/a").click()
 
 
 def fill_out_country(driver: WebDriver, country: str):
@@ -336,11 +414,11 @@ def fill_out_country(driver: WebDriver, country: str):
     )
     country_btn.click()
 
-    try:
-        if driver.find_element_by_xpath("//button[contains(text(),'Got it')]").is_displayed():
-            driver.find_element_by_xpath("//button[contains(text(),'Got it')]").click()
-    except:
-        pass
+    # try:
+    #     if driver.find_element_by_xpath("//button[contains(text(),'Got it')]").is_displayed():
+    #         driver.find_element_by_xpath("//button[contains(text(),'Got it')]").click()
+    # except:
+    #     pass
 
     if 0 == len(country):
         # if country name is not provided from the test case, then select one of the random 5 countries listed on the browser
@@ -394,19 +472,21 @@ def fill_out_products_and_country(driver: WebDriver, products: str, country: str
     fill_out_country(driver, country)
 
 
-def fill_out_products(driver: WebDriver, products: str):
-    # details_dict = {"emailaddress": products}
-    # product_selectors = SELECTORS["dashboard"]
-    # fill_out_input_fields(driver, product_selectors, details_dict)
-    product_btn = find_element(
-        driver, find_selector_by_name(SELECTORS, "product-btn")
-    )
-    product_btn.click()
-    driver.implicitly_wait(1)
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").clear()
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").send_keys(products)
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/button").click()
-    time.sleep(5)
+# def fill_out_products(driver: WebDriver, products: str):
+#     # details_dict = {"emailaddress": products}
+#     # product_selectors = SELECTORS["dashboard"]
+#     # fill_out_input_fields(driver, product_selectors, details_dict)
+#     product_btn = find_element(
+#         driver, find_selector_by_name(SELECTORS, "product-btn")
+#     )
+#     product_btn.click()
+#     add_product_btn = find_element(driver, find_selector_by_name(SELECTORS, "add product"))
+#     add_product_btn.click()
+#     driver.implicitly_wait(1)
+#     driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").clear()
+#     driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").send_keys(products)
+#     driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/button").click()
+#     time.sleep(5)
 
 
 def click_on_i_have_exported_in_the_last_12_months(driver: WebDriver):

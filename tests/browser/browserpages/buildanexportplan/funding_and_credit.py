@@ -185,6 +185,7 @@ def find_and_select_random_funding_options(driver: WebDriver, position: str, amo
     funding_option_1_element = funding_option_element_xpath + "/div/div[1]/div/div/div[2]"  # /td[1]/div/div/div[2]/button"
     driver.find_element_by_xpath(funding_option_1_element).click()
     driver.implicitly_wait(5)
+                                  #//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div[1]/div/div[1]/div/div/div[2]/div[4]/ul
     ulist_funding_options_xpath = "//body/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div" + "[" + str(
         actual_positon) + "]"
     ulist_funding_options_element = ulist_funding_options_xpath + "/div/div[1]/div/div/div[2]/div[4]/ul"

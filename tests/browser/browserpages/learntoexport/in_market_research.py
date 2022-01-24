@@ -43,13 +43,13 @@ PAGE_TITLE = "In market research"
 SELECTORS = {
     "in market research": {
         "lesson yes checkbox": Selector(
-            By.XPATH, "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
+            By.XPATH, "//body/main/div/div[2]/div[2]/div/div[2]/fieldset/div/div"
         ),
         "continue learning": Selector(
             By.XPATH, "//a[contains(text(),'Continue learning')]"
         ),
         "bottom back": Selector(
-            By.XPATH, "//body/main/div/div[2]/span/a"
+            By.XPATH, "//body/main/div/div[2]/div[3]/a"
         ),
         "top back": Selector(
             By.XPATH, "//body/main/div/div[1]/div/div[1]/a"

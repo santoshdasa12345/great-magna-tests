@@ -77,7 +77,7 @@ Feature: GreatMagna - Lessons Page
 
 
    @allure.link:XOT-596
-  @Great-Magna-Lessons
+  @Great-Magna-Lessons_crfaco
  Scenario: User should be able to view the Lesson page "Choose the right funding"and click Yes and back to check the progress bar on the Dashboard page.
 
      Given "Robert" visited "GreatMagna - Login" page

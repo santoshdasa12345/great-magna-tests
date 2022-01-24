@@ -111,11 +111,8 @@ SELECTORS = {
         "dashboard": Selector(
             By.XPATH, "//a[contains(text(),'Dashboard')]"
         ),
-        "lesson": Selector(
-            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div[2]/div[1]/button[2]"
-        ),
         "move from accidental lesson": Selector(
-            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div[2]/div[1]/button[2]"
+            By.XPATH, "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/button[2]"
         ),
 
     }
@@ -165,6 +162,45 @@ def enter_business_objectives_details(driver: WebDriver, position: str, objectiv
     time.sleep(1)
     objective_div_element_xpath = "//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset" + "[" + position + "]"
     objective_text_ele_xpath = objective_div_element_xpath + "div/div[1]/div/textarea"
+    #//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[1]/div/div/div[2]
+    #//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[1]/div/div/div[2]/div[4]/ul
+    month_down_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[1]/div/div/div[2]")
+    month_down_btn.click()
+    driver.implicitly_wait(5)
+    month_down_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[1]/div/div/div[2]/div[4]/ul")
+    li_elements = month_down_element.find_elements_by_tag_name("li")
+    logging.debug("list elements")
+    logging.debug(li_elements)
+    random_number = 0
+    if len(li_elements) > 2:
+        random_number = random.randint(1, len(li_elements) - 1)
+    random_li_element = li_elements[random_number]
+    logging.debug(random_number)
+    logging.debug(random_li_element.tag_name)
+    logging.debug(random_li_element)
+    time.sleep(2)
+
+    year_down_btn = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[2]/div/div/div[2]")
+    year_down_btn.click()
+    driver.implicitly_wait(5)
+    year_down_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[2]/div/div/div[2]/div[4]/ul")
+    li_elements = year_down_element.find_elements_by_tag_name("li")
+    logging.debug("list elements")
+    logging.debug(li_elements)
+    random_number = 0
+    if len(li_elements) > 2:
+        random_number = random.randint(1, len(li_elements) - 1)
+    random_li_element = li_elements[random_number]
+    logging.debug(random_number)
+    logging.debug(random_li_element.tag_name)
+    logging.debug(random_li_element)
+    time.sleep(2)
+    #//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[2]/div/div/div[2]
+    #//body/main/div[2]/section[4]/div/div[2]/div/div/fieldset/div/div[2]/fieldset/div/div[2]/div/div/div[2]/div[4]/ul
     del_btn_ele_xpath = objective_div_element_xpath + "div/div[5]/button"
     find_and_select_random_month_list(driver, element_selector_name)
     find_and_select_random_year_list(driver, element_selector_name)

@@ -45,7 +45,7 @@ Feature: GreatMagna - Lessons Page
 #    And "Robert" decides to click on section "Top Back" on page "LearnToExport - In market research"
 #
  @allure.link:XOT-134
-   @Great-Magna-Lessons-progress-bar-test
+   @Great-Magna-Lessons-progress-bar-test_3
  Scenario:User should be able to view Lesson page "In market research" and click Yes lesson complete and click back to check the progress bar on Topics , module and lessons categories section.
 
  Given "Robert" visited "GreatMagna - Login" page

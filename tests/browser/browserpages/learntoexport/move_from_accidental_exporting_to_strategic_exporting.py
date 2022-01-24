@@ -46,7 +46,7 @@ SELECTORS = {
             By.XPATH, "//a[contains(text(),'Continue learning')]"
         ),
         "bottom back": Selector(
-            By.XPATH, "//body/main/div/div[2]/span/a"
+            By.XPATH, "//body/main/div/div[2]/div[3]/a"
         ),
         "top back": Selector(
             By.XPATH, "//body/main/div/div[1]/div/div[1]/a"
@@ -96,3 +96,19 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
         driver, find_selector_by_name(SELECTORS, element_selector_name)
     )
     find_and_click.click()
+
+def find_progress_bar(driver: WebDriver, element_name : str):
+    # search for parent progress bar div class
+    parent_div_element = driver.find_element_by_class_name("learn__category-progress-container")
+    #child_radio_div_elements = parent_div_radio_element.find_elements_by_tag_name("div")
+    p_tag = parent_div_element.find_element_by_tag_name("p")
+    logging.debug(p_tag.text)
+    # get the child elements if any
+    # check if progress bar exists
+    # read the text from the progress bar
+
+    #
+    # find_and_click = find_element(
+    #     driver, find_selector_by_name(SELECTORS, element_name)
+    # )
+    # find_and_click.click()

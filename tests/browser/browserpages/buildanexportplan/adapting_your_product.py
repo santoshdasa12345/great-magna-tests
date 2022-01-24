@@ -66,8 +66,8 @@ SELECTORS = {
             By.XPATH, "//*[@id=\"size\"]", type=ElementType.INPUT
         ),
         "product changes to comply educational": Selector(
-            By.CSS_SELECTOR,
-            "#changes-to-product > div.form-table.bg-blue-deep-10.radius.p-h-s.p-v-xs > div > div:nth-child(4) > div > div.learning__buttons > div > div > button"
+            By.XPATH,
+            "//body/main/div[2]/section[5]/div/div[2]/div/div[2]/div/div[4]/div/div[1]/div/div/button"
         ),
         "product changes to comply": Selector(
             By.XPATH, "//*[@id=\"standards\"]", type=ElementType.INPUT
@@ -96,8 +96,7 @@ SELECTORS = {
         ),
         "commercial invoice educational": Selector(
             By.CSS_SELECTOR,
-            "#documents-for-target-market > div.form-table.bg-blue-deep-10.radius.p-h-s.p-v-xs > div > div:nth-child(3) > div > div.learning__buttons > div > div > button"
-            # "//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[3]/div/div[1]/div/div/button/span"
+            "//body/main/div[2]/section[6]/div/div[2]/div/form/div[2]/div/div[3]/div/div[1]/div/div/button"
         ),
         "commercial invoice": Selector(
             By.XPATH, "//*[@id=\"commercial_invoice\"]", type=ElementType.INPUT

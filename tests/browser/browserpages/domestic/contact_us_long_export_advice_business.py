@@ -25,11 +25,11 @@ from browserpages.common_actions import (
 )
 from browserpages.domestic import contact_us_short_domestic_thank_you
 
-NAME = "Long (Business details)"
+NAME = "Contact Us (Business details)"
 SERVICE = Service.DOMESTIC
 TYPE = PageType.CONTACT_US
-URL = URLs.CONTACT_US_EXPORT_ADVICE_BUSINESS.absolute
-PAGE_TITLE = "Welcome to great.gov.uk"
+URL = URLs.DOMESTIC_GET_IN_TOUCH_FEEDBACK.absolute
+PAGE_TITLE = "Contact us feedback "
 
 SELECTORS = {
     "form": {

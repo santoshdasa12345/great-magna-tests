@@ -99,7 +99,7 @@ SELECTORS = {
         ),
         "choose the right payment method": Selector(
             By.XPATH,
-            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[1]/div[2]/a/div"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[1]/div[2]/a"
         ),
         "decide when to get paid": Selector(
             By.XPATH,
@@ -111,15 +111,15 @@ SELECTORS = {
         ),
         "incoterms lesson": Selector(
             By.XPATH,
-            "//*[@id=\"getting-paid\"]/div/div[3]/div[1]/div/div[1]/div[1]/button"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[3]/div[1]/div/div[1]/div[1]/button"
         ),
         "payment terms lesson": Selector(
             By.XPATH,
-            "//*[@id=\"getting-paid\"]/div/div[2]/div[1]/div/div[1]/div[1]/button"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[1]/div[1]/button"
         ),
         "payment methods lesson": Selector(
             By.XPATH,
-            "//*[@id=\"getting-paid\"]/div/div[2]/div[1]/div/div[1]/div[1]/button"
+            "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[1]/div[1]/button"
         ),
     }
 }
@@ -140,10 +140,12 @@ def enter_text(driver: WebDriver, element_name: str):
     text_element = find_element(
         driver, find_selector_by_name(SELECTORS, element_name)
     )
-    print(text_element)
+    logging.debug("text_element")
+    logging.debug(text_element)
     text_element.clear()
-    time.sleep(2)
+    driver.implicitly_wait(2)
     text_element.send_keys("Automated tests")
+    time.sleep(3)
 
 
 def validate_entered_text(driver: WebDriver, element_name: str):
@@ -173,7 +175,7 @@ def enter_business_objectives_details(driver: WebDriver, startdate: str, enddate
     time.sleep(1)
 
 
-def find_and_select_random_item_list(driver: WebDriver, element_selector_name: str):
+def find_and_select_random_payment_methods(driver: WebDriver):
     payment_methods_btn = driver.find_element_by_xpath(
         #//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]
         "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[3]")
@@ -197,7 +199,7 @@ def find_and_select_random_item_list(driver: WebDriver, element_selector_name: s
     time.sleep(2)
 
 
-def find_and_select_random_payment_terms(driver: WebDriver,element_selector_name: str):
+def find_and_select_random_payment_terms(driver: WebDriver):
     payment_terms_btn = driver.find_element_by_xpath(
         "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]")
     payment_terms_btn.click()
@@ -217,15 +219,16 @@ def find_and_select_random_payment_terms(driver: WebDriver,element_selector_name
     logging.debug(random_li_element.tag_name)
     logging.debug(random_li_element)
     time.sleep(2)
+    random_li_element.click()
 
-def find_and_select_random_incoterms(driver: WebDriver,element_selector_name: str):
+def find_and_select_random_incoterms(driver: WebDriver):
     incoterms_btn = driver.find_element_by_xpath(
-        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]")
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[3]/div[1]/div/div[2]")
     incoterms_btn.click()
     driver.implicitly_wait(5)
     # select__list body-l bg-white radius
-    incoterms_element = driver.find_element_by_css_selector(
-        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/div[4]/ul")
+    incoterms_element = driver.find_element_by_xpath(
+        "//body/main/div[2]/section[3]/div/div[2]/div/div/div/div[3]/div[1]/div/div[2]/div[4]/ul/li[1]/ul")
     li_elements = incoterms_element.find_elements_by_tag_name("li")
     logging.debug("list elements")
     logging.debug(li_elements)
@@ -236,6 +239,7 @@ def find_and_select_random_incoterms(driver: WebDriver,element_selector_name: st
     logging.debug(random_number)
     logging.debug(random_li_element.tag_name)
     logging.debug(random_li_element)
+    random_li_element.click()
     time.sleep(2)
 
 def check_section_complete_yes(driver: WebDriver, element_selector_name: str):
@@ -335,6 +339,7 @@ def find_and_click_lesson_link(driver: WebDriver, lesson_name: str):
             logging.debug(actual_title_element.text)
             if lesson_name.lower() in str(actual_title_element.text).lower():
                 lesson_name_found = True
+                time.sleep(2)
                 title_element.click()
                 break
             time.sleep(2)

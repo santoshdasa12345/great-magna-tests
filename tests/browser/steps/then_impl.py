@@ -290,17 +290,21 @@ def actor_decides_to_select_random_item_list_on_page(context, element_name, page
     has_action(page, "find_and_select_random_item_list")
     page.find_and_select_random_item_list(context.driver, element_name)
 
+def actor_decides_to_select_random_payment_methods_list_on_page(context,page_name):
+    page = get_page_object(page_name)
+    has_action(page, "find_and_select_random_payment_methods")
+    page.find_and_select_random_payment_methods(context.driver)
 
-def actor_decides_to_select_random_payment_terms_on_page(context, element_name, page_name):
+def actor_decides_to_select_random_payment_terms_on_page(context,page_name):
     page = get_page_object(page_name)
     has_action(page, "find_and_select_random_payment_terms")
-    page.find_and_select_random_payment_terms(context.driver, element_name)
+    page.find_and_select_random_payment_terms(context.driver)
 
 
-def actor_decides_to_select_random_item_incoterms(context, element_name, page_name):
+def actor_decides_to_select_random_item_incoterms(context,page_name):
     page = get_page_object(page_name)
     has_action(page, "find_and_select_random_incoterms")
-    page.find_and_select_random_incoterms(context.driver,element_name)
+    page.find_and_select_random_incoterms(context.driver)
 
 
 def actor_decides_to_select_random_unit_list_on_page(context, actor_alias, element_name, page_name):
@@ -1413,6 +1417,7 @@ def actor_decides_to_click_on_page_with_lesson_link(
         page = get_page_object(page_name)
     else:
         page = get_last_visited_page(context, actor_alias)
+    time.sleep(2)
     has_action(page, "find_and_click_lesson_link")
     page.find_and_click_lesson_link(context.driver, lesson_name)
 

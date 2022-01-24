@@ -50,7 +50,7 @@ Feature: GreatMagna - Lessons Page
 
 
    @allure.link:XOT-124
-   @Great-Magna-Lessons-progress-bar-test
+   @Great-Magna-Lessons-progress-bar-test_1
  Scenario:User should be able to view Lesson page "Move from accidental exporting to strategic exporting" and click Yes and back to check the progress bar on lessons and module and lesson categories section
 
 Given "Robert" visited "GreatMagna - Login" page

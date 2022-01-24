@@ -40,8 +40,7 @@ URL = URLs.GREAT_MAGNA_START_PRODUCT_MAKE_AN_EXPORT_PLAN.absolute
 PAGE_TITLE = "Export Plan"
 # NAMES = [NAME, "new-lesson-added"]
 SubURLs = {
-    # "export plan":URLs.GREAT_MAGNA_EXPORT_PLAN_DASHBOARD.absolute,
-    "export plan": URLs.GREAT_MAGNA_START_PRODUCT_MAKE_AN_EXPORT_PLAN.absolute,
+    "export plan":URLs.GREAT_MAGNA_START_PRODUCT_MAKE_AN_EXPORT_PLAN.absolute,
     "export plan market": URLs.GREAT_MAGNA_START_MARKET_MAKE_AN_EXPORT_PLAN.absolute_template,
     "export plan dashboard": URLs.GREAT_MAGNA_NEW_EXPORT_PLAN.absolute_template,
 }
@@ -78,6 +77,13 @@ SELECTORS = {
         "exporting plan 1": Selector(
             By.CSS_SELECTOR, "#content > div.container > div > div > nav > ul > li:nth-child(1) > article > a"
         ),
+        "download plan": Selector(
+            By.XPATH, "//body/main/section/aside/a"
+        ),
+        "delete plan": Selector(
+            By.XPATH, "//body/main/section/aside/div[2]/button"
+        ),
+
 
     }
 }

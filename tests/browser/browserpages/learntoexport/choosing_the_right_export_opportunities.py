@@ -46,7 +46,7 @@ SELECTORS = {
             By.XPATH, "//a[contains(text(),'Continue learning')]"
         ),
         "bottom back": Selector(
-            By.XPATH, "//body/main/div/div[2]/span/a"
+            By.XPATH, "//body/main/div/div[2]/div[3]/a"
         ),
         "top back": Selector(
             By.XPATH, "//body/main/div/div[1]/div/div[1]/a"

@@ -49,7 +49,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#set-product-button > span > button"
         ),
         "search next button": Selector(
-            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/div/button"
+            By.XPATH, "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/div/fieldset/button"
         ),
         "search": Selector(
             By.CSS_SELECTOR, "#search-input"
@@ -69,9 +69,13 @@ SELECTORS = {
         "save product": Selector(
             By.XPATH, "//body/div[7]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button"
         ),
+        "add market 1": Selector(
+            By.XPATH,  # //body/main/div[1]/section/div/div/div[1]/div/div[2]/button
+            "//body/main/div[1]/section/div/div/div[1]/div/div[2]/button"
+        ),
         "add market": Selector(
-            By.XPATH,  # "#cta-container > button"
-            "//body/main/div[1]/section/div/div/div[1]/div/div[2]/div/button"
+            By.XPATH,  # //body/main/div[1]/section/div/div/div[1]/div/div[2]/button
+            "//body/main/div[3]/div[2]/button"
         ),
         "search country": Selector(
             By.XPATH, "//body/div[8]/div/div/div/div/div/div[1]/div[3]/div[1]/div/label/div/input"
@@ -124,9 +128,17 @@ SELECTORS = {
         "transparency international": Selector(
             By.XPATH, "//a[contains(text(),'Transparency International')]"
         ),
+        "favourites": Selector(
+            By.XPATH, "//body/main/div[3]/div[2]/span/table/tbody/tr/td[2]/label"
+        ),
+        "add another product": Selector(
+            By.XPATH, "//body/main/div[3]/div[2]/div/button"
+        ),
     },
 }
-
+#//body/main/div[1]/section/div/div/div[1]/div/div[2]/button-- add market
+#//body/main/div[3]/div[2]/button --- add market 1
+#//body/main/div[3]/div[2]/button
 
 def visit(driver: WebDriver, *, page_name: str = None):
     go_to_url(driver, URL, page_name or NAME)
@@ -197,7 +209,7 @@ def search_select_save_random_next(driver: WebDriver):
         save_btn_found = False
         try:
             save_product_btn = driver.find_element_by_xpath(
-                "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button")
+                "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/button")
             save_btn_found = True
         except Exception as ex:
             logging.debug("save button not found.Exception: " + str(ex))
@@ -239,8 +251,9 @@ def search_select_save_random_next(driver: WebDriver):
         search_next_btn.click()
 
         counter += 1
-
-
+#/html/body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section[1]/div[1]
+#/html/body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section[2]/div[1]
+#//body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section/div[2]/ol/li/button
 def fill_out_country(driver: WebDriver, country: str):
     # search using the provide country name from the test case
     driver.find_element_by_css_selector("#search-input").clear()
@@ -258,7 +271,7 @@ def fill_out_country(driver: WebDriver, country: str):
     logging.debug("Index of section elements " + str(index_random_element_to_be_selected))
     section_element_selected = section_elements[index_random_element_to_be_selected]
     logging.debug(section_element_selected)
-    # //body/div[7]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/div/section/div[2]/ol/li/button
+
     div_elements = section_element_selected.find_elements_by_tag_name("div")  # 2 has to be present
     # logging.debug("length of div elements " + str(len(div_elements)))
     for ol_element in div_elements:
@@ -307,21 +320,18 @@ def fill_out_country_and_validate_ui(driver: WebDriver, country: str, display_ta
 def enter_country_details(driver: WebDriver, country_name: str, country_place_number: int = 1
                           , country_max: int = 10
                           , display_tab_count: int = 4):
-    driver.implicitly_wait(1)
-    logging.debug("country_place_number " + str(country_place_number))
-    logging.debug("country_max " + str(country_max))
-    logging.debug("display_tab_count " + str(display_tab_count))
+    driver.implicitly_wait(2)
+    # logging.debug("country_place_number " + str(country_place_number))
+    # logging.debug("country_max " + str(country_max))
+    # logging.debug("display_tab_count " + str(display_tab_count))
     table_element = None
     try:
-        # check if the country table already exists
-        # table_element = driver.find_element_by_xpath("/html/body/main/div[3]/span/div[2]/span/table")
-        # if table doesnt not exists then "add a place" button must exists
-        # if table_element == None:
         if (country_place_number == 1):
-            find_and_click(driver, element_selector_name="add market")
+            find_and_click(driver, element_selector_name="add market 1")
     except Exception as e:
         logging.debug(e)
         table_element = None
+        time.sleep(2)
         find_and_click(driver, element_selector_name="add market")
 
     # logging.debug("table_element " + str(table_element))
@@ -331,27 +341,16 @@ def enter_country_details(driver: WebDriver, country_name: str, country_place_nu
         return
 
     if country_place_number <= country_max:
-        # if table already exists, then "add place (x) of (y)" button must exists
-        add_place_num_btn_element = driver.find_element_by_xpath("//body/main/div[3]/div[2]/div[2]/button")
-        button_text = add_place_num_btn_element.text
-        user_entered_button_text = "Add market " + str(country_place_number) + " of " + str(country_max)
-        if button_text != user_entered_button_text:
-            raise Exception(
-                "Invalid Add market button index - " + str(button_text) + " vs " + str(user_entered_button_text))
-
-        # if proper button index found, then click the button to add the country place name
-        add_place_num_btn_element.click()
-
+        find_and_click(driver, element_selector_name="add market")
         fill_out_country_and_validate_ui(driver, country_name, display_tab_count=display_tab_count)
         time.sleep(4)
     else:
         logging.debug(
             "Country " + str(country_name) + " cannot be added as the CountryPlaceNumber exceeding max limit.")
 
-
 def delete_all_country_details(driver: WebDriver, position: str):
-    country_details_div_element_xpath = "//body/main/div[3]/span/div[2]/span/table/tbody/tr" + "[" + position + "]"
-    del_btn_ele_xpath = country_details_div_element_xpath + "/th/div/button/i"
+    country_details_div_element_xpath = "//body/main/div[3]/div[2]/span/table/tbody/tr" + "[" + position + "]"
+    del_btn_ele_xpath = country_details_div_element_xpath + "td[1]/button"
 
     driver.find_element_by_xpath(del_btn_ele_xpath).click()
     time.sleep(1)
@@ -454,3 +453,98 @@ def validate_entered_country_details(driver: WebDriver, country_name: str, count
     list_selection = list_country + "/button"
     driver.find_element_by_xpath(list_selection).click()
     time.sleep(2)
+
+def fill_out_product(driver: WebDriver, product_name: str):
+
+    product_btn = find_element(driver, find_selector_by_name(SELECTORS, "add another product"))
+    product_btn.click()
+
+    # search_again_top_bottom(driver)
+    driver.implicitly_wait(1)
+    time.sleep(2)
+    driver.find_element_by_xpath("//body/div[6]/div/div/form/div[2]/div/div/div[1]/label/div/input").clear()
+    driver.find_element_by_xpath("//body/div[6]/div/div/form/div[2]/div/div/div[1]/label/div/input").send_keys(
+        product_name)
+    driver.find_element_by_xpath("//body/div[6]/div/div/form/div[2]/div/div/div[1]/button").click()
+
+    # Inorder to copy this code, 3 elements to be copied
+    # as per the element path on the browser
+    # save_product_btn, parent_1_div_element, search next button
+    # def search_select_save_radio(driver: WebDriver):
+    counter = 0
+    while True:
+
+        if counter >= 50:
+            break
+        # logging.debug("Counter: " + str(counter))
+        driver.implicitly_wait(1)
+        # check for save button
+        save_btn_found = False
+        try:
+            save_product_btn = driver.find_element_by_xpath(
+                "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/button")
+            save_btn_found = True
+        except Exception as ex:
+            logging.debug("save button not found.Exception: " + str(ex))
+
+        if save_btn_found == True:
+            logging.debug("Save button found")
+            save_product_btn.click()
+            return
+        # look for div's and radio buttons
+        parent_1_div_element = driver.find_element_by_xpath(
+            "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/div")  # ("interaction grid m-v-xs")
+        child_1_div_element = parent_1_div_element.find_element_by_tag_name("fieldset")  # ("c-fullwidth")
+        main_div_element = child_1_div_element.find_element_by_tag_name("div")  # "m-b-xs"
+        # radio button labels
+        label_elements = main_div_element.find_elements_by_tag_name("label")
+        radio_elements = []
+        for label_element in label_elements:
+            radio_ele = None
+            try:
+                radio_ele = label_element.find_element_by_tag_name("input")
+            except Exception as e:
+                continue
+            radio_elements.append(radio_ele)
+        # logging.debug('number of labels - ' + str(len(radio_elements)))
+        random_label_index = random.randint(0, len(radio_elements) - 1)
+        # logging.debug('Index of radio buttons to be selected -> ' + str(random_label_index))
+
+        radio_btn_selected = radio_elements[random_label_index]
+        radio_btn_selected.click()
+
+        driver.implicitly_wait(1)
+        search_next_btn = find_element(
+            driver, find_selector_by_name(SELECTORS, "search next button")
+        )
+        search_next_btn.click()
+        counter += 1
+    # driver.find_element_by_xpath("//body/main/div/div[1]/div[2]/div[2]/a").click()
+    # find_and_select_product_drop_down(driver)
+    # time.sleep(2)
+
+
+# def find_and_select_product_drop_down(driver: WebDriver):
+    product_drop_down_btn = driver.find_element_by_xpath(
+        "//body/main/div[3]/div[2]/div/div[2]/div/div/div[2]")
+    product_drop_down_btn.click()
+    driver.implicitly_wait(5)
+    # select__list body-l bg-white radius
+    product_drop_down_element = driver.find_element_by_xpath(
+        "//body/main/div[3]/div[2]/div/div[2]/div/div/div[2]/div[4]/ul")
+    li_elements = product_drop_down_element.find_elements_by_tag_name("li")
+    # logging.debug("list elements")
+    # logging.debug(li_elements)
+    random_number = 0
+    if len(li_elements) > 2:
+        random_number = random.randint(1, len(li_elements) - 1)
+    random_li_element = li_elements[random_number]
+    # logging.debug(random_number)
+    # logging.debug(random_li_element.tag_name)
+    # logging.debug(random_li_element)
+    random_li_element.click()
+    time.sleep(2)
+    product_list_of_elements=driver.find_element_by_xpath(By.XPATH,"//body/main/div[3]/div[2]/div/div[2]/div/div/div[2]/div[4]/ul")
+    for i in range(len(product_list_of_elements)):
+        product_list_of_elements[i].text
+    logging.debug("product_list_of_elements")

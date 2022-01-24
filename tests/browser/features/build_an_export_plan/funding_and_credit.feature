@@ -43,28 +43,28 @@ Feature: GreatMagna - Funding and Credit Page
           | 4        | 25000   |
           | 5        | 35000   |
 
-     @allure.link:XOT-1113
-   @Great_Magna_Export_Plan_FUNDING
-       @failed_exp
-  Scenario:User should be able to delete added funding options
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-       And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
-#     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Funding and Credit"
-#    And "Robert" decides to click on section "Choose the right funding and Credit Options" on page "Build An Export Plan - Funding and Credit"
-#    And "Robert" should be on the "LearnToExport - Choose the right funding and Credit Options" page
-
-     And "Robert" decides to delete funding options on page "Build An Export Plan - Funding and Credit"
-          | Position |
-          | 10        |
-          | 8        |
-          | 6        |
-          | 4        |
-          | 2       |
+#     @allure.link:XOT-1113
+#   @Great_Magna_Export_Plan_FUNDING
+#       @failed_exp
+#  Scenario:User should be able to delete added funding options
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#       And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+##     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Funding and Credit"
+##    And "Robert" decides to click on section "Choose the right funding and Credit Options" on page "Build An Export Plan - Funding and Credit"
+##    And "Robert" should be on the "LearnToExport - Choose the right funding and Credit Options" page
+#
+#     And "Robert" decides to delete funding options on page "Build An Export Plan - Funding and Credit"
+#          | Position |
+#          | 10        |
+#          | 8        |
+#          | 6        |
+#          | 4        |
+#          | 2       |
 
 
 #       @allure.link:XOT-1112

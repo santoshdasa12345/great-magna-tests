@@ -423,6 +423,7 @@ class URLs(Enum):
     DOMESTIC_GET_FINANCE = DomesticUrl("get-finance/?lang=en-gb")
     DOMESTIC_GET_FINANCE_YOUR_DETAILS = DomesticUrl("get-finance/your-details/")
     DOMESTIC_GET_FINANCE_SUCCESS = DomesticUrl("get-finance/contact/thanks/")
+    DOMESTIC_GET_IN_TOUCH_FEEDBACK = DomesticUrl("contact/feedback/")
     DOMESTIC_GET_FINANCE_HELP = DomesticUrl("get-finance/help/")
     DOMESTIC_STORY_FIRST = DomesticUrl("story/hello-babys-rapid-online-growth/")
     DOMESTIC_STORY_SECOND = DomesticUrl(
@@ -1343,8 +1344,8 @@ class URLs(Enum):
     SSO_API_USER = SSOApiUrl("api/v1/session-user/")
 
     # Great Magna Pages
-    GREAT_MAGNA_LANDING = GreatMagnaUrl("https://great.dev.uktrade.digital/")
-    GREAT_MAGNA_HOME = GreatMagnaUrl("https://great.dev.uktrade.digital/")
+    GREAT_MAGNA_LANDING = GreatMagnaUrl("https://great.staging.uktrade.digital/")
+    GREAT_MAGNA_HOME = GreatMagnaUrl("https://great.staging.uktrade.digital/")
     # GREAT_MAGNA_HOME = GreatMagnaUrl("https://great-magna.staging.uktrade.digital/")
     # GREAT_MAGNA_HOME = GreatMagnaUrl("https://magna-beta.great.uktrade.digital/")
     GREAT_MAGNA_START = GreatMagnaUrl("")
@@ -1515,7 +1516,7 @@ class URLs(Enum):
     GREAT_MAGNA_START_MARKET_MAKE_AN_EXPORT_PLAN = GreatMagnaUrl("export-plan/start/#/market")
     GREAT_MAGNA_NEW_EXPORT_PLAN = GreatMagnaUrl("export-plan/{page_id}/", template="export-plan/{page_id}/")
 
-    GREAT_MAGNA_EXPORT_PLAN_DASHBOARD = GreatMagnaUrl("export-plan/dashboard/")
+    GREAT_MAGNA_EXPORT_PLAN_DASHBOARD = GreatMagnaUrl("export-plan/")
     GREAT_MAGNA_UPLOAD_LOGO = GreatMagnaUrl("export-plan/logo")
     GREAT_MAGNA_EXPORT_PLAN_ABOUT_YOUR_BUSINESS = GreatMagnaUrl(
         "export-plan/{page_id}/about-your-business/" , template="export-plan/{page_id}/")

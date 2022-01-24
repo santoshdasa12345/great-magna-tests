@@ -18,7 +18,7 @@ Feature: GreatMagna - Getting Paid Page
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to select random item for "Payment Methods" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to select random item for payment methods on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to enter text at "Payment Methods Notes" on page "Build An Export Plan - Getting Paid"
 
    @allure.link:XOT-1132
@@ -32,7 +32,7 @@ Feature: GreatMagna - Getting Paid Page
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to select random item for payment terms "Payment terms" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to select random item for payment terms on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to enter text at "Payment Terms Notes" on page "Build An Export Plan - Getting Paid"
 
    @allure.link:XOT-1133
@@ -46,7 +46,7 @@ Feature: GreatMagna - Getting Paid Page
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to select random item for incoterms "Incoterms" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to select random item for incoterms on page "Build An Export Plan - Getting Paid"
      And "Robert" decides to enter text at "Incoterms Notes" on page "Build An Export Plan - Getting Paid"
 
 
@@ -69,7 +69,7 @@ Feature: GreatMagna - Getting Paid Page
 
 
    @allure.link:XOT-1135
-   @Great_Magna_Export_Plan_321b
+   @Great_Magna_Export_Plan__lesson_123
   Scenario:User should be able to click lessons link "Decide when to get paid"
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -85,7 +85,7 @@ Feature: GreatMagna - Getting Paid Page
      And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Decide when to get paid"
 
    @allure.link:XOT-1136
-   @Great_Magna_Export_Plan_321c
+   @Great_Magna_Export_Plan__lesson_123
   Scenario:User should be able to click lessons link "Choose which incoterms are right for you"
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -181,6 +181,6 @@ Feature: GreatMagna - Getting Paid Page
    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
    And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" should be on the "Build An Export Plan - Getting Paid" Page
-    And "Robert" decides to select random item for "Incoterms" on page "Build An Export Plan - Getting Paid"
+    And "Robert" decides to select random item for incoterms on page "Build An Export Plan - Getting Paid"
    And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Getting Paid"
-     And "Robert" should see "Getting Paid" text under section "Export Plan" on page "GreatMagna - Dashboard"
+#     And "Robert" should see "Getting Paid" text under section "Export Plan" on page "GreatMagna - Dashboard"

@@ -13,10 +13,11 @@ from browserutils.browser import get_driver_capabilities, start_driver_session
 DRIVER_CAPABILITIES = get_driver_capabilities()
 
 
+
 def before_all(context: Context):
     context.driver_capabilities = DRIVER_CAPABILITIES
 
-    context.config.setup_logging(configfile=".behave_logging")
+    context.config.setup_logging()#configfile=".behave_logging")
     logger = logging.getLogger()
 
 
