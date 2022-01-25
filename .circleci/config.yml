@@ -27,14 +27,14 @@ machine_python3_node_browsers: &machine_python3_node_browsers
 step_checkout_repo: &step_checkout_repo
   checkout
 
-#step_install_requirements_for_smoke_tests: &step_install_requirements_for_smoke_tests
-#  run:
-#    name: Create virtualenv and install dependencies
-#    command: |
-#      python3 -m venv venv
-#      . venv/bin/activate
-#      pip install --quiet --upgrade pip
-#      pip install --quiet -r requirements_smoke.txt
+step_install_requirements_for_smoke_tests: &step_install_requirements_for_smoke_tests
+  run:
+    name: Create virtualenv and install dependencies
+    command: |
+      python3 -m venv venv
+      . venv/bin/activate
+      pip install --quiet --upgrade pip
+      pip install --quiet -r requirements_smoke.txt
 
 #step_install_requirements_for_functional_tests: &step_install_requirements_for_functional_tests
 #  run:
@@ -164,11 +164,11 @@ step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests: &step_prepare_l
 #      pip install --quiet --upgrade pip
 #      pip install --quiet -r requirements_load.txt
 
-#step_cache_smoke_tests_requirements: &step_cache_smoke_tests_requirements
-#  save_cache:
-#    key: smoke-tests-dependency-cache-{{ .Revision }}
-#    paths:
-#      - ~/great_magna_tests
+step_cache_smoke_tests_requirements: &step_cache_smoke_tests_requirements
+  save_cache:
+    key: smoke-tests-dependency-cache-{{ .Revision }}
+    paths:
+      - ~/great_magna_tests
 #
 #step_cache_functional_tests_requirements: &step_cache_functional_tests_requirements
 #  save_cache:
@@ -194,10 +194,10 @@ step_cache_browser_tests_requirements: &step_cache_browser_tests_requirements
 #    paths:
 #      - ~/great_magna_tests
 
-#step_restore_cached_smoke_tests_requirements: &step_restore_cached_smoke_tests_requirements
-#  restore_cache:
-#    keys:
-#      - smoke-tests-dependency-cache-{{ .Revision }}
+step_restore_cached_smoke_tests_requirements: &step_restore_cached_smoke_tests_requirements
+  restore_cache:
+    keys:
+      - smoke-tests-dependency-cache-{{ .Revision }}
 
 step_restore_cached_browser_tests_requirements: &step_restore_cached_browser_tests_requirements
   restore_cache:
@@ -434,11 +434,11 @@ step_merge_junit_xml_reports_from_parallel_browser_tests: &step_merge_junit_xml_
 #      - results_international
 
 # Lists of steps
-#steps_setup_env_for_smoke_tests: &steps_setup_env_for_smoke_tests
-#  steps:
-#    - *step_checkout_repo
-#    - *step_install_requirements_for_smoke_tests
-#    - *step_cache_smoke_tests_requirements
+steps_setup_env_for_smoke_tests: &steps_setup_env_for_smoke_tests
+  steps:
+    - *step_checkout_repo
+    - *step_install_requirements_for_smoke_tests
+    - *step_cache_smoke_tests_requirements
 #
 #steps_setup_env_for_functional_tests: &steps_setup_env_for_functional_tests
 #  steps:
@@ -487,30 +487,30 @@ steps_setup_env_for_parallel_browser_tests_using_circleci: &steps_setup_env_for_
 #  - *step_install_requirements_for_load_tests
 #  - *step_cache_load_tests_requirements
 
-#steps_smoke_tests: &steps_smoke_tests
-#  steps:
-#    - *step_restore_cached_smoke_tests_requirements
-#    - *step_run_smoke_tests
-#    - *step_install_moxci
-#    - *step_install_allure_cli
-#    - *step_save_test_related_env_vars
-#    - *step_make_allure_report
-#    - store_test_results:
-#        path: ./reports
-#    - store_artifacts:
-#        path: ./reports
-#    - store_artifacts:
-#        path: ./allure_report
-#        destination: allure_report
-#    - run:
-#        name: Push Allure report link to Slack with moxci
-#        when: always
-#        command: |
-#          set -e
-#          export CIRCLE_PULL_REQUEST="${CIRCLE_PULL_REQUEST:-none}"
-#          export WORKFLOW_LINK="https://circleci.com/workflow-run/${CIRCLE_WORKFLOW_ID}"
-#          export summary="$(./parse_test_summary_json.py allure_report/widgets/summary.json)"
-#          moxci allure_report/index.html --slack_message "The latest report from SMOKE tests ran against `awk '/Environment/{print toupper($3)}' ./results/environment.properties`. ${summary}. (workflow → ${WORKFLOW_LINK})"
+steps_smoke_tests: &steps_smoke_tests
+  steps:
+    - *step_restore_cached_smoke_tests_requirements
+    - *step_run_smoke_tests
+    - *step_install_moxci
+    - *step_install_allure_cli
+    - *step_save_test_related_env_vars
+    - *step_make_allure_report
+    - store_test_results:
+        path: ./reports
+    - store_artifacts:
+        path: ./reports
+    - store_artifacts:
+        path: ./allure_report
+        destination: allure_report
+    - run:
+        name: Push Allure report link to Slack with moxci
+        when: always
+        command: |
+          set -e
+          export CIRCLE_PULL_REQUEST="${CIRCLE_PULL_REQUEST:-none}"
+          export WORKFLOW_LINK="https://circleci.com/workflow-run/${CIRCLE_WORKFLOW_ID}"
+          export summary="$(./parse_test_summary_json.py allure_report/widgets/summary.json)"
+          moxci allure_report/index.html --slack_message "The latest report from SMOKE tests ran against `awk '/Environment/{print toupper($3)}' ./results/environment.properties`. ${summary}. (workflow → ${WORKFLOW_LINK})"
 
 steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack: &steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack
   steps:
@@ -668,13 +668,13 @@ steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack: &
 #    - *step_run_geckoboard_updater
 
 
-#jobs:
-#  setup_env_for_smoke_tests:
-#    working_directory: ~/great_magna_tests
-#    <<: [
-#    *machine_python3_node_browsers,
-#    *steps_setup_env_for_smoke_tests,
-#    ]
+jobs:
+  setup_env_for_smoke_tests:
+    working_directory: ~/great_magna_tests
+    <<: [
+    *machine_python3_node_browsers,
+    *steps_setup_env_for_smoke_tests,
+    ]
 
 #  setup_env_for_functional_tests:
 #    working_directory: ~/great_magna_tests
@@ -697,35 +697,35 @@ steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack: &
     *steps_setup_env_for_parallel_browser_tests_using_circleci,
     ]
 
-#  smoke_tests_dev:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      TEST_ENV: "dev"
-#      PYTEST_ARGS: '-m "not stage and not uat and not prod"'
-#    <<: [
-#    *machine_python3_node_browsers,
-#    *steps_smoke_tests,
-#    ]
-#
-#  smoke_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      TEST_ENV: "stage"
-#      PYTEST_ARGS: "-m 'not dev and not uat and not prod'"
-#    <<: [
-#    *machine_python3_node_browsers,
-#    *steps_smoke_tests,
-#    ]
-#
-#  smoke_tests_uat:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      TEST_ENV: "uat"
-#      PYTEST_ARGS: "-m 'not dev and not stage and not prod'"
-#    <<: [
-#    *machine_python3_node_browsers,
-#    *steps_smoke_tests,
-#    ]
+  smoke_tests_dev:
+    working_directory: ~/great_magna_tests
+    environment:
+      TEST_ENV: "dev"
+      PYTEST_ARGS: '-m "not stage and not uat and not prod"'
+    <<: [
+    *machine_python3_node_browsers,
+    *steps_smoke_tests,
+    ]
+
+  smoke_tests_stage:
+    working_directory: ~/great_magna_tests
+    environment:
+      TEST_ENV: "stage"
+      PYTEST_ARGS: "-m 'not dev and not uat and not prod'"
+    <<: [
+    *machine_python3_node_browsers,
+    *steps_smoke_tests,
+    ]
+
+  smoke_tests_uat:
+    working_directory: ~/great_magna_tests
+    environment:
+      TEST_ENV: "uat"
+      PYTEST_ARGS: "-m 'not dev and not stage and not prod'"
+    <<: [
+    *machine_python3_node_browsers,
+    *steps_smoke_tests,
+    ]
 
 #  func_fas_test_dev:
 #    working_directory: ~/great_magna_tests
