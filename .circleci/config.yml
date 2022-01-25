@@ -1081,12 +1081,12 @@ steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack: &
     *steps_run_parallel_browser_tests,
     ]
 
-#  merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
-#    working_directory: ~/great_magna_tests
-#    <<: [
-#    *machine_python3_node_browsers,
-#    *steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack,
-#    ]
+  merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
+    working_directory: ~/great_magna_tests
+    <<: [
+    *machine_python3_node_browsers,
+    *steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack,
+    ]
 
 #  generate_allure_report_from_functional_tests_and_send_link_to_slack:
 #    working_directory: ~/great_magna_tests
