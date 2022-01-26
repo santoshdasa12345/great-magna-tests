@@ -1038,7 +1038,7 @@ jobs:
 
   dev_parallel_browser_tests_using_circleci:
     working_directory: ~/great_magna_tests
-    parallelism: 20
+    parallelism: 12
     environment:
       TEST_ENV: "dev"
       AUTO_RETRY: "true"
