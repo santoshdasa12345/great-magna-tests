@@ -1051,35 +1051,35 @@ jobs:
     *steps_run_parallel_browser_tests_local
     ]
 
-  stage_parallel_browser_tests_using_circleci:
-    working_directory: ~/great_magna_tests
-    parallelism: 20
-    environment:
-      TEST_ENV: "stage"
-      AUTO_RETRY: "true"
-      TAKE_SCREENSHOTS: "true"
-      TAGS: "--tags=~@dev-only --tags=~@uat-only --tags=~@erp"
-      BROWSER_ENVIRONMENT: "local"
-      BROWSER_HEADLESS: "true"
-    <<: [
-    *machine_python3_node_browsers,
-    *steps_run_parallel_browser_tests,
-    ]
-
-  uat_parallel_browser_tests_using_circleci:
-    working_directory: ~/great_magna_tests
-    parallelism: 20
-    environment:
-      TEST_ENV: "uat"
-      AUTO_RETRY: "true"
-      TAKE_SCREENSHOTS: "true"
-      TAGS: "--tags=~@stage-only --tags=~@erp"
-      BROWSER_ENVIRONMENT: "local"
-      BROWSER_HEADLESS: "true"
-    <<: [
-    *machine_python3_node_browsers,
-    *steps_run_parallel_browser_tests,
-    ]
+#  stage_parallel_browser_tests_using_circleci:
+#    working_directory: ~/great_magna_tests
+#    parallelism: 20
+#    environment:
+#      TEST_ENV: "stage"
+#      AUTO_RETRY: "true"
+#      TAKE_SCREENSHOTS: "true"
+#      TAGS: "--tags=~@dev-only --tags=~@uat-only --tags=~@erp"
+#      BROWSER_ENVIRONMENT: "local"
+#      BROWSER_HEADLESS: "true"
+#    <<: [
+#    *machine_python3_node_browsers,
+#    *steps_run_parallel_browser_tests,
+#    ]
+#
+#  uat_parallel_browser_tests_using_circleci:
+#    working_directory: ~/great_magna_tests
+#    parallelism: 20
+#    environment:
+#      TEST_ENV: "uat"
+#      AUTO_RETRY: "true"
+#      TAKE_SCREENSHOTS: "true"
+#      TAGS: "--tags=~@stage-only --tags=~@erp"
+#      BROWSER_ENVIRONMENT: "local"
+#      BROWSER_HEADLESS: "true"
+#    <<: [
+#    *machine_python3_node_browsers,
+#    *steps_run_parallel_browser_tests,
+#    ]
 
   merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
     working_directory: ~/great_magna_tests
@@ -1404,21 +1404,21 @@ workflows:
 #            - func_profile_test_uat
 #            - func_international_test_uat
 
-  run_browser_tests_in_parallel_in_uat_ad_hoc:
-    jobs:
-      - setup_env_for_parallel_browser_tests_using_circleci
-      - uat_parallel_browser_tests_using_circleci:
-          requires:
-            - setup_env_for_parallel_browser_tests_using_circleci
-      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
-          requires:
-            - uat_parallel_browser_tests_using_circleci
-      - merge_junit_results_from_parallel_browser_tests:
-          requires:
-            - uat_parallel_browser_tests_using_circleci
-      - store_behave_logs_from_browser_tests_as_artifacts:
-          requires:
-            - uat_parallel_browser_tests_using_circleci
+#  run_browser_tests_in_parallel_in_uat_ad_hoc:
+#    jobs:
+#      - setup_env_for_parallel_browser_tests_using_circleci
+#      - uat_parallel_browser_tests_using_circleci:
+#          requires:
+#            - setup_env_for_parallel_browser_tests_using_circleci
+#      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
+#          requires:
+#            - uat_parallel_browser_tests_using_circleci
+#      - merge_junit_results_from_parallel_browser_tests:
+#          requires:
+#            - uat_parallel_browser_tests_using_circleci
+#      - store_behave_logs_from_browser_tests_as_artifacts:
+#          requires:
+#            - uat_parallel_browser_tests_using_circleci
 
 #  prod_check_for_dead_links_ad_hoc:
 #    jobs:
@@ -1552,27 +1552,27 @@ workflows:
 #            - func_profile_test_stage
 #            - func_international_test_stage
 
-  run_browser_tests_in_parallel_in_stage:
-    triggers:
-      - schedule:
-          cron: "23 3 * * 1-5"
-          filters:
-            branches:
-              only: master
-    jobs:
-      - setup_env_for_parallel_browser_tests_using_circleci
-      - stage_parallel_browser_tests_using_circleci:
-          requires:
-            - setup_env_for_parallel_browser_tests_using_circleci
-      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
-          requires:
-            - stage_parallel_browser_tests_using_circleci
-      - merge_junit_results_from_parallel_browser_tests:
-          requires:
-            - stage_parallel_browser_tests_using_circleci
-      - store_behave_logs_from_browser_tests_as_artifacts:
-          requires:
-            - stage_parallel_browser_tests_using_circleci
+#  run_browser_tests_in_parallel_in_stage:
+#    triggers:
+#      - schedule:
+#          cron: "23 3 * * 1-5"
+#          filters:
+#            branches:
+#              only: master
+#    jobs:
+#      - setup_env_for_parallel_browser_tests_using_circleci
+#      - stage_parallel_browser_tests_using_circleci:
+#          requires:
+#            - setup_env_for_parallel_browser_tests_using_circleci
+#      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
+#          requires:
+#            - stage_parallel_browser_tests_using_circleci
+#      - merge_junit_results_from_parallel_browser_tests:
+#          requires:
+#            - stage_parallel_browser_tests_using_circleci
+#      - store_behave_logs_from_browser_tests_as_artifacts:
+#          requires:
+#            - stage_parallel_browser_tests_using_circleci
 
 #  run_cms_load_tests_on_stage:
 #    triggers:
@@ -1739,27 +1739,27 @@ workflows:
 #            - func_profile_test_uat
 #            - func_international_test_uat
 
-  run_browser_tests_in_parallel_in_uat:
-    triggers:
-      - schedule:
-          cron: "3 6 * * 1-5"
-          filters:
-            branches:
-              only: master
-    jobs:
-      - setup_env_for_parallel_browser_tests_using_circleci
-      - uat_parallel_browser_tests_using_circleci:
-          requires:
-            - setup_env_for_parallel_browser_tests_using_circleci
-      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
-          requires:
-            - uat_parallel_browser_tests_using_circleci
-      - merge_junit_results_from_parallel_browser_tests:
-          requires:
-            - uat_parallel_browser_tests_using_circleci
-      - store_behave_logs_from_browser_tests_as_artifacts:
-          requires:
-            - uat_parallel_browser_tests_using_circleci
+#  run_browser_tests_in_parallel_in_uat:
+#    triggers:
+#      - schedule:
+#          cron: "3 6 * * 1-5"
+#          filters:
+#            branches:
+#              only: master
+#    jobs:
+#      - setup_env_for_parallel_browser_tests_using_circleci
+#      - uat_parallel_browser_tests_using_circleci:
+#          requires:
+#            - setup_env_for_parallel_browser_tests_using_circleci
+#      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
+#          requires:
+#            - uat_parallel_browser_tests_using_circleci
+#      - merge_junit_results_from_parallel_browser_tests:
+#          requires:
+#            - uat_parallel_browser_tests_using_circleci
+#      - store_behave_logs_from_browser_tests_as_artifacts:
+#          requires:
+#            - uat_parallel_browser_tests_using_circleci
 
 #  refresh_geckoboard_periodically:
 #    triggers:
