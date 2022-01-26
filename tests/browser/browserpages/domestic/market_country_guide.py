@@ -73,7 +73,6 @@ SubURLs = {
 }
 SELECTORS = {
     "description": {
-        # "intro": Selector(By.ID, "country-guide-teaser-section"),
         "description": Selector(By.ID, "country-guide-section-one"),
         "statistics": Selector(By.ID, "country-guide-statistics-section"),
     },
@@ -129,9 +128,6 @@ def should_see_following_sections(driver: WebDriver, names: List[str]):
 
 def search(driver: WebDriver, phrase: str):
     domestic_actions.search(driver, phrase)
-
-def should_see_following_sections(driver: WebDriver, names: List[str]):
-    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
 
 def find_and_click(driver: WebDriver, *, element_selector_name: str):
     find_and_click = find_element(
