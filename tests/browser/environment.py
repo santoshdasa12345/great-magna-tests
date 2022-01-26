@@ -19,6 +19,7 @@ def before_all(context: Context):
 
     context.config.setup_logging()#configfile=".behave_logging")
     logger = logging.getLogger()
+    logger.setLevel(logging.ERROR)
 
 
 def before_feature(context: Context, feature: Feature):
