@@ -14,17 +14,17 @@ load_run_time: &load_run_time
 machine_python3_clean: &machine_python3_clean
   docker:
     - image: circleci/python:3.8.0
-    - resource_class:large
+  resource_class:large
 
 machine_python3_node: &machine_python3_node
   docker:
     - image: circleci/python:3.8.0-node
-    - resource_class:large
+  resource_class:large
 
 machine_python3_node_browsers: &machine_python3_node_browsers
   docker:
     - image: circleci/python:3.8.0-node-browsers
-    - resource_class:large
+  resource_class:large
 
 # Individual (shared) steps.
 step_checkout_repo: &step_checkout_repo
