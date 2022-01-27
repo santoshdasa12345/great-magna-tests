@@ -14,6 +14,7 @@ load_run_time: &load_run_time
 machine_python3_clean: &machine_python3_clean
   docker:
     - image: circleci/python:3.8.0
+      resource_class:large
 
 machine_python3_node: &machine_python3_node
   docker:
