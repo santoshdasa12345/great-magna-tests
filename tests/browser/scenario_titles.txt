@@ -1,38 +1,2036 @@
-@Great_Magna_Tests @lessons-page @allure.suite:Great_Magna_Lessons
-Feature: GreatMagna - Lessons Page
+@Great_Magna_Tests
+@about-your-business-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_A_Y_B_P
+Feature: GreatMagna - About your Business Page
 
   Background:
-
-  @allure.link:XOT-124 @Great-Magna-Lessons-progress-bar-test_1
-  Scenario: User should be able to view Lesson page "Move from accidental exporting to strategic exporting" and click Yes and back to check the progress bar on lessons and module and lesson categories section
     Given test authentication is done
+
+  @allure.link:XOT-1011
+  @Great_Magna_Export_Plan_A_Y_B_P_1
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to view "How you started" section and enter text and validate
+
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
     And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Learn to export"
-    Then "Robert" decides to click on section "Identify opportunities" on page "LearnToExport - Learn Categories"
-    And "Robert" decides to click on section "Move from accidental exporting to strategic exporting" on page "LearnToExport - Identify opportunities"
-    And "Robert" decides to click checkbox Yes on "LearnToExport - Move from accidental exporting to strategic exporting"
-    And "Robert" decides to click on section "Bottom Back" on page "LearnToExport - Move from accidental exporting to strategic exporting"
-    And "Robert" should be able to see progress bar for section "Identify opportunities" on "LearnToExport - Identify opportunities" page
-    And "Robert" decides to click on section "Top Back" on page "LearnToExport - Identify opportunities"
-    And "Robert" should be able to see progress bar for section "Identify opportunities" on "LearnToExport - Learn Categories" page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "How you started example" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to click on element "How you started educational" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to enter text at "How you started" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to validate entered text at "How you started" on page "Build An Export Plan - About Your Business"
 
-@atlas @landing-page @allure.suite:Atlas
-Feature: Invest Atlas - landing page
+  @allure.link:XOT-1012
+  @Great_Magna_Export_Plan_A_Y_B_P
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to view  "Where you're based" section and enter text and validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "Where you're based example" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to enter text at "Where you're based" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to validate entered text at "Where you're based" on page "Build An Export Plan - About Your Business"
+
+  @allure.link:XOT-1013
+  @Great_Magna_Export_Plan_A_Y_B_P
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to enter "How you make your products" section and enter text and validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "How you make your products example" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to enter text at "How you make your products" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to validate entered text at "How you make your products" on page "Build An Export Plan - About Your Business"
+#
+  @allure.link:XOT-1014
+  @Great_Magna_Export_Plan_A_Y_B_P
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to enter "Your product packaging" section and enter text and validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "Your product packaging example" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to enter text at "Your product packaging" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to validate entered text at "Your product packaging" on page "Build An Export Plan - About Your Business"
+
+  @allure.link:XOT-1015
+  @Great_Magna_Export_Plan_A_Y_B_P
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to click on section complete and  "Business objective link" at the bottom of the page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click section complete on "Build An Export Plan - About Your Business"
+    And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - About Your Business"
+    And "Robert" should be on the "Build An Export Plan - Business Objectives" page
+
+  @allure.link:XOT-1016
+  @Great_Magna_Export_Plan_A_Y_B_P
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Export plan home and should be on Export plan Home page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - About Your Business"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+  @allure.link:XOT-1017
+  @Great_Magna_Export_Plan_A_Y_B_P
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to click on "Business performance" section and select random turnover
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to select random item for "Your business performance dropdown" on page "Build An Export Plan - About Your business"
+
+  @allure.link:XOT-1018
+  @Great_Magna_Export_Plan_A_Y_B_P
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to click on navigation bar and navigate to "Business Objectives" page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to click on element "Nav Business Objectives" on page "Build An Export Plan - About Your Business"
+    And "Robert" should be on the "Build An Export Plan - Business Objectives" Page
+
+  @allure.link:XOT-1019
+  @Great_Magna_Export_Plan_A_Y_B_P
+  @Great-Magna-Export_Plan-progress-bar-test
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to click section complete on "About Your Business" page  and back to export plan dashboard
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    Then "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click section complete on "Build An Export Plan - About Your Business"
+    And "Robert" decides to click on "Build an export plan"
+
+@allure.link:XOT-1020
+   @Great_Magna_Export_Plan_aybp
+  Scenario:User should be able to click on Top Export plan home in "About your business" and should be on Export plan dashboard page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - About Your Business"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+  @allure.link:XOT-1021
+  @Great_Magna_Export_Plan_B_O_Last_1
+  @Great_Magna_Export_Plan_A_Y_B_P
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to click on "Drop down" on About your business page and click on dashboard should see "About your business page" as last visited page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" should be on the "Build An Export Plan - About Your Business" Page
+    And "Robert" decides to click on element "Your product packaging example" on page "Build An Export Plan - About Your Business"
+   #And "Robert" decides to select random item for "Your business performance dropdown" on page "Build An Export Plan - About Your business"
+    And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - About Your Business"
+#    And "Robert" should see "About Your Business" text under section "Export Plan" on page "GreatMagna - Dashboard"
+
+Great_Magna_Tests
+@adaptation-for-your-target-market-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_A_F_Y_T_M
+Feature: GreatMagna - Adapting Your Product Page
+   Background:
+   Given test authentication is done
+
+   @allure.link:XOT-1031
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on "Open DataSnapshot" and check whether atleast one language is present
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "Open Data Snapshot" on page "Build An Export Plan - Adapting Your Product"
+     #And "Robert" decides to click on element "Hide Data Snapshot" on page "Build An Export Plan - Adapting Your Product"
+
+   @allure.link:XOT-1032
+   @Great_Magna_Export_Plan
+ Scenario:User should be able to click lesson link "Adapting your product or service" and click link back to "Adapting your product"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Adapting Your Product"
+     And "Robert" decides to click on section "Adapting your product or service" on page "Build An Export Plan - Adapting Your Product"
+     And "Robert" should be on the "LearnToExport - Adapting your product or service" page
+     And "Robert" decides to click on section "Adapting Your Product" on page "LearnToExport - Adapting your product or service"
+
+
+   @allure.link:XOT-1033
+   @Great_Magna_Export_Plan_changing
+  Scenario:User should be able to view tool tip and enter relevant text in "Changing your product to adapt to your target market"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "Labelling educational" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to enter text at "Labelling" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to validate entered text at "Labelling" on page "Build An Export Plan - Adapting Your Product"
+
+    And "Robert" decides to click on element "Packaging educational" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to enter text at "Packaging" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to validate entered text at "Packaging" on page "Build An Export Plan - Adapting Your Product"
+
+    And "Robert" decides to click on element "Size educational" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to enter text at "Size" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to validate entered text at "Size" on page "Build An Export Plan - Adapting Your Product"
+
+    And "Robert" decides to click on element "Product changes to comply educational" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to enter text at "Product changes to comply" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to validate entered text at "Product changes to comply" on page "Build An Export Plan - Adapting Your Product"
+
+    And "Robert" decides to click on element "Translations educational" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to enter text at "Translations" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to validate entered text at "Translations" on page "Build An Export Plan - Adapting Your Product"
+
+    And "Robert" decides to enter text at "Other changes" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to validate entered text at "Other changes" on page "Build An Export Plan - Adapting Your Product"
+
+
+   @allure.link:XOT-1034
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to view educational tool tip and enter relevant text in "Documents you need to provide to meet the requirements for your target market"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "Certificate of origin educational" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to enter text at "Certificate of origin" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to validate entered text at "Certificate of origin" on page "Build An Export Plan - Adapting Your Product"
+
+    And "Robert" decides to click on element "Insurance certificate educational" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to enter text at "Insurance certificate" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to validate entered text at "Insurance certificate" on page "Build An Export Plan - Adapting Your Product"
+
+    And "Robert" decides to click on element "Commercial invoice educational" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to enter text at "Commercial invoice" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to validate entered text at "Commercial invoice" on page "Build An Export Plan - Adapting Your Product"
+
+    And "Robert" decides to click on element "UK customs declaration educational" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to enter text at "UK customs declaration" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to validate entered text at "UK customs declaration" on page "Build An Export Plan - Adapting Your Product"
+
+    @allure.link:XOT-1035
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on navigation bar and navigate to "Marketing Approach" page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Adapting Your Product"
+     And "Robert" decides to click on element "Nav Marketing Approach" on page "Build An Export Plan - Adapting Your Product"
+     And "Robert" should be on the "Build An Export Plan - Marketing Approach" Page
+
+  @allure.link:XOT-1036
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on page "Marketing approach link" at the bottom of the page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click section complete on "Build An Export Plan - Adapting Your Product"
+     And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Adapting Your Product"
+     And "Robert" should be on the "Build An Export Plan - Marketing approach" page
+
+   @allure.link:XOT-1037
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Export plan home and should be on Export plan Home page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+
+ @allure.link:XOT-1038
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on "Add another document" and enter the Document name and Notes
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" fill document details on page "Build An Export Plan - Adapting Your Product"
+          | Position | DocumentName  |   Notes         |
+          | 1        | Vat certif    | Vat certificate |
+          | 2        | Reg Document  | Reg Document    |
+          | 3        | Id Proof      | Id Proof        |
+          | 4        | Address Proof | Address Proof   |
+          | 5        | Packing List  | Packing List    |
+
+    @allure.link:XOT-1039
+   @Great_Magna_Export_Plan
+   Scenario:User should be able to click on "Add another document" and delete the document and notes
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to delete document details on page "Build An Export Plan - Adapting Your Product"
+          | Position |
+          | 5     |
+          | 4     |
+          | 3     |
+          | 2     |
+          | 1     |
+
+  @allure.link:XOT-1040
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Top Export plan home and should be on Export plan dashboard page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Adapting Your Product"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+     @allure.link:XOT-1042
+   @Great_Magna_Export_Plan_last
+  Scenario:User should be able to click on "Open DataSnapshot" on Adapting Your Product page and click on dashboard should see "Adapting Your Product" as last visited page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" should be on the "Build An Export Plan - Adapting Your Product" Page
+    And "Robert" decides to click on element "Open Data Snapshot" on page "Build An Export Plan - Adapting Your Product"
+    And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Adapting Your Product"
+#    And "Robert" should see "Adapting Your Product" text under section "Export Plan" on page "GreatMagna - Dashboard"
+
+@Great_Magna_Tests
+@business-objectives-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_B_O
+Feature: GreatMagna - Business Objectives Page
+   Background:
+   Given test authentication is done
+
+   @allure.link:XOT-1051
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to view "Why you want to export" section and enter text and validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Why you want to export example" on page "Build An Export Plan - Business Objectives"
+     And "Robert" decides to enter text at "Why you want to export" on page "Build An Export Plan - Business Objectives"
+     And "Robert" decides to validate entered text at "Why you want to export" on page "Build An Export Plan - Business Objectives"
+
+ @bug
+ @allure.link:XOT-1052
+   @Great_Magna_Export_Plan_B_O_123
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on "Add goal" and enter the objectives for exporting
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" fill business objective details on page "Build An Export Plan - Business Objectives"
+          | Position | Objectives | Owner        | PlannedReviews      |
+          | 1        | obj1       | obj1-owner   | obj1-plannedreviews |
+          | 2        | obj2       | obj2-owner   | obj2-plannedreviews |
+          | 3        | obj3       | obj3-owner   | obj3-plannedreviews |
+          | 4        | obj4       | obj4-owner   | obj4-plannedreviews |
+          | 5        | obj5       | obj5-owner   | obj5-plannedreviews |
+
+   @allure.link:XOT-1053
+     @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_B_O_D_123
+   Scenario:User should be able to delete objectives
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to delete business objectives on page "Build An Export Plan - Business Objectives"
+          | Position |
+          | 5    |
+          | 4    |
+          | 3    |
+          | 2    |
+          | 1    |
+
+
+@allure.link:XOT-1054
+   @Great_Magna_Export_Plan_lesson
+ Scenario:User should be able to click lessons "Move from accidental exporting to strategic exporting" and click back link "Business Objectives"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+  And "Robert" decides to click on element "move from accidental lesson" on page "Build An Export Plan - Business Objectives"
+  And "Robert" decides to click on section "Move from accidental exporting to strategic exporting" on page "Build An Export Plan - Business Objectives"
+     And "Robert" should be on the "LearnToExport - Move from accidental exporting to strategic exporting" page
+     And "Robert" decides to click on section "Business Objectives" on page "LearnToExport - Move from accidental exporting to strategic exporting"
+
+
+@allure.link:XOT-1055
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on section complete and "Target markets research link" at the bottom of the page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click section complete on "Build An Export Plan - Business Objectives"
+     And "Robert" decides to click on section "Target markets research" on page "Build An Export Plan - Business Objectives"
+     And "Robert" should be on the "Build An Export Plan - Target markets research" page
+
+@allure.link:XOT-1056
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Export plan home and should be on Export plan Home page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Business Objectives"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+
+ @allure.link:XOT-1057
+   @Great_Magna_Export_Plan_123
+  Scenario:User should be able to click on Top Export plan home and should be on Export plan dashboard page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Business Objectives"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+ @allure.link:XOT-1058
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on navigation bar and navigate to "Target Markets Research" page
+
+    Given "Robert" visited "GreatMagna - Login" page
+     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+      And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Business Objectives"
+     And "Robert" decides to click on element "Nav Target Markets Research" on page "Build An Export Plan - Business Objectives"
+     And "Robert" should be on the "Build An Export Plan - Target Markets Research" Page
+
+
+ @allure.link:XOT-1059
+   @Great_Magna_Export_Plan_B_O_1
+   @Great_Magna_Export_Plan
+  Scenario:User should not be able to click on "Add goal" after 5 objectives for exporting
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" fill business objective details on page "Build An Export Plan - Business Objectives"
+          | Position | Objectives | Owner        | PlannedReviews      |
+          | 1        | obj1       | obj1-owner   | obj1-plannedreviews |
+          | 2        | obj2       | obj2-owner   | obj2-plannedreviews |
+          | 3        | obj3       | obj3-owner   | obj3-plannedreviews |
+          | 4        | obj4       | obj4-owner   | obj4-plannedreviews |
+          | 5        | obj5       | obj5-owner   | obj5-plannedreviews |
+
+
+   @allure.link:XOT-1060
+   @Great_Magna_Export_Plan_B_O_Last
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on "Add goal" and enter the objectives for exporting
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" should be on the "Build An Export Plan - Business Objectives" Page
+   And "Robert" decides to click on element "Why you want to export example" on page "Build An Export Plan - Business Objectives"
+     And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Business Objectives"
+     And "Robert" should see "Business Objectives" text under section "Export Plan" on page "GreatMagna - Dashboard"
+
+@Great_Magna_Tests
+@business-risk-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_B_R
+
+Feature: GreatMagna - Business Risk Page
+   Background:
+   Given test authentication is done
+
+     @placeholder_test
+     @skip
+   @allure.link:XOT-1071
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on "Business Risk" Page and click back button
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+       And "Robert" decides to click on element "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "Back" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" Page
+    And "Robert" decides to click on element "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "ok Button" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" Page
+
+
+
+@allure.link:XOT-1072
+   @Great_Magna_Export_Plan
+
+  Scenario:User should be able to click on Top Export plan home in Business Risk and should be on Export plan dashboard page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Business Risk"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+#@allure.link:XOT-1073
+#  @Great_Magna_Export_Plan
+#   @Great-Magna-Export_Plan-progress-bar-test
+# Scenario:User should be able to click on "Download export plan" at the bottom of the page
+#
+#Given "Robert" visited "GreatMagna - Login" page
+#   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#   And "Robert" should be on the "GreatMagna - Dashboard" Page
+#   Then "Robert" decides to click on "Build an export plan"
+#   Then "Robert" decides to click on section "Business risk" on page "Build An Export Plan - Export Plan Dashboard"
+#    And "Robert" decides to click section complete on "Build An Export Plan - Business risk"
+#    And "Robert" decides to click on section "Download export plan" on page "Build An Export Plan - Business risk"
+
+
+    @allure.link:XOT-1075
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Export plan home on "Travel plan" and should be on Export plan Home page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+       And "Robert" decides to click section complete on "Build An Export Plan - Business Risk"
+     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Business Risk"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+#@allure.link:XOT-1076
+#  @Great-Magna-Sign-Up
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter product name "Sofa" on page "Build An Export Plan - Business Risk"
+#
+
+ @allure.link:XOT-1076
+   @Great_Magna_Export_Plan_B_O_D_123_add
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on "Add A Risk" and enter the Risk details for exporting
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" fill risk details on page "Build An Export Plan - Business Risk"
+          | Position | Risktext  | Contingencyplan |
+          | 1     | Risk-1 | Contingencyplan-1 |
+          | 2     | Risk-2 | Contingencyplan-2 |
+          | 3     | Risk-3 | Contingencyplan-3 |
+          | 4     | Risk-4 | Contingencyplan-4 |
+          | 5     | Risk-5 | Contingencyplan-5|
+
+      @allure.link:XOT-1077
+     @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_B_O_D_123_del
+   Scenario:User should be able to delete "Add a Risk" details
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+     Then "Robert" decides to click on "Build an export plan"
+        And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to delete risk details on page "Build An Export Plan - Business Risk"
+          | Position |
+          | 5    |
+          | 4    |
+          | 3    |
+          | 2    |
+          | 1    |
+     @allure.link:XOT-1078
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click section complete on Business Risk page and click on dashboard should see "Business Risk" as last visited page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+       And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" should be on the "Build An Export Plan - Business Risk" Page
+    And "Robert" decides to click section complete on "Build An Export Plan - Business Risk"
+     And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Business Risk"
+     And "Robert" should see "Business Risk" text under section "Export Plan" on page "GreatMagna - Dashboard"
+
+
+   @allure.link:XOT-1079
+   @Great_Magna_Export_Plan_B_R_1_111
+   @Great_Magna_Export_Plan
+     @failed_exp
+  Scenario:User should be able to click on "Add A Risk" and click on Examples and educational moment
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "Add A Risk" on page "Build An Export Plan - Business Risk"
+    And "Robert" decides to click on element "Risk example" on page "Build An Export Plan - Business Risk"
+    And "Robert" decides to click on element "Risk educational" on page "Build An Export Plan - Business Risk"
+    And "Robert" decides to click on element "Risk likelihood educational" on page "Build An Export Plan - Business Risk"
+    And "Robert" decides to click on element "Risk impact educational" on page "Build An Export Plan - Business Risk"
+    And "Robert" decides to click on element "contingency plan educational" on page "Build An Export Plan - Business Risk"
+    And "Robert" decides to click on element "contingency plan example" on page "Build An Export Plan - Business Risk"
+
+@Great_Magna_Tests
+@costs-and-pricing-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_C_A_P
+Feature: GreatMagna - Costs And Pricing Page
+
+   Background:
+   Given test authentication is done
+
+  @allure.link:XOT-1091
+   @Great_Magna_Export_Plan_cap_1
+  Scenario: User should be able to click on navigation bar and navigate to "Funding and credit" page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Costs And Pricing"
+     And "Robert" decides to click on element "Nav Funding and credit" on page "Build An Export Plan - Costs And Pricing"
+     And "Robert" should be on the "Build An Export Plan - Funding and credit" Page
+
+   @allure.link:XOT-1092
+   @Great_Magna_Export_Plan_cap_2
+  Scenario:User should be able to click on "Funding and Credit link" at the bottom of the page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click section complete on "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" should be on the "Build An Export Plan - Funding and Credit" page
+
+   @allure.link:XOT-1093
+   @Great_Magna_Export_Plan_cap_3
+  Scenario:User should be able to click on Export plan home and should be on Export plan Home page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Costs And Pricing"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+   @allure.link:XOT-1094
+   @Great_Magna_Export_Plan_cap_4
+  Scenario:User should be able to click on "No. of units and time" section and select random units and time
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to enter value in "Number of units" on page "Build An Export Plan - Costs And Pricing"
+     And "Robert" decides to select random unit for "Number of units" on page "Build An Export Plan - Costs And Pricing"
+     And "Robert" decides to enter value in "Time frame" on page "Build An Export Plan - Costs And Pricing"
+     And "Robert" decides to select random time from "Time Frame" on page "Build An Export Plan - Costs And Pricing"
+
+
+   @allure.link:XOT-1095
+   @Great_Magna_Export_Plan_cap_5
+  Scenario:User should be able to enter "Direct costs"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "Product Cost educational" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on element "Labour Cost educational" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" enters direct costs price on page "Build An Export Plan - Costs And Pricing"
+          | Productcost  | Labourcost    | Additionalmargin |
+          |     600      |      35       |         25       |
+
+#    #And "Robert" decides to validate entered value at "Direct costs total" on page "Build An Export Plan - Costs And Pricing"
+#
+   @allure.link:XOT-1096
+   @Great_Magna_Export_Plan_cap_6
+  Scenario:User should be able to enter "Overhead costs"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "Product Adaptation educational" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on element "Freight and Logistics educational" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on element "Agent and Distribution fees educational" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on element "Marketing educational" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on element "Insurance educational" on page "Build An Export Plan - Costs And Pricing"
+     And "Robert" enters overhead costs price on page "Build An Export Plan - Costs And Pricing"
+          | Product Adaptation  | Freight and Logistics | Agent and Distribution fees | Marketing | Insurance |
+          |        210          |          35           |            44               |     55    |     66    |
+
+#    And "Robert" decides to validate entered value at "Overhead costs total" on page "Build An Export Plan - Costs And Pricing"
+
+
+   @allure.link:XOT-1097
+   @Great_Magna_Export_Plan_cap_7
+  Scenario:User should be able to enter "your net price","Local taxes" and "Duty per unit" value
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Net Price educational" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on element "Net Price example" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to enter value in "Net Price" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on element "Local Taxes educational" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on element "Local taxes example" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to enter value in "Local taxes" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on element "Duty educational" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to enter value in "Duty" on page "Build An Export Plan - Costs And Pricing"
+
+#   @allure.link:XOT-1098
+#   @Great_Magna_Export_Plan
+#  Scenario:User should be able to enter "your net price","Local taxes" and "Duty per unit" value
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "Net Price educational" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to click on element "Net Price example" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to enter value in "Net Price" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to click on element "Local Taxes educational" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to click on element "Local taxes example" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to enter value in "Local taxes" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to click on element "Duty educational" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to enter value in "Duty" on page "Build An Export Plan - Costs And Pricing"
+
+   @allure.link:XOT-1099
+   @Great_Magna_Export_Plan_cap_8
+  Scenario:User should be able to "select currency" and enter invoicing currency
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on section "Manage Exchange Rates" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" should be on the "LearnToExport - Manage Exchange Rates" page
+    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Manage Exchange Rates"
+    And "Robert" decides to select random currency in "Select Currency" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to enter value in "Gross Price per unit" on page "Build An Export Plan - Costs And Pricing"
+
+@allure.link:XOT-1100
+   @Great_Magna_Export_Plan_cap_9
+  @failed_18
+  Scenario:User should be able to click on Top Export plan home in Costs And Pricing and should be on Export plan dashboard page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Costs And Pricing"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+#   @allure.link:XOT-1101
+#  @Great-Magna-Sign-Up
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter product name "Flowers" on page "Build An Export Plan - Costs And Pricing"
+#  And "Robert" decides to enter country name "Israel" on the "Build An Export Plan - Costs And Pricing" page
+
+      @allure.link:XOT-1102
+   @Great_Magna_Export_Plan_cap_10
+        @failed_16
+  Scenario:User should be able to click "Net Price example" on Costs And Pricing page and click on dashboard should see "Costs And Pricing" as last visited page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+        And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" should be on the "Build An Export Plan - Costs And Pricing" Page
+    And "Robert" decides to click on element "Net Price example" on page "Build An Export Plan - Costs And Pricing"
+     And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Costs And Pricing"
+#     And "Robert" should see "Costs And Pricing" text under section "Export Plan" on page "GreatMagna - Dashboard"
+
+
+#        @allure.link:XOT-1102
+#   @Great_Magna_Export_Plan_cap_11
+#        @failed_16
+#  Scenario:User should be able to click "estimate" on Costs And Pricing page and calculate the total overhead costs divided by total number of units plus adding to the direct costs
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#        And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" should be on the "Build An Export Plan - Costs And Pricing" Page
+#     And "Robert" decides to validate entered value at "Overhead costs total" on page "Build An Export Plan - Costs And Pricing"
+#     And "Robert" decides to enter number of units at at "Number of units" on page "Build An Export Plan - Costs And Pricing"
+#     And "Robert" decides to enter number of units at at "Number of units" on page "Build An Export Plan - Costs And Pricing"
+#     And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Costs And Pricing"
+##(Total over head costs /total number of units) +total directs costs = estimaetes
+
+
+  @allure.link:XOT-1103
+   @Great_Magna_Export_Plan_cap_12
+  Scenario:User should be able to "select currency" and enter invoicing currency
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "duty lesson" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on section "Understand duties and taxes" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" should be on the "LearnToExport - Understand duties and taxes" page
+    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Understand duties and taxes"
+
+ @allure.link:XOT-1104
+   @Great_Magna_Export_Plan_cap_13
+  Scenario:User should be able to click duty lesson "Understand duties and taxes" and click back link "Costs And Pricing"
+
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "duty lesson" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on section "Understand duties and taxes" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" should be on the "LearnToExport - Understand duties and taxes" page
+    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Understand duties and taxes"
+
+    @allure.link:XOT-1104
+   @Great_Magna_Export_Plan_cap_14
+  Scenario:User should be able to click local taxes lesson "local taxes -Understand duties and taxes" and click back link "Costs And Pricing"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "local taxes lesson" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" decides to click on section "local taxes Understand duties and taxes" on page "Build An Export Plan - Costs And Pricing"
+    And "Robert" should be on the "LearnToExport - Understand duties and taxes" page
+    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Understand duties and taxes"
+
+@Great_Magna_Tests
+@upload-logo-page
+@allure.suite:Great_Magna_Export_Plan
+Feature: GreatMagna - Export plans
+   Background:
+   Given test authentication is done
+
+  @allure.link:XOT-1113
+   @Great_Magna_Export_Plan_random
+
+  Scenario:User should be able to select random export plan from the Build an export plan
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to select random export plan on page "Build An Export Plan - Export Plan"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" Page
+
+  @allure.link:XOT-1113
+   @Great_Magna_Export_Plan_download
+
+  Scenario:User should be able to select random export plan from the Build an export plan and download plan from export plan dashboard
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to select random export plan on page "Build An Export Plan - Export Plan"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" Page
+    Then "Robert" decides to click on "Download plan"
+
+      @allure.link:XOT-1113
+   @Great_Magna_Export_Plan_delete_plan
+
+  Scenario:User should be able to select random export plan from the Build an export plan and delete plan from export plan dashboard
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to select random export plan on page "Build An Export Plan - Export Plan"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" Page
+    Then "Robert" decides to click on "Delete plan"
+
+  @allure.link:XOT-1113
+   @Great_Magna_Export_Plan_random_1
+
+  Scenario:User should be able to select random export plan from the dashboard
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+    Then "Robert" decides to select random export plan on page "GreatMagna - Dashboard"
+    And "Robert" should be on the "Build An Export Plan - Export Plan" Page
+
+     @allure.link:XOT-1113
+   @Great_Magna_Export_Plan_delete
+
+  Scenario:User should be able to select random export plan from the dashboard
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    Then "Robert" decides to select random export plan on page "GreatMagna - Dashboard"
+    And "Robert" should be on the "Build An Export Plan - Export Plan" Page
+
+@Great_Magna_Tests
+@funding-and-credit-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_F_A_C
+Feature: GreatMagna - Funding and Credit Page
+
+   Background:
+   Given test authentication is done
+
+   @allure.link:XOT-1111
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to enter "How much funding you need"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to enter value in "How much funding" on page "Build An Export Plan - Funding and Credit"
+
+
+   @allure.link:XOT-1112
+   @Great_Magna_Export_Plan_FUNDING
+     @failed_exp_3
+  Scenario:User should be able to click on "Add a funding option" and select random option and enter value
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Funding and Credit"
+#    And "Robert" decides to click on section "Choose the right funding and Credit Options" on page "Build An Export Plan - Funding and Credit"
+#    And "Robert" should be on the "LearnToExport - Choose the right funding and Credit Options" page
+
+     And "Robert" decides to select random funding options on page "Build An Export Plan - Funding and Credit"
+          | Position | Amount  |
+          | 1        | 5000    |
+          | 2        | 1000    |
+          | 3        | 12000   |
+          | 4        | 25000   |
+          | 5        | 35000   |
+
+#     @allure.link:XOT-1113
+#   @Great_Magna_Export_Plan_FUNDING
+#       @failed_exp
+#  Scenario:User should be able to delete added funding options
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#       And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+##     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Funding and Credit"
+##    And "Robert" decides to click on section "Choose the right funding and Credit Options" on page "Build An Export Plan - Funding and Credit"
+##    And "Robert" should be on the "LearnToExport - Choose the right funding and Credit Options" page
+#
+#     And "Robert" decides to delete funding options on page "Build An Export Plan - Funding and Credit"
+#          | Position |
+#          | 10        |
+#          | 8        |
+#          | 6        |
+#          | 4        |
+#          | 2       |
+
+
+#       @allure.link:XOT-1112
+#   @Great_Magna_Export_Plan_FUNDING
+#     @failed_exp_3
+#  Scenario:User should be able to click on "Add a funding option" and select random option and enter value and validate the entered valued summation
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to select random funding options on page "Build An Export Plan - Funding and Credit"
+#          | Position | Amount  |
+#          | 1        | 5000    |
+#          | 2        | 1000    |
+#          | 3        | 12000   |
+#          | 4        | 25000   |
+#          | 5        | 35000   |
+#     And "Robert" decides to validate the summation of the total funding "Build An Export Plan - Funding and Credit"
+
+  @allure.link:XOT-1115
+  @Great_Magna_Export_Plan
+    @failed_exp_2
+  Scenario:User should be able to click lessons link "Choose the right funding and credit options"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Funding and Credit"
+     And "Robert" decides to click on section "Choose the right funding" on page "Build An Export Plan - Funding and Credit"
+     And "Robert" should be on the "LearnToExport - Choose the right funding" page
+     And "Robert" decides to click on section "Funding and Credit" on page "LearnToExport - Choose the right funding"
+
+
+   @allure.link:XOT-1116
+   @Great_Magna_Export_Plan
+  Scenario: User should be able to click on navigation bar and navigate to "Getting Paid" page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Funding and Credit"
+     And "Robert" decides to click on element "Nav Getting Paid" on page "Build An Export Plan - Funding and Credit"
+     And "Robert" should be on the "Build An Export Plan - Getting paid" Page
+
+
+  @allure.link:XOT-1117
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to click on page "Getting paid link" at the bottom of the page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click section complete on "Build An Export Plan - Funding and Credit"
+    And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Funding and Credit"
+    And "Robert" should be on the "Build An Export Plan - Getting Paid" page
+
+  @allure.link:XOT-1118
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Export plan home and should be on Export plan Home page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Funding and Credit"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+@allure.link:XOT-1119
+   @Great_Magna_Export_Plan_fac
+  Scenario:User should be able to click on Top Export plan home in Funding and Credit and should be on Export plan dashboard page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Funding and Credit"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+#  @allure.link:XOT-1120
+#  @Great-Magna-Sign-Up
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter product name "oil" on page "Build An Export Plan - Funding and Credit"
+#  And "Robert" decides to enter country name "Russia" on the "Build An Export Plan - Funding and Credit" page
+
+  #as there is no last visited page on dashboard
+   @allure.link:XOT-1121
+   @Great_Magna_Export_Plan_12
+     @failed_exp_fc
+  Scenario:User should be able to click "lesson" on Funding and Credit page and click on dashboard should see "Funding and Credit" as last visited page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" should be on the "Build An Export Plan - Funding and Credit" Page
+    And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Funding and Credit"
+     And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Funding and Credit"
+#     And "Robert" should see "Funding and Credit" text under section "Export Plan" on page "GreatMagna - Dashboard"
+
+
+    @allure.link:XOT-1122
+  @Great_Magna_Export_Plan_13
+  Scenario:User should be able to click lessons link "Avoid cashflow challenges when exporting" and click back link "Costs And Pricing"
+
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Funding and Credit" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Avoid cashflow lesson" on page "Build An Export Plan - Funding and Credit"
+     And "Robert" decides to click on section "Avoid cashflow challenges when exporting" on page "Build An Export Plan - Funding and Credit"
+     And "Robert" should be on the "LearnToExport - Avoid cashflow challenges when exporting" page
+     And "Robert" decides to click on section "Funding and Credit" on page "LearnToExport - Avoid cashflow challenges when exporting"
+
+@Great_Magna_Tests
+@getting-paid-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_G_P
+Feature: GreatMagna - Getting Paid Page
 
   Background:
+   Given test authentication is done
 
-  @allure.link:CMS-157
-  Scenario: Visitors should be able to view "Invest - Landing" page
-    Given test authentication is done
-    Given "Robert" visits the "Atlas - landing" page
-    Then "Robert" should see following sections
-      | Sections    |
-      | Header      |
-      | Hero        |
-      | Benefits    |
-      | Sectors     |
-      | How we help |
-      | Contact us  |
-      | Footer      |
+   @allure.link:XOT-1131
+   @Great_Magna_Export_Plan
+     @failed_exp_gp_1_gp
+  Scenario:User should be able to click on "Payment methods" section and enter Notes
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to select random item for payment methods on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to enter text at "Payment Methods Notes" on page "Build An Export Plan - Getting Paid"
+
+   @allure.link:XOT-1132
+   @Great_Magna_Export_Plan
+     @failed_exp_gp_112_12
+  Scenario:User should be able to click on "Payment Terms" section and enter Notes
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to select random item for payment terms on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to enter text at "Payment Terms Notes" on page "Build An Export Plan - Getting Paid"
+
+   @allure.link:XOT-1133
+   @Great_Magna_Export_Plan
+     @failed_exp_gp_1
+  Scenario:User should be able to click on "Incoterms" section and enter Notes
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to select random item for incoterms on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to enter text at "Incoterms Notes" on page "Build An Export Plan - Getting Paid"
+
+
+   @allure.link:XOT-1134
+   @Great_Magna_Export_Plan__lesson_123
+     @failed_exp_gp_2
+  Scenario:User should be able to click lessons link "Choose the right payment method"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "payment methods lesson" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to click on lesson link "Choose the right payment method" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" decides to click on section "Choose the right payment method" on page "Build An Export Plan - Getting Paid"
+     And "Robert" should be on the "LearnToExport - Choose the right payment method" page
+     And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Choose the right payment method"
+
+
+   @allure.link:XOT-1135
+   @Great_Magna_Export_Plan__lesson_123
+  Scenario:User should be able to click lessons link "Decide when to get paid"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "payment terms lesson" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to click on lesson link "Decide when to get paid" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" decides to click on section "Decide when to get paid" on page "Build An Export Plan - Getting Paid"
+     And "Robert" should be on the "LearnToExport - Decide when to get paid" page
+     And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Decide when to get paid"
+
+   @allure.link:XOT-1136
+   @Great_Magna_Export_Plan__lesson_123
+  Scenario:User should be able to click lessons link "Choose which incoterms are right for you"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "incoterms lesson" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to click on lesson link "Choose which incoterms are right for you" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" decides to click on section "Choose which incoterms are right for you" on page "Build An Export Plan - Getting Paid"
+     And "Robert" should be on the "LearnToExport - Choose which incoterms are right for you" page
+     And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Choose which incoterms are right for you"
+
+
+  @allure.link:XOT-1137
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on navigation bar and navigate to "Travel Plan" page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Getting Paid"
+     And "Robert" decides to click on element "Nav Travel Plan" on page "Build An Export Plan - Getting Paid"
+     And "Robert" should be on the "Build An Export Plan - Travel Plan" Page
+
+@allure.link:XOT-1138
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on page "Travel Plan" at the bottom of the page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+  And "Robert" decides to click section complete on "Build An Export Plan - Getting Paid"
+  And "Robert" decides to click on section "Travel plan" on page "Build An Export Plan - Getting Paid"
+  And "Robert" should be on the "Build An Export Plan - Travel plan" page
+
+   @allure.link:XOT-1139
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Export plan home and should be on Export plan Home page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Getting Paid"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+@allure.link:XOT-1140
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Top Export plan home in Getting Paid and should be on Export plan dashboard page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Getting Paid"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+#
+#@allure.link:XOT-1141
+#  @Great-Magna-Sign-Up_1
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Getting paid" Page and enter the "Add a target market"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter country name "India" on the "Build An Export Plan - Getting Paid" Page
+
+ @allure.link:XOT-1142
+   @Great_Magna_Export_Plan_113
+  Scenario:User should be able to click on "Incoterms" on Getting Paid page and click on dashboard should see "Getting Paid" as last visited page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" should be on the "Build An Export Plan - Getting Paid" Page
+    And "Robert" decides to select random item for incoterms on page "Build An Export Plan - Getting Paid"
+   And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" should see "Getting Paid" text under section "Export Plan" on page "GreatMagna - Dashboard"
+
+@Great_Magna_Tests
+@marketing-approach-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_M_A
+Feature: GreatMagna - Marketing approach Page
+ Background:
+   Given test authentication is done
+
+
+  @allure.link:XOT-1151
+   @Great_Magna_Export_Plan_B_O_D_1_123
+  Scenario:User should be able to click on "Route to market" section and select random "route" and "how will you promote product"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "Add route to market" on page "Build An Export Plan - Marketing approach"
+     And "Robert" decides to select random item for "Route to market" on page "Build An Export Plan - Marketing approach"
+
+   @allure.link:XOT-1152
+   @Great_Magna_Export_Plan_B_O
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on "Add goal" and enter the objectives for exporting
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" fill business objective details on page "Build An Export Plan - Business Objectives"
+          | Position | Objectives | Owner        | PlannedReviews      |
+          | 1        | obj1       | obj1-owner   | obj1-plannedreviews |
+          | 2        | obj2       | obj2-owner   | obj2-plannedreviews |
+          | 3        | obj3       | obj3-owner   | obj3-plannedreviews |
+          | 4        | obj4       | obj4-owner   | obj4-plannedreviews |
+          | 5        | obj5       | obj5-owner   | obj5-plannedreviews |
+
+  @allure.link:XOT-1153
+     @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_B_O_D_1_123
+   Scenario:User should be able to delete Route to market
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to delete route to market on page "Build An Export Plan - Marketing approach"
+          | Position |
+          | 5    |
+          | 4    |
+          | 3    |
+          | 2    |
+          | 1    |
+
+   @allure.link:XOT-1154
+   @Great_Magna_Export_Plan_les_ma
+  Scenario:User should be able to click lessons link "Selling direct to your customer"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "What Marketing resources example" on page "Build An Export Plan - Marketing approach"
+     And "Robert" decides to click on element "Add route to market" on page "Build An Export Plan - Marketing approach"
+     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Marketing approach"
+     And "Robert" decides to click on section "Choose the right route to market" on page "Build An Export Plan - Marketing approach"
+     And "Robert" should be on the "LearnToExport - Choose the right route to market" page
+     And "Robert" decides to click on section "Marketing approach" on page "LearnToExport - Choose the right route to market"
+
+   @allure.link:XOT-1155
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to view Marketing approach pages
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "open" on page "Build An Export Plan - Marketing approach"
+     And "Robert" decides to click on element "0-14 year olds" on page "Build An Export Plan - Marketing approach"
+     And "Robert" decides to click on element "confirm" on page "Build An Export Plan - Marketing approach"
+
+   @allure.link:XOT-1156
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on navigation bar and navigate to "Costs and pricing" page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Marketing approach"
+     And "Robert" decides to click on element "Nav Costs And Pricing" on page "Build An Export Plan - Marketing approach"
+     And "Robert" should be on the "Build An Export Plan - Costs And Pricing" Page
+
+   @allure.link:XOT-1157
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on page "Costs And Pricing link" at the bottom of the page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click section complete on "Build An Export Plan - Marketing approach"
+    And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Marketing approach"
+    And "Robert" should be on the "Build An Export Plan - Costs And Pricing" page
+
+   @allure.link:XOT-1158
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Export plan home and should be on Export plan Home page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Marketing approach"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+
+
+  @allure.link:XOT-1159
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Top Export plan home in Marketing approach and should be on Export plan dashboard page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Marketing approach"
+      And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+#  @allure.link:XOT-1160
+#  @Great-Magna-Sign-Up
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter product name "Chair" on page "Build An Export Plan - Marketing approach"
+#  And "Robert" decides to enter country name "Brazil" on the "Build An Export Plan - Marketing approach" page
+
+    @allure.link:XOT-1161
+   @Great_Magna_Export_Plan_115
+  Scenario:User should be able to click on "Add route to market" on Marketing approach page and click on dashboard should see "Marketing approach" as last visited page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Marketing approach" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" should be on the "Build An Export Plan - Marketing approach" Page
+    And "Robert" decides to click on element "Add route to market" on page "Build An Export Plan - Marketing approach"
+   And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Marketing approach"
+#     And "Robert" should see "Marketing approach" text under section "Export Plan" on page "GreatMagna - Dashboard"
+@Great_Magna_Tests
+@target-markets-research-page
+@allure.suite:Great_Magna_Export_Plan_T_M_R
+@Great_Magna_Export_Plan
+Feature: GreatMagna - Target Markets Research Page
+   Background:
+   Given test authentication is done
+
+   @allure.link:XOT-1171
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to "Open DataSnapshot" and select random age group and confirm
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Data Snapshot" on page "Build An Export Plan - Target Markets Research"
+    And "Robert" decides to select random checkbox "Age Group" on page "Build An Export Plan - Target Markets Research"
+
+#@allure.link:XOT-1172
+#   @Great_Magna_Export_Plan
+#  Scenario:User should be able to select random age group and click confirm and verify the selected age group
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "Data Snapshot" on page "Build An Export Plan - Target Markets Research"
+#    And "Robert" decides to select random checkbox "Age Group" on page "Build An Export Plan - Target Markets Research"
+#    And "Robert" decides to verify selected "Age Group" on page "Build An Export Plan - Target Markets Research"
+
+   @allure.link:XOT-1173
+   @Great_Magna_Export_Plan_tm_1
+  Scenario:User should be able to view "Describe the consumer demand" section and enter text and validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Describe the consumer demand example" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to enter text at "Describe the consumer demand" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to validate entered text at "Describe the consumer demand" on page "Build An Export Plan - Target Markets Research"
+
+@allure.link:XOT-1174
+   @Great_Magna_Export_Plan_tm
+  Scenario:User should be able to view "Who are your competitors" section and enter text and validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Who are your competitors example" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to enter text at "Who are your competitors" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to validate entered text at "Who are your competitors" on page "Build An Export Plan - Target Markets Research"
+
+
+
+   @allure.link:XOT-1175
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to view "What are the product trends" section and enter text and validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "What are the product trends example" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to enter text at "What are the product trends" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to validate entered text at "What are the product trends" on page "Build An Export Plan - Target Markets Research"
+
+   @allure.link:XOT-1176
+   @Great_Magna_Export_Plan
+     @failed_4
+  Scenario:User should be able to view "What’s your unique selling proposition" section and enter text and validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "What’s your unique selling proposition example" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to enter text at "What’s your unique selling proposition" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to validate entered text at "What’s your unique selling proposition" on page "Build An Export Plan - Target Markets Research"
+
+   @allure.link:XOT-1177
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to enter price in  "What’s the average price for your product"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to enter value in "What’s the average price for your product" on page "Build An Export Plan - Target Markets Research"
+
+
+   @allure.link:XOT-1178
+   @Great_Magna_Export_Plan
+     @tm_5
+ Scenario:User should be able to click lesson link "Work out customer demand" and click link back to "Target Markets Research"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to click on section "Work out customer demand" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" should be on the "LearnToExport - Work out customer demand" page
+     And "Robert" decides to click on section "Target Markets Research" on page "LearnToExport - Work out customer demand"
+
+
+   @allure.link:XOT-1179
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on page "Adapting Your Product link" at the bottom of the page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click section complete on "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" should be on the "Build An Export Plan - Adapting Your Product" page
+
+   @allure.link:XOT-1180
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Export plan home and should be on Export plan Home page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Target Markets Research"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+
+   @allure.link:XOT-1181
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on navigation bar and navigate to "Adapting Your Product" page
+
+    Given "Robert" visited "GreatMagna - Login" page
+     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+     And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" decides to click on element "Nav Adapting Your Product" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" should be on the "Build An Export Plan - Adapting Your Product" Page
+
+@allure.link:XOT-1182
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Top Export plan home in Target Markets Research and should be on Export plan dashboard page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+  And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+  And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+   @allure.link:XOT-1183
+   @Great_Magna_Export_Plan_T_M_R_1
+     @Great_Magna_Export_Plan
+  Scenario:User should be able to enter price in  "What’s the average price for your product"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to enter value in "What’s the average price for your product" on page "Build An Export Plan - Target Markets Research"
+
+
+#@allure.link:XOT-1184
+#  @Great-Magna-Sign-Up
+#  @Great_Magna_Export_Plan_tmr_sign
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Target Markets Research" Page and enter "Add Product" and "Add Country"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter product name "Coffee" on page "Build An Export Plan - Target Markets Research"
+#  And "Robert" decides to enter country name "India" on the "Build An Export Plan - Target Markets Research" page
+
+  @allure.link:XOT-1185
+   @Great_Magna_Export_Plan_117
+    @Great_Magna_Export_Plan
+  Scenario:User should be able to click on "What’s the average price for your product" on Target Markets Research" page and click on dashboard should see "Marketing approach" as last visited page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" should be on the "Build An Export Plan - Target Markets Research" Page
+    And "Robert" decides to enter value in "What’s the average price for your product" on page "Build An Export Plan - Target Markets Research"
+   And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Target Markets Research"
+     And "Robert" should see "Target Markets Research" text under section "Export Plan" on page "GreatMagna - Dashboard"
+@Great_Magna_Tests
+@travel-plan-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_T_P
+
+Feature: GreatMagna - Travel Plan Page
+   Background:
+   Given test authentication is done
+
+  @allure.link:XOT-1191
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to enter text at  "Travel Information"  and "Cultural Information"section and validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "open datasnapshot" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to click on element "languages educational" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to click on element "travel information educational" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to enter text at "travel information" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to validate entered text at "travel information" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to enter text at "cultural information" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to validate entered text at "cultural information" on page "Build An Export Plan - Travel Plan"
+
+   @allure.link:XOT-1192
+   @Great_Magna_Export_Plan_D
+  Scenario:User should be able to click on "Visa Information" and "Planned Travel" section and validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to select radio button "I dont need visa" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to click on element "Planned Travel educational" on page "Build An Export Plan - Travel Plan"
+
+   @allure.link:XOT-1193
+   @Great_Magna_Export_Plan_D
+  Scenario:User should be able to click on "Visa Information" and enter text adn validate
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to select radio button "I need a visa" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to enter text at "How and where" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to enter text at "How long" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to enter text at "notes" on page "Build An Export Plan - Travel Plan"
+
+#
+#
+    @allure.link:XOT-1194
+   @Great_Magna_Export_Plan_tp_1
+  Scenario:User should be able to click another trip and enter trip details and delete "Trip details"
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" fill trip details on page "Build An Export Plan - Travel Plan"
+          | Position | TripName  |
+          | 1        | Trip1- India    |
+          | 2        | Trip2- Nigeria  |
+          | 3        | Trip3- Ghana      |
+          | 4       | Trip4- Bangladesh |
+          | 5        | Trip5- Indonesia  |
+
+  @allure.link:XOT-1195
+   @Great_Magna_Export_Plan_tp
+    @failed_exp
+   Scenario:User should be able to delete the trip details
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+     Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to delete trip details on page "Build An Export Plan - Travel Plan"
+          | Position |
+          | 5     |
+          | 4     |
+#          | 3     |
+#          | 2     |
+#          | 1     |
+
+   @allure.link:XOT-1196
+   @Great-Magna-Export_Plan-progress-bar-test
+ Scenario:User should be able to click on page "Business Risk link" at the bottom of the page
+
+Given "Robert" visited "GreatMagna - Login" page
+   When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+   And "Robert" should be on the "GreatMagna - Dashboard" Page
+   Then "Robert" decides to click on "Build an export plan"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+     Then "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click section complete on "Build An Export Plan - Travel Plan"
+    And "Robert" decides to click on section "Business Risk" on page "Build An Export Plan - Travel Plan"
+    And "Robert" should be on the "Build An Export Plan - Business Risk" page
+
+
+    @allure.link:XOT-1197
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on navigation bar and navigate to "Business Risk" page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on element "Open Navigation" on page "Build An Export Plan - Travel Plan"
+     And "Robert" decides to click on element "Nav Business Risk" on page "Build An Export Plan - Travel Plan"
+     And "Robert" should be on the "Build An Export Plan - Business Risk" Page
+
+
+    @allure.link:XOT-1198
+   @Great_Magna_Export_Plan
+  Scenario:User should be able to click on Export plan home on "Travel plan" and should be on Export plan Home page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+      And "Robert" decides to click on section "Travel plan" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Travel plan"
+    And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+@allure.link:XOT-1199
+   @Great_Magna_Export_Plan_124_oo
+  Scenario:User should be able to click on Top Export plan home in Travel Plan" and should be on Export plan dashboard page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" decides to click on section "Top Export Plan Home" on page "Build An Export Plan - Travel Plan"
+     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
+
+#@allure.link:XOT-1200
+#  @Great-Magna-Sign-Up
+#  Scenario Outline: New User should be able to navigate to Export Plan and click on "Travel Plan" Page and enter the "Add Product"
+#
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#  And "Robert" decides to click on "Build an export plan"
+#  And "Robert" "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+#  And "Robert" decides to enter product name "Televisions" on page "Build An Export Plan - Travel Plan"
+#  And "Robert" decides to enter country name "Angola" on the "Build An Export Plan - Travel Plan" page
+#
+#
+#    @allure.link:XOT-1201
+#   @Great-Magna-Search-2tp
+#  Scenario: Visitor should be able to Enter and Save Product
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+999888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on Product and Search again for "Vehicle" on the "GreatMagna - Dashboard" Page
+#    And "Robert" decides to click on select and save random product options on the "GreatMagna - Dashboard" Page
+
+ @allure.link:XOT-1202
+   @Great_Magna_Export_Plan_118
+  Scenario:User should be able to click on "Export Plan Home" on Travel Plan page and click on dashboard should see "Marketing approach" as last visited page
+
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+   And "Robert" decides to click on section "Travel Plan" on page "Build An Export Plan - Export Plan Dashboard"
+     And "Robert" should be on the "Build An Export Plan - Travel Plan" Page
+    And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Travel plan"
+   And "Robert" decides to click on element "Dashboard" on page "Build An Export Plan - Travel Plan"
+     And "Robert" should see "Travel Plan" text under section "Export Plan" on page "GreatMagna - Dashboard"
