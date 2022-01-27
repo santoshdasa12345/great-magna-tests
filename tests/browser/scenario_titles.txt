@@ -1,0 +1,38 @@
+@Great_Magna_Tests @lessons-page @allure.suite:Great_Magna_Lessons
+Feature: GreatMagna - Lessons Page
+
+  Background:
+
+  @allure.link:XOT-124 @Great-Magna-Lessons-progress-bar-test_1
+  Scenario: User should be able to view Lesson page "Move from accidental exporting to strategic exporting" and click Yes and back to check the progress bar on lessons and module and lesson categories section
+    Given test authentication is done
+    Given "Robert" visited "GreatMagna - Login" page
+    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Learn to export"
+    Then "Robert" decides to click on section "Identify opportunities" on page "LearnToExport - Learn Categories"
+    And "Robert" decides to click on section "Move from accidental exporting to strategic exporting" on page "LearnToExport - Identify opportunities"
+    And "Robert" decides to click checkbox Yes on "LearnToExport - Move from accidental exporting to strategic exporting"
+    And "Robert" decides to click on section "Bottom Back" on page "LearnToExport - Move from accidental exporting to strategic exporting"
+    And "Robert" should be able to see progress bar for section "Identify opportunities" on "LearnToExport - Identify opportunities" page
+    And "Robert" decides to click on section "Top Back" on page "LearnToExport - Identify opportunities"
+    And "Robert" should be able to see progress bar for section "Identify opportunities" on "LearnToExport - Learn Categories" page
+
+@atlas @landing-page @allure.suite:Atlas
+Feature: Invest Atlas - landing page
+
+  Background:
+
+  @allure.link:CMS-157
+  Scenario: Visitors should be able to view "Invest - Landing" page
+    Given test authentication is done
+    Given "Robert" visits the "Atlas - landing" page
+    Then "Robert" should see following sections
+      | Sections    |
+      | Header      |
+      | Hero        |
+      | Benefits    |
+      | Sectors     |
+      | How we help |
+      | Contact us  |
+      | Footer      |
