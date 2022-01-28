@@ -1563,19 +1563,19 @@ workflows:
 #            branches:
 #              only: master
 #    jobs:
-      - setup_env_for_parallel_browser_tests_using_circleci
-      - stage_parallel_browser_tests_using_circleci:
-          requires:
-            - setup_env_for_parallel_browser_tests_using_circleci
-      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
-          requires:
-            - stage_parallel_browser_tests_using_circleci
-      - merge_junit_results_from_parallel_browser_tests:
-          requires:
-            - stage_parallel_browser_tests_using_circleci
-      - store_behave_logs_from_browser_tests_as_artifacts:
-          requires:
-            - stage_parallel_browser_tests_using_circleci
+#      - setup_env_for_parallel_browser_tests_using_circleci
+#      - stage_parallel_browser_tests_using_circleci:
+#          requires:
+#            - setup_env_for_parallel_browser_tests_using_circleci
+#      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
+#          requires:
+#            - stage_parallel_browser_tests_using_circleci
+#      - merge_junit_results_from_parallel_browser_tests:
+#          requires:
+#            - stage_parallel_browser_tests_using_circleci
+#      - store_behave_logs_from_browser_tests_as_artifacts:
+#          requires:
+#            - stage_parallel_browser_tests_using_circleci
 
 #  run_cms_load_tests_on_stage:
 #    triggers:
