@@ -6,18 +6,18 @@ Feature: GreatMagna - Target Markets Research Page
    Background:
    Given test authentication is done
 
-   @allure.link:XOT-1171
-   @Great_Magna_Export_Plan
-  Scenario:User should be able to "Open DataSnapshot" and select random age group and confirm
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "Data Snapshot" on page "Build An Export Plan - Target Markets Research"
-    And "Robert" decides to select random checkbox "Age Group" on page "Build An Export Plan - Target Markets Research"
+#   @allure.link:XOT-1171
+#   @Great_Magna_Export_Plan
+#  Scenario:User should be able to "Open DataSnapshot" and select random age group and confirm
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "Data Snapshot" on page "Build An Export Plan - Target Markets Research"
+#    And "Robert" decides to select random checkbox "Age Group" on page "Build An Export Plan - Target Markets Research"
 
 #@allure.link:XOT-1172
 #   @Great_Magna_Export_Plan
@@ -32,19 +32,19 @@ Feature: GreatMagna - Target Markets Research Page
 #    And "Robert" decides to select random checkbox "Age Group" on page "Build An Export Plan - Target Markets Research"
 #    And "Robert" decides to verify selected "Age Group" on page "Build An Export Plan - Target Markets Research"
 
-   @allure.link:XOT-1173
-   @Great_Magna_Export_Plan_tm_1
-  Scenario:User should be able to view "Describe the consumer demand" section and enter text and validate
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "Describe the consumer demand example" on page "Build An Export Plan - Target Markets Research"
-     And "Robert" decides to enter text at "Describe the consumer demand" on page "Build An Export Plan - Target Markets Research"
-     And "Robert" decides to validate entered text at "Describe the consumer demand" on page "Build An Export Plan - Target Markets Research"
+#   @allure.link:XOT-1173
+#   @Great_Magna_Export_Plan_tm_1
+#  Scenario:User should be able to view "Describe the consumer demand" section and enter text and validate
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "Describe the consumer demand example" on page "Build An Export Plan - Target Markets Research"
+#     And "Robert" decides to enter text at "Describe the consumer demand" on page "Build An Export Plan - Target Markets Research"
+#     And "Robert" decides to validate entered text at "Describe the consumer demand" on page "Build An Export Plan - Target Markets Research"
 
 @allure.link:XOT-1174
    @Great_Magna_Export_Plan_tm
@@ -104,21 +104,21 @@ Feature: GreatMagna - Target Markets Research Page
      And "Robert" decides to enter value in "What’s the average price for your product" on page "Build An Export Plan - Target Markets Research"
 
 
-   @allure.link:XOT-1178
-   @Great_Magna_Export_Plan
-     @tm_5
- Scenario:User should be able to click lesson link "Work out customer demand" and click link back to "Target Markets Research"
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Target Markets Research"
-     And "Robert" decides to click on section "Work out customer demand" on page "Build An Export Plan - Target Markets Research"
-     And "Robert" should be on the "LearnToExport - Work out customer demand" page
-     And "Robert" decides to click on section "Target Markets Research" on page "LearnToExport - Work out customer demand"
+#   @allure.link:XOT-1178
+#   @Great_Magna_Export_Plan
+#     @tm_5
+# Scenario:User should be able to click lesson link "Work out customer demand" and click link back to "Target Markets Research"
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Target Markets Research"
+#     And "Robert" decides to click on section "Work out customer demand" on page "Build An Export Plan - Target Markets Research"
+#     And "Robert" should be on the "LearnToExport - Work out customer demand" page
+#     And "Robert" decides to click on section "Target Markets Research" on page "LearnToExport - Work out customer demand"
 
 
    @allure.link:XOT-1179

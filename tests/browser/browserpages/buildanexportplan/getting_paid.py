@@ -248,55 +248,55 @@ def check_section_complete_yes(driver: WebDriver, element_selector_name: str):
     )
     check_yes_link.click()
 
-
-def fill_out_country(driver: WebDriver, country: str):
-    driver.implicitly_wait(1)
-
-    driver.find_element_by_xpath("//button[contains(text(),'Add a target market')]").click()
-    if 0 == len(country):
-        # if country name is not provided from the test case, then select one of the random 5 countries listed on the browser
-        path_random_country_element = "body > div:nth-child(13) > div > div > div > div > div > div.only-desktop > div.suggested-markets > ul > button:nth-child(" + str(
-            random.randint(1, 5)) + ")"
-        driver.find_element_by_css_selector(path_random_country_element).click()
-    else:
-        # search using the provide country name from the test case
-        driver.find_element_by_css_selector("#search-input").clear()
-        driver.find_element_by_css_selector("#search-input").send_keys(country)
-
-        # look out for the list displayed after entering country name and select random/provided country
-        ul_list_element = driver.find_element_by_xpath(
-            "//body/div[11]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul")
-
-        section_elements = ul_list_element.find_elements_by_tag_name("section")
-        logging.debug("length of section elements " + str(len(section_elements)))
-        # select random section element and within that select a country
-        index_random_element_to_be_selected = random.randint(0, len(section_elements) - 1)
-        logging.debug("Index of section elements " + str(index_random_element_to_be_selected))
-        section_element_selected = section_elements[index_random_element_to_be_selected]
-        logging.debug(section_element_selected)
-
-        div_elements = section_element_selected.find_elements_by_tag_name("div")  # 2 has to be present
-        logging.debug("length of div elements " + str(len(div_elements)))
-        level_1_div_element = div_elements[
-            1]  # section_element_selected.find_element_by_class_name("p-t-s expand-section open")
-        level_2_div_element = level_1_div_element.find_element_by_tag_name("div")
-        span_elements = level_2_div_element.find_elements_by_tag_name("span")
-        logging.debug("length of span elements " + str(len(span_elements)))
-        # select random span element and within that select a country
-        index_random_element_to_be_selected = random.randint(0, len(span_elements) - 1)
-        span_element_selected = span_elements[index_random_element_to_be_selected]
-        li_element = span_element_selected.find_element_by_tag_name("li")
-        # finally arrived at country name button(s)
-        buttons_elements = li_element.find_elements_by_tag_name("button")
-        logging.debug("length of country button elements " + str(len(buttons_elements)))
-        country_name_found = False
-        for button_element in buttons_elements:
-            if str(button_element.text).lower() == country.lower():
-                country_name_found = True
-                button_element.click()
-                break
-        if country_name_found == False:
-            raise Exception("Country name could not be found " + str(country))
+#
+# def fill_out_country(driver: WebDriver, country: str):
+#     driver.implicitly_wait(1)
+#
+#     driver.find_element_by_xpath("//button[contains(text(),'Add a target market')]").click()
+#     if 0 == len(country):
+#         # if country name is not provided from the test case, then select one of the random 5 countries listed on the browser
+#         path_random_country_element = "body > div:nth-child(13) > div > div > div > div > div > div.only-desktop > div.suggested-markets > ul > button:nth-child(" + str(
+#             random.randint(1, 5)) + ")"
+#         driver.find_element_by_css_selector(path_random_country_element).click()
+#     else:
+#         # search using the provide country name from the test case
+#         driver.find_element_by_css_selector("#search-input").clear()
+#         driver.find_element_by_css_selector("#search-input").send_keys(country)
+#
+#         # look out for the list displayed after entering country name and select random/provided country
+#         ul_list_element = driver.find_element_by_xpath(
+#             "//body/div[11]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul")
+#
+#         section_elements = ul_list_element.find_elements_by_tag_name("section")
+#         logging.debug("length of section elements " + str(len(section_elements)))
+#         # select random section element and within that select a country
+#         index_random_element_to_be_selected = random.randint(0, len(section_elements) - 1)
+#         logging.debug("Index of section elements " + str(index_random_element_to_be_selected))
+#         section_element_selected = section_elements[index_random_element_to_be_selected]
+#         logging.debug(section_element_selected)
+#
+#         div_elements = section_element_selected.find_elements_by_tag_name("div")  # 2 has to be present
+#         logging.debug("length of div elements " + str(len(div_elements)))
+#         level_1_div_element = div_elements[
+#             1]  # section_element_selected.find_element_by_class_name("p-t-s expand-section open")
+#         level_2_div_element = level_1_div_element.find_element_by_tag_name("div")
+#         span_elements = level_2_div_element.find_elements_by_tag_name("span")
+#         logging.debug("length of span elements " + str(len(span_elements)))
+#         # select random span element and within that select a country
+#         index_random_element_to_be_selected = random.randint(0, len(span_elements) - 1)
+#         span_element_selected = span_elements[index_random_element_to_be_selected]
+#         li_element = span_element_selected.find_element_by_tag_name("li")
+#         # finally arrived at country name button(s)
+#         buttons_elements = li_element.find_elements_by_tag_name("button")
+#         logging.debug("length of country button elements " + str(len(buttons_elements)))
+#         country_name_found = False
+#         for button_element in buttons_elements:
+#             if str(button_element.text).lower() == country.lower():
+#                 country_name_found = True
+#                 button_element.click()
+#                 break
+#         if country_name_found == False:
+#             raise Exception("Country name could not be found " + str(country))
 
 
 # def fill_out_products_and_country(driver: WebDriver, products: str, country: str):

@@ -251,133 +251,133 @@ def check_section_complete_yes(driver: WebDriver, element_selector_name: str):
     )
     check_yes_link.click()
 
-
-def fill_out_country(driver: WebDriver, country: str):
-    driver.implicitly_wait(1)
-    # parent div: //body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]
-    # parent ul: //body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul
-
-    # where to export : country search
-    # //body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]
-    # //body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/ul
-
-    # country
-    country_btn = find_element(
-        driver, find_selector_by_name(SELECTORS, "add a target market")  # dashboard add country button
-    )
-    country_btn.click()
-
-    if 0 == len(country):
-        # if country name is not provided from the test case, then select one of the random 5 countries listed on the browser
-        path_random_country_element = "body > div:nth-child(13) > div > div > div > div > div > div.only-desktop > div.suggested-markets > ul > button:nth-child(" + str(
-            random.randint(1, 5)) + ")"
-        driver.find_element_by_css_selector(path_random_country_element).click()
-    else:
-        # search using the provide country name from the test case
-        driver.find_element_by_css_selector("#search-input").clear()
-        driver.find_element_by_css_selector("#search-input").send_keys(country)
-
-        # look out for the list displayed after entering country name and select random/provided country
-        ul_list_element = driver.find_element_by_xpath(
-            "//body/div[11]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul")
-
-        section_elements = ul_list_element.find_elements_by_tag_name("section")
-        logging.debug("length of section elements " + str(len(section_elements)))
-        # select random section element and within that select a country
-        index_random_element_to_be_selected = random.randint(0, len(section_elements) - 1)
-        logging.debug("Index of section elements " + str(index_random_element_to_be_selected))
-        section_element_selected = section_elements[index_random_element_to_be_selected]
-        logging.debug(section_element_selected)
-
-        div_elements = section_element_selected.find_elements_by_tag_name("div")  # 2 has to be present
-        logging.debug("length of div elements " + str(len(div_elements)))
-        level_1_div_element = div_elements[
-            1]  # section_element_selected.find_element_by_class_name("p-t-s expand-section open")
-        level_2_div_element = level_1_div_element.find_element_by_tag_name("div")
-        span_elements = level_2_div_element.find_elements_by_tag_name("span")
-        logging.debug("length of span elements " + str(len(span_elements)))
-        # select random span element and within that select a country
-        index_random_element_to_be_selected = random.randint(0, len(span_elements) - 1)
-        span_element_selected = span_elements[index_random_element_to_be_selected]
-        li_element = span_element_selected.find_element_by_tag_name("li")
-        # finally arrived at country name button(s)
-        buttons_elements = li_element.find_elements_by_tag_name("button")
-        logging.debug("length of country button elements " + str(len(buttons_elements)))
-        country_name_found = False
-        for button_element in buttons_elements:
-            if str(button_element.text).lower() == country.lower():
-                country_name_found = True
-                button_element.click()
-                time.sleep(2)
-                break
-        if country_name_found == False:
-            raise Exception("Country name could not be found " + str(country))
-
-
-def fill_out_product(driver: WebDriver, product_name: str):
-    product_btn = find_element(
-        driver, find_selector_by_name(SELECTORS, "add a product")
-    )
-    product_btn.click()
-    # search_again_top_bottom(driver)
-    driver.implicitly_wait(1)
-    driver.find_element_by_xpath("//body/div[9]/div/div/form/div[2]/div/div/div[2]/label/div/input").clear()
-    driver.find_element_by_xpath("//body/div[9]/div/div/form/div[2]/div/div/div[2]/label/div/input").send_keys(
-        product_name)
-    driver.find_element_by_xpath("//body/div[9]/div/div/form/div[2]/div/div/div[2]/button/i").click()
-
-    # Inorder to copy this code, 3 elements to be copied
-    # as per the element path on the browser
-    # save_product_btn, parent_1_div_element, search next button
-    # def search_select_save_radio(driver: WebDriver):
-    counter = 0
-    while True:
-
-        if counter >= 50:
-            break
-        # logging.debug("Counter: " + str(counter))
-
-        driver.implicitly_wait(1)
-
-        # check for save button
-        save_btn_found = False
-        try:
-            save_product_btn = driver.find_element_by_xpath(
-                "//body/div[9]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button")
-            save_btn_found = True
-        except Exception as ex:
-            logging.debug("save button not found.Exception: " + str(ex))
-
-        if save_btn_found == True:
-            logging.debug("Save button found")
-            save_product_btn.click()
-            return
-        # look for div's and radio buttons
-        parent_1_div_element = driver.find_element_by_xpath(
-            "//body/div[9]/div/div/form/div[2]/div/span/div/section[1]/div")  # ("interaction grid m-v-xs")
-        child_1_div_element = parent_1_div_element.find_element_by_tag_name("div")  # ("c-fullwidth")
-        main_div_element = child_1_div_element.find_element_by_tag_name("div")  # "m-b-xs"
-        # radio button labels
-        label_elements = main_div_element.find_elements_by_tag_name("label")
-        radio_elements = []
-        for label_element in label_elements:
-            radio_ele = None
-            try:
-                radio_ele = label_element.find_element_by_tag_name("input")
-            except Exception as e:
-                continue
-            radio_elements.append(radio_ele)
-        # logging.debug('number of labels - ' + str(len(radio_elements)))
-        random_label_index = random.randint(0, len(radio_elements) - 1)
-        # logging.debug('Index of radio buttons to be selected -> ' + str(random_label_index))
-
-        radio_btn_selected = radio_elements[random_label_index]
-        radio_btn_selected.click()
-
-        driver.implicitly_wait(1)
-        search_next_btn = find_element(
-            driver, find_selector_by_name(SELECTORS, "search next button")
-        )
-        search_next_btn.click()
-
-        counter += 1
+#
+# def fill_out_country(driver: WebDriver, country: str):
+#     driver.implicitly_wait(1)
+#     # parent div: //body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]
+#     # parent ul: //body/div[5]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul
+#
+#     # where to export : country search
+#     # //body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]
+#     # //body/div[8]/div/div/div/div/div/div[1]/div[3]/div[2]/div[2]/ul
+#
+#     # country
+#     country_btn = find_element(
+#         driver, find_selector_by_name(SELECTORS, "add a target market")  # dashboard add country button
+#     )
+#     country_btn.click()
+#
+#     if 0 == len(country):
+#         # if country name is not provided from the test case, then select one of the random 5 countries listed on the browser
+#         path_random_country_element = "body > div:nth-child(13) > div > div > div > div > div > div.only-desktop > div.suggested-markets > ul > button:nth-child(" + str(
+#             random.randint(1, 5)) + ")"
+#         driver.find_element_by_css_selector(path_random_country_element).click()
+#     else:
+#         # search using the provide country name from the test case
+#         driver.find_element_by_css_selector("#search-input").clear()
+#         driver.find_element_by_css_selector("#search-input").send_keys(country)
+#
+#         # look out for the list displayed after entering country name and select random/provided country
+#         ul_list_element = driver.find_element_by_xpath(
+#             "//body/div[11]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul")
+#
+#         section_elements = ul_list_element.find_elements_by_tag_name("section")
+#         logging.debug("length of section elements " + str(len(section_elements)))
+#         # select random section element and within that select a country
+#         index_random_element_to_be_selected = random.randint(0, len(section_elements) - 1)
+#         logging.debug("Index of section elements " + str(index_random_element_to_be_selected))
+#         section_element_selected = section_elements[index_random_element_to_be_selected]
+#         logging.debug(section_element_selected)
+#
+#         div_elements = section_element_selected.find_elements_by_tag_name("div")  # 2 has to be present
+#         logging.debug("length of div elements " + str(len(div_elements)))
+#         level_1_div_element = div_elements[
+#             1]  # section_element_selected.find_element_by_class_name("p-t-s expand-section open")
+#         level_2_div_element = level_1_div_element.find_element_by_tag_name("div")
+#         span_elements = level_2_div_element.find_elements_by_tag_name("span")
+#         logging.debug("length of span elements " + str(len(span_elements)))
+#         # select random span element and within that select a country
+#         index_random_element_to_be_selected = random.randint(0, len(span_elements) - 1)
+#         span_element_selected = span_elements[index_random_element_to_be_selected]
+#         li_element = span_element_selected.find_element_by_tag_name("li")
+#         # finally arrived at country name button(s)
+#         buttons_elements = li_element.find_elements_by_tag_name("button")
+#         logging.debug("length of country button elements " + str(len(buttons_elements)))
+#         country_name_found = False
+#         for button_element in buttons_elements:
+#             if str(button_element.text).lower() == country.lower():
+#                 country_name_found = True
+#                 button_element.click()
+#                 time.sleep(2)
+#                 break
+#         if country_name_found == False:
+#             raise Exception("Country name could not be found " + str(country))
+#
+#
+# def fill_out_product(driver: WebDriver, product_name: str):
+#     product_btn = find_element(
+#         driver, find_selector_by_name(SELECTORS, "add a product")
+#     )
+#     product_btn.click()
+#     # search_again_top_bottom(driver)
+#     driver.implicitly_wait(1)
+#     driver.find_element_by_xpath("//body/div[9]/div/div/form/div[2]/div/div/div[2]/label/div/input").clear()
+#     driver.find_element_by_xpath("//body/div[9]/div/div/form/div[2]/div/div/div[2]/label/div/input").send_keys(
+#         product_name)
+#     driver.find_element_by_xpath("//body/div[9]/div/div/form/div[2]/div/div/div[2]/button/i").click()
+#
+#     # Inorder to copy this code, 3 elements to be copied
+#     # as per the element path on the browser
+#     # save_product_btn, parent_1_div_element, search next button
+#     # def search_select_save_radio(driver: WebDriver):
+#     counter = 0
+#     while True:
+#
+#         if counter >= 50:
+#             break
+#         # logging.debug("Counter: " + str(counter))
+#
+#         driver.implicitly_wait(1)
+#
+#         # check for save button
+#         save_btn_found = False
+#         try:
+#             save_product_btn = driver.find_element_by_xpath(
+#                 "//body/div[9]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button")
+#             save_btn_found = True
+#         except Exception as ex:
+#             logging.debug("save button not found.Exception: " + str(ex))
+#
+#         if save_btn_found == True:
+#             logging.debug("Save button found")
+#             save_product_btn.click()
+#             return
+#         # look for div's and radio buttons
+#         parent_1_div_element = driver.find_element_by_xpath(
+#             "//body/div[9]/div/div/form/div[2]/div/span/div/section[1]/div")  # ("interaction grid m-v-xs")
+#         child_1_div_element = parent_1_div_element.find_element_by_tag_name("div")  # ("c-fullwidth")
+#         main_div_element = child_1_div_element.find_element_by_tag_name("div")  # "m-b-xs"
+#         # radio button labels
+#         label_elements = main_div_element.find_elements_by_tag_name("label")
+#         radio_elements = []
+#         for label_element in label_elements:
+#             radio_ele = None
+#             try:
+#                 radio_ele = label_element.find_element_by_tag_name("input")
+#             except Exception as e:
+#                 continue
+#             radio_elements.append(radio_ele)
+#         # logging.debug('number of labels - ' + str(len(radio_elements)))
+#         random_label_index = random.randint(0, len(radio_elements) - 1)
+#         # logging.debug('Index of radio buttons to be selected -> ' + str(random_label_index))
+#
+#         radio_btn_selected = radio_elements[random_label_index]
+#         radio_btn_selected.click()
+#
+#         driver.implicitly_wait(1)
+#         search_next_btn = find_element(
+#             driver, find_selector_by_name(SELECTORS, "search next button")
+#         )
+#         search_next_btn.click()
+#
+#         counter += 1

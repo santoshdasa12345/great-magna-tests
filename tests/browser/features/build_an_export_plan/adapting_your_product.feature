@@ -20,8 +20,8 @@ Feature: GreatMagna - Adapting Your Product Page
      #And "Robert" decides to click on element "Hide Data Snapshot" on page "Build An Export Plan - Adapting Your Product"
 
    @allure.link:XOT-1032
-   @Great_Magna_Export_Plan
- Scenario:User should be able to click lesson link "Adapting your product or service" and click link back to "Adapting your product"
+   @Great_Magna_Export_Plan_adapt
+  Scenario:User should be able to click lesson link "Adapting your product or service" and click link back to "Adapting your product"
 
     Given "Robert" visited "GreatMagna - Login" page
     When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
@@ -29,7 +29,7 @@ Feature: GreatMagna - Adapting Your Product Page
     Then "Robert" decides to click on "Build an export plan"
      And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
      And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Adapting Your Product"
+     And "Robert" decides to click on element "Adapting lesson" on page "Build An Export Plan - Adapting Your Product"
      And "Robert" decides to click on section "Adapting your product or service" on page "Build An Export Plan - Adapting Your Product"
      And "Robert" should be on the "LearnToExport - Adapting your product or service" page
      And "Robert" decides to click on section "Adapting Your Product" on page "LearnToExport - Adapting your product or service"
@@ -57,7 +57,7 @@ Feature: GreatMagna - Adapting Your Product Page
     And "Robert" decides to enter text at "Size" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" decides to validate entered text at "Size" on page "Build An Export Plan - Adapting Your Product"
 
-    And "Robert" decides to click on element "Product changes to comply educational" on page "Build An Export Plan - Adapting Your Product"
+#    And "Robert" decides to click on element "Product changes to comply educational" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" decides to enter text at "Product changes to comply" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" decides to validate entered text at "Product changes to comply" on page "Build An Export Plan - Adapting Your Product"
 
@@ -70,7 +70,7 @@ Feature: GreatMagna - Adapting Your Product Page
 
 
    @allure.link:XOT-1034
-   @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_comm
   Scenario:User should be able to view educational tool tip and enter relevant text in "Documents you need to provide to meet the requirements for your target market"
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -87,7 +87,7 @@ Feature: GreatMagna - Adapting Your Product Page
     And "Robert" decides to enter text at "Insurance certificate" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" decides to validate entered text at "Insurance certificate" on page "Build An Export Plan - Adapting Your Product"
 
-    And "Robert" decides to click on element "Commercial invoice educational" on page "Build An Export Plan - Adapting Your Product"
+#    And "Robert" decides to click on element "Commercial invoice educational" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" decides to enter text at "Commercial invoice" on page "Build An Export Plan - Adapting Your Product"
     And "Robert" decides to validate entered text at "Commercial invoice" on page "Build An Export Plan - Adapting Your Product"
 
@@ -138,7 +138,7 @@ Feature: GreatMagna - Adapting Your Product Page
 
 
  @allure.link:XOT-1038
-   @Great_Magna_Export_Plan
+   @Great_Magna_Export_Plan_add_document
   Scenario:User should be able to click on "Add another document" and enter the Document name and Notes
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -155,23 +155,23 @@ Feature: GreatMagna - Adapting Your Product Page
           | 4        | Address Proof | Address Proof   |
           | 5        | Packing List  | Packing List    |
 
-    @allure.link:XOT-1039
-   @Great_Magna_Export_Plan
-   Scenario:User should be able to click on "Add another document" and delete the document and notes
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-      And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
-    And "Robert" decides to delete document details on page "Build An Export Plan - Adapting Your Product"
-          | Position |
-          | 5     |
-          | 4     |
-          | 3     |
-          | 2     |
-          | 1     |
+#    @allure.link:XOT-1039
+#   @Great_Magna_Export_Plan_del_doc
+#   Scenario:User should be able to click on "Add another document" and delete the document and notes
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#     Then "Robert" decides to click on "Build an export plan"
+#    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#      And "Robert" decides to click on section "Adapting Your Product" on page "Build An Export Plan - Export Plan Dashboard"
+#    And "Robert" decides to delete document details on page "Build An Export Plan - Adapting Your Product"
+#          | Position |
+#          | 5     |
+#          | 4     |
+#          | 3     |
+#          | 2     |
+#          | 1     |
 
   @allure.link:XOT-1040
    @Great_Magna_Export_Plan

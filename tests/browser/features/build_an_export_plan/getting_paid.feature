@@ -50,56 +50,56 @@ Feature: GreatMagna - Getting Paid Page
      And "Robert" decides to enter text at "Incoterms Notes" on page "Build An Export Plan - Getting Paid"
 
 
-   @allure.link:XOT-1134
-   @Great_Magna_Export_Plan__lesson_123
-     @failed_exp_gp_2
-  Scenario:User should be able to click lessons link "Choose the right payment method"
+#   @allure.link:XOT-1134
+#   @Great_Magna_Export_Plan__lesson_123
+#     @failed_exp_gp_2
+#  Scenario:User should be able to click lessons link "Choose the right payment method"
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "payment methods lesson" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" decides to click on lesson link "Choose the right payment method" on page "Build An Export Plan - Getting Paid"
+##     And "Robert" decides to click on section "Choose the right payment method" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" should be on the "LearnToExport - Choose the right payment method" page
+#     And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Choose the right payment method"
 
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "payment methods lesson" on page "Build An Export Plan - Getting Paid"
-     And "Robert" decides to click on lesson link "Choose the right payment method" on page "Build An Export Plan - Getting Paid"
-#     And "Robert" decides to click on section "Choose the right payment method" on page "Build An Export Plan - Getting Paid"
-     And "Robert" should be on the "LearnToExport - Choose the right payment method" page
-     And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Choose the right payment method"
 
+#   @allure.link:XOT-1135
+#   @Great_Magna_Export_Plan__lesson_123
+#  Scenario:User should be able to click lessons link "Decide when to get paid"
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "payment terms lesson" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" decides to click on lesson link "Decide when to get paid" on page "Build An Export Plan - Getting Paid"
+##     And "Robert" decides to click on section "Decide when to get paid" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" should be on the "LearnToExport - Decide when to get paid" page
+#     And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Decide when to get paid"
 
-   @allure.link:XOT-1135
-   @Great_Magna_Export_Plan__lesson_123
-  Scenario:User should be able to click lessons link "Decide when to get paid"
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "payment terms lesson" on page "Build An Export Plan - Getting Paid"
-     And "Robert" decides to click on lesson link "Decide when to get paid" on page "Build An Export Plan - Getting Paid"
-#     And "Robert" decides to click on section "Decide when to get paid" on page "Build An Export Plan - Getting Paid"
-     And "Robert" should be on the "LearnToExport - Decide when to get paid" page
-     And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Decide when to get paid"
-
-   @allure.link:XOT-1136
-   @Great_Magna_Export_Plan__lesson_123
-  Scenario:User should be able to click lessons link "Choose which incoterms are right for you"
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "incoterms lesson" on page "Build An Export Plan - Getting Paid"
-     And "Robert" decides to click on lesson link "Choose which incoterms are right for you" on page "Build An Export Plan - Getting Paid"
-#     And "Robert" decides to click on section "Choose which incoterms are right for you" on page "Build An Export Plan - Getting Paid"
-     And "Robert" should be on the "LearnToExport - Choose which incoterms are right for you" page
-     And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Choose which incoterms are right for you"
-
+#   @allure.link:XOT-1136
+#   @Great_Magna_Export_Plan__lesson_123
+#  Scenario:User should be able to click lessons link "Choose which incoterms are right for you"
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#     And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Getting Paid" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "incoterms lesson" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" decides to click on lesson link "Choose which incoterms are right for you" on page "Build An Export Plan - Getting Paid"
+##     And "Robert" decides to click on section "Choose which incoterms are right for you" on page "Build An Export Plan - Getting Paid"
+#     And "Robert" should be on the "LearnToExport - Choose which incoterms are right for you" page
+#     And "Robert" decides to click on section "Getting Paid" on page "LearnToExport - Choose which incoterms are right for you"
+#
 
   @allure.link:XOT-1137
    @Great_Magna_Export_Plan

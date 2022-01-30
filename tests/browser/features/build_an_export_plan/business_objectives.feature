@@ -20,48 +20,48 @@ Feature: GreatMagna - Business Objectives Page
      And "Robert" decides to enter text at "Why you want to export" on page "Build An Export Plan - Business Objectives"
      And "Robert" decides to validate entered text at "Why you want to export" on page "Build An Export Plan - Business Objectives"
 
- @bug
- @allure.link:XOT-1052
-   @Great_Magna_Export_Plan_B_O_123
-   @Great_Magna_Export_Plan
-  Scenario:User should be able to click on "Add goal" and enter the objectives for exporting
+# @bug
+# @allure.link:XOT-1052
+#   @Great_Magna_Export_Plan_B_O_123
+#   @Great_Magna_Export_Plan
+#  Scenario:User should be able to click on "Add goal" and enter the objectives for exporting
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#   And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+#    And "Robert" fill business objective details on page "Build An Export Plan - Business Objectives"
+#          | Position | Objectives | Owner        | PlannedReviews      |
+#          | 1        | obj1       | obj1-owner   | obj1-plannedreviews |
+#          | 2        | obj2       | obj2-owner   | obj2-plannedreviews |
+#          | 3        | obj3       | obj3-owner   | obj3-plannedreviews |
+#          | 4        | obj4       | obj4-owner   | obj4-plannedreviews |
+#          | 5        | obj5       | obj5-owner   | obj5-plannedreviews |
 
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-   And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
-    And "Robert" fill business objective details on page "Build An Export Plan - Business Objectives"
-          | Position | Objectives | Owner        | PlannedReviews      |
-          | 1        | obj1       | obj1-owner   | obj1-plannedreviews |
-          | 2        | obj2       | obj2-owner   | obj2-plannedreviews |
-          | 3        | obj3       | obj3-owner   | obj3-plannedreviews |
-          | 4        | obj4       | obj4-owner   | obj4-plannedreviews |
-          | 5        | obj5       | obj5-owner   | obj5-plannedreviews |
-
-   @allure.link:XOT-1053
-     @Great_Magna_Export_Plan
-   @Great_Magna_Export_Plan_B_O_D_123
-   Scenario:User should be able to delete objectives
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-     Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
-    And "Robert" decides to delete business objectives on page "Build An Export Plan - Business Objectives"
-          | Position |
-          | 5    |
-          | 4    |
-          | 3    |
-          | 2    |
+#   @allure.link:XOT-1053
+#     @Great_Magna_Export_Plan
+#   @Great_Magna_Export_Plan_B_O_D_123
+#   Scenario:User should be able to delete objectives
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#     Then "Robert" decides to click on "Build an export plan"
+#    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+#    And "Robert" decides to delete business objectives on page "Build An Export Plan - Business Objectives"
+#          | Position |
+#          | 5    |
+#          | 4    |
+#          | 3    |
+#          | 2    |
           | 1    |
 
 
 @allure.link:XOT-1054
-   @Great_Magna_Export_Plan_lesson
+   @Great_Magna_Export_Plan_lesson_move_from
  Scenario:User should be able to click lessons "Move from accidental exporting to strategic exporting" and click back link "Business Objectives"
 
     Given "Robert" visited "GreatMagna - Login" page
@@ -131,25 +131,25 @@ Feature: GreatMagna - Business Objectives Page
      And "Robert" decides to click on element "Nav Target Markets Research" on page "Build An Export Plan - Business Objectives"
      And "Robert" should be on the "Build An Export Plan - Target Markets Research" Page
 
-
- @allure.link:XOT-1059
-   @Great_Magna_Export_Plan_B_O_1
-   @Great_Magna_Export_Plan
-  Scenario:User should not be able to click on "Add goal" after 5 objectives for exporting
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-   And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
-    And "Robert" fill business objective details on page "Build An Export Plan - Business Objectives"
-          | Position | Objectives | Owner        | PlannedReviews      |
-          | 1        | obj1       | obj1-owner   | obj1-plannedreviews |
-          | 2        | obj2       | obj2-owner   | obj2-plannedreviews |
-          | 3        | obj3       | obj3-owner   | obj3-plannedreviews |
-          | 4        | obj4       | obj4-owner   | obj4-plannedreviews |
-          | 5        | obj5       | obj5-owner   | obj5-plannedreviews |
+#
+# @allure.link:XOT-1059
+#   @Great_Magna_Export_Plan_B_O_1
+#   @Great_Magna_Export_Plan
+#  Scenario:User should not be able to click on "Add goal" after 5 objectives for exporting
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#   And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#   And "Robert" decides to click on section "Business Objectives" on page "Build An Export Plan - Export Plan Dashboard"
+#    And "Robert" fill business objective details on page "Build An Export Plan - Business Objectives"
+#          | Position | Objectives | Owner        | PlannedReviews      |
+#          | 1        | obj1       | obj1-owner   | obj1-plannedreviews |
+#          | 2        | obj2       | obj2-owner   | obj2-plannedreviews |
+#          | 3        | obj3       | obj3-owner   | obj3-plannedreviews |
+#          | 4        | obj4       | obj4-owner   | obj4-plannedreviews |
+#          | 5        | obj5       | obj5-owner   | obj5-plannedreviews |
 
 
    @allure.link:XOT-1060

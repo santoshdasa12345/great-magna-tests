@@ -141,22 +141,22 @@ Feature: GreatMagna - Costs And Pricing Page
 #    And "Robert" decides to click on element "Duty educational" on page "Build An Export Plan - Costs And Pricing"
 #    And "Robert" decides to enter value in "Duty" on page "Build An Export Plan - Costs And Pricing"
 
-   @allure.link:XOT-1099
-   @Great_Magna_Export_Plan_cap_8
-  Scenario:User should be able to "select currency" and enter invoicing currency
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Costs And Pricing"
-    And "Robert" decides to click on section "Manage Exchange Rates" on page "Build An Export Plan - Costs And Pricing"
-    And "Robert" should be on the "LearnToExport - Manage Exchange Rates" page
-    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Manage Exchange Rates"
-    And "Robert" decides to select random currency in "Select Currency" on page "Build An Export Plan - Costs And Pricing"
-    And "Robert" decides to enter value in "Gross Price per unit" on page "Build An Export Plan - Costs And Pricing"
+#   @allure.link:XOT-1099
+#   @Great_Magna_Export_Plan_cap_8
+#  Scenario:User should be able to "select currency" and enter invoicing currency
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "lesson" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to click on section "Manage Exchange Rates" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" should be on the "LearnToExport - Manage Exchange Rates" page
+#    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Manage Exchange Rates"
+#    And "Robert" decides to select random currency in "Select Currency" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to enter value in "Gross Price per unit" on page "Build An Export Plan - Costs And Pricing"
 
 @allure.link:XOT-1100
    @Great_Magna_Export_Plan_cap_9
@@ -224,48 +224,48 @@ Feature: GreatMagna - Costs And Pricing Page
 ##(Total over head costs /total number of units) +total directs costs = estimaetes
 
 
-  @allure.link:XOT-1103
-   @Great_Magna_Export_Plan_cap_12
-  Scenario:User should be able to "select currency" and enter invoicing currency
+#  @allure.link:XOT-1103
+#   @Great_Magna_Export_Plan_cap_12
+#  Scenario:User should be able to "select currency" and enter invoicing currency
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "duty lesson" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to click on section "Understand duties and taxes" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" should be on the "LearnToExport - Understand duties and taxes" page
+#    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Understand duties and taxes"
 
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "duty lesson" on page "Build An Export Plan - Costs And Pricing"
-    And "Robert" decides to click on section "Understand duties and taxes" on page "Build An Export Plan - Costs And Pricing"
-    And "Robert" should be on the "LearnToExport - Understand duties and taxes" page
-    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Understand duties and taxes"
+# @allure.link:XOT-1104
+#   @Great_Magna_Export_Plan_cap_13
+#  Scenario:User should be able to click duty lesson "Understand duties and taxes" and click back link "Costs And Pricing"
+#
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "duty lesson" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to click on section "Understand duties and taxes" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" should be on the "LearnToExport - Understand duties and taxes" page
+#    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Understand duties and taxes"
 
- @allure.link:XOT-1104
-   @Great_Magna_Export_Plan_cap_13
-  Scenario:User should be able to click duty lesson "Understand duties and taxes" and click back link "Costs And Pricing"
-
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "duty lesson" on page "Build An Export Plan - Costs And Pricing"
-    And "Robert" decides to click on section "Understand duties and taxes" on page "Build An Export Plan - Costs And Pricing"
-    And "Robert" should be on the "LearnToExport - Understand duties and taxes" page
-    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Understand duties and taxes"
-
-    @allure.link:XOT-1104
-   @Great_Magna_Export_Plan_cap_14
-  Scenario:User should be able to click local taxes lesson "local taxes -Understand duties and taxes" and click back link "Costs And Pricing"
-
-    Given "Robert" visited "GreatMagna - Login" page
-    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-    And "Robert" should be on the "GreatMagna - Dashboard" Page
-    Then "Robert" decides to click on "Build an export plan"
-    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
-     And "Robert" decides to click on element "local taxes lesson" on page "Build An Export Plan - Costs And Pricing"
-    And "Robert" decides to click on section "local taxes Understand duties and taxes" on page "Build An Export Plan - Costs And Pricing"
-    And "Robert" should be on the "LearnToExport - Understand duties and taxes" page
-    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Understand duties and taxes"
+#    @allure.link:XOT-1104
+#   @Great_Magna_Export_Plan_cap_14
+#  Scenario:User should be able to click local taxes lesson "local taxes -Understand duties and taxes" and click back link "Costs And Pricing"
+#
+#    Given "Robert" visited "GreatMagna - Login" page
+#    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#    Then "Robert" decides to click on "Build an export plan"
+#    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+#     And "Robert" decides to click on section "Costs And Pricing" on page "Build An Export Plan - Export Plan Dashboard"
+#     And "Robert" decides to click on element "local taxes lesson" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" decides to click on section "local taxes Understand duties and taxes" on page "Build An Export Plan - Costs And Pricing"
+#    And "Robert" should be on the "LearnToExport - Understand duties and taxes" page
+#    And "Robert" decides to click on section "Costs And Pricing" on page "LearnToExport - Understand duties and taxes"
