@@ -60,8 +60,6 @@ Feature: GreatMagna - Target Markets Research Page
      And "Robert" decides to enter text at "Who are your competitors" on page "Build An Export Plan - Target Markets Research"
      And "Robert" decides to validate entered text at "Who are your competitors" on page "Build An Export Plan - Target Markets Research"
 
-
-
    @allure.link:XOT-1175
    @Great_Magna_Export_Plan
   Scenario:User should be able to view "What are the product trends" section and enter text and validate
@@ -103,7 +101,6 @@ Feature: GreatMagna - Target Markets Research Page
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
      And "Robert" decides to enter value in "What’s the average price for your product" on page "Build An Export Plan - Target Markets Research"
 
-
 #   @allure.link:XOT-1178
 #   @Great_Magna_Export_Plan
 #     @tm_5
@@ -119,7 +116,6 @@ Feature: GreatMagna - Target Markets Research Page
 #     And "Robert" decides to click on section "Work out customer demand" on page "Build An Export Plan - Target Markets Research"
 #     And "Robert" should be on the "LearnToExport - Work out customer demand" page
 #     And "Robert" decides to click on section "Target Markets Research" on page "LearnToExport - Work out customer demand"
-
 
    @allure.link:XOT-1179
    @Great_Magna_Export_Plan
@@ -147,7 +143,6 @@ Feature: GreatMagna - Target Markets Research Page
      And "Robert" decides to click on section "Target Markets Research" on page "Build An Export Plan - Export Plan Dashboard"
     And "Robert" decides to click on section "Export Plan Home" on page "Build An Export Plan - Target Markets Research"
     And "Robert" should be on the "Build An Export Plan - Export Plan Dashboard" page
-
 
    @allure.link:XOT-1181
    @Great_Magna_Export_Plan
