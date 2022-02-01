@@ -1,0 +1,1639 @@
+@domestic
+@services
+@allure.suite:Domestic
+Feature: Domestic - Accessing Services
+
+  Background:
+    Given test authentication is done
+
+
+  @allure.link:ED-2659
+  @home-page
+  @passed
+  @accessing-services_1
+  Scenario: Any Exporter visiting the Services page should be able to see links to all relevant Services
+    When "Robert" goes to the "Domestic - Services" page
+
+    Then "Robert" should see following sections
+      | sections               |
+      | Header                 |
+      | SSO links - logged out |
+      | Breadcrumbs            |
+      | Services               |
+      | Error reporting        |
+#      | Footer                 |
+
+
+  @bug
+  @allure.issue:ED-2702
+  @allure.link:ED-2661
+  @home-page
+  @accessing-services_2
+  @<service>
+  @external-service_1
+  Scenario Outline: Any Exporter should be able to get to the "<specific>" Service page from "Domestic - Services" page
+    Given "Robert" visits the "Domestic - Services" page
+
+    When "Robert" decides to find out more about "<service>"
+
+    Then "Robert" should be on the "<specific>" page
+
+    Examples:
+      | service                   | specific                       |
+      | Create a business profile | Find a Buyer - Home            |
+      | Find online marketplaces  | Selling online overseas - Home |
+      | Find export opportunities | Export Opportunities - Home    |
+      | UK Export Finance         | Domestic - Get Finance         |
+      | Find events and visits    | Events - Home                  |
+      | Get an EORI number        | EORI - Home                    |
+      | Report A Trade Barrier    | Domestic - Report a trade barrier   |
+
+@allure.link:CMS-686
+  @advice_1
+  @articles
+  Scenario: Any Exporter should see all expected sections on "Domestic - Advice landing" page
+    When "Robert" goes to the "Domestic - Advice landing" page
+
+    Then "Robert" should see following sections
+      | sections                 |
+      | Header                   |
+      | Hero                     |
+      | Breadcrumbs              |
+      | Advice & Guidance tiles  |
+      | Error reporting          |
+#      | Footer                   |
+#      | Upskill now             |
+
+
+  @allure.link:CMS-686
+  @advice_2
+  @bug_domestic
+  @articles
+  Scenario: Any Exporter should be able to get to a list of Advice articles from the home page using link in "<specific>" section
+    Given "Robert" visits the "Domestic - Advice landing" page
+
+    When "Robert" opens any article on the list
+
+    Then "Robert" should be on the "Domestic - Advice article list" page
+    And "Robert" should see following sections
+      | sections                 |
+      | Header                   |
+      | Hero                     |
+      | Breadcrumbs              |
+      | List of articles         |
+      | Error reporting          |
+#      | Footer                   |
+#      | Upskill now              |
+
+
+  @allure.link:CMS-686
+  @advice_3
+  @bug_domestic
+  @articles
+  Scenario Outline: Any Exporter should be able to get to "<advice>" Advice article
+    Given "Robert" visits the "Domestic - <advice> - Article list" page
+
+    When "Robert" opens any article on the list
+
+    Then "Robert" should be on the "Domestic - Advice article" page
+    And "Robert" should see following sections
+      | sections        |
+      | Header          |
+      | Breadcrumbs     |
+      | Share buttons   |
+      | Article         |
+      | Error reporting |
+#      | Footer          |
+#      | Upskill now     |
+
+    Examples:
+      | advice                                      |
+      | Find an export market                       |
+
+    @full
+    Examples:
+      | advice                                      |
+      | Create an export plan                       |
+      | Find an export market                       |
+     | Choose a route to market                    |
+      | Get export finance                          |
+      | Manage payment for export orders            |
+      | Prepare to do business in a foreign country |
+      | Prepare for export procedures and logistics  |
+      | Sell services overseas                      |
+      | Manage risk of bribery and corruption       |
+
+    @bug
+    @allure.issue:TT-2311
+    @fixme
+    Examples: None of "Prepare for export procedures and logistics" pages work in Dev & Staging
+      | advice                                      |
+      | Prepare for export procedures and logistics |
+
+
+  @allure.link:CMS-686
+    @advice_4
+    @bug_domestic_advice
+    @report_1
+  Scenario: Any Exporter should be able to report a problem with Advice Article page
+    Given "Robert" is on randomly selected Advice article page
+
+    When "Robert" decides to report a problem with the page
+
+    Then "Robert" should be on the "Domestic - Feedback - contact us" page
+
+
+
+  @allure.issue:CMS-1698
+  @allure.link:CMS-686
+  @advice_5
+  @bug_domestic_no_links_international
+  @breadcrumbs_1
+  Scenario Outline: Any Exporter should see be to use "<breadcrumb>" breadcrumb on "Advice article" page to get to "<target>" page
+    Given "Robert" is on randomly selected Advice article page
+
+    When "Robert" decides to open "<breadcrumb>"
+
+    Then "Robert" should be on the "Domestic - <target>" page if not be redirected to "International - Landing" page
+
+    Examples:
+      | breadcrumb   | target              |
+#      | great.gov.uk | Home                |
+      | Advice       | Advice Landing      |
+      | Article list | Advice article list |
+@allure.link:TT-758
+  @enquirer-location
+  @contact-us_1
+  Scenario: Enquirers should see all expected contact location options on the "Domestic - Contact us"
+    Given "Robert" visits the "Domestic - Contact us" page
+
+    Then "Robert" should be on the "Domestic - Contact us" page
+    And "Robert" should see following form choices
+      | radio elements |
+      | The UK         |
+      | Outside the UK |
+
+
+  @allure.link:TT-758
+  @enquirer-location
+  @contact-us_2
+  @domestic-enquiry-page
+  Scenario: Domestic Enquirers should see all expected contact options on the "Domestic - What can we help you with?" page
+    Given "Robert" visits the "Domestic - Contact us" page
+
+    When "Robert" says that his business is in "The UK"
+
+    Then "Robert" should be on the "Domestic - What can we help you with? - Domestic Contact us" page
+    And "Robert" should see following form choices
+      | radio elements                            |
+      | Find your local trade office              |
+      | Advice to export from the UK              |
+      | Great.gov.uk account and services support |
+      | UK Export Finance (UKEF)                  |
+      | Brexit enquiries                          |
+      | Events                                    |
+      | Defence and Security Organisation (DSO)   |
+      | Other                                     |
+
+
+  @allure.link:TT-363
+  @office-finder
+  @contact-us_3
+  Scenario: Domestic Enquirers should be able to get to the "New Office finder - Home" page
+    Given "Robert" visits the "Domestic - Contact us" page
+
+    When "Robert" says that his business is in "the UK"
+    And "Robert" chooses "Find your local trade office" option
+
+    Then "Robert" should be on the "Domestic - New Office Finder" page
+
+
+  @allure.link:TT-363
+  @office-finder
+  @contact-us_4
+  Scenario Outline: Domestic Enquirers should be able to get to find contact details for "<appropriate>" office in "<city>"
+    Given "Robert" visits the "Domestic - New Office Finder" page
+
+    When "Robert" searches for local trade office near "<post-code>"
+
+    Then "Robert" should be on the "Domestic - New Office Finder - search results" page
+    And "Robert" should see contact details for "<appropriate>" office in "<city>"
+
+    Examples: postcodes and trade offices
+      | post-code | appropriate       | city        |
+      | LL57 1ST  | Business Wales    | Sarn Mynach |
+      | LE5 3BF   | DIT East Midlands | Leicester   |
+
+    @full
+    Examples: postcodes and trade offices
+      | post-code | appropriate                  | city       |
+      | AL10 8EP  | DIT East of England          | Hatfield   |
+      | E14 9ET | DIT London                   | London     |
+      | DH1 1SQ   | DIT North East               | Durham     |
+      | M15 6PQ   | DIT North West               | Manchester |
+      | PO15 5DE  | DIT South East               | Fareham    |
+      | BS1 4RL   | DIT South West               | Bristol    |
+      | B3 2RT    | DIT West Midlands            | Birmingham |
+      | S70 2PS   | DIT Yorkshire and the Humber | Barnsley   |
+      | BT2 8DN   | Invest NI                    | Belfast    |
+      | G3 6AP    | Scottish Enterprise          | Glasgow    |
+
+
+  @wip
+  @allure.link:TT-363
+  @office-finder
+  @contact-us_5
+   @failed
+  Scenario: Domestic Enquirers should be able to get to the NEW Office finder page
+    Given "Robert" visits the "Domestic - New Office Finder" page
+
+    When "Robert" found his local trade office by providing his company's postcode
+    And "Robert" decides to "Contact the local trade office"
+
+    Then "Robert" should be on the "Domestic - Short contact form (Office Finder)" page
+
+
+  @wip
+  @allure.link:TT-363
+  @captcha
+  @dev-only
+  @office-finder
+  @contact-us_6
+  @failed
+  Scenario: Domestic Enquirers should be able to contact
+    Given "Robert" got to the "Short contact-us form" page via "Find local trade office"
+
+    When "Robert" fills out and submits the form
+
+    Then "Robert" should be on the "Thank you for your enquiry" page
+    And an email is submitted to "appropriate local office based on the postcode provided"
+
+
+  @allure.link:TT-758
+  @exporting-from-the-UK
+  @contact-us_7
+  Scenario: Domestic Enquirers should be able to get to the "Long (Export Advice Comment) - Contact us" form
+    Given "Robert" visits the "Domestic - Contact us" page
+
+    When "Robert" says that his business is in "the UK"
+    And "Robert" chooses "Advice to export from the UK" option
+
+    Then "Robert" should be on the "Domestic - Long (Export Advice Comment) - Contact us" page
+
+
+  @allure.link:TT-758
+  @ita
+  @captcha
+  @exporting-from-the-UK
+  @contact-us_8
+  @failed
+  Scenario: Domestic Enquirers should be able to contact relevant ITA based on the postcode provided
+    Given "Robert" got to the "Domestic - Long (Export Advice Comment)" page via "The UK -> Advice to export from the UK"
+
+    When "Robert" fills out and submits the form
+    Then "Robert" should be on the "Domestic - Long (Personal details) - Contact us" page
+    When "Robert" fills out and submits the form
+    Then "Robert" should be on the "Domestic - Long (Business details) - Contact us" page
+    When "Robert" fills out and submits the form
+
+    Then "Robert" should be on the "Domestic - Thank you for your enquiry" page
+    And "Robert" should receive "Thank you for your enquiry" confirmation email
+    # TODO check if this email is being actually sent
+#    And an email is submitted to relevant "ITA" (based on the postcode provided)
+
+
+  @allure.link:TT-758
+  @account-support
+  @contact-us_9
+  Scenario: Domestic enquirers should see all expected help options on the "Great.gov.uk account and services support" page
+    Given "Robert" got to the "Domestic - Great.gov.uk account and services support" page via "The UK -> Great.gov.uk account and services support"
+
+    Then "Robert" should see following form choices
+      | radio elements               |
+      | Export opportunities service |
+      | Your account on Great.gov.uk |
+      | Other                        |
+
+
+  @allure.link:TT-758
+  @exopps
+  @account-support
+  @contact-us_10
+  Scenario: Domestic enquirers should see all expected help options for "Export opportunities service"
+    Given "Robert" got to the "Domestic - Export opportunities service" page via "The UK -> Great.gov.uk account and services support -> Export opportunities service"
+
+    Then "Robert" should see following form choices
+      | radio elements                                              |
+      | I haven't had a response from the opportunity I applied for |
+      | My daily alerts are not relevant to me                      |
+      | Other                                                       |
+
+
+  @allure.link:TT-758
+  @greatgovuk-account
+  @account-support
+  @contact-us_11
+  Scenario: Domestic enquirers should see all expected help options for "Great.gov.uk account"
+    Given "Robert" got to the "Domestic - Great.gov.uk account" page via "The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk"
+
+    Then "Robert" should see following form choices
+      | radio elements                                                 |
+      | I have not received an email confirmation                      |
+      | I need to reset my password                                    |
+#      | I cannot find my company                                       |
+      | My Companies House login is not working                        |
+      | I do not know where to enter my verification code              |
+      | I have not received my letter containing the verification code |
+      | I have not received a verification code                        |
+      | Other                                                          |
+
+
+  @allure.link:TT-758
+  @short-domestic
+  @account-support
+  @contact-us_12
+  @failed
+  Scenario: Domestic enquirers should be able to get to the "Short Contact Us" form via "The UK -> Great.gov.uk account and services support -> Other"
+    Given "Robert" got to the "Domestic - Great.gov.uk account and services support" page via "The UK -> Great.gov.uk account and services support"
+
+    When "Robert" chooses "Other" option
+
+    Then "Robert" should be on the "Domestic - Short contact form (Tell us how we can help)" page
+
+
+  @allure.link:TT-758
+  @short-domestic
+  @greatgovuk-account
+  @contact-us_13
+  @support
+  Scenario: Domestic enquirers should be able to get to the "Short Contact Us" form via "The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk -> Other"
+    Given "Robert" got to the "Domestic - Great.gov.uk account" page via "The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk"
+
+    When "Robert" chooses "Other" option
+
+    Then "Robert" should be on the "Domestic - Short contact form (Tell us how we can help)" page
+
+
+  @allure.link:TT-758
+  @greatgovuk-account
+  @support
+  @contact-us_14
+  Scenario: Domestic enquirers should be able to find answers to sought topic about "Your account on Great.gov.uk"
+    Given "Robert" got to the "Domestic - Great.gov.uk account" page via "The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk"
+
+    When "Robert" chooses any available option except "Other"
+
+    Then "Robert" should be on the "Domestic - Great.gov.uk account - Dedicated Support Content" page
+
+
+  @allure.link:TT-758
+    @exopps
+    @support
+    @contact-us_15
+  Scenario Outline: Exporters should be able to find answers to Export Opportunities related topic "<selected>"
+    Given "Robert" got to the "Domestic - Export opportunities service" page via "The UK -> Great.gov.uk account and services support -> Export opportunities service"
+
+    When "Robert" chooses "<selected>" option
+
+    Then "Robert" should be on the "Domestic - <selected> - Dedicated Support Content" page
+
+    Examples:
+      | selected                                                    |
+      | I haven't had a response from the opportunity I applied for |
+      | My daily alerts are not relevant to me                      |
+
+
+  @allure.link:TT-758
+    @zendesk
+    @dev-only
+    @captcha
+    @account-support
+    @contact-us_16
+    @failed
+  Scenario Outline: Domestic Enquirers should be able to contact Great Support team via "The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk -> <selected topic>"
+    Given "Robert" got to the "Domestic - <selected topic> - Dedicated Support Content" page via "The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk -> <selected topic>"
+
+    When "Robert" decides to "Submit an enquiry"
+    And "Robert" is on the "Domestic - Short contact form (Tell us how we can help)" page
+    And "Robert" fills out and submits the form
+
+    Then "Robert" should be on the "Domestic - Thank you for your enquiry (<selected topic>)" page
+    And a "zendesk" notification entitled "great.gov.uk contact form" should be sent to "Robert"
+
+    Examples:
+      | selected topic                            |
+      | I have not received an email confirmation |
+
+    @full
+    Examples:
+      | selected topic                                                 |
+      | I have not received an email confirmation                      |
+#      | I need to reset my password                                    |
+#      | My Companies House login is not working                        |
+#      | I do not know where to enter my verification code              |
+#      | I have not received my letter containing the verification code |
+#      | I have not received a verification code                        |
+
+
+  @allure.link:TT-758
+    @zendesk
+    @dev-only
+    @captcha
+    @exopps
+    @contact-us_17
+  Scenario Outline: Exporters should be to contact Export Opportunities team via Zendesk using "Short contact form" page accessed via "The UK -> Great.gov.uk account and services support -> Export opportunities service -> <selected topic>"
+    Given "Robert" got to the "Domestic - <selected topic> - Dedicated Support Content" page via "The UK -> Great.gov.uk account and services support -> Export opportunities service -> <selected topic>"
+
+    When "Robert" decides to "Submit an enquiry"
+    And "Robert" is on the "Domestic - Short contact form (Tell us how we can help)" page
+    And "Robert" fills out and submits the form
+
+    Then "Robert" should be on the "Domestic - Thank you for your enquiry (<selected topic>) - Short Domestic Contact us" page
+    And a "zendesk" notification entitled "great.gov.uk contact form" should be sent to "Robert"
+
+    Examples:
+      | selected topic                                              |
+      | I haven't had a response from the opportunity I applied for |
+      | My daily alerts are not relevant to me                      |
+
+
+  # Choosing "Other" on the "Your account on Great.gov.uk" page takes us
+  # directly to the short contact us form
+
+  @allure.link:TT-758
+    @zendesk
+    @dev-only
+    @captcha
+    @account-support
+    @contact-us_18
+    @failed
+  Scenario Outline: Domestic Enquirers should be able to contact Great Support team via "The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk -> <selected topic>"
+    Given "Robert" got to the "Domestic - Short contact form (Tell us how we can help)" page via "The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk -> <selected topic>"
+
+    When "Robert" fills out and submits the form
+
+    Then "Robert" should be on the "Domestic - Thank you for your enquiry (<selected topic>) - Short Domestic Contact us" page
+    And a "zendesk" notification entitled "great.gov.uk contact form" should be sent to "Robert"
+
+    Examples:
+      | selected topic |
+      | Other          |
+
+
+  @allure.link:TT-758
+  @ukef
+  @contact-us_19
+  Scenario: Exporters should be able to get to the UKEF Check your eligibility contact-us form
+    Given "Robert" got to the "Domestic - What can we help you with? - Domestic Contact us" page via "The UK"
+
+    When "Robert" chooses "UK Export Finance (UKEF)" option
+
+    Then "Robert" should be on the "Domestic - Your details - UKEF Contact us" page
+
+
+  # already partially covered by stories for TT-585
+  @dev-only
+  @captcha
+  @ukef
+  @contact-us_20
+  @failed
+  Scenario: Exporters should be able to contact UKEF mailbox
+    Given "Robert" got to the "Domestic - Your details - UKEF Contact us" page via "The UK -> UK Export Finance (UKEF)"
+
+    When "Robert" fills out and submits the form
+
+    Then "Robert" should be on the "Domestic - Thank you - UKEF Contact us" page
+    # No confirmation email is sent to the user
+    # TODO check if email is sent to dedicated mailbox
+    And an email is submitted to "UKEF mailbox"
+
+
+  @allure.link:TT-758
+    @investing-overseas
+    @events
+    @dso
+    @short-form
+    @contact-us_21
+  Scenario Outline: Domestic enquirers should get to the "Short contact us form" via "The UK -> <selected option>"
+    Given "Robert" got to the "Domestic - What can we help you with? - Domestic Contact us" page via "The UK"
+
+    When "Robert" chooses "<selected option>" option
+
+    Then "Robert" should be on the "Domestic - Short contact form (<selected option>)" page
+
+    Examples:
+      | selected option                         |
+      | Events                                  |
+      | Defence and Security Organisation (DSO) |
+      | Other                                   |
+
+  #change to eu exit and eu enquiries
+  @allure.link:TT-758
+  @allure.link:CMS-506
+  @eu-exit
+  @feature-flagged
+  @contact-us_22
+  @failed
+  Scenario: Exporters should be able to get to the "Domestic EU exit help short contact-us form"
+    Given "Robert" got to the "Domestic - What can we help you with? - Domestic Contact us" page via "The UK"
+
+    When "Robert" chooses "Brexit enquiries" option
+
+    Then "Robert" should be on the "Domestic - Brexit help" page
+
+  #change to eu exit and eu enquiries
+  @allure.link:TT-758
+  @zendesk
+  @allure.link:CMS-506
+  @captcha
+  @eu-exit
+  @contact-us_23
+  @failed
+  Scenario: Exporters should be able to contact "Brexit help mailbox"
+    Given "Robert" got to the "Domestic - Brexit help" page via "The UK -> Brexit enquiries"
+
+    When "Robert" fills out and submits the form
+
+    Then "Robert" should be on the "Domestic - Brexit help - Thank you" page
+    And a "zendesk" notification entitled "Brexit contact form" should be sent to "Robert"
+
+
+  @allure.link:TT-758
+    @dev-only
+    @captcha
+    @short-form
+    @contact-us
+  Scenario Outline: Exporters should be able to contact "<expected recipient>" using "Short contact form (<selected option>)" page accessed via "The UK -> <selected option>"
+    Given "Robert" got to the "Domestic - Short contact form (<selected option>)" page via "The UK -> <selected option>"
+
+    When "Robert" fills out and submits the form
+
+    Then "Robert" should be on the "Domestic - Thank you for your enquiry (<selected option>) - Short Domestic Contact us" page
+    And "Robert" should receive "<appropriate>" confirmation email
+    And an email notification about "Robert"'s enquiry should be send to "<expected recipient>"
+
+    Examples:
+      | selected option                         | appropriate                                                  | expected recipient |
+      | Events                                  | Thank you for your Events enquiry                            | Events mailbox     |
+      | Defence and Security Organisation (DSO) | Thank you for your Defence and Security Organisation enquiry | DSO mailbox        |
+      | Other                                   | Thank you for your enquiry                                   | DIT Enquiry unit   |
+
+
+  @allure.link:TT-758
+  @international
+  @contact-us_24
+  Scenario: International Enquirers should be able to see all expected contact options on the "International - What would you like to know more about?" page
+    Given "Robert" visits the "Domestic - Contact us" page
+
+    When "Robert" says that his business is "Outside the UK"
+
+    Then "Robert" should be on the "Domestic - What would you like to know more about? - International Contact us" page
+    And "Robert" should see following form choices
+      | radio elements              |
+      | Expanding to the UK         |
+      | Investing capital in the UK |
+      | Find a UK business partner  |
+      | The transition period       |
+      | Other                       |
+
+
+  @allure.link:TT-758
+    @international
+    @contact-us_25
+    @failed
+  Scenario Outline: International Enquirers should be able to get to the "<expected>" form for "<selected>"
+    Given "Robert" got to the "Domestic - What would you like to know more about? - International Contact us" page via "Outside the UK"
+
+    When "Robert" chooses "<selected>" option
+
+    Then "Robert" should be on the "<expected>" page
+
+    Examples:
+      | selected                    | expected                                                |
+      | Expanding to the UK         | Invest - Contact us                                     |
+#      | Investing capital in the UK | International - Contact the Capital Investment team     |
+#      | Find a UK business partner  | International - Find a UK business partner - Contact us |
+#      | The transition period       | International - Transition period enquiries             |
+#      | Other                       | International - Contact us                              |
+
+
+  @allure.link:TT-758
+    @going-back
+    @contact-us_26
+    @failed
+  Scenario Outline: Enquirers should be able to navigate back to previous pages from "<path>" back to "<expected>" page
+    Given "Robert" navigates via "<path>"
+
+    When "Robert" decides to use "back" link
+
+    Then "Robert" should be on the "<expected>" page
+
+    Examples:
+      | path                                                                                | expected                                                    |
+      | The UK                                                                              | Domestic - Contact us                                       |
+      | Outside the UK                                                                      | Domestic - Contact us                                       |
+      | The UK -> Great.gov.uk account and services support                                 | Domestic - What can we help you with? - Domestic Contact us |
+      | The UK -> Great.gov.uk account and services support -> Export opportunities service | Domestic - Great.gov.uk account and services support        |
+      | The UK -> Great.gov.uk account and services support -> Your account on Great.gov.uk | Domestic - Great.gov.uk account and services support        |
+
+
+@allure.link:TT-2319
+    @cookies_1
+  Scenario Outline: Accepting all cookies on "<specific>" page should trigger appropriate GA event and set correct cookies policy
+    Given "Robert" visited the "Domestic - <specific>" page
+
+    When "Robert" accepts all cookies
+
+    Then following GTM events should be registered
+      | action    | destination | element | event   | type | value              |
+      | clickLink | #           |         | gaEvent | CTA  | Accept all cookies |
+    And following cookies should be set
+      | name                   | value                                                            |
+      | cookie_preferences_set | true                                                             |
+      | cookies_policy         | {"essential":true,"settings":true,"usage":true,"campaigns":true} |
+
+    Examples:
+      | specific                                 |
+      | Home                                     |
+      | Advice landing                           |
+      | Markets listing                          |
+      | Services                                 |
+      | Search results                           |
+      | Transition period enquiries - contact us |
+      | Create an export plan - article list     |
+      | Get export finance - article list        |
+      | Join our export community - landing      |
+      | Join our Export Community - form         |
+
+
+  @allure.link:TT-2319
+    @cookies_2
+  Scenario Outline: Users should be able to "<make a decision on>" cookies via "Cookies on great.gov.uk" page should trigger appropriate GA event and set correct cookies policy
+    Given "Robert" visited the "Domestic - Cookies" page
+
+    When "Robert" fills out and submits the form with captcha dev check turned "off"
+      | field                              | value           |
+      | Allow measure website use          | <usage on>      |
+      | Allow use for marketing campaigns  | <campaigns on>  |
+      | Allow to remember my settings      | <settings on>   |
+      | Do not measure website use         | <usage off>     |
+      | Do not use for marketing campaigns | <campaigns off> |
+      | Do not remember my settings        | <settings off>  |
+
+    Then "Robert" should see following sections
+      | Sections            |
+      | Confirmation banner |
+    And following GTM events should be registered
+      | action | element                 | event   | type | value |
+      | submit | cookie-preferences-form | gaEvent | form |       |
+    And following cookies should be set
+      | name                   | value            |
+      | cookie_preferences_set | true             |
+      | cookies_policy         | <cookies_policy> |
+
+    Examples:
+      | make a decision on             | usage on  | campaigns on | settings on | usage off | campaigns off | settings off | cookies_policy                                                      |
+      | Accept all                     | checked   | checked      | checked     | unchecked | unchecked     | unchecked    | {"essential":true,"settings":true,"usage":true,"campaigns":true}    |
+      | Reject all                     | unchecked | unchecked    | unchecked   | checked   | checked       | checked      | {"essential":true,"settings":false,"usage":false,"campaigns":false} |
+      | Reject measuring website use   | unchecked | checked      | checked     | checked   | unchecked     | unchecked    | {"essential":true,"settings":true,"usage":false,"campaigns":true}   |
+      | Reject marketing campaigns     | checked   | unchecked    | checked     | unchecked | checked       | unchecked    | {"essential":true,"settings":true,"usage":true,"campaigns":false}   |
+      | Reject remembering my settings | checked   | checked      | unchecked   | unchecked | unchecked     | checked      | {"essential":true,"settings":false,"usage":true,"campaigns":true}   |
+      | Allow measuring website use    | checked   | unchecked    | unchecked   | unchecked | checked       | checked      | {"essential":true,"settings":false,"usage":true,"campaigns":false}  |
+      | Allow marketing campaigns      | unchecked | checked      | unchecked   | checked   | unchecked     | checked      | {"essential":true,"settings":false,"usage":false,"campaigns":true}  |
+      | Allow to remember my settings  | unchecked | unchecked    | checked     | checked   | checked       | unchecked    | {"essential":true,"settings":true,"usage":false,"campaigns":false}  |
+
+@skip
+    @allure.link:CMS-1672
+    @header-events
+    @ga360_1
+  Scenario Outline: All GA360 events should registered for event handlers attached to "Domestic Header" elements on "Domestic - <specific>" page
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM events defined for "Domestic header"
+
+    Then following GTM events should be registered
+      | action     | element          | event   | type        | value        |
+      | SignIn     | HeaderSignInLink | gaEvent | Account     | Not present  |
+      | Search     | HeaderSearchBar  | gaEvent | General     | Empty string |
+      | Navigation | HeaderMenuLink   | gaEvent | Not present | Advice       |
+      | Navigation | HeaderMenuLink   | gaEvent | Not present | Markets      |
+      | Navigation | HeaderMenuLink   | gaEvent | Not present | Services     |
+
+    Examples:
+      | specific                             |
+      | Home                                 |
+      | Advice landing                       |
+      | Markets                              |
+      | Services                             |
+      | Search results                       |
+      | Domestic EU Exit contact form        |
+      | Create an export plan - article list |
+      | Get export finance - article list    |
+      | Join our export community - landing  |
+      | Join our Export Community - form     |
+
+    @bug
+    @allure.issue:CMS-1683
+    @fixme
+    Examples: Pages without Domestic Header tagging
+      | specific      |
+      | Feedback      |
+      | Get finance   |
+      | Trade finance |
+
+    @bug
+    @allure.issue:CMS-1683
+    @fixme
+    @dev-only
+    Examples: Pages without Domestic Header tagging
+      | specific               |
+      | Report a trade barrier |
+
+
+  @bug
+    @allure.issue:CMS-1684
+    @fixme
+    @allure.link:CMS-1672
+    @page-events
+    @ga360_2
+  Scenario Outline: All GA360 "LandingPage" events should registered for event handlers attached to "Domestic Pages" elements on "Domestic - <specific>" page
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM "LandingPage" events defined for "Domestic pages"
+
+    Then following GTM events should be registered
+      | action      | element             | event   | type          | value       |
+      | ContentLink | EuExitBanner        | gaEvent | EuExit        | Not present |
+      | ContentLink | HeroBannerVideoLink | gaEvent | Video         | Not present |
+      | Cta         | Link                | gaEvent | Advice        | Not present |
+      | Cta         | Link                | gaEvent | ExporterStory | Not present |
+      | Cta         | Link                | gaEvent | Service       | Not present |
+
+    Examples:
+      | specific                          |
+      | Home                              |
+      | Advice landing                    |
+      | Markets                           |
+      | Services                          |
+      | Feedback                          |
+      | Search results                    |
+      | Domestic EU Exit contact form     |
+      | Get export finance - article list |
+
+
+  @allure.link:CMS-1672
+    @dev-only
+    @page-events
+    @ga360_3
+  Scenario Outline: All GA360 "ArticleList" events should registered for event handlers attached to "Domestic Pages" elements on "Domestic - <specific>" page (Dev)
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM "ArticleList" events defined for "Domestic pages"
+
+    Then following GTM events should be registered
+      | action      | element | event   | type                  | value                        |
+      | ContentLink | Article | gaEvent | Create an export plan | How to create an export plan |
+
+    Examples:
+      | specific                             |
+      | Create an export plan - article list |
+
+
+  @allure.link:CMS-1672
+    @stage-only
+    @page-events
+    @ga360_4
+  Scenario Outline: All GA360 "ArticleList" events should registered for event handlers attached to "Domestic Pages" elements on "Domestic - <specific>" page (Staging)
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM "ArticleList" events defined for "Domestic pages"
+
+    Then following GTM events should be registered
+      | action      | element | event   | type                  | value                                         |
+      | ContentLink | Article | gaEvent | Create an export plan | Prepare to sell and deliver services overseas |
+      | ContentLink | Article | gaEvent | Create an export plan | How to create an export plan                  |
+      | ContentLink | Article | gaEvent | Create an export plan | Market services overseas                      |
+      | ContentLink | Article | gaEvent | Create an export plan | Deliver services overseas                     |
+
+    Examples:
+      | specific                             |
+      | Create an export plan - article list |
+
+
+  @allure.link:CMS-1672
+    @dev-only
+    @page-events
+    @ga360_5
+  Scenario Outline: All GA360 "CountryGuidePage" events should registered for event handlers attached to "Domestic Pages" elements on "Domestic - <specific>" page (Dev)
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM "CountryGuidePage" events defined for "Domestic pages"
+
+    Then following GTM events should be registered
+      | action          | element         | event   | type        | value                                          |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Health and life sciences                       |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Oil and gas                                    |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Renewables                                     |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Fintech                                        |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Education                                      |
+# On DEV country-guide-intro-ctas are not present
+#      | Cta             | IntroRelatedCta | gaEvent | Not present | Export opportunities for Brazil                |
+#      | Cta             | IntroRelatedCta | gaEvent | Not present | Sell online in Brazil                          |
+#      | Cta             | IntroRelatedCta | gaEvent | Not present | Trade events for Brazil                        |
+      | Cta             | NextStepCta     | gaEvent | Not present | Exporting to Brazil if there's no EU Exit deal |
+      | Cta             | NextStepCta     | gaEvent | Not present | Get in touch with one of our trade advisers    |
+      | Cta             | NextStepCta     | gaEvent | Not present | Read more advice about doing business abroad   |
+
+    Examples:
+      | specific       |
+      | Brazil - guide |
+
+
+  @allure.link:CMS-1672
+    @stage-only
+    @page-events
+    @ga360_6
+  Scenario Outline: All GA360 "CountryGuidePage" events should registered for event handlers attached to "Domestic Pages" elements on "Domestic - <specific>" page (Staging)
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM "CountryGuidePage" events defined for "Domestic pages"
+
+    Then following GTM events should be registered
+      | action          | element         | event   | type        | value                                          |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Health and life sciences                       |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Oil and gas                                    |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Renewables                                     |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Fintech                                        |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Education                                      |
+      | Cta             | IntroRelatedCta | gaEvent | Not present | Export opportunities for Brazil                |
+      | Cta             | IntroRelatedCta | gaEvent | Not present | Sell online in Brazil                          |
+      | Cta             | IntroRelatedCta | gaEvent | Not present | Trade events for Brazil                        |
+      | Cta             | NextStepCta     | gaEvent | Not present | Exporting to Brazil if there's no EU Exit deal |
+      | Cta             | NextStepCta     | gaEvent | Not present | Get in touch with one of our trade advisers    |
+      | Cta             | NextStepCta     | gaEvent | Not present | Read more advice about doing business abroad   |
+
+    Examples:
+      | specific       |
+      | Brazil - guide |
+
+
+  @allure.link:CMS-1672
+    @stage-only
+    @page-events
+    @ga360_7
+  Scenario Outline: All GA360 "CountryGuidePage" events should registered for event handlers attached to "Domestic Pages" elements on "Domestic - <specific>" page
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM "CountryGuidePage" events defined for "Domestic pages"
+
+    Then following GTM events should be registered
+      | action          | element         | event   | type        | value                                           |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Automotive                                      |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Food and drink                                  |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Health and life sciences                        |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Technology                                      |
+      | Cta             | NextStepCta     | gaEvent | Not present | Exporting to Germany if there's no EU Exit deal |
+      | Cta             | NextStepCta     | gaEvent | Not present | Get in touch with one of our trade advisers     |
+      | Cta             | NextStepCta     | gaEvent | Not present | Read more advice about doing business abroad    |
+
+    Examples:
+      | specific        |
+      | Germany - guide |
+
+
+  @allure.link:CMS-1672
+    @stage-only
+    @page-events
+    @ga360_8
+  Scenario Outline: All GA360 "CountryGuidePage" events should registered for event handlers attached to "Domestic Pages" elements on "Domestic - <specific>" page
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM "CountryGuidePage" events defined for "Domestic pages"
+
+    Then following GTM events should be registered
+      | action          | element         | event   | type        | value                                         |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Aerospace and engineering                     |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Cyber security                                |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Health and life sciences                      |
+      | Cta             | NextStepCta     | gaEvent | Not present | Exporting to Italy if there's no EU Exit deal |
+      | Cta             | NextStepCta     | gaEvent | Not present | Get in touch with one of our trade advisers   |
+      | Cta             | NextStepCta     | gaEvent | Not present | Read more advice about doing business abroad  |
+
+    Examples:
+      | specific      |
+      | Italy - guide |
+
+
+  @allure.link:CMS-1672
+    @stage-only
+    @page-events
+    @ga360_9
+  Scenario Outline: All GA360 "CountryGuidePage" events should registered for event handlers attached to "Domestic Pages" elements on "Domestic - <specific>" page
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM "CountryGuidePage" events defined for "Domestic pages"
+
+    Then following GTM events should be registered
+      | action          | element         | event   | type        | value                                               |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Automotive                                          |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Fintech                                             |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Life sciences                                       |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Offshore wind                                       |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Technology                                          |
+      | Cta             | NextStepCta     | gaEvent | Not present | Exporting to South Korea if there's no EU Exit deal |
+      | Cta             | NextStepCta     | gaEvent | Not present | Get in touch with one of our trade advisers         |
+      | Cta             | NextStepCta     | gaEvent | Not present | Read more advice about doing business abroad        |
+
+    Examples:
+      | specific            |
+      | South Korea - guide |
+
+
+  @allure.link:CMS-1672
+    @stage-only
+    @page-events
+    @ga360_10
+  Scenario Outline: All GA360 "CountryGuidePage" events should registered for event handlers attached to "Domestic Pages" elements on "Domestic - <specific>" page
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM "CountryGuidePage" events defined for "Domestic pages"
+
+    Then following GTM events should be registered
+      | action          | element         | event   | type        | value                                                   |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Defence and security                                    |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Food and drink                                          |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Offshore wind energy                                    |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Technology                                              |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Financial and professional services                     |
+      | Cta             | NextStepCta     | gaEvent | Not present | Exporting to The Netherlands if there's no EU Exit deal |
+      | Cta             | NextStepCta     | gaEvent | Not present | Get in touch with one of our trade advisers             |
+      | Cta             | NextStepCta     | gaEvent | Not present | Read more advice about doing business abroad            |
+
+    Examples:
+      | specific                |
+      | The Netherlands - guide |
+
+
+  @allure.link:CMS-1672
+    @stage-only
+    @page-events
+    @ga360_11
+  Scenario Outline: All GA360 "CountryGuidePage" events should registered for event handlers attached to "Domestic Pages" elements on "Domestic - <specific>" page
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" triggers all GTM "CountryGuidePage" events defined for "Domestic pages"
+
+    Then following GTM events should be registered
+      | action          | element         | event   | type        | value                                          |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Healthcare and life sciences                   |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Advanced manufacturing                         |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Energy                                         |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Defence and security                           |
+      | ExpressInterest | ExpanderControl | gaEvent | Not present | Infrastructure                                 |
+      | Cta             | NextStepCta     | gaEvent | Not present | Exporting to Turkey if there's no EU Exit deal |
+      | Cta             | NextStepCta     | gaEvent | Not present | Get in touch with one of our trade advisers    |
+      | Cta             | NextStepCta     | gaEvent | Not present | Read more advice about doing business abroad   |
+
+    Examples:
+      | specific       |
+      | Turkey - guide |
+
+@bug
+    @allure.issue:ED-3116
+    @fixed
+    @allure.link:ED-3118
+    @logo
+  Scenario Outline: Any Exporter should see correct EIG header logo & GREAT footer logo on "<selected>" page
+    Given "Robert" visits the "<selected>" page
+
+    Then "Robert" should see correct "EIG" logo
+    And "Robert" should see correct "Great - footer" logo
+
+    Examples:
+      | selected                       |
+      | Domestic - Get finance         |
+      | Domestic - Home                |
+      | Find a Buyer - Home            |
+      | Selling Online Overseas - Home |
+      | Profile - About                |
+      | SSO - Registration             |
+      | SSO - Sign in                  |
+
+
+  @stage-only
+  @allure.link:ED-3118
+  @logo
+  Scenario: Any Exporter should see correct EIG header logo & GREAT footer logo on "Export Opportunities - Home" page
+    Given "Robert" visits the "Export Opportunities - Home" page
+
+    Then "Robert" should see correct "EIG" logo
+    And "Robert" should see correct "Great - footer" logo
+
+
+  @bug
+  @allure.issue:ED-3116
+  @fixed
+  @allure.link:ED-3118
+  @events
+  @logo
+  Scenario: Any Exporter should see correct Business Is Great (BIG) header & footer logo on "Events - Home" page
+    Given "Robert" visits the "Events - Home" page
+
+    Then "Robert" should see correct "EVENTS Business Is Great - header" logo
+    And "Robert" should see correct "EVENTS Business Is Great - footer" logo
+
+
+  @allure.link:ED-3118
+  @logo
+  Scenario: Any Exporter should see correct GREAT header & footer logo on "Find a Supplier - Landing" page
+    Given "Robert" visits the "Find a Supplier - Landing" page
+
+    Then "Robert" should see correct "Great - header" logo
+    And "Robert" should see correct "Great - footer" logo
+
+
+  @allure.link:ED-3587
+    @logo
+    @allure.link:ED-3118
+  Scenario Outline: Any Exporter should be able to get to the Domestic Home page from "<selected>" page by using DIT logo in the page header and footer
+    Given "Robert" visits the "<selected>" page
+
+    When "Robert" decides to click on "Invest in Great logo"
+
+    Then "Robert" should be on the "Domestic - Home" page if not be redirected to "International - Landing" page
+
+    Examples:
+      | selected                       |
+      | Domestic - Home                |
+      | Domestic - Get finance         |
+      | SSO - Registration             |
+      | SSO - Sign in                  |
+      | Find a Buyer - Home            |
+      | Selling Online Overseas - Home |
+      | Profile - About                |
+
+
+    @stage-only
+    Examples:
+      | selected                    |
+      | Export Opportunities - Home |
+
+
+  @allure.link:ED-3091
+    @favicon
+  Scenario Outline: Any user should see the correct favicon on "<specific>" page
+    Given "Robert" visits the "<specific>" page
+
+    Then "Robert" should see the correct favicon
+
+    Examples: Domestic pages
+      | specific                       |
+      | Domestic - Home                |
+      | Find a Buyer - Home            |
+      | Find a Supplier - Landing      |
+      | SSO - Registration             |
+      | SSO - Sign in                  |
+      | Profile - About                |
+      | Selling Online Overseas - Home |
+
+    @stage-only
+    Examples: Export Opportunities
+      | specific                    |
+      | Export Opportunities - Home |
+
+
+  @mobile
+    @skip-in-firefox
+  Scenario Outline: Any mobile user should see mobile-friendly header on "<selected>" page
+    Given "Robert" visits the "<selected>" page
+
+    When "Robert" clicks the Menu button
+
+    Then "Robert" should see the menu items
+
+    Examples: Domestic pages
+      | selected                       |
+      | Domestic - Home                |
+      | Find a Buyer - Home            |
+      | Find a Supplier - Landing      |
+      | SSO - Registration             |
+      | SSO - Sign in                  |
+      | Profile - About                |
+      | Selling Online Overseas - Home |
+
+ @allure.link:ED-2366
+  @home-page
+  @sections
+  Scenario: Any Exporter should see the "Beta bar, Hero, EU Exit enquiries banner, Advice, Services, Case Studies, Business is Great, Error Reporting" sections on the home page
+    Given "Robert" visits the "Domestic - Home" page
+    Then "Robert" should see following sections
+      | Sections                 |
+      | Header                   |
+      | SSO links - logged out   |
+      | Hero                     |
+      | How DIT helps            |
+      | Find new markets         |
+      | Export goods from the UK |
+      | What's new               |
+      | Error Reporting          |
+      | Footer                   |
+      | Sign in                  |
+
+    @allure.link:XOT-1215
+  @maddb
+  @home-page_4
+  @sections
+  Scenario: Any Exporter should be able to get to the "Market Access Database" using link on the home page
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to find out more about "exporting goods from the UK"
+
+    Then "Robert" should be on the "Market Access Database - Landing" page
+
+
+  @allure.link:XOT-1217
+    @markets
+    @home-page_5
+    @sections
+    # re directing to different url view export market guides instead of markets ,its directing to dashboard
+  Scenario Outline: Any Exporter should be able to get to the export markets listing using "<export market guides>" link on Home page
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to "<export market guides>"
+
+    Then "Robert" should be on the "Domestic - markets listing" page
+
+    Examples:
+      | export market guides      |
+      | view export market guides |
+      | view all market guides    |
+
+
+  @allure.link:XOT-1217
+  @markets
+  @home-page_6
+  @sections
+  Scenario: Exporters should be able to quickly filter export markets by one of the preselected sectors
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to use one of the "sector selector quick links"
+
+    Then "Robert" should be on the "Domestic - filtered markets listing" page
+
+
+  @allure.link:XOT-1217
+  @markets
+  @home-page_7
+  @sections
+  Scenario: Exporters should be able to filter export markets by the sector their business is in
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to find new markets for his business
+
+    Then "Robert" should be on the "Domestic - filtered markets listing" page
+
+
+  @allure.link:XOT-1218
+  @markets
+  @home-page_8
+  @sections
+  Scenario: Any Exporter should be able to learn what's new on our site
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to use one of the "what's new links"
+
+    Then "Robert" should get to a working page
+
+#   @sections
+#   @sign_in_required_1
+#  Scenario: Visitor should able to login with learn to export section on the home page
+#    Given "Robert" visits the "Domestic - Home" page
+#
+#    When "Robert" decides to click on "Learn to Export"
+#
+#    Then "Robert" should be on the "GreatMagna - Sign Up" page
+#    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
+#    And "Robert" visited "GreatMagna - Login" page
+#    And "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#
+#   @sections
+#   @sign_in_required_2
+#  Scenario: Visitor should able to login with where to export section on the home page
+#    Given "Robert" visits the "Domestic - Home" page
+#
+#    When "Robert" decides to click on "Where to Export"
+#
+#    Then "Robert" should be on the "GreatMagna - Sign Up" page
+#    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
+#    And "Robert" visited "GreatMagna - Login" page
+#    And "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+#
+#   @sections
+#   @sign_in_required_3
+#  Scenario: Visitor should able to login with make an export plan section on the home page
+#    Given "Robert" visits the "Domestic - Home" page
+#
+#    When "Robert" decides to click on "Make An Export Plan"
+#
+#    Then "Robert" should be on the "GreatMagna - Sign Up" page
+#    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
+#    And "Robert" visited "GreatMagna - Login" page
+#    And "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+#    And "Robert" should be on the "GreatMagna - Dashboard" Page
+
+
+      @sections
+   @sign_in_required_4
+  Scenario: Visitor should able to login with make an export plan section on the home page
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to click on "Make An Export Plan"
+
+    And "Robert" decides to click on element "Top Create a new plan" on page "Build An Export Plan - Export Plan"
+
+    Then "Robert" should be on the "GreatMagna - Sign Up" page
+    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
+    And "Robert" visited "GreatMagna - Login" page
+    And "Robert" decides to enter email address "santoshtesting10008+9019@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "Build An Export Plan - Export Plan" Page
+    And "Robert" decides to enter product name "Vehicle" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click continue on "Build An Export Plan - Export Plan" Page
+    And "Robert" decides to enter country name "South Africa" on the "Build An Export Plan - Export Plan" page
+
+
+#
+#@sections
+#   @sign_up_required_5
+#  Scenario Outline: Visitor should able to login with make an export plan section on the home page
+#  Given "Robert" visits the "Domestic - Home" page
+#
+#  When "Robert" decides to click on "Make An Export Plan"
+#
+#  And "Robert" decides to click on element "Top Create a new plan" on page "Build An Export Plan - Export Plan"
+#  And "Robert" visited "GreatMagna - Sign Up" page
+#  And "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+#  And "Robert" should be on the "Build An Export Plan - Export Plan" Page
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+#
+#    And "Robert" should be on the "GreatMagna - Sign Up" page
+#    And "Robert" should be on the "Build An Export Plan - Export Plan" Page
+
+#
+   @sections
+   @sign_in_required_6
+  Scenario: Visitor should able to login with make an export plan section on the home page
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to click on "Make An Export Plan"
+
+    And "Robert" decides to click on element "Top Create a new plan" on page "Build An Export Plan - Export Plan"
+
+    Then "Robert" should be on the "GreatMagna - Sign Up" page
+    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
+    And "Robert" visited "GreatMagna - Login" page
+    And "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "Build An Export Plan - Export Plan" Page
+    And "Robert" decides to select random product on "Build An Export Plan - Export Plan" Page
+#    And "Robert" decides to enter random country on page "Build An Export Plan - Export Plan"
+#    And "Robert" decides to click on "create export plan" on "Build An Export Plan - Export Plan" Page
+
+@markets_1
+  Scenario: Visitors should be able to view all available markets
+    Given "Joel" visits the "Domestic - Home" page
+
+    When "Joel" decides to find out more about "Markets"
+
+    Then "Joel" should be on the "Domestic - markets listing" page
+
+
+  @pass
+  @markets_2
+  Scenario: Visitors should be able to view market guide page
+    Given "Joel" visits the "Domestic - Markets listing" page
+
+    When "Joel" selects a random market
+
+    Then "Joel" should be on the "Domestic - Markets - Guide" page
+    And "Joel" should see following sections
+      | Sections                    |
+      | Header                      |
+      | Hero                        |
+      | Breadcrumbs                 |
+      | Description                 |
+      | Opportunities for exporters |
+      | Doing business in           |
+#      | Next steps                  |
+      | Error Reporting             |
+      | Footer                      |
+
+
+
+  @markets_3
+  @failed
+  Scenario: Visitors should be able to view market guide page
+    Given "Joel" visits the "Domestic - Markets listing" page
+
+    When "Joel" selects a random market
+
+    Then "Joel" should be on the "Domestic - Markets - Guide" page
+    And "Joel" should see following sections
+      | Sections                    |
+      | Header                      |
+      | Hero                        |
+      | Breadcrumbs                 |
+      | Description                 |
+      | Opportunities for exporters |
+      | Doing business in           |
+#      | Next steps                  |
+#      | Next steps Staging          |
+      | Error Reporting             |
+      | Footer                      |
+
+  @markets_4
+  @bug_domestic_no_link_get_in_touch
+  Scenario Outline: Visitors which decided to "<follow up>" after they read about random market should get to "<expected>" page
+    Given "Joel" is on randomly selected Market page
+
+    When "Joel" decides to "<follow up>"
+
+    Then "Joel" should be on the "Domestic - <expected>" page
+
+    Examples: next step
+      | follow up                                    | expected       |
+      | Read more advice about doing business abroad | Advice landing |
+#      | Get in touch with one of our trade advisers  | New Office Finder |
+
+
+
+    @check-duties-and-customs
+    @bug_domestic_no_check_duties_link
+    @markets_5
+  Scenario Outline: Visitors which decided to "<follow up>" after they read about random market should get to Check Duties and Customs "<country>" page
+    Given "Joel" visits the "Domestic - <country> - guide" page
+
+    When "Joel" decides to "<follow up>"
+
+    Then "Joel" should be on one of the "Check duties and customs - Search product code, Check duties and customs - Access Geo Restricted" pages
+
+    Examples: next step
+      | follow up                                               | country |
+      | Check duties and customs procedures for exporting goods | Brazil  |
+      | Check duties and customs procedures for exporting goods | Germany |
+      | Check duties and customs procedures for exporting goods | Italy   |
+      | Check duties and customs procedures for exporting goods | Japan   |
+
+
+   @markets_6
+   @get_started_markets
+  Scenario: Visitor should able to login with "get started" from the market list
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to click on "Markets"
+    And "Robert" decides to click on element "Get started" on page "Domestic - Markets Listing"
+
+    Then "Robert" should be on the "GreatMagna - Sign Up" page
+    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
+    And "Robert" visited "GreatMagna - Login" page
+    And "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+
+   @markets_7
+   @get_started_markets
+  Scenario: Visitor should able to login with "compare now" from the market guide
+     Given "Robert" visits the "Domestic - Brazil - guide" page
+
+#    When "Robert" decides to click on "Markets"
+    When "Robert" decides to click on element "Compare Now" on page "Domestic - Brazil - guide"
+
+    Then "Robert" should be on the "GreatMagna - Sign Up" page
+    And "Robert" decides to click on element "Sign in" on page "GreatMagna - Sign Up"
+    And "Robert" visited "GreatMagna - Login" page
+    And "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+
+ @international
+  Scenario Outline: Pixels should be present on "International - <selected>" page
+    Given "Robert" visited "Domestic - <selected>" page
+
+    Then "Robert" should be on the "Domestic - <selected>" page
+    And following web statistics analysis or tracking elements should be present
+      | Google Tag Manager             |
+      | Google Tag Manager - no script |
+      | UTM Cookie Domain              |
+    And following web statistics analysis or tracking elements should NOT be present
+      | LinkedIn tracking pixel |
+      | Facebook tracking pixel |
+
+    Examples: Various pages
+      | selected                                                           |
+      | Home                                                               |
+      | Advice landing                                                     |
+      | Contact us                                                         |
+      | Feedback - contact us                                              |
+      | Find an export market - Article list                               |
+      | Get finance                                                        |
+      | Join our Export Community - form                                   |
+      | Join our export community - landing                                |
+      | Markets listing                                                    |
+      | Services                                                           |
+      | Trade finance                                                      |
+      | What can we help you with? - Domestic Contact us                   |
+      | What would you like to know more about? - International Contact us |
+
+
+@search_1
+  @allure.link:XOT-760
+  Scenario: Visitor should see empty search results if they don't specify search phrase
+    Given "Robert" visits the "Domestic - Home" page
+
+    When "Robert" decides to click on "search button"
+
+    Then "Robert" should be on the "Domestic - Empty Search results" page
+
+  @search_2
+  @allure.link:XOT-760
+  @failed
+  Scenario Outline: Visitor should see search results for "<phrase>"
+    Given "Robert" visits the "Domestic - <specific>" page
+
+    When "Robert" searches using "<phrase>"
+
+    Then "Robert" should see search results page number "1" for "<phrase>"
+#    And "Robert" should see search results in following order "Article, Service, Event, Opportunity"
+
+    Examples: event, market, service and opportunity
+      | specific        | phrase    |
+      | Home            | Work      |
+      | Advice landing  | Transport |
+      | Markets listing | Export    |
+
+  @search_3
+  @failed
+    @allure.issue:XOT-840
+    @fixed
+    @allure.link:XOT-760
+  Scenario Outline: Visitors should be able to find out more about the "<type of>" search results
+    Given "Robert" searched using "<phrase>" on the "Domestic - <specific>" page
+
+    When "Robert" decides to find out more about random "<type of>" result
+
+    Then "Robert" should be on one of the "<expected>" pages
+  #type -Event
+    Examples: event, market, service and opportunity
+      | specific        | phrase     | type of            | expected                                                                          |
+      | Home            | Exhibition | Article              | Events - Event, Events - Registration                                             |
+      | Markets listing | Food       | Online marketplace | Selling Online Overseas - Marketplace, Domestic - Markets - guide, Events - event |
+
+    @bug
+    @allure.issue:XOT-1208
+    @fixme
+    Examples: event, market, service and opportunity
+      | specific       | phrase         | type of            | expected                                                                                            |
+      | Advice landing | export finance | Service            | Domestic - Get Finance, Export Opportunities - Home, Selling Online Overseas - Home, Events - event |
+      | Advice landing | Transport      | Article            | Domestic - Advice article, Domestic - Markets                                                       |
+      | Services       | Manufacture    | Export opportunity | Export Opportunities - Opportunity                                                                  |
+
+  @search_4
+  @allure.link:XOT-760
+  Scenario Outline: Visitors should be able to navigate through search results pages for "<phrase>"
+    Given "Robert" searched using "<phrase>" on the "Domestic - <specific>" page
+    And "Robert" sees more than "1" search result page
+
+    When "Robert" decides to use "Next" link
+    Then "Robert" should see search results page number "2" for "<phrase>"
+
+    When "Robert" decides to use "Previous" link
+    Then "Robert" should see search results page number "1" for "<phrase>"
+
+    Examples: event, market, service and opportunity
+      | specific        | phrase    |
+      | Home            | Work      |
+      | Advice landing  | Transport |
+      | Markets listing | Water     |
+
+  @search_5
+  @failed
+  @allure.link:XOT-760
+  Scenario Outline: Visitor should be able to clear the last search for "<first phrase>" and start new search for "<second phrase>"
+    Given "Robert" searched using "<first phrase>" on the "Domestic - <specific>" page
+    And "Robert" sees search results page number "1" for "<first phrase>"
+
+    When "Robert" searches using "<second phrase>"
+
+    Then "Robert" should see search results page number "1" for "<second phrase>"
+
+    Examples: event, market, service and opportunity
+      | specific        | first phrase | second phrase     |
+#      | Home            | Work         | Full work service |
+      | Advice landing  | Transport    | way               |
+#      | Markets listing | Water        | selection         |
+
+
+@allure.link:TT-585
+   @ukef_1
+  Scenario: Any Exporter should see the all expected sections on the "UKEF Trade Finance" page
+    Given "Robert" visits the "Domestic - Trade Finance" page
+
+    Then "Robert" should see following sections
+      | Sections                    |
+      | Breadcrumbs                 |
+      | Hero                        |
+      | Tell us about your business |
+      | Advantages                  |
+      | Video                       |
+      | Contact us                  |
+      | Error Reporting             |
+
+
+  @allure.link:TT-585
+  @video
+  @skip-in-firefox
+  Scenario: Any Exporter should be able to watch promotional video on the "UKEF Trade Finance" page
+    Given "Robert" visits the "Domestic - Trade Finance" page
+
+    When "Robert" decides to watch "6" seconds of the promotional video
+
+    Then "Robert" should be able to watch at least first "5" seconds of the promotional video
+
+
+  @allure.link:TT-585
+  Scenario: Any Exporter should be able to get to "Finance Advice" page from the "UKEF Trade Finance" page
+    Given "Robert" visits the "Domestic - Trade Finance" page
+
+    When "Robert" decides to "Read more about getting money to grow your business"
+
+    Then "Robert" should be on the "Domestic - Advice article list" page
+
+
+  @allure.link:TT-585
+  Scenario Outline: Any Exporter should be able to navigate to "Domestic - <expected>" page using "<breadcrumb>" on the "UKEF Trade Finance" page
+    Given "Robert" visits the "Domestic - Trade Finance" page
+
+    When "Robert" decides to click on "<breadcrumb>"
+
+    Then "Robert" should be on the "Domestic - <expected>" page if not be redirected to "International - Landing" page
+
+    Examples: Breadcrumbs
+      | breadcrumb   | expected    |
+      | great.gov.uk | Home        |
+      | UKEF         | Get Finance |
+
+
+  @allure.link:TT-585
+  Scenario: Any Exporter should be able to get to the "Contact UKEF" form from "Domestic - Trade Finance"
+    Given "Robert" visits the "Domestic - Trade Finance" page
+
+    When "Robert" decides to "Tell us about your business"
+
+    Then "Robert" should be on the "Domestic - Your details - UKEF Contact us" page
+    And "Robert" should see following sections
+      | Sections        |
+      | Breadcrumbs     |
+      | Form            |
+      | Error Reporting |
+
+
+  @allure.link:TT-585
+  @captcha
+  @dev-only
+  Scenario: Any Exporter should be able to contact UKEF team by submitting the "Check your eligibility" form
+    Given "Robert" visits the "Domestic - Your details - UKEF Contact us" page
+
+    When "Robert" fills out and submits the form
+    Then "Robert" should be on the "Domestic - Company details - UKEF Contact us" page
+
+    When "Robert" fills out and submits the form
+    Then "Robert" should be on the "Domestic - Tell us how we can help - UKEF Contact us" page
+
+    When "Robert" fills out and submits the form
+    Then "Robert" should be on the "Domestic - Thank you - UKEF Contact us" page
+
+
+  @allure.link:TT-585
+  @captcha
+  @dev-only
+  Scenario: Any Exporter should not be able to submit "Check you eligibility" form without filling out all required fields
+    Given "Robert" visits the "Domestic - Your details - UKEF Contact us" page
+    When "Robert" submits the form
+    Then "Robert" should be on the "Domestic - Your details - UKEF Contact us" page
+    And "Robert" should see error message saying that mandatory fields are required
+
+    When "Robert" fills out and submits the form
+    Then "Robert" should be on the "Domestic - Company details - UKEF Contact us" page
+    When "Robert" submits the form
+    Then "Robert" should be on the "Domestic - Company details - UKEF Contact us" page
+    And "Robert" should see error message saying that mandatory fields are required
+
+    When "Robert" fills out and submits the form
+    Then "Robert" should be on the "Domestic - Tell us how we can help - UKEF Contact us" page
+    When "Robert" submits the form
+    Then "Robert" should be on the "Domestic - Tell us how we can help - UKEF Contact us" page
+    And "Robert" should see error message saying that mandatory fields are required
+
+    When "Robert" fills out and submits the form
+    Then "Robert" should be on the "Domestic - Thank you - UKEF Contact us" page
