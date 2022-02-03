@@ -7,21 +7,21 @@ Feature: Domestic - Advice articles
     Given test authentication is done
 
 
-  @allure.link:CMS-686
-  @advice_1
-  @articles
-  Scenario: Any Exporter should see all expected sections on "Domestic - Advice landing" page
-    When "Robert" goes to the "Domestic - Advice landing" page
-
-    Then "Robert" should see following sections
-      | sections                 |
-      | Header                   |
-      | Hero                     |
-      | Breadcrumbs              |
-      | Advice & Guidance tiles  |
-      | Error reporting          |
-#      | Footer                   |
-#      | Upskill now             |
+#  @allure.link:CMS-686
+#  @advice_1
+#  @articles
+#  Scenario: Any Exporter should see all expected sections on "Domestic - Advice landing" page
+#    When "Robert" goes to the "Domestic - Advice landing" page
+#
+#    Then "Robert" should see following sections
+#      | sections                 |
+#      | Header                   |
+#      | Hero                     |
+#      | Breadcrumbs              |
+#      | Advice & Guidance tiles  |
+#      | Error reporting          |
+##      | Footer                   |
+##      | Upskill now             |
 
 
   @allure.link:CMS-686
