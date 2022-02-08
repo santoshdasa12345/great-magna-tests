@@ -281,8 +281,8 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
 
       SPLIT_FILE_SUFFIX=$(( ${CIRCLE_NODE_INDEX} / 2 ))
 
-      echo "Creating results output directory inside tests/browser"
-      mkdir results_${BROWSER}_${CIRCLE_NODE_INDEX}/
+#      echo "Creating results output directory inside tests/browser"
+#      mkdir results_${BROWSER}_${CIRCLE_NODE_INDEX}/
       echo "Current instance of ${BROWSER} is going to run `cat tests-to-run${SPLIT_FILE_SUFFIX} | wc -l` scenarios:"
       cat tests-to-run${SPLIT_FILE_SUFFIX}
 
@@ -1041,7 +1041,7 @@ jobs:
 
   dev_parallel_browser_tests_using_circleci:
     working_directory: ~/great_magna_tests
-    parallelism: 16
+    parallelism: 1
     environment:
       TEST_ENV: "dev"
       AUTO_RETRY: "true"
