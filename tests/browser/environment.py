@@ -17,7 +17,9 @@ DRIVER_CAPABILITIES = get_driver_capabilities()
 def before_all(context: Context):
     context.driver_capabilities = DRIVER_CAPABILITIES
 
-    context.config.setup_logging()#configfile=".behave_logging")
+    context.config.setup_logging()
+    # configfile=".behave_logging")
+
     logger = logging.getLogger()
     logger.setLevel(logging.ERROR)
 
