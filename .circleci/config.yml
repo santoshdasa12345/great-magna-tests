@@ -1044,7 +1044,7 @@ jobs:
     parallelism: 4
     environment:
       TEST_ENV: "dev"
-      AUTO_RETRY: "true"
+      AUTO_RETRY: "false"
       TAKE_SCREENSHOTS: "true"
       TAGS: "--tags=~@stage-only --tags=~@uat-only --tags=~@erp"
       BROWSER_ENVIRONMENT: "local"
