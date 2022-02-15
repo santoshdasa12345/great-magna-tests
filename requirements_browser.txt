@@ -31,7 +31,7 @@ future==0.18.2            # via great-magna-tests-shared, notifications-python-c
 hyperlink==19.0.0         # via great-magna-tests-shared, twisted
 idna==2.9                 # via great-magna-tests-shared, hyperlink, requests
 importlib-metadata==1.6.0  # via pluggy
-incremental==17.5.0       # via great-magna-tests-shared, twisted
+incremental>=21.3.0       # via great-magna-tests-shared, twisted
 lxml==4.6.5               # via great-magna-tests-shared, parsel, scrapy
 langdetect==1.0.8         # via -r requirements_functional.in
 mohawk==0.3.4             # via great-magna-tests-shared, sigauth
@@ -63,7 +63,7 @@ six==1.15.0               # via allure-python-commons, automat, behave, cryptogr
 soupsieve==2.0.1          # via beautifulsoup4
 sqlparse==0.3.1           # via great_magna_tests_shared, django
 termcolor==1.1.0          # via -r requirements_browser.in, great_magna_tests_shared
-twisted==20.3.0           # via great_magna_tests_shared, scrapy
+twisted==22.1.0           # via great_magna_tests_shared, scrapy
 urllib3==1.25.9           # via -r requirements_browser.in, great_magna_tests_shared, requests, selenium
 w3lib==1.22.0             # via directory-client-core, great_magna_tests_shared, parsel, scrapy
 xmltodict==0.12.0         # via -r requirements_browser.in
