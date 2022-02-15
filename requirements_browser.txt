@@ -31,7 +31,7 @@ future==0.18.2            # via great-magna-tests-shared, notifications-python-c
 hyperlink==19.0.0         # via great-magna-tests-shared, twisted
 idna==2.9                 # via great-magna-tests-shared, hyperlink, requests
 importlib-metadata==1.6.0  # via pluggy
-incremental==17.5.0       # via great-magna-tests-shared, twisted
+incremental>=21.3.0       # via great-magna-tests-shared, twisted
 lxml==4.6.5               # via great-magna-tests-shared, parsel, scrapy
 langdetect==1.0.8         # via -r requirements_functional.in
 mohawk==0.3.4             # via great-magna-tests-shared, sigauth

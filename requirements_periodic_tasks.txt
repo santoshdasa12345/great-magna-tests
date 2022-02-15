@@ -35,7 +35,7 @@ geckoboard.py==1.1.0      # via -r requirements_periodic_tasks.in
 hyperlink==19.0.0         # via great_magna_tests_shared, twisted
 idna==2.9                 # via great_magna_tests_shared, hyperlink, requests
 importlib-metadata==1.6.0  # via pluggy, pytest
-incremental==17.5.0       # via great_magna_tests_shared, twisted
+incremental>=21.3.0       # via great_magna_tests_shared, twisted
 jira==2.0.0               # via -r requirements_periodic_tasks.in
 junit-xml==1.9            # via -r requirements_periodic_tasks.in
 lxml==4.6.5               # via -r requirements_periodic_tasks.in, great_magna_tests_shared, parsel, scrapy
