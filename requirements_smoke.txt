@@ -29,7 +29,7 @@ envparse==0.2.0           # via great-magna-tests-shared
 future==0.18.2            # via great-magna-tests-shared, notifications-python-client
 hyperlink==19.0.0         # via great-magna-tests-shared, twisted
 idna==2.9                 # via great-magna-tests-shared, hyperlink, requests
-incremental==17.5.0       # via great-magna-tests-shared, twisted
+incremental>=21.3.0       # via great-magna-tests-shared, twisted
 lxml==4.6.5               # via -r requirements_smoke.in, great-magna-tests-shared, parsel, scrapy
 mohawk==0.3.4             # via great-magna-tests-shared, sigauth
 monotonic==1.5            # via directory-client-core, great-magna-tests-shared, notifications-python-client
