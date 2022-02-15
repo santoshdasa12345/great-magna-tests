@@ -60,7 +60,7 @@ sigauth==4.1.1            # via directory-client-core, great-magna-tests-shared
 six==1.15.0               # via automat, cryptography, great-magna-tests-shared, geventhttpclient-wheels, mohawk, parsel, pdfminer2, protego, pyopenssl, retrying, w3lib
 sqlparse==0.3.1           # via great-magna-tests-shared, django
 termcolor==1.1.0          # via great-magna-tests-shared
-twisted==20.3.0           # via great-magna-tests-shared, scrapy
+twisted==22.1.0           # via great-magna-tests-shared, scrapy
 urllib3==1.25.9           # via great-magna-tests-shared, requests
 w3lib==1.22.0             # via directory-client-core, great-magna-tests-shared, parsel, scrapy
 werkzeug==1.0.1           # via flask
