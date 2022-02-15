@@ -68,7 +68,7 @@ six==1.15.0               # via allure-python-commons, automat, behave, cryptogr
 soupsieve==2.0.1          # via beautifulsoup4
 sqlparse==0.3.1           # via great_magna_tests_shared, django
 termcolor==1.1.0          # via -r requirements_functional.in, great_magna_tests_shared
-twisted==20.3.0           # via great_magna_tests_shared, scrapy
+twisted==22.1.0           # via great_magna_tests_shared, scrapy
 urllib3==1.25.9           # via great_magna_tests_shared, requests
 w3lib==1.22.0             # via directory-client-core, great_magna_tests_shared, parsel, scrapy
 wcwidth==0.1.9            # via pytest
