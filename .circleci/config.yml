@@ -350,15 +350,15 @@ step_run_content_diff: &step_run_content_diff
       . venv/bin/activate
       SERVICE=${SERVICE} ENVS_TO_COMPARE=${ENVS_TO_COMPARE} make compare_content
 
-#step_run_dead_links_checker: &step_run_dead_links_checker
-#  run:
-#    name: Run Dead Links Checker script
-#    command: |
-#      . venv/bin/activate
-#      python ./env_vars/env_writer.py --env=${TEST_ENV} --config=./env_vars/env_dead_link_checker.json
-#      source ./env_vars/.env_with_export;
-#      TEST_ENV=${TEST_ENV} make dead_links_check
-#      make dead_links_list > ./reports/dead_links_report.txt
+step_run_dead_links_checker: &step_run_dead_links_checker
+  run:
+    name: Run Dead Links Checker script
+    command: |
+      . venv/bin/activate
+      python ./env_vars/env_writer.py --env=${TEST_ENV} --config=./env_vars/env_dead_link_checker.json
+      source ./env_vars/.env_with_export;
+      TEST_ENV=${TEST_ENV} make dead_links_check
+      make dead_links_list > ./reports/dead_links_report.txt
 
 #step_run_geckoboard_updater: &step_run_geckoboard_updater
 #  run:
@@ -657,14 +657,14 @@ steps_content_diff: &steps_content_diff
     - store_artifacts:
         path: ./reports
 
-#steps_dead_links_checker: &steps_dead_links_checker
-#  steps:
-#    - *step_restore_cached_periodic_tasks_requirements
-#    - *step_run_dead_links_checker
-#    - store_test_results:
-#        path: ./reports
-#    - store_artifacts:
-#        path: ./reports
+steps_dead_links_checker: &steps_dead_links_checker
+  steps:
+    - *step_restore_cached_periodic_tasks_requirements
+    - *step_run_dead_links_checker
+    - store_test_results:
+        path: ./reports
+    - store_artifacts:
+        path: ./reports
 
 #steps_geckoboard_updater: &steps_geckoboard_updater
 #  steps:
@@ -1139,41 +1139,41 @@ jobs:
 #    *steps_geckoboard_updater,
 #    ]
 
-#  check_for_dead_links_on_dev:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      TEST_ENV: "DEV"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_dead_links_checker,
-#    ]
-#
-#  check_for_dead_links_on_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      TEST_ENV: "STAGE"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_dead_links_checker,
-#    ]
-#
-#  check_for_dead_links_on_uat:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      TEST_ENV: "UAT"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_dead_links_checker,
-#    ]
-#
-#  check_for_dead_links_on_prod:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      TEST_ENV: "PROD"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_dead_links_checker,
-#    ]
+  check_for_dead_links_on_dev:
+    working_directory: ~/great_magna_tests
+    environment:
+      TEST_ENV: "DEV"
+    <<: [
+    *machine_python3_clean,
+    *steps_dead_links_checker,
+    ]
+
+  check_for_dead_links_on_stage:
+    working_directory: ~/great_magna_tests
+    environment:
+      TEST_ENV: "STAGE"
+    <<: [
+    *machine_python3_clean,
+    *steps_dead_links_checker,
+    ]
+
+  check_for_dead_links_on_uat:
+    working_directory: ~/great_magna_tests
+    environment:
+      TEST_ENV: "UAT"
+    <<: [
+    *machine_python3_clean,
+    *steps_dead_links_checker,
+    ]
+
+  check_for_dead_links_on_prod:
+    working_directory: ~/great_magna_tests
+    environment:
+      TEST_ENV: "PROD"
+    <<: [
+    *machine_python3_clean,
+    *steps_dead_links_checker,
+    ]
 
 #  check_cms_pages_on_production_return_200:
 #    working_directory: ~/great_magna_tests
