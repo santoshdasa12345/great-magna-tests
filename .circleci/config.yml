@@ -59,14 +59,14 @@ step_install_requirements_for_parallel_browser_tests: &step_install_requirements
       pip install --quiet --upgrade pip
       pip install --quiet -r requirements_browser.txt
 
-#step_install_requirements_for_periodic_tasks: &step_install_requirements_for_periodic_tasks
-#  run:
-#    name: Create virtualenv and install dependencies
-#    command: |
-#      python3 -m venv venv
-#      . venv/bin/activate
-#      pip install --upgrade pip
-#      pip install -q -r requirements_periodic_tasks.txt
+step_install_requirements_for_periodic_tasks: &step_install_requirements_for_periodic_tasks
+  run:
+    name: Create virtualenv and install dependencies
+    command: |
+      python3 -m venv venv
+      . venv/bin/activate
+      pip install --upgrade pip
+      pip install -q -r requirements_periodic_tasks.txt
 
 step_install_allure_cli: &step_install_allure_cli
   run:
@@ -108,6 +108,7 @@ step_update_allure_result_files_generated_by_browser_tests: &step_update_allure_
     when: always
     command: |
       set -e
+
       mv tests/browser/results* .
       ls -lad results*
       make results_browser
@@ -191,11 +192,11 @@ step_cache_browser_tests_requirements: &step_cache_browser_tests_requirements
 #    paths:
 #    - ~/great_magna_tests
 
-#step_cache_periodic_tasks_requirements: &step_cache_periodic_tasks_requirements
-#  save_cache:
-#    key: periodic-tasks-dependency-cache-{{ .Revision }}
-#    paths:
-#      - ~/great_magna_tests
+step_cache_periodic_tasks_requirements: &step_cache_periodic_tasks_requirements
+  save_cache:
+    key: periodic-tasks-dependency-cache-{{ .Revision }}
+    paths:
+      - ~/great_magna_tests
 
 step_restore_cached_smoke_tests_requirements: &step_restore_cached_smoke_tests_requirements
   restore_cache:
@@ -217,9 +218,9 @@ step_restore_cached_browser_tests_requirements: &step_restore_cached_browser_tes
 #    keys:
 #    - load-tests-dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
 #
-#step_restore_cached_periodic_tasks_requirements: &step_restore_cached_periodic_tasks_requirements
-#  restore_cache:
-#    key: periodic-tasks-dependency-cache-{{ .Revision }}
+step_restore_cached_periodic_tasks_requirements: &step_restore_cached_periodic_tasks_requirements
+  restore_cache:
+    key: periodic-tasks-dependency-cache-{{ .Revision }}
 
 step_run_smoke_tests: &step_run_smoke_tests
   run:
@@ -328,26 +329,26 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
 #      source ./env_vars/.env_with_export;
 #      NUM_USERS=${NUM_USERS} HATCH_RATE=${HATCH_RATE} RUN_TIME=${RUN_TIME} make load_test_${SERVICE}
 #
-#step_run_test_cms_pages_return_200: &step_run_test_cms_pages_return_200
-#  run:
-#    name: Run CMS Checker
-#    command: |
-#      . venv/bin/activate
-#      make test_cms_pages_return_200
+step_run_test_cms_pages_return_200: &step_run_test_cms_pages_return_200
+  run:
+    name: Run CMS Checker
+    command: |
+      . venv/bin/activate
+      make test_cms_pages_return_200
 #
-#step_generate_cms_page_status_report: &step_generate_cms_page_status_report
-#  run:
-#    name: Generate CMS Page Status report
-#    command: |
-#      . venv/bin/activate
-#      make cms_page_status_report
+step_generate_cms_page_status_report: &step_generate_cms_page_status_report
+  run:
+    name: Generate CMS Page Status report
+    command: |
+      . venv/bin/activate
+      make cms_page_status_report
 #
-#step_run_content_diff: &step_run_content_diff
-#  run:
-#    name: Run Content Diff tests
-#    command: |
-#      . venv/bin/activate
-#      SERVICE=${SERVICE} ENVS_TO_COMPARE=${ENVS_TO_COMPARE} make compare_content
+step_run_content_diff: &step_run_content_diff
+  run:
+    name: Run Content Diff tests
+    command: |
+      . venv/bin/activate
+      SERVICE=${SERVICE} ENVS_TO_COMPARE=${ENVS_TO_COMPARE} make compare_content
 
 #step_run_dead_links_checker: &step_run_dead_links_checker
 #  run:
@@ -623,38 +624,38 @@ steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack: &
 #  - store_artifacts:
 #      path: ./reports
 
-#steps_setup_env_for_periodic_tasks: &steps_setup_env_for_periodic_tasks
-#  steps:
-#    - *step_checkout_repo
-#    - *step_install_requirements_for_periodic_tasks
-#    - *step_cache_periodic_tasks_requirements
+steps_setup_env_for_periodic_tasks: &steps_setup_env_for_periodic_tasks
+  steps:
+    - *step_checkout_repo
+    - *step_install_requirements_for_periodic_tasks
+    - *step_cache_periodic_tasks_requirements
 #
-#steps_run_test_cms_pages_return_200: &steps_run_test_cms_pages_return_200
-#  steps:
-#    - *step_restore_cached_periodic_tasks_requirements
-#    - *step_run_test_cms_pages_return_200
-#    - store_test_results:
-#        path: ./reports
-#    - store_artifacts:
-#        path: ./reports
-#
-#steps_generate_cms_page_status_report: &steps_generate_cms_page_status_report
-#  steps:
-#    - *step_restore_cached_periodic_tasks_requirements
-#    - *step_generate_cms_page_status_report
-#    - store_test_results:
-#        path: ./reports
-#    - store_artifacts:
-#        path: ./reports
+steps_run_test_cms_pages_return_200: &steps_run_test_cms_pages_return_200
+  steps:
+    - *step_restore_cached_periodic_tasks_requirements
+    - *step_run_test_cms_pages_return_200
+    - store_test_results:
+        path: ./reports
+    - store_artifacts:
+        path: ./reports
 
-#steps_content_diff: &steps_content_diff
-#  steps:
-#    - *step_restore_cached_periodic_tasks_requirements
-#    - *step_run_content_diff
-#    - store_test_results:
-#        path: ./reports
-#    - store_artifacts:
-#        path: ./reports
+steps_generate_cms_page_status_report: &steps_generate_cms_page_status_report
+  steps:
+    - *step_restore_cached_periodic_tasks_requirements
+    - *step_generate_cms_page_status_report
+    - store_test_results:
+        path: ./reports
+    - store_artifacts:
+        path: ./reports
+
+steps_content_diff: &steps_content_diff
+  steps:
+    - *step_restore_cached_periodic_tasks_requirements
+    - *step_run_content_diff
+    - store_test_results:
+        path: ./reports
+    - store_artifacts:
+        path: ./reports
 
 #steps_dead_links_checker: &steps_dead_links_checker
 #  steps:
@@ -1124,12 +1125,12 @@ jobs:
           path: ./tests/browser/reports/
           destination: behave_logs
 
-#  setup_env_for_periodic_tasks: &setup_env_for_periodic_tasks
-#    working_directory: ~/great_magna_tests
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_setup_env_for_periodic_tasks,
-#    ]
+  setup_env_for_periodic_tasks: &setup_env_for_periodic_tasks
+    working_directory: ~/great_magna_tests
+    <<: [
+    *machine_python3_clean,
+    *steps_setup_env_for_periodic_tasks,
+    ]
 
 #  refresh_geckoboard:
 #    working_directory: ~/great_magna_tests
@@ -1190,95 +1191,95 @@ jobs:
 #    *steps_generate_cms_page_status_report,
 #    ]
 #
-#  domestic_compare_prod_and_dev_pages:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "domestic"
-#      ENVS_TO_COMPARE: "prod_dev"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_content_diff,
-#    ]
+  domestic_compare_prod_and_dev_pages:
+    working_directory: ~/great_magna_tests
+    environment:
+      SERVICE: "domestic"
+      ENVS_TO_COMPARE: "prod_dev"
+    <<: [
+    *machine_python3_clean,
+    *steps_content_diff,
+    ]
 #
-#  domestic_compare_prod_and_stage_pages:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "domestic"
-#      ENVS_TO_COMPARE: "prod_stage"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_content_diff,
-#    ]
+  domestic_compare_prod_and_stage_pages:
+    working_directory: ~/great_magna_tests
+    environment:
+      SERVICE: "domestic"
+      ENVS_TO_COMPARE: "prod_stage"
+    <<: [
+    *machine_python3_clean,
+    *steps_content_diff,
+    ]
 #
-#  domestic_compare_prod_and_uat_pages:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "domestic"
-#      ENVS_TO_COMPARE: "prod_uat"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_content_diff,
-#    ]
-#
-#  domestic_compare_stage_and_dev_pages:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "domestic"
-#      ENVS_TO_COMPARE: "stage_dev"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_content_diff,
-#    ]
+  domestic_compare_prod_and_uat_pages:
+    working_directory: ~/great_magna_tests
+    environment:
+      SERVICE: "domestic"
+      ENVS_TO_COMPARE: "prod_uat"
+    <<: [
+    *machine_python3_clean,
+    *steps_content_diff,
+    ]
 
-#  domestic_compare_stage_and_uat_pages:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "domestic"
-#      ENVS_TO_COMPARE: "stage_uat"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_content_diff,
-#    ]
+  domestic_compare_stage_and_dev_pages:
+    working_directory: ~/great_magna_tests
+    environment:
+      SERVICE: "domestic"
+      ENVS_TO_COMPARE: "stage_dev"
+    <<: [
+    *machine_python3_clean,
+    *steps_content_diff,
+    ]
+
+  domestic_compare_stage_and_uat_pages:
+    working_directory: ~/great_magna_tests
+    environment:
+      SERVICE: "domestic"
+      ENVS_TO_COMPARE: "stage_uat"
+    <<: [
+    *machine_python3_clean,
+    *steps_content_diff,
+    ]
 #
-#  international_compare_prod_and_stage_pages:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "international"
-#      ENVS_TO_COMPARE: "prod_stage"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_content_diff,
-#    ]
+  international_compare_prod_and_stage_pages:
+    working_directory: ~/great_magna_tests
+    environment:
+      SERVICE: "international"
+      ENVS_TO_COMPARE: "prod_stage"
+    <<: [
+    *machine_python3_clean,
+    *steps_content_diff,
+    ]
+
+  international_compare_prod_and_uat_pages:
+    working_directory: ~/great_magna_tests
+    environment:
+      SERVICE: "international"
+      ENVS_TO_COMPARE: "prod_uat"
+    <<: [
+    *machine_python3_clean,
+    *steps_content_diff,
+    ]
 #
-#  international_compare_prod_and_uat_pages:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "international"
-#      ENVS_TO_COMPARE: "prod_uat"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_content_diff,
-#    ]
+  international_compare_stage_and_uat_pages:
+    working_directory: ~/great_magna_tests
+    environment:
+      SERVICE: "international"
+      ENVS_TO_COMPARE: "stage_uat"
+    <<: [
+    *machine_python3_clean,
+    *steps_content_diff,
+    ]
 #
-#  international_compare_stage_and_uat_pages:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "international"
-#      ENVS_TO_COMPARE: "stage_uat"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_content_diff,
-#    ]
-#
-#  international_compare_stage_and_dev_pages:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "international"
-#      ENVS_TO_COMPARE: "stage_dev"
-#    <<: [
-#    *machine_python3_clean,
-#    *steps_content_diff,
-#    ]
+  international_compare_stage_and_dev_pages:
+    working_directory: ~/great_magna_tests
+    environment:
+      SERVICE: "international"
+      ENVS_TO_COMPARE: "stage_dev"
+    <<: [
+    *machine_python3_clean,
+    *steps_content_diff,
+    ]
 
 
 workflows:
@@ -1774,194 +1775,194 @@ workflows:
 #    jobs:
 #      - refresh_geckoboard
 
-#  prod_check_for_dead_links:
-#    triggers:
-#      - schedule:
-#          cron: "43 6 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - check_for_dead_links_on_prod:
-#          requires:
-#            - setup_env_for_periodic_tasks
-#
-#  uat_check_for_dead_links:
-#    triggers:
-#      - schedule:
-#          cron: "53 6 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - check_for_dead_links_on_uat:
-#          requires:
-#            - setup_env_for_periodic_tasks
-#
-#  stage_check_for_dead_links:
-#    triggers:
-#      - schedule:
-#          cron: "0 7 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - check_for_dead_links_on_stage:
-#          requires:
-#            - setup_env_for_periodic_tasks
-#
-#  dev_check_for_dead_links:
-#    triggers:
-#      - schedule:
-#          cron: "10 7 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - check_for_dead_links_on_dev:
-#          requires:
-#            - setup_env_for_periodic_tasks
+  prod_check_for_dead_links:
+    triggers:
+      - schedule:
+          cron: "43 6 * * 1-5"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - check_for_dead_links_on_prod:
+          requires:
+            - setup_env_for_periodic_tasks
 
-#  prod_check_cms_peges_return_200:
-#    triggers:
-#      - schedule:
-#          cron: "17 7 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - check_cms_pages_on_production_return_200:
-#          requires:
-#            - setup_env_for_periodic_tasks
+  uat_check_for_dead_links:
+    triggers:
+      - schedule:
+          cron: "53 6 * * 1-5"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - check_for_dead_links_on_uat:
+          requires:
+            - setup_env_for_periodic_tasks
+
+  stage_check_for_dead_links:
+    triggers:
+      - schedule:
+          cron: "0 7 * * 1-5"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - check_for_dead_links_on_stage:
+          requires:
+            - setup_env_for_periodic_tasks
+
+  dev_check_for_dead_links:
+    triggers:
+      - schedule:
+          cron: "10 7 * * 1-5"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - check_for_dead_links_on_dev:
+          requires:
+            - setup_env_for_periodic_tasks
+
+  prod_check_cms_peges_return_200:
+    triggers:
+      - schedule:
+          cron: "17 7 * * 1-5"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - check_cms_pages_on_production_return_200:
+          requires:
+            - setup_env_for_periodic_tasks
 #
-#  domestic_prod_dev_content_diff:
-#    triggers:
-#      - schedule:
-#          cron: "28 7 * * 3"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - domestic_compare_prod_and_dev_pages:
-#          requires:
-#            - setup_env_for_periodic_tasks
-#
-#  domestic_prod_uat_content_diff:
-#    triggers:
-#      - schedule:
-#          cron: "40 7 * * 3"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - domestic_compare_prod_and_uat_pages:
-#          requires:
-#            - setup_env_for_periodic_tasks
-#
-#  domestic_prod_stage_content_diff:
-#    triggers:
-#      - schedule:
-#          cron: "51 7 * * 3"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - domestic_compare_prod_and_stage_pages:
-#          requires:
-#            - setup_env_for_periodic_tasks
-#
-#  domestic_stage_uat_content_diff:
-#    triggers:
-#      - schedule:
-#          cron: "7 8 * * 3"
-#          filters:
-#            branches:
-#              only: master
+  domestic_prod_dev_content_diff:
+    triggers:
+      - schedule:
+          cron: "28 7 * * 3"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - domestic_compare_prod_and_dev_pages:
+          requires:
+            - setup_env_for_periodic_tasks
+
+  domestic_prod_uat_content_diff:
+    triggers:
+      - schedule:
+          cron: "40 7 * * 3"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - domestic_compare_prod_and_uat_pages:
+          requires:
+            - setup_env_for_periodic_tasks
+
+  domestic_prod_stage_content_diff:
+    triggers:
+      - schedule:
+          cron: "51 7 * * 3"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - domestic_compare_prod_and_stage_pages:
+          requires:
+            - setup_env_for_periodic_tasks
+
+  domestic_stage_uat_content_diff:
+    triggers:
+      - schedule:
+          cron: "7 8 * * 3"
+          filters:
+            branches:
+              only: master
 #    jobs:
 #      - setup_env_for_periodic_tasks
 #      - domestic_compare_stage_and_uat_pages:
 #          requires:
 #            - setup_env_for_periodic_tasks
 #
-#  domestic_stage_dev_content_diff:
-#    triggers:
-#      - schedule:
-#          cron: "21 8 * * 3"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - domestic_compare_stage_and_dev_pages:
-#          requires:
-#            - setup_env_for_periodic_tasks
+  domestic_stage_dev_content_diff:
+    triggers:
+      - schedule:
+          cron: "21 8 * * 3"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - domestic_compare_stage_and_dev_pages:
+          requires:
+            - setup_env_for_periodic_tasks
+
+  international_prod_stage_content_diff:
+    triggers:
+      - schedule:
+          cron: "34 8 * * 3"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - international_compare_prod_and_stage_pages:
+          requires:
+            - setup_env_for_periodic_tasks
+
+  international_prod_uat_content_diff:
+    triggers:
+      - schedule:
+          cron: "52 8 * * 3"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - international_compare_prod_and_uat_pages:
+          requires:
+            - setup_env_for_periodic_tasks
+
+  international_stage_uat_content_diff:
+    triggers:
+      - schedule:
+          cron: "17 9 * * 3"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - international_compare_stage_and_uat_pages:
+          requires:
+            - setup_env_for_periodic_tasks
 #
-#  international_prod_stage_content_diff:
-#    triggers:
-#      - schedule:
-#          cron: "34 8 * * 3"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - international_compare_prod_and_stage_pages:
-#          requires:
-#            - setup_env_for_periodic_tasks
+  international_stage_dev_content_diff:
+    triggers:
+      - schedule:
+          cron: "33 9 * * 3"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - setup_env_for_periodic_tasks
+      - international_compare_stage_and_dev_pages:
+          requires:
+            - setup_env_for_periodic_tasks
 #
-#  international_prod_uat_content_diff:
-#    triggers:
-#      - schedule:
-#          cron: "52 8 * * 3"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - international_compare_prod_and_uat_pages:
-#          requires:
-#            - setup_env_for_periodic_tasks
-#
-#  international_stage_uat_content_diff:
-#    triggers:
-#      - schedule:
-#          cron: "17 9 * * 3"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - international_compare_stage_and_uat_pages:
-#          requires:
-#            - setup_env_for_periodic_tasks
-#
-#  international_stage_dev_content_diff:
-#    triggers:
-#      - schedule:
-#          cron: "33 9 * * 3"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - international_compare_stage_and_dev_pages:
-#          requires:
-#            - setup_env_for_periodic_tasks
-#
-#  prod_cms_page_status_report:
-#    triggers:
-#      - schedule:
-#          cron: "42 14 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - generate_cms_page_status_report_for_prod
+  prod_cms_page_status_report:
+    triggers:
+      - schedule:
+          cron: "42 14 * * 1-5"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - generate_cms_page_status_report_for_prod
