@@ -350,15 +350,15 @@ step_run_content_diff: &step_run_content_diff
       . venv/bin/activate
       SERVICE=${SERVICE} ENVS_TO_COMPARE=${ENVS_TO_COMPARE} make compare_content
 
-step_run_dead_links_checker: &step_run_dead_links_checker
-  run:
-    name: Run Dead Links Checker script
-    command: |
-      . venv/bin/activate
-      python ./env_vars/env_writer.py --env=${TEST_ENV} --config=./env_vars/env_dead_link_checker.json
-      source ./env_vars/.env_with_export;
-      TEST_ENV=${TEST_ENV} make dead_links_check
-      make dead_links_list > ./reports/dead_links_report.txt
+#step_run_dead_links_checker: &step_run_dead_links_checker
+#  run:
+#    name: Run Dead Links Checker script
+#    command: |
+#      . venv/bin/activate
+#      python ./env_vars/env_writer.py --env=${TEST_ENV} --config=./env_vars/env_dead_link_checker.json
+#      source ./env_vars/.env_with_export;
+#      TEST_ENV=${TEST_ENV} make dead_links_check
+#      make dead_links_list > ./reports/dead_links_report.txt
 
 #step_run_geckoboard_updater: &step_run_geckoboard_updater
 #  run:
@@ -367,19 +367,19 @@ step_run_dead_links_checker: &step_run_dead_links_checker
 #      . venv/bin/activate
 #      make geckoboard_updater
 
-# this step requires Java 8+ to work.
-#step_merge_junit_xml_reports_from_periodic_tasks: &step_merge_junit_xml_reports_from_periodic_tasks
-#  run:
-#    name: Merge JUnit XML reports
-#    when: always
-#    command: |
-#      python3 -m venv venv
-#      . venv/bin/activate
-#      cd ./reports
-#      junit-merge *.xml -o merged.xml
-#      ls *.xml | grep -v merged.xml | xargs rm
-#      cd ../
-#      ./print_error_summary.py --report ./reports/merged.xml
+ #this step requires Java 8+ to work.
+step_merge_junit_xml_reports_from_periodic_tasks: &step_merge_junit_xml_reports_from_periodic_tasks
+  run:
+    name: Merge JUnit XML reports
+    when: always
+    command: |
+      python3 -m venv venv
+      . venv/bin/activate
+      cd ./reports
+      junit-merge *.xml -o merged.xml
+      ls *.xml | grep -v merged.xml | xargs rm
+      cd ../
+      ./print_error_summary.py --report ./reports/merged.xml
 #
 ## this step requires Java 8+ to work.
 #step_merge_junit_xml_reports_from_functional_tests: &step_merge_junit_xml_reports_from_functional_tests
@@ -657,14 +657,14 @@ steps_content_diff: &steps_content_diff
     - store_artifacts:
         path: ./reports
 
-steps_dead_links_checker: &steps_dead_links_checker
-  steps:
-    - *step_restore_cached_periodic_tasks_requirements
-    - *step_run_dead_links_checker
-    - store_test_results:
-        path: ./reports
-    - store_artifacts:
-        path: ./reports
+#steps_dead_links_checker: &steps_dead_links_checker
+#  steps:
+#    - *step_restore_cached_periodic_tasks_requirements
+#    - *step_run_dead_links_checker
+#    - store_test_results:
+#        path: ./reports
+#    - store_artifacts:
+#        path: ./reports
 
 #steps_geckoboard_updater: &steps_geckoboard_updater
 #  steps:
@@ -1139,57 +1139,57 @@ jobs:
 #    *steps_geckoboard_updater,
 #    ]
 
-  check_for_dead_links_on_dev:
-    working_directory: ~/great_magna_tests
-    environment:
-      TEST_ENV: "DEV"
-    <<: [
-    *machine_python3_clean,
-    *steps_dead_links_checker,
-    ]
-
-  check_for_dead_links_on_stage:
-    working_directory: ~/great_magna_tests
-    environment:
-      TEST_ENV: "STAGE"
-    <<: [
-    *machine_python3_clean,
-    *steps_dead_links_checker,
-    ]
-
-  check_for_dead_links_on_uat:
-    working_directory: ~/great_magna_tests
-    environment:
-      TEST_ENV: "UAT"
-    <<: [
-    *machine_python3_clean,
-    *steps_dead_links_checker,
-    ]
-
-  check_for_dead_links_on_prod:
-    working_directory: ~/great_magna_tests
-    environment:
-      TEST_ENV: "PROD"
-    <<: [
-    *machine_python3_clean,
-    *steps_dead_links_checker,
-    ]
-
-#  check_cms_pages_on_production_return_200:
+#  check_for_dead_links_on_dev:
 #    working_directory: ~/great_magna_tests
+#    environment:
+#      TEST_ENV: "DEV"
 #    <<: [
 #    *machine_python3_clean,
-#    *steps_run_test_cms_pages_return_200,
+#    *steps_dead_links_checker,
 #    ]
 #
-#  generate_cms_page_status_report_for_prod:
+#  check_for_dead_links_on_stage:
+#    working_directory: ~/great_magna_tests
+#    environment:
+#      TEST_ENV: "STAGE"
+#    <<: [
+#    *machine_python3_clean,
+#    *steps_dead_links_checker,
+#    ]
+#
+#  check_for_dead_links_on_uat:
+#    working_directory: ~/great_magna_tests
+#    environment:
+#      TEST_ENV: "UAT"
+#    <<: [
+#    *machine_python3_clean,
+#    *steps_dead_links_checker,
+#    ]
+#
+#  check_for_dead_links_on_prod:
 #    working_directory: ~/great_magna_tests
 #    environment:
 #      TEST_ENV: "PROD"
 #    <<: [
 #    *machine_python3_clean,
-#    *steps_generate_cms_page_status_report,
+#    *steps_dead_links_checker,
 #    ]
+
+  check_cms_pages_on_production_return_200:
+    working_directory: ~/great_magna_tests
+    <<: [
+    *machine_python3_clean,
+    *steps_run_test_cms_pages_return_200,
+    ]
+
+  generate_cms_page_status_report_for_prod:
+    working_directory: ~/great_magna_tests
+    environment:
+      TEST_ENV: "PROD"
+    <<: [
+    *machine_python3_clean,
+    *steps_generate_cms_page_status_report,
+    ]
 #
   domestic_compare_prod_and_dev_pages:
     working_directory: ~/great_magna_tests
@@ -1424,33 +1424,33 @@ workflows:
           requires:
             - uat_parallel_browser_tests_using_circleci
 
-  prod_check_for_dead_links_ad_hoc:
-    jobs:
-      - setup_env_for_periodic_tasks
-      - check_for_dead_links_on_prod:
-          requires:
-            - setup_env_for_periodic_tasks
-
-  uat_check_for_dead_links_ad_hoc:
-    jobs:
-      - setup_env_for_periodic_tasks
-      - check_for_dead_links_on_uat:
-          requires:
-            - setup_env_for_periodic_tasks
-
-  stage_check_for_dead_links_ad_hoc:
-    jobs:
-      - setup_env_for_periodic_tasks
-      - check_for_dead_links_on_stage:
-          requires:
-            - setup_env_for_periodic_tasks
-
-  dev_check_for_dead_links_ad_hoc:
-    jobs:
-      - setup_env_for_periodic_tasks
-      - check_for_dead_links_on_dev:
-          requires:
-            - setup_env_for_periodic_tasks
+#  prod_check_for_dead_links_ad_hoc:
+#    jobs:
+#      - setup_env_for_periodic_tasks
+#      - check_for_dead_links_on_prod:
+#          requires:
+#            - setup_env_for_periodic_tasks
+#
+#  uat_check_for_dead_links_ad_hoc:
+#    jobs:
+#      - setup_env_for_periodic_tasks
+#      - check_for_dead_links_on_uat:
+#          requires:
+#            - setup_env_for_periodic_tasks
+#
+#  stage_check_for_dead_links_ad_hoc:
+#    jobs:
+#      - setup_env_for_periodic_tasks
+#      - check_for_dead_links_on_stage:
+#          requires:
+#            - setup_env_for_periodic_tasks
+#
+#  dev_check_for_dead_links_ad_hoc:
+#    jobs:
+#      - setup_env_for_periodic_tasks
+#      - check_for_dead_links_on_dev:
+#          requires:
+#            - setup_env_for_periodic_tasks
 
 #  refresh_geckoboard_ad_hoc:
 #    jobs:
@@ -1775,26 +1775,26 @@ workflows:
 #    jobs:
 #      - refresh_geckoboard
 
-  prod_check_for_dead_links:
-    triggers:
-      - schedule:
-          cron: "43 6 * * 1-5"
-          filters:
-            branches:
-              only: master
+#  prod_check_for_dead_links:
+#    triggers:
+#      - schedule:
+#          cron: "43 6 * * 1-5"
+#          filters:
+#            branches:
+#              only: master
     jobs:
       - setup_env_for_periodic_tasks
       - check_for_dead_links_on_prod:
           requires:
             - setup_env_for_periodic_tasks
-
-  uat_check_for_dead_links:
-    triggers:
-      - schedule:
-          cron: "53 6 * * 1-5"
-          filters:
-            branches:
-              only: master
+#
+#  uat_check_for_dead_links:
+#    triggers:
+#      - schedule:
+#          cron: "53 6 * * 1-5"
+#          filters:
+#            branches:
+#              only: master
     jobs:
       - setup_env_for_periodic_tasks
       - check_for_dead_links_on_uat:
