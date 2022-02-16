@@ -1886,11 +1886,11 @@ workflows:
           filters:
             branches:
               only: master
-#    jobs:
-#      - setup_env_for_periodic_tasks
-#      - domestic_compare_stage_and_uat_pages:
-#          requires:
-#            - setup_env_for_periodic_tasks
+    jobs:
+      - setup_env_for_periodic_tasks
+      - domestic_compare_stage_and_uat_pages:
+          requires:
+            - setup_env_for_periodic_tasks
 #
   domestic_stage_dev_content_diff:
     triggers:
