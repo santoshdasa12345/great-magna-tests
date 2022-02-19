@@ -1,2 +1,0 @@
-New Visitor should be able to sign up
-"LTD, PLC or Royal Charter" representative should receive an email with confirmation code -- @1.1 
