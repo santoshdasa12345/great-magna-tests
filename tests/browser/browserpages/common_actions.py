@@ -1249,7 +1249,8 @@ def generic_set_basic_auth_creds(driver: WebDriver, *, service_name: str = None)
     if service_name == "GREATMAGNA":
         base_url = URLs.GREAT_MAGNA_START.absolute
         parsed = urlparse(base_url)
-        with_creds = f"{parsed.scheme}://{parsed.netloc}/login?enc=gAAAAABgF-Gia1slIhrlp4r6x3BdqsFCnpp1VRANWAhb6fDX_VnPi8iDIaXNYceAq-Z7e234b77gF-_HlPmQue6L47pnvKr46xU6s22ZC-4m8En3V4uISwY="
+        with_creds = f"{parsed.scheme}://{BASICAUTH_USER}:{BASICAUTH_PASS}@{parsed.netloc}/automated-test-auth"
+        # with_creds = f"{parsed.scheme}://{parsed.netloc}/login?enc=gAAAAABgF-Gia1slIhrlp4r6x3BdqsFCnpp1VRANWAhb6fDX_VnPi8iDIaXNYceAq-Z7e234b77gF-_HlPmQue6L47pnvKr46xU6s22ZC-4m8En3V4uISwY="
     else:
         base_url = URLs.DOMESTIC_LANDING.absolute
         parsed = urlparse(base_url)
