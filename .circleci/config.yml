@@ -1796,7 +1796,8 @@ workflows:
       - store_behave_logs_from_browser_tests_as_artifacts:
           requires:
             - uat_parallel_browser_tests_using_circleci
-            -
+
+
   run_browser_tests_in_parallel_in_prod:
     triggers:
       - schedule:
@@ -1818,6 +1819,7 @@ workflows:
       - store_behave_logs_from_browser_tests_as_artifacts:
           requires:
             - prod_parallel_browser_tests_using_circleci
+
 
 #  refresh_geckoboard_periodically:
 #    triggers:
