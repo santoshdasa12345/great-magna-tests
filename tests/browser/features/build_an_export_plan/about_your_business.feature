@@ -27,21 +27,22 @@ Feature: GreatMagna - About your Business Page
 #     |      emailaddress                 | password    |
 #     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
 
-#  @allure.link:XOT-1011
-#  @Great_Magna_Export_Plan_A_Y_B_P_1
-#  @Great_Magna_Export_Plan
-#  Scenario:User should be able to view "How you started" section and enter text and validate
-##    Given "Robert" visits the "Profile - Enter your email address and set a password" page
-#    Given "Robert" visited "GreatMagna - Login" page
+  @allure.link:XOT-1011
+  @Great_Magna_Export_Plan_A_Y_B_P_1
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to view "How you started" section and enter text and validate
+#    Given "Robert" visits the "Profile - Enter your email address and set a password" page
+    Given "Robert" visited "GreatMagna - Login" page
 #    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-#    And "Robert" should be on the "GreatMagna - Dashboard" Page
-#    Then "Robert" decides to click on "Build an export plan"
-#    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-#    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
-#    And "Robert" decides to click on element "How you started example" on page "Build An Export Plan - About Your Business"
-#    And "Robert" decides to click on element "How you started educational" on page "Build An Export Plan - About Your Business"
-#    And "Robert" decides to enter text at "How you started" on page "Build An Export Plan - About Your Business"
-#    And "Robert" decides to validate entered text at "How you started" on page "Build An Export Plan - About Your Business"
+    When "Robert" fills out and submits the form
+    And "Robert" should be on the "GreatMagna - Dashboard" Page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "How you started example" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to click on element "How you started educational" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to enter text at "How you started" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to validate entered text at "How you started" on page "Build An Export Plan - About Your Business"
 
 #  @allure.link:XOT-1012
 #  @Great_Magna_Export_Plan_A_Y_B_P
@@ -57,8 +58,8 @@ Feature: GreatMagna - About your Business Page
 #    And "Robert" decides to click on element "Where you're based example" on page "Build An Export Plan - About Your Business"
 #    And "Robert" decides to enter text at "Where you're based" on page "Build An Export Plan - About Your Business"
 #    And "Robert" decides to validate entered text at "Where you're based" on page "Build An Export Plan - About Your Business"
-#
-#  @allure.link:XOT-1013
+##
+##  @allure.link:XOT-1013
 #  @Great_Magna_Export_Plan_A_Y_B_P
 #  @Great_Magna_Export_Plan
 #  Scenario:User should be able to enter "How you make your products" section and enter text and validate
