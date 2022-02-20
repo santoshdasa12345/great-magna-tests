@@ -1,6 +1,6 @@
 #@domestic
 #@wip
-#@ga360
+#@ga360_domestic
 #@allure.suite:Domestic
 #Feature: Domestic - Google Analytics 360 Events
 #

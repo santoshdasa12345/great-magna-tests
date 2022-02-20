@@ -1,5 +1,5 @@
 #@domestic
-#@search_1
+#@search_domestic
 #@allure.suite:Domestic
 #Feature: Domestic - Great site search
 #
