@@ -1,48 +1,48 @@
-#@domestic
-#@advice
-#@allure.suite:Domestic
-#Feature: Domestic - Advice articles
-#
-#  Background:
-#    Given test authentication is done
-#
-#
-##  @allure.link:CMS-686
-##  @advice_1
-##  @articles
-##  Scenario: Any Exporter should see all expected sections on "Domestic - Advice landing" page
-##    When "Robert" goes to the "Domestic - Advice landing" page
-##
-##    Then "Robert" should see following sections
-##      | sections                 |
-##      | Header                   |
-##      | Hero                     |
-##      | Breadcrumbs              |
-##      | Advice & Guidance tiles  |
-##      | Error reporting          |
-###      | Footer                   |
-###      | Upskill now             |
-#
+@domestic
+@advice
+@allure.suite:Domestic
+Feature: Domestic - Advice articles
+
+  Background:
+    Given test authentication is done
+
 #
 #  @allure.link:CMS-686
-#  @advice_2
-#  @bug_domestic
+#  @advice_1
 #  @articles
-#  Scenario: Any Exporter should be able to get to a list of Advice articles from the home page using link in "<specific>" section
-#    Given "Robert" visits the "Domestic - Advice landing" page
+#  Scenario: Any Exporter should see all expected sections on "Domestic - Advice landing" page
+#    When "Robert" goes to the "Domestic - Advice landing" page
 #
-#    When "Robert" opens any article on the list
-#
-#    Then "Robert" should be on the "Domestic - Advice article list" page
-#    And "Robert" should see following sections
+#    Then "Robert" should see following sections
 #      | sections                 |
 #      | Header                   |
 #      | Hero                     |
 #      | Breadcrumbs              |
-#      | List of articles         |
+#      | Advice & Guidance tiles  |
 #      | Error reporting          |
 ##      | Footer                   |
-##      | Upskill now              |
+##      | Upskill now             |
+
+
+  @allure.link:CMS-686
+  @advice_2
+  @bug_domestic
+  @articles
+  Scenario: Any Exporter should be able to get to a list of Advice articles from the home page using link in "<specific>" section
+    Given "Robert" visits the "Domestic - Advice landing" page
+
+    When "Robert" opens any article on the list
+
+    Then "Robert" should be on the "Domestic - Advice article list" page
+    And "Robert" should see following sections
+      | sections                 |
+      | Header                   |
+      | Hero                     |
+      | Breadcrumbs              |
+      | List of articles         |
+      | Error reporting          |
+#      | Footer                   |
+#      | Upskill now              |
 #
 #
 #  @allure.link:CMS-686
