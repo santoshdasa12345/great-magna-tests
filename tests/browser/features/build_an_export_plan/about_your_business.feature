@@ -1,31 +1,31 @@
-#@Great_Magna_Tests
-#@about-your-business-page
-#@Great_Magna_Export_Plan
-#@allure.suite:Great_Magna_Export_Plan_A_Y_B_P
-#Feature: GreatMagna - About your Business Page
-#
-#  Background:
-#    Given test authentication is done for "GREATMAGNA"
-#
-#
-#
-#     @allure.link:XOT-031
-#  @Great-Magna-Sign-Up_1
-#  Scenario: New Visitor should be able to sign up
-#    Given "Robert" visits the "GreatMagna - Sign Up" page
-##  Given "Robert" visited "GreatMagna - Sign Up" page
-#    When "Robert" fills out and submits the form
-#    Then "Robert" should be on the "GreatMagna - Sign Up confirmation code" page
-#    And "Robert" should receive email confirmation code
-##  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
-##  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
-#  #Then "Robert" should be on the "GreatMagna - Sign Up" Page
-#  #Then "Robert" decides to click "Continue"
-#  #Then "Robert" decides to click on section "Continue" on page "GreatMagna - Sign up"
-##  Then "Robert" should be on the "GreatMagna - Dashboard" Page(18,19,25)
-##  Examples: email address and password
-##     |      emailaddress                 | password    |
-##     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
+@Great_Magna_Tests
+@about-your-business-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_A_Y_B_P
+Feature: GreatMagna - About your Business Page
+
+  Background:
+    Given test authentication is done for "GREATMAGNA"
+
+
+
+     @allure.link:XOT-031
+  @Great-Magna-Sign-Up_1
+  Scenario: New Visitor should be able to sign up
+    Given "Robert" visits the "GreatMagna - Sign Up" page
+#  Given "Robert" visited "GreatMagna - Sign Up" page
+    When "Robert" fills out and submits the form
+    Then "Robert" should be on the "GreatMagna - Sign Up confirmation code" page
+    And "Robert" should receive email confirmation code
+#  When "Robert" decides to enter email address "<emailaddress>", password "<password>" and click Sign up
+#  Then "Robert" should be able to see confirmation code page from email "santoshtesting10008@gmail.com", password "Testing@123!" and enter code
+  #Then "Robert" should be on the "GreatMagna - Sign Up" Page
+  #Then "Robert" decides to click "Continue"
+  #Then "Robert" decides to click on section "Continue" on page "GreatMagna - Sign up"
+#  Then "Robert" should be on the "GreatMagna - Dashboard" Page(18,19,25)
+#  Examples: email address and password
+#     |      emailaddress                 | password    |
+#     | santoshtesting10008+xxxx@gmail.com | Testing@123!|
 
 #  @allure.link:XOT-1011
 #  @Great_Magna_Export_Plan_A_Y_B_P_1
