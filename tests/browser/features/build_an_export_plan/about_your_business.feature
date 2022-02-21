@@ -1,16 +1,16 @@
-#@Great_Magna_Tests
-#@about-your-business-page
-#@Great_Magna_Export_Plan
-#@allure.suite:Great_Magna_Export_Plan_A_Y_B_P
-#Feature: GreatMagna - About your Business Page
-#
-#  Background:
-#    Given test authentication is done for "GREATMAGNA"
-#
+@Great_Magna_Tests
+@about-your-business-page
+@Great_Magna_Export_Plan
+@allure.suite:Great_Magna_Export_Plan_A_Y_B_P
+Feature: GreatMagna - About your Business Page
+
+  Background:
+    Given test authentication is done for "GREATMAGNA"
 
 
-#     @allure.link:XOT-031
-#  @Great-Magna-Sign-Up_1
+
+     @allure.link:XOT-031
+  @Great-Magna-Sign-Up_1
 #  Scenario: New Visitor should be able to sign up
 #    Given "Robert" visits the "GreatMagna - Sign Up" page
 ##  Given "Robert" visited "GreatMagna - Sign Up" page
@@ -59,21 +59,22 @@
 #    And "Robert" decides to enter text at "Where you're based" on page "Build An Export Plan - About Your Business"
 #    And "Robert" decides to validate entered text at "Where you're based" on page "Build An Export Plan - About Your Business"
 ##
-##  @allure.link:XOT-1013
-#  @Great_Magna_Export_Plan_A_Y_B_P
-#  @Great_Magna_Export_Plan
-#  Scenario:User should be able to enter "How you make your products" section and enter text and validate
-#
-#    Given "Robert" visited "GreatMagna - Login" page
+#  @allure.link:XOT-1013
+  @Great_Magna_Export_Plan_A_Y_B_P
+  @Great_Magna_Export_Plan
+  Scenario:User should be able to enter "How you make your products" section and enter text and validate
+
+#    Given "Robert" visits the "GreatMagna - Login" page
 #    When "Robert" decides to enter email address "santoshtesting10008+888@gmail.com", password "Testing@123!" and click Login
-#    And "Robert" should be on the "GreatMagna - Dashboard" Page
-#    Then "Robert" decides to click on "Build an export plan"
-#    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
-#    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
-#    And "Robert" decides to click on element "How you make your products example" on page "Build An Export Plan - About Your Business"
-#    And "Robert" decides to enter text at "How you make your products" on page "Build An Export Plan - About Your Business"
-#    And "Robert" decides to validate entered text at "How you make your products" on page "Build An Export Plan - About Your Business"
-##
+#    When "Robert" should be on the "GreatMagna - Dashboard" Page
+    Given "Robert" visited "GreatMagna - Dashboard" page
+    Then "Robert" decides to click on "Build an export plan"
+    And "Robert" decides to click on section "Exporting Plan 1" on page "Build An Export Plan - Export Plan"
+    And "Robert" decides to click on section "About Your Business" on page "Build An Export Plan - Export Plan Dashboard"
+    And "Robert" decides to click on element "How you make your products example" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to enter text at "How you make your products" on page "Build An Export Plan - About Your Business"
+    And "Robert" decides to validate entered text at "How you make your products" on page "Build An Export Plan - About Your Business"
+#
 #  @allure.link:XOT-1014
 #  @Great_Magna_Export_Plan_A_Y_B_P
 #  @Great_Magna_Export_Plan

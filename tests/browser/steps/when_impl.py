@@ -114,6 +114,10 @@ def visit_page(context: Context, actor_alias: str, page_name: str):
 
     if not get_actor(context, actor_alias):
         add_actor(context, unauthenticated_actor(actor_alias))
+        # actor = get_actor(context, actor_alias)
+        # if actor.csrfmiddlewaretoken = "":
+
+
 
     page = get_page_object(page_name)
 
@@ -599,11 +603,12 @@ def actor_decides_to_enter_blank_spaces_click_on_continue(
 
 def actor_decides_to_enter_email_address_and_click_login(
         context, actor_alias, email_address, password):
+    actor = get_actor(context, actor_alias)
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "login")
     email_address = str(email_address).strip()  # trimming
     password = str(password).strip()  # trimming
-    page.login(context.driver, email_address=email_address, password=password)
+    page.login(context.driver, email_address=actor.email, password=actor.password)
     time.sleep(2)
 
 
