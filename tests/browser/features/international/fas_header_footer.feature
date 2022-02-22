@@ -1,47 +1,47 @@
-@international
-  @invest
-@fas
-@header-footer-fas
-  @investment_atlas
-@allure.suite:International
-Feature: FAS - Common header & Footer
-
-  Background:
-    Given test authentication is done
-
-
-  Scenario Outline: Buyers should be able to see correct header & footer on "Find a Supplier - <specific>" page
-    Given "Robert" visits the "Find a Supplier - <specific>" page
-
-    Then "Robert" should see following sections
-      | Sections        |
-      | Header          |
-      | Filters         |
-      | Error reporting |
-      | Footer          |
-
-    Examples:
-      | specific             |
-      | Landing              |
-#      | Empty search results |
-
-
-
-  Scenario Outline: Buyers should be able to see correct header & footer on "Find a Supplier - <specific>" page
-    Given "Robert" visits the "Find a Supplier - <specific>" page
-
-    Then "Robert" should see following sections
-      | Sections        |
-      | Header          |
-      | Filters         |
-      | Error reporting |
-      | Footer          |
-
-    Examples:
-      | specific             |
+#@international
+#  @invest
+#@fas
+#@header-footer-fas
+#  @investment_atlas
+#@allure.suite:International
+#Feature: FAS - Common header & Footer
+#
+#  Background:
+#    Given test authentication is done
+#
+#
+#  Scenario Outline: Buyers should be able to see correct header & footer on "Find a Supplier - <specific>" page
+#    Given "Robert" visits the "Find a Supplier - <specific>" page
+#
+#    Then "Robert" should see following sections
+#      | Sections        |
+#      | Header          |
+#      | Filters         |
+#      | Error reporting |
+#      | Footer          |
+#
+#    Examples:
+#      | specific             |
 #      | Landing              |
-      | Empty search results |
-
+##      | Empty search results |
+#
+#
+#
+#  Scenario Outline: Buyers should be able to see correct header & footer on "Find a Supplier - <specific>" page
+#    Given "Robert" visits the "Find a Supplier - <specific>" page
+#
+#    Then "Robert" should see following sections
+#      | Sections        |
+#      | Header          |
+#      | Filters         |
+#      | Error reporting |
+#      | Footer          |
+#
+#    Examples:
+#      | specific             |
+##      | Landing              |
+#      | Empty search results |
+#
 ##  @no results found,that's why its failing
 #@header-footer-fas_1
 #  @invest_fix
@@ -57,7 +57,7 @@ Feature: FAS - Common header & Footer
 #      | Header                      |
 #      | Subscribe for email updates |
 #      | Footer                      |
-
+#
 #@header-footer-fas_2
 #  @invest_fix
 #  Scenario: Buyers should see correct header & footer on "Company Profile" page

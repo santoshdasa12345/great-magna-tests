@@ -20,38 +20,31 @@ SELECTORS = {
     "services": {
         "service cards": Selector(By.CSS_SELECTOR, "div.card"),
         "create a business profile": Selector(
-            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(1) > div > div > a.card__link.card__link--focused > div",
-            #services-list-section > div > div > div:nth-child(1) > div > a > div > h3"
+            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(1) > div > a",
             type=ElementType.LINK
         ),
         "find online marketplaces": Selector(
-            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(2) > div > div > a.card__link.card__link--focused > div",
-            #"#services-list-section > div > div > div:nth-child(2) > div > a > div > h3"
+            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(2) > div > a",
             type=ElementType.LINK
         ),
         "find export opportunities": Selector(
-            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(3) > div > div > a.card__link.card__link--focused > div",
-            #"#services-list-section > div > div > div:nth-child(3) > div > a > div > h3",
+            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(3) > div > a",
             type=ElementType.LINK
         ),
         "uk export finance": Selector(
-            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(4) > div > div > a.card__link.card__link--focused > div",
-            #"#services-list-section > div > div > div:nth-child(4) > div > a > div > h3",
+            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(4) > div > a",
             type=ElementType.LINK
         ),
         "find events and visits": Selector(
-            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(5) > div > div > a.card__link.card__link--focused > div",
-            #"#services-list-section > div > div > div:nth-child(5) > div > a > div > h3",
+            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(5) > div > a",
             type=ElementType.LINK
         ),
         "get an eori number": Selector(
-            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(6) > div > div > a.card__link.card__link--focused > div",
-            #"#services-list-section > div > div > div:nth-child(6) > div > a > div > h3",
+            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(6) > div > a",
             type=ElementType.LINK
         ),
         "report a trade barrier": Selector(
-            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(7) > div > div > a.card__link.card__link--focused > div",
-            #services-list-section > div > div > div:nth-child(7) > div > a > div > h3",
+            By.CSS_SELECTOR, "#services-list-section > div > div > div:nth-child(1) > div > a",
             type=ElementType.LINK
         ),
     }
@@ -79,5 +72,3 @@ def should_see_following_sections(driver: WebDriver, names: List[str]):
 def search(driver: WebDriver, phrase: str):
     domestic_actions.search(driver, phrase)
 
-def should_see_following_sections(driver: WebDriver, names: List[str]):
-    check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

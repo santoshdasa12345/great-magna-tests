@@ -47,11 +47,11 @@ CAPABILITIES_TEMPLATES = {
         "browser_capabilities": {
             "chrome": {
                 "browser": "Chrome",
-                "browser_version": "78.0",
+                "browser_version": "98.0",
                 "pageLoadStrategy": "none",
                 "os": "Windows",
                 "os_version": "10",
-                "browserstack.chrome.driver": "78.0.3904.70",
+                "browserstack.chrome.driver": "98.0.4758.80",
             },
             "edge": {
                 "browser": "Edge",
