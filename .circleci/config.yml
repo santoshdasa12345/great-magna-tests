@@ -1049,36 +1049,21 @@ jobs:
     *machine_python3_node_browsers,
     *steps_run_parallel_browser_tests,
     ]
-#
-#  uat_parallel_browser_tests_using_circleci:
-#    working_directory: ~/great_magna_tests
-#    parallelism: 6
-#    environment:
-#      TEST_ENV: "uat"
-#      AUTO_RETRY: "true"
-#      TAKE_SCREENSHOTS: "true"
-#      TAGS: "--tags=~@stage-only --tags=~@erp"
-#      BROWSER_ENVIRONMENT: "local"
-#      BROWSER_HEADLESS: "true"
-#    <<: [
-#    *machine_python3_node_browsers,
-#    *steps_run_parallel_browser_tests,
-#    ]
-#
-#  prod_parallel_browser_tests_using_circleci:
-#    working_directory: ~/great_magna_tests
-#    parallelism: 6
-#    environment:
-#      TEST_ENV: "prod"
-#      AUTO_RETRY: "false"
-#      TAKE_SCREENSHOTS: "true"
-#      TAGS: "--tags=~@stage-only --tags=~@uat-only --tags=~@erp"
-#      BROWSER_ENVIRONMENT: "local"
-#      BROWSER_HEADLESS: "true"
-#    <<: [
-#      *machine_python3_node_browsers,
-#      *steps_run_parallel_browser_tests_local
-#    ]
+
+  uat_parallel_browser_tests_using_circleci:
+    working_directory: ~/great_magna_tests
+    parallelism: 6
+    environment:
+      TEST_ENV: "uat"
+      AUTO_RETRY: "true"
+      TAKE_SCREENSHOTS: "true"
+      TAGS: "--tags=~@stage-only --tags=~@erp"
+      BROWSER_ENVIRONMENT: "local"
+      BROWSER_HEADLESS: "true"
+    <<: [
+    *machine_python3_node_browsers,
+    *steps_run_parallel_browser_tests,
+    ]
 
   merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
     working_directory: ~/great_magna_tests
