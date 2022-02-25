@@ -1035,20 +1035,20 @@ jobs:
     *steps_run_parallel_browser_tests_local
     ]
 #
-#  stage_parallel_browser_tests_using_circleci:
-#    working_directory: ~/great_magna_tests
-#    parallelism: 6
-#    environment:
-#      TEST_ENV: "stage"
-#      AUTO_RETRY: "true"
-#      TAKE_SCREENSHOTS: "true"
-#      TAGS: "--tags=~@dev-only --tags=~@uat-only --tags=~@erp"
-#      BROWSER_ENVIRONMENT: "local"
-#      BROWSER_HEADLESS: "true"
-#    <<: [
-#    *machine_python3_node_browsers,
-#    *steps_run_parallel_browser_tests,
-#    ]
+  stage_parallel_browser_tests_using_circleci:
+    working_directory: ~/great_magna_tests
+    parallelism: 6
+    environment:
+      TEST_ENV: "stage"
+      AUTO_RETRY: "true"
+      TAKE_SCREENSHOTS: "true"
+      TAGS: "--tags=~@dev-only --tags=~@uat-only --tags=~@erp"
+      BROWSER_ENVIRONMENT: "local"
+      BROWSER_HEADLESS: "true"
+    <<: [
+    *machine_python3_node_browsers,
+    *steps_run_parallel_browser_tests,
+    ]
 #
 #  uat_parallel_browser_tests_using_circleci:
 #    working_directory: ~/great_magna_tests
