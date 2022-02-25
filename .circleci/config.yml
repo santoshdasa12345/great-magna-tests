@@ -1279,21 +1279,21 @@ workflows:
             - func_profile_test_dev
             - func_international_test_dev
 
-  run_browser_tests_in_parallel_in_dev_ad_hoc:
-    jobs:
-      - setup_env_for_parallel_browser_tests_using_circleci
-      - dev_parallel_browser_tests_using_circleci:
-          requires:
-            - setup_env_for_parallel_browser_tests_using_circleci
-      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
-          requires:
-            - dev_parallel_browser_tests_using_circleci
-      - merge_junit_results_from_parallel_browser_tests:
-          requires:
-            - dev_parallel_browser_tests_using_circleci
-      - store_behave_logs_from_browser_tests_as_artifacts:
-          requires:
-            - dev_parallel_browser_tests_using_circleci
+#  run_browser_tests_in_parallel_in_dev_ad_hoc:
+#    jobs:
+#      - setup_env_for_parallel_browser_tests_using_circleci
+#      - dev_parallel_browser_tests_using_circleci:
+#          requires:
+#            - setup_env_for_parallel_browser_tests_using_circleci
+#      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
+#          requires:
+#            - dev_parallel_browser_tests_using_circleci
+#      - merge_junit_results_from_parallel_browser_tests:
+#          requires:
+#            - dev_parallel_browser_tests_using_circleci
+#      - store_behave_logs_from_browser_tests_as_artifacts:
+#          requires:
+#            - dev_parallel_browser_tests_using_circleci
 
   run_smoke_and_functional_on_stage_ad_hoc:
     jobs:
@@ -1324,21 +1324,21 @@ workflows:
             - func_profile_test_stage
             - func_international_test_stage
 
-  run_browser_tests_in_parallel_in_stage_ad_hoc:
-    jobs:
-      - setup_env_for_parallel_browser_tests_using_circleci
-      - stage_parallel_browser_tests_using_circleci:
-          requires:
-            - setup_env_for_parallel_browser_tests_using_circleci
-      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
-          requires:
-            - stage_parallel_browser_tests_using_circleci
-      - merge_junit_results_from_parallel_browser_tests:
-          requires:
-            - stage_parallel_browser_tests_using_circleci
-      - store_behave_logs_from_browser_tests_as_artifacts:
-          requires:
-            - stage_parallel_browser_tests_using_circleci
+#  run_browser_tests_in_parallel_in_stage_ad_hoc:
+#    jobs:
+#      - setup_env_for_parallel_browser_tests_using_circleci
+#      - stage_parallel_browser_tests_using_circleci:
+#          requires:
+#            - setup_env_for_parallel_browser_tests_using_circleci
+#      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
+#          requires:
+#            - stage_parallel_browser_tests_using_circleci
+#      - merge_junit_results_from_parallel_browser_tests:
+#          requires:
+#            - stage_parallel_browser_tests_using_circleci
+#      - store_behave_logs_from_browser_tests_as_artifacts:
+#          requires:
+#            - stage_parallel_browser_tests_using_circleci
 
   run_smoke_and_functional_on_uat_ad_hoc:
     jobs:
@@ -1369,21 +1369,21 @@ workflows:
             - func_profile_test_uat
             - func_international_test_uat
 
-  run_browser_tests_in_parallel_in_uat_ad_hoc:
-    jobs:
-      - setup_env_for_parallel_browser_tests_using_circleci
-      - uat_parallel_browser_tests_using_circleci:
-          requires:
-            - setup_env_for_parallel_browser_tests_using_circleci
-      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
-          requires:
-            - uat_parallel_browser_tests_using_circleci
-      - merge_junit_results_from_parallel_browser_tests:
-          requires:
-            - uat_parallel_browser_tests_using_circleci
-      - store_behave_logs_from_browser_tests_as_artifacts:
-          requires:
-            - uat_parallel_browser_tests_using_circleci
+#  run_browser_tests_in_parallel_in_uat_ad_hoc:
+#    jobs:
+#      - setup_env_for_parallel_browser_tests_using_circleci
+#      - uat_parallel_browser_tests_using_circleci:
+#          requires:
+#            - setup_env_for_parallel_browser_tests_using_circleci
+#      - merge_browser_allure_results_and_generate_report_and_send_link_to_slack:
+#          requires:
+#            - uat_parallel_browser_tests_using_circleci
+#      - merge_junit_results_from_parallel_browser_tests:
+#          requires:
+#            - uat_parallel_browser_tests_using_circleci
+#      - store_behave_logs_from_browser_tests_as_artifacts:
+#          requires:
+#            - uat_parallel_browser_tests_using_circleci
 
   prod_check_for_dead_links_ad_hoc:
     jobs:
