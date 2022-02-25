@@ -37,6 +37,8 @@ from browserpages.common_actions import (
 
 )
 
+from browserpages.greatmagna import sign_up_enter_your_confirmation_code
+
 NAME = "Sign up"
 SERVICE = Service.GREATMAGNA
 TYPE = PageType.SEARCH
@@ -46,11 +48,19 @@ PAGE_TITLE = "Sign up Page"
 SubURLs = {
     "sign up": URL,
     # Sign up learn to export,where to export, make an export plan
+
     "/signup/?next=/learn/categories/": URLs.GREAT_MAGNA_SIGNUP_LEARN_TO_EXPORT.absolute_template,
     "?next=/where-to-export/": URLs.GREAT_MAGNA_SIGNUP_WHERE_TO_EXPORT.absolute_template,
     "?next=/export-plan/dashboard/": URLs.GREAT_MAGNA_SIGNUP_MAKE_AN_EXPORT_PLAN.absolute_template,
+    "?next=/dashboard/": URLs.GREAT_MAGNA_SIGNUP_CONFIRMATION_CODE_LANDING.absolute_template,
+
 
 }
+# SubURLs = {
+#     "sign up": URL,
+#     "required":
+#         URLs.GREAT_MAGNA_SIGNUP.absolute_template,
+# }
 
 SELECTORS = {
     "sign up": {
@@ -60,14 +70,18 @@ SELECTORS = {
         "password": Selector(
             By.XPATH, "//input[@id='password']", type=ElementType.INPUT
         ),
-        "sign up button": Selector(
-            By.XPATH, "//button[@id='signup-modal-submit']"
+        "sign up": Selector(
+            By.XPATH, "//*[@id=\"signup-modal-submit\"]"
         ),
         "code": Selector(
             By.XPATH, "//input[@id='code']", type=ElementType.INPUT
         ),
-        "submit": Selector(
-            By.XPATH, "//button[@id='signup-modal-submit-code']"
+        "submit button": Selector(
+            # By.XPATH, "//button[@id='signup-modal-submit-code']"
+            By.XPATH,
+            "//*[@id=\"signup-modal-submit\"]",
+            type=ElementType.SUBMIT,
+            next_page=sign_up_enter_your_confirmation_code,
         ),
         "continue": Selector(
             By.XPATH, "//a[@id='signup-modal-submit-success']"  # # #signup-modal-submit-success
@@ -90,11 +104,11 @@ SELECTORS = {
 
     },
 }
-SubURLs = {
-    "sign up": URL,
-    "required":
-        URLs.GREAT_MAGNA_SIGNUP.absolute_template,
-}
+# SubURLs = {
+#     "sign up": URL,
+#     "required":
+#         URLs.GREAT_MAGNA_SIGNUP.absolute_template,
+# }
 
 
 def visit(driver: WebDriver, *, page_name: str = None):
@@ -115,11 +129,11 @@ def sign_up(driver: WebDriver, email_address: str, password: str):
     fill_out_email_address(driver, details_dict)
 
 
-def fill_out_email_address(driver: WebDriver, details: dict):
-    email_address_selectors = SELECTORS["sign up"]
-    fill_out_input_fields(driver, email_address_selectors, details)
-    fill_input_list = find_element(driver, find_selector_by_name(SELECTORS, "sign up button"))
-    fill_input_list.click()
+# def fill_out_email_address(driver: WebDriver, details: dict):
+#     email_address_selectors = SELECTORS["sign up"]
+#     fill_out_input_fields(driver, email_address_selectors, details)
+#     fill_input_list = find_element(driver, find_selector_by_name(SELECTORS, "sign up button"))
+#     fill_input_list.click()
 
 
 def confirmation_code(driver: WebDriver, email: str, password: str):
@@ -198,3 +212,24 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
         driver, find_selector_by_name(SELECTORS, element_selector_name)
     )
     find_and_click.click()
+
+def generate_form_details(actor: Actor, *, custom_details: dict = None) -> dict:
+    result = {
+        "emailaddress": actor.email,
+        "password": actor.password,
+        "code": actor.email_confirmation_code,
+    }
+    if custom_details:
+        result.update(custom_details)
+    logging.debug(f"Generated form details: {result}")
+    return result
+
+
+def fill_out(driver: WebDriver, details: dict):
+    form_selectors = SELECTORS["sign up"]
+    fill_out_input_fields(driver, form_selectors, details)
+
+def submit(driver: WebDriver):
+    logging.debug("I am clicking sign up")
+    driver.find_element_by_xpath("//*[@id=\"signup-modal-submit\"]").click()
+

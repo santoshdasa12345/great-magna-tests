@@ -24,6 +24,27 @@ Feature: Domestic - Accessing Services
 #      | Footer                 |
 
 
+#  @dev-only
+#  @allure.link:TT-1120
+#  @ltd-plc-royal
+#  Scenario Outline: "<business type>" representative should receive an email with confirmation code
+#    Given "Natalia" visits the "Profile - Enter your email address and set a password (<business type>)" page
+#
+#    When "Natalia" fills out and submits the form
+#
+#    Then "Natalia" should be on the "Profile - Enter your confirmation code (<business type>)" page
+#    And "Natalia" should see following sections
+#      | sections                     |
+#      | Confirmation code message    |
+#      | Confirmation code form       |
+#      | An option to resend the code |
+#      | Enrolment progress bar       |
+#    And "Natalia" should receive email confirmation code
+#
+#    Examples:
+#      | business type             |
+#      | LTD, PLC or Royal Charter |
+
   @bug
   @allure.issue:ED-2702
   @allure.link:ED-2661
@@ -46,5 +67,5 @@ Feature: Domestic - Accessing Services
       | UK Export Finance         | Domestic - Get Finance         |
       | Find events and visits    | Events - Home                  |
       | Get an EORI number        | EORI - Home                    |
-      | Report A Trade Barrier    | Domestic - Report a trade barrier   |
+#      | Report A Trade Barrier    | Domestic - Report a trade barrier   |
 

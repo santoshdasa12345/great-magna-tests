@@ -118,3 +118,21 @@ def should_be_error_message(driver: WebDriver, element_name: str, expected_error
         pass
 
     return False
+
+def generate_form_details(actor: Actor, *, custom_details: dict = None) -> dict:
+    result = {
+        "emailaddress": actor.email,
+        "password": actor.password,
+        # "code": actor.email_confirmation_code,
+    }
+    if custom_details:
+        result.update(custom_details)
+    logging.debug(f"Generated form details: {result}")
+    return result
+
+def fill_out(driver: WebDriver, details: dict):
+    form_selectors = SELECTORS["login"]
+    fill_out_input_fields(driver, form_selectors, details)
+
+def submit(driver: WebDriver):
+    driver.find_element_by_xpath("//button[@id='signup-modal-submit']").click()

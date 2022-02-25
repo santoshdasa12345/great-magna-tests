@@ -5,12 +5,12 @@ from typing import List
 import requests
 
 from tests.periodic_tasks.geckoboard_updater.circleci_utils import (
-    GREAT_MAGNA_LOAD_TESTS_JOB_NAME_MAPPINGS,
-    GREAT_MAGNA_PERIODIC_TESTS_JOB_NAME_MAPPINGS,
+    DIRECTORY_LOAD_TESTS_JOB_NAME_MAPPINGS,
+    DIRECTORY_PERIODIC_TESTS_JOB_NAME_MAPPINGS,
     get_load_test_response_time_distribution,
     get_load_test_response_time_metrics,
-    last_great_magna_service_build_results,
-    last_great_magna_tests_results,
+    last_directory_service_build_results,
+    last_directory_tests_results,
     last_load_test_artifacts,
     last_periodic_tests_results,
     last_tests_results_from_junit_artifacts,
@@ -34,7 +34,7 @@ from tests.periodic_tasks.geckoboard_updater.pa11y import (
 from tests.periodic_tasks.geckoboard_updater.settings import (
     GECKOBOARD_API_KEY,
     GECKOBOARD_CONTENT_DIFF_REPORTS_WIDGET_KEY,
-    GECKOBOARD_GREAT_MAGNA_TESTS_RESULTS_WIDGET_KEY,
+    GECKOBOARD_DIRECTORY_TESTS_RESULTS_WIDGET_KEY,
     GECKOBOARD_LINKS_TO_USEFUL_CONTENT_TEST_JOBS_WIDGET_KEY,
     GECKOBOARD_PERIODIC_TESTS_RESULTS_WIDGET_KEY,
     GECKOBOARD_PUSH_URL,
@@ -58,7 +58,7 @@ def job_status_color(status: str) -> str:
     return status_colors[status]
 
 
-def widget_text_for_great_magna_tests(test_results: dict) -> str:
+def widget_text_for_directory_tests(test_results: dict) -> str:
     table_template = """<table style="width:100%;font-size:14pt">
 <thead>
 <tr>
@@ -145,18 +145,18 @@ def push_widget_text(push_url: str, api_key: str, widget_key: str, text: str):
     assert response.status_code == 200, error
 
 
-def push_great_magna_tests_results():
-    last_test_results = last_great_magna_tests_results(CIRCLE_CI_CLIENT)
+def push_directory_tests_results():
+    last_test_results = last_directory_tests_results(CIRCLE_CI_CLIENT)
     if not last_test_results:
         print(
-            f"Couldn't find new results for great magna tests jobs. Will keep the old ones in place"
+            f"Couldn't find new results for directory tests jobs. Will keep the old ones in place"
         )
         return
-    text = widget_text_for_great_magna_tests(last_test_results)
+    text = widget_text_for_directory_tests(last_test_results)
     push_widget_text(
         GECKOBOARD_PUSH_URL,
         GECKOBOARD_API_KEY,
-        GECKOBOARD_GREAT_MAGNA_TESTS_RESULTS_WIDGET_KEY,
+        GECKOBOARD_DIRECTORY_TESTS_RESULTS_WIDGET_KEY,
         text,
     )
 
@@ -168,7 +168,7 @@ def push_periodic_tests_results():
             f"Couldn't find new results for periodic tests jobs. Will keep the old ones in place"
         )
         return
-    text = widget_text_for_great_magna_tests(last_periodic_test_results)
+    text = widget_text_for_directory_tests(last_periodic_test_results)
     push_widget_text(
         GECKOBOARD_PUSH_URL,
         GECKOBOARD_API_KEY,
@@ -234,8 +234,8 @@ def push_links_to_content_diff_reports():
     )
 
 
-def push_great_magna_service_build_results():
-    last_service_build_results = last_great_magna_service_build_results(CIRCLE_CI_CLIENT)
+def push_directory_service_build_results():
+    last_service_build_results = last_directory_service_build_results(CIRCLE_CI_CLIENT)
     if not last_service_build_results:
         print(
             f"Couldn't find new service build results in CircleCI. Will keep the old ones in place"
@@ -312,12 +312,12 @@ def push_pa11y_test_results(datasets: GeckoboardDatasets):
 
 def push_circleci_test_results(datasets: GeckoboardDatasets):
     circle_ci_periodic_tests_results = last_tests_results_from_junit_artifacts(
-        CIRCLE_CI_CLIENT, "great-magna-tests", GREAT_MAGNA_PERIODIC_TESTS_JOB_NAME_MAPPINGS,
+        CIRCLE_CI_CLIENT, "directory-tests", DIRECTORY_PERIODIC_TESTS_JOB_NAME_MAPPINGS,
     )
     load_tests_artifacts = last_load_test_artifacts(
         CIRCLE_CI_CLIENT,
-        "great-magna-tests",
-        job_name_mappings=GREAT_MAGNA_LOAD_TESTS_JOB_NAME_MAPPINGS,
+        "directory-tests",
+        job_name_mappings=DIRECTORY_LOAD_TESTS_JOB_NAME_MAPPINGS,
     )
     load_tests_response_times_distributions = get_load_test_response_time_distribution(
         load_tests_artifacts

@@ -116,6 +116,7 @@ TOOLS_CLOSED_STATUSES = ["Closed", "Done", "Release Candidate", "Release"]
 
 
 class ToolsJQLs(Enum):
+
     BUGS_IN_BACKLOG = JQL(
         description="Bugs in backlog",
         query=_BACKLOG_BUGS.format(project="TT", backlog_name="Backlog"),

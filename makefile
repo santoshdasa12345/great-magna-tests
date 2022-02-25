@@ -182,7 +182,7 @@ serve_smoke:
 report:
 	@echo Allure
 	@allure --version
-	@allure generate --clean --output ./allure_report tests/browser/results/
+	@allure generate --clean --output ./allure_report ./results/
 
 report_smoke:
 	@echo Allure

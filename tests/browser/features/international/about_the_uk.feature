@@ -1,6 +1,6 @@
 #@allure.suite:International
 #  @international
-#  @international_about
+#  @international_about_the_uk
 #Feature: International - About the UK
 #
 #  Background:
@@ -14,7 +14,7 @@
 #      | Sections               |
 #      | Header                 |
 #      | Hero                   |
-#      | Breadcrumbs            |
+##      | Breadcrumbs            |
 #      | About the UK subheader |
 #      | Teaser                 |
 #      | Why choose the UK      |

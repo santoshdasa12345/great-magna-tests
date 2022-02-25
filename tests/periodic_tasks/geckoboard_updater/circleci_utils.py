@@ -13,7 +13,7 @@ from retrying import retry
 from circleclient.circleclient import CircleClient
 
 # Mapping of CircleCI job names to human friendly ones
-GREAT_MAGNA_PERIODIC_TESTS_JOB_NAME_MAPPINGS = {
+DIRECTORY_PERIODIC_TESTS_JOB_NAME_MAPPINGS = {
     "Content diffs": {
         "domestic_compare_prod_and_dev_pages": "Domestic Prod Dev",
         "domestic_compare_prod_and_stage_pages": "Domestic Prod Stage",
@@ -47,7 +47,7 @@ USEFUL_CONTENT_TESTS_JOB_NAME_MAPPINGS = {
     "check_for_dead_links_on_dev": "Dead links - Dev",
 }
 
-GREAT_MAGNA_LOAD_TESTS_JOB_NAME_MAPPINGS = {
+DIRECTORY_LOAD_TESTS_JOB_NAME_MAPPINGS = {
     "load_cms_tests_stage": "Load STAGE CMS",
     "load_domestic_tests_stage": "Load STAGE Domestic",
     "load_erp_tests_stage": "Load STAGE ERP",
@@ -60,7 +60,7 @@ GREAT_MAGNA_LOAD_TESTS_JOB_NAME_MAPPINGS = {
     "load_soo_tests_stage": "Load STAGE SOO",
 }
 
-GREAT_MAGNA_TESTS_JOB_NAME_MAPPINGS = {
+DIRECTORY_TESTS_JOB_NAME_MAPPINGS = {
     "dev_parallel_browser_tests_using_circleci": "Browser Dev",
     "func_fas_test_dev": "Dev FAS",
     "func_international_test_dev": "Dev Int",
@@ -82,25 +82,25 @@ GREAT_MAGNA_TESTS_JOB_NAME_MAPPINGS = {
     "smoke_tests_uat": "UAT Smoke",
 }
 
-GREAT_MAGNA_TESTS_JOB_NAME_MAPPINGS.update(GREAT_MAGNA_LOAD_TESTS_JOB_NAME_MAPPINGS)
+DIRECTORY_TESTS_JOB_NAME_MAPPINGS.update(DIRECTORY_LOAD_TESTS_JOB_NAME_MAPPINGS)
 
-GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS = {
+DIRECTORY_SERVICE_JOB_NAME_MAPPINGS = {
     "test": "Unit Tests",
     "flake8": "flake8",
 }
 
-GREAT_MAGNA_CH_SEARCH_JOB_NAME_MAPPINGS = {"test": "Unit Tests"}
+DIRECTORY_CH_SEARCH_JOB_NAME_MAPPINGS = {"test": "Unit Tests"}
 
 
 @retry(wait_fixed=10000, stop_max_attempt_number=2)
 def recent_builds(
-        circle_ci_client: CircleClient,
-        project: str,
-        *,
-        username: str = "uktrade",
-        limit: int = 10,
-        branch: str = "master",
-        offset: int = 0,
+    circle_ci_client: CircleClient,
+    project: str,
+    *,
+    username: str = "uktrade",
+    limit: int = 10,
+    branch: str = "master",
+    offset: int = 0,
 ) -> List[dict]:
     return circle_ci_client.build.recent(
         username=username, project=project, limit=limit, branch=branch, offset=offset
@@ -133,11 +133,11 @@ def last_build_per_job(builds: List[dict], job_mappings: dict) -> dict:
 
 @retry(wait_fixed=10000, stop_max_attempt_number=3)
 def get_build_artifact_link(
-        circle_ci_client: CircleClient,
-        builds: dict,
-        name: str,
-        *,
-        username: str = "uktrade",
+    circle_ci_client: CircleClient,
+    builds: dict,
+    name: str,
+    *,
+    username: str = "uktrade",
 ) -> dict:
     """Fetch a link to single build artifact than matches specified name.
 
@@ -165,12 +165,12 @@ def get_build_artifact_link(
 
 @retry(wait_fixed=10000, stop_max_attempt_number=3)
 def get_build_artifacts(
-        circle_ci_client: CircleClient,
-        builds: dict,
-        extentions: List[str],
-        *,
-        username: str = "uktrade",
-        decode_content: bool = True,
+    circle_ci_client: CircleClient,
+    builds: dict,
+    extentions: List[str],
+    *,
+    username: str = "uktrade",
+    decode_content: bool = True,
 ) -> dict:
     """Fetch build artifacts that match one of selected file extensions"""
 
@@ -304,31 +304,31 @@ def last_workflow_test_results(builds: dict) -> dict:
 
 
 def last_build_test_results(
-        circle_ci_client: CircleClient,
-        project_name: str,
-        job_name_mappings: dict,
-        *,
-        limit: int = 10,
+    circle_ci_client: CircleClient,
+    project_name: str,
+    job_name_mappings: dict,
+    *,
+    limit: int = 10,
 ) -> dict:
     recent = recent_builds(circle_ci_client, project_name, limit=limit)
     build_per_job = last_build_per_job(recent, job_name_mappings)
     return last_workflow_test_results(build_per_job)
 
 
-def last_great_magna_tests_results(circle_ci_client: CircleClient) -> dict:
+def last_directory_tests_results(circle_ci_client: CircleClient) -> dict:
     return last_build_test_results(
         circle_ci_client,
-        "great-magna-tests",
-        job_name_mappings=GREAT_MAGNA_TESTS_JOB_NAME_MAPPINGS,
+        "directory-tests",
+        job_name_mappings=DIRECTORY_TESTS_JOB_NAME_MAPPINGS,
         limit=100,
     )
 
 
-def last_periodic_tests_results(circle_ci_client: CircleClient, ) -> dict:
+def last_periodic_tests_results(circle_ci_client: CircleClient,) -> dict:
     return last_build_test_results(
         circle_ci_client,
-        "great-magna-tests",
-        job_name_mappings=GREAT_MAGNA_PERIODIC_TESTS_JOB_NAME_MAPPINGS,
+        "directory-tests",
+        job_name_mappings=DIRECTORY_PERIODIC_TESTS_JOB_NAME_MAPPINGS,
         limit=100,
     )
 
@@ -336,82 +336,82 @@ def last_periodic_tests_results(circle_ci_client: CircleClient, ) -> dict:
 def last_useful_content_tests_results(circle_ci_client: CircleClient) -> dict:
     return last_build_test_results(
         circle_ci_client,
-        "great-magna-tests",
+        "directory-tests",
         job_name_mappings=USEFUL_CONTENT_TESTS_JOB_NAME_MAPPINGS,
         limit=100,
     )
 
 
 def last_useful_content_diff_report_links(circle_ci_client: CircleClient) -> dict:
-    recent = recent_builds(circle_ci_client, "great-magna-tests", limit=100)
+    recent = recent_builds(circle_ci_client, "directory-tests", limit=100)
     build_per_job = last_build_per_job(
-        recent, GREAT_MAGNA_PERIODIC_TESTS_JOB_NAME_MAPPINGS["Content diffs"]
+        recent, DIRECTORY_PERIODIC_TESTS_JOB_NAME_MAPPINGS["Content diffs"]
     )
     return get_build_artifact_link(circle_ci_client, build_per_job, "index.html")
 
 
 def last_useful_production_cms_page_status_report_link(
-        circle_ci_client: CircleClient,
+    circle_ci_client: CircleClient,
 ) -> dict:
-    recent = recent_builds(circle_ci_client, "great-magna-tests", limit=100)
+    recent = recent_builds(circle_ci_client, "directory-tests", limit=100)
     build_per_job = last_build_per_job(
         recent,
-        GREAT_MAGNA_PERIODIC_TESTS_JOB_NAME_MAPPINGS["Production CMS page status report"],
+        DIRECTORY_PERIODIC_TESTS_JOB_NAME_MAPPINGS["Production CMS page status report"],
     )
     return get_build_artifact_link(circle_ci_client, build_per_job, "index.html")
 
 
-def last_great_magna_service_build_results(circle_ci_client: CircleClient) -> dict:
+def last_directory_service_build_results(circle_ci_client: CircleClient) -> dict:
     return {
         "API": last_build_test_results(
             circle_ci_client=circle_ci_client,
             project_name="directory-api",
-            job_name_mappings=GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS,
+            job_name_mappings=DIRECTORY_SERVICE_JOB_NAME_MAPPINGS,
         ),
         "FAB": last_build_test_results(
             circle_ci_client=circle_ci_client,
             project_name="directory-ui-buyer",
-            job_name_mappings=GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS,
+            job_name_mappings=DIRECTORY_SERVICE_JOB_NAME_MAPPINGS,
         ),
         "Domestic": last_build_test_results(
             circle_ci_client=circle_ci_client,
             project_name="great-domestic-ui",
-            job_name_mappings=GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS,
+            job_name_mappings=DIRECTORY_SERVICE_JOB_NAME_MAPPINGS,
         ),
         "SSO": last_build_test_results(
             circle_ci_client=circle_ci_client,
             project_name="directory-sso",
-            job_name_mappings=GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS,
+            job_name_mappings=DIRECTORY_SERVICE_JOB_NAME_MAPPINGS,
         ),
         "Profile": last_build_test_results(
             circle_ci_client=circle_ci_client,
             project_name="directory-sso-profile",
-            job_name_mappings=GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS,
+            job_name_mappings=DIRECTORY_SERVICE_JOB_NAME_MAPPINGS,
         ),
         "SSO Proxy": last_build_test_results(
             circle_ci_client=circle_ci_client,
             project_name="directory-sso-proxy",
-            job_name_mappings=GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS,
+            job_name_mappings=DIRECTORY_SERVICE_JOB_NAME_MAPPINGS,
         ),
         "CH Search": last_build_test_results(
             circle_ci_client=circle_ci_client,
             project_name="directory-companies-house-search",
-            job_name_mappings=GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS,
+            job_name_mappings=DIRECTORY_SERVICE_JOB_NAME_MAPPINGS,
         ),
         "CMS": last_build_test_results(
             circle_ci_client=circle_ci_client,
             project_name="directory-cms",
-            job_name_mappings=GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS,
+            job_name_mappings=DIRECTORY_SERVICE_JOB_NAME_MAPPINGS,
         ),
         "International": last_build_test_results(
             circle_ci_client=circle_ci_client,
             project_name="great-international-ui",
-            job_name_mappings=GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS,
+            job_name_mappings=DIRECTORY_SERVICE_JOB_NAME_MAPPINGS,
         ),
         "Forms API": last_build_test_results(
             circle_ci_client=circle_ci_client,
             project_name="directory-forms-api",
-            job_name_mappings=GREAT_MAGNA_SERVICE_JOB_NAME_MAPPINGS,
+            job_name_mappings=DIRECTORY_SERVICE_JOB_NAME_MAPPINGS,
         ),
     }
 
@@ -421,28 +421,29 @@ def parse_locust_stats_csv(csv_content: str) -> List[dict]:
 
 
 def extract_response_time_distribution_from_csv(
-        csv_content: str,
-        test_name: str,
-        test_date: str,
-        *,
-        ignored_results: List[str] = ["aggregated"],
-        ignored_columns: List[str] = [
-            "failure count",
-            "median response time",
-            "average response time",
-            "min response time",
-            "max response time",
-            "average content size",
-            "requests/s",
-            "failures/s",
-            "66%",
-            "80%",
-            "98%",
-            "99.9%",
-            "99.99%",
-            "99.999%",
-        ],
+    csv_content: str,
+    test_name: str,
+    test_date: str,
+    *,
+    ignored_results: List[str] = ["aggregated"],
+    ignored_columns: List[str] = [
+        "failure count",
+        "median response time",
+        "average response time",
+        "min response time",
+        "max response time",
+        "average content size",
+        "requests/s",
+        "failures/s",
+        "66%",
+        "80%",
+        "98%",
+        "99.9%",
+        "99.99%",
+        "99.999%",
+    ],
 ) -> List[dict]:
+
     parsed_csv_results = parse_locust_stats_csv(csv_content)
 
     clean_results = []
@@ -489,27 +490,27 @@ def replace_all(text: str, replacements: dict) -> str:
 
 
 def extract_response_time_metrics_from_csv(
-        csv_content: str,
-        test_name: str,
-        test_date: str,
-        *,
-        ignored_results: List[str] = ["aggregated"],
-        ignored_metrics: List[str] = [
-            "average content size",
-            "failures/s",
-            "50%",
-            "66%",
-            "75%",
-            "80%",
-            "90%",
-            "95%",
-            "98%",
-            "99%",
-            "99.9%",
-            "99.99%",
-            "99.999%",
-            "100%",
-        ],
+    csv_content: str,
+    test_name: str,
+    test_date: str,
+    *,
+    ignored_results: List[str] = ["aggregated"],
+    ignored_metrics: List[str] = [
+        "average content size",
+        "failures/s",
+        "50%",
+        "66%",
+        "75%",
+        "80%",
+        "90%",
+        "95%",
+        "98%",
+        "99%",
+        "99.9%",
+        "99.99%",
+        "99.999%",
+        "100%",
+    ],
 ) -> List[dict]:
     """Takes Locust's results_stats.csv & converts it into Geckoboard dataset.
 
@@ -608,7 +609,7 @@ def extract_response_time_metrics_from_csv(
 
 
 def get_load_test_response_time_distribution(
-        build_artifacts: dict, *, artifact_filename: str = "results_stats.csv",
+    build_artifacts: dict, *, artifact_filename: str = "results_stats.csv",
 ) -> List[dict]:
     results = []
     for friendly_name, artifacts in build_artifacts.items():
@@ -627,7 +628,7 @@ def get_load_test_response_time_distribution(
 
 
 def get_load_test_response_time_metrics(
-        build_artifacts: dict, *, artifact_filename: str = "results_stats.csv"
+    build_artifacts: dict, *, artifact_filename: str = "results_stats.csv"
 ) -> List[dict]:
     results = []
     for friendly_name, artifacts in build_artifacts.items():
@@ -646,11 +647,11 @@ def get_load_test_response_time_metrics(
 
 
 def last_load_test_artifacts(
-        circle_ci_client: CircleClient,
-        project_name: str,
-        job_name_mappings: dict,
-        *,
-        limit: int = 50,
+    circle_ci_client: CircleClient,
+    project_name: str,
+    job_name_mappings: dict,
+    *,
+    limit: int = 50,
 ) -> dict:
     recent = recent_builds(circle_ci_client, project_name, limit=limit)
     filtered_builds = last_build_per_job(recent, job_name_mappings)
@@ -672,11 +673,11 @@ def parse_junit_results(build_artifacts: dict, metric: str) -> List[dict]:
 
 
 def last_tests_results_from_junit_artifacts(
-        circle_ci_client: CircleClient,
-        project_name: str,
-        job_name_mappings: dict,
-        *,
-        limit: int = 100,
+    circle_ci_client: CircleClient,
+    project_name: str,
+    job_name_mappings: dict,
+    *,
+    limit: int = 100,
 ) -> List[dict]:
     recent = recent_builds(circle_ci_client, project_name, limit=limit)
     result = []

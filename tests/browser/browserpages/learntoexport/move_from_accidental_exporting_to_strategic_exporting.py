@@ -70,7 +70,7 @@ SELECTORS = {
             By.XPATH, "//span[contains(text(),'About your business')]"
         ),
         "business objectives": Selector(
-            By.XPATH, "//span[contains(text(),'Business objectives')]"
+            By.XPATH, "//body/main/div[1]/div/div[3]/div[3]/div/div/a"
         ),
     },
 }
