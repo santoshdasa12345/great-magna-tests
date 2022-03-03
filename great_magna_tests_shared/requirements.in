@@ -7,5 +7,5 @@ notifications-python-client
 parse
 pdfminer2
 retrying
-scrapy
+scrapy==2.6.1
 termcolor
