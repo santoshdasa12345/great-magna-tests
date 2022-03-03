@@ -140,7 +140,7 @@ compile_requirements_tests_shared:
 	@rm -fr ./great_magna_tests_shared/requirements.txt
 	python3 -m piptools compile --quiet --no-annotate --output-file ./great_magna_tests_shared/requirements.txt ./great_magna_tests_shared/requirements.in
 
-compile_all_requirements: compile_requirements_tests_shared compile_requirements_browser compile_requirements_load compile_requirements_test_tools
+compile_all_requirements: compile_requirements_tests_shared compile_requirements_browser compile_requirements_load compile_requirements_test_tools compile_requirements_functional compile_requirements_periodic_tasks compile_requirements_smoke
 
 find_duplicated_scenario_names: SHELL:=/usr/bin/env bash  # set shell for this target to bash
 find_duplicated_scenario_names:
