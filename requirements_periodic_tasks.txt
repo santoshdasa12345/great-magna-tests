@@ -73,7 +73,7 @@ directory-client-core==6.3.0
     #   directory-forms-api-client
     #   directory-sso-api-client
     #   great-magna-tests-shared
-directory_cms_client==11.1.1
+directory-cms-client==11.1.1
     # via
     #   -r requirements_periodic_tasks.in
     #   great-magna-tests-shared
@@ -301,7 +301,7 @@ tldextract==3.2.0
     #   scrapy
 tomli==2.0.1
     # via pytest
-twisted==22.1.0
+twisted==22.2.0
     # via
     #   great-magna-tests-shared
     #   scrapy
