@@ -31,7 +31,7 @@ charset-normalizer==2.0.12
     # via
     #   great-magna-tests-shared
     #   requests
-click==8.0.4
+click==8.1.2
     # via flask
 configargparse==1.5.3
     # via locust
@@ -39,7 +39,7 @@ constantly==15.1.0
     # via
     #   great-magna-tests-shared
     #   twisted
-cryptography==36.0.1
+cryptography==36.0.2
     # via
     #   great-magna-tests-shared
     #   pyopenssl
@@ -50,7 +50,7 @@ cssselect==1.1.0
     #   great-magna-tests-shared
     #   parsel
     #   scrapy
-directory-api-client==24.1.0
+directory-api-client==24.2.0
     # via great-magna-tests-shared
 directory-client-core==6.3.0
     # via
@@ -61,11 +61,11 @@ directory-client-core==6.3.0
     #   great-magna-tests-shared
 directory-cms-client==11.1.1
     # via great-magna-tests-shared
-directory-forms-api-client==6.1.0
+directory-forms-api-client==6.2.0
     # via great-magna-tests-shared
 directory-sso-api-client==6.5.6
     # via great-magna-tests-shared
-django==2.2.27
+django==2.2.28
     # via
     #   directory-api-client
     #   directory-client-core
@@ -87,7 +87,7 @@ filelock==3.6.0
     # via
     #   great-magna-tests-shared
     #   tldextract
-flask==2.0.3
+flask==2.1.1
     # via
     #   flask-basicauth
     #   flask-cors
@@ -114,11 +114,13 @@ idna==3.3
     #   hyperlink
     #   requests
     #   tldextract
+importlib-metadata==4.11.3
+    # via flask
 incremental==21.3.0
     # via
     #   great-magna-tests-shared
     #   twisted
-itemadapter==0.4.0
+itemadapter==0.5.0
     # via
     #   great-magna-tests-shared
     #   itemloaders
@@ -127,22 +129,24 @@ itemloaders==1.0.4
     # via
     #   great-magna-tests-shared
     #   scrapy
-itsdangerous==2.1.0
+itsdangerous==2.1.2
     # via flask
 jinja2==3.0.3
-    # via flask
-jmespath==0.10.0
+    # via
+    #   flask
+    #   locust
+jmespath==1.0.0
     # via
     #   great-magna-tests-shared
     #   itemloaders
-locust==2.8.3
+locust==2.8.6
     # via -r requirements_load.in
 lxml==4.8.0
     # via
     #   great-magna-tests-shared
     #   parsel
     #   scrapy
-markupsafe==2.1.0
+markupsafe==2.1.1
     # via jinja2
 mohawk==1.1.0
     # via
@@ -196,7 +200,7 @@ pyopenssl==22.0.0
     # via
     #   great-magna-tests-shared
     #   scrapy
-pytz==2021.3
+pytz==2022.1
     # via
     #   django
     #   djangorestframework
@@ -255,11 +259,11 @@ sqlparse==0.4.2
     #   great-magna-tests-shared
 termcolor==1.1.0
     # via great-magna-tests-shared
-tldextract==3.2.0
+tldextract==3.2.1
     # via
     #   great-magna-tests-shared
     #   scrapy
-twisted==22.2.0
+twisted==22.4.0rc1
     # via
     #   great-magna-tests-shared
     #   scrapy
@@ -268,7 +272,7 @@ typing-extensions==4.1.1
     #   great-magna-tests-shared
     #   locust
     #   twisted
-urllib3==1.26.8
+urllib3==1.26.9
     # via
     #   great-magna-tests-shared
     #   requests
@@ -279,13 +283,15 @@ w3lib==1.22.0
     #   itemloaders
     #   parsel
     #   scrapy
-werkzeug==2.0.3
+werkzeug==2.1.1
     # via
     #   flask
     #   locust
-zope.event==4.5.0
+zipp==3.8.0
+    # via importlib-metadata
+zope-event==4.5.0
     # via gevent
-zope.interface==5.4.0
+zope-interface==5.4.0
     # via
     #   gevent
     #   great-magna-tests-shared
