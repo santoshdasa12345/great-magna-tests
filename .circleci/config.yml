@@ -1,14 +1,5 @@
 version: 2.1
 
-# Variables
-load_hatch_rate: &load_hatch_rate
-    HATCH_RATE: 3
-
-load_num_users: &load_num_users
-    NUM_USERS: 1000
-
-load_run_time: &load_run_time
-    RUN_TIME: 5m
 
 # Machines configs
 machine_python3_clean: &machine_python3_clean
@@ -159,14 +150,6 @@ step_prepare_list_of_scenarios_to_run_by_parallel_browser_tests: &step_prepare_l
         features/ \
         | grep -v "Supplied path\|Trying base directory" > scenario_titles.txt
 
-#step_install_requirements_for_load_tests: &step_install_requirements_for_load_tests
-#  run:
-#    name: Create virtualenv and install dependencies
-#    command: |
-#      python3 -m venv venv
-#      . venv/bin/activate
-#      pip install --quiet --upgrade pip
-#      pip install --quiet -r requirements_load.txt
 
 #step_cache_smoke_tests_requirements: &step_cache_smoke_tests_requirements
 #  save_cache:
@@ -185,12 +168,6 @@ step_cache_browser_tests_requirements: &step_cache_browser_tests_requirements
     key: browser-tests-dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
     paths:
       - ~/great_magna_tests
-
-#step_cache_load_tests_requirements: &step_cache_load_tests_requirements
-#  save_cache:
-#    key: load-tests-dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-#    paths:
-#    - ~/great_magna_tests
 
 #step_cache_periodic_tasks_requirements: &step_cache_periodic_tasks_requirements
 #  save_cache:
@@ -212,11 +189,6 @@ step_restore_cached_browser_tests_requirements: &step_restore_cached_browser_tes
 #  restore_cache:
 #    keys:
 #      - functional-tests-dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-#
-#step_restore_cached_load_tests_requirements: &step_restore_cached_load_tests_requirements
-#  restore_cache:
-#    keys:
-#    - load-tests-dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
 #
 #step_restore_cached_periodic_tasks_requirements: &step_restore_cached_periodic_tasks_requirements
 #  restore_cache:
@@ -317,16 +289,6 @@ step_run_browser_tests_in_parallel: &step_run_browser_tests_in_parallel
 
       echo "Saving environment variables that control test execution"
       ../../save_test_related_env_vars.py
-
-
-#step_run_load_tests: &step_run_load_tests
-#  run:
-#    name: Run load tests
-#    command: |
-#      . venv/bin/activate
-#      python ./env_vars/env_writer.py --env=${TEST_ENV} --config=./env_vars/env.json
-#      source ./env_vars/.env_with_export;
-#      NUM_USERS=${NUM_USERS} HATCH_RATE=${HATCH_RATE} RUN_TIME=${RUN_TIME} make load_test_${SERVICE}
 #
 #step_run_test_cms_pages_return_200: &step_run_test_cms_pages_return_200
 #  run:
@@ -484,12 +446,6 @@ steps_setup_env_for_parallel_browser_tests_using_circleci: &steps_setup_env_for_
     - *step_install_requirements_for_parallel_browser_tests
     - *step_cache_browser_tests_requirements
 
-#steps_setup_env_for_load_tests: &steps_setup_env_for_load_tests
-#  steps:
-#  - *step_checkout_repo
-#  - *step_install_requirements_for_load_tests
-#  - *step_cache_load_tests_requirements
-
 #steps_smoke_tests: &steps_smoke_tests
 #  steps:
 #    - *step_restore_cached_smoke_tests_requirements
@@ -616,13 +572,6 @@ steps_merge_browser_allure_results_and_generate_report_and_send_link_to_slack: &
 #        path: ./tests/functional/reports
 #    - *step_persist_international_results
 
-#steps_run_load_tests: &steps_run_load_tests
-#  steps:
-#  - *step_restore_cached_load_tests_requirements
-#  - *step_run_load_tests
-#  - store_artifacts:
-#      path: ./reports
-
 #steps_setup_env_for_periodic_tasks: &steps_setup_env_for_periodic_tasks
 #  steps:
 #    - *step_checkout_repo
@@ -686,12 +635,6 @@ jobs:
 #    *steps_setup_env_for_functional_tests,
 #    ]
 #
-#  setup_env_for_load_tests:
-#    working_directory: ~/great_magna_tests
-#    <<: [
-#    *machine_python3_node,
-#    *steps_setup_env_for_load_tests,
-#    ]
 
   setup_env_for_parallel_browser_tests_using_circleci:
     working_directory: ~/great_magna_tests
@@ -887,156 +830,6 @@ jobs:
 #    <<: [
 #    *machine_python3_node_browsers,
 #    *steps_delete_test_data,
-#    ]
-
-#  load_cms_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "cms"
-#      TEST_ENV: "stage"
-#      <<: [
-#      *load_hatch_rate,
-#      *load_num_users,
-#      *load_run_time,
-#      ]
-#    <<: [
-#    *machine_python3_node,
-#    *steps_run_load_tests,
-#    ]
-#
-#  load_soo_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "soo"
-#      TEST_ENV: "stage"
-#      <<: [
-#      *load_hatch_rate,
-#      *load_num_users,
-#      *load_run_time,
-#      ]
-#    <<: [
-#    *machine_python3_node,
-#    *steps_run_load_tests,
-#    ]
-#
-#  load_fab_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "fab"
-#      TEST_ENV: "stage"
-#      <<: [
-#      *load_hatch_rate,
-#      *load_num_users,
-#      *load_run_time,
-#      ]
-#    <<: [
-#    *machine_python3_node,
-#    *steps_run_load_tests,
-#    ]
-
-#  load_fas_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "fas"
-#      TEST_ENV: "stage"
-#      <<: [
-#      *load_hatch_rate,
-#      *load_num_users,
-#      *load_run_time,
-#      ]
-#    <<: [
-#    *machine_python3_node,
-#    *steps_run_load_tests,
-#    ]
-#
-#  load_isd_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "isd"
-#      TEST_ENV: "stage"
-#      <<: [
-#      *load_hatch_rate,
-#      *load_num_users,
-#      *load_run_time,
-#      ]
-#    <<: [
-#    *machine_python3_node,
-#    *steps_run_load_tests,
-#    ]
-#
-#  load_international_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "international"
-#      TEST_ENV: "stage"
-#      <<: [
-#      *load_hatch_rate,
-#      *load_num_users,
-#      *load_run_time,
-#      ]
-#    <<: [
-#    *machine_python3_node,
-#    *steps_run_load_tests,
-#    ]
-#
-#  load_invest_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "invest"
-#      TEST_ENV: "stage"
-#      <<: [
-#      *load_hatch_rate,
-#      *load_num_users,
-#      *load_run_time,
-#      ]
-#    <<: [
-#    *machine_python3_node,
-#    *steps_run_load_tests,
-#    ]
-
-#  load_domestic_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "domestic"
-#      TEST_ENV: "stage"
-#      <<: [
-#      *load_hatch_rate,
-#      *load_num_users,
-#      *load_run_time,
-#      ]
-#    <<: [
-#    *machine_python3_node,
-#    *steps_run_load_tests,
-#    ]
-#
-#  load_erp_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "erp"
-#      TEST_ENV: "stage"
-#      <<: [
-#      *load_hatch_rate,
-#      *load_num_users,
-#      *load_run_time,
-#      ]
-#    <<: [
-#    *machine_python3_node,
-#    *steps_run_load_tests,
-#    ]
-
-#  load_profile_tests_stage:
-#    working_directory: ~/great_magna_tests
-#    environment:
-#      SERVICE: "profile"
-#      TEST_ENV: "stage"
-#      <<: [
-#      *load_hatch_rate,
-#      *load_num_users,
-#      *load_run_time,
-#      ]
-#    <<: [
-#    *machine_python3_node,
-#    *steps_run_load_tests,
 #    ]
 
   dev_parallel_browser_tests_using_circleci:
@@ -1609,136 +1402,6 @@ workflows:
           requires:
             - stage_parallel_browser_tests_using_circleci
 
-#  run_cms_load_tests_on_stage:
-#    triggers:
-#    - schedule:
-#        cron: "53 3 * * 1-5"
-#        filters:
-#          branches:
-#            only: master
-#    jobs:
-#    - setup_env_for_load_tests
-#    - load_cms_tests_stage:
-#        requires:
-#        - setup_env_for_load_tests
-#
-#  run_fas_load_tests_on_stage:
-#    triggers:
-#    - schedule:
-#        cron: "4 4 * * 1-5"
-#        filters:
-#          branches:
-#            only: master
-#    jobs:
-#    - setup_env_for_load_tests
-#    - load_fas_tests_stage:
-#        requires:
-#        - setup_env_for_load_tests
-#
-#  run_isd_load_tests_on_stage:
-#    triggers:
-#      - schedule:
-#          cron: "16 4 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_load_tests
-#      - load_isd_tests_stage:
-#          requires:
-#            - setup_env_for_load_tests
-#
-#  run_international_load_tests_on_stage:
-#    triggers:
-#      - schedule:
-#          cron: "27 4 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_load_tests
-#      - load_international_tests_stage:
-#          requires:
-#            - setup_env_for_load_tests
-#
-#  run_invest_load_tests_on_stage:
-#    triggers:
-#    - schedule:
-#        cron: "38 4 * * 1-5"
-#        filters:
-#          branches:
-#            only: master
-#    jobs:
-#    - setup_env_for_load_tests
-#    - load_invest_tests_stage:
-#        requires:
-#        - setup_env_for_load_tests
-#
-#  run_fab_load_tests_on_stage:
-#    triggers:
-#    - schedule:
-#        cron: "49 4 * * 1-5"
-#        filters:
-#          branches:
-#            only: master
-#    jobs:
-#    - setup_env_for_load_tests
-#    - load_fab_tests_stage:
-#        requires:
-#        - setup_env_for_load_tests
-#
-#  run_soo_load_tests_on_stage:
-#    triggers:
-#      - schedule:
-#          cron: "59 4 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_load_tests
-#      - load_soo_tests_stage:
-#          requires:
-#            - setup_env_for_load_tests
-#
-#  run_domestic_load_tests_on_stage:
-#    triggers:
-#      - schedule:
-#          cron: "11 5 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_load_tests
-#      - load_domestic_tests_stage:
-#          requires:
-#            - setup_env_for_load_tests
-#
-#  run_erp_load_tests_on_stage:
-#    triggers:
-#      - schedule:
-#          cron: "23 5 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_load_tests
-#      - load_erp_tests_stage:
-#          requires:
-#            - setup_env_for_load_tests
-#
-#  run_profile_load_tests_on_stage:
-#    triggers:
-#      - schedule:
-#          cron: "23 5 * * 1-5"
-#          filters:
-#            branches:
-#              only: master
-#    jobs:
-#      - setup_env_for_load_tests
-#      - load_profile_tests_stage:
-#          requires:
-#            - setup_env_for_load_tests
-#
 #  run_smoke_and_functional_tests_on_uat:
 #    triggers:
 #      - schedule:
