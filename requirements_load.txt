@@ -18,16 +18,16 @@ automat==20.2.0
     #   twisted
 brotli==1.0.9
     # via geventhttpclient
-certifi==2022.5.18.1
+certifi==2022.6.15
     # via
     #   geventhttpclient
     #   great-magna-tests-shared
     #   requests
-cffi==1.15.0
+cffi==1.15.1
     # via
     #   cryptography
     #   great-magna-tests-shared
-charset-normalizer==2.0.12
+charset-normalizer==2.1.0
     # via
     #   great-magna-tests-shared
     #   requests
@@ -39,7 +39,7 @@ constantly==15.1.0
     # via
     #   great-magna-tests-shared
     #   twisted
-cryptography==37.0.2
+cryptography==37.0.4
     # via
     #   great-magna-tests-shared
     #   pyopenssl
@@ -83,7 +83,7 @@ docopt==0.6.2
     #   notifications-python-client
 envparse==0.2.0
     # via great-magna-tests-shared
-filelock==3.7.0
+filelock==3.7.1
     # via
     #   great-magna-tests-shared
     #   tldextract
@@ -100,7 +100,7 @@ gevent==21.12.0
     # via
     #   geventhttpclient
     #   locust
-geventhttpclient==1.5.3
+geventhttpclient==1.5.5
     # via locust
 greenlet==1.1.2
     # via gevent
@@ -114,7 +114,7 @@ idna==3.3
     #   hyperlink
     #   requests
     #   tldextract
-importlib-metadata==4.11.4
+importlib-metadata==4.12.0
     # via flask
 incremental==21.3.0
     # via
@@ -133,13 +133,13 @@ itsdangerous==2.1.2
     # via flask
 jinja2==3.1.2
     # via flask
-jmespath==1.0.0
+jmespath==1.0.1
     # via
     #   great-magna-tests-shared
     #   itemloaders
-locust==2.9.0
+locust==2.10.1
     # via -r requirements_load.in
-lxml==4.8.0
+lxml==4.9.1
     # via
     #   great-magna-tests-shared
     #   parsel
@@ -154,7 +154,7 @@ monotonic==1.6
     # via
     #   directory-client-core
     #   great-magna-tests-shared
-msgpack==1.0.3
+msgpack==1.0.4
     # via locust
 notifications-python-client==6.3.0
     # via great-magna-tests-shared
@@ -209,7 +209,7 @@ queuelib==1.6.2
     # via
     #   great-magna-tests-shared
     #   scrapy
-requests==2.27.1
+requests==2.28.1
     # via
     #   -r requirements_load.in
     #   directory-api-client
@@ -265,12 +265,12 @@ twisted==22.4.0
     # via
     #   great-magna-tests-shared
     #   scrapy
-typing-extensions==4.2.0
+typing-extensions==4.3.0
     # via
     #   great-magna-tests-shared
     #   locust
     #   twisted
-urllib3==1.26.9
+urllib3==1.26.10
     # via
     #   great-magna-tests-shared
     #   requests

@@ -32,15 +32,15 @@ behave==1.2.6
     # via
     #   -r requirements_periodic_tasks.in
     #   allure-behave
-certifi==2022.5.18.1
+certifi==2022.6.15
     # via
     #   great-magna-tests-shared
     #   requests
-cffi==1.15.0
+cffi==1.15.1
     # via
     #   cryptography
     #   great-magna-tests-shared
-charset-normalizer==2.0.12
+charset-normalizer==2.1.0
     # via
     #   great-magna-tests-shared
     #   requests
@@ -50,7 +50,7 @@ constantly==15.1.0
     # via
     #   great-magna-tests-shared
     #   twisted
-cryptography==37.0.2
+cryptography==37.0.4
     # via
     #   great-magna-tests-shared
     #   pyopenssl
@@ -73,11 +73,11 @@ directory-client-core==6.3.0
     #   directory-forms-api-client
     #   directory-sso-api-client
     #   great-magna-tests-shared
-directory_cms_client==11.1.1
+directory-cms-client==11.1.1
     # via
     #   -r requirements_periodic_tasks.in
     #   great-magna-tests-shared
-directory-constants==21.3.0
+directory-constants==21.4.0
     # via -r requirements_periodic_tasks.in
 directory-forms-api-client==6.2.0
     # via great-magna-tests-shared
@@ -101,7 +101,7 @@ docopt==0.6.2
     #   notifications-python-client
 envparse==0.2.0
     # via great-magna-tests-shared
-filelock==3.7.0
+filelock==3.7.1
     # via
     #   great-magna-tests-shared
     #   tldextract
@@ -117,7 +117,7 @@ idna==3.3
     #   hyperlink
     #   requests
     #   tldextract
-importlib-metadata==4.11.4
+importlib-metadata==4.12.0
     # via keyring
 incremental==21.3.0
     # via
@@ -140,15 +140,15 @@ jeepney==0.8.0
     #   secretstorage
 jira==3.2.0
     # via -r requirements_periodic_tasks.in
-jmespath==1.0.0
+jmespath==1.0.1
     # via
     #   great-magna-tests-shared
     #   itemloaders
 junit-xml==1.9
     # via -r requirements_periodic_tasks.in
-keyring==23.5.1
+keyring==23.6.0
     # via jira
-lxml==4.8.0
+lxml==4.9.1
     # via
     #   -r requirements_periodic_tasks.in
     #   great-magna-tests-shared
@@ -231,7 +231,7 @@ queuelib==1.6.2
     # via
     #   great-magna-tests-shared
     #   scrapy
-requests==2.27.1
+requests==2.28.1
     # via
     #   -r requirements_periodic_tasks.in
     #   circleclient
@@ -305,12 +305,12 @@ twisted==22.4.0
     # via
     #   great-magna-tests-shared
     #   scrapy
-typing-extensions==4.2.0
+typing-extensions==4.3.0
     # via
     #   great-magna-tests-shared
     #   jira
     #   twisted
-urllib3==1.26.9
+urllib3==1.26.10
     # via
     #   great-magna-tests-shared
     #   requests
