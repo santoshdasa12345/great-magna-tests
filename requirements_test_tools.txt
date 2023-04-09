@@ -106,13 +106,15 @@ traitlets==5.3.0
     # via
     #   ipython
     #   matplotlib-inline
+typing-extensions==4.5.0
+    # via black
 virtualenv==20.16.2
     # via pre-commit
 vulture==2.5
     # via -r requirements_test_tools.in
 wcwidth==0.2.5
     # via prompt-toolkit
-wheel==0.37.1
+wheel==0.38.1
     # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
