@@ -51,7 +51,7 @@ scrapy==2.6.2
 service-identity==21.1.0
 sigauth==4.3.0
 six==1.16.0
-sqlparse==0.4.2
+sqlparse==0.4.4
 termcolor==1.1.0
 tldextract==3.3.1
 twisted==22.4.0
