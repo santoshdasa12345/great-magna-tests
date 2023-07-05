@@ -56,8 +56,8 @@ six==1.16.0
 sqlparse==0.4.4
 termcolor==2.3.0
 tldextract==3.4.4
-twisted==22.4.0
-typing-extensions==4.7.0
+twisted==22.10.0
+typing-extensions==4.7.1
 urllib3==2.0.3
 w3lib==1.22.0
 zope-interface==6.0

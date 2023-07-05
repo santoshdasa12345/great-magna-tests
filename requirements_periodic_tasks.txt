@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements_periodic_tasks.in
 #
--e ./great_magna_tests_shared/
+-e file:///Users/elimarkham/great-magna-tests/great_magna_tests_shared
     # via -r requirements_periodic_tasks.in
 -e git+https://github.com/kowalcj0/pylinkvalidator.git@json-reporter#egg=pylinkvalidator
     # via -r requirements_periodic_tasks.in
@@ -103,7 +103,7 @@ docopt==0.6.2
     #   notifications-python-client
 envparse==0.2.0
     # via great-magna-tests-shared
-exceptiongroup==1.1.1
+exceptiongroup==1.1.2
     # via pytest
 filelock==3.12.2
     # via
@@ -175,7 +175,7 @@ parse==1.19.1
     #   behave
     #   great-magna-tests-shared
     #   parse-type
-parse-type==0.6.0
+parse-type==0.6.1
     # via behave
 parsel==1.8.1
     # via
@@ -292,11 +292,11 @@ tldextract==3.4.4
     #   scrapy
 tomli==2.0.1
     # via pytest
-twisted==22.4.0
+twisted==22.10.0
     # via
     #   great-magna-tests-shared
     #   scrapy
-typing-extensions==4.7.0
+typing-extensions==4.7.1
     # via
     #   asgiref
     #   great-magna-tests-shared
