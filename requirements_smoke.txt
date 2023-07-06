@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements_smoke.in
 #
--e file:///Users/elimarkham/great-magna-tests/great_magna_tests_shared
+-e ./great_magna_tests_shared/
     # via -r requirements_smoke.in
 allure-pytest==2.13.2
     # via -r requirements_smoke.in
@@ -54,28 +54,28 @@ cssselect==1.2.0
     #   great-magna-tests-shared
     #   parsel
     #   scrapy
-directory-api-client==26.3.0
+directory-api-client==26.4.2
     # via great-magna-tests-shared
-directory-client-core==7.2.2
+directory-client-core==7.2.5
     # via
     #   directory-api-client
     #   directory-cms-client
     #   directory-forms-api-client
     #   directory-sso-api-client
     #   great-magna-tests-shared
-directory-cms-client==12.3.0
+directory-cms-client==12.3.2
     # via
     #   -r requirements_smoke.in
     #   great-magna-tests-shared
-directory-constants==23.1.0
+directory-constants==23.1.1
     # via -r requirements_smoke.in
-directory-forms-api-client==7.2.0
+directory-forms-api-client==7.2.2
     # via great-magna-tests-shared
-directory-sso-api-client==7.2.1
+directory-sso-api-client==7.2.3
     # via
     #   -r requirements_smoke.in
     #   great-magna-tests-shared
-django==4.2
+django==4.2.3
     # via
     #   directory-api-client
     #   directory-client-core
@@ -235,7 +235,7 @@ service-identity==23.1.0
     # via
     #   great-magna-tests-shared
     #   scrapy
-sigauth==5.2.0
+sigauth==5.2.2
     # via
     #   -r requirements_smoke.in
     #   directory-client-core

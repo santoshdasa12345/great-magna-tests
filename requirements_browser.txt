@@ -4,6 +4,7 @@
 #
 #    pip-compile requirements_browser.in
 #
+./great_magna_tests_shared/
 allure-behave==2.13.2
     # via -r requirements_browser.in
 allure-python-commons==2.13.2
@@ -61,28 +62,28 @@ cssselect==1.2.0
     #   scrapy
 datadiff==2.1.0
     # via -r requirements_browser.in
-directory-api-client==26.3.0
+directory-api-client==26.4.2
     # via
     #   -r requirements_browser.in
     #   great-magna-tests-shared
-directory-client-core==7.2.2
+directory-client-core==7.2.5
     # via
     #   directory-api-client
     #   directory-cms-client
     #   directory-forms-api-client
     #   directory-sso-api-client
     #   great-magna-tests-shared
-directory-cms-client==12.3.0
+directory-cms-client==12.3.2
     # via
     #   -r requirements_browser.in
     #   great-magna-tests-shared
-directory-forms-api-client==7.2.0
+directory-forms-api-client==7.2.2
     # via great-magna-tests-shared
-directory-sso-api-client==7.2.1
+directory-sso-api-client==7.2.3
     # via
     #   -r requirements_browser.in
     #   great-magna-tests-shared
-django==4.2
+django==4.2.3
     # via
     #   directory-api-client
     #   directory-client-core
@@ -104,11 +105,10 @@ exceptiongroup==1.1.2
     # via
     #   trio
     #   trio-websocket
-filelock==3.12.2
     # via
     #   great-magna-tests-shared
     #   tldextract
-great-magna-tests-shared @ file:///Users/elimarkham/great-magna-tests/great_magna_tests_shared
+great-magna-tests-shared @ file:///app/great_magna_tests_shared
     # via -r requirements_browser.in
 h11==0.14.0
     # via wsproto
@@ -171,7 +171,7 @@ parse==1.19.1
     #   behave
     #   great-magna-tests-shared
     #   parse-type
-parse-type==0.6.1
+parse-type==0.6.2
     # via behave
 parsel==1.8.1
     # via
@@ -248,7 +248,7 @@ service-identity==23.1.0
     # via
     #   great-magna-tests-shared
     #   scrapy
-sigauth==5.2.0
+sigauth==5.2.2
     # via
     #   -r requirements_browser.in
     #   directory-client-core
