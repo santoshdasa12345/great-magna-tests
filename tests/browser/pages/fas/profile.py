@@ -5,7 +5,7 @@ from urllib.parse import urljoin
 
 from behave.model import Table
 from requests import Response, Session
-from scrapy import Selector
+from bs4 import BeautifulSoup
 
 from directory_tests_shared import PageType, Service, URLs
 from directory_tests_shared.constants import SECTORS_WITH_LABELS
@@ -153,13 +153,13 @@ def should_see_details(company: Company, response: Response, table_of_details: T
 
 def get_case_studies_details(response: Response):
     content = response.content.decode("utf-8")
-    article_selector = "div.card"
-    articles = Selector(text=content).css(article_selector).extract()
+    soup = BeautifulSoup(content, 'html.parser')
+    articles = soup.select("div.card")
     result = []
     for article in articles:
-        title = Selector(text=article).css("h3::text").extract()[0]
-        summary = Selector(text=article).css("p.description::text").extract()[0]
-        href = Selector(text=article).css("a::attr(href)").extract()[0]
+        title = article.select_one("h3").get_text()
+        summary = article.select_one("p.description").get_text()
+        href = article.select_one("a")['href']
         slug = href.split("/")[-2]
         assert slug, f"Couldn't extract case study slug from {article}"
         logging.debug("Got case study slug: %s", slug)

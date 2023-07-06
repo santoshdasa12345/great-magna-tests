@@ -3,7 +3,7 @@
 from typing import List, Tuple
 
 from requests import Response, Session
-from scrapy import Selector
+from bs4 import BeautifulSoup
 
 from directory_tests_shared import PageType, Service, URLs
 from tests.functional.utils.generic import Method, make_request
@@ -41,16 +41,18 @@ def go_to(session: Session) -> Response:
 
 
 def extract_email_to_id_mapping(label: str) -> Tuple[str, str]:
-    element_id = Selector(text=label).css("label::attr(for)").extract()[0]
-    email = Selector(text=label).css("label::text").extract()[0]
+    soup = BeautifulSoup(label, 'html.parser')
+    element_id = soup.label['for']
+    email = soup.label.get_text()
     return email, element_id
 
 
 def extract_sso_id(html: str, email_to_element_id: Tuple[str, str]):
     email, element_id = email_to_element_id
-    css_selector = f"#{element_id}::attr(value)"
-    value = Selector(text=html).css(css_selector).extract()
-    return email, value[0] if value else None
+    soup = BeautifulSoup(html, 'html.parser')
+    element = soup.select_one(f"#{element_id}")
+    value = element.get('value') if element else None
+    return email, value
 
 
 def extract_email_to_sso_id(html: str, mapping: dict) -> dict:
@@ -62,13 +64,12 @@ def extract_email_to_sso_id(html: str, mapping: dict) -> dict:
     )
 
 
-def extract_sso_ids(response: Response) -> dict:
+def extract_sso_ids(response: Response) -> Dict[str, str]:
     content = response.content.decode("utf-8")
-    label_css = "label[for]"
-    labels = Selector(text=content).css(label_css).extract()
-    email_to_element_id_map = dict(map(extract_email_to_id_mapping, labels))
+    soup = BeautifulSoup(content, 'html.parser')
+    labels = soup.select("label[for]")
+    email_to_element_id_map = dict(map(extract_email_to_id_mapping, [str(label) for label in labels]))
     return extract_email_to_sso_id(content, email_to_element_id_map)
-
 
 def remove(session: Session, token: str, sso_ids: List[str]) -> Response:
     data = {"csrfmiddlewaretoken": token, "sso_ids": sso_ids}

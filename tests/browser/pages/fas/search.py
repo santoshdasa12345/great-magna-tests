@@ -5,7 +5,7 @@ from typing import List
 
 from requests import Response, Session
 from retrying import retry
-from scrapy import Selector
+from bs4 import BeautifulSoup
 
 from directory_tests_shared import PageType, Service, URLs
 from tests.functional.utils.generic import escape_html, extract_page_contents
@@ -53,13 +53,13 @@ def should_be_here(response, *, number=None):
     logging.debug("Buyer is on the FAS Find a Supplier page")
 
 
-def get_profile_links(page_content: str) -> List[tuple]:
-    profile_selector = "#companies-column > ul > li a"
-    profile_links = Selector(text=page_content).css(profile_selector).extract()
+def get_profile_links(page_content: str) -> List[Tuple[str, str]]:
+    soup = BeautifulSoup(page_content, 'html.parser')
+    profile_links = soup.select("#companies-column > ul > li a")
     results = []
     for link in profile_links:
-        href = Selector(text=link).css("a::attr(href)").extract()[0]
-        company_title = Selector(text=link).css("h3::text").extract()[0]
+        href = link['href']
+        company_title = link.select_one("h3").get_text()
         clean_company_title = escape_html(company_title.replace("  ", " ")).lower()
         results.append((clean_company_title, href))
     return results
