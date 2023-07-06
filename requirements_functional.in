@@ -1,5 +1,4 @@
 -e ./great_magna_tests_shared/
-Scrapy==2.6.2
 allure-behave
 beautifulsoup4
 behave
