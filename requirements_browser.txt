@@ -13,6 +13,8 @@ asgiref==3.7.2
     # via
     #   django
     #   great-magna-tests-shared
+async-generator==1.10
+    # via trio
 attrs==23.1.0
     # via
     #   allure-python-commons
