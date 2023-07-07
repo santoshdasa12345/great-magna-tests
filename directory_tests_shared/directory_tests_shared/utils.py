@@ -11,8 +11,8 @@ from random import choice, randint
 from types import BuiltinFunctionType
 from typing import List, Tuple, Union
 from urllib.parse import urlsplit
+from bs4 import BeautifulSoup
 
-from scrapy.selector import Selector as ScrapySelector
 from termcolor import cprint
 
 import parse
@@ -164,9 +164,9 @@ def assertion_msg(message: str, *args):
 def extract_attributes_by_css(
     content: str, selector: str, *, attrs: List[str] = None, text: bool = True
 ) -> List[dict]:
-    """Extract attributes of matching html elements.
+    """Extract attributes of matching HTML elements.
 
-    If element has no matching attribute then it's value will default to None
+    If an element has no matching attribute, its value will default to None.
 
     :param content: HTML page content
     :param selector: a CSS selector
@@ -174,16 +174,19 @@ def extract_attributes_by_css(
     :param text: (optional) extract element's text (defaults to True)
     :return: a list of dictionaries with matching attribute values
     """
+    soup = BeautifulSoup(content, 'html.parser')
+    elements = soup.select(selector)
     results = []
-    elements = ScrapySelector(text=content).css(selector)
+
     for element in elements:
         element_details = {}
+
         if attrs:
             for attribute in attrs:
-                element_details[attribute] = element.attrib.get(attribute, None)
+                element_details[attribute] = element.get(attribute, None)
 
         if text:
-            parts = [part for part in element.css("*::text").getall() if part.strip()]
+            parts = [part for part in element.stripped_strings]
             element_details["text"] = parts[0] if parts else None
 
         if element_details:
@@ -200,13 +203,16 @@ def extract_by_css(
     :param content: HTML content
     :param selector: CSS selector
     :param first: (optional) return first found element or all of them
-    :return: value of the 1st found element or emtpy string if not found; or a list of all found elements
+    :return: value of the 1st found element or empty string if not found; or a list of all found elements
     """
-    extracted = ScrapySelector(text=content).css(selector).extract()
+    soup = BeautifulSoup(content, 'html.parser')
+    extracted = [elem.get_text() for elem in soup.select(selector)]
+    
     if first:
         result = extracted[0] if len(extracted) > 0 else ""
     else:
         result = extracted
+    
     return result
 
 
