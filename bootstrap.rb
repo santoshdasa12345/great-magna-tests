@@ -7,16 +7,16 @@ require 'rest-client'
 require 'deep_merge'
 require 'base64'
 
-CONFIG_DIR = "#{ENV['WORKSPACE']}/.ci/config"
-JSON_SCHEMA = "#{ENV['WORKSPACE']}/.ci/schema.json"
+CONFIG_DIR = "#{ENV['WORKSPACE']}/great-magna-tests/config"
+JSON_SCHEMA = "#{ENV['WORKSPACE']}/great-magna-tests/schema.json"
 CONSUL = ENV['CONSUL']
 VAULT_API = ENV['VAULT_API']
 VAULT_PREFIX = ENV['VAULT_PREFIX']
 VAULT_ROLE_ID = ENV['VAULT_ROLE_ID']
 VAULT_SERECT_ID = ENV['VAULT_SERECT_ID']
-OPTION_FILE = "#{ENV['WORKSPACE']}/.ci/.option.json"
-ENV_FILE = "#{ENV['WORKSPACE']}/.ci/env.json"
-CONF_FILE = "#{ENV['WORKSPACE']}/.ci/config.json"
+OPTION_FILE = "#{ENV['WORKSPACE']}/great-magna-tests/.option.json"
+ENV_FILE = "#{ENV['WORKSPACE']}/great-magna-tests/env.json"
+CONF_FILE = "#{ENV['WORKSPACE']}/great-magna-tests/config.json"
 
 def validate(schema, data)
   return JSON::Validator.validate!(schema, data, {:validate_schema => true, :strict => false})
@@ -106,17 +106,17 @@ def main(args)
     save_json(OPTION_FILE, consul_get("_"))
 
   when "get"
-    team, project, env = params.split('/')
+    team, project, dir, env = params.split('/')
     puts "Saving environment variables."
 
-    data = consul_get("#{team}/#{project}/#{env}")
+    data = consul_get("#{team}/#{project}/#{dir}/#{env}")
     run = String.new
     data['run'].each_with_index { |cmd, index|
       (index + 1) < data['run'].length ? run += "#{cmd} && " : run += cmd
     } unless data['run'].empty?
     file_content = Hash.new
     data['vars'].each { |var| file_content.deep_merge!(var) } unless data['vars'].empty?
-    secrets = vault_get("#{team}/data/#{project}/#{env}") if data['secrets']
+    secrets = vault_get("#{team}/#{project}/#{dir}/#{env}") if data['secrets']
     file_content.deep_merge!(secrets) unless !defined?(secrets) && secrets.empty?
     file_content.each { |key, value| file_content.deep_merge!({key => value.to_s}) } unless file_content.empty?
 
@@ -146,7 +146,7 @@ def main(args)
     consul_add(params, JSON.pretty_generate(consul_get(params).deep_merge!({'lock' => false})))
 
   else
-    abort("Usage: bootstrap.rb [update|list|get|get-lock|lock|unlock] [APP_PATH|Team/Porject/Environment]")
+    abort("Usage: bootstrap.rb [update|list|get|get-lock|lock|unlock] [APP_PATH|Team/Project/Dir/Environment]")
   end
 
 end
