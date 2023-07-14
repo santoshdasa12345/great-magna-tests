@@ -13,6 +13,13 @@ OPTION_FILE = f"#{WORKSPACE}/great-magna-tests/.option.json"
 ENV_FILE = f"#{WORKSPACE}/great-magna-tests/env.json"
 CONF_FILE = f"#{WORKSPACE}/great-magna-tests/config.json"
 
+print(WORKSPACE)
+print(VAULT_API)
+print(VAULT_PREFIX)
+print(VAULT_ROLE_ID)
+print(VAULT_SERECT_ID)
+
+
 # Create a client instance
 client = hvac.Client(url='https://vault.ci.uktrade.digital/ui/vault/secrets/dit%2Fdirectory/')  # Replace with your Vault URL
 
