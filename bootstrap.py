@@ -16,7 +16,7 @@ class Vault:
     def client(self):
 
       # Create a client instance
-      client = hvac.Client(url=self.VAULT_API)  # Replace with your Vault URL
+      client = hvac.Client(url=self.VAULT_API)
       
       # Enable approle auth
       client.sys.enable_auth_method(
