@@ -16,12 +16,12 @@ class Vault:
     def client(self):
 
       # Create a client instance
-      client = hvac.Client(url=self.VAULT_API)
+      client = hvac.Client(url='https://vault.ci.uktrade.digital')
       
       # Enable approle auth
-      # client.sys.enable_auth_method(
-      #     method_type='approle',
-      # )
+      client.sys.enable_auth_method(
+          method_type='approle',
+      )
 
       # Authenticate to Vault with role_id and secret
       client.auth.approle.login(
