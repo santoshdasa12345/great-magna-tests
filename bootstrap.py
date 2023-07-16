@@ -19,9 +19,9 @@ class Vault:
       client = hvac.Client(url=self.VAULT_API)
       
       # Enable approle auth
-      client.sys.enable_auth_method(
-          method_type='approle',
-      )
+      # client.sys.enable_auth_method(
+      #     method_type='approle',
+      # )
 
       # Authenticate to Vault with role_id and secret
       client.auth.approle.login(
@@ -36,7 +36,7 @@ class Vault:
       client = self.client()
       # Perform operations with Vault
       secrets = client.secrets.kv.v2.read_secret_version(
-         path=f'/{self.VAULT_PREFIX}dit/directory/great-magna-tests/{self.ENVIRONMENT}_eu-west-2'
+         path=f'/{self.VAULT_PREFIX}/directory/great-magna-tests/{self.ENVIRONMENT}_eu-west-2'
          )
       if secrets:
           data = secrets['data']['data']
