@@ -7,7 +7,7 @@ class Vault:
     def __init__(self):
       self.ENVIRONMENT = sys.argv[1]
       self.WORKSPACE = os.environ.get('WORKSPACE')
-      self.VAULT_API = os.environ.get('VAULT_API')
+      self.VAULT_API = "/".join(os.environ.get('VAULT_API').split("/")[:-1])
       self.VAULT_PREFIX = os.environ.get('VAULT_PREFIX')
       self.VAULT_ROLE_ID = os.environ.get('VAULT_ROLE_ID')
       self.VAULT_SECRET_ID = os.environ.get('VAULT_SERECT_ID')
@@ -16,12 +16,12 @@ class Vault:
     def client(self):
 
       # Create a client instance
-      client = hvac.Client(url=self.VAULT_API)
+      client = hvac.Client(self.VAULT_API)
       
       # Enable approle auth
-      # client.sys.enable_auth_method(
-      #     method_type='approle',
-      # )
+      client.sys.enable_auth_method(
+          method_type='approle',
+      )
 
       # Authenticate to Vault with role_id and secret
       client.auth.approle.login(
