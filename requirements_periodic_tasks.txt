@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements_periodic_tasks.in
 #
--e file:///Users/marclupton/Desktop/DIT/great-magna-tests/great_magna_tests_shared
+-e ./great_magna_tests_shared/
     # via -r requirements_periodic_tasks.in
 -e git+https://github.com/kowalcj0/pylinkvalidator.git@json-reporter#egg=pylinkvalidator
     # via -r requirements_periodic_tasks.in

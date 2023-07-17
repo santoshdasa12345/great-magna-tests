@@ -88,7 +88,7 @@ exceptiongroup==1.1.2
     # via
     #   trio
     #   trio-websocket
-great-magna-tests-shared @ file:///Users/marclupton/Desktop/DIT/great-magna-tests/great_magna_tests_shared
+great-magna-tests-shared @ ./great_magna_tests_shared/
     # via -r requirements_browser.in
 h11==0.14.0
     # via wsproto
