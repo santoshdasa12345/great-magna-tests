@@ -7,7 +7,7 @@ class Vault:
     def __init__(self):
       self.ENVIRONMENT = sys.argv[1]
       self.WORKSPACE = os.environ.get('WORKSPACE', '/home/jenkins/agent/workspace/great-load-test')
-      self.VAULT_API = os.environ.get('VAULT_API').replace('/v1', "")
+      self.VAULT_API = os.environ.get('VAULT_API')
       self.VAULT_PREFIX = os.environ.get('VAULT_PREFIX')
       self.VAULT_ROLE_ID = os.environ.get('VAULT_ROLE_ID')
       self.VAULT_TOKEN_ID = os.environ.get('VAULT_TOKEN_ID')
