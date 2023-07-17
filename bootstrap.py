@@ -6,9 +6,10 @@ class Vault:
     
     def __init__(self):
       self.ENVIRONMENT = sys.argv[1]
-      self.WORKSPACE = os.environ.get('WORKSPACE', '/home/jenkins/agent/workspace/great-load-test')
-      self.VAULT_API = os.environ.get('VAULT_API')
+      self.WORKSPACE = os.environ.get('WORKSPACE')
+      self.VAULT_API = os.environ.get('VAULT_API').replace('/v1', '')
       self.VAULT_PREFIX = os.environ.get('VAULT_PREFIX')
+      self.VAULT_ROLE = os.environ.get('VAULT_ROLE')
       self.VAULT_ROLE_ID = os.environ.get('VAULT_ROLE_ID')
       self.VAULT_TOKEN_ID = os.environ.get('VAULT_TOKEN_ID')
       self.VAULT_SECRET_ID = os.environ.get('VAULT_SECRET_ID')
@@ -16,7 +17,6 @@ class Vault:
 
     def client(self):
 
-      print(self.VAULT_TOKEN_ID)
       # Create a client instance
       client = hvac.Client(self.VAULT_API)
       
@@ -28,8 +28,10 @@ class Vault:
       # Authenticate to Vault with role_id and secret
       client.auth.approle.login(
           role_id=self.VAULT_ROLE_ID,
-          secret_id=self.VAULT_TOKEN_ID,
+          secret_id=self.VAULT_SECRET_ID,
       )
+
+      print(f'Authentication status: {client.is_authenticated()}')
 
       return client
 
