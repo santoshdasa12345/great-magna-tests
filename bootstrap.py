@@ -23,8 +23,7 @@ class RVault:
 
       response = requests.post(
                 self.URL,
-                data=self.data,
-                headers=self.HEADERS
+                data=data,
             )
       return response.json()['auth']['client_token']
 
