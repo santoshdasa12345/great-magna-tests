@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements_load.in
 #
--e file:///Users/davidurquhart/great/great-magna-tests/great_magna_tests_shared
+-e ./great_magna_tests_shared/
     # via -r requirements_load.in
 asgiref==3.7.2
     # via
