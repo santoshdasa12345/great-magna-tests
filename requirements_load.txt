@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements_load.in
 #
--e ./great_magna_tests_shared/
+-e file:///Users/davidurquhart/great/great-magna-tests/great_magna_tests_shared
     # via -r requirements_load.in
 asgiref==3.7.2
     # via
@@ -19,6 +19,8 @@ automat==22.10.0
     # via
     #   great-magna-tests-shared
     #   twisted
+beautifulsoup4==4.12.2
+    # via great-magna-tests-shared
 blinker==1.6.2
     # via flask
 brotli==1.0.9
@@ -28,7 +30,7 @@ certifi==2023.5.7
     #   geventhttpclient
     #   great-magna-tests-shared
     #   requests
-charset-normalizer==3.1.0
+charset-normalizer==3.2.0
     # via
     #   great-magna-tests-shared
     #   requests
@@ -170,6 +172,10 @@ six==1.16.0
     #   pdfminer2
     #   retrying
     #   w3lib
+soupsieve==2.4.1
+    # via
+    #   beautifulsoup4
+    #   great-magna-tests-shared
 sqlparse==0.4.4
     # via
     #   django

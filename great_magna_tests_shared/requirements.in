@@ -10,3 +10,4 @@ retrying
 termcolor
 twisted==22.10.0
 lxml==4.9.1
+beautifulsoup4
