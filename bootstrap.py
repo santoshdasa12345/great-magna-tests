@@ -25,19 +25,25 @@ class RVault:
                 self.URL,
                 data=data,
             )
-      return response.json()['auth']['client_token']
+      print(response)
+      if response.status_code == 200:
+        return response.json()['auth']['client_token']
+      return None
 
 
     def secrets(self):
-      
-      response = requests.get(
-                self.URL,
-                headers={'X-Vault-Token': self.get_token()}
-            )
-      if response.status_code == 200:
-          data = response.json()["data"]["data"]
-          with open(self.ENV_FILE, "w") as outfile:
-              outfile.write(data)
+
+      token = self.get_token()
+      if token:
+        response = requests.get(
+                  self.URL,
+                  headers={'X-Vault-Token': self.get_token()}
+              )
+        print(response)
+        if response.status_code == 200:
+            data = response.json()["data"]["data"]
+            with open(self.ENV_FILE, "w") as outfile:
+                outfile.write(data)
 
 
 class HVault:
