@@ -25,7 +25,7 @@ class RVault:
                 self.URL,
                 data=data,
             )
-      print(response)
+      print(response.json())
       if response.status_code == 200:
         return response.json()['auth']['client_token']
       return None
@@ -39,7 +39,7 @@ class RVault:
                   self.URL,
                   headers={'X-Vault-Token': self.get_token()}
               )
-        print(response)
+        print(response.json())
         if response.status_code == 200:
             data = response.json()["data"]["data"]
             with open(self.ENV_FILE, "w") as outfile:
