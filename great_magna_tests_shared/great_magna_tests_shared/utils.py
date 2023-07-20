@@ -12,7 +12,7 @@ from types import BuiltinFunctionType
 from typing import List, Tuple, Union
 from urllib.parse import urlsplit
 
-from scrapy.selector import Selector as ScrapySelector
+from bs4 import BeautifulSoup
 from termcolor import cprint
 
 import parse
@@ -175,15 +175,16 @@ def extract_attributes_by_css(
     :return: a list of dictionaries with matching attribute values
     """
     results = []
-    elements = ScrapySelector(text=content).css(selector)
+    soup = BeautifulSoup(content, 'html.parser')
+    elements = soup.select(selector)
     for element in elements:
         element_details = {}
         if attrs:
             for attribute in attrs:
-                element_details[attribute] = element.attrib.get(attribute, None)
+                element_details[attribute] = element.get(attribute, None)
 
         if text:
-            parts = [part for part in element.css("*::text").getall() if part.strip()]
+            parts = [part for part in element.stripped_strings]
             element_details["text"] = parts[0] if parts else None
 
         if element_details:
@@ -200,13 +201,15 @@ def extract_by_css(
     :param content: HTML content
     :param selector: CSS selector
     :param first: (optional) return first found element or all of them
-    :return: value of the 1st found element or emtpy string if not found; or a list of all found elements
+    :return: value of the 1st found element or empty string if not found; or a list of all found elements
     """
-    extracted = ScrapySelector(text=content).css(selector).extract()
+    soup = BeautifulSoup(content, 'html.parser')
+    elements = soup.select(selector)
     if first:
-        result = extracted[0] if len(extracted) > 0 else ""
+        result = elements[0].get_text() if len(elements) > 0 else ""
     else:
-        result = extracted
+        result = [element.get_text() for element in elements]
+
     return result
 
 

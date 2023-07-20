@@ -9,11 +9,12 @@ from string import ascii_letters, digits
 from typing import Tuple
 from urllib.parse import parse_qsl, quote, urljoin, urlsplit
 
+from bs4 import BeautifulSoup
+
 from behave.model import Table
 from behave.runner import Context
 from requests import Response, Session
 from retrying import retry
-from scrapy import Selector
 
 from directory_constants import choices
 from directory_constants.expertise import (
@@ -802,7 +803,6 @@ def profile_add_case_study(context: Context, supplier_alias: str, case_alias: st
     # Step 5 - Store Case Study data in Scenario Data
     add_case_study(context, actor.company_alias, case_alias, case_study)
 
-
 def profile_update_case_study(context: Context, supplier_alias: str, case_alias: str):
     actor = get_actor(context, supplier_alias)
     session = actor.session
@@ -812,10 +812,11 @@ def profile_update_case_study(context: Context, supplier_alias: str, case_alias:
 
     # Step 0 - extract links to Case Studies and do a crude mapping to
     # Case Study titles.
-    css_titles = "#case-studies span::text"
-    css_links = "#case-studies a::attr(href)"
-    titles = Selector(text=content).css(css_titles).extract()
-    links = Selector(text=content).css(css_links).extract()
+    css_titles = "#case-studies span"
+    css_links = "#case-studies a"
+    soup = BeautifulSoup(content, 'html.parser')
+    titles = [span.get_text() for span in soup.select(css_titles)]
+    links = [a['href'] for a in soup.select(css_links)]
     case_link_mappings = {k: v for (k, v) in zip(titles, links)}
     current = company.case_studies[case_alias]
     current_link = case_link_mappings[current.title]
@@ -994,21 +995,23 @@ def fas_feedback_request_should_be_submitted(context: Context, buyer_alias: str)
     )
 
 
-def fas_get_company_profile_url(response: Response, name: str) -> str:
+def fas_get_company_profile_url(response: Response, name: str) -> Optional[str]:
     content = response.content.decode("utf-8")
     links_to_profiles_selector = "#companies-column > ul > li > a"
-    href_selector = "a::attr(href)"
-    links_to_profiles = Selector(text=content).css(links_to_profiles_selector).extract()
+    href_selector = "a[href]"
+    
+    soup = BeautifulSoup(content, 'html.parser')
+    links_to_profiles = soup.select(links_to_profiles_selector)
     profile_url = None
     clean_name = escape_html(name.replace("  ", " ")).lower()
+    
     for link in links_to_profiles:
-        # try to find Profile URL by escaping html chars or not in found link
-        if (clean_name in link.lower()) or (clean_name in escape_html(link).lower()):
-            profile_url = Selector(text=link).css(href_selector).extract()[0]
-    with assertion_msg(
-        f"Couldn't find link to '{name}' company profile page on {response.url}"
-    ):
-        assert profile_url
+        link_text = link.get_text()
+        if (clean_name in link_text.lower()) or (clean_name in escape_html(link_text).lower()):
+            profile_url = link.get("href")
+            break
+    
+    assert profile_url, f"Couldn't find link to '{name}' company profile page on {response.url}"
     logging.debug(f"Found link to '{name}'s profile: {profile_url}")
     return profile_url
 
@@ -1255,22 +1258,24 @@ def profile_provide_products_and_services(
     context.results = results
 
 
+
 def fas_follow_case_study_links_to_related_sectors(context: Context, actor_alias: str):
     actor = get_actor(context, actor_alias)
     session = actor.session
     content = context.response.content.decode("utf-8")
     links_css_selector = "#company-showcase .case-study-info a"
-    links_to_sectors = Selector(text=content).css(links_css_selector).extract()
+    soup = BeautifulSoup(content, 'html.parser')
+    links_to_sectors = [link['href'] for link in soup.select(links_css_selector)]
     with assertion_msg(
         "Expected to find at least 1 link to Industry sector"
         "associated with Company Showcase Case Study"
     ):
-        assert links_css_selector
+        assert links_to_sectors
     results = {}
     fas_url = URLs.FAS_LANDING.absolute
     for link in links_to_sectors:
-        industry = Selector(text=link).css("a::text").extract()[0]
-        href = Selector(text=link).css("a::attr(href)").extract()[0]
+        industry = link.get_text()
+        href = link['href']
         url = urljoin(fas_url, href)
         sectors = [value for _, value in parse_qsl(urlsplit(href).query)]
         logging.debug(
@@ -1283,7 +1288,6 @@ def fas_follow_case_study_links_to_related_sectors(context: Context, actor_alias
         results[industry] = {"url": url, "sectors": sectors, "response": response}
     context.results = results
 
-
 def fas_browse_suppliers_using_every_sector_filter(context: Context, actor_alias: str):
     actor = get_actor(context, actor_alias)
     session = actor.session
@@ -1292,9 +1296,10 @@ def fas_browse_suppliers_using_every_sector_filter(context: Context, actor_alias
     context.response = response
     fas.search.should_be_here(response)
 
-    sector_filters_selector = "#checkbox-industry-expertise input::attr(value)"
+    sector_filters_selector = "#checkbox-industry-expertise input"
     content = response.content.decode("utf-8")
-    sector_filters = Selector(text=content).css(sector_filters_selector).extract()
+    soup = BeautifulSoup(content, 'html.parser')
+    sector_filters = [input_tag['value'] for input_tag in soup.select(sector_filters_selector)]
     results = {}
     for sector in sector_filters:
         logging.debug(
@@ -1305,7 +1310,7 @@ def fas_browse_suppliers_using_every_sector_filter(context: Context, actor_alias
         response = fas.search.go_to(session, sectors=[sector])
         fas.search.should_be_here(response)
         results[sector] = {
-            "url": response.request.url,
+            "url": response.url,
             "sectors": [sector],
             "response": response,
         }
@@ -1320,9 +1325,10 @@ def fas_browse_suppliers_by_multiple_sectors(context: Context, actor_alias: str)
     context.response = response
     fas.search.should_be_here(response)
 
-    sector_selector = "#checkbox-industry-expertise input::attr(value)"
+    sector_selector = "#checkbox-industry-expertise input"
     content = response.content.decode("utf-8")
-    filters = Selector(text=content).css(sector_selector).extract()
+    soup = BeautifulSoup(content, 'html.parser')
+    filters = [input_tag['value'] for input_tag in soup.select(sector_selector)]
 
     sectors = list(set(choice(filters) for _ in range(randrange(1, len(filters)))))
     results = {}
@@ -1334,12 +1340,11 @@ def fas_browse_suppliers_by_multiple_sectors(context: Context, actor_alias: str)
     response = fas.search.go_to(session, sectors=sectors)
     fas.search.should_be_here(response)
     results["multiple choice"] = {
-        "url": response.request.url,
+        "url": response.url,
         "sectors": sectors,
         "response": response,
     }
     context.results = results
-
 
 def fas_browse_suppliers_by_invalid_sectors(context: Context, actor_alias: str):
     actor = get_actor(context, actor_alias)
@@ -1349,9 +1354,10 @@ def fas_browse_suppliers_by_invalid_sectors(context: Context, actor_alias: str):
     context.response = response
     fas.search.should_be_here(response)
 
-    sector_selector = "#checkbox-industry-expertise input::attr(value)"
+    sector_selector = "#checkbox-industry-expertise input"
     content = response.content.decode("utf-8")
-    filters = Selector(text=content).css(sector_selector).extract()
+    soup = BeautifulSoup(content, 'html.parser')
+    filters = [input_tag['value'] for input_tag in soup.select(sector_selector)]
 
     sectors = list(set(choice(filters) for _ in range(randrange(1, len(filters)))))
 

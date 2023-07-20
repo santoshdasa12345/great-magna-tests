@@ -7,7 +7,7 @@ notifications-python-client
 parse
 pdfminer2
 retrying
-scrapy==2.6.2
 termcolor
 twisted==22.10.0
 lxml==4.9.1
+beautifulsoup4
