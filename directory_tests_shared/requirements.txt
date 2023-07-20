@@ -67,7 +67,7 @@ pytz==2022.1
     # via
     #   django
     #   djangorestframework
-requests==2.28.1
+requests==2.31.0
     # via
     #   directory-api-client
     #   directory-client-core
