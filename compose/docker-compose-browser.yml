@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+
+
+  browser-tests:
+    build:
+      context: ../
+      dockerfile: dockerfiles/Dockerfile.browser
+    container_name: browser-tests
+    restart: unless-stopped
+    env_file:
+      - ../env_vars/browser/dev
+      - ../env_vars/browser/secrets-do-not-commit
+    volumes:
+      - ..:/app
+    ports:
+      - 8052:8052
+    stdin_open: true
+    tty: true

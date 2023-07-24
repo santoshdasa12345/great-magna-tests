@@ -5,9 +5,31 @@ from urllib.parse import urljoin
 from django.conf import settings
 from envparse import env
 
+import requests
+from lxml import etree
+
+
 #####################################################################
 # Directory Service URLs & Credentials
 #####################################################################
+def get_sitemap_urls(url):
+    try: 
+        resp = requests.get(url)
+        tree = etree.fromstring(resp.content)
+        return [loc.text for loc in tree.findall('{*}url/{*}loc')]
+    except requests.exceptions.RequestException:
+        return []
+
+SITE_MAP = env.str("SITE_MAP", default="/")
+if SITE_MAP != "/":
+    SITE_MAP_URLS = get_sitemap_urls(SITE_MAP)
+    ADVICE_AND_MARKETS = [url for url in SITE_MAP_URLS if "/advice/" in url]
+    MISC_ENDPOINTS = [url for url in SITE_MAP_URLS if "/advice/" not in url]
+    DOMESTIC_URL = SITE_MAP_URLS[0]
+else:
+    DOMESTIC_URL = env.str("DOMESTIC_URL")
+
+    
 CMS_API_KEY = env.str("CMS_API_KEY")
 CMS_API_URL = env.str("CMS_API_URL")
 CMS_API_CACHE_EXPIRE_SECONDS = env.int(
@@ -21,7 +43,6 @@ DIRECTORY_API_KEY = env.str("DIRECTORY_API_KEY")
 DIRECTORY_API_SENDER_ID = env.str("DIRECTORY_API_SENDER_ID", default="directory")
 DIRECTORY_API_HEALTH_CHECK_TOKEN = env.str("DIRECTORY_API_HEALTH_CHECK_TOKEN")
 DIRECTORY_API_URL = env.str("DIRECTORY_API_URL")
-DOMESTIC_URL = env.str("DOMESTIC_URL")
 ERP_URL = env.str("ERP_URL")
 EVENTS_URL = env.str("EVENTS_URL")
 EXPORT_OPPORTUNITIES_URL = env.str("EXPORT_OPPORTUNITIES_URL")

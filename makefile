@@ -190,3 +190,24 @@ report_smoke:
 	@allure generate --clean --output ./allure_report tests/smoke/smoke_results/
 
 .PHONY: build clean results_browser report
+
+cf-signin:
+	cf login -a api.london.cloud.service.gov.uk -u $(ARGUMENTS) -o dit-staging -s directory-dev
+
+cf-signin-sso:
+	cf login --sso -a api.london.cloud.service.gov.uk -u $(ARGUMENTS) -o dit-staging -s directory-dev
+
+
+cf-load-dev-signin-sso:
+	cf login --sso -a api.london.cloud.service.gov.uk -u $(ARGUMENTS) -o dit-staging -s directory-dev
+
+install-cf-conduit:
+	cf install-plugin conduit
+
+build:
+	docker-compose -f $(ARGUMENTS) up -d --build
+
+
+locust:
+	docker exec load-tests \
+		locust --headless -f $(LOCUST_FILE) --users=$(NUM_USERS) --spawn-rate=$(SPAWN_RATE) --run-time=$(RUN_TIME) --html=$(HTML_FILE)

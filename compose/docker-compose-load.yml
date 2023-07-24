@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+
+
+  load-tests:
+    build:
+      context: ../
+      dockerfile: dockerfiles/Dockerfile.load
+    container_name: load-tests
+    restart: unless-stopped
+    env_file:
+      - ../env_vars/load/${TEST_ENV}
+    volumes:
+      - ..:/app
+    ports:
+      - 8050:8050
+    stdin_open: true
+    tty: true
+

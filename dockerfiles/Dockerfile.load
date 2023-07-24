@@ -1,0 +1,19 @@
+FROM python:3.9.2
+
+### 1. Set environment variables
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
+
+### 2. Create working directory
+RUN mkdir /app
+COPY . /app/
+WORKDIR /app
+
+### 3. Install packages
+RUN set -e; \
+    /usr/local/bin/python -m pip install --upgrade pip ;\
+    python -m pip install pip-tools chardet;\
+    python -m pip install -r /app/requirements_load.txt ;
+
+### 4. Expose port
+EXPOSE 8050
