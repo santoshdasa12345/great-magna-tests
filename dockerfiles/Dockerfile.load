@@ -4,6 +4,7 @@ FROM python:3.9.2
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
+
 ### 2. Create working directory
 RUN mkdir /app
 COPY . /app/
@@ -17,3 +18,4 @@ RUN set -e; \
 
 ### 4. Expose port
 EXPOSE 8050
+
