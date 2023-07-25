@@ -25,7 +25,10 @@ if SITE_MAP != "/":
     SITE_MAP_URLS = get_sitemap_urls(SITE_MAP)
     ADVICE_AND_MARKETS = [url for url in SITE_MAP_URLS if "/advice/" in url]
     MISC_ENDPOINTS = [url for url in SITE_MAP_URLS if "/advice/" not in url]
-    DOMESTIC_URL = SITE_MAP_URLS[0]
+    if SITE_MAP_URLS:
+        DOMESTIC_URL = SITE_MAP_URLS[0]
+    else:
+        DOMESTIC_URL = "/".join(SITE_MAP.split('/')[:-1])
 else:
     DOMESTIC_URL = env.str("DOMESTIC_URL")
 
