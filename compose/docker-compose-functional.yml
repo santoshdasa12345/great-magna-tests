@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+
+
+  functional-tests:
+    build:
+      context: ../
+      dockerfile: dockerfiles/Dockerfile.functional
+    container_name: functional-tests
+    restart: unless-stopped
+    env_file:
+      - ../env_vars/functional/dev
+      - ../env_vars/functional/secrets-do-not-commit
+    volumes:
+      - ..:/app
+    ports:
+      - 8053:8054
+    stdin_open: true
+    tty: true
