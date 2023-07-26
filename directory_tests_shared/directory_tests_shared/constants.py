@@ -8,11 +8,11 @@ from envparse import env
 # Constants used across all of the test suites
 #####################################################################
 FORMS_API_MAILBOXES = {
-    "DIT Enquiry unit": env.str("FORMS_API_SENDER_EMAIL_DIT_ENQUIRIES"),
-    "Events mailbox": env.str("FORMS_API_SENDER_EMAIL_EVENTS"),
-    "DSO mailbox": env.str("FORMS_API_SENDER_EMAIL_DSO"),
-    "Invest mailbox": env.str("FORMS_API_SENDER_EMAIL_INVEST"),
-    "Trade mailbox": env.str("FORMS_API_SENDER_EMAIL_TRADE"),
+    "DIT Enquiry unit": env.str("FORMS_API_SENDER_EMAIL_DIT_ENQUIRIES", default='test@test.com'),
+    "Events mailbox": env.str("FORMS_API_SENDER_EMAIL_EVENTS", default='test@test.com'),
+    "DSO mailbox": env.str("FORMS_API_SENDER_EMAIL_DSO", default='test@test.com'),
+    "Invest mailbox": env.str("FORMS_API_SENDER_EMAIL_INVEST", default='test@test.com'),
+    "Trade mailbox": env.str("FORMS_API_SENDER_EMAIL_TRADE", default='test@test.com'),
 }
 INVEST_CONTACT_CONFIRMATION_SUBJECT = env.str(
     "INVEST_CONTACT_CONFIRMATION_SUBJECT", default="Contact form user email subject"
@@ -277,12 +277,12 @@ SEPARATORS = {
 # are created when `manage.py create_test_users` is ran on sso.
 USERS = {
     "verified": {
-        "username": env.str("SSO_USER_USERNAME"),
-        "password": env.str("SSO_USER_PASSWORD"),
-        "token": env.str("SSO_USER_TOKEN"),
-        "sso_id": env.int("SSO_USER_SSO_ID"),
+        "username": env.str("SSO_USER_USERNAME", default="test"),
+        "password": env.str("SSO_USER_PASSWORD", default="123456"),
+        "token": env.str("SSO_USER_TOKEN", default="123456"),
+        "sso_id": env.int("SSO_USER_SSO_ID", default="123456"),
     },
-    "unverified": {"token": env.str("SSO_UNVERIFIED_USER_TOKEN")},
+    "unverified": {"token": env.str("SSO_UNVERIFIED_USER_TOKEN", default="123456")},
 }
 
 COMPANIES = {
