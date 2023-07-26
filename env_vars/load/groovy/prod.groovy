@@ -1,1 +1,1 @@
-env.DB_URL='https://great.gov.uk/sitemap.xml'
+env.SITE_MAP="https://great.gov.uk/sitemap.xml"

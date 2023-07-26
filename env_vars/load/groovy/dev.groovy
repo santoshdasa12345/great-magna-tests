@@ -1,1 +1,1 @@
-env.DB_URL='https://great.dev.uktrade.digital/sitemap.xml'
+env.SITE_MAP="https://great.dev.uktrade.digital/sitemap.xml"
