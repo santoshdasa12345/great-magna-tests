@@ -3,11 +3,6 @@
 import logging
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -16,6 +11,11 @@ from browserpages.common_actions import (
     check_url,
     go_to_url,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Region"
 NAMES = [
@@ -57,24 +57,16 @@ SELECTORS = {
         # ),
     },
     "expanding your business": {
-        "itself": Selector(
-            By.CSS_SELECTOR, "#content > section:nth-child(4)"
-        ),
+        "itself": Selector(By.CSS_SELECTOR, "#content > section:nth-child(4)"),
     },
     "related opportunities": {
-        "itself": Selector(
-            By.CSS_SELECTOR, "#content > section:nth-child(5)"
-        ),
+        "itself": Selector(By.CSS_SELECTOR, "#content > section:nth-child(5)"),
     },
     "strategic markets": {
-        "itself": Selector(
-            By.CSS_SELECTOR, "#content > section:nth-child(6)"
-        ),
+        "itself": Selector(By.CSS_SELECTOR, "#content > section:nth-child(6)"),
     },
     "case study": {
-        "itself": Selector(
-            By.CSS_SELECTOR, "#content > section:nth-child(7)"
-        ),
+        "itself": Selector(By.CSS_SELECTOR, "#content > section:nth-child(7)"),
     },
 }
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
@@ -112,6 +104,7 @@ def should_see_content_for(driver: WebDriver, region_name: str):
         driver.current_url,
     ):
         assert region_name.lower() in source.lower()
+
 
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

@@ -5,19 +5,18 @@ import logging
 from behave.contrib.scenario_autoretry import patch_scenario_with_autoretry
 from behave.model import Feature, Scenario, Step
 from behave.runner import Context
-
-from great_magna_tests_shared.settings import AUTO_RETRY
 from browserpages.common_actions import initialize_scenario_data
 from browserutils.browser import get_driver_capabilities, start_driver_session
 
-DRIVER_CAPABILITIES = get_driver_capabilities()
+from great_magna_tests_shared.settings import AUTO_RETRY
 
+DRIVER_CAPABILITIES = get_driver_capabilities()
 
 
 def before_all(context: Context):
     context.driver_capabilities = DRIVER_CAPABILITIES
 
-    context.config.setup_logging()#configfile=".behave_logging")
+    context.config.setup_logging()  # configfile=".behave_logging")
     logger = logging.getLogger()
 
 
@@ -57,6 +56,6 @@ def after_step(context: Context, step: Step):
 
 
 def after_scenario(context: Context, scenario: Scenario):
-    #logging.debug(f"Scenario data: {context.scenario_data}")
+    # logging.debug(f"Scenario data: {context.scenario_data}")
     logging.debug(f"Finished scenario: {round(scenario.duration, 3)} → {scenario.name}")
     context.driver.quit()

@@ -3,13 +3,18 @@
 import logging
 from typing import List
 
+from browserpages import common_selectors
+from browserpages.common_actions import (
+    Selector,
+    check_for_sections,
+    check_url,
+    go_to_url,
+)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages import common_selectors
-from browserpages.common_actions import Selector, check_for_sections, check_url, go_to_url
 
 NAME = "Regions"
 SERVICE = Service.INTERNATIONAL
@@ -36,13 +41,30 @@ SELECTORS = {
     #     "south of england - svg": Selector(By.ID, "south-england"),
     # },
     "the uk map": {
-        "the uk map - svg": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero__heading > div > div > div.atlas-grid__column.atlas-grid__column--5-12-m.atlas-grid__column--offset-1-m > div > svg"),
-        "scotland - svg": Selector(By.CSS_SELECTOR, "#atlas-map-scotland > g.atlas-map__shape > path:nth-child(8)"),
-        "northern ireland - svg": Selector(By.CSS_SELECTOR, "#atlas-map-northern-ireland > g.atlas-map__shape > path"),
-        "north of england - svg": Selector(By.XPATH, "//body/main/div[2]/div/div/div[2]/div/svg/g/a[2]/g/g[1]/path"),
-        "wales - svg": Selector(By.CSS_SELECTOR, "#atlas-map-wales > g.atlas-map__shape > path"),
-        "midlands - svg": Selector(By.CSS_SELECTOR, "#atlas-map-midlands > g.atlas-map__shape > path"),
-        "south of england - svg": Selector(By.CSS_SELECTOR, "#atlas-map-south-england > g.atlas-map__shape > path:nth-child(1)"),
+        "the uk map - svg": Selector(
+            By.CSS_SELECTOR,
+            "#content > div.atlas-hero__heading > div > div > div.atlas-grid__column.atlas-grid__column--5-12-m.atlas-grid__column--offset-1-m > div > svg",
+        ),
+        "scotland - svg": Selector(
+            By.CSS_SELECTOR,
+            "#atlas-map-scotland > g.atlas-map__shape > path:nth-child(8)",
+        ),
+        "northern ireland - svg": Selector(
+            By.CSS_SELECTOR, "#atlas-map-northern-ireland > g.atlas-map__shape > path"
+        ),
+        "north of england - svg": Selector(
+            By.XPATH, "//body/main/div[2]/div/div/div[2]/div/svg/g/a[2]/g/g[1]/path"
+        ),
+        "wales - svg": Selector(
+            By.CSS_SELECTOR, "#atlas-map-wales > g.atlas-map__shape > path"
+        ),
+        "midlands - svg": Selector(
+            By.CSS_SELECTOR, "#atlas-map-midlands > g.atlas-map__shape > path"
+        ),
+        "south of england - svg": Selector(
+            By.CSS_SELECTOR,
+            "#atlas-map-south-england > g.atlas-map__shape > path:nth-child(1)",
+        ),
     },
     "contact us": {"get in touch": Selector(By.PARTIAL_LINK_TEXT, "Get in touch")},
 }

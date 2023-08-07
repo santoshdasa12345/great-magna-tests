@@ -3,11 +3,6 @@
 import logging
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -16,14 +11,18 @@ from browserpages.common_actions import (
     check_url,
     go_to_url,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Industry"
 NAMES = [
     "Clean agritech",
     "Carbon capture usage and storage",
     "Chemicals",
-    "Civil nuclear"
-    "Green finance",
+    "Civil nuclear" "Green finance",
     "Greener buildings",
     "Hydrogen",
     "Jet zero and green ships",
@@ -46,13 +45,12 @@ NAMES = [
     "Legal services",
     "Maritime",
     "Nuclear energy",
-    "Offshore Wind"
-    "Real Estate",
+    "Offshore Wind" "Real Estate",
     "Retail",
     "Space",
     "Sports economy",
     "Technology",
-    "Zero emission vehicles"
+    "Zero emission vehicles",
 ]
 SERVICE = Service.INTERNATIONAL
 TYPE = PageType.INDUSTRY
@@ -65,12 +63,12 @@ SubURLs = {
     "clean agritech": URLs.INTERNATIONAL_INDUSTRY_AGRI_TECH.absolute,
     "carbon capture usage and storage": URLs.INTERNATIONAL_INDUSTRY_CARBON_CAPTURE_USAGE_AND_STORAGE.absolute,
     "chemicals": URLs.INTERNATIONAL_INDUSTRY_CHEMICALS.absolute,
-    "civil nuclear" : URLs.INTERNATIONAL_INDUSTRY_CIVIL_NUCLEAR.absolute,
+    "civil nuclear": URLs.INTERNATIONAL_INDUSTRY_CIVIL_NUCLEAR.absolute,
     "green finance": URLs.INTERNATIONAL_INDUSTRY_GREEN_FINANCE.absolute,
     "greener buildings": URLs.INTERNATIONAL_INDUSTRY_GREENER_BUILDINGS.absolute,
     "hydrogen": URLs.INTERNATIONAL_INDUSTRY_HYDROGEN.absolute,
     "jet zero and green ships": URLs.INTERNATIONAL_INDUSTRY_JET_ZERO_AND_GREEN_SHIPS.absolute,
-    "offshore wind" : URLs.INTERNATIONAL_INDUSTRY_OFFSHORE_WIND.absolute,
+    "offshore wind": URLs.INTERNATIONAL_INDUSTRY_OFFSHORE_WIND.absolute,
     # "scotland": URLs.INTERNATIONAL_INDUSTRY_SCOTLAND.absolute,
     "sustainable infrastructure": URLs.INTERNATIONAL_INDUSTRY_SUSTAINABLE_INFRASTRUCTURE.absolute,
     # "aerospace": URLs.INTERNATIONAL_INDUSTRY_AEROSPACE.absolute,
@@ -94,7 +92,7 @@ SubURLs = {
     # "space": URLs.INTERNATIONAL_INDUSTRY_SPACE.absolute,
     # "sports economy": URLs.INTERNATIONAL_INDUSTRY_SPORTS_ECONOMY.absolute,
     # "technology": URLs.INTERNATIONAL_INDUSTRY_TECHNOLOGY.absolute,
-    "zero emission vehicles" : URLs.INTERNATIONAL_INDUSTRY_ZERO_EMISSION_VEHICLES.absolute,
+    "zero emission vehicles": URLs.INTERNATIONAL_INDUSTRY_ZERO_EMISSION_VEHICLES.absolute,
 }
 
 SELECTORS = {
@@ -107,42 +105,84 @@ SELECTORS = {
         # ),
     },
     "content": {
-        "carbon capture usage and storage": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(1) > a"),
-        "chemicals": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(2) > a"),
-        "civil nuclear": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(3) > a"),
-        "clean agritech": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(4) > a"),
-        "green finance": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(5) > a"),
-        "greener buildings": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(6) > a"),
-        "hydrogen": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(7) > a"),
-        "jet zero and green ships": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(8) > a"),
-        "offshore wind": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(9) > a"),
-        "sustainable infrastructure": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(10 > a)"),
-        "zero emission vehicles": Selector(By.CSS_SELECTOR, "#content > section.atlas-container > div:nth-child(2) > div:nth-child(11) > a"),
-
+        "carbon capture usage and storage": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(1) > a",
+        ),
+        "chemicals": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(2) > a",
+        ),
+        "civil nuclear": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(3) > a",
+        ),
+        "clean agritech": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(4) > a",
+        ),
+        "green finance": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(5) > a",
+        ),
+        "greener buildings": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(6) > a",
+        ),
+        "hydrogen": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(7) > a",
+        ),
+        "jet zero and green ships": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(8) > a",
+        ),
+        "offshore wind": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(9) > a",
+        ),
+        "sustainable infrastructure": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(10 > a)",
+        ),
+        "zero emission vehicles": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-container > div:nth-child(2) > div:nth-child(11) > a",
+        ),
     },
-
     "opportunity highlights": {
-        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(2)"),
-        },
+        "itself": Selector(
+            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(2)"
+        ),
+    },
     "commercial maturity": {
-        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(3)"),
-        },
+        "itself": Selector(
+            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(3)"
+        ),
+    },
     "key uk assets": {
-        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(4)"),
-        },
+        "itself": Selector(
+            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(4)"
+        ),
+    },
     "r&d capability": {
-        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(5)"),
-        },
+        "itself": Selector(
+            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(5)"
+        ),
+    },
     "business and government support": {
-        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(6)"),
-        },
+        "itself": Selector(
+            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(6)"
+        ),
+    },
     "case studies": {
-        "itself": Selector(By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(7)"),
-        },
+        "itself": Selector(
+            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg > section:nth-child(7)"
+        ),
+    },
     "early potential opportunities": {
         "itself": Selector(By.CSS_SELECTOR, "#content > section"),
-        },
-
+    },
 }
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER)
 SELECTORS.update(common_selectors.INTERNATIONAL_HERO)
@@ -180,6 +220,7 @@ def should_see_content_for(driver: WebDriver, industry_name: str):
         driver.current_url,
     ):
         assert industry_name.lower() in source.lower()
+
 
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

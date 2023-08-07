@@ -3,12 +3,6 @@
 import random
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
-from great_magna_tests_shared.utils import extract_attributes_by_css
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -18,6 +12,12 @@ from browserpages.common_actions import (
     wait_for_page_load_after_action,
 )
 from browserpages.domestic import actions as domestic_actions
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import extract_attributes_by_css
 
 NAME = "Advice landing"
 TYPE = PageType.LANDING
@@ -25,18 +25,16 @@ SERVICE = Service.DOMESTIC
 URL = URLs.DOMESTIC_ADVICE.absolute
 PAGE_TITLE = "Welcome to great.gov.uk"
 
-ARTICLE_LINKS = Selector(
-    By.CSS_SELECTOR, "#-list-section a", type=ElementType.LINK
-)
+ARTICLE_LINKS = Selector(By.CSS_SELECTOR, "#-list-section a", type=ElementType.LINK)
 SELECTORS = {
     "advice & guidance tiles": {
         "itself": Selector(By.CSS_SELECTOR, "#-list-section"),
         "cards": Selector(By.CSS_SELECTOR, "#-list-section div.card"),
         "articles": ARTICLE_LINKS,
         "article images": Selector(By.CSS_SELECTOR, "#-list-section .card-image"),
-    # "upskill now": {
-    #     "itseld": Selector(By.CSS_SELECTOR,"#content > div:nth-child(3) > div > div.cta-container > a"),
-    # }
+        # "upskill now": {
+        #     "itseld": Selector(By.CSS_SELECTOR,"#content > div:nth-child(3) > div > div.cta-container > a"),
+        # }
     }
 }
 SELECTORS.update(common_selectors.DOMESTIC_HEADER)

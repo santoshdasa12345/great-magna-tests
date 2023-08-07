@@ -4,11 +4,6 @@ import logging
 from types import ModuleType
 from typing import Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType
 from browserpages.common_actions import (
     Actor,
@@ -20,6 +15,11 @@ from browserpages.common_actions import (
     submit_form,
     tick_checkboxes,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Company details"
 SERVICE = Service.DOMESTIC

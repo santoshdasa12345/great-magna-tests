@@ -2,14 +2,14 @@
 """Selling Online Overseas - Marketplace details page."""
 from typing import List
 
+from browserpages import ElementType, common_selectors
+from browserpages.common_actions import Selector, check_for_sections
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
 from great_magna_tests_shared.utils import check_url_path_matches_template
-from browserpages import ElementType, common_selectors
-from browserpages.common_actions import Selector, check_for_sections
 
 NAME = "Marketplace"
 SERVICE = Service.SOO
@@ -47,6 +47,7 @@ def should_be_here(driver: WebDriver):
 
 def should_see_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
+
 
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

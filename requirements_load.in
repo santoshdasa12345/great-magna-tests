@@ -1,4 +1,0 @@
--e ./great_magna_tests_shared/
-docopt
-locust
-requests

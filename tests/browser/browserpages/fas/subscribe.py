@@ -4,11 +4,6 @@ import logging
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Actor,
@@ -23,6 +18,11 @@ from browserpages.common_actions import (
     tick_checkboxes,
 )
 from browserpages.fas import thank_you_for_registering
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Subscribe for email updates"
 SERVICE = Service.FAS
@@ -35,7 +35,9 @@ SELECTORS = {
         "full name": Selector(By.CSS_SELECTOR, "#id_full_name", type=ElementType.INPUT),
         "email": Selector(By.CSS_SELECTOR, "#id_email_address", type=ElementType.INPUT),
         "industry": Selector(By.CSS_SELECTOR, "#id_sector", type=ElementType.SELECT),
-        "company name": Selector(By.CSS_SELECTOR, "#id_company_name", type=ElementType.INPUT),
+        "company name": Selector(
+            By.CSS_SELECTOR, "#id_company_name", type=ElementType.INPUT
+        ),
         "country": Selector(By.CSS_SELECTOR, "#id_country", type=ElementType.SELECT),
         "t&c": Selector(By.CSS_SELECTOR, "#id_terms", type=ElementType.CHECKBOX),
         # "captcha": Selector(By.ID, "#id_captcha"),

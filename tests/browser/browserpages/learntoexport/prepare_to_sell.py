@@ -4,13 +4,7 @@ import time
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -18,21 +12,26 @@ from browserpages.common_actions import (
     check_for_sections,
     check_if_element_is_not_present,
     check_if_element_is_visible,
-    check_url,
-    find_element,
-    find_selector_by_name,
-    find_elements,
-    go_to_url,
-    pick_option,
-    is_element_present,
-    submit_form,
     check_random_radio,
+    check_url,
+    fill_out_email_address,
+    fill_out_input_fields,
+    find_element,
+    find_elements,
+    find_selector_by_name,
+    go_to_url,
+    is_element_present,
+    pick_option,
+    submit_form,
     take_screenshot,
     wait_for_page_load_after_action,
-    fill_out_input_fields,
-    fill_out_email_address
-
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Prepare to sell"
 SERVICE = Service.LEARNTOEXPORT
@@ -46,8 +45,9 @@ SELECTORS = {
             By.XPATH, "//span[contains(text(),'Choose the right route to market')]"
         ),
         "using ecommerce as a route to market": Selector(
-            By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[2]/a"
-            #"//span[contains(text(),'Selling direct to your customer')]"
+            By.XPATH,
+            "//body/main/div/section[2]/ol/li[1]/div/ul/li[2]/a"
+            # "//span[contains(text(),'Selling direct to your customer')]"
         ),
         "selling direct to your customer": Selector(
             By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[3]/a"
@@ -74,7 +74,8 @@ SELECTORS = {
             By.XPATH, "//span[contains(text(),'Understand product liability')]"
         ),
         "protect your intellectual property abroad": Selector(
-            By.XPATH, "//span[contains(text(),'Protect your intellectual property abroad')]"
+            By.XPATH,
+            "//span[contains(text(),'Protect your intellectual property abroad')]",
         ),
         "prepare for a trade mission": Selector(
             By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[1]/a"
@@ -86,13 +87,13 @@ SELECTORS = {
             By.XPATH, "//body/main/div/section[2]/ol/li[4]/div/ul/li[3]/a"
         ),
         "module_progress": Selector(
-            By.CSS_SELECTOR, "#learn-root > section.learn__single-category-header > div > div > div:nth-child(1) > div.learn__single-category-header-content > div.learn__category-progress-container"
+            By.CSS_SELECTOR,
+            "#learn-root > section.learn__single-category-header > div > div > div:nth-child(1) > div.learn__single-category-header-content > div.learn__category-progress-container",
         ),
-        "lessons_progress_bar": Selector(
-            By.XPATH, "//*[@id=\"55\"]/div/p"
-        ),
+        "lessons_progress_bar": Selector(By.XPATH, '//*[@id="55"]/div/p'),
         "lesson_categories_progress": Selector(
-            By.CSS_SELECTOR, "#learn-root > section > a:nth-child(3) > article > div > div.learn__category-content.learn__category-content--progress-bar > div.learn__category-progress-container > div"
+            By.CSS_SELECTOR,
+            "#learn-root > section > a:nth-child(3) > article > div > div.learn__category-content.learn__category-content--progress-bar > div.learn__category-progress-container > div",
         ),
         "pitching and tendering ina new market": Selector(
             By.XPATH, "//body/main/div/section[2]/ol/li[6]/div/ul/li[1]/a"
@@ -107,7 +108,8 @@ SELECTORS = {
             By.XPATH, "//body/main/div/section[2]/ol/li[6]/div/ul/li[4]/a"
         ),
         "protect your business from bribery and corruption": Selector(
-            By.XPATH, "//span[contains(text(),'Protect your business from bribery and corruption')]"
+            By.XPATH,
+            "//span[contains(text(),'Protect your business from bribery and corruption')]",
         ),
         "how to operate with business integrity": Selector(
             By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[2]/a"
@@ -118,12 +120,8 @@ SELECTORS = {
         # "placeholder lesson": Selector(
         #     By.XPATH, "//body/main/div/section[2]/ol/li[5]/div/ul/li[1]/a/span"
         # ),
-        "back" : Selector(
-            By.CSS_SELECTOR, "#learn-root > span > a"
-        ),
-        "ok button": Selector(
-            By.XPATH, "//button[contains(text(),'Ok')]"
-        ),
+        "back": Selector(By.CSS_SELECTOR, "#learn-root > span > a"),
+        "ok button": Selector(By.XPATH, "//button[contains(text(),'Ok')]"),
         "adapting your website for export": Selector(
             By.XPATH, "//body/main/div/section[2]/ol/li[7]/div/ul/li[1]/a"
         ),
@@ -164,6 +162,7 @@ def visit(driver: WebDriver, *, page_name: str = None):
 
 def should_be_here(driver: WebDriver):
     check_url(driver, URL, exact_match=False)
+
 
 def find_and_click(driver: WebDriver, *, element_selector_name: str):
     find_and_click = find_element(

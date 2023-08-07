@@ -2,16 +2,16 @@
 """Share on Twitter Page Object."""
 from urllib.parse import urljoin
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages.common_actions import (
     Selector,
     assertion_msg,
     check_for_expected_sections_elements,
     find_element,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Share on Twitter"
 SERVICE = Service.TWITTER

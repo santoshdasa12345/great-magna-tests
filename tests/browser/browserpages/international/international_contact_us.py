@@ -6,11 +6,6 @@ from types import ModuleType
 from typing import Union
 from uuid import uuid4
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType
 from browserpages.common_actions import (
     Actor,
@@ -26,6 +21,11 @@ from browserpages.common_actions import (
     tick_checkboxes,
 )
 from browserpages.international import international_contact_us_thank_you
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Contact us"
 SERVICE = Service.INTERNATIONAL

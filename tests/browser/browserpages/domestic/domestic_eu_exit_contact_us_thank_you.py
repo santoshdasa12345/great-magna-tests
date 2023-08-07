@@ -2,12 +2,12 @@
 """Domestic - Domestic EU Exit Contact us - Thank you for your enquiry."""
 import logging
 
+from browserpages.common_actions import Selector, check_url
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages.common_actions import Selector, check_url
 
 NAME = "Brexit help"
 SERVICE = Service.DOMESTIC

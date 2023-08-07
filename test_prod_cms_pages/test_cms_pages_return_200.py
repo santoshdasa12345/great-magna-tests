@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 import pytest
-from rest_framework.status import HTTP_200_OK
-
 from helpers import (
     all_cms_pks,
     find_draft_urls,
@@ -10,6 +8,7 @@ from helpers import (
     get_and_assert,
     get_pages_by_pk,
 )
+from rest_framework.status import HTTP_200_OK
 
 ALL_OK_PAGES, ALL_BAD_RESPONSES = get_pages_by_pk(all_cms_pks())
 

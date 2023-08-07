@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import List
 
 from geckoboard.dataset import Dataset
+
 from tests.periodic_tasks.geckoboard_updater.clients import GECKOBOARD_CLIENT
 
 

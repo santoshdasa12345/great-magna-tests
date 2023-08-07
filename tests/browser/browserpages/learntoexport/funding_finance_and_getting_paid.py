@@ -4,13 +4,7 @@ import time
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -18,21 +12,26 @@ from browserpages.common_actions import (
     check_for_sections,
     check_if_element_is_not_present,
     check_if_element_is_visible,
-    check_url,
-    find_element,
-    find_selector_by_name,
-    find_elements,
-    go_to_url,
-    pick_option,
-    is_element_present,
-    submit_form,
     check_random_radio,
+    check_url,
+    fill_out_email_address,
+    fill_out_input_fields,
+    find_element,
+    find_elements,
+    find_selector_by_name,
+    go_to_url,
+    is_element_present,
+    pick_option,
+    submit_form,
     take_screenshot,
     wait_for_page_load_after_action,
-    fill_out_input_fields,
-    fill_out_email_address
-
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Funding finance and getting paid"
 SERVICE = Service.LEARNTOEXPORT
@@ -43,7 +42,8 @@ PAGE_TITLE = "Funding finance and getting paid page"
 SELECTORS = {
     "Funding finance and getting paid": {
         "choose the right funding": Selector(
-            By.XPATH, "//span[contains(text(),'Choose the right funding and credit options')]"
+            By.XPATH,
+            "//span[contains(text(),'Choose the right funding and credit options')]",
         ),
         "avoid cashflow challenges when exporting": Selector(
             By.XPATH, "//body/main/div/section[2]/ol/li[1]/div/ul/li[2]/a"
@@ -66,9 +66,7 @@ SELECTORS = {
         "manage exchange rates": Selector(
             By.XPATH, "//span[contains(text(),'Manage exchange rates')]"
         ),
-        "top back": Selector(
-            By.CSS_SELECTOR, "#learn-root > span > a"
-        )
+        "top back": Selector(By.CSS_SELECTOR, "#learn-root > span > a"),
     }
 }
 

@@ -2,75 +2,74 @@
 # flake8: noqa
 # fmt: off
 """When step definitions."""
+import time
+
+import parse
 from behave import register_type, when
 from behave.runner import Context
-import time
-import parse
-from steps.then_impl import (
-    should_be_on_page,
-    domestic_search_finder_should_see_page_number,
 
+from steps.then_impl import (
+    domestic_search_finder_should_see_page_number,
+    should_be_on_page,
 )
 from steps.when_impl import (
-    articles_open_any,
-    click_on_page_element,
-    visit_page,
-    generic_fill_out,
-    generic_fill_out_and_submit_form,
-    generic_country_name_to_fill_country_and_click_on_continue,
-    generic_product_name_to_fill_country_and_click_on_continue,
-    actor_decides_to_fill_country_and_click_on_continue,
-    actor_decides_to_fill_product_and_click_on_continue,
-    actor_decides_to_check_random_radio_and_click_on_continue,
     actor_decides_not_to_enter_any_text_and_click_on_page_element,
+    actor_decides_to_check_random_radio_and_click_on_continue,
     actor_decides_to_enter_blank_spaces_click_on_continue,
     actor_decides_to_enter_email_address_and_click_login,
-    actor_should_be_able_to_click_on_skipwalkthrough,
-    actor_should_be_able_to_click_on_avatar,
-    actor_should_be_able_to_click_on_SignOut,
-    actor_decides_to_page_tour_and_click_on_page_element,
     actor_decides_to_enter_email_address_and_click_sign_up,
-    generic_accept_all_cookies,
-    promo_video_watch,
-    promo_video_close,
+    actor_decides_to_fill_country_and_click_on_continue,
+    actor_decides_to_fill_product_and_click_on_continue,
+    actor_decides_to_page_tour_and_click_on_page_element,
+    actor_should_be_able_to_click_on_avatar,
     actor_should_be_able_to_click_on_i_have_exported_in_the_last_12_months,
+    actor_should_be_able_to_click_on_SignOut,
+    actor_should_be_able_to_click_on_skipwalkthrough,
+    actor_should_be_able_to_enter_products_and_country,
+    articles_open_any,
+    articles_share_on_social_media,
+    clear_the_cookies,
+    click_on_header_menu_button,
+    click_on_link_element_in_page,
+    click_on_page_element,
+    contact_us_navigate_through_options,
+    domestic_find_more_about_search_result_type,
+    domestic_submit_soo_contact_us_form,
     fas_search_for_companies,
     fas_view_selected_company_profile,
-    generic_report_problem_with_page,
-    generic_click_on_random_marketplace,
+    generic_accept_all_cookies,
     generic_click_on_random_element,
+    generic_click_on_random_industry,
+    generic_click_on_random_marketplace,
+    generic_country_name_to_fill_country_and_click_on_continue,
+    generic_download_all_pdfs,
+    generic_fill_out,
+    generic_fill_out_and_submit_form,
     generic_open_any_tag,
     generic_open_industry_page,
-    generic_download_all_pdfs,
-    generic_remove_previous_field_selections,
-    generic_submit_form,
-    generic_visit_current_page_with_lang_parameter,
     generic_open_news_article,
-    generic_click_on_random_industry,
-    domestic_submit_soo_contact_us_form,
+    generic_pick_radio_option_and_submit,
     generic_pick_random_radio_option_and_submit,
-    soo_look_for_marketplace,
+    generic_product_name_to_fill_country_and_click_on_continue,
+    generic_remove_previous_field_selections,
+    generic_report_problem_with_page,
     generic_search_for_phrase,
+    generic_select_dropdown_option,
+    generic_submit_form,
+    generic_trigger_all_gtm_events,
+    generic_unfold_elements_in_section,
+    generic_visit_current_page_with_lang_parameter,
     language_selector_change_to,
     language_selector_close,
     language_selector_open,
-    contact_us_navigate_through_options,
-    domestic_find_more_about_search_result_type,
-    generic_trigger_all_gtm_events,
-    generic_unfold_elements_in_section,
-    registration_submit_form_and_verify_account,
-    sign_out,
-    clear_the_cookies,
-    sign_in,
     office_finder_find_trade_office,
-    click_on_header_menu_button,
-    generic_select_dropdown_option,
-    language_selector_open,
-    articles_share_on_social_media,
-    generic_pick_radio_option_and_submit,
-    actor_should_be_able_to_enter_products_and_country,
-    click_on_link_element_in_page,
-
+    promo_video_close,
+    promo_video_watch,
+    registration_submit_form_and_verify_account,
+    sign_in,
+    sign_out,
+    soo_look_for_marketplace,
+    visit_page,
 )
 
 
@@ -502,5 +501,3 @@ def when_actor_closes_language_selector(context, actor_alias):
 def then_actor_decides_to_click_continue(
         context, actor_alias, element_name):
     click_on_page_element(context, actor_alias, element_name)
-
-

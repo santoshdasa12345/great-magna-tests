@@ -4,12 +4,6 @@ import logging
 from typing import List
 from urllib.parse import urljoin
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
-from great_magna_tests_shared.settings import INTERNATIONAL_URL
 from browserpages import common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -18,6 +12,12 @@ from browserpages.common_actions import (
     check_url,
     go_to_url,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.settings import INTERNATIONAL_URL
 
 NAME = "How to set up in the UK"
 NAMES = [
@@ -75,7 +75,7 @@ SubURLs = {
     "open a UK business bank account": URLs.INVEST_UK_SETUP_GUIDE_OPEN_BUSINESS_BANK_ACCOUNT.absolute,
     "research and development support in the uk": URLs.INVEST_UK_SETUP_GUIDE_RESEARCH_AND_DEVELOPMENT.absolute,
     "uk visas and migration": URLs.INVEST_UK_SETUP_GUIDE_UK_VISAS.absolute,
-    "get support to move your tech business to the UK" : URLs.INVEST_UK_SETUP_GUIDE_GET_SUPPORT_TO_MOVE_YOUR_TECH_BUSINESS_TO_THE_UK.absolute,
+    "get support to move your tech business to the UK": URLs.INVEST_UK_SETUP_GUIDE_GET_SUPPORT_TO_MOVE_YOUR_TECH_BUSINESS_TO_THE_UK.absolute,
     "register a company in the uk": URLs.INVEST_UK_SETUP_GUIDE_REGISTER_A_COMPANY_IN_THE_UK.absolute,
     # "uk innovation": URLs.INVEST_UK_SETUP_GUIDE_UK_INNOVATION.absolute,
     "hire skilled workers for your UK operations": URLs.INVEST_UK_SETUP_GUIDE_HIRE_SKILLED_WORKERS.absolute,

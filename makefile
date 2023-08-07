@@ -82,65 +82,11 @@ browser_tests_locally:
 	cd tests/browser && \
 	BROWSER_ENVIRONMENT=$(BROWSER_ENVIRONMENT) BROWSER_TYPE=$(BROWSER_TYPE) BROWSER=$(BROWSER) VERSION=$(VERSION) HEADLESS=$(HEADLESS) AUTO_RETRY=$(AUTO_RETRY) behave --format=allure_behave.formatter:AllureFormatter --define AllureFormatter.issue_pattern=$(BUG_TRACKER_URL_PATTERN) --define AllureFormatter.link_pattern=$(BUG_TRACKER_URL_PATTERN) --outfile=results/ -f pretty --no-skipped --tags=~@wip --tags=~@fixme --tags=~@skip ${TAGS}
 
-requirements_browser:
-	pip3 install -r requirements_browser.txt
+requirements:
+	pip-compile requirements.in
 
-
-requirements_functional:
-	pip3 install -r requirements_functional.txt
-
-requirements_smoke:
-	pip3 install -r requirements_smoke.txt
-
-
-requirements_load:
-	pip3 install -r requirements_load.txt
-
-requirements_tests_shared:
-	pip3 install -r ./great_magna_tests_shared/requirements.txt
-
-requirements_periodic_tasks:
-	pip install -r requirements_periodic_tasks.txt
-
-compile_requirements_periodic_tasks:
-	@rm -fr requirements_periodic_tasks.txt
-	python3 -m piptools compile --quiet requirements_periodic_tasks.in
-	@sed -i 's/^\-e file.*/\-e .\/great_magna_tests_shared\//' requirements_periodic_tasks.txt
-
-
-compile_requirements_browser:
-	@rm -fr requirements_browser.txt
-	python3 -m piptools compile --quiet requirements_browser.in
-	@sed -i '/^file.*/d' requirements_browser.txt
-	@sed -i '7i.\/great_magna_tests_shared\/' requirements_browser.txt
-
-compile_requirements_functional:
-	@rm -fr requirements_functional.txt
-	python3 -m piptools compile --quiet requirements_functional.in
-	@sed -i 's/^\-e file.*/\-e .\/great_magna_tests_shared\//' requirements_functional.txt
-
-
-
-compile_requirements_smoke:
-	@rm -fr requirements_smoke.txt
-	python3 -m piptools compile --quiet requirements_smoke.in
-	@sed -i 's/^\-e file.*/\-e .\/great_magna_tests_shared\//' requirements_smoke.txt
-
-
-compile_requirements_load:
-	@rm -fr requirements_load.txt
-	python3 -m piptools compile --quiet requirements_load.in
-	@sed -i 's/^\-e file.*/\-e .\/great_magna_tests_shared\//' requirements_load.txt
-
-compile_requirements_test_tools:
-	@rm -fr requirements_test_tools.txt
-	python3 -m piptools compile --quiet requirements_test_tools.in
-
-compile_requirements_tests_shared:
-	@rm -fr ./great_magna_tests_shared/requirements.txt
-	python3 -m piptools compile --quiet --no-annotate --output-file ./great_magna_tests_shared/requirements.txt ./great_magna_tests_shared/requirements.in
-
-compile_all_requirements: compile_requirements_tests_shared compile_requirements_browser compile_requirements_load compile_requirements_test_tools compile_requirements_functional compile_requirements_periodic_tasks compile_requirements_smoke
+install_requirements:
+	pip install -r requirements.txt
 
 find_duplicated_scenario_names: SHELL:=/usr/bin/env bash  # set shell for this target to bash
 find_duplicated_scenario_names:
@@ -206,6 +152,15 @@ install-cf-conduit:
 
 build:
 	docker-compose -f $(ARGUMENTS) up -d --build
+
+enter-container:
+	docker exec -it $(ARGUMENTS) bash
+
+down:
+	docker-compose -f $(ARGUMENTS) down
+
+down_v:
+	docker-compose -f $(ARGUMENTS) down -v
 
 
 locust:

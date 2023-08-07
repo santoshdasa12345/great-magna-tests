@@ -2,12 +2,12 @@
 """Export Opportunities - Opportunity page"""
 from typing import List
 
+from browserpages.common_actions import check_for_sections
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
 from great_magna_tests_shared.utils import check_url_path_matches_template
-from browserpages.common_actions import check_for_sections
 
 NAME = "Opportunity"
 SERVICE = Service.EXPORT_OPPORTUNITIES

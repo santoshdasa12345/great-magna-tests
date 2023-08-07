@@ -3,20 +3,20 @@
 import logging
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Selector,
     check_for_sections,
     check_url,
     find_element,
-    go_to_url,
     find_selector_by_name,
+    go_to_url,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "landing"
 URL = URLs.INVEST_LANDING.absolute
@@ -33,18 +33,33 @@ SELECTORS = {
         "image": Selector(By.CSS_SELECTOR, "#benefits img"),
     },
     "landing": {
-        "invest in the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
-        "buy from the uk header": Selector(By.PARTIAL_LINK_TEXT, "Buy from the UK", type=ElementType.LINK),
+        "invest in the uk": Selector(
+            By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"
+        ),
+        "buy from the uk header": Selector(
+            By.PARTIAL_LINK_TEXT, "Buy from the UK", type=ElementType.LINK
+        ),
         "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
-        "get started": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > div > a"),
-        "find investment opportunities": Selector(By.CSS_SELECTOR,
-                                                  "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)"),
-        "find a uk specialist": Selector(By.CSS_SELECTOR,
-                                         "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)"),
-        "buy from the uk": Selector(By.CSS_SELECTOR,
-                                    "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)"),
-        "contact dit": Selector(By.CSS_SELECTOR,
-                                "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(4)"),
+        "get started": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > div > a",
+        ),
+        "find investment opportunities": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)",
+        ),
+        "find a uk specialist": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)",
+        ),
+        "buy from the uk": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)",
+        ),
+        "contact dit": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(4)",
+        ),
     },
     "sectors": {
         "self": Selector(By.ID, "industries"),
@@ -71,12 +86,8 @@ SELECTORS = {
         # "high productivity food production (staging)": Selector(
         #     By.PARTIAL_LINK_TEXT, "High productivity food production"
         # ),
-        "lightweight": Selector(
-            By.PARTIAL_LINK_TEXT, "Lightweight structures"
-        ),
-        "photonics": Selector(
-            By.PARTIAL_LINK_TEXT, "Photonics and Microelectronics"
-        ),
+        "lightweight": Selector(By.PARTIAL_LINK_TEXT, "Lightweight structures"),
+        "photonics": Selector(By.PARTIAL_LINK_TEXT, "Photonics and Microelectronics"),
         "rail": Selector(By.PARTIAL_LINK_TEXT, "Rail infrastructure"),
         "space": Selector(By.PARTIAL_LINK_TEXT, "Space"),
         "sustainable packaging": Selector(
@@ -99,9 +110,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#get-in-touch a", type=ElementType.LINK
         ),
     },
-    "logo": Selector(
-        By.XPATH, "//body/header/div[2]/div/a"
-    ),
+    "logo": Selector(By.XPATH, "//body/header/div[2]/div/a"),
 }
 SELECTORS.update(common_selectors.INVEST_HEADER)
 SELECTORS.update(common_selectors.INVEST_HERO)
@@ -147,6 +156,3 @@ def open_guide(driver: WebDriver, guide_name: str):
     logging.debug("Looking for: {}".format(guide_name))
     guide = find_element(driver, selector, element_name="Guide card", wait_for_it=False)
     guide.click()
-
-
-

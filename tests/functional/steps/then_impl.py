@@ -4,10 +4,10 @@ import inspect
 import logging
 from collections import defaultdict
 from statistics import median
-from bs4 import BeautifulSoup
 
 from behave.model import Table
 from behave.runner import Context
+from bs4 import BeautifulSoup
 from requests import Response
 from retrying import retry
 
@@ -319,8 +319,7 @@ def profile_should_see_online_profiles(context: Context, supplier_alias: str):
 def profile_no_links_to_online_profiles_are_visible(
     context: Context, supplier_alias: str
 ):
-    """Supplier should't see any links to Online Profiles on FAB Profile page.
-    """
+    """Supplier should't see any links to Online Profiles on FAB Profile page."""
     response = context.response
     profile.edit_company_profile.should_not_see_links_to_online_profiles(response)
     logging.debug(
@@ -329,8 +328,7 @@ def profile_no_links_to_online_profiles_are_visible(
 
 
 def fas_no_links_to_online_profiles_are_visible(context: Context, supplier_alias: str):
-    """Supplier should't see any links to Online Profiles on FAS Profile page.
-    """
+    """Supplier should't see any links to Online Profiles on FAS Profile page."""
     response = context.response
     fas.profile.should_not_see_online_profiles(response)
     logging.debug(
@@ -707,10 +705,10 @@ def fas_should_see_filtered_search_results(context: Context, actor_alias: str):
     for industry, result in results.items():
         context.response = result["response"]
         content = result["response"].content.decode("utf-8")
-        soup = BeautifulSoup(content, 'html.parser')
+        soup = BeautifulSoup(content, "html.parser")
         filters = soup.select(sector_filters_selector)
         for filter in filters:
-            sector = filter.select_one("input")['value']
+            sector = filter.select_one("input")["value"]
             input = filter.select_one("input[checked]")
             checked = True if input else False
             if sector in result["sectors"]:
@@ -740,11 +738,11 @@ def fas_should_see_filtered_search_results(context: Context, actor_alias: str):
 def fas_should_see_unfiltered_search_results(context: Context, actor_alias: str):
     response = context.response
     content = response.content.decode("utf-8")
-    soup = BeautifulSoup(content, 'html.parser')
+    soup = BeautifulSoup(content, "html.parser")
     sector_filters_selector = "#id_sectors input"
     filters = soup.select(sector_filters_selector)
     for filter in filters:
-        sector = filter.select_one("input")['value']
+        sector = filter.select_one("input")["value"]
         checked = True if filter.select_one("input:checked") else False
         with assertion_msg(
             "Expected search results to be unfiltered but this "
@@ -787,7 +785,7 @@ def fas_should_see_highlighted_search_term(
 ):
     response = context.response
     content = response.content.decode("utf-8")
-    soup = BeautifulSoup(content, 'html.parser')
+    soup = BeautifulSoup(content, "html.parser")
     search_summaries_selector = "#companies-column div.width-full.details-container"
     summaries = soup.select(search_summaries_selector)
     tag = "em"
@@ -1033,13 +1031,13 @@ def isd_should_be_told_about_empty_search_results(context: Context, buyer_alias:
 def isd_should_see_unfiltered_search_results(context: Context, actor_alias: str):
     response = context.response
     content = response.content.decode("utf-8")
-    soup = BeautifulSoup(content, 'html.parser')
+    soup = BeautifulSoup(content, "html.parser")
     sector_filters_selector = "#filter-column input[type=checkbox]"
     filters = soup.select(sector_filters_selector)
     with assertion_msg(f"Couldn't find filter checkboxes on {response.url}"):
         assert filters
     for filter in filters:
-        sector = filter.select_one("input")['value']
+        sector = filter.select_one("input")["value"]
         checked = True if filter.select_one("input:checked") else False
         with assertion_msg(
             "Expected search results to be unfiltered but this "
@@ -1064,8 +1062,8 @@ def generic_page_language_should_be_set_to(context: Context, language: str):
         response = views[page_name]
         content = response.content.decode("utf-8")
         check_for_errors(content, response.url)
-        soup = BeautifulSoup(content, 'html.parser')
-        html_tag_language = soup.html.get('lang', '')
+        soup = BeautifulSoup(content, "html.parser")
+        html_tag_language = soup.html.get("lang", "")
         results[page_name] = html_tag_language
 
     logging.debug(f"HTML tag language attributes for: {dict(results)}")
@@ -1078,6 +1076,7 @@ def generic_page_language_should_be_set_to(context: Context, language: str):
         f"HTML document language was not set to '{language_code}' in following pages: {undetected_languages}"
     ):
         assert not undetected_languages
+
 
 def generic_language_switcher_should_be_set_to(context: Context, language: str):
     language_code = Language[language.upper()].value
@@ -1093,13 +1092,15 @@ def generic_language_switcher_should_be_set_to(context: Context, language: str):
         response = views[page_name]
         content = response.content.decode("utf-8")
         check_for_errors(content, response.url)
-        soup = BeautifulSoup(content, 'html.parser')
+        soup = BeautifulSoup(content, "html.parser")
         selector = f"#great-header-language-select option[selected]"
         selected_language_switcher_option = soup.select_one(selector)
         error = f"Couldn't find language switcher on {response.url}"
         with assertion_msg(error):
             assert selected_language_switcher_option
-        selected_language_switcher_option = selected_language_switcher_option.get('value', '')
+        selected_language_switcher_option = selected_language_switcher_option.get(
+            "value", ""
+        )
         results[page_name] = selected_language_switcher_option
 
     logging.debug(f"Selected language in Language Switcher on: {dict(results)}")
@@ -1112,6 +1113,7 @@ def generic_language_switcher_should_be_set_to(context: Context, language: str):
         f"'{language}' was not selected in Language Switcher for following pages: {undetected_languages}"
     ):
         assert not undetected_languages
+
 
 def profile_should_not_see_options_to_manage_users(context: Context, actor_alias: str):
     profile.business_profile.should_not_see_options_to_manage_users(context.response)

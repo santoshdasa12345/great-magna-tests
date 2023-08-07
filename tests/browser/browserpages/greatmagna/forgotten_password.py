@@ -3,14 +3,8 @@ import random
 import time
 from types import ModuleType
 from typing import List, Union
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
 
-from great_magna_tests_shared import URLs, settings
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
-from great_magna_tests_shared.reademail import ReadEmail
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -18,21 +12,27 @@ from browserpages.common_actions import (
     check_for_sections,
     check_if_element_is_not_present,
     check_if_element_is_visible,
-    check_url,
-    find_element,
-    find_selector_by_name,
-    find_elements,
-    go_to_url,
-    pick_option,
-    is_element_present,
-    submit_form,
     check_random_radio,
+    check_url,
+    fill_out_email_address,
+    fill_out_input_fields,
+    find_element,
+    find_elements,
+    find_selector_by_name,
+    go_to_url,
+    is_element_present,
+    pick_option,
+    submit_form,
     take_screenshot,
     wait_for_page_load_after_action,
-    fill_out_input_fields,
-    fill_out_email_address
-
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs, settings
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.reademail import ReadEmail
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "forgotten password"
 SERVICE = Service.GREATMAGNA
@@ -54,9 +54,7 @@ SELECTORS = {
         "confirmpassword": Selector(
             By.XPATH, "//input[@id='id_password2']", type=ElementType.INPUT
         ),
-        "changepassword": Selector(
-            By.XPATH, "//button[@class='button']"
-        ),
+        "changepassword": Selector(By.XPATH, "//button[@class='button']"),
     },
 }
 
@@ -72,16 +70,24 @@ def should_be_here(driver: WebDriver):
 def fill_out_email_address(driver: WebDriver, details: dict):
     email_address_selectors = SELECTORS["forgotten password"]
     fill_out_input_fields(driver, email_address_selectors, details)
-    reset_password_btn = find_element(driver, find_selector_by_name(SELECTORS, "resetmypassword"))
+    reset_password_btn = find_element(
+        driver, find_selector_by_name(SELECTORS, "resetmypassword")
+    )
     reset_password_btn.click()
 
 
-def read_reset_password_email(driver: WebDriver, emailaddress: str, emailpassword: str, newpassword: str):
+def read_reset_password_email(
+    driver: WebDriver, emailaddress: str, emailpassword: str, newpassword: str
+):
     # create and load the confirmation code email from the test user
-    objreadmail = ReadEmail(settings.DEV_GMAIL_HOST, emailaddress, emailpassword, settings.EMAIL_FETCH_COUNT)
+    objreadmail = ReadEmail(
+        settings.DEV_GMAIL_HOST, emailaddress, emailpassword, settings.EMAIL_FETCH_COUNT
+    )
     # search the test user INBOX, read the email body text from the Reset password email
     email_search_criteria = "Reset your password at "
-    email_body_text = objreadmail.reademailbody("Reset your great.gov.uk password", email_search_criteria)
+    email_body_text = objreadmail.reademailbody(
+        "Reset your great.gov.uk password", email_search_criteria
+    )
     # print(email_body_text)
 
     # check if the email_body_text exists or empty
@@ -90,19 +96,29 @@ def read_reset_password_email(driver: WebDriver, emailaddress: str, emailpasswor
         reset_link_pos = email_body_text.find(email_search_criteria)
         # check if the required search criteria text found in the email_body_text. -1 indicates not found.
         if reset_link_pos != -1:
-            reset_link_text = email_body_text[reset_link_pos + len(email_search_criteria):]
+            reset_link_text = email_body_text[
+                reset_link_pos + len(email_search_criteria) :
+            ]
             reset_link_text = reset_link_text.strip()  # trim left and right
 
             reset_link_end_pos = reset_link_text.find("/about/")
             if reset_link_end_pos != -1:
-                reset_link_text = reset_link_text[:reset_link_end_pos + len("/about/")]
+                reset_link_text = reset_link_text[: reset_link_end_pos + len("/about/")]
                 reset_link_text = reset_link_text.strip()  # trim left and right
                 # print(reset_link_text)
                 driver.get(reset_link_text)
-                if driver.find_element_by_xpath("//h1[contains(text(),'Change Password')]").is_displayed():
-                    driver.find_element_by_xpath("//input[@id='id_password1']").send_keys(newpassword)
-                    driver.find_element_by_xpath("//input[@id='id_password2']").send_keys(newpassword)
-                    driver.find_element_by_xpath("//button[contains(text(),'change password')]").click()
+                if driver.find_element_by_xpath(
+                    "//h1[contains(text(),'Change Password')]"
+                ).is_displayed():
+                    driver.find_element_by_xpath(
+                        "//input[@id='id_password1']"
+                    ).send_keys(newpassword)
+                    driver.find_element_by_xpath(
+                        "//input[@id='id_password2']"
+                    ).send_keys(newpassword)
+                    driver.find_element_by_xpath(
+                        "//button[contains(text(),'change password')]"
+                    ).click()
                 else:
                     raise Exception("Could not find Change Password")
             else:
@@ -120,5 +136,6 @@ def confirm_password(driver: WebDriver, password: str):
 
 def click_forgotten_password(driver: WebDriver, element_name: str):
     forgotten_password = find_element(
-        driver, find_selector_by_name(SELECTORS, element_name))
+        driver, find_selector_by_name(SELECTORS, element_name)
+    )
     forgotten_password.click()

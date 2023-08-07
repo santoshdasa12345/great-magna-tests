@@ -14,13 +14,18 @@ class signUpTasks(TaskSet):
     @task
     def signUpPage(self):
         response = self.client.get("/")
-        csrftoken = response.cookies['csrftoken']
-        csrfmiddlewaretoken = f"csrfmiddlewaretoken={settings.CSRFMIDDLEWARETOKEN}&proddesc=cake"
-        self.client.post(url="signup/",
-                         data=csrfmiddlewaretoken,
-                         headers={'referer': URLs.GREAT_MAGNA_SIGNUP.absolute,
-                                  "X-CSRFToken": csrftoken},
-                         )
+        csrftoken = response.cookies["csrftoken"]
+        csrfmiddlewaretoken = (
+            f"csrfmiddlewaretoken={settings.CSRFMIDDLEWARETOKEN}&proddesc=cake"
+        )
+        self.client.post(
+            url="signup/",
+            data=csrfmiddlewaretoken,
+            headers={
+                "referer": URLs.GREAT_MAGNA_SIGNUP.absolute,
+                "X-CSRFToken": csrftoken,
+            },
+        )
 
 
 class loginTasks(HttpUser):

@@ -3,20 +3,20 @@
 import logging
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Selector,
     check_for_sections,
     check_url,
     find_element,
-    go_to_url,
     find_selector_by_name,
+    go_to_url,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "landing"
 URL = URLs.INVEST_WHY_INVEST_IN_THE_UK.absolute
@@ -26,27 +26,54 @@ PAGE_TITLE = "Invest in Great Britain - Home"
 
 SELECTORS = {
     "uk strengths": {
-        "uk strengths section": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light"),
-        "tax and incentives": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(1)"),
-        "talent and labour": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(2)"),
+        "uk strengths section": Selector(
+            By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light"
+        ),
+        "tax and incentives": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg--grey-light > div > div > div:nth-child(1)",
+        ),
+        "talent and labour": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg--grey-light > div > div > div:nth-child(2)",
+        ),
     },
     "get in touch": {
         "get in touch section": Selector(By.CSS_SELECTOR, "#content > section"),
-        "get in touch": Selector(By.CSS_SELECTOR,"#content > section > div > a"),
+        "get in touch": Selector(By.CSS_SELECTOR, "#content > section > div > a"),
     },
     "content": {
         "itself": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light"),
-        "heading": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > h2"),
-        "section 1": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(1) > h3 > a"),
-        "section 2": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(2) > h3"),
-        "section 3": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(3) > h3"),
-        "section 4": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(4) > h3"),
-        "section 5": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(5) > h3"),
-        "section 6": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(6) > h3 > a"),
-
+        "heading": Selector(
+            By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > h2"
+        ),
+        "section 1": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg--grey-light > div > div > div:nth-child(1) > h3 > a",
+        ),
+        "section 2": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg--grey-light > div > div > div:nth-child(2) > h3",
+        ),
+        "section 3": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg--grey-light > div > div > div:nth-child(3) > h3",
+        ),
+        "section 4": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg--grey-light > div > div > div:nth-child(4) > h3",
+        ),
+        "section 5": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg--grey-light > div > div > div:nth-child(5) > h3",
+        ),
+        "section 6": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg--grey-light > div > div > div:nth-child(6) > h3 > a",
+        ),
     },
     "logo": {
-        "itself":Selector(By.XPATH, "//body/header/div[2]/div/a"),
+        "itself": Selector(By.XPATH, "//body/header/div[2]/div/a"),
     },
 }
 SELECTORS.update(common_selectors.INVEST_HEADER)
@@ -68,8 +95,10 @@ def should_be_here(driver: WebDriver):
 def should_see_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
 
+
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
+
 
 def clean_name(name: str) -> str:
     return name.split(" - ")[1].strip()
@@ -91,6 +120,7 @@ def open_guide(driver: WebDriver, guide_name: str):
     logging.debug("Looking for: {}".format(guide_name))
     guide = find_element(driver, selector, element_name="Guide card", wait_for_it=False)
     guide.click()
+
 
 def find_and_click(driver: WebDriver, *, element_selector_name: str):
     find_and_click = find_element(

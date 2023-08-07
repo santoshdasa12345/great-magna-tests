@@ -2,12 +2,17 @@
 """Events Home Page Object."""
 import logging
 
+from browserpages.common_actions import (
+    Selector,
+    check_url,
+    go_to_url,
+    wait_for_visibility,
+)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages.common_actions import Selector, check_url, go_to_url, wait_for_visibility
 
 NAME = "Home"
 SERVICE = Service.EVENTS

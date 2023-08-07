@@ -5,5 +5,5 @@ __all__ = [
     "buy_from_the_uk",
     "why_invest_in_the_uk",
     "contact_us",
-    "contact_us_thank_you"
+    "contact_us_thank_you",
 ]

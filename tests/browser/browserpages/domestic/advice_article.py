@@ -4,12 +4,6 @@ import logging
 from typing import List
 from urllib import parse as urlparse
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages import common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -20,6 +14,12 @@ from browserpages.common_actions import (
     find_element,
 )
 from browserpages.domestic import actions as domestic_actions
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Advice article"
 SERVICE = Service.DOMESTIC
@@ -47,7 +47,9 @@ SELECTORS = {
     "breadcrumbs": {
         "itself": Selector(By.CSS_SELECTOR, "nav.breadcrumbs"),
         "links": Selector(By.CSS_SELECTOR, "nav.breadcrumbs a"),
-        "great.gov.uk": Selector(By.CSS_SELECTOR, ".breadcrumbs a[href='https://great.gov.uk/']"),
+        "great.gov.uk": Selector(
+            By.CSS_SELECTOR, ".breadcrumbs a[href='https://great.gov.uk/']"
+        ),
         "advice": Selector(
             By.CSS_SELECTOR, "nav.breadcrumbs > ol > li:nth-child(2) > a"
         ),

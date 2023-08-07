@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """GOV.UK - Prepare your business or organisation for Brexit."""
+from browserpages.common_actions import check_url, go_to_url
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages.common_actions import check_url, go_to_url
 
 NAME = "Prepare your business or organisation for Brexit"
 SERVICE = Service.GOVUK

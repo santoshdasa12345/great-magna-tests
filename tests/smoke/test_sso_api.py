@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 
+import allure
 import pytest
 from rest_framework.status import (
     HTTP_200_OK,
@@ -8,7 +9,6 @@ from rest_framework.status import (
     HTTP_401_UNAUTHORIZED,
 )
 
-import allure
 from directory_tests_shared.clients import BASIC_AUTHENTICATOR, SSO_API_CLIENT
 from directory_tests_shared.constants import USERS
 from tests.smoke.cms_api_helpers import status_error

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+import allure
 import pytest
 from rest_framework.status import HTTP_200_OK
 
-import allure
 from directory_tests_shared import URLs
 from tests.smoke.cms_api_helpers import get_and_assert
 

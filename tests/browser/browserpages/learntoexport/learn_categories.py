@@ -4,13 +4,7 @@ import time
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -18,21 +12,26 @@ from browserpages.common_actions import (
     check_for_sections,
     check_if_element_is_not_present,
     check_if_element_is_visible,
-    check_url,
-    find_element,
-    find_selector_by_name,
-    find_elements,
-    go_to_url,
-    pick_option,
-    is_element_present,
-    submit_form,
     check_random_radio,
+    check_url,
+    fill_out_email_address,
+    fill_out_input_fields,
+    find_element,
+    find_elements,
+    find_selector_by_name,
+    go_to_url,
+    is_element_present,
+    pick_option,
+    submit_form,
     take_screenshot,
     wait_for_page_load_after_action,
-    fill_out_input_fields,
-    fill_out_email_address
-
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Learn Categories"
 # CASESTUDY = [
@@ -73,7 +72,6 @@ SubURLs = {
     "learn categories": URL,
     "new-lesson-added": URLs.GREAT_MAGNA_LESSONS_NEW_LESSON_ADDED.absolute_template,
     # "lookup commodity code": URLs.LOOK_UP_COMMODITY_CONFIRMATION.absolute_template
-
     # "market-research": URLs.GREAT_MAGNA_LESSONS_IDENTIFY_OPPORTUNITIES_AND_RESEARCH_THE_MARKET.absolute_template,
     "opportunity-right-you": URLs.GREAT_MAGNA_LESSONS_CHOOSING_THE_RIGHT_EXPORT_OPPORTUNITIES.absolute_template,
     "move-accidental-exporting-strategic-exporting": URLs.GREAT_MAGNA_LESSONS_MOVE_FROM_ACCIDENTAL_EXPORTING_TO_STRATEGIC_EXPORTING.absolute_template,
@@ -113,7 +111,6 @@ SubURLs = {
     "how-draft-contract": URLs.GREAT_MAGNA_HOW_TO_DRAFT_A_CONTRACT.absolute_template,
     "using-samples-prototypes-and-demos": URLs.GREAT_MAGNA_LESSONS_USING_SAMPLES_PROTOTYPES_AND_DEMOS.absolute_template,
     "how-handle-price-negotiations": URLs.GREAT_MAGNA_LESSONS_HOW_TO_HANDLE_PRICE_NEGOTIATIONS.absolute_template,
-
     # "selling-across-borders-product-and-services-regulations-licensing-and-logistics": URLs.GREAT_MAGNA_LESSONS_REGULATIONS_LICENSING_AND_LOGISTICS.absolute_template,
     "labelling-and-packaging": URLs.GREAT_MAGNA_LESSONS_HOW_TO_ADAPT_YOUR_LABELLING_AND_PACKAGING.absolute_template,
     "understand-duties-and-taxes": URLs.GREAT_MAGNA_LESSONS_UNDERSTAND_DUTIES_AND_TAXES.absolute_template,
@@ -131,7 +128,6 @@ SubURLs = {
     "decide-when-get-paid-export-orders": URLs.GREAT_MAGNA_LESSONS_DECIDE_WHEN_TO_GET_PAID.absolute_template,
     "payment-methods-exporters": URLs.GREAT_MAGNA_LESSONS_CHOOSE_THE_RIGHT_PAYMENT_METHOD.absolute_template,
     "managing-exchange-rates": URLs.GREAT_MAGNA_LESSONS_MANAGE_EXCHANGE_RATES.absolute_template,
-
     # SubURLs = {
     #
     # "getting-started/introduction-learning/what-youll-find-each-lesson/": urljoin(URL,
@@ -284,19 +280,17 @@ SubURLs = {
     #                                                                                   "funding-financing-and-getting-paid/get-paid/payment-methods-exporters/"),
     # "funding-financing-and-getting-paid/exchange-rates-and-moving-money/managing-exchange-rates/": urljoin(URL,
     #                                                                                                        "funding-financing-and-getting-paid/exchange-rates-and-moving-money/managing-exchange-rates/"),
-
 }
 
 SELECTORS = {
     "categories": {
-        "get started": Selector(
-            By.XPATH, "//body/main/section/section/article[1]/a"
-        ),
+        "get started": Selector(By.XPATH, "//body/main/section/section/article[1]/a"),
         "identify opportunities": Selector(
             By.CSS_SELECTOR, "#learn-root > section > article:nth-child(3) > a"
         ),
         "prepare to sell": Selector(
-            By.CSS_SELECTOR, "#learn-root > section > article:nth-child(4) > a"
+            By.CSS_SELECTOR,
+            "#learn-root > section > article:nth-child(4) > a"
             # "//*[@id=\"learn-root\"]/section/a[3]/article"
         ),
         "regulations licensing and logistics": Selector(
@@ -308,7 +302,6 @@ SELECTORS = {
         "continue learning": Selector(
             By.CSS_SELECTOR, "#learn-root > section > article:nth-child(3) > a"
         ),
-
     },
     "export academy": {
         "itself": Selector(By.CSS_SELECTOR, "#learn-root > section > div > img"),
@@ -321,18 +314,30 @@ SELECTORS = {
         "image": Selector(By.CSS_SELECTOR, "#benefits img"),
     },
     "landing": {
-        "invest in the uk": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
-        "buy from the uk header": Selector(By.PARTIAL_LINK_TEXT, "Buy from the UK", type=ElementType.LINK),
+        "invest in the uk": Selector(
+            By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"
+        ),
+        "buy from the uk header": Selector(
+            By.PARTIAL_LINK_TEXT, "Buy from the UK", type=ElementType.LINK
+        ),
         "contact": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(3) > a"),
         # "get started": Selector(By.CSS_SELECTOR, "#content > div > div.atlas-container.atlas-p-b-xl > div > a"),
-        "find investment opportunities": Selector(By.CSS_SELECTOR,
-                                                  "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)"),
-        "find a uk specialist": Selector(By.CSS_SELECTOR,
-                                         "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)"),
-        "buy from the uk": Selector(By.CSS_SELECTOR,
-                                    "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)"),
-        "contact dit": Selector(By.CSS_SELECTOR,
-                                "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(4)"),
+        "find investment opportunities": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)",
+        ),
+        "find a uk specialist": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)",
+        ),
+        "buy from the uk": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)",
+        ),
+        "contact dit": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(4)",
+        ),
     },
     "sectors": {
         "self": Selector(By.ID, "industries"),
@@ -350,12 +355,8 @@ SELECTORS = {
             By.CSS_SELECTOR, "#high-potential-opportunities h2 ~ div > p"
         ),
         "aquaculture": Selector(By.PARTIAL_LINK_TEXT, "Aquaculture"),
-        "lightweight": Selector(
-            By.PARTIAL_LINK_TEXT, "Lightweight structures"
-        ),
-        "photonics": Selector(
-            By.PARTIAL_LINK_TEXT, "Photonics and Microelectronics"
-        ),
+        "lightweight": Selector(By.PARTIAL_LINK_TEXT, "Lightweight structures"),
+        "photonics": Selector(By.PARTIAL_LINK_TEXT, "Photonics and Microelectronics"),
         "rail": Selector(By.PARTIAL_LINK_TEXT, "Rail infrastructure"),
         "space": Selector(By.PARTIAL_LINK_TEXT, "Space"),
         "sustainable packaging": Selector(
@@ -445,6 +446,7 @@ def should_be_here(driver: WebDriver, *, page_name: str = None):
 # def should_be_here(driver: WebDriver):
 #     check_url(driver, URL, exact_match=False)
 
+
 def find_and_click(driver: WebDriver, *, element_selector_name: str):
     find_and_click = find_element(
         driver, find_selector_by_name(SELECTORS, element_selector_name)
@@ -467,7 +469,9 @@ def find_progress_bar(driver: WebDriver, element_name: str):
         div_1_element = article_element.find_element_by_tag_name("div")
         # logging.debug("element_name : " + element_name)
         # logging.debug("div_1_element.text : " + div_1_element.text)
-        if (element_name.lower() in div_1_element.text.lower()) and ("lessons completed" in div_1_element.text.lower()):
+        if (element_name.lower() in div_1_element.text.lower()) and (
+            "lessons completed" in div_1_element.text.lower()
+        ):
             # progress_bar_element = div_1_element.find_element_by_css_selector(".learn__category-content.learn__category-content--progress-bar")
             # logging.debug("progress_bar_element.text : " + progress_bar_element.text)
             # div_element = progress_bar_element.find_element_by_class_name("learn__category-progress")

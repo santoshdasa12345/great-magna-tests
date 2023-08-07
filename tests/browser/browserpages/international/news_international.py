@@ -2,11 +2,6 @@
 """great.gov.uk International EU Exit News Articles List page"""
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -15,6 +10,11 @@ from browserpages.common_actions import (
     find_elements,
     go_to_url,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Updates for non UK companies on EU Exit"
 SERVICE = Service.INTERNATIONAL

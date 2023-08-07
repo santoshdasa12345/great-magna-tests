@@ -3,16 +3,8 @@ import random
 import time
 from types import ModuleType
 from typing import List, Union
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.common import action_chains
-from selenium.webdriver.common.actions import action_builder
 
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -20,21 +12,29 @@ from browserpages.common_actions import (
     check_for_sections,
     check_if_element_is_not_present,
     check_if_element_is_visible,
-    check_url,
-    find_element,
-    find_selector_by_name,
-    find_elements,
-    go_to_url,
-    pick_option,
-    is_element_present,
-    submit_form,
     check_random_radio,
+    check_url,
+    fill_out_email_address,
+    fill_out_input_fields,
+    find_element,
+    find_elements,
+    find_selector_by_name,
+    go_to_url,
+    is_element_present,
+    pick_option,
+    submit_form,
     take_screenshot,
     wait_for_page_load_after_action,
-    fill_out_input_fields,
-    fill_out_email_address
-
 )
+from selenium.webdriver.common import action_chains
+from selenium.webdriver.common.actions import action_builder
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Home"
 SERVICE = Service.GREATMAGNA
@@ -47,15 +47,9 @@ SELECTORS = {
         "uk business": Selector(
             By.XPATH, "//a[@id='great-global-header-domestic-link']"
         ),
-        "dashbaord": Selector(
-            By.CSS_SELECTOR, "#header-sign-out-link"
-        ),
-        "advice": Selector(
-            By.XPATH, "//a[@id='header-advice-desktop']"
-        ),
-        "markets": Selector(
-            By.CSS_SELECTOR, "#header-markets-desktop"
-        ),
+        "dashbaord": Selector(By.CSS_SELECTOR, "#header-sign-out-link"),
+        "advice": Selector(By.XPATH, "//a[@id='header-advice-desktop']"),
+        "markets": Selector(By.CSS_SELECTOR, "#header-markets-desktop"),
         "go to your dashboard": Selector(
             By.XPATH, "//a[contains(text(),'Go to your dashboard')]"
         ),
@@ -69,28 +63,29 @@ SELECTORS = {
             By.XPATH, "//h3[contains(text(),'Make an export plan')]"
         ),
         "i have exported in last 12 months": Selector(
-            By.XPATH, "//label[contains(text(),'I have exported in the last 12 months')]"
+            By.XPATH,
+            "//label[contains(text(),'I have exported in the last 12 months')]",
         ),
         "i have exported before but not in the last 12 months": Selector(
-            By.XPATH, "//label[contains(text(),'I have exported before but not in the last 12 mont')]"
+            By.XPATH,
+            "//label[contains(text(),'I have exported before but not in the last 12 mont')]",
         ),
         "i have never exported but have a product or service": Selector(
-            By.XPATH, "//label[contains(text(),'I have never exported but have a product or servic')]"
+            By.XPATH,
+            "//label[contains(text(),'I have never exported but have a product or servic')]",
         ),
         "i do not have a product or service for export": Selector(
-            By.XPATH, "//label[contains(text(),'I do not have a product or service for export')]"
+            By.XPATH,
+            "//label[contains(text(),'I do not have a product or service for export')]",
         ),
-        "save": Selector(
-            By.XPATH, "//button[contains(text(),'Save')]"
-        ),
+        "save": Selector(By.XPATH, "//button[contains(text(),'Save')]"),
         "go to export plan": Selector(
             By.XPATH, "//a[contains(text(),'Go to export plan')]"
         ),
-        "start": Selector(
-            By.XPATH, "//a[contains(text(),'Start')]"
-        ),
+        "start": Selector(By.XPATH, "//a[contains(text(),'Start')]"),
         "export plan progress bar": Selector(
-            By.XPATH, "//body/main[@id='content']/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]"
+            By.XPATH,
+            "//body/main[@id='content']/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]",
         ),
         "top search again": Selector(
             By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/button"
@@ -99,14 +94,14 @@ SELECTORS = {
             By.XPATH, "//body/div[4]/div/div/form/div[2]/div/div/section/button"
         ),
         "search next button": Selector(
-            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/div/button"
+            By.XPATH,
+            "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/div/button",
         ),
         "save product": Selector(
-            By.XPATH, "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button"
+            By.XPATH,
+            "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button",
         ),
-        "menu home": Selector(
-            By.XPATH, "//span[contains(text(),'Home')]"
-        ),
+        "menu home": Selector(By.XPATH, "//span[contains(text(),'Home')]"),
         "menu learn to export": Selector(
             By.XPATH, "//span[contains(text(),'Learn to export')]"
         ),
@@ -116,19 +111,12 @@ SELECTORS = {
         "menu make an export plan": Selector(
             By.XPATH, "//span[contains(text(),'Make an export plan')]"
         ),
-        "menu advice": Selector(
-            By.XPATH, "//span[contains(text(),'Advice')]"
-        ),
-        "menu markets": Selector(
-            By.XPATH, "//span[contains(text(),'Markets')]"
-        ),
-        "dashboard": Selector(
-            By.XPATH, "//a[contains(text(),'Dashboard')]"
-        ),
+        "menu advice": Selector(By.XPATH, "//span[contains(text(),'Advice')]"),
+        "menu markets": Selector(By.XPATH, "//span[contains(text(),'Markets')]"),
+        "dashboard": Selector(By.XPATH, "//a[contains(text(),'Dashboard')]"),
         "contact us": Selector(
             By.XPATH, "//span[contains(text(),'Make an export plan')]"
         ),
-
     },
 }
 
@@ -173,28 +161,28 @@ def click_skip_walk_through(driver: WebDriver):
 
 
 def click_signout(driver: WebDriver):
-    signout_link = find_element(
-        driver, find_selector_by_name(SELECTORS, "sign out")
-    )
+    signout_link = find_element(driver, find_selector_by_name(SELECTORS, "sign out"))
     signout_link.click()
 
 
 def click_avatar(driver: WebDriver):
-    avatar_btn = find_element(
-        driver, find_selector_by_name(SELECTORS, "avatar")
-    )
+    avatar_btn = find_element(driver, find_selector_by_name(SELECTORS, "avatar"))
     avatar_btn.click()
 
 
 def find_and_select_random_radio_and_click_next(driver: WebDriver):
     parent_div_radio_element = driver.find_element_by_class_name("m-b-xs")
     time.sleep(2)
-    child_radio_div_elements = parent_div_radio_element.find_elements_by_xpath("//input[@type='radio']");
+    child_radio_div_elements = parent_div_radio_element.find_elements_by_xpath(
+        "//input[@type='radio']"
+    )
     RADIO_SELECTORS_DICT = {}
     for index in range(len(child_radio_div_elements)):
         child_radio_element = child_radio_div_elements[index]
         key_name = "radio" + str(index)
-        radio_element_xpath = f"//input[@id='" + str(child_radio_element.get_attribute("id")) + "']"
+        radio_element_xpath = (
+            f"//input[@id='" + str(child_radio_element.get_attribute("id")) + "']"
+        )
         key_value = Selector(By.XPATH, radio_element_xpath, type=ElementType.RADIO)
 
         if index == 0:
@@ -218,14 +206,16 @@ def nextbtnclick(driver: WebDriver):
 
 
 def fill_out_product(driver: WebDriver, products: str):
-    product_btn = find_element(
-        driver, find_selector_by_name(SELECTORS, "product-btn")
-    )
+    product_btn = find_element(driver, find_selector_by_name(SELECTORS, "product-btn"))
     product_btn.click()
 
     try:
-        if driver.find_element_by_css_selector("body > div:nth-child(11) > div > div > button").is_displayed():
-            driver.find_element_by_css_selector("body > div:nth-child(11) > div > div > button").click()
+        if driver.find_element_by_css_selector(
+            "body > div:nth-child(11) > div > div > button"
+        ).is_displayed():
+            driver.find_element_by_css_selector(
+                "body > div:nth-child(11) > div > div > button"
+            ).click()
     except:
         pass
 
@@ -244,7 +234,9 @@ def fill_out_product(driver: WebDriver, products: str):
         # time.sleep(2)
         # driver.find_element_by_xpath(
         #     "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").clear()
-        product_input_text = driver.find_element_by_xpath("//input[@id='input-commodity-name']").text
+        product_input_text = driver.find_element_by_xpath(
+            "//input[@id='input-commodity-name']"
+        ).text
         logging.debug("product_input_text -> " + product_input_text)
         # actions = action_chains(driver)
         # driver.find_element_by_xpath("//input[@id='input-commodity-name']").click()
@@ -261,21 +253,28 @@ def fill_out_product(driver: WebDriver, products: str):
 
         for i in range(len(product_input_text)):
             driver.find_element_by_xpath(
-                "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").sendKeys(
-                Keys.BACKSPACE)
+                "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]"
+            ).sendKeys(Keys.BACKSPACE)
         driver.find_element_by_xpath(
-            "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").send_keys("")
+            "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]"
+        ).send_keys("")
         driver.find_element_by_xpath(
-            "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]").send_keys(products)
+            "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input[1]"
+        ).send_keys(products)
         driver.find_element_by_xpath(
-            "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/button[1]/i[1]").click()
+            "//body/div[3]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/button[1]/i[1]"
+        ).click()
 
         while True:
             find_and_select_random_radio_and_click_next(driver)
             time.sleep(1)  # seconds
             try:
-                if driver.find_element_by_xpath("//button[contains(text(),'Save product')]").is_displayed():
-                    driver.find_element_by_xpath("//button[contains(text(),'Save product')]").click()
+                if driver.find_element_by_xpath(
+                    "//button[contains(text(),'Save product')]"
+                ).is_displayed():
+                    driver.find_element_by_xpath(
+                        "//button[contains(text(),'Save product')]"
+                    ).click()
                     break
                 else:
                     continue
@@ -284,7 +283,9 @@ def fill_out_product(driver: WebDriver, products: str):
     except Exception as ex:
         logging.debug("Exception in product input " + str(ex))
         driver.find_element_by_css_selector("#input-commodity-name").send_keys(products)
-        driver.find_element_by_xpath("/html/body/div[3]/div/div/form/div[2]/div/div/section/div/button").click()
+        driver.find_element_by_xpath(
+            "/html/body/div[3]/div/div/form/div[2]/div/div/section/div/button"
+        ).click()
 
 
 def fill_out_country(driver: WebDriver, country: str):
@@ -299,39 +300,54 @@ def fill_out_country(driver: WebDriver, country: str):
 
     try:
         time.sleep(1)
-        if driver.find_element_by_css_selector("body > div:nth-child(11) > div > div > button").is_displayed():
-            driver.find_element_by_css_selector("body > div:nth-child(11) > div > div > button").click()
+        if driver.find_element_by_css_selector(
+            "body > div:nth-child(11) > div > div > button"
+        ).is_displayed():
+            driver.find_element_by_css_selector(
+                "body > div:nth-child(11) > div > div > button"
+            ).click()
     except:
         pass
 
     try:
-        if driver.find_element_by_xpath("//button[contains(text(),'Got it')]").is_displayed():
+        if driver.find_element_by_xpath(
+            "//button[contains(text(),'Got it')]"
+        ).is_displayed():
             driver.find_element_by_xpath("//button[contains(text(),'Got it')]").click()
     except:
         pass
 
     # country
     time.sleep(1)
-    country_btn = find_element(
-        driver, find_selector_by_name(SELECTORS, "country-btn")
-    )
+    country_btn = find_element(driver, find_selector_by_name(SELECTORS, "country-btn"))
     country_btn.click()
     try:
         time.sleep(1)
-        if driver.find_element_by_css_selector("body > div:nth-child(14) > div > div > button").is_displayed():
-            driver.find_element_by_css_selector("body > div:nth-child(14) > div > div > button").click()
+        if driver.find_element_by_css_selector(
+            "body > div:nth-child(14) > div > div > button"
+        ).is_displayed():
+            driver.find_element_by_css_selector(
+                "body > div:nth-child(14) > div > div > button"
+            ).click()
     except:
         pass
 
     time.sleep(1)
     if 0 == len(country):
-        path_random_country_element = "body > div:nth-child(13) > div > div > div > div > div > div.only-desktop > div.suggested-markets > ul > button:nth-child(" + str(
-            random.randint(1, 5)) + ")"
+        path_random_country_element = (
+            "body > div:nth-child(13) > div > div > div > div > div > div.only-desktop > div.suggested-markets > ul > button:nth-child("
+            + str(random.randint(1, 5))
+            + ")"
+        )
         driver.find_element_by_css_selector(path_random_country_element).click()
     else:
         try:
-            if driver.find_element_by_xpath("//button[contains(text(),'Got it')]").is_displayed():
-                driver.find_element_by_xpath("//button[contains(text(),'Got it')]").click()
+            if driver.find_element_by_xpath(
+                "//button[contains(text(),'Got it')]"
+            ).is_displayed():
+                driver.find_element_by_xpath(
+                    "//button[contains(text(),'Got it')]"
+                ).click()
         except:
             pass
         driver.find_element_by_css_selector("#search-input").clear()
@@ -364,14 +380,18 @@ def fill_out_products(driver: WebDriver, products: str):
     # details_dict = {"emailaddress": products}
     # product_selectors = SELECTORS["dashboard"]
     # fill_out_input_fields(driver, product_selectors, details_dict)
-    product_btn = find_element(
-        driver, find_selector_by_name(SELECTORS, "product-btn")
-    )
+    product_btn = find_element(driver, find_selector_by_name(SELECTORS, "product-btn"))
     product_btn.click()
     driver.implicitly_wait(1)
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").clear()
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").send_keys(products)
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/button").click()
+    driver.find_element_by_xpath(
+        "//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input"
+    ).clear()
+    driver.find_element_by_xpath(
+        "//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input"
+    ).send_keys(products)
+    driver.find_element_by_xpath(
+        "//body/div[4]/div/div/form/div[2]/div/div/div[2]/button"
+    ).click()
     time.sleep(5)
 
 
@@ -380,9 +400,7 @@ def click_on_i_have_exported_in_the_last_12_months(driver: WebDriver):
         driver, find_selector_by_name(SELECTORS, "i have exported in last 12 months")
     )
     click_element.click()
-    save = find_element(
-        driver, find_selector_by_name(SELECTORS, "save")
-    )
+    save = find_element(driver, find_selector_by_name(SELECTORS, "save"))
     save.click()
 
 
@@ -403,16 +421,19 @@ def search_again_top_bottom(driver: WebDriver):
 
 
 def select_product_search_again_top_bottom(driver: WebDriver, product_name: str):
-    product_btn = find_element(
-        driver, find_selector_by_name(SELECTORS, "product-btn")
-    )
+    product_btn = find_element(driver, find_selector_by_name(SELECTORS, "product-btn"))
     product_btn.click()
     search_again_top_bottom(driver)
     driver.implicitly_wait(1)
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").clear()
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input").send_keys(
-        product_name)
-    driver.find_element_by_xpath("//body/div[4]/div/div/form/div[2]/div/div/div[2]/button").click()
+    driver.find_element_by_xpath(
+        "//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input"
+    ).clear()
+    driver.find_element_by_xpath(
+        "//body/div[4]/div/div/form/div[2]/div/div/div[2]/label/div/input"
+    ).send_keys(product_name)
+    driver.find_element_by_xpath(
+        "//body/div[4]/div/div/form/div[2]/div/div/div[2]/button"
+    ).click()
 
 
 def search_select_save_random_next(driver: WebDriver):
@@ -421,37 +442,45 @@ def search_select_save_random_next(driver: WebDriver):
     while True:
         try:
             driver.implicitly_wait(1)
-            logging.debug('Counter -> ' + str(counter))
+            logging.debug("Counter -> " + str(counter))
 
             parent_div_element = driver.find_element_by_xpath(
-                "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/div/div")
+                "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div/div/div"
+            )
             label_elements = parent_div_element.find_elements_by_tag_name("label")
-            logging.debug('number of labels - ' + str(len(label_elements)))
+            logging.debug("number of labels - " + str(len(label_elements)))
             radio_elements = []
             for label_element in label_elements:
                 try:
                     radio_ele = label_element.find_element_by_tag_name("input")
                     radio_elements.append(radio_ele)
                 except Exception as ex:
-                    logging.error('Érror selecting correct label -> ' + str(ex))
+                    logging.error("Érror selecting correct label -> " + str(ex))
                     pass
 
             random_label_index = random.randint(0, len(radio_elements) - 1)
-            logging.debug('Index of radio buttons to be selected - ' + str(random_label_index))
+            logging.debug(
+                "Index of radio buttons to be selected - " + str(random_label_index)
+            )
             if random_label_index <= len(radio_elements):
                 # label_elements[random_label_index]
                 for index, random_radio_element in enumerate(radio_elements):
                     if random_label_index == index:
-                        logging.debug('Selecting Index of radio buttons - ' + str(index))
+                        logging.debug(
+                            "Selecting Index of radio buttons - " + str(index)
+                        )
                         random_radio_element.click()
                         try:
                             driver.implicitly_wait(1)
                             search_next_btn = find_element(
-                                driver, find_selector_by_name(SELECTORS, "search next button")
+                                driver,
+                                find_selector_by_name(SELECTORS, "search next button"),
                             )
                             search_next_btn.click()
                         except Exception as ex:
-                            logging.error('Exception while clicking Next button - ' + str(ex))
+                            logging.error(
+                                "Exception while clicking Next button - " + str(ex)
+                            )
                             break
                         counter += 1
         except Exception as ex:

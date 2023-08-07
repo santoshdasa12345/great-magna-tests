@@ -5,11 +5,6 @@ from types import ModuleType
 from typing import List, Union
 from uuid import uuid4
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType
 from browserpages.common_actions import (
     Actor,
@@ -22,6 +17,11 @@ from browserpages.common_actions import (
     tick_checkboxes,
 )
 from browserpages.profile import enrol_account_created
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Enter your details (LTD, PLC or Royal Charter)"
 SERVICE = Service.PROFILE

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from random import choice
 
+import allure
 from rest_framework.status import HTTP_200_OK
 
-import allure
 from directory_tests_shared import URLs
 from directory_tests_shared.constants import SECTORS
 from directory_tests_shared.utils import rare_word

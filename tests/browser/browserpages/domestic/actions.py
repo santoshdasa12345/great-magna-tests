@@ -2,17 +2,22 @@
 """Common Actions for Domestic Page Objects"""
 import logging
 
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared.constants import MD5_CHECKSUM_DIT_FAVICON
 from browserpages.common_actions import (
     check_hash_of_remote_file,
     find_element,
     find_selector_by_name,
     wait_for_page_load_after_action,
 )
-from browserpages.common_selectors import DOMESTIC_HEADER, EXOPPS_FAVICON, FAVICON, LOGOS
+from browserpages.common_selectors import (
+    DOMESTIC_HEADER,
+    EXOPPS_FAVICON,
+    FAVICON,
+    LOGOS,
+)
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared.constants import MD5_CHECKSUM_DIT_FAVICON
 
 
 def search(driver: WebDriver, phrase: str):

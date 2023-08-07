@@ -2,9 +2,9 @@
 from collections import namedtuple
 from random import choice, randint
 
+from directory_constants.cms import EXPORT_READINESS, FIND_A_SUPPLIER, INVEST
 from locust import TaskSet, between, task
 
-from directory_constants.cms import EXPORT_READINESS, FIND_A_SUPPLIER, INVEST
 from directory_tests_shared import URLs, settings
 from directory_tests_shared.constants import LOAD_TESTS_USER_AGENT
 from tests.load.cms_helpers import CMSAPIAuthClientMixin, get_page_types

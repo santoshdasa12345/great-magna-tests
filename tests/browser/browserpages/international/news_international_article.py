@@ -2,13 +2,13 @@
 """great.gov.uk International EU Exit News Article page"""
 import random
 
+from browserpages import common_selectors
+from browserpages.common_actions import Selector, check_url, find_elements
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages import common_selectors
-from browserpages.common_actions import Selector, check_url, find_elements
 
 NAME = "International EU Exit news"
 SERVICE = Service.INTERNATIONAL

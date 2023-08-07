@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+import allure
 import pytest
 from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND
 
-import allure
 from directory_tests_shared import URLs
 from directory_tests_shared.clients import CMS_API_CLIENT
 from tests.smoke.cms_api_helpers import (
@@ -35,6 +35,7 @@ def test_wagtail_get_pages():
     endpoint = URLs.CMS_API_PAGES.relative
     response = CMS_API_CLIENT.get(endpoint)
     assert response.status_code == HTTP_200_OK, status_error(HTTP_200_OK, response)
+
 
 @pytest.mark.cms
 @pytest.mark.dev

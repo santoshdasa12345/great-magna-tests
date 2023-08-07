@@ -5,12 +5,6 @@ import random
 from types import ModuleType
 from typing import Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Actor,
@@ -23,6 +17,12 @@ from browserpages.common_actions import (
     tick_checkboxes,
 )
 from browserpages.domestic import contact_us_soo_2_about_your_business
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Contact details (SOO)"
 SERVICE = Service.DOMESTIC

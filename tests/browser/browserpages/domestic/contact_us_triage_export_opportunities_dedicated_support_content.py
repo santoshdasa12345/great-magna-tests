@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """Domestic - Domestic Contact us - Great.gov.uk account"""
+from browserpages import ElementType
+from browserpages.common_actions import Selector, check_url, go_to_url
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages import ElementType
-from browserpages.common_actions import Selector, check_url, go_to_url
 
 NAME = "Export opportunities service"
 NAMES = [

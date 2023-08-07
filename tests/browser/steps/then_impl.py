@@ -1,42 +1,18 @@
 # -*- coding: utf-8 -*-
 """Then step implementations."""
 import logging
+import time
 from collections import defaultdict
 from inspect import signature
 from typing import List, Union
 from urllib.parse import urlparse
-import time
+
 import requests
 from behave.model import Table
 from behave.runner import Context
-from datadiff import diff
-from retrying import retry
-from selenium.common.exceptions import NoSuchElementException, WebDriverException
-from selenium.webdriver.common.by import By
-
-from great_magna_tests_shared.utils import blue, check_for_errors, get_comparison_details
-from great_magna_tests_shared.clients import (
-    BASIC_AUTHENTICATOR,
-    DIRECTORY_TEST_API_CLIENT,
-)
-from great_magna_tests_shared.constants import (
-    EMAIL_ERP_PROGRESS_SAVED_MSG_SUBJECT,
-    FORMS_API_MAILBOXES,
-    HPO_AGENT_EMAIL_ADDRESS,
-    HPO_AGENT_EMAIL_SUBJECT,
-    HPO_ENQUIRY_CONFIRMATION_SUBJECT,
-    HPO_PDF_URLS,
-)
-from great_magna_tests_shared.gov_notify import (
-    get_email_confirmation_notification,
-    get_email_confirmations_with_matching_string,
-    get_verification_link,
-)
-from great_magna_tests_shared.pdf import extract_text_from_pdf
-from browserpages import (
+from browserpages import (  # erp,
     common_language_selector,
     domestic,
-    # erp,
     fas,
     get_page_object,
     invest,
@@ -55,7 +31,6 @@ from browserpages.common_actions import (
     update_actor,
 )
 from browserpages.domestic import contact_us_office_finder_search_results
-from steps import has_action
 from browserutils.browser import clear_driver_cookies
 from browserutils.forms_api import (
     find_form_submissions,
@@ -67,6 +42,35 @@ from browserutils.gtm import (
     get_gtm_data_layer_properties,
     replace_string_representations,
 )
+from datadiff import diff
+from retrying import retry
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from selenium.webdriver.common.by import By
+
+from great_magna_tests_shared.clients import (
+    BASIC_AUTHENTICATOR,
+    DIRECTORY_TEST_API_CLIENT,
+)
+from great_magna_tests_shared.constants import (
+    EMAIL_ERP_PROGRESS_SAVED_MSG_SUBJECT,
+    FORMS_API_MAILBOXES,
+    HPO_AGENT_EMAIL_ADDRESS,
+    HPO_AGENT_EMAIL_SUBJECT,
+    HPO_ENQUIRY_CONFIRMATION_SUBJECT,
+    HPO_PDF_URLS,
+)
+from great_magna_tests_shared.gov_notify import (
+    get_email_confirmation_notification,
+    get_email_confirmations_with_matching_string,
+    get_verification_link,
+)
+from great_magna_tests_shared.pdf import extract_text_from_pdf
+from great_magna_tests_shared.utils import (
+    blue,
+    check_for_errors,
+    get_comparison_details,
+)
+from steps import has_action
 
 
 def should_be_on_page(context: Context, actor_alias: str, page_name: str):
@@ -94,31 +98,35 @@ def should_be_on_page(context: Context, actor_alias: str, page_name: str):
     )
 
 
-def should_be_able_to_see_error_message(context, actor_alias, element_name, expected_error_message):
+def should_be_able_to_see_error_message(
+    context, actor_alias, element_name, expected_error_message
+):
     default_page = "GreatMagna - Login"
     page = get_page_object(default_page)
     has_action(page, "should_be_error_message")
-    if page.should_be_error_message(context.driver, element_name, expected_error_message) == False:
+    if (
+        page.should_be_error_message(
+            context.driver, element_name, expected_error_message
+        )
+        == False
+    ):
         error = f"Error message not found on the page {page.NAME}"
         assert False, error
 
 
-def actor_decides_to_check_random_radio_and_click_on_continue(
-        context, actor_alias):
+def actor_decides_to_check_random_radio_and_click_on_continue(context, actor_alias):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "find_and_select_random_radio_and_click_continue")
     page.find_and_select_random_radio_and_click_continue(context.driver)
 
 
-def actor_decides_to_click_country_name_change(
-        context, actor_alias, element_name):
+def actor_decides_to_click_country_name_change(context, actor_alias, element_name):
     page = get_page_object("ImportTariff - CheckYourAnswers")
     has_action(page, "find_and_click_change_link")
     page.find_and_click_change_link(context.driver, "country_name_change")
 
 
-def actor_decides_to_click_product_search_change(
-        context, actor_alias, element_name):
+def actor_decides_to_click_product_search_change(context, actor_alias, element_name):
     page = get_page_object("ImportTariff - CheckYourAnswers")
     has_action(page, "find_and_click_change_link")
     current_url = context.driver.current_url
@@ -129,28 +137,26 @@ def actor_decides_to_click_product_search_change(
 
 
 def actor_decides_to_click_refine_interaction_change(
-        context, actor_alias, element_name):
+    context, actor_alias, element_name
+):
     page = get_page_object("ImportTariff - CheckYourAnswers")
     has_action(page, "find_elements_and_click_change_link")
     page.find_elements_and_click_change_link(context.driver, "refine")
 
 
-def actor_decides_to_click_trade_data_change(
-        context, actor_alias, element_name):
+def actor_decides_to_click_trade_data_change(context, actor_alias, element_name):
     page = get_page_object("ImportTariff - CheckYourAnswers")
     has_action(page, "find_elements_and_click_change_link")
     page.find_elements_and_click_change_link(context.driver, "tradedata")
 
 
-def actor_decides_to_click_proceed(
-        context, actor_alias, element_name):
+def actor_decides_to_click_proceed(context, actor_alias, element_name):
     page = get_page_object("ImportTariff - CheckYourAnswers")
     has_action(page, "find_and_click_change_link")
     page.find_and_click_change_link(context.driver, "submit")
 
 
-def actor_should_be_able_to_see_comodity_code(
-        context, actor_alias, code, product):
+def actor_should_be_able_to_see_comodity_code(context, actor_alias, code, product):
     page = get_page_object("ImportTariff - Confirmation Code")
     has_action(page, "find_and_select_comodity_code")
     if page.find_and_select_comodity_code(context.driver, code, product) == False:
@@ -158,15 +164,19 @@ def actor_should_be_able_to_see_comodity_code(
         assert False, error
 
 
-def actor_clicked_on_start_again(
-        context, actor_alias, keyword_to_click):
+def actor_clicked_on_start_again(context, actor_alias, keyword_to_click):
     page = get_page_object("ImportTariff - Confirmation Code")
     has_action(page, "find_and_click_start_again")
     page.find_and_click_start_again(context.driver, keyword_to_click)
 
 
-def should_see_following_sections(context: Context, actor_alias: str, sections_table: Table = None, *,
-                                  sections_list: list = None, ):
+def should_see_following_sections(
+    context: Context,
+    actor_alias: str,
+    sections_table: Table = None,
+    *,
+    sections_list: list = None,
+):
     sections = sections_list or [row[0] for row in sections_table]
     logging.debug(
         "%s will look for following sections: '%s' on %s",
@@ -180,15 +190,17 @@ def should_see_following_sections(context: Context, actor_alias: str, sections_t
     page.should_see_following_sections(context.driver, sections)
 
 
-def actor_should_be_able_to_see_confirmation_code_page_from_email_password_and_enter_code(context: Context
-                                                                                          , email_address: str,
-                                                                                          password: str):
+def actor_should_be_able_to_see_confirmation_code_page_from_email_password_and_enter_code(
+    context: Context, email_address: str, password: str
+):
     page = get_page_object("GreatMagna - Sign Up")
     has_action(page, "confirmation_code")
     page.confirmation_code(context.driver, email_address, password)
 
 
-def actor_decides_to_enter_email_address_and_click_on_reset_password(context: Context, email_address: str):
+def actor_decides_to_enter_email_address_and_click_on_reset_password(
+    context: Context, email_address: str
+):
     page = get_page_object("GreatMagna - forgotten password")
     has_action(page, "fill_out_email_address")
     details_dict = {"emailaddress": email_address}
@@ -196,10 +208,17 @@ def actor_decides_to_enter_email_address_and_click_on_reset_password(context: Co
 
 
 def actor_should_be_able_to_click_on_reset_password_link_from_email_password_and_enters_new_password_and_confirm(
-        context: Context, actor_alias: str, email_address: str, password: str, new_password: str):
+    context: Context,
+    actor_alias: str,
+    email_address: str,
+    password: str,
+    new_password: str,
+):
     page = get_page_object("GreatMagna - forgotten password")
     has_action(page, "read_reset_password_email")
-    page.read_reset_password_email(context.driver, email_address, password, new_password)
+    page.read_reset_password_email(
+        context.driver, email_address, password, new_password
+    )
 
 
 def actor_should_be_able_to_enter_products_and_country(context, products, country):
@@ -233,7 +252,8 @@ def actor_decides_to_click_checkbox_section_complete(context, page_name: str):
 
 
 def actor_decides_to_click_continue_for_number_of_times_until_it_reaches_required_page(
-        context, actor_alias, max_number_pages, from_page_name, to_page_name):
+    context, actor_alias, max_number_pages, from_page_name, to_page_name
+):
     counter = 0
     while counter < int(max_number_pages):
         page = get_page_object(from_page_name)
@@ -250,13 +270,16 @@ def actor_decides_to_click_continue_for_number_of_times_until_it_reaches_require
 
 
 def actor_decides_to_click_open_case_study_in_all_lessons_for_number_of_times_until_it_reaches_required_page(
-        context, actor_alias, max_number_pages, from_page_name, to_page_name, element_name):
+    context, actor_alias, max_number_pages, from_page_name, to_page_name, element_name
+):
     counter = 0
     while counter < int(max_number_pages):
         page = get_page_object(from_page_name)
         # logging.debug("visiting page  - "+ page.NAME)
         has_action(page, "find_and_click")
-        page.find_and_click_case_study(context.driver, element_selector_name="open case study")
+        page.find_and_click_case_study(
+            context.driver, element_selector_name="open case study"
+        )
         current_page_url = str(context.driver.current_url)
         # logging.debug("Last visited page - "+current_page_url)
         # time.sleep(1)
@@ -265,7 +288,9 @@ def actor_decides_to_click_open_case_study_in_all_lessons_for_number_of_times_un
             break
 
 
-def actor_should_be_able_to_see_progress_bar_for_section(context, actor_alias, element_name, page_name):
+def actor_should_be_able_to_see_progress_bar_for_section(
+    context, actor_alias, element_name, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "find_progress_bar")
     page.find_progress_bar(context.driver, element_name)
@@ -290,91 +315,120 @@ def actor_decides_to_select_random_item_list_on_page(context, element_name, page
     has_action(page, "find_and_select_random_item_list")
     page.find_and_select_random_item_list(context.driver, element_name)
 
-def actor_decides_to_select_random_payment_methods_list_on_page(context,page_name):
+
+def actor_decides_to_select_random_payment_methods_list_on_page(context, page_name):
     page = get_page_object(page_name)
     has_action(page, "find_and_select_random_payment_methods")
     page.find_and_select_random_payment_methods(context.driver)
 
-def actor_decides_to_select_random_payment_terms_on_page(context,page_name):
+
+def actor_decides_to_select_random_payment_terms_on_page(context, page_name):
     page = get_page_object(page_name)
     has_action(page, "find_and_select_random_payment_terms")
     page.find_and_select_random_payment_terms(context.driver)
 
 
-def actor_decides_to_select_random_item_incoterms(context,page_name):
+def actor_decides_to_select_random_item_incoterms(context, page_name):
     page = get_page_object(page_name)
     has_action(page, "find_and_select_random_incoterms")
     page.find_and_select_random_incoterms(context.driver)
 
 
-def actor_decides_to_select_random_unit_list_on_page(context, actor_alias, element_name, page_name):
+def actor_decides_to_select_random_unit_list_on_page(
+    context, actor_alias, element_name, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "find_and_select_random_unit_list")
     page.find_and_select_random_unit_list(context.driver, element_name)
 
 
-def actor_decides_to_select_random_time_from_list_on_page(context, actor_alias, element_name, page_name):
+def actor_decides_to_select_random_time_from_list_on_page(
+    context, actor_alias, element_name, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "find_and_select_random_time_list")
     page.find_and_select_random_time_list(context.driver, element_name)
 
 
-def actor_decides_to_select_random_currency_from_list_on_page(context, actor_alias, element_name, page_name):
+def actor_decides_to_select_random_currency_from_list_on_page(
+    context, actor_alias, element_name, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "find_and_select_random_currency_list")
     page.find_and_select_random_currency_list(context.driver, element_name)
 
 
-def actor_fill_business_objectives_details_on_page(context, actor_alias, position, objectives,
-                                                   owner, plannedreviews, page_name, element_name):
+def actor_fill_business_objectives_details_on_page(
+    context,
+    actor_alias,
+    position,
+    objectives,
+    owner,
+    plannedreviews,
+    page_name,
+    element_name,
+):
     page = get_page_object(page_name)
     has_action(page, "enter_business_objectives_details")
-    page.enter_business_objectives_details(context.driver, position, objectives, owner,
-                                           plannedreviews, element_name)
+    page.enter_business_objectives_details(
+        context.driver, position, objectives, owner, plannedreviews, element_name
+    )
 
 
-def actor_decides_to_delete_business_objectives_on_page(context, actor_alias, position, page_name):
+def actor_decides_to_delete_business_objectives_on_page(
+    context, actor_alias, position, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "delete_all_business_objectives")
     page.delete_all_business_objectives(context.driver, position)
 
 
-def actor_decides_to_delete_risk_details_on_page(context, actor_alias, position, page_name):
+def actor_decides_to_delete_risk_details_on_page(
+    context, actor_alias, position, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "delete_all_risk_details")
     page.delete_all_risk_details(context.driver, position)
 
 
-def actor_fill_risk_details_on_page(context, actor_alias, position, risktext, contingencyplan, page_name):
+def actor_fill_risk_details_on_page(
+    context, actor_alias, position, risktext, contingencyplan, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "enter_risk_details")
     page.enter_risk_details(context.driver, position, risktext, contingencyplan)
 
 
-def actor_decides_to_delete_country_details_on_page(context, actor_alias, position, page_name):
+def actor_decides_to_delete_country_details_on_page(
+    context, actor_alias, position, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "delete_all_country_details")
     page.delete_all_country_details(context.driver, position)
 
 
-def actor_decides_to_delete_route_to_market_on_page(context, actor_alias, position, page_name):
+def actor_decides_to_delete_route_to_market_on_page(
+    context, actor_alias, position, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "delete_all_route_to_market")
     page.delete_all_route_to_market(context.driver, position)
 
 
-def actor_decides_to_delete_funding_options_on_page(context, actor_alias, position, page_name):
+def actor_decides_to_delete_funding_options_on_page(
+    context, actor_alias, position, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "delete_all_funding_options")
     page.delete_all_funding_options(context.driver, position)
 
 
 def should_see_sections(
-        context: Context,
-        actor_alias: str,
-        sections_table: Table = None,
-        *,
-        sections_list: list = None,
+    context: Context,
+    actor_alias: str,
+    sections_table: Table = None,
+    *,
+    sections_list: list = None,
 ):
     sections = sections_list or [row[0] for row in sections_table]
     logging.debug(
@@ -388,7 +442,9 @@ def should_see_sections(
     page.should_see_sections(context.driver, sections)
 
 
-def actor_decides_to_select_random_checkbox_on_page(context, actor_alias, element_name, page_name):
+def actor_decides_to_select_random_checkbox_on_page(
+    context, actor_alias, element_name, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "random_select_checkbox")
     page.random_select_checkbox(context.driver, element_name)
@@ -400,33 +456,55 @@ def actor_decides_to_enter_value(context, element_name, page_name):
     page.enter_value(context.driver, element_name)
 
 
-def actor_fill_document_details_on_page(context, actor_alias, position, documentname, notes, page_name):
+def actor_fill_document_details_on_page(
+    context, actor_alias, position, documentname, notes, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "enter_document_details")
     page.enter_document_details(context.driver, position, documentname, notes)
 
 
-def actor_decides_to_delete_document_details_on_page(context, actor_alias, position, page_name):
+def actor_decides_to_delete_document_details_on_page(
+    context, actor_alias, position, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "delete_all_document_details")
     page.delete_all_document_details(context.driver, position)
 
 
-def actor_enters_direct_costs_on_page(context, actor_alias, productcost, labourcost, additionalmargin, page_name):
+def actor_enters_direct_costs_on_page(
+    context, actor_alias, productcost, labourcost, additionalmargin, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "enter_direct_costs")
     page.enter_direct_costs(context.driver, productcost, labourcost, additionalmargin)
 
 
-def actor_enters_overhead_costs_on_page(context, actor_alias, productadaptation, freightandlogistics,
-                                        agentanddistributionfees, marketing, finance, page_name):
+def actor_enters_overhead_costs_on_page(
+    context,
+    actor_alias,
+    productadaptation,
+    freightandlogistics,
+    agentanddistributionfees,
+    marketing,
+    finance,
+    page_name,
+):
     page = get_page_object(page_name)
     has_action(page, "enter_overhead_costs")
-    page.enter_overhead_costs(context.driver, productadaptation, freightandlogistics, agentanddistributionfees,
-                              marketing, finance)
+    page.enter_overhead_costs(
+        context.driver,
+        productadaptation,
+        freightandlogistics,
+        agentanddistributionfees,
+        marketing,
+        finance,
+    )
 
 
-def actor_decides_to_select_funding_options_on_page(context, actor_alias, position, amount, page_name):
+def actor_decides_to_select_funding_options_on_page(
+    context, actor_alias, position, amount, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "find_and_select_random_funding_options")
     page.find_and_select_random_funding_options(context.driver, position, amount)
@@ -446,8 +524,7 @@ def actor_decides_to_enter_country_name(context, actor_alias, country_name, page
     page.fill_out_country(context.driver, country=country_name)
 
 
-def actor_should_be_able_to_click_on_skipwalkthrough(
-        context, actor_alias):
+def actor_should_be_able_to_click_on_skipwalkthrough(context, actor_alias):
     # time.sleep(5)
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "click_skip_walk_through")
@@ -457,7 +534,8 @@ def actor_should_be_able_to_click_on_skipwalkthrough(
 
 
 def actor_should_be_able_to_click_on_i_have_exported_in_the_last_12_months(
-        context, actor_alias):
+    context, actor_alias
+):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "click_on_i_have_exported_in_the_last_12_months")
     page.click_on_i_have_exported_in_the_last_12_months(context.driver)
@@ -469,25 +547,33 @@ def actor_decides_to_click_on_search_again(context, actor_alias, page_name):
     page.search_again_top_bottom(context.driver)
 
 
-def actor_decides_to_click_on_product_and_search_again(context, actor_alias, product_name, page_name):
+def actor_decides_to_click_on_product_and_search_again(
+    context, actor_alias, product_name, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "select_product_search_again_top_bottom")
     page.select_product_search_again_top_bottom(context.driver, product_name)
 
 
-def actor_decides_to_click_on_select_save_random_products(context, actor_alias, page_name):
+def actor_decides_to_click_on_select_save_random_products(
+    context, actor_alias, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "search_select_save_random_next")
     page.search_select_save_random_next(context.driver)
 
 
-def actor_fill_trip_details_on_page(context, actor_alias, position, tripname, page_name):
+def actor_fill_trip_details_on_page(
+    context, actor_alias, position, tripname, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "enter_trip_details")
     page.enter_trip_details(context.driver, position, tripname)
 
 
-def actor_decides_to_delete_trip_details_on_page(context, actor_alias, position, page_name):
+def actor_decides_to_delete_trip_details_on_page(
+    context, actor_alias, position, page_name
+):
     page = get_page_object(page_name)
     has_action(page, "delete_all_trip_details")
     page.delete_all_trip_details(context.driver, position)
@@ -499,25 +585,35 @@ def actor_decides_to_select_radio_button(context, element_name, page_name):
     page.select_radio_button(context.driver, element_name=element_name)
 
 
-def actor_decides_to_enter_country_details(context, actor_alias, countryname, country_place_number, country_max
-                                           , display_tab_count, page_name):
+def actor_decides_to_enter_country_details(
+    context,
+    actor_alias,
+    countryname,
+    country_place_number,
+    country_max,
+    display_tab_count,
+    page_name,
+):
     page = get_page_object(page_name)
     has_action(page, "enter_country_details")
-    page.enter_country_details(context.driver, countryname
-                               , country_place_number=int(country_place_number)
-                               , country_max=int(country_max)
-                               , display_tab_count=int(display_tab_count))
+    page.enter_country_details(
+        context.driver,
+        countryname,
+        country_place_number=int(country_place_number),
+        country_max=int(country_max),
+        display_tab_count=int(display_tab_count),
+    )
 
 
 def generic_fill_out_and_submit_form(
-        context: Context,
-        actor_alias: str,
-        *,
-        custom_details_table: Table = None,
-        retry_on_errors: bool = False,
-        go_back: bool = False,
-        form_name: str = None,
-        check_captcha_dev_mode: bool = True,
+    context: Context,
+    actor_alias: str,
+    *,
+    custom_details_table: Table = None,
+    retry_on_errors: bool = False,
+    go_back: bool = False,
+    form_name: str = None,
+    check_captcha_dev_mode: bool = True,
 ):
     if check_captcha_dev_mode:
         assert_catcha_in_dev_mode(context.driver)
@@ -585,14 +681,17 @@ def generic_submit_form(context: Context, actor_alias: str):
     page.submit(context.driver)
 
 
-def actor_should_see_country_details_on_page(context, actor_alias, page_name, on_all_tabs: bool = False):
+def actor_should_see_country_details_on_page(
+    context, actor_alias, page_name, on_all_tabs: bool = False
+):
     page = get_page_object(page_name)
     has_action(page, "check_country_details")
     page.check_country_details(context.driver, on_all_tabs=on_all_tabs)
 
 
-def actor_should_see_last_visited_page_under_section_on_page(context, actor_alias, text_to_see, section_name,
-                                                             page_name):
+def actor_should_see_last_visited_page_under_section_on_page(
+    context, actor_alias, text_to_see, section_name, page_name
+):
     page = get_last_visited_page(context, actor_alias)
     page_to_be_landed = get_page_object(page_name)
     print(page.NAME)
@@ -600,15 +699,24 @@ def actor_should_see_last_visited_page_under_section_on_page(context, actor_alia
         raise Exception("Last visited page is incorrect - " + str(page.NAME))
 
 
-def actor_decides_to_validate_entered_country_details_and_change_from_the_list(context, actor_alias, countryname,
-                                                                               country_place_number, country_max
-                                                                               , list_selection, page_name):
+def actor_decides_to_validate_entered_country_details_and_change_from_the_list(
+    context,
+    actor_alias,
+    countryname,
+    country_place_number,
+    country_max,
+    list_selection,
+    page_name,
+):
     page = get_page_object(page_name)
     has_action(page, "vallidate_entered_country_details")
-    page.validate_entered_country_details(context.driver, countryname
-                                          , country_place_number=int(country_place_number)
-                                          , country_max=int(country_max)
-                                          , list_selection=int(list_selection))
+    page.validate_entered_country_details(
+        context.driver,
+        countryname,
+        country_place_number=int(country_place_number),
+        country_max=int(country_max),
+        list_selection=int(list_selection),
+    )
 
 
 def actor_fills_out_and_submits_the_form(context, actor_alias, page_name):
@@ -618,7 +726,7 @@ def actor_fills_out_and_submits_the_form(context, actor_alias, page_name):
 
 
 def generic_should_be_on_one_of_the_pages(
-        context: Context, actor_alias: str, expected_pages: str
+    context: Context, actor_alias: str, expected_pages: str
 ):
     expected_pages = [page.strip() for page in expected_pages.split(",")]
     urls = [get_page_object(name).URL for name in expected_pages]
@@ -633,23 +741,23 @@ def generic_should_be_on_one_of_the_pages(
             results[page_name] = False
 
     with assertion_msg(
-            f"{actor_alias} expected to land on one of the following pages: {urls}, "
-            f"instead we got to: {context.driver.current_url}"
+        f"{actor_alias} expected to land on one of the following pages: {urls}, "
+        f"instead we got to: {context.driver.current_url}"
     ):
         assert any(list(results.values()))
 
 
 def promo_video_check_watch_time(
-        context: Context, actor_alias: str, expected_watch_time: int
+    context: Context, actor_alias: str, expected_watch_time: int
 ):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "get_video_watch_time")
     watch_time = page.get_video_watch_time(context.driver)
     with assertion_msg(
-            "%s expected to watch at least first '%d' seconds of the video but" " got '%d'",
-            actor_alias,
-            expected_watch_time,
-            watch_time,
+        "%s expected to watch at least first '%d' seconds of the video but" " got '%d'",
+        actor_alias,
+        expected_watch_time,
+        watch_time,
     ):
         assert watch_time >= expected_watch_time
     logging.debug(
@@ -678,7 +786,7 @@ def should_be_on_working_page(context: Context, actor_alias: str):
 
 
 def should_be_on_page_or_be_redirected_to_page(
-        context: Context, actor_alias: str, page_name: str, redirect_page: str
+    context: Context, actor_alias: str, page_name: str, redirect_page: str
 ):
     try:
         should_be_on_page(context, actor_alias, page_name)
@@ -688,11 +796,11 @@ def should_be_on_page_or_be_redirected_to_page(
 
 
 def should_see_sections(
-        context: Context,
-        actor_alias: str,
-        sections_table: Table = None,
-        *,
-        sections_list: list = None,
+    context: Context,
+    actor_alias: str,
+    sections_table: Table = None,
+    *,
+    sections_list: list = None,
 ):
     sections = sections_list or [row[0] for row in sections_table]
     logging.debug(
@@ -707,7 +815,7 @@ def should_see_sections(
 
 
 def should_not_see_sections(
-        context: Context, actor_alias: str, sections_table: Table = None
+    context: Context, actor_alias: str, sections_table: Table = None
 ):
     sections = [row[0] for row in sections_table]
     logging.debug(f"sections {sections}")
@@ -724,11 +832,11 @@ def should_not_see_sections(
 
 
 def should_see_links_in_specific_location(
-        context: Context,
-        actor_alias: str,
-        section: str,
-        links: Union[list, Table],
-        location: str,
+    context: Context,
+    actor_alias: str,
+    section: str,
+    links: Union[list, Table],
+    location: str,
 ):
     page = get_page_object(location)
     has_action(page, "should_see_link_to")
@@ -740,7 +848,7 @@ def should_see_links_in_specific_location(
 
 
 def articles_should_be_on_share_page(
-        context: Context, actor_alias: str, social_media: str
+    context: Context, actor_alias: str, social_media: str
 ):
     page_name = f"{social_media} - share on {social_media}"
     social_media_page = get_page_object(page_name)
@@ -750,7 +858,7 @@ def articles_should_be_on_share_page(
 
 
 def share_page_should_be_prepopulated(
-        context: Context, actor_alias: str, social_media: str
+    context: Context, actor_alias: str, social_media: str
 ):
     page_name = f"{social_media} - share on {social_media}"
     page = get_page_object(page_name)
@@ -766,7 +874,7 @@ def share_page_should_be_prepopulated(
 
 
 def share_page_via_email_should_have_article_details(
-        context: Context, actor_alias: str
+    context: Context, actor_alias: str
 ):
     driver = context.driver
     body = driver.current_url
@@ -782,16 +890,16 @@ def share_page_via_email_should_have_article_details(
 
 
 def promo_video_check_watch_time(
-        context: Context, actor_alias: str, expected_watch_time: int
+    context: Context, actor_alias: str, expected_watch_time: int
 ):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "get_video_watch_time")
     watch_time = page.get_video_watch_time(context.driver)
     with assertion_msg(
-            "%s expected to watch at least first '%d' seconds of the video but" " got '%d'",
-            actor_alias,
-            expected_watch_time,
-            watch_time,
+        "%s expected to watch at least first '%d' seconds of the video but" " got '%d'",
+        actor_alias,
+        expected_watch_time,
+        watch_time,
     ):
         assert watch_time >= expected_watch_time
     logging.debug(
@@ -826,7 +934,7 @@ def language_selector_should_see_it(context: Context, actor_alias: str):
 
 
 def should_see_page_in_preferred_language(
-        context: Context, actor_alias: str, preferred_language: str
+    context: Context, actor_alias: str, preferred_language: str
 ):
     common_language_selector.check_page_language_is(context.driver, preferred_language)
     logging.debug(
@@ -836,7 +944,7 @@ def should_see_page_in_preferred_language(
 
 
 def fas_search_results_filtered_by_industries(
-        context: Context, actor_alias: str, industry_names: List[str]
+    context: Context, actor_alias: str, industry_names: List[str]
 ):
     fas.search_results.should_see_filtered_results(context.driver, industry_names)
     logging.debug(
@@ -848,8 +956,7 @@ def fas_search_results_filtered_by_industries(
 
 
 def generic_should_see_expected_page_content(
-        context: Context, actor_alias: str, expected_page_name: str
-
+    context: Context, actor_alias: str, expected_page_name: str
 ):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "should_see_content_for")
@@ -898,7 +1005,7 @@ def hpo_agent_should_receive_enquiry_email(context: Context, actor_alias: str):
 
 
 def form_check_state_of_element(
-        context: Context, actor_alias: str, element: str, state: str
+    context: Context, actor_alias: str, element: str, state: str
 ):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "check_state_of_form_element")
@@ -910,7 +1017,7 @@ def form_check_state_of_element(
 
 
 def pdf_check_expected_details(
-        context: Context, actor_alias: str, details_table: Table
+    context: Context, actor_alias: str, details_table: Table
 ):
     pdfs = context.pdfs
     pdf_texts = [
@@ -971,7 +1078,7 @@ def generic_should_see_message(context: Context, actor_alias: str, message: str 
 # https://www.browserstack.com/automate/timeouts
 @retry(wait_fixed=5000, stop_max_attempt_number=7, wrap_exception=False)
 def generic_contact_us_should_receive_confirmation_email(
-        context: Context, actor_alias: str, subject: str, *, service: str = None
+    context: Context, actor_alias: str, subject: str, *, service: str = None
 ):
     avoid_browser_stack_idle_timeout_exception(context.driver)
     actor = get_actor(context, actor_alias)
@@ -982,7 +1089,7 @@ def generic_contact_us_should_receive_confirmation_email(
 
 
 def erp_should_receive_email_with_link_to_restore_saved_progress(
-        context: Context, actor_alias: str
+    context: Context, actor_alias: str
 ):
     avoid_browser_stack_idle_timeout_exception(context.driver)
     actor = get_actor(context, actor_alias)
@@ -996,7 +1103,7 @@ def erp_should_receive_email_with_link_to_restore_saved_progress(
 
 
 def generic_contact_us_should_receive_confirmation_email_containing_message(
-        context: Context, actor_alias: str, subject: str, message: str
+    context: Context, actor_alias: str, subject: str, message: str
 ):
     actor = get_actor(context, actor_alias)
     confirmation = get_email_confirmations_with_matching_string(
@@ -1011,7 +1118,7 @@ def generic_contact_us_should_receive_confirmation_email_containing_message(
 
 @retry(wait_fixed=5000, stop_max_attempt_number=5)
 def generic_a_notification_should_be_sent(
-        context: Context, actor_alias: str, action: str, subject: str
+    context: Context, actor_alias: str, action: str, subject: str
 ):
     actor = get_actor(context, actor_alias)
     submissions = find_form_submissions_by_subject_and_action(
@@ -1034,7 +1141,7 @@ def generic_a_notification_should_be_sent(
 
 
 def generic_a_notification_should_be_sent_to_specific_dit_office(
-        context: Context, actor_alias: str, mailbox_name: str
+    context: Context, actor_alias: str, mailbox_name: str
 ):
     actor = get_actor(context, actor_alias)
     mailbox_email = FORMS_API_MAILBOXES[mailbox_name]
@@ -1062,7 +1169,7 @@ def generic_a_notification_should_be_sent_to_specific_dit_office(
 
 
 def generic_a_notification_should_not_be_sent_to_specific_dit_office(
-        context: Context, actor_alias: str, mailbox_name: str
+    context: Context, actor_alias: str, mailbox_name: str
 ):
     actor = get_actor(context, actor_alias)
     forms_data = actor.forms_data
@@ -1107,7 +1214,7 @@ def generic_a_notification_should_not_be_sent_to_specific_dit_office(
 
 
 def generic_should_see_form_choices(
-        context: Context, actor_alias: str, option_names: Table
+    context: Context, actor_alias: str, option_names: Table
 ):
     option_names = [row[0] for row in option_names]
     page = get_last_visited_page(context, actor_alias)
@@ -1116,7 +1223,7 @@ def generic_should_see_form_choices(
 
 
 def office_finder_should_see_correct_office_details(
-        context: Context, actor_alias: str, trade_office: str, city: str
+    context: Context, actor_alias: str, trade_office: str, city: str
 ):
     contact_us_office_finder_search_results.should_see_office_details(
         context.driver, trade_office, city
@@ -1140,7 +1247,7 @@ def forms_confirmation_email_should_not_be_sent(context: Context, actor_alias: s
 
 
 def marketplace_finder_should_see_marketplaces(
-        context: Context, actor_alias: str, country: str
+    context: Context, actor_alias: str, country: str
 ):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "should_see_marketplaces")
@@ -1148,7 +1255,7 @@ def marketplace_finder_should_see_marketplaces(
 
 
 def domestic_search_finder_should_see_page_number(
-        context: Context, actor_alias: str, page_num: int
+    context: Context, actor_alias: str, page_num: int
 ):
     should_be_on_page(
         context,
@@ -1161,7 +1268,7 @@ def domestic_search_finder_should_see_page_number(
 
 
 def generic_should_be_on_one_of_the_pages(
-        context: Context, actor_alias: str, expected_pages: str
+    context: Context, actor_alias: str, expected_pages: str
 ):
     expected_pages = [page.strip() for page in expected_pages.split(",")]
     urls = [get_page_object(name).URL for name in expected_pages]
@@ -1176,8 +1283,8 @@ def generic_should_be_on_one_of_the_pages(
             results[page_name] = False
 
     with assertion_msg(
-            f"{actor_alias} expected to land on one of the following pages: {urls}, "
-            f"instead we got to: {context.driver.current_url}"
+        f"{actor_alias} expected to land on one of the following pages: {urls}, "
+        f"instead we got to: {context.driver.current_url}"
     ):
         assert any(list(results.values()))
 
@@ -1195,7 +1302,7 @@ def soo_contact_form_should_be_prepopulated(context: Context, actor_alias: str):
 
 
 def generic_should_see_prepopulated_fields(
-        context: Context, actor_alias: str, table: Table
+    context: Context, actor_alias: str, table: Table
 ):
     table.require_columns(["form", "fields"])
     expected_form_fields = {
@@ -1241,10 +1348,10 @@ def generic_check_gtm_datalayer_properties(context: Context, table: Table):
     found_properties = get_gtm_data_layer_properties(context.driver)
 
     with assertion_msg(
-            f"Expected to see following GTM data layer properties:\n"
-            f"'{expected_properties}'\n but got:\n'{found_properties}'\non: "
-            f"{context.driver.current_url}\ndiff:\n"
-            f"{diff(expected_properties, found_properties)}"
+        f"Expected to see following GTM data layer properties:\n"
+        f"'{expected_properties}'\n but got:\n'{found_properties}'\non: "
+        f"{context.driver.current_url}\ndiff:\n"
+        f"{diff(expected_properties, found_properties)}"
     ):
         assert expected_properties == found_properties
 
@@ -1278,17 +1385,17 @@ def generic_check_gtm_events(context: Context):
         event for event in expected_gtm_events if event not in registered_gtm_events
     ]
     with assertion_msg(
-            f"Could not find following GTM events:\n{missing_events}\n"
-            f"among following GTM events:\n{registered_gtm_events}\n"
-            f"registered on: {context.driver.current_url}\n"
-            f"Diff:\n{diff(expected_gtm_events, registered_gtm_events)}"
+        f"Could not find following GTM events:\n{missing_events}\n"
+        f"among following GTM events:\n{registered_gtm_events}\n"
+        f"registered on: {context.driver.current_url}\n"
+        f"Diff:\n{diff(expected_gtm_events, registered_gtm_events)}"
     ):
         assert not missing_events
 
     with assertion_msg(
-            f"Expected to find {len(expected_gtm_events)} registered GTM event(s) but "
-            f"found {len(registered_gtm_events)} instead: "
-            f"{registered_gtm_events}"
+        f"Expected to find {len(expected_gtm_events)} registered GTM event(s) but "
+        f"found {len(registered_gtm_events)} instead: "
+        f"{registered_gtm_events}"
     ):
         assert len(expected_gtm_events) == len(registered_gtm_events)
 
@@ -1344,7 +1451,7 @@ def generic_should_be_able_to_print(context: Context, actor_alias: str):
 
 
 def erp_should_see_number_of_product_codes_to_select(
-        context: Context, actor_alias: str, comparison_description: str
+    context: Context, actor_alias: str, comparison_description: str
 ):
     comparison_details = get_comparison_details(comparison_description)
 
@@ -1361,7 +1468,7 @@ def erp_should_see_number_of_product_codes_to_select(
 
 
 def erp_should_see_number_of_product_categories_to_expand(
-        context: Context, actor_alias: str, comparison_description: str
+    context: Context, actor_alias: str, comparison_description: str
 ):
     comparison_details = get_comparison_details(comparison_description)
 
@@ -1385,14 +1492,16 @@ def erp_should_see_number_of_product_categories_to_expand(
 #     )
 #     logging.debug(f"{actor_alias} saw: all expected data on the ERP Summary page")
 
+
 @retry(wait_fixed=5000, stop_max_attempt_number=5)
 def fas_buyer_should_be_signed_up_for_email_updates(context: Context, actor_alias: str):
     actor = get_actor(context, actor_alias)
     response = DIRECTORY_TEST_API_CLIENT.get(
-        f"testapi/buyer/{actor.email}/", authenticator=BASIC_AUTHENTICATOR,
+        f"testapi/buyer/{actor.email}/",
+        authenticator=BASIC_AUTHENTICATOR,
     )
     with assertion_msg(
-            f"Expected 200 OK but got {response.status_code} from {response.url}"
+        f"Expected 200 OK but got {response.status_code} from {response.url}"
     ):
         assert response.status_code == 200
         assert response.json()["email"] == actor.email
@@ -1411,7 +1520,12 @@ def generic_search_for_phrase(context: Context, actor_alias: str, phrase: str):
 
 
 def actor_decides_to_click_on_page_with_lesson_link(
-        context: Context, actor_alias: str, lesson_name: str, *, page_name: str = None, wait_for_it: bool = True
+    context: Context,
+    actor_alias: str,
+    lesson_name: str,
+    *,
+    page_name: str = None,
+    wait_for_it: bool = True,
 ):
     if page_name:
         page = get_page_object(page_name)
@@ -1428,8 +1542,7 @@ def actor_decides_to_click_continue_on_page(context: Context, page_name):
     page.click_on_continue(context.driver)
 
 
-def actor_decides_to_select_random_product_on_page(
-        context, actor_alias):
+def actor_decides_to_select_random_product_on_page(context, actor_alias):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "find_and_select_random_product_and_click_continue")
     page.find_and_select_random_product_and_click_continue(context.driver)

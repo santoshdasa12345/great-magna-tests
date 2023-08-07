@@ -4,11 +4,16 @@ import logging
 from urllib import parse as urlparse
 from urllib.parse import urljoin
 
+from browserpages.common_actions import (
+    Selector,
+    assertion_msg,
+    check_title,
+    find_element,
+)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages.common_actions import Selector, assertion_msg, check_title, find_element
 
 NAME = "Share on LinkedIn"
 SERVICE = Service.LINKEDIN

@@ -3,11 +3,6 @@
 import logging
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -15,11 +10,16 @@ from browserpages.common_actions import (
     check_if_element_is_visible,
     check_url,
     find_element,
+    find_selector_by_name,
     go_to_url,
     take_screenshot,
     wait_for_page_load_after_action,
-    find_selector_by_name,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Landing"
 SERVICE = Service.INTERNATIONAL
@@ -83,17 +83,29 @@ SELECTORS = {
         "study in the uk": Selector(By.LINK_TEXT, "Study in the UK"),
         "visit the uk": Selector(By.LINK_TEXT, "Visit the UK"),
     },
-    "get started":{
-        "itself": Selector(By.CSS_SELECTOR,"#content > div > div.atlas-container.atlas-p-b-xl > div > a"),
+    "get started": {
+        "itself": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > div > a",
+        ),
     },
-    "invest in the uk":{
-        "itself":Selector(By.CSS_SELECTOR,"#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)"),
+    "invest in the uk": {
+        "itself": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(1)",
+        ),
     },
-    "buy from the uk":{
-        "itself":Selector(By.CSS_SELECTOR,"#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)"),
+    "buy from the uk": {
+        "itself": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(2)",
+        ),
     },
-    "contact dit":{
-        "itself":Selector(By.CSS_SELECTOR,"#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)"),
+    "contact dit": {
+        "itself": Selector(
+            By.CSS_SELECTOR,
+            "#content > div > div.atlas-container.atlas-p-b-xl > nav > a:nth-child(3)",
+        ),
     },
 }
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER)
@@ -127,11 +139,13 @@ def open(driver: WebDriver, group: str, element: str, *, same_tab: bool = True):
             link.click()
     take_screenshot(driver, NAME + " after clicking on: %s link".format(element))
 
+
 def find_and_click(driver: WebDriver, *, element_selector_name: str):
     find_and_click = find_element(
         driver, find_selector_by_name(SELECTORS, element_selector_name)
     )
     find_and_click.click()
+
 
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

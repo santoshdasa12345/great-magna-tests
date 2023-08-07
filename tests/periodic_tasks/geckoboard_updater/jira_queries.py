@@ -143,6 +143,7 @@ class ToolsJQLs(Enum):
     TICKETS_ON_BOARD = JQL(
         description="Tickets (incl. bugs) on Kanban Board",
         query=_KANBAN_BOARD_TICKETS.format(
-            project="TT", open_statuses=to_jql_list_string(TOOLS_BOARD_OPEN_STATUSES),
+            project="TT",
+            open_statuses=to_jql_list_string(TOOLS_BOARD_OPEN_STATUSES),
         ),
     )

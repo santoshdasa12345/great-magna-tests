@@ -18,10 +18,10 @@ import lxml
 import requests
 from behave.runner import Context
 from bs4 import BeautifulSoup
+from directory_constants import choices
 from langdetect import DetectorFactory, detect_langs
 from requests import Response
 
-from directory_constants import choices
 from directory_tests_shared import URLs
 from directory_tests_shared.clients import (
     DIRECTORY_TEST_API_CLIENT,
@@ -456,9 +456,9 @@ def check_hash_of_remote_file(expected_hash, file_url):
 @contextmanager
 def assertion_msg(message: str, *args):
     """This will:
-        * print the custom assertion message
-        * print the traceback (stack trace)
-        * raise the original AssertionError exception
+    * print the custom assertion message
+    * print the traceback (stack trace)
+    * raise the original AssertionError exception
     """
     try:
         yield

@@ -2,6 +2,9 @@
 """Selectors for various common page components"""
 import copy
 
+from browserpages import ElementType
+from browserpages.common_actions import By, Selector
+
 from great_magna_tests_shared.constants import (
     MD5_CHECKSUM_EIG_LOGO,
     MD5_CHECKSUM_EVENTS_BIG_FOOTER_LOGO,
@@ -9,8 +12,6 @@ from great_magna_tests_shared.constants import (
     MD5_CHECKSUM_GREAT_LOGO,
     MD5_CHECKSUM_INVEST_IN_GREAT,
 )
-from browserpages import ElementType
-from browserpages.common_actions import By, Selector
 
 DOMESTIC_HERO_WITH_LINK = {
     "hero": {
@@ -234,14 +235,24 @@ ERP_FOOTER = {
 DOMESTIC_FOOTER = {
     "footer": {
         # "great footer logo": Selector(By.ID, "great-footer-great-logo"),
-        "contact us": Selector(By.CSS_SELECTOR, "#great-footer > nav > ul > li:nth-child(1) > a"),
-        "privacy and cookies": Selector(By.CSS_SELECTOR, "#great-footer > nav > ul > li:nth-child(2) > a"),
-        "terms and conditions": Selector(By.CSS_SELECTOR, "#great-footer > nav > ul > li:nth-child(3) > a"),
-        "performance": Selector(By.CSS_SELECTOR, "#great-footer > nav > ul > li:nth-child(5) > a"),
-        "department for international trade on gov.uk": Selector(By.CSS_SELECTOR,
-                                                                 "#great-footer > nav > ul > li:nth-child(6) > a"),
-        "go to the page for international businesses": Selector(By.ID,
-                                                                "#great-footer > nav > ul > li:nth-child(7) > a"),
+        "contact us": Selector(
+            By.CSS_SELECTOR, "#great-footer > nav > ul > li:nth-child(1) > a"
+        ),
+        "privacy and cookies": Selector(
+            By.CSS_SELECTOR, "#great-footer > nav > ul > li:nth-child(2) > a"
+        ),
+        "terms and conditions": Selector(
+            By.CSS_SELECTOR, "#great-footer > nav > ul > li:nth-child(3) > a"
+        ),
+        "performance": Selector(
+            By.CSS_SELECTOR, "#great-footer > nav > ul > li:nth-child(5) > a"
+        ),
+        "department for international trade on gov.uk": Selector(
+            By.CSS_SELECTOR, "#great-footer > nav > ul > li:nth-child(6) > a"
+        ),
+        "go to the page for international businesses": Selector(
+            By.ID, "#great-footer > nav > ul > li:nth-child(7) > a"
+        ),
         "dit footer logo": Selector(By.ID, "#great-global-footer-logo"),
         "copyright notice": Selector(By.CSS_SELECTOR, "#great-footer-copyright"),
     }
@@ -255,15 +266,22 @@ SIGN_IN_LINK = Selector(By.ID, "header-sign-in-link")
 LOGOS = {
     "eig": {"selector": EIG_LOGO, "md5": MD5_CHECKSUM_EIG_LOGO},
     "great - header": {
-        "selector": Selector(By.CSS_SELECTOR, "body > header > div.atlas-header__main > div > a"),
+        "selector": Selector(
+            By.CSS_SELECTOR, "body > header > div.atlas-header__main > div > a"
+        ),
         "md5": MD5_CHECKSUM_GREAT_LOGO,
     },
     "great - footer": {
-        "selector": Selector(By.CSS_SELECTOR, "#great-footer > div.atlas-footer__main > div:nth-child(1) > div > img"),
+        "selector": Selector(
+            By.CSS_SELECTOR,
+            "#great-footer > div.atlas-footer__main > div:nth-child(1) > div > img",
+        ),
         "md5": MD5_CHECKSUM_GREAT_LOGO,
     },
     "invest in great - header": {
-        "selector": Selector(By.CSS_SELECTOR, "body > header > div.atlas-header__main > div > a"),
+        "selector": Selector(
+            By.CSS_SELECTOR, "body > header > div.atlas-header__main > div > a"
+        ),
         "md5": MD5_CHECKSUM_INVEST_IN_GREAT,
     },
     "events business is great - header": {
@@ -284,7 +302,9 @@ INTERNATIONAL_HEADER = {
             By.CSS_SELECTOR, "#header-cookie-notice a", is_visible=False
         ),
         # global header
-        "global header": Selector(By.CSS_SELECTOR, "body > header > div.atlas-header__main > div"),
+        "global header": Selector(
+            By.CSS_SELECTOR, "body > header > div.atlas-header__main > div"
+        ),
         "great global logo": Selector(By.XPATH, "//body/header/div[2]/div/a"),
         # "for uk businesses": Selector(By.ID, "great-global-header-domestic-link"),
         # "for international businesses": Selector(By.ID, "great-global-header-international-link"),
@@ -293,8 +313,12 @@ INTERNATIONAL_HEADER = {
         # language selector
         # "language selector": Selector(By.ID, "great-header-language-select", type=ElementType.SELECT),
         # main menu
-        "header menu": Selector(By.CSS_SELECTOR, "body > header > div.atlas-header__main"),
-        "invest in the uk": Selector(By.LINK_TEXT, "Invest in the UK", type=ElementType.LINK),
+        "header menu": Selector(
+            By.CSS_SELECTOR, "body > header > div.atlas-header__main"
+        ),
+        "invest in the uk": Selector(
+            By.LINK_TEXT, "Invest in the UK", type=ElementType.LINK
+        ),
         # "expand to the uk": Selector(
         #     By.LINK_TEXT, "Expand to the UK", type=ElementType.LINK
         # ),
@@ -312,17 +336,32 @@ INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR = copy.deepcopy(INTERNATIONAL_HEADER)
 
 INTERNATIONAL_FOOTER = {
     "footer": {
-        "DIT logo": Selector(By.CSS_SELECTOR, "#great-footer > div.atlas-footer__main > div:nth-child(1) > div > img"),
-        "great footer logo": Selector(By.CSS_SELECTOR,
-                                      "#great-footer > div.atlas-footer__main > div:nth-child(1) > div"),
-        "contact us": Selector(By.PARTIAL_LINK_TEXT, "Contact us", type=ElementType.LINK),
-        "privacy and cookies": Selector(By.PARTIAL_LINK_TEXT, "Privacy and cookies", type=ElementType.LINK),
-        "terms and conditions": Selector(By.CSS_SELECTOR, "#footer-terms-and-conditions"),
+        "DIT logo": Selector(
+            By.CSS_SELECTOR,
+            "#great-footer > div.atlas-footer__main > div:nth-child(1) > div > img",
+        ),
+        "great footer logo": Selector(
+            By.CSS_SELECTOR,
+            "#great-footer > div.atlas-footer__main > div:nth-child(1) > div",
+        ),
+        "contact us": Selector(
+            By.PARTIAL_LINK_TEXT, "Contact us", type=ElementType.LINK
+        ),
+        "privacy and cookies": Selector(
+            By.PARTIAL_LINK_TEXT, "Privacy and cookies", type=ElementType.LINK
+        ),
+        "terms and conditions": Selector(
+            By.CSS_SELECTOR, "#footer-terms-and-conditions"
+        ),
         # "accessibility" : Selector(By.PARTIAL_LINK_TEXT, "Accessibility", type=ElementType.LINK),
-        "department for international trade on gov.uk": Selector(By.CSS_SELECTOR, "#footer-dit"),
+        "department for international trade on gov.uk": Selector(
+            By.CSS_SELECTOR, "#footer-dit"
+        ),
         # "go to the page for uk businesses": Selector(By.CSS_SELECTOR, "#footer-domestic"),
         # "HM Government": Selector(By.CSS_SELECTOR, "#great-global-footer-logo"),
-        "copyright notice": Selector(By.CSS_SELECTOR, "#great-footer > div.atlas-footer__global > div > p"),
+        "copyright notice": Selector(
+            By.CSS_SELECTOR, "#great-footer > div.atlas-footer__global > div > p"
+        ),
     }
 }
 
@@ -336,23 +375,23 @@ INTERNATIONAL_HERO = {
 INVEST_HEADER = {
     "header": {
         # sub menu
-        "header sub menu": Selector(By.CSS_SELECTOR, "body > header > div.atlas-subnav > div > nav"),
-        "why invest in the uk": Selector(By.PARTIAL_LINK_TEXT, "Why invest in the UK?", type=ElementType.LINK),
+        "header sub menu": Selector(
+            By.CSS_SELECTOR, "body > header > div.atlas-subnav > div > nav"
+        ),
+        "why invest in the uk": Selector(
+            By.PARTIAL_LINK_TEXT, "Why invest in the UK?", type=ElementType.LINK
+        ),
         "how we can help": Selector(
             By.PARTIAL_LINK_TEXT, "How we can help", type=ElementType.LINK
         ),
         "uk nations and regions": Selector(
             By.PARTIAL_LINK_TEXT, "UK nations and regions", type=ElementType.LINK
         ),
-        "sectors": Selector(
-            By.PARTIAL_LINK_TEXT, "Sectors", type=ElementType.LINK
-        ),
+        "sectors": Selector(By.PARTIAL_LINK_TEXT, "Sectors", type=ElementType.LINK),
         "investment opportunities": Selector(
             By.PARTIAL_LINK_TEXT, "Investment opportunities", type=ElementType.LINK
         ),
-        "contact": Selector(
-            By.PARTIAL_LINK_TEXT, "Contact", type=ElementType.LINK
-        ),
+        "contact": Selector(By.PARTIAL_LINK_TEXT, "Contact", type=ElementType.LINK),
     }
 }
 # merge Invest header sub-menu with main International header
@@ -363,45 +402,64 @@ INVEST_HERO = {
         "self": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero"),
         "heading": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero__heading"),
         "get in touch": Selector(
-            By.CSS_SELECTOR, "#content > section.atlas-bg.atlas-bg--dark-blue.atlas-colour--white > div > a",
-            type=ElementType.LINK
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg.atlas-bg--dark-blue.atlas-colour--white > div > a",
+            type=ElementType.LINK,
         ),
     }
 }
 
 INVEST_FOOTER = {
     "footer": {
-        "great footer logo": Selector(By.CSS_SELECTOR,
-                                      "#great-footer > div.atlas-footer__main > div:nth-child(1) > div"),
-        "contact us": Selector(By.PARTIAL_LINK_TEXT, "Contact us", type=ElementType.LINK),
+        "great footer logo": Selector(
+            By.CSS_SELECTOR,
+            "#great-footer > div.atlas-footer__main > div:nth-child(1) > div",
+        ),
+        "contact us": Selector(
+            By.PARTIAL_LINK_TEXT, "Contact us", type=ElementType.LINK
+        ),
         "privacy and cookies": Selector(By.CSS_SELECTOR, "#footer-privacy-and-cookies"),
-        "terms and conditions": Selector(By.CSS_SELECTOR, "#footer-terms-and-conditions"),
-        "department for international trade on gov.uk": Selector(By.CSS_SELECTOR, "#footer-dit"),
+        "terms and conditions": Selector(
+            By.CSS_SELECTOR, "#footer-terms-and-conditions"
+        ),
+        "department for international trade on gov.uk": Selector(
+            By.CSS_SELECTOR, "#footer-dit"
+        ),
         # "go to the page for uk businesses": Selector(By.ID, "footer-domestic"),
-        "dit footer logo": Selector(By.CSS_SELECTOR, "#great-footer > div.atlas-footer__global > div > img"),
-        "copyright notice": Selector(By.CSS_SELECTOR, "#great-footer > div.atlas-footer__global > div > p"),
+        "dit footer logo": Selector(
+            By.CSS_SELECTOR, "#great-footer > div.atlas-footer__global > div > img"
+        ),
+        "copyright notice": Selector(
+            By.CSS_SELECTOR, "#great-footer > div.atlas-footer__global > div > p"
+        ),
     }
 }
 
 ABOUT_UK_SUBHEADER = {
     "about the uk subheader": {
         "about uk subheader itself": Selector(
-            By.CSS_SELECTOR, "div.great-sub-header > nav",
+            By.CSS_SELECTOR,
+            "div.great-sub-header > nav",
         ),
         "overview": Selector(
-            By.CSS_SELECTOR, "div.great-sub-header > nav li:nth-child(1) a",
+            By.CSS_SELECTOR,
+            "div.great-sub-header > nav li:nth-child(1) a",
         ),
         "why choose the uk": Selector(
-            By.CSS_SELECTOR, "div.great-sub-header > nav li:nth-child(2) a",
+            By.CSS_SELECTOR,
+            "div.great-sub-header > nav li:nth-child(2) a",
         ),
         "industries": Selector(
-            By.CSS_SELECTOR, "div.great-sub-header > nav li:nth-child(3) a",
+            By.CSS_SELECTOR,
+            "div.great-sub-header > nav li:nth-child(3) a",
         ),
         "regions": Selector(
-            By.CSS_SELECTOR, "div.great-sub-header > nav li:nth-child(4) a",
+            By.CSS_SELECTOR,
+            "div.great-sub-header > nav li:nth-child(4) a",
         ),
         "contact us": Selector(
-            By.CSS_SELECTOR, "div.great-sub-header > nav li:nth-child(5) a",
+            By.CSS_SELECTOR,
+            "div.great-sub-header > nav li:nth-child(5) a",
         ),
     }
 }
@@ -409,42 +467,63 @@ ABOUT_UK_SUBHEADER = {
 ABOUT_US_SUBHEADER = {
     "about us subheader": {
         "about us subheader itself": Selector(
-            By.CSS_SELECTOR, "div.great-sub-header > nav",
+            By.CSS_SELECTOR,
+            "div.great-sub-header > nav",
         ),
         "overview": Selector(
-            By.CSS_SELECTOR, "div.great-sub-header > nav li:nth-child(1) a",
+            By.CSS_SELECTOR,
+            "div.great-sub-header > nav li:nth-child(1) a",
         ),
         "contact us": Selector(
-            By.CSS_SELECTOR, "div.great-sub-header > nav li:nth-child(2) a",
+            By.CSS_SELECTOR,
+            "div.great-sub-header > nav li:nth-child(2) a",
         ),
     }
 }
 
 FAS_HEADER = {
     "fas header": {
-        "fas header itself": Selector(By.CSS_SELECTOR, "body > header > div.atlas-subnav > div"),
-        "how we help": Selector(By.CSS_SELECTOR,
-                                "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(1) > a"),
-        "find a supplier": Selector(By.CSS_SELECTOR,
-                                    "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(2) > a"),
-        "contact us": Selector(By.CSS_SELECTOR,
-                               "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(3) > a"),
+        "fas header itself": Selector(
+            By.CSS_SELECTOR, "body > header > div.atlas-subnav > div"
+        ),
+        "how we help": Selector(
+            By.CSS_SELECTOR,
+            "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(1) > a",
+        ),
+        "find a supplier": Selector(
+            By.CSS_SELECTOR,
+            "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(2) > a",
+        ),
+        "contact us": Selector(
+            By.CSS_SELECTOR,
+            "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(3) > a",
+        ),
     }
 }
 
 INVEST_IN_THE_UK = {
     "invest in the uk": {
         "itself": Selector(By.CSS_SELECTOR, "#atlas-nav > ul > li:nth-child(1) > a"),
-        "why invest in the uk": Selector(By.CSS_SELECTOR,
-                                         "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(1) > a"),
-        "uk nations and regions": Selector(By.CSS_SELECTOR,
-                                           "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(2) > a"),
-        "sectors": Selector(By.CSS_SELECTOR, "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(3) > a"),
-        "investment opportunities": Selector(By.CSS_SELECTOR,
-                                             "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(4) > a"),
-        "how we can help": Selector(By.CSS_SELECTOR,
-                                    "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(5) > a"),
-
+        "why invest in the uk": Selector(
+            By.CSS_SELECTOR,
+            "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(1) > a",
+        ),
+        "uk nations and regions": Selector(
+            By.CSS_SELECTOR,
+            "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(2) > a",
+        ),
+        "sectors": Selector(
+            By.CSS_SELECTOR,
+            "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(3) > a",
+        ),
+        "investment opportunities": Selector(
+            By.CSS_SELECTOR,
+            "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(4) > a",
+        ),
+        "how we can help": Selector(
+            By.CSS_SELECTOR,
+            "body > header > div.atlas-subnav > div > nav > ul > li:nth-child(5) > a",
+        ),
     }
 }
 
@@ -458,14 +537,27 @@ FAS_HERO = {
 GREAT_MAGNA_HEADER = {
     "header": {
         # great magna header
-        "great magna header": Selector(By.CSS_SELECTOR, "#header > div.container.container-fluid"),
+        "great magna header": Selector(
+            By.CSS_SELECTOR, "#header > div.container.container-fluid"
+        ),
         "great magna logo": Selector(By.CSS_SELECTOR, "#header-logo-link"),
         # header menu
-        "header menu": Selector(By.CSS_SELECTOR, "#header-link-user-profile > div > button"),
-        "dashbaord": Selector(By.CSS_SELECTOR, "#header > div.container.container-fluid > nav > ul > li > a"),
-        "learn to export": Selector(By.ID, "header-link-learning", type=ElementType.LINK),
-        "where to export": Selector(By.ID, "header-link-markets", type=ElementType.LINK),
-        "make an export plan": Selector(By.ID, "header-link-exporting-plan", type=ElementType.LINK),
+        "header menu": Selector(
+            By.CSS_SELECTOR, "#header-link-user-profile > div > button"
+        ),
+        "dashbaord": Selector(
+            By.CSS_SELECTOR,
+            "#header > div.container.container-fluid > nav > ul > li > a",
+        ),
+        "learn to export": Selector(
+            By.ID, "header-link-learning", type=ElementType.LINK
+        ),
+        "where to export": Selector(
+            By.ID, "header-link-markets", type=ElementType.LINK
+        ),
+        "make an export plan": Selector(
+            By.ID, "header-link-exporting-plan", type=ElementType.LINK
+        ),
         "search box": Selector(
             By.ID, "magna-header-search-box", type=ElementType.INPUT
         ),
@@ -475,25 +567,47 @@ GREAT_MAGNA_HEADER = {
             type=ElementType.BUTTON,
         ),
         # sub nav menu
-        "personalisation bar": Selector(By.CSS_SELECTOR, "#header > div.bg-blue-deep-80.shared-personalisation-bar"),
-        "my products": Selector(By.CSS_SELECTOR, "#set-product-button > span:nth-child(1) > button"),
-        "my markets": Selector(By.CSS_SELECTOR, "#set-country-button > span > span > button"),
+        "personalisation bar": Selector(
+            By.CSS_SELECTOR, "#header > div.bg-blue-deep-80.shared-personalisation-bar"
+        ),
+        "my products": Selector(
+            By.CSS_SELECTOR, "#set-product-button > span:nth-child(1) > button"
+        ),
+        "my markets": Selector(
+            By.CSS_SELECTOR, "#set-country-button > span > span > button"
+        ),
     }
 }
 
 GREAT_MAGNA_FOOTER = {
     "footer": {
         "itself": Selector(By.CSS_SELECTOR, "#footer"),
-        "contact us": Selector(By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(1) > a"),
-        "privacy and cookies": Selector(By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(2) > a"),
-        "terms and conditions": Selector(By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(3) > a"),
-        "accessibility": Selector(By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(4) > a"),
-        "performance": Selector(By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(5) > a"),
-        "department for international trade on gov.uk": Selector(By.CSS_SELECTOR,
-                                                                 "#footer > nav > ul > li:nth-child(6) > a"),
-        "go to the page for international businesses": Selector(By.ID,
-                                                                "#footer > nav > ul > li:nth-child(7) > a"),
-        "dit footer logo": Selector(By.ID, "#footer > div > div.magna-footer__dit-logo > img"),
-        "copyright notice": Selector(By.CSS_SELECTOR, "#footer > div > div.magna-footer__copy > p"),
+        "contact us": Selector(
+            By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(1) > a"
+        ),
+        "privacy and cookies": Selector(
+            By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(2) > a"
+        ),
+        "terms and conditions": Selector(
+            By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(3) > a"
+        ),
+        "accessibility": Selector(
+            By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(4) > a"
+        ),
+        "performance": Selector(
+            By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(5) > a"
+        ),
+        "department for international trade on gov.uk": Selector(
+            By.CSS_SELECTOR, "#footer > nav > ul > li:nth-child(6) > a"
+        ),
+        "go to the page for international businesses": Selector(
+            By.ID, "#footer > nav > ul > li:nth-child(7) > a"
+        ),
+        "dit footer logo": Selector(
+            By.ID, "#footer > div > div.magna-footer__dit-logo > img"
+        ),
+        "copyright notice": Selector(
+            By.CSS_SELECTOR, "#footer > div > div.magna-footer__copy > p"
+        ),
     }
 }

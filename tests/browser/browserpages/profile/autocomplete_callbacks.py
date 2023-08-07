@@ -3,10 +3,9 @@
 import logging
 import random
 
+from browserpages.common_actions import Selector, find_element, find_elements
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
-
-from browserpages.common_actions import Selector, find_element, find_elements
 
 
 def enrol_autocomplete_company_name(driver: WebDriver, value: str = None):

@@ -3,11 +3,6 @@
 import logging
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -16,6 +11,11 @@ from browserpages.common_actions import (
     find_element,
     go_to_url,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Why invest in the uk"
 URL = URLs.INVEST_LANDING.absolute
@@ -26,12 +26,26 @@ PAGE_TITLE = "Invest in Great Britain - Home"
 SELECTORS = {
     "why invest in the uk": {
         "hero": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero"),
-        "atlas hero heading": Selector(By.CSS_SELECTOR, "#content > div.atlas-hero__heading"),
-        "why invest in th euk content": Selector(By.CSS_SELECTOR, "#content > div.atlas-container"),
-        "uk strengths": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light"),
-        "tax and incentives": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(1) > h3 > a"),
-        "talent and labour": Selector(By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light > div > div > div:nth-child(2) > h3 > a"),
-        "find your investment opportunities": Selector(By.CSS_SELECTOR, "#content > div:nth-child(7)"),
+        "atlas hero heading": Selector(
+            By.CSS_SELECTOR, "#content > div.atlas-hero__heading"
+        ),
+        "why invest in th euk content": Selector(
+            By.CSS_SELECTOR, "#content > div.atlas-container"
+        ),
+        "uk strengths": Selector(
+            By.CSS_SELECTOR, "#content > section.atlas-bg--grey-light"
+        ),
+        "tax and incentives": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg--grey-light > div > div > div:nth-child(1) > h3 > a",
+        ),
+        "talent and labour": Selector(
+            By.CSS_SELECTOR,
+            "#content > section.atlas-bg--grey-light > div > div > div:nth-child(2) > h3 > a",
+        ),
+        "find your investment opportunities": Selector(
+            By.CSS_SELECTOR, "#content > div:nth-child(7)"
+        ),
         "how we can help": Selector(By.CSS_SELECTOR, "#content > div:nth-child(8)"),
     },
     "sectors": {
@@ -62,9 +76,7 @@ SELECTORS = {
         "lightweight structures": Selector(
             By.PARTIAL_LINK_TEXT, "Lightweight structures"
         ),
-        "photonics": Selector(
-            By.PARTIAL_LINK_TEXT, "Photonics and Microelectronics"
-        ),
+        "photonics": Selector(By.PARTIAL_LINK_TEXT, "Photonics and Microelectronics"),
         "rail": Selector(By.PARTIAL_LINK_TEXT, "Rail infrastructure"),
         "space": Selector(By.PARTIAL_LINK_TEXT, "Space"),
         "sustainable packaging": Selector(
@@ -107,8 +119,10 @@ def should_be_here(driver: WebDriver):
 def should_see_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
 
+
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
+
 
 def clean_name(name: str) -> str:
     return name.split(" - ")[1].strip()

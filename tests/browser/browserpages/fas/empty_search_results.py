@@ -3,13 +3,18 @@
 import logging
 from typing import List
 
+from browserpages import common_selectors
+from browserpages.common_actions import (
+    Selector,
+    check_for_sections,
+    check_url,
+    go_to_url,
+)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages import common_selectors
-from browserpages.common_actions import Selector, check_for_sections, check_url, go_to_url
 
 NAME = "Empty Search Results"
 SERVICE = Service.FAS
@@ -40,6 +45,7 @@ def should_be_here(driver: WebDriver):
 
 def should_see_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
+
 
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

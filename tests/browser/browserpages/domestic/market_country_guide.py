@@ -5,20 +5,8 @@ import random
 import time
 from types import ModuleType
 from typing import List, Union
-from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.support.ui import Select
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages import ElementType, common_selectors
-from browserpages.common_actions import Selector, check_for_sections, go_to_url
-from browserpages.domestic import actions as domestic_actions
-
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -26,20 +14,29 @@ from browserpages.common_actions import (
     check_for_sections,
     check_if_element_is_not_present,
     check_if_element_is_visible,
-    check_url,
-    find_element,
-    find_selector_by_name,
-    find_elements,
-    go_to_url,
-    pick_option,
-    is_element_present,
-    submit_form,
     check_random_radio,
+    check_url,
+    fill_out_email_address,
+    fill_out_input_fields,
+    find_element,
+    find_elements,
+    find_selector_by_name,
+    go_to_url,
+    is_element_present,
+    pick_option,
+    submit_form,
     take_screenshot,
     wait_for_page_load_after_action,
-    fill_out_input_fields,
-    fill_out_email_address
 )
+from browserpages.domestic import actions as domestic_actions
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.support.ui import Select
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
+
 NAME = "Markets"
 SERVICE = Service.DOMESTIC
 TYPE = PageType.GUIDE
@@ -104,7 +101,10 @@ SELECTORS = {
         ),
     },
     "compare now": {
-        "self": Selector(By.CSS_SELECTOR, "#country-guide-learning-banner > div > div > div.cta-container > a"),
+        "self": Selector(
+            By.CSS_SELECTOR,
+            "#country-guide-learning-banner > div > div > div.cta-container > a",
+        ),
     },
 }
 SELECTORS.update(common_selectors.DOMESTIC_HEADER)
@@ -130,12 +130,13 @@ def should_see_following_sections(driver: WebDriver, names: List[str]):
 def search(driver: WebDriver, phrase: str):
     domestic_actions.search(driver, phrase)
 
+
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
+
 
 def find_and_click(driver: WebDriver, *, element_selector_name: str):
     find_and_click = find_element(
         driver, find_selector_by_name(SELECTORS, element_selector_name)
     )
     find_and_click.click()
-

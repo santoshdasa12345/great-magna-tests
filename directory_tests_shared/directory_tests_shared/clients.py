@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import base64
 
-from notifications_python_client import NotificationsAPIClient
-
 from directory_api_client.testapiclient import url_company_by_ch_id  # noqa
 from directory_api_client.testapiclient import url_published_companies  # noqa
 from directory_api_client.testapiclient import DirectoryTestAPIClient
@@ -12,6 +10,8 @@ from directory_forms_api_client.client import (  # noqa
 )
 from directory_sso_api_client.client import sso_api_client as SSO_API_CLIENT  # noqa
 from directory_sso_api_client.testapiclient import DirectorySSOTestAPIClient
+from notifications_python_client import NotificationsAPIClient
+
 from .settings import (
     BASICAUTH_PASS,
     BASICAUTH_USER,

@@ -2,10 +2,9 @@
 from datetime import datetime
 from urllib.parse import urljoin
 
+import requests
 from django.conf import settings
 from envparse import env
-
-import requests
 from lxml import etree
 
 
@@ -13,12 +12,13 @@ from lxml import etree
 # Directory Service URLs & Credentials
 #####################################################################
 def get_sitemap_urls(url):
-    try: 
+    try:
         resp = requests.get(url)
         tree = etree.fromstring(resp.content)
-        return [loc.text for loc in tree.findall('{*}url/{*}loc')]
+        return [loc.text for loc in tree.findall("{*}url/{*}loc")]
     except requests.exceptions.RequestException:
         return []
+
 
 SITE_MAP = env.str("SITE_MAP", default="/")
 if SITE_MAP != "/":
@@ -28,11 +28,11 @@ if SITE_MAP != "/":
     if SITE_MAP_URLS:
         DOMESTIC_URL = SITE_MAP_URLS[0]
     else:
-        DOMESTIC_URL = "/".join(SITE_MAP.split('/')[:-1])
+        DOMESTIC_URL = "/".join(SITE_MAP.split("/")[:-1])
 else:
     DOMESTIC_URL = env.str("DOMESTIC_URL")
 
-    
+
 CMS_API_KEY = env.str("CMS_API_KEY", default="123456")
 CMS_API_URL = env.str("CMS_API_URL", default="/")
 CMS_API_CACHE_EXPIRE_SECONDS = env.int(
@@ -44,7 +44,9 @@ CONTACT_US_URL = env.str("CONTACT_US_URL", default="/")
 DIRECTORY_API_DEFAULT_TIMEOUT = env.int("DIRECTORY_API_DEFAULT_TIMEOUT", default=30)
 DIRECTORY_API_KEY = env.str("DIRECTORY_API_KEY", default="123456")
 DIRECTORY_API_SENDER_ID = env.str("DIRECTORY_API_SENDER_ID", default="directory")
-DIRECTORY_API_HEALTH_CHECK_TOKEN = env.str("DIRECTORY_API_HEALTH_CHECK_TOKEN", default="123456")
+DIRECTORY_API_HEALTH_CHECK_TOKEN = env.str(
+    "DIRECTORY_API_HEALTH_CHECK_TOKEN", default="123456"
+)
 DIRECTORY_API_URL = env.str("DIRECTORY_API_URL", default="/")
 ERP_URL = env.str("ERP_URL", default="/")
 EVENTS_URL = env.str("EVENTS_URL", default="/")
@@ -54,22 +56,28 @@ FIND_A_SUPPLIER_URL = env.str("FIND_A_SUPPLIER_URL", default="/")
 FORMS_API_KEY = env.str("FORMS_API_KEY", default="123456")
 FORMS_API_SENDER_ID = env.str("FORMS_API_SENDER_ID", default="123456")
 FORMS_API_URL = env.str("FORMS_API_URL", default="/")
-GOV_NOTIFY_API_KEY = env.str("GOV_NOTIFY_API_KEY", default="1234567891012345678910123456789101234567891012345678910123456789101234567891012345678910123456789101234567891012345678910")
-PIR_GOV_NOTIFY_API_KEY = env.str("PIR_GOV_NOTIFY_API_KEY", default="1234567891012345678910123456789101234567891012345678910123456789101234567891012345678910123456789101234567891012345678910")
+GOV_NOTIFY_API_KEY = env.str(
+    "GOV_NOTIFY_API_KEY",
+    default="1234567891012345678910123456789101234567891012345678910123456789101234567891012345678910123456789101234567891012345678910",
+)
+PIR_GOV_NOTIFY_API_KEY = env.str(
+    "PIR_GOV_NOTIFY_API_KEY",
+    default="1234567891012345678910123456789101234567891012345678910123456789101234567891012345678910123456789101234567891012345678910",
+)
 INTERNATIONAL_URL = env.str("INTERNATIONAL_URL", default="/international/")
-INVEST_URL = env.str("INVEST_URL",default="/")
+INVEST_URL = env.str("INVEST_URL", default="/")
 ISD_URL = env.str(
     "ISD_URL", default=urljoin(INTERNATIONAL_URL, "investment-support-directory/")
 )
-LEGACY_CONTACT_US_URL = env.str("LEGACY_CONTACT_US_URL",default="/")
-LEGACY_INVEST_URL = env.str("LEGACY_INVEST_URL",default="/")
-PROFILE_URL = env.str("PROFILE_URL",default="/")
-SOO_URL = env.str("SOO_URL",default="/")
-SSO_API_KEY = env.str("SSO_API_KEY",default="123456")
-SSO_API_URL = env.str("SSO_API_URL",default="/")
+LEGACY_CONTACT_US_URL = env.str("LEGACY_CONTACT_US_URL", default="/")
+LEGACY_INVEST_URL = env.str("LEGACY_INVEST_URL", default="/")
+PROFILE_URL = env.str("PROFILE_URL", default="/")
+SOO_URL = env.str("SOO_URL", default="/")
+SSO_API_KEY = env.str("SSO_API_KEY", default="123456")
+SSO_API_URL = env.str("SSO_API_URL", default="/")
 SSO_API_DEFAULT_TIMEOUT = env.int("SSO_API_DEFAULT_TIMEOUT", default=30)
 SSO_API_SENDER_ID = env.str("SSO_API_SENDER_ID", default="directory")
-SSO_URL = env.str("SSO_URL",default="/")
+SSO_URL = env.str("SSO_URL", default="/")
 
 
 #####################################################################

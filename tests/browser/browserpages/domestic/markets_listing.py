@@ -6,12 +6,6 @@ import random
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Actor,
@@ -26,6 +20,12 @@ from browserpages.common_actions import (
     wait_for_page_load_after_action,
 )
 from browserpages.domestic import actions, markets_listing as SELF
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Markets listing"
 SERVICE = Service.DOMESTIC
@@ -44,7 +44,7 @@ SELECTORS = {
         "sector selector": Selector(By.ID, "id_sector", type=ElementType.SELECT),
         "submit": Selector(
             By.CSS_SELECTOR,
-            "#id_sector-container ~ button",#show markets
+            "#id_sector-container ~ button",  # show markets
             type=ElementType.SUBMIT,
             next_page=SELF,
         ),
@@ -52,7 +52,8 @@ SELECTORS = {
             By.CSS_SELECTOR, "#id_sector-container ~ a", type=ElementType.LINK
         ),
         "get started": Selector(
-            By.CSS_SELECTOR, "#markets-list-section > div:nth-child(2) > div > div > div.cta-container > a"
+            By.CSS_SELECTOR,
+            "#markets-list-section > div:nth-child(2) > div > div > div.cta-container > a",
         ),
     },
     "no results": {"itself": Selector(By.ID, "search-results-list")},
@@ -107,6 +108,7 @@ def open_random_marketplace(driver: WebDriver) -> str:
     with wait_for_page_load_after_action(driver):
         link.click()
     return link_text
+
 
 def find_and_click(driver: WebDriver, *, element_selector_name: str):
     find_and_click = find_element(

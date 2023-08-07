@@ -7,9 +7,6 @@ from pkgutil import iter_modules
 from types import ModuleType
 from typing import Dict, List
 
-
-
-
 import browserpages
 
 REQUIRED_PROPERTIES = ["SERVICE", "NAME", "TYPE", "URL", "SELECTORS"]
@@ -95,7 +92,7 @@ def get_subpackages_names(package: ModuleType) -> List[str]:
 
 def get_page_objects(package: ModuleType) -> Dict[str, ModuleType]:
     subpackages_names = get_subpackages_names(package)
-    #logging.debug(f"subpackages_names -> {subpackages_names}")
+    # logging.debug(f"subpackages_names -> {subpackages_names}")
     result = {}
     root_prefix = f"{package.__name__}."
     root_path = package.__path__[0]
@@ -120,7 +117,7 @@ PAGES = PageObjects("PageObjects", names=get_page_objects(browserpages))
 
 
 def get_page_object(service_and_page: str) -> ModuleType:
-    #logging.debug(f"get_page_object: input '{service_and_page}'")
+    # logging.debug(f"get_page_object: input '{service_and_page}'")
     assert " - " in service_and_page, f"Invalid Service & Page name: {service_and_page}"
     parts = service_and_page.split(" - ")
     sought_service = parts[0]
@@ -128,18 +125,22 @@ def get_page_object(service_and_page: str) -> ModuleType:
     sought_type = parts[2] if len(parts) == 3 else None
     result = None
     # PAGES = PageObjects("PageObjects", names=get_page_objects(browserpages))
-    #logging.debug(f"PAGES.__members__.values() -> {PAGES.__members__.values()}")
+    # logging.debug(f"PAGES.__members__.values() -> {PAGES.__members__.values()}")
     for page_object in PAGES.__members__.values():
         matched_service = False
         matched_type = False
         matched_name = False
-        logging.debug(f"user entered -> {sought_service.lower()} , available -> {page_object.service.lower()}")
+        logging.debug(
+            f"user entered -> {sought_service.lower()} , available -> {page_object.service.lower()}"
+        )
         if sought_service.lower() == page_object.service.lower():
             logging.debug(f"PO search: matched service '{sought_service}'")
             matched_service = True
         else:
             continue
-        logging.debug(f"user entered -> {sought_page.lower()} , available -> {page_object.name.lower()}")
+        logging.debug(
+            f"user entered -> {sought_page.lower()} , available -> {page_object.name.lower()}"
+        )
         # try to find a match based on the PO.NAME
         if sought_page.lower() == page_object.name.lower():
             logging.debug(f"PO search: matched name '{sought_page}'")
@@ -182,5 +183,3 @@ def get_page_object(service_and_page: str) -> ModuleType:
         )
     logging.debug(f"PO search: found 1 PO for: {service_and_page} → {result}")
     return result
-
-

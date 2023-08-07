@@ -4,11 +4,6 @@ import logging
 import random
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -21,6 +16,11 @@ from browserpages.common_actions import (
     take_screenshot,
     wait_for_page_load_after_action,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Landing"
 SERVICE = Service.FAS
@@ -58,9 +58,7 @@ SELECTORS = {
         "third industry": Selector(
             By.CSS_SELECTOR, "#industries-section ul li:nth-child(3) > a"
         ),
-        "see more services": Selector(
-            By.CSS_SELECTOR, "#services-section > div > a"
-        ),
+        "see more services": Selector(By.CSS_SELECTOR, "#services-section > div > a"),
     },
     "how we can help": {
         "itself": Selector(By.ID, "services-section"),
@@ -75,7 +73,7 @@ SELECTORS = {
             By.CSS_SELECTOR, "#checkbox-industry-expertise li label"
         ),
     },
-        "error reporting": {
+    "error reporting": {
         "itself": Selector(By.CSS_SELECTOR, "#error-reporting-section-contact-us"),
     },
 }
@@ -141,6 +139,7 @@ def open_any_article(driver: WebDriver) -> str:
     with wait_for_page_load_after_action(driver):
         link.click()
     return link_text
+
 
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

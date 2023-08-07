@@ -1,12 +1,11 @@
-import imaplib
 import email
-from email.header import decode_header
-import time
+import imaplib
 import logging
+import time
+from email.header import decode_header
 
 
 class ReadEmail:
-
     def __init__(self, host, emailaddress, password, emailstofetch):
         self.host = host
         self.emailid = emailaddress
@@ -14,7 +13,6 @@ class ReadEmail:
         self.noofemailstofetch = emailstofetch
 
     def reademailbody(self, containsemailsubject, containsbodytext):
-
         imap = imaplib.IMAP4_SSL(self.host)
         # authenticate
         imap.login(self.emailid, self.password)
@@ -29,11 +27,9 @@ class ReadEmail:
             if messages <= actualmesasgestofetch:
                 actualmesasgestofetch = messages
             for i in range(messages, messages - actualmesasgestofetch, -1):
-
                 res, msg = imap.fetch(str(i), "(RFC822)")
                 for response in msg:
                     if isinstance(response, tuple):
-
                         msg = email.message_from_bytes(response[1])
                         # decode the email subject
                         subject = decode_header(msg["Subject"])[0][0]
@@ -53,7 +49,9 @@ class ReadEmail:
                             for part in msg.walk():
                                 # extract content type of email
                                 content_type = part.get_content_type()
-                                content_disposition = str(part.get("Content-Disposition"))
+                                content_disposition = str(
+                                    part.get("Content-Disposition")
+                                )
                                 try:
                                     # get the email body
                                     body = part.get_payload(decode=True).decode()

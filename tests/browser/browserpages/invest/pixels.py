@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 import logging
 
+from browserpages.common_actions import (
+    Selector,
+    check_if_element_is_not_visible,
+    find_element,
+)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
-
-from browserpages.common_actions import Selector, check_if_element_is_not_visible, find_element
 
 ALLOWED = {
     "google tag manager": Selector(

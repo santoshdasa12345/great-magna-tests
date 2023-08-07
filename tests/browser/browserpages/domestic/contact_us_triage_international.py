@@ -4,11 +4,6 @@ import logging
 from types import ModuleType
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType
 from browserpages.common_actions import (
     Selector,
@@ -27,6 +22,11 @@ from browserpages.international import (
     trade_contact_us,
 )
 from browserpages.invest import contact_us as invest_contact_us
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "What would you like to know more about?"
 SERVICE = Service.DOMESTIC
