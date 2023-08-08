@@ -38,14 +38,14 @@ class NoPDFMinerLogEntriesFilter(logging.Filter):
 
 
 def extract_text_from_pdf(
-        pdf_bytes: bytes = None,
-        pdf_path: str = None,
-        *,
-        codec: str = "utf-8",
-        password: str = "",
-        maxpages: int = 0,
-        caching: bool = True,
-        remove_empty_lines: bool = True,
+    pdf_bytes: bytes = None,
+    pdf_path: str = None,
+    *,
+    codec: str = "utf-8",
+    password: str = "",
+    maxpages: int = 0,
+    caching: bool = True,
+    remove_empty_lines: bool = True,
 ) -> str:
     error = f"Please provide PDF in-memory buffer stream or path to PDF file"
     assert pdf_bytes or pdf_path, error

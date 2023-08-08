@@ -3,11 +3,6 @@
 import logging
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -17,6 +12,11 @@ from browserpages.common_actions import (
     go_to_url,
     take_screenshot,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "How to set up in the UK"
 SERVICE = Service.INVEST
@@ -34,83 +34,92 @@ SELECTORS = {
     },
     "about us": {
         "about us section": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(1)"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(1)",
         ),
         "about us image": Selector(
             By.CSS_SELECTOR,
-            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(1) > div > div > div.atlas-grid__column.atlas-grid__column--right.atlas-grid__column--6-12-m > div > img"
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(1) > div > div > div.atlas-grid__column.atlas-grid__column--right.atlas-grid__column--6-12-m > div > img",
         ),
         "more": Selector(
             By.CSS_SELECTOR,
-            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(1) > div > div > div.atlas-grid__column.atlas-grid__column--left.atlas-grid__column--6-12-m > div > button"
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(1) > div > div > div.atlas-grid__column.atlas-grid__column--left.atlas-grid__column--6-12-m > div > button",
         ),
         "less": Selector(
             By.CSS_SELECTOR,
-            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(1) > div > div > div.atlas-grid__column.atlas-grid__column--left.atlas-grid__column--6-12-m > div > button"
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(1) > div > div > div.atlas-grid__column.atlas-grid__column--left.atlas-grid__column--6-12-m > div > button",
         ),
     },
     "how we are helping investors": {
         "how we are helping investors section": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(2)"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(2)",
         ),
         "the office for investment": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(2) > div > div:nth-child(3) > div:nth-child(1) > div > h4 > a"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(2) > div > div:nth-child(3) > div:nth-child(1) > div > h4 > a",
         ),
         "the venture capital unit": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(2) > div > div:nth-child(3) > div:nth-child(2) > div > h4 > a"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(2) > div > div:nth-child(3) > div:nth-child(2) > div > h4 > a",
         ),
     },
     "how to expand to the uk": {
         "Establish a base for business in the UK": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(1) > div"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(1) > div",
         ),
         "Get support to move your tech business to the UK": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(2) > div"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(2) > div",
         ),
         "Register a company in the UK": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(3) > div"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(3) > div",
         ),
         "Open a UK business bank account": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(4) > div"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(4) > div",
         ),
         "Access finance in the UK": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(5) > div"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(5) > div",
         ),
         "Research and development support in the UK": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(6) > div",
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(6) > div",
         ),
         "UK Visas and migration": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(7) > div"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(7) > div",
         ),
         "Hire skilled workers for your UK Operations": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(8) > div"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(8) > div",
         ),
         "UK tax and incentives": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(9) > div"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(3) > div > div:nth-child(3) > div:nth-child(9) > div",
         ),
         "Find a UK Specialist": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(4) > div > div > div.atlas-grid__column.atlas-grid__column--left.atlas-grid__column--6-12-m > a"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(4) > div > div > div.atlas-grid__column.atlas-grid__column--left.atlas-grid__column--6-12-m > a",
         ),
-        "Get in touch": Selector(
-            By.CSS_SELECTOR, "#content > section > div > a"
-        ),
+        "Get in touch": Selector(By.CSS_SELECTOR, "#content > section > div > a"),
     },
     "find a uk specialist": {
         "find a uk specialist section": Selector(
-            By.CSS_SELECTOR, "#content > div.atlas-alternate-bg--3-tone > section:nth-child(4)"
+            By.CSS_SELECTOR,
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(4)",
         ),
         "find a uk specialist": Selector(
             By.CSS_SELECTOR,
-            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(4) > div > div > div.atlas-grid__column.atlas-grid__column--left.atlas-grid__column--6-12-m > a"
+            "#content > div.atlas-alternate-bg--3-tone > section:nth-child(4) > div > div > div.atlas-grid__column.atlas-grid__column--left.atlas-grid__column--6-12-m > a",
         ),
     },
     "get in touch": {
-    "get in touch section": Selector(
-        By.CSS_SELECTOR, "#content > section"
-    ),
-    "get in touch": Selector(
-        By.CSS_SELECTOR,
-        "#content > section > div > a"),
+        "get in touch section": Selector(By.CSS_SELECTOR, "#content > section"),
+        "get in touch": Selector(By.CSS_SELECTOR, "#content > section > div > a"),
     },
 }
 SELECTORS.update(common_selectors.INVEST_HEADER)
@@ -139,7 +148,3 @@ def open_guide(driver: WebDriver, guide_name: str):
     guide = find_element(driver, selector, element_name="Guide card", wait_for_it=False)
     guide.click()
     take_screenshot(driver, PAGE_TITLE + " after opening " + guide_name)
-
-
-
-

@@ -3,13 +3,13 @@
 import logging
 from typing import List
 
+from browserpages import common_selectors
+from browserpages.common_actions import Selector, check_for_sections, check_url
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages import common_selectors
-from browserpages.common_actions import Selector, check_for_sections, check_url
 
 NAME = "Search results"
 SERVICE = Service.ISD
@@ -34,13 +34,21 @@ SELECTORS = {
             By.CSS_SELECTOR, "#filter-column > fieldset:nth-child(2)"
         ),
         "regional expertise": Selector(By.CSS_SELECTOR, "#toggle_id_expertise_regions"),
-        "industry expertise": Selector(By.CSS_SELECTOR, "#toggle_id_expertise_industries"),
-        "language expertise": Selector(By.CSS_SELECTOR, "#toggle_id_expertise_languages"),
-        "international expertise": Selector(By.CSS_SELECTOR, "#toggle_id_expertise_countries"),
+        "industry expertise": Selector(
+            By.CSS_SELECTOR, "#toggle_id_expertise_industries"
+        ),
+        "language expertise": Selector(
+            By.CSS_SELECTOR, "#toggle_id_expertise_languages"
+        ),
+        "international expertise": Selector(
+            By.CSS_SELECTOR, "#toggle_id_expertise_countries"
+        ),
         "filter by services": Selector(
             By.CSS_SELECTOR, "#filter-column > fieldset:nth-child(3)"
         ),
-        "financial": Selector(By.CSS_SELECTOR, "#toggle_id_expertise_products_services_financial"),
+        "financial": Selector(
+            By.CSS_SELECTOR, "#toggle_id_expertise_products_services_financial"
+        ),
         "management consulting": Selector(
             By.CSS_SELECTOR, "#toggle_id_expertise_products_services_management"
         ),
@@ -50,7 +58,9 @@ SELECTORS = {
         "publicity and communications": Selector(
             By.CSS_SELECTOR, "#toggle_id_expertise_products_services_publicity"
         ),
-        "legal": Selector(By.CSS_SELECTOR, "#toggle_id_expertise_products_services_legal"),
+        "legal": Selector(
+            By.CSS_SELECTOR, "#toggle_id_expertise_products_services_legal"
+        ),
         "business support": Selector(
             By.CSS_SELECTOR, "#toggle_id_expertise_products_services_business_support"
         ),
@@ -73,6 +83,7 @@ def should_be_here(driver: WebDriver):
 
 def should_see_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)
+
 
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

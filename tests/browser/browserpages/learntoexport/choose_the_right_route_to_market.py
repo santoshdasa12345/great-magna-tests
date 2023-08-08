@@ -4,13 +4,7 @@ import time
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -18,53 +12,59 @@ from browserpages.common_actions import (
     check_for_sections,
     check_if_element_is_not_present,
     check_if_element_is_visible,
-    check_url,
-    find_element,
-    find_selector_by_name,
-    find_elements,
-    go_to_url,
-    pick_option,
-    is_element_present,
-    submit_form,
     check_random_radio,
+    check_url,
+    fill_out_email_address,
+    fill_out_input_fields,
+    find_element,
+    find_elements,
+    find_selector_by_name,
+    go_to_url,
+    is_element_present,
+    pick_option,
+    submit_form,
     take_screenshot,
     wait_for_page_load_after_action,
-    fill_out_input_fields,
-    fill_out_email_address
-
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Choose the right route to market"
 SERVICE = Service.LEARNTOEXPORT
 TYPE = PageType.LESSON
 URL = URLs.GREAT_MAGNA_LESSONS_CHOOSE_THE_RIGHT_ROUTE_TO_MARKET.absolute
 PAGE_TITLE = "Choose the right route to market"
-PROMO_VIDEO = Selector(By.CSS_SELECTOR,
-                       "#content > div > div.bg-white > div > div.grid.lesson-body.p-t-s > div.c-1-2 > div.lesson-hero.media-section > video")
-                       #"#content > div > div.bg-white > div > div.grid.lesson-body.p-t-xl > div.c-1-2 > div.lesson-hero.media-section > video")
-                       #"#content > div > div:nth-child(2) > div > div > div > div.c-1-2 > div.lesson-hero.media-section > video")
+PROMO_VIDEO = Selector(
+    By.CSS_SELECTOR,
+    "#content > div > div.bg-white > div > div.grid.lesson-body.p-t-s > div.c-1-2 > div.lesson-hero.media-section > video",
+)
+# "#content > div > div.bg-white > div > div.grid.lesson-body.p-t-xl > div.c-1-2 > div.lesson-hero.media-section > video")
+# "#content > div > div:nth-child(2) > div > div > div > div.c-1-2 > div.lesson-hero.media-section > video")
 CLOSE_VIDEO = Selector(By.ID, "campaign-section-videoplayer-close")
 
 SELECTORS = {
     "choose the right route to market": {
         "lesson yes checkbox": Selector(
-            By.CSS_SELECTOR, "#mark_as_complete > div > div"
-            #"//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
+            By.CSS_SELECTOR,
+            "#mark_as_complete > div > div"
+            # "//body/main/div/div[2]/div[2]/div/div/div[2]/fieldset/div/div"
         ),
         "continue learning": Selector(
             By.XPATH, "//a[contains(text(),'Continue learning')]"
         ),
-        "bottom back": Selector(
-            By.XPATH, "//body/main/div/div[2]/span/a"
-        ),
-        "top back": Selector(
-            By.XPATH, "//body/main/div/div[1]/div/div[1]/a"
-        ),
-        "open case study" :Selector(
-            By.XPATH, "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button"
+        "bottom back": Selector(By.XPATH, "//body/main/div/div[2]/span/a"),
+        "top back": Selector(By.XPATH, "//body/main/div/div[1]/div/div[1]/a"),
+        "open case study": Selector(
+            By.XPATH,
+            "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button",
         ),
         "close case study": Selector(
-            By.XPATH, "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button"
+            By.XPATH,
+            "//body/main/div/div[1]/div/div[2]/div[2]/div[3]/div[5]/div/div/div/div/button",
         ),
         "view all lessons": Selector(
             By.XPATH, "//a[contains(text(),'View all lessons')]"

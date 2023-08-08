@@ -2,8 +2,8 @@
 """Find a Buyer - Remove Collaborator page"""
 from typing import List, Tuple
 
-from requests import Response, Session
 from bs4 import BeautifulSoup
+from requests import Response, Session
 
 from directory_tests_shared import PageType, Service, URLs
 from tests.functional.utils.generic import Method, make_request
@@ -41,17 +41,17 @@ def go_to(session: Session) -> Response:
 
 
 def extract_email_to_id_mapping(label: str) -> Tuple[str, str]:
-    soup = BeautifulSoup(label, 'html.parser')
-    element_id = soup.label['for']
+    soup = BeautifulSoup(label, "html.parser")
+    element_id = soup.label["for"]
     email = soup.label.get_text()
     return email, element_id
 
 
 def extract_sso_id(html: str, email_to_element_id: Tuple[str, str]):
     email, element_id = email_to_element_id
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, "html.parser")
     element = soup.select_one(f"#{element_id}")
-    value = element.get('value') if element else None
+    value = element.get("value") if element else None
     return email, value
 
 
@@ -66,10 +66,13 @@ def extract_email_to_sso_id(html: str, mapping: dict) -> dict:
 
 def extract_sso_ids(response: Response) -> Dict[str, str]:
     content = response.content.decode("utf-8")
-    soup = BeautifulSoup(content, 'html.parser')
+    soup = BeautifulSoup(content, "html.parser")
     labels = soup.select("label[for]")
-    email_to_element_id_map = dict(map(extract_email_to_id_mapping, [str(label) for label in labels]))
+    email_to_element_id_map = dict(
+        map(extract_email_to_id_mapping, [str(label) for label in labels])
+    )
     return extract_email_to_sso_id(content, email_to_element_id_map)
+
 
 def remove(session: Session, token: str, sso_ids: List[str]) -> Response:
     data = {"csrfmiddlewaretoken": token, "sso_ids": sso_ids}

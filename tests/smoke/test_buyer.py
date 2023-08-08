@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from urllib.parse import urljoin
 
+import allure
 import pytest
 import requests
 from rest_framework.status import (
@@ -10,7 +11,6 @@ from rest_framework.status import (
     HTTP_404_NOT_FOUND,
 )
 
-import allure
 from directory_tests_shared import URLs
 from directory_tests_shared.constants import COMPANIES
 from tests.smoke.cms_api_helpers import get_and_assert, status_error

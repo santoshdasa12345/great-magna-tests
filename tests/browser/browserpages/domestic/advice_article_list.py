@@ -5,12 +5,6 @@ import random
 from typing import List
 from urllib.parse import urljoin
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
-from great_magna_tests_shared.utils import extract_attributes_by_css
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -20,6 +14,12 @@ from browserpages.common_actions import (
     wait_for_page_load_after_action,
 )
 from browserpages.domestic import actions as domestic_actions
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import extract_attributes_by_css
 
 NAME = "Advice article list"
 SERVICE = Service.DOMESTIC
@@ -43,18 +43,14 @@ SubURLs = {
     "find an export market": urljoin(URL, "find-an-export-market/"),
     "choose a route to market": urljoin(URL, "choose-route-market/"),
     "get export finance": urljoin(URL, "get-export-finance-and-funding/"),
-    "manage payment for export orders": urljoin(
-        URL, "manage-payment-export-orders/"
-    ),
+    "manage payment for export orders": urljoin(URL, "manage-payment-export-orders/"),
     "prepare to do business in a foreign country": urljoin(
         URL, "prepare-to-do-business-in-a-foreign-country/"
     ),
     "prepare for export procedures and logistics": urljoin(
         URL, "prepare-for-export-procedures-and-logistics/"
     ),
-    "sell services overseas": urljoin(
-        URL, "sell-services-overseas/"
-    ),
+    "sell services overseas": urljoin(URL, "sell-services-overseas/"),
     "manage risk of bribery and corruption": urljoin(
         URL, "manage-risk-bribery-and-corruption/"
     ),

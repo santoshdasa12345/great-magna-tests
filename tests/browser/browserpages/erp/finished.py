@@ -2,14 +2,19 @@
 """ERP - Finished"""
 from typing import List
 
+from browserpages import common_selectors
+from browserpages.common_actions import (
+    Selector,
+    check_for_sections,
+    check_url,
+    find_element,
+)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
 from great_magna_tests_shared.utils import extract_by_css
-from browserpages import common_selectors
-from browserpages.common_actions import Selector, check_for_sections, check_url, find_element
 
 NAME = "Finished"
 SERVICE = Service.ERP

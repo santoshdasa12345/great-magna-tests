@@ -4,13 +4,7 @@ import time
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -18,20 +12,26 @@ from browserpages.common_actions import (
     check_for_sections,
     check_if_element_is_not_present,
     check_if_element_is_visible,
-    check_url,
-    find_element,
-    find_selector_by_name,
-    find_elements,
-    go_to_url,
-    pick_option,
-    is_element_present,
-    submit_form,
     check_random_radio,
+    check_url,
+    fill_out_email_address,
+    fill_out_input_fields,
+    find_element,
+    find_elements,
+    find_selector_by_name,
+    go_to_url,
+    is_element_present,
+    pick_option,
+    submit_form,
     take_screenshot,
     wait_for_page_load_after_action,
-    fill_out_input_fields,
-    fill_out_email_address
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Export Plan"
 SERVICE = Service.BUILD_AN_EXPORT_PLAN
@@ -40,7 +40,7 @@ URL = URLs.GREAT_MAGNA_START_PRODUCT_MAKE_AN_EXPORT_PLAN.absolute
 PAGE_TITLE = "Export Plan"
 # NAMES = [NAME, "new-lesson-added"]
 SubURLs = {
-    "export plan":URLs.GREAT_MAGNA_START_PRODUCT_MAKE_AN_EXPORT_PLAN.absolute,
+    "export plan": URLs.GREAT_MAGNA_START_PRODUCT_MAKE_AN_EXPORT_PLAN.absolute,
     "export plan market": URLs.GREAT_MAGNA_START_MARKET_MAKE_AN_EXPORT_PLAN.absolute_template,
     "export plan dashboard": URLs.GREAT_MAGNA_NEW_EXPORT_PLAN.absolute_template,
 }
@@ -48,10 +48,12 @@ SubURLs = {
 SELECTORS = {
     "Export Plan Dashboard": {
         "top create a new plan": Selector(
-            By.CSS_SELECTOR, "#content > div.bg-blue-deep-80.hero-image-container > div > div > div.c-1-2.p-v-xl.lh > a"
+            By.CSS_SELECTOR,
+            "#content > div.bg-blue-deep-80.hero-image-container > div > div > div.c-1-2.p-v-xl.lh > a",
         ),
         "bottom create an export plan": Selector(
-            By.CSS_SELECTOR, "#content > div:nth-child(3) > div > div > div > div:nth-child(2) > div:nth-child(1) > a"
+            By.CSS_SELECTOR,
+            "#content > div:nth-child(3) > div > div > div > div:nth-child(2) > div:nth-child(1) > a",
         ),
         # "continue": Selector(
         #     By.XPATH, "//body/main/div/div[1]/div[2]/div[2]"
@@ -63,28 +65,24 @@ SELECTORS = {
             By.XPATH, "//body/main/div/div[1]/div[2]/div[1]/div[2]/div/div[7]/label"
         ),
         "next button": Selector(
-            By.XPATH, "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/div/fieldset/button"
+            By.XPATH,
+            "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/div/fieldset/button",
         ),
         "start choose a product": Selector(
             By.XPATH, "//body/main/div/div[1]/div[2]/div[1]/div[2]/button"
         ),
         "choose market": Selector(
-            By.XPATH, "//*[@id=\"export-plan-wizard-container\"]/div[2]/div/div[2]/button"
+            By.XPATH, '//*[@id="export-plan-wizard-container"]/div[2]/div/div[2]/button'
         ),
         "create export plan": Selector(
             By.XPATH, "//body/main/div/div[1]/div[2]/button"
         ),
         "exporting plan 1": Selector(
-            By.CSS_SELECTOR, "#content > div.container > div > div > nav > ul > li:nth-child(1) > article > a"
+            By.CSS_SELECTOR,
+            "#content > div.container > div > div > nav > ul > li:nth-child(1) > article > a",
         ),
-        "download plan": Selector(
-            By.XPATH, "//body/main/section/aside/a"
-        ),
-        "delete plan": Selector(
-            By.XPATH, "//body/main/section/aside/div[2]/button"
-        ),
-
-
+        "download plan": Selector(By.XPATH, "//body/main/section/aside/a"),
+        "delete plan": Selector(By.XPATH, "//body/main/section/aside/div[2]/button"),
     }
 }
 
@@ -111,17 +109,13 @@ def find_and_click(driver: WebDriver, *, element_selector_name: str):
 
 
 def enter_text(driver: WebDriver, element_name: str):
-    text_element = find_element(
-        driver, find_selector_by_name(SELECTORS, element_name)
-    )
+    text_element = find_element(driver, find_selector_by_name(SELECTORS, element_name))
     text_element.clear()
     text_element.send_keys("Automated tests")
 
 
 def validate_entered_text(driver: WebDriver, element_name: str):
-    text_element = find_element(
-        driver, find_selector_by_name(SELECTORS, element_name)
-    )
+    text_element = find_element(driver, find_selector_by_name(SELECTORS, element_name))
     if "Automated tests" in text_element.text:
         return True
     return False
@@ -160,8 +154,13 @@ def validate_entered_text(driver: WebDriver, element_name: str):
 def random_select_checkbox(driver: WebDriver, element_name: str):
     find_and_click(driver, element_selector_name="Select")
 
-    random_age_group_element_xpath = "//body/main/div[2]/section[3]/div/div/div[2]/div/div[1]/form/ul/li" \
-                                     + "[" + str(random.randint(0, 8)) + "]" + "/label"
+    random_age_group_element_xpath = (
+        "//body/main/div[2]/section[3]/div/div/div[2]/div/div[1]/form/ul/li"
+        + "["
+        + str(random.randint(0, 8))
+        + "]"
+        + "/label"
+    )
     driver.implicitly_wait(1)
     driver.find_element_by_xpath(random_age_group_element_xpath).click()
     find_and_click(driver, element_selector_name="Confirm")
@@ -178,7 +177,10 @@ def fill_out_country(driver: WebDriver, country: str):
 
     # country
     country_btn = find_element(
-        driver, find_selector_by_name(SELECTORS, "choose market")  # dashboard add country button
+        driver,
+        find_selector_by_name(
+            SELECTORS, "choose market"
+        ),  # dashboard add country button
     )
     country_btn.click()
 
@@ -190,8 +192,11 @@ def fill_out_country(driver: WebDriver, country: str):
 
     if 0 == len(country):
         # if country name is not provided from the test case, then select one of the random 5 countries listed on the browser
-        path_random_country_element = "body > div:nth-child(15) > div > div > div > div > div > div.only-desktop > div.suggested-markets > div > button:nth-child(" + str(
-            random.randint(1, 5)) + ")"
+        path_random_country_element = (
+            "body > div:nth-child(15) > div > div > div > div > div > div.only-desktop > div.suggested-markets > div > button:nth-child("
+            + str(random.randint(1, 5))
+            + ")"
+        )
         driver.find_element_by_css_selector(path_random_country_element).click()
     else:
         # search using the provide country name from the test case
@@ -200,7 +205,8 @@ def fill_out_country(driver: WebDriver, country: str):
 
         # look out for the list displayed after entering country name and select random/provided country
         ul_list_element = driver.find_element_by_xpath(
-            "//body/div[6]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/div/section[1]/div[2]/ol")
+            "//body/div[6]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/div/section[1]/div[2]/ol"
+        )
         # "//body/div[11]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/ul")
         # /html/body/div[6]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/div/section/div[2]/ol/li/button
         # //body/div[6]/div/div/div/div/div/div[1]/div[4]/div[2]/div[2]/div/section/div[2]/ol/li/button
@@ -208,7 +214,9 @@ def fill_out_country(driver: WebDriver, country: str):
         logging.debug("length of li elements " + str(len(li_elements)))
         # select random section element and within that select a country
         index_random_element_to_be_selected = random.randint(0, len(li_elements) - 1)
-        logging.debug("Index of section elements " + str(index_random_element_to_be_selected))
+        logging.debug(
+            "Index of section elements " + str(index_random_element_to_be_selected)
+        )
         section_element_selected = li_elements[index_random_element_to_be_selected]
         logging.debug(section_element_selected)
 
@@ -249,12 +257,14 @@ def fill_out_product(driver: WebDriver, product_name: str):
     # search_again_top_bottom(driver)
     driver.implicitly_wait(2)
     driver.find_element_by_xpath(
-        "//body[1]/div[6]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/label/div/input").clear()
+        "//body[1]/div[6]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/label/div/input"
+    ).clear()
     driver.find_element_by_xpath(
-        "//body[1]/div[6]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/label/div/input").send_keys(
-        product_name)
+        "//body[1]/div[6]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/label/div/input"
+    ).send_keys(product_name)
     driver.find_element_by_xpath(
-        "//body[1]/div[6]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/button[1]/i").click()
+        "//body[1]/div[6]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/button[1]/i"
+    ).click()
     # driver.find_element_by_css_selector("//input[@id='search-input']").clear()
     # driver.find_element_by_css_selector("//input[@id='search-input']").send_keys(product_name)
     # driver.find_element_by_xpath("//body[1]/div[6]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/button[1]/i").click()
@@ -265,7 +275,6 @@ def fill_out_product(driver: WebDriver, product_name: str):
     # def search_select_save_radio(driver: WebDriver):
     counter = 0
     while True:
-
         if counter >= 50:
             break
         # logging.debug("Counter: " + str(counter))
@@ -276,7 +285,8 @@ def fill_out_product(driver: WebDriver, product_name: str):
         save_btn_found = False
         try:
             save_product_btn = driver.find_element_by_xpath(
-                "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/button")
+                "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/button"
+            )
             save_btn_found = True
         except Exception as ex:
             logging.debug("save button not found.Exception: " + str(ex))
@@ -287,9 +297,14 @@ def fill_out_product(driver: WebDriver, product_name: str):
             return
         # look for div's and radio buttons
         parent_1_div_element = driver.find_element_by_xpath(
-            "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/div")  # ("interaction grid m-v-xs")
-        child_1_div_element = parent_1_div_element.find_element_by_tag_name("fieldset")  # ("c-fullwidth")
-        main_div_element = child_1_div_element.find_element_by_tag_name("div")  # "m-b-xs"
+            "//body/div[6]/div/div/form/div[2]/div/span/div/section[1]/div"
+        )  # ("interaction grid m-v-xs")
+        child_1_div_element = parent_1_div_element.find_element_by_tag_name(
+            "fieldset"
+        )  # ("c-fullwidth")
+        main_div_element = child_1_div_element.find_element_by_tag_name(
+            "div"
+        )  # "m-b-xs"
         # radio button labels
         label_elements = main_div_element.find_elements_by_tag_name("label")
         radio_elements = []
@@ -324,7 +339,6 @@ def click_on_continue(driver: WebDriver):
 def search_select_save_random_next(driver: WebDriver):
     counter = 0
     while True:
-
         if counter >= 50:
             break
         # logging.debug("Counter: " + str(counter))
@@ -335,7 +349,8 @@ def search_select_save_random_next(driver: WebDriver):
         save_btn_found = False
         try:
             save_product_btn = driver.find_element_by_xpath(
-                "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button")
+                "//body/div[4]/div/div/form/div[2]/div/span/div/section[1]/div[2]/button"
+            )
             save_btn_found = True
         except Exception as ex:
             logging.debug("save button not found.Exception: " + str(ex))
@@ -347,11 +362,14 @@ def search_select_save_random_next(driver: WebDriver):
         # look for div's and radio buttons
         # try:
         parent_1_div_element = driver.find_element_by_xpath(
-            "//body/div[4]/div/div/form/div[2]/div/span/div/section/div")
+            "//body/div[4]/div/div/form/div[2]/div/span/div/section/div"
+        )
         #      #   "/html/body/div[7]/div/div/form/div[2]/div/span/div/section/div")  # ("interaction grid m-v-xs")
         # except Exception as e:
         #     parent_1_div_element = driver.find_element_by_xpath("//body/div[7]/div[1]/div[1]/form[1]/div[2]/div[1]/span[1]/div[1]/section[1]/div[1]")#"interaction grid m-v-xs")
-        child_1_div_element = parent_1_div_element.find_element_by_tag_name("div")  # ("c-fullwidth")
+        child_1_div_element = parent_1_div_element.find_element_by_tag_name(
+            "div"
+        )  # ("c-fullwidth")
         main_div_element = child_1_div_element.find_element_by_tag_name("div")
         # radio button labels
         label_elements = main_div_element.find_elements_by_tag_name("label")
@@ -363,9 +381,11 @@ def search_select_save_random_next(driver: WebDriver):
             except Exception as e:
                 continue
             radio_elements.append(radio_ele)
-        logging.debug('number of labels - ' + str(len(radio_elements)))
+        logging.debug("number of labels - " + str(len(radio_elements)))
         random_label_index = random.randint(0, len(radio_elements) - 1)
-        logging.debug('Index of radio buttons to be selected -> ' + str(random_label_index))
+        logging.debug(
+            "Index of radio buttons to be selected -> " + str(random_label_index)
+        )
 
         radio_btn_selected = radio_elements[random_label_index]
         radio_btn_selected.click()
@@ -380,7 +400,9 @@ def search_select_save_random_next(driver: WebDriver):
 
 
 def find_and_select_random_product_and_click_continue(driver: WebDriver):
-    product_div_element = driver.find_element_by_xpath("//body/main/div/div[1]/div[2]/div[1]/div[2]/div")
+    product_div_element = driver.find_element_by_xpath(
+        "//body/main/div/div[1]/div[2]/div[1]/div[2]/div"
+    )
     child_div_elements = product_div_element.find_elements_by_tag_name("div")
 
     # label_elements = child_div_element.find_elements_by_tag_name("label")
@@ -394,14 +416,16 @@ def find_and_select_random_product_and_click_continue(driver: WebDriver):
         except Exception as e:
             continue
         radio_elements.append(radio_ele)
-    logging.debug('number of radio elements - ' + str(len(radio_elements)))
+    logging.debug("number of radio elements - " + str(len(radio_elements)))
     random_label_index = random.randint(0, len(radio_elements) - 1)
     # logging.debug('Index of radio buttons to be selected -> ' + str(random_label_index))
 
     radio_btn_selected = radio_elements[random_label_index]
     radio_btn_selected.click()
 
-    something_else_element = driver.find_element_by_xpath("//body/main/div/div[1]/div[2]/div[1]/div[3]/button")
+    something_else_element = driver.find_element_by_xpath(
+        "//body/main/div/div[1]/div[2]/div[1]/div[3]/button"
+    )
     if str(something_else_element.text).lower() == "something else":
         something_else_found = True
         something_else_element.click()
@@ -414,8 +438,12 @@ def find_and_select_random_product_and_click_continue(driver: WebDriver):
 
 
 def find_and_select_random_export_plan(driver: WebDriver):
-    ulist_export_plan_xpath = driver.find_element_by_xpath("//body/main/div[3]/div/div/nav/ul")
-    export_plan_xpath_li_elements = ulist_export_plan_xpath.find_elements_by_tag_name("li")
+    ulist_export_plan_xpath = driver.find_element_by_xpath(
+        "//body/main/div[3]/div/div/nav/ul"
+    )
+    export_plan_xpath_li_elements = ulist_export_plan_xpath.find_elements_by_tag_name(
+        "li"
+    )
     random_number = 0
     if len(export_plan_xpath_li_elements) > 2:
         random_number = random.randint(1, len(export_plan_xpath_li_elements) - 1)

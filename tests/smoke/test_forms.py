@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import allure
 import pytest
 from rest_framework.status import (
     HTTP_200_OK,
@@ -7,7 +8,6 @@ from rest_framework.status import (
     HTTP_405_METHOD_NOT_ALLOWED,
 )
 
-import allure
 from directory_tests_shared import URLs
 from directory_tests_shared.clients import FORMS_API_CLIENT, BasicAuthenticator
 from directory_tests_shared.settings import BASICAUTH_PASS, BASICAUTH_USER

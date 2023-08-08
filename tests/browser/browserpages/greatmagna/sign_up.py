@@ -4,16 +4,7 @@ import time
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.common.exceptions import (
-    NoSuchElementException,
-)
-from great_magna_tests_shared import URLs, settings
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
-from great_magna_tests_shared.reademail import ReadEmail
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -21,21 +12,28 @@ from browserpages.common_actions import (
     check_for_sections,
     check_if_element_is_not_present,
     check_if_element_is_visible,
-    check_url,
-    find_element,
-    find_selector_by_name,
-    find_elements,
-    go_to_url,
-    pick_option,
-    is_element_present,
-    submit_form,
     check_random_radio,
+    check_url,
+    fill_out_email_address,
+    fill_out_input_fields,
+    find_element,
+    find_elements,
+    find_selector_by_name,
+    go_to_url,
+    is_element_present,
+    pick_option,
+    submit_form,
     take_screenshot,
     wait_for_page_load_after_action,
-    fill_out_input_fields,
-    fill_out_email_address
-
 )
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs, settings
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.reademail import ReadEmail
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Sign up"
 SERVICE = Service.GREATMAGNA
@@ -49,7 +47,6 @@ SubURLs = {
     "/signup/?next=/learn/categories/": URLs.GREAT_MAGNA_SIGNUP_LEARN_TO_EXPORT.absolute_template,
     "?next=/where-to-export/": URLs.GREAT_MAGNA_SIGNUP_WHERE_TO_EXPORT.absolute_template,
     "?next=/export-plan/dashboard/": URLs.GREAT_MAGNA_SIGNUP_MAKE_AN_EXPORT_PLAN.absolute_template,
-
 }
 
 SELECTORS = {
@@ -60,17 +57,12 @@ SELECTORS = {
         "password": Selector(
             By.XPATH, "//input[@id='password']", type=ElementType.INPUT
         ),
-        "sign up button": Selector(
-            By.XPATH, "//button[@id='signup-modal-submit']"
-        ),
-        "code": Selector(
-            By.XPATH, "//input[@id='code']", type=ElementType.INPUT
-        ),
-        "submit": Selector(
-            By.XPATH, "//button[@id='signup-modal-submit-code']"
-        ),
+        "sign up button": Selector(By.XPATH, "//button[@id='signup-modal-submit']"),
+        "code": Selector(By.XPATH, "//input[@id='code']", type=ElementType.INPUT),
+        "submit": Selector(By.XPATH, "//button[@id='signup-modal-submit-code']"),
         "continue": Selector(
-            By.XPATH, "//a[@id='signup-modal-submit-success']"  # # #signup-modal-submit-success
+            By.XPATH,
+            "//a[@id='signup-modal-submit-success']",  # # #signup-modal-submit-success
         ),
         "add a target market": Selector(
             By.XPATH, "//button[contains(text(),'Add a target market')]"
@@ -81,19 +73,13 @@ SELECTORS = {
         "google login": Selector(
             By.CSS_SELECTOR, "#signup-modal-google", type=ElementType.INPUT
         ),
-        "sign in": Selector(
-            By.CSS_SELECTOR, "#signup-modal-log-in"
-        ),
-        "get in touch": Selector(
-            By.XPATH, "//body/main/div/div/div[1]/p/a"
-        ),
-
+        "sign in": Selector(By.CSS_SELECTOR, "#signup-modal-log-in"),
+        "get in touch": Selector(By.XPATH, "//body/main/div/div/div[1]/p/a"),
     },
 }
 SubURLs = {
     "sign up": URL,
-    "required":
-        URLs.GREAT_MAGNA_SIGNUP.absolute_template,
+    "required": URLs.GREAT_MAGNA_SIGNUP.absolute_template,
 }
 
 
@@ -118,7 +104,9 @@ def sign_up(driver: WebDriver, email_address: str, password: str):
 def fill_out_email_address(driver: WebDriver, details: dict):
     email_address_selectors = SELECTORS["sign up"]
     fill_out_input_fields(driver, email_address_selectors, details)
-    fill_input_list = find_element(driver, find_selector_by_name(SELECTORS, "sign up button"))
+    fill_input_list = find_element(
+        driver, find_selector_by_name(SELECTORS, "sign up button")
+    )
     fill_input_list.click()
 
 
@@ -126,18 +114,26 @@ def confirmation_code(driver: WebDriver, email: str, password: str):
     time.sleep(2)
     logging.debug("email: " + email)
     logging.debug("password: " + password)
-    readMailBody = ReadEmail(settings.DEV_GMAIL_HOST, email, password, settings.EMAIL_FETCH_COUNT)
-    email_body_text = readMailBody.reademailbody(settings.EMAIL_SEARCH_SUBJECT, settings.EMAIL_SEARCH_CRITERIA)
+    readMailBody = ReadEmail(
+        settings.DEV_GMAIL_HOST, email, password, settings.EMAIL_FETCH_COUNT
+    )
+    email_body_text = readMailBody.reademailbody(
+        settings.EMAIL_SEARCH_SUBJECT, settings.EMAIL_SEARCH_CRITERIA
+    )
 
     # check if the email_body_text exists or empty
     if email_body_text:
         # search text position in email_body_text
         c_code_pos = email_body_text.find(settings.EMAIL_SEARCH_CRITERIA)
-        confirmation_code = '00000'  # default
+        confirmation_code = "00000"  # default
         # check if the required search criteria text found in the email_body_text. -1 indicates not found.
         if c_code_pos != -1:
-            confirmation_code = email_body_text[c_code_pos + len(settings.EMAIL_SEARCH_CRITERIA):c_code_pos + len(
-                settings.EMAIL_SEARCH_CRITERIA) + settings.CONFIRMATION_CODE_LENGTH]
+            confirmation_code = email_body_text[
+                c_code_pos
+                + len(settings.EMAIL_SEARCH_CRITERIA) : c_code_pos
+                + len(settings.EMAIL_SEARCH_CRITERIA)
+                + settings.CONFIRMATION_CODE_LENGTH
+            ]
         confirmation_code = confirmation_code.strip()  # trim left and right
 
         if confirmation_code.isdigit():
@@ -163,11 +159,16 @@ def confirmation_code(driver: WebDriver, email: str, password: str):
 #         return True
 #     return False
 
-def should_be_error_message(driver: WebDriver, element_name: str, expected_error_message: str):
+
+def should_be_error_message(
+    driver: WebDriver, element_name: str, expected_error_message: str
+):
     try:
         selectors = SELECTORS["login"]
         element_selector = selectors[element_name]
-        actual_error_message = driver.find_element_by_css_selector(element_selector.value).text
+        actual_error_message = driver.find_element_by_css_selector(
+            element_selector.value
+        ).text
         # logging.debug(f"actual_error_message -> {actual_error_message}")
         actual_error_message = actual_error_message.strip()
         if actual_error_message in expected_error_message:

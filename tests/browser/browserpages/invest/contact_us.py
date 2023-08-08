@@ -5,11 +5,6 @@ from random import choice
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Actor,
@@ -26,6 +21,11 @@ from browserpages.common_actions import (
 )
 from browserpages.common_autocomplete_callbacks import js_country_select
 from browserpages.invest import contact_us_thank_you
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Contact us"
 SERVICE = Service.INVEST
@@ -46,10 +46,16 @@ SELECTORS = {
         "email": Selector(By.CSS_SELECTOR, "#id_email_address", type=ElementType.INPUT),
         "phone": Selector(By.ID, "id_phone_number", type=ElementType.INPUT),
         # "your industry": Selector(By.ID, "id_company_name", type=ElementType.INPUT),
-        "your organisation name": Selector(By.XPATH, "//*[@id=\"id_organisation_name\"]", type=ElementType.INPUT),
-        "your country": Selector(By.CSS_SELECTOR, "#js-country-select", type=ElementType.INPUT),
+        "your organisation name": Selector(
+            By.XPATH, '//*[@id="id_organisation_name"]', type=ElementType.INPUT
+        ),
+        "your country": Selector(
+            By.CSS_SELECTOR, "#js-country-select", type=ElementType.INPUT
+        ),
         "company name": Selector(By.ID, "id_company_name", type=ElementType.INPUT),
-        "describe what products or services": Selector(By.CSS_SELECTOR, "#id_body", type=ElementType.INPUT),
+        "describe what products or services": Selector(
+            By.CSS_SELECTOR, "#id_body", type=ElementType.INPUT
+        ),
         "website url": Selector(By.ID, "id_company_website", type=ElementType.INPUT),
         "company hq address": Selector(
             By.ID, "id_company_hq_address", type=ElementType.INPUT
@@ -122,12 +128,12 @@ def generate_form_details(actor: Actor, *, custom_details: dict = None) -> dict:
         # "company hq address": "Far, far away",
         # "country": True,
         "your industry": None,
-        "your organisation name" : "Automated test",
-        "size of your organisation":None,
+        "your organisation name": "Automated test",
+        "size of your organisation": None,
         # "feeling": None,
-        "your country" : None,
+        "your country": None,
         "your plans": "This is a test message sent via automated tests",
-        "describe what products or services" :" This is a test message",
+        "describe what products or services": " This is a test message",
         "arrange call yes": arrange_call,
         "arrange call no": not arrange_call,
         "how did you hear": None,

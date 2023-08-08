@@ -2,43 +2,24 @@
 """When step implementations."""
 import logging
 import random
+import time
 from inspect import signature
 from types import MethodType
 from typing import Dict
 from urllib.parse import urljoin
-import time
 
 from behave.model import Table
 from behave.runner import Context
-from retrying import retry
-from selenium.common.exceptions import (
-    NoSuchElementException,
-    TimeoutException,
-    WebDriverException,
-)
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared.gov_notify import (
-    get_email_verification_code,
-    get_verification_link,
-
-)
-from great_magna_tests_shared.utils import check_for_errors
-from browserpages import (
-    # search,
+from browserpages import (  # search,
     common_language_selector,
+    domestic,
+    fas,
     get_page_object,
     greatmagna,
     learntoexport,
-    fas,
-    soo,
     profile,
+    soo,
     sso,
-)
-from browserpages import (
-    domestic,
-
 )
 from browserpages.common_actions import (
     accept_all_cookies,
@@ -63,12 +44,24 @@ from browserpages.common_actions import (
     update_actor,
     update_actor_forms_data,
     wait_for_page_load_after_action,
-    revisit_page_on_access_denied,
 )
-
-from steps import has_action
 from browserutils.cms_api import get_news_articles
 from browserutils.gtm import get_gtm_event_definitions, trigger_js_event
+from retrying import retry
+from selenium.common.exceptions import (
+    NoSuchElementException,
+    TimeoutException,
+    WebDriverException,
+)
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared.gov_notify import (
+    get_email_verification_code,
+    get_verification_link,
+)
+from great_magna_tests_shared.utils import check_for_errors
+from steps import has_action
 
 NUMBERS = {
     "random": 0,
@@ -193,7 +186,7 @@ def articles_open_any(context: Context, actor_alias: str):
 
 
 def click_on_page_element(
-        context: Context, actor_alias: str, element_name: str, *, page_name: str = None
+    context: Context, actor_alias: str, element_name: str, *, page_name: str = None
 ):
     if page_name:
         page = get_page_object(page_name)
@@ -207,14 +200,21 @@ def click_on_page_element(
 
 
 def click_on_page_element_with_wait(
-        context: Context, actor_alias: str, element_name: str, *, page_name: str = None, wait_for_it: bool = True
+    context: Context,
+    actor_alias: str,
+    element_name: str,
+    *,
+    page_name: str = None,
+    wait_for_it: bool = True,
 ):
     if page_name:
         page = get_page_object(page_name)
     else:
         page = get_last_visited_page(context, actor_alias)
     logging.debug(page)
-    find_and_click_on_page_element(context.driver, page.SELECTORS, element_name, wait_for_it=wait_for_it)
+    find_and_click_on_page_element(
+        context.driver, page.SELECTORS, element_name, wait_for_it=wait_for_it
+    )
     logging.debug(
         "%s decided to click on '%s' on '%s' page", actor_alias, element_name, page.NAME
     )
@@ -227,14 +227,14 @@ def click_on_page_element_with_wait(
     wrap_exception=False,
 )
 def generic_fill_out_and_submit_form(
-        context: Context,
-        actor_alias: str,
-        *,
-        custom_details_table: Table = None,
-        retry_on_errors: bool = False,
-        go_back: bool = False,
-        form_name: str = None,
-        check_captcha_dev_mode: bool = False,
+    context: Context,
+    actor_alias: str,
+    *,
+    custom_details_table: Table = None,
+    retry_on_errors: bool = False,
+    go_back: bool = False,
+    form_name: str = None,
+    check_captcha_dev_mode: bool = False,
 ):
     # if check_captcha_dev_mode:
     #     assert_catcha_in_dev_mode(context.driver)
@@ -303,14 +303,14 @@ def generic_fill_out_and_submit_form(
     wrap_exception=False,
 )
 def generic_fill_out(
-        context: Context,
-        actor_alias: str,
-        *,
-        custom_details_table: Table = None,
-        retry_on_errors: bool = False,
-        go_back: bool = False,
-        form_name: str = None,
-        check_captcha_dev_mode: bool = True,
+    context: Context,
+    actor_alias: str,
+    *,
+    custom_details_table: Table = None,
+    retry_on_errors: bool = False,
+    go_back: bool = False,
+    form_name: str = None,
+    check_captcha_dev_mode: bool = True,
 ):
     if check_captcha_dev_mode:
         assert_catcha_in_dev_mode(context.driver)
@@ -369,21 +369,27 @@ def generic_submit_form(context: Context, actor_alias: str):
 
 
 def actor_decides_to_fill_country_and_click_on_continue(
-        context, actor_alias, country_name):
+    context, actor_alias, country_name
+):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "countrysearch")
     page.countrysearch(context.driver, country_name=country_name)
 
 
 def generic_country_name_to_fill_country_and_click_on_continue(
-        context, actor_alias, element_name, form_name):
+    context, actor_alias, element_name, form_name
+):
     generic_fill_out(
-        context, actor_alias, custom_details_table=context.table, form_name=form_name,
+        context,
+        actor_alias,
+        custom_details_table=context.table,
+        form_name=form_name,
         check_captcha_dev_mode=False,
     )
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "searchcontinue")
     page.searchcontinue(context.driver)
+
 
 def generic_open_industry_page(context: Context, actor_alias: str, industry_name: str):
     page = get_last_visited_page(context, actor_alias)
@@ -392,10 +398,15 @@ def generic_open_industry_page(context: Context, actor_alias: str, industry_name
     update_actor(context, actor_alias, visited_page=page)
     logging.debug("%s opened '%s' page on %s", actor_alias, industry_name, page.URL)
 
+
 def generic_product_name_to_fill_country_and_click_on_continue(
-        context, actor_alias, element_name, form_name):
+    context, actor_alias, element_name, form_name
+):
     generic_fill_out(
-        context, actor_alias, custom_details_table=context.table, form_name=form_name,
+        context,
+        actor_alias,
+        custom_details_table=context.table,
+        form_name=form_name,
         check_captcha_dev_mode=False,
     )
     page = get_last_visited_page(context, actor_alias)
@@ -404,26 +415,24 @@ def generic_product_name_to_fill_country_and_click_on_continue(
 
 
 def actor_decides_to_fill_product_and_click_on_continue(
-        context, actor_alias, product_name):
+    context, actor_alias, product_name
+):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "productsearch")
     page.productsearch(context.driver, product_name=product_name)
 
 
-def actor_decides_to_check_random_radio_and_click_on_continue(
-        context, actor_alias):
+def actor_decides_to_check_random_radio_and_click_on_continue(context, actor_alias):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "find_and_select_random_radio_and_click_continue")
     page.find_and_select_random_radio_and_click_continue(context.driver)
 
 
-def actor_should_be_on_refine_or_tradedata_page(
-        context, actor_alias):
+def actor_should_be_on_refine_or_tradedata_page(context, actor_alias):
     actor_should_be_on_appropriate_page(context, actor_alias)
 
 
-def actor_should_be_on_appropriate_page(
-        context, actor_alias):
+def actor_should_be_on_appropriate_page(context, actor_alias):
     page = get_last_visited_page(context, actor_alias)
     current_page_url = str(context.driver.current_url)
     # logging.debug(f"actor_should_be_on_appropriate_page:current_page_url -> {current_page_url}")
@@ -447,14 +456,21 @@ def actor_should_be_on_appropriate_page(
     assert False, error
 
 
-def actor_decides_not_to_enter_any_text_and_click_on_page_element(context, actor_alias, element_name):
+def actor_decides_not_to_enter_any_text_and_click_on_page_element(
+    context, actor_alias, element_name
+):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "searchcontinue")
     page.searchcontinue(context.driver)
 
 
 def actor_select_random_data_click_continue_until_tradedata_or_checkanswers_page(
-        context, actor_alias, max_number_pages, is_trade_data_page, is_check_your_answers_page):
+    context,
+    actor_alias,
+    max_number_pages,
+    is_trade_data_page,
+    is_check_your_answers_page,
+):
     landed_on_tradedata_page = False
     landed_on_checkanswers_page = False
     counter = 0
@@ -479,7 +495,8 @@ def actor_select_random_data_click_continue_until_tradedata_or_checkanswers_page
 
 
 def actor_select_or_enter_random_data_click_continue_until_checkanswers_page(
-        context, actor_alias, max_number_pages):
+    context, actor_alias, max_number_pages
+):
     counter = 0
     while counter < int(max_number_pages):
         current_page_url = str(context.driver.current_url)
@@ -499,20 +516,27 @@ def actor_select_or_enter_random_data_click_continue_until_checkanswers_page(
                 has_action(page, "find_and_select_random_radio_and_click_continue")
                 page.find_and_select_random_radio_and_click_continue(context.driver)
                 # time.sleep(1)
-                composition_text_element = context.driver.find_element_by_xpath("//*[@id=\"composition_message\"]")
+                composition_text_element = context.driver.find_element_by_xpath(
+                    '//*[@id="composition_message"]'
+                )
                 composition_text = str(composition_text_element.text)
                 if "The numbers need to add up to 100." in composition_text:
                     page = get_page_object("Search - Refinement Interaction")
                     has_action(page, "find_and_enter_random_composition_percent")
-                    page.find_and_enter_random_composition_percent(context.driver, "100")
-                    find_and_click_on_page_element(context.driver, page.SELECTORS, "Continue")
+                    page.find_and_enter_random_composition_percent(
+                        context.driver, "100"
+                    )
+                    find_and_click_on_page_element(
+                        context.driver, page.SELECTORS, "Continue"
+                    )
             except NoSuchElementException:
                 pass
         counter += 1
 
 
 def actor_decides_to_click_back_until_reaches_product_search_page(
-        context, actor_alias, element_name, max_number_pages, page_name):
+    context, actor_alias, element_name, max_number_pages, page_name
+):
     counter = 0
     while counter < int(max_number_pages):
         current_page_url = str(context.driver.current_url)
@@ -537,7 +561,8 @@ def actor_decides_to_click_back_until_reaches_product_search_page(
 
 
 def actor_select_random_data_click_continue_until_composition_page(
-        context, actor_alias, max_number_pages):
+    context, actor_alias, max_number_pages
+):
     landed_on_composition_page = False
     counter = 0
     while counter < int(max_number_pages):
@@ -554,7 +579,9 @@ def actor_select_random_data_click_continue_until_composition_page(
             # logging.debug(
             #     f"actor_select_random_data_click_continue_until_composition_page:get_last_visited_page ->  {page.NAME}")
             # should_be_on_page(context, actor_alias, f"Search - {page.NAMES[1]}")
-            composition_text_element = context.driver.find_element_by_xpath("//*[@id=\"composition_message\"]")
+            composition_text_element = context.driver.find_element_by_xpath(
+                '//*[@id="composition_message"]'
+            )
             composition_text = str(composition_text_element.text)
             # logging.debug(
             #     f"actor_select_random_data_click_continue_until_composition_page:composition_text ->  {composition_text}")
@@ -565,7 +592,8 @@ def actor_select_random_data_click_continue_until_composition_page(
                 #     f"actor_select_random_data_click_continue_until_composition_page:Reached Composition page!")
         except NoSuchElementException:
             logging.debug(
-                f"actor_select_random_data_click_continue_until_composition_page:Couldn't reach Composition page after {counter} attempts!")
+                f"actor_select_random_data_click_continue_until_composition_page:Couldn't reach Composition page after {counter} attempts!"
+            )
 
         if landed_on_composition_page:
             break
@@ -575,22 +603,23 @@ def actor_select_random_data_click_continue_until_composition_page(
         assert False, error
 
 
-def actor_enter_random_composition_data_equal_to_hundred_percent(
-        context, actor_alias):
+def actor_enter_random_composition_data_equal_to_hundred_percent(context, actor_alias):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "find_and_enter_random_composition_percent")
     page.find_and_enter_random_composition_percent(context.driver, "100")
 
 
 def actor_enter_random_composition_data_not_equal_to_hundred_percent(
-        context, actor_alias):
+    context, actor_alias
+):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "find_and_enter_random_composition_percent")
     page.find_and_enter_random_composition_percent(context.driver, "80")
 
 
 def actor_decides_to_enter_blank_spaces_click_on_continue(
-        context, actor_alias, product_name, element_name):
+    context, actor_alias, product_name, element_name
+):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "productsearch")
     page.productsearch(context.driver, product_name=product_name)
@@ -598,7 +627,8 @@ def actor_decides_to_enter_blank_spaces_click_on_continue(
 
 
 def actor_decides_to_enter_email_address_and_click_login(
-        context, actor_alias, email_address, password):
+    context, actor_alias, email_address, password
+):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "login")
     email_address = str(email_address).strip()  # trimming
@@ -608,15 +638,15 @@ def actor_decides_to_enter_email_address_and_click_login(
 
 
 def actor_decides_to_enter_email_address_and_click_sign_up(
-        context, actor_alias, email_address, password):
+    context, actor_alias, email_address, password
+):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "sign_up")
     email_address = email_address.replace("xxxx", str(random.randint(6666, 9999)))
     page.sign_up(context.driver, email_address=email_address, password=password)
 
 
-def actor_should_be_able_to_click_on_skipwalkthrough(
-        context, actor_alias):
+def actor_should_be_able_to_click_on_skipwalkthrough(context, actor_alias):
     # time.sleep(5)
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "click_skip_walk_through")
@@ -625,22 +655,21 @@ def actor_should_be_able_to_click_on_skipwalkthrough(
     # page.click_avatar(context.driver)
 
 
-def actor_should_be_able_to_click_on_avatar(
-        context, actor_alias):
+def actor_should_be_able_to_click_on_avatar(context, actor_alias):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "click_avatar")
     page.click_avatar(context.driver)
 
 
-def actor_should_be_able_to_click_on_SignOut(
-        context, actor_alias):
+def actor_should_be_able_to_click_on_SignOut(context, actor_alias):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "click_signout")
     page.click_signout(context.driver)
 
 
 def actor_decides_to_page_tour_and_click_on_page_element(
-        context, actor_alias, element_name):
+    context, actor_alias, element_name
+):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "click_show_me_around")
     page.click_show_me_around(context.driver)
@@ -659,7 +688,7 @@ def promo_video_close(context: Context, actor_alias: str):
 
 
 def click_on_link_element_in_page(
-        context: Context, actor_alias: str, element_name: str, *, page_name: str = None
+    context: Context, actor_alias: str, element_name: str, *, page_name: str = None
 ):
     if page_name:
         page = get_page_object(page_name)
@@ -677,7 +706,8 @@ def generic_submit_form(context: Context, actor_alias: str):
 
 
 def actor_should_be_able_to_click_on_i_have_exported_in_the_last_12_months(
-        context, actor_alias):
+    context, actor_alias
+):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "click_on_i_have_exported_in_the_last_12_months")
     page.click_on_i_have_exported_in_the_last_12_months(context.driver)
@@ -734,7 +764,7 @@ def domestic_open_random_market(context: Context, actor_alias: str):
 
 
 def generic_click_on_random_element(
-        context: Context, actor_alias: str, elements_name: str
+    context: Context, actor_alias: str, elements_name: str
 ):
     page = get_last_visited_page(context, actor_alias)
     selector = find_selector_by_name(page.SELECTORS, elements_name)
@@ -762,7 +792,7 @@ def generic_download_all_pdfs(context: Context, actor_alias: str):
 
 
 def generic_visit_current_page_with_lang_parameter(
-        context: Context, actor_alias: str, preferred_language: str
+    context: Context, actor_alias: str, preferred_language: str
 ):
     page = get_last_visited_page(context, actor_alias)
     url = urljoin(page.URL, f"?lang={preferred_language}")
@@ -783,7 +813,7 @@ def generic_click_on_random_industry(context: Context, actor_alias: str):
 
 
 def domestic_submit_soo_contact_us_form(
-        context: Context, actor_alias: str, custom_details_table: Table
+    context: Context, actor_alias: str, custom_details_table: Table
 ):
     generic_fill_out_and_submit_form(
         context, actor_alias, custom_details_table=custom_details_table
@@ -801,7 +831,7 @@ def domestic_submit_soo_contact_us_form(
 
 
 def generic_pick_random_radio_option_and_submit(
-        context: Context, actor_alias: str, ignored: str
+    context: Context, actor_alias: str, ignored: str
 ):
     ignored = [item.strip().lower() for item in ignored.split(",")]
     page = get_last_visited_page(context, actor_alias)
@@ -811,7 +841,7 @@ def generic_pick_random_radio_option_and_submit(
 
 
 def soo_look_for_marketplace(
-        context: Context, actor_alias: str, country: str, category: str
+    context: Context, actor_alias: str, country: str, category: str
 ):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "search")
@@ -834,14 +864,14 @@ def contact_us_navigate_through_options(context: Context, actor_alias: str, via:
 
 
 def domestic_find_more_about_search_result_type(
-        context: Context, actor_alias: str, type_of: str
+    context: Context, actor_alias: str, type_of: str
 ):
     should_be_on_page(context, actor_alias, get_full_page_name(domestic.search_results))
     domestic.search_results.click_on_result_of_type(context.driver, type_of)
 
 
 def generic_trigger_all_gtm_events(
-        context: Context, actor_alias: str, tagging_package: str, *, event_group: str = None
+    context: Context, actor_alias: str, tagging_package: str, *, event_group: str = None
 ):
     events = get_gtm_event_definitions(
         context.driver, tagging_package, event_group=event_group
@@ -854,7 +884,7 @@ def generic_trigger_all_gtm_events(
 
 
 def generic_unfold_elements_in_section(
-        context: Context, actor_alias: str, section_name: str
+    context: Context, actor_alias: str, section_name: str
 ):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "unfold_elements_in_section")
@@ -885,7 +915,7 @@ def registration_open_email_confirmation_link(context: Context, actor_alias: str
 
 
 def registration_submit_form_and_verify_account(
-        context: Context, actor_alias: str, *, fake_verification: bool = True
+    context: Context, actor_alias: str, *, fake_verification: bool = True
 ):
     actor = get_actor(context, actor_alias)
 
@@ -937,7 +967,7 @@ def click_on_header_menu_button(context: Context):
 
 
 def generic_select_dropdown_option(
-        context: Context, actor_alias: str, dropdown: str, option: str
+    context: Context, actor_alias: str, dropdown: str, option: str
 ):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "select_dropdown_option")
@@ -945,7 +975,7 @@ def generic_select_dropdown_option(
 
 
 def language_selector_open(
-        context: Context, actor_alias: str, *, with_keyboard: bool = False
+    context: Context, actor_alias: str, *, with_keyboard: bool = False
 ):
     logging.debug("%s decided to go open language selector", actor_alias)
     page = get_last_visited_page(context, actor_alias)
@@ -955,7 +985,7 @@ def language_selector_open(
 
 
 def domestic_search_for_phrase_on_page(
-        context: Context, actor_alias: str, phrase: str, page_name: str
+    context: Context, actor_alias: str, phrase: str, page_name: str
 ):
     visit_page(context, actor_alias, page_name)
     page = get_last_visited_page(context, actor_alias)
@@ -964,7 +994,7 @@ def domestic_search_for_phrase_on_page(
 
 
 def domestic_search_result_has_more_than_one_page(
-        context: Context, actor_alias: str, min_page_num: int
+    context: Context, actor_alias: str, min_page_num: int
 ):
     should_be_on_page(
         context,
@@ -977,7 +1007,7 @@ def domestic_search_result_has_more_than_one_page(
 
 
 def domestic_search_finder_should_see_page_number(
-        context: Context, actor_alias: str, page_num: int
+    context: Context, actor_alias: str, page_num: int
 ):
     should_be_on_page(
         context,
@@ -990,12 +1020,12 @@ def domestic_search_finder_should_see_page_number(
 
 
 def contact_us_get_to_page_via(
-        context: Context,
-        actor_alias: str,
-        final_page: str,
-        via: str,
-        *,
-        start_page: str = None,
+    context: Context,
+    actor_alias: str,
+    final_page: str,
+    via: str,
+    *,
+    start_page: str = None,
 ):
     start_page = start_page or "Domestic - Contact us"
     intermediate = [name.strip() for name in via.split("->")]
@@ -1009,7 +1039,7 @@ def contact_us_get_to_page_via(
 
 
 def generic_pick_radio_option_and_submit(
-        context: Context, actor_alias: str, option: str
+    context: Context, actor_alias: str, option: str
 ):
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "pick_radio_option_and_submit")
@@ -1018,7 +1048,7 @@ def generic_pick_radio_option_and_submit(
 
 
 def articles_share_on_social_media(
-        context: Context, actor_alias: str, social_media: str
+    context: Context, actor_alias: str, social_media: str
 ):
     avoid_browser_stack_idle_timeout_exception(context.driver)
     context.article_url = context.driver.current_url
@@ -1042,7 +1072,7 @@ def actor_should_be_able_to_enter_products_and_country(context, products, countr
 
 
 def soo_find_and_open_random_marketplace(
-        context: Context, actor_alias: str, country: str, category: str
+    context: Context, actor_alias: str, country: str, category: str
 ):
     soo_look_for_marketplaces_from_home_page(context, actor_alias, country, category)
     generic_click_on_random_marketplace(context, actor_alias)
@@ -1052,7 +1082,7 @@ def soo_find_and_open_random_marketplace(
 
 
 def soo_look_for_marketplaces_from_home_page(
-        context: Context, actor_alias: str, country: str, category: str
+    context: Context, actor_alias: str, country: str, category: str
 ):
     visit_page(context, actor_alias, f"{soo.home.SERVICE} - {soo.home.NAME}")
     soo_look_for_marketplace(context, actor_alias, country, category)
@@ -1064,7 +1094,7 @@ def soo_look_for_marketplaces_from_home_page(
 
 
 def generic_create_great_account(
-        context: Context, actor_alias: str, business_type: str
+    context: Context, actor_alias: str, business_type: str
 ):
     page_name = f"Profile - Enter your email address and set a password ({business_type})"  # noqa
 
@@ -1123,7 +1153,7 @@ def generic_create_great_account(
 
 
 def generic_at_least_n_news_articles(
-        context: Context, n: int, visitor_type: str, service: str
+    context: Context, n: int, visitor_type: str, service: str
 ):
     context.articles = get_news_articles(service, visitor_type)
     error = (
@@ -1134,7 +1164,7 @@ def generic_at_least_n_news_articles(
 
 
 def sso_actor_received_email_confirmation_code(
-        context: Context, actor_alias: str, business_type: str
+    context: Context, actor_alias: str, business_type: str
 ):
     page_name = (
         f"Profile - Enter your email address and set a password ({business_type})"
@@ -1147,7 +1177,7 @@ def sso_actor_received_email_confirmation_code(
 
 
 def generic_get_verification_code(
-        context: Context, actor_alias: str, *, resent_code: bool = False
+    context: Context, actor_alias: str, *, resent_code: bool = False
 ):
     """Will check if the Exporter received an email verification message."""
     logging.debug("Searching for an email verification message...")
@@ -1157,7 +1187,7 @@ def generic_get_verification_code(
 
 
 def registration_create_and_verify_account(
-        context: Context, actor_alias: str, *, fake_verification: bool = True
+    context: Context, actor_alias: str, *, fake_verification: bool = True
 ):
     visit_page(context, actor_alias, "SSO - Registration")
     registration_submit_form_and_verify_account(
@@ -1166,7 +1196,7 @@ def registration_create_and_verify_account(
 
 
 def profile_start_registration_as(
-        context: Context, actor_alias: str, business_type: str
+    context: Context, actor_alias: str, business_type: str
 ):
     if not get_actor(context, actor_alias):
         add_actor(context, unauthenticated_actor(actor_alias))
@@ -1177,6 +1207,7 @@ def profile_start_registration_as(
     should_be_on_page(
         context, actor_alias, f"{second_page.SERVICE} - {second_page.NAME}"
     )
+
 
 def fas_search_for_companies(
     context: Context, actor_alias: str, *, keyword: str = None, sector: str = None
@@ -1193,6 +1224,7 @@ def fas_search_for_companies(
         "%s will visit '%s' page using: '%s'", actor_alias, page.NAME, page.URL
     )
 
+
 def fas_searched_for_companies(
     context: Context, actor_alias: str, *, keyword: str = None, sector: str = None
 ):
@@ -1204,6 +1236,7 @@ def fas_searched_for_companies(
         f"{fas.search_results.SERVICE} - {fas.search_results.NAME}",
     )
 
+
 def language_selector_change_to(
     context: Context, actor_alias: str, preferred_language: str
 ):
@@ -1214,7 +1247,6 @@ def language_selector_change_to(
     )
     common_language_selector.open(context.driver, page=page)
     common_language_selector.change_to(context.driver, page, preferred_language)
-
 
 
 def fas_view_selected_company_profile(
@@ -1244,6 +1276,7 @@ def fas_view_article(context: Context, actor_alias: str, article_number: str):
         context.driver.current_url,
     )
 
+
 def generic_remove_previous_field_selections(
     context: Context, actor_alias: str, selector_name: str
 ):
@@ -1251,10 +1284,12 @@ def generic_remove_previous_field_selections(
     selector = find_selector_by_name(page.SELECTORS, selector_name)
     untick_selected_checkboxes(context.driver, selector)
 
+
 def language_selector_close(context: Context, actor_alias: str):
     logging.debug("%s decided to close language selector", actor_alias)
     page = get_last_visited_page(context, actor_alias)
     common_language_selector.close(context.driver, page=page)
+
 
 def generic_get_in_touch(
     context: Context, actor_alias: str, page_name: str, custom_details_table: Table
@@ -1263,5 +1298,3 @@ def generic_get_in_touch(
     generic_fill_out_and_submit_form(
         context, actor_alias, custom_details_table=custom_details_table
     )
-
-

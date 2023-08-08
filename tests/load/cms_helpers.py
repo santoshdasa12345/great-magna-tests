@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import time
 
+from directory_cms_client.client import DirectoryCMSClient, cms_api_client  # noqa
+from directory_constants.cms import INVEST  # noqa
 from locust import HttpUser, events
 from requests.exceptions import (
     InvalidSchema,
@@ -9,8 +11,6 @@ from requests.exceptions import (
     RequestException,
 )
 
-from directory_cms_client.client import DirectoryCMSClient, cms_api_client  # noqa
-from directory_constants.cms import INVEST  # noqa
 from directory_tests_shared.settings import (
     CMS_API_DEFAULT_TIMEOUT,
     CMS_API_KEY,

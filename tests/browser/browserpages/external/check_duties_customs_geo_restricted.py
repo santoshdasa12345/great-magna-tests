@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Check duties and customs - Access Geo Restricted Page Object."""
+from browserpages.common_actions import check_url, go_to_url
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages.common_actions import check_url, go_to_url
 
 NAME = "Access Geo Restricted"
 SERVICE = Service.CHECK_DUTIES_CUSTOMS

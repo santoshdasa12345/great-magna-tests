@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
+import allure
 import pytest
 from bs4 import BeautifulSoup
 from rest_framework.status import HTTP_200_OK
 
-import allure
 from directory_tests_shared import URLs
 from directory_tests_shared.settings import BASICAUTH_PASS, BASICAUTH_USER
 from tests.smoke.cms_api_helpers import get_and_assert

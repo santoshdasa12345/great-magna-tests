@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+import allure
 import pytest
 from rest_framework.status import HTTP_200_OK, HTTP_302_FOUND, HTTP_404_NOT_FOUND
 
-import allure
 from directory_tests_shared import URLs
 from tests.smoke.cms_api_helpers import get_and_assert
 
@@ -368,6 +368,7 @@ def test_invest_pages_stage(url, basic_auth):
 )
 def test_invest_pages_uat(url, basic_auth):
     get_and_assert(url=url, status_code=HTTP_200_OK, auth=basic_auth)
+
 
 @pytest.mark.invest
 @pytest.mark.dev

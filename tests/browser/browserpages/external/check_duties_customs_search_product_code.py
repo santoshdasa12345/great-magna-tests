@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Check duties and customs Home Page Object."""
+from browserpages.common_actions import go_to_url
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared.enums import PageType, Service
 from great_magna_tests_shared.utils import check_url_path_matches_template
-from browserpages.common_actions import go_to_url
 
 NAME = "Search product code"
 SERVICE = Service.CHECK_DUTIES_CUSTOMS

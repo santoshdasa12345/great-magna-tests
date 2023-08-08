@@ -3,11 +3,11 @@
 import logging
 import random
 
+from browserpages.common_actions import Selector, find_element
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared.utils import extract_attributes_by_css
-from browserpages.common_actions import Selector, find_element
 
 
 def js_country_select(driver: WebDriver, *, value):

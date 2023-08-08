@@ -5,11 +5,6 @@ import random
 from types import ModuleType
 from typing import Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType
 from browserpages.common_actions import (
     Actor,
@@ -24,6 +19,11 @@ from browserpages.common_actions import (
     tick_checkboxes,
 )
 from browserpages.domestic import contact_us_short_domestic_thank_you
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Contact us feedback"
 SERVICE = Service.DOMESTIC
@@ -43,10 +43,18 @@ SELECTORS = {
         "organisation name": Selector(
             By.CSS_SELECTOR, "#id_business-organisation_name", type=ElementType.INPUT
         ),
-        "postcode": Selector(By.CSS_SELECTOR, "#id_business-postcode", type=ElementType.INPUT),
-        "industry": Selector(By.CSS_SELECTOR, "#id_business-industry", type=ElementType.SELECT),
-        "turnover": Selector(By.CSS_SELECTOR, "#id_business-turnover", type=ElementType.SELECT),
-        "size": Selector(By.CSS_SELECTOR, "#id_business-employees", type=ElementType.SELECT),
+        "postcode": Selector(
+            By.CSS_SELECTOR, "#id_business-postcode", type=ElementType.INPUT
+        ),
+        "industry": Selector(
+            By.CSS_SELECTOR, "#id_business-industry", type=ElementType.SELECT
+        ),
+        "turnover": Selector(
+            By.CSS_SELECTOR, "#id_business-turnover", type=ElementType.SELECT
+        ),
+        "size": Selector(
+            By.CSS_SELECTOR, "#id_business-employees", type=ElementType.SELECT
+        ),
         "by email": Selector(
             By.CSS_SELECTOR,
             "#checkbox-multiple-i-would-like-to-receive-additional-information-by-email",

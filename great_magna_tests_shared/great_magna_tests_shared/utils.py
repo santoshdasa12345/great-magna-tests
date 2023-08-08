@@ -12,18 +12,16 @@ from types import BuiltinFunctionType
 from typing import List, Tuple, Union
 from urllib.parse import urlsplit
 
+import parse
 from bs4 import BeautifulSoup
 from termcolor import cprint
 
-import parse
 from .constants import (
     OPERATING_COUNTRIES,
     POPULAR_ENGLISH_WORDS,
     PRODUCT_CATEGORIES,
     SECTORS,
 )
-
-
 from .settings import BASICAUTH_PASS, BASICAUTH_USER
 
 
@@ -40,15 +38,17 @@ def is_500(exception):
     """Return True exception message contains 500"""
     return "500" in str(exception)
 
+
 def basic_auth():
     return BASICAUTH_USER, BASICAUTH_PASS
 
+
 def sentence(
-        *,
-        max_length: int = 60,
-        min_word_length: int = 5,
-        max_words: int = 10,
-        min_words: int = 3,
+    *,
+    max_length: int = 60,
+    min_word_length: int = 5,
+    max_words: int = 10,
+    min_words: int = 3,
 ) -> str:
     """Generate a random string consisting of rare english words.
 
@@ -110,7 +110,7 @@ def access_was_denied(source: str) -> bool:
 
 
 def check_if_access_denied(
-        source: str, url: str, *, error_msg: str = "Access denied (on error check) → {url}"
+    source: str, url: str, *, error_msg: str = "Access denied (on error check) → {url}"
 ):
     network_errors = ["Unfortunately your IP address", "If you require access"]
     with assertion_msg(error_msg.format(url=url)):
@@ -137,9 +137,9 @@ def check_for_errors(source: str, url: str):
 @contextmanager
 def assertion_msg(message: str, *args):
     """This will:
-        * print the custom assertion message
-        * print the traceback (stack trace)
-        * raise the original AssertionError exception
+    * print the custom assertion message
+    * print the traceback (stack trace)
+    * raise the original AssertionError exception
     """
     try:
         yield
@@ -162,7 +162,7 @@ def assertion_msg(message: str, *args):
 
 
 def extract_attributes_by_css(
-        content: str, selector: str, *, attrs: List[str] = None, text: bool = True
+    content: str, selector: str, *, attrs: List[str] = None, text: bool = True
 ) -> List[dict]:
     """Extract attributes of matching html elements.
 
@@ -175,7 +175,7 @@ def extract_attributes_by_css(
     :return: a list of dictionaries with matching attribute values
     """
     results = []
-    soup = BeautifulSoup(content, 'html.parser')
+    soup = BeautifulSoup(content, "html.parser")
     elements = soup.select(selector)
     for element in elements:
         element_details = {}
@@ -194,7 +194,7 @@ def extract_attributes_by_css(
 
 
 def extract_by_css(
-        content: str, selector: str, *, first: bool = True
+    content: str, selector: str, *, first: bool = True
 ) -> Union[str, list]:
     """Extract values from HTML content using CSS selector.
 
@@ -203,7 +203,7 @@ def extract_by_css(
     :param first: (optional) return first found element or all of them
     :return: value of the 1st found element or empty string if not found; or a list of all found elements
     """
-    soup = BeautifulSoup(content, 'html.parser')
+    soup = BeautifulSoup(content, "html.parser")
     elements = soup.select(selector)
     if first:
         result = elements[0].get_text() if len(elements) > 0 else ""
@@ -226,7 +226,7 @@ def get_operator_from_operation(comparison_function):
 
 
 def evaluate_comparison(
-        value_name: str, value_to_compare: int, comparison: Tuple[BuiltinFunctionType, int]
+    value_name: str, value_to_compare: int, comparison: Tuple[BuiltinFunctionType, int]
 ):
     """Will evaluate comparison operator on value_to_compare & compared_value"""
     comparison_operation = comparison[0]
@@ -299,13 +299,13 @@ class ANSIIStyle:
     end = ""
 
     def __init__(
-            self,
-            *,
-            bold: bool = False,
-            italic: bool = False,
-            underline: bool = False,
-            strikethrough: bool = False,
-            color: ANSIIColor = None,
+        self,
+        *,
+        bold: bool = False,
+        italic: bool = False,
+        underline: bool = False,
+        strikethrough: bool = False,
+        color: ANSIIColor = None,
     ):
         tmp = []
         if bold:
@@ -339,11 +339,11 @@ def blue(x: str):
 
 
 def format_matching_parts(
-        string_a: str,
-        string_b: str,
-        *,
-        invert: bool = False,
-        style: ANSIIStyle = ANSIIStyle(),
+    string_a: str,
+    string_b: str,
+    *,
+    invert: bool = False,
+    style: ANSIIStyle = ANSIIStyle(),
 ) -> Tuple[str, str]:
     """Format matching parts of both strings in desired style & color"""
     if invert:

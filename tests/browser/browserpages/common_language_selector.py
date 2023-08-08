@@ -3,10 +3,6 @@
 import logging
 from types import ModuleType
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.remote.webdriver import WebDriver
-
 from browserpages.common_actions import (
     Selector,
     assertion_msg,
@@ -14,6 +10,9 @@ from browserpages.common_actions import (
     find_selector_by_name,
     take_screenshot,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.remote.webdriver import WebDriver
 
 NAME = "Language selector"
 
@@ -108,7 +107,7 @@ def navigate_through_links_with_keyboard(driver: WebDriver, page: ModuleType):
 
 
 def change_to(
-        driver: WebDriver, page: ModuleType, language: str, *, with_keyboard: bool = False
+    driver: WebDriver, page: ModuleType, language: str, *, with_keyboard: bool = False
 ):
     page_name = f"{page.SERVICE} - {page.NAME}".lower()
 
@@ -132,8 +131,8 @@ def check_page_language_is(driver: WebDriver, expected_language: str):
     options = language_selector.find_elements_by_tag_name("option")
     selected = [option for option in options if option.is_selected()][0]
     with assertion_msg(
-            "Expected to see page in '%s' but got '%s'",
-            expected_language_code,
-            selected.get_attribute("value"),
+        "Expected to see page in '%s' but got '%s'",
+        expected_language_code,
+        selected.get_attribute("value"),
     ):
         assert selected.get_attribute("value") == expected_language_code

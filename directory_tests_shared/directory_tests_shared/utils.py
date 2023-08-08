@@ -11,11 +11,11 @@ from random import choice, randint
 from types import BuiltinFunctionType
 from typing import List, Tuple, Union
 from urllib.parse import urlsplit
-from bs4 import BeautifulSoup
-
-from termcolor import cprint
 
 import parse
+from bs4 import BeautifulSoup
+from termcolor import cprint
+
 from .constants import (
     OPERATING_COUNTRIES,
     POPULAR_ENGLISH_WORDS,
@@ -137,9 +137,9 @@ def check_for_errors(source: str, url: str):
 @contextmanager
 def assertion_msg(message: str, *args):
     """This will:
-        * print the custom assertion message
-        * print the traceback (stack trace)
-        * raise the original AssertionError exception
+    * print the custom assertion message
+    * print the traceback (stack trace)
+    * raise the original AssertionError exception
     """
     try:
         yield
@@ -174,7 +174,7 @@ def extract_attributes_by_css(
     :param text: (optional) extract element's text (defaults to True)
     :return: a list of dictionaries with matching attribute values
     """
-    soup = BeautifulSoup(content, 'html.parser')
+    soup = BeautifulSoup(content, "html.parser")
     elements = soup.select(selector)
     results = []
 
@@ -205,14 +205,14 @@ def extract_by_css(
     :param first: (optional) return first found element or all of them
     :return: value of the 1st found element or empty string if not found; or a list of all found elements
     """
-    soup = BeautifulSoup(content, 'html.parser')
+    soup = BeautifulSoup(content, "html.parser")
     extracted = [elem.get_text() for elem in soup.select(selector)]
-    
+
     if first:
         result = extracted[0] if len(extracted) > 0 else ""
     else:
         result = extracted
-    
+
     return result
 
 

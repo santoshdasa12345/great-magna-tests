@@ -4,11 +4,6 @@ import logging
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType
 from browserpages.common_actions import (
     Actor,
@@ -22,6 +17,11 @@ from browserpages.common_actions import (
     tick_checkboxes,
 )
 from browserpages.profile import enrol_enter_your_confirmation_code
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Enter your email address and set a password (LTD, PLC or Royal Charter)"
 SERVICE = Service.PROFILE
@@ -35,7 +35,10 @@ SELECTORS = {
     "registration form": {
         "itself": Selector(By.CSS_SELECTOR, "section form"),
         "email": Selector(
-            By.XPATH, "//body/main/section/div/div[1]/form/div[2]/div[1]/input", type=ElementType.INPUT, is_visible=False
+            By.XPATH,
+            "//body/main/section/div/div[1]/form/div[2]/div[1]/input",
+            type=ElementType.INPUT,
+            is_visible=False,
         ),
         "password": Selector(
             By.ID, "id_user-account-password", type=ElementType.INPUT, is_visible=False
@@ -98,6 +101,7 @@ def fill_out(driver: WebDriver, details: dict):
 
 def submit(driver: WebDriver) -> Union[ModuleType, None]:
     return submit_form(driver, SELECTORS["registration form"])
+
 
 def should_see_following_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

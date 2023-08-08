@@ -13,7 +13,7 @@ Options:
   --report=REPORT_FILE  Specify JUnit XML report file [default: ./merged.xml]
   --version             Show version.
 """
-from collections import defaultdict, OrderedDict
+from collections import OrderedDict, defaultdict
 
 import xmltodict
 from docopt import docopt
@@ -42,6 +42,7 @@ def count_errors(doc: OrderedDict) -> dict:
     Non-Assertion errors are stored in "error" nodes.
     Assertions errors are stored in "failure" nodes.
     """
+
     def get_error_type_and_msg(test_case: OrderedDict) -> tuple:
         if "error" in test_case:
             error_type = test_case["error"]["@type"]

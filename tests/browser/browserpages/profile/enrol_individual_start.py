@@ -2,13 +2,18 @@
 """Profile - Enrol - Start as Individual"""
 from typing import List
 
+from browserpages import common_selectors
+from browserpages.common_actions import (
+    Selector,
+    check_for_sections,
+    check_url,
+    go_to_url,
+)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages import common_selectors
-from browserpages.common_actions import Selector, check_for_sections, check_url, go_to_url
 
 NAME = "Start as Individual"
 SERVICE = Service.PROFILE

@@ -7,13 +7,11 @@ from requests.auth import HTTPBasicAuth
 from rest_framework.status import HTTP_200_OK, HTTP_204_NO_CONTENT
 
 from great_magna_tests_shared import URLs
-from great_magna_tests_shared.clients import (
+from great_magna_tests_shared.clients import (  # CMS_API_CLIENT,
     BASIC_AUTHENTICATOR,
-    # CMS_API_CLIENT,
     SSO_API_CLIENT,
 )
 from great_magna_tests_shared.settings import BASICAUTH_PASS, BASICAUTH_USER
-
 
 #
 #
@@ -36,6 +34,7 @@ def extract_csrf_middleware_token(content: str) -> str:
 
 
 #
+
 
 @pytest.fixture
 def test_sso_user() -> dict:
@@ -84,16 +83,15 @@ def session_and_csrf_middleware_token() -> Tuple[Session, str]:
     login_url = URLs.SSO_LOGIN.absolute
     response = session.get(url=login_url, auth=(BASICAUTH_USER, BASICAUTH_PASS))
     assert (
-            response.status_code == 200
+        response.status_code == 200
     ), f"Expected 200 but got {response.status_code} from {response.url}"
     return session, extract_csrf_middleware_token(response.content.decode("UTF-8"))
-
 
 
 #
 @pytest.fixture
 def logged_in_session_and_user(
-        test_sso_user_verified: dict, session_and_csrf_middleware_token: Tuple[Session, str]
+    test_sso_user_verified: dict, session_and_csrf_middleware_token: Tuple[Session, str]
 ) -> Tuple[Session, dict]:
     session, csrfmiddlewaretoken = session_and_csrf_middleware_token
     data = {

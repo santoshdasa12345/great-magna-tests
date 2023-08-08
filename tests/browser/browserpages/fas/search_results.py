@@ -5,13 +5,7 @@ import random
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -29,6 +23,12 @@ from browserpages.common_actions import (
     tick_checkboxes,
 )
 from browserpages.fas import thank_you_for_registering
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Search results"
 SERVICE = Service.FAS
@@ -44,7 +44,7 @@ PROFILE_LINKS = Selector(
 )
 FILTER_TOGGLE = Selector(By.CSS_SELECTOR, "#toggle_id_industries")
 SubURLs = {
-    "search results" : URLs.FAS_SEARCH.absolute_template,
+    "search results": URLs.FAS_SEARCH.absolute_template,
     # "search results industries" : URLs.FAS_SEARCH.absolute_template
 }
 SELECTORS = {
@@ -77,12 +77,15 @@ SELECTORS = {
     },
     "subscribe for email updates": {
         "itself": Selector(
-            By.CSS_SELECTOR, "#content > section.subscription.background-stone-30.padding-top-90.padding-bottom-60"
+            By.CSS_SELECTOR,
+            "#content > section.subscription.background-stone-30.padding-top-90.padding-bottom-60",
         ),
         "full name": Selector(By.CSS_SELECTOR, "#id_full_name", type=ElementType.INPUT),
         "email": Selector(By.CSS_SELECTOR, "#id_email_address", type=ElementType.INPUT),
         "industry": Selector(By.CSS_SELECTOR, "#id_sector", type=ElementType.SELECT),
-        "company name": Selector(By.CSS_SELECTOR, "#id_company_name", type=ElementType.INPUT),
+        "company name": Selector(
+            By.CSS_SELECTOR, "#id_company_name", type=ElementType.INPUT
+        ),
         "country": Selector(By.CSS_SELECTOR, "#id_country", type=ElementType.SELECT),
         "t&c": Selector(
             By.CSS_SELECTOR,
@@ -104,14 +107,17 @@ SELECTORS.update(common_selectors.FAS_HERO)
 SELECTORS.update(common_selectors.INTERNATIONAL_HEADER_WO_LANGUAGE_SELECTOR)
 SELECTORS.update(common_selectors.INTERNATIONAL_FOOTER)
 
+
 def visit(driver: WebDriver, *, page_name: str = None):
     url = SubURLs[page_name] if page_name else URL
     go_to_url(driver, url, page_name or NAME)
+
 
 # def should_be_here(driver: WebDriver):
 #     show_filters(driver)
 #     check_url(driver, URL, exact_match=False)
 #     logging.debug("All expected elements are visible on '%s' page", NAME)
+
 
 def should_be_here(driver: WebDriver, *, page_name: str = None):
     if page_name:
@@ -120,6 +126,7 @@ def should_be_here(driver: WebDriver, *, page_name: str = None):
         check_url_path_matches_template(url, driver.current_url)
     else:
         check_url(driver, URL, exact_match=False)
+
 
 def should_see_sections(driver: WebDriver, names: List[str]):
     check_for_sections(driver, all_sections=SELECTORS, sought_sections=names)

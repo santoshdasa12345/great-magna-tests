@@ -4,16 +4,7 @@ import time
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.common.exceptions import (
-    NoSuchElementException,
-)
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
-from great_magna_tests_shared.utils import check_url_path_matches_template
 from browserpages.common_actions import (
     Actor,
     Selector,
@@ -21,21 +12,27 @@ from browserpages.common_actions import (
     check_for_sections,
     check_if_element_is_not_present,
     check_if_element_is_visible,
-    check_url,
-    find_element,
-    find_selector_by_name,
-    find_elements,
-    go_to_url,
-    pick_option,
-    is_element_present,
-    submit_form,
     check_random_radio,
+    check_url,
+    fill_out_email_address,
+    fill_out_input_fields,
+    find_element,
+    find_elements,
+    find_selector_by_name,
+    go_to_url,
+    is_element_present,
+    pick_option,
+    submit_form,
     take_screenshot,
     wait_for_page_load_after_action,
-    fill_out_input_fields,
-    fill_out_email_address
-
 )
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.utils import check_url_path_matches_template
 
 NAME = "Login"
 SERVICE = Service.GREATMAGNA
@@ -46,7 +43,8 @@ PAGE_TITLE = "Login Page "
 SELECTORS = {
     "login": {
         "forgotten_password": Selector(
-            By.CSS_SELECTOR, "#login > div > div.signup__steps-panel > form > a.text-red-80.inline-block"
+            By.CSS_SELECTOR,
+            "#login > div > div.signup__steps-panel > form > a.text-red-80.inline-block"
             # //a[contains(text(),'Forgotten password?')]
         ),
         "emailaddress": Selector(
@@ -55,12 +53,8 @@ SELECTORS = {
         "password": Selector(
             By.XPATH, "//input[@id='password']", type=ElementType.INPUT
         ),
-        "login button": Selector(
-            By.XPATH, "//button[@id='signup-modal-submit']"
-        ),
-        "error message": Selector(
-            By.XPATH, "//li[@class='error-message']"
-        ),
+        "login button": Selector(By.XPATH, "//button[@id='signup-modal-submit']"),
+        "error message": Selector(By.XPATH, "//li[@class='error-message']"),
         "incorrect username and password": Selector(
             By.CSS_SELECTOR, "#login > form > ul > li"
         ),
@@ -99,16 +93,22 @@ def fill_out_email_address(driver: WebDriver, details: dict):
     logging.debug(email_address_selectors)
     logging.debug(details)
     fill_out_input_fields(driver, email_address_selectors, details)
-    fill_input_list = find_element(driver, find_selector_by_name(SELECTORS, "login button"))
+    fill_input_list = find_element(
+        driver, find_selector_by_name(SELECTORS, "login button")
+    )
     fill_input_list.click()
     driver.implicitly_wait(000)
 
 
-def should_be_error_message(driver: WebDriver, element_name: str, expected_error_message: str):
+def should_be_error_message(
+    driver: WebDriver, element_name: str, expected_error_message: str
+):
     try:
         selectors = SELECTORS["login"]
         element_selector = selectors[element_name]
-        actual_error_message = driver.find_element_by_css_selector(element_selector.value).text
+        actual_error_message = driver.find_element_by_css_selector(
+            element_selector.value
+        ).text
         # logging.debug(f"actual_error_message -> {actual_error_message}")
         actual_error_message = actual_error_message.strip()
         if actual_error_message in expected_error_message:

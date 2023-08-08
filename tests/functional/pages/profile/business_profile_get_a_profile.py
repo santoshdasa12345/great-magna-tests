@@ -33,7 +33,9 @@ def go_to(session: Session) -> Response:
     return make_request(Method.GET, URL, session=session, headers=headers)
 
 
-def should_be_here(response: Response,):
+def should_be_here(
+    response: Response,
+):
     check_url(response, URL)
     check_response(response, 200, body_contains=EXPECTED_STRINGS)
 

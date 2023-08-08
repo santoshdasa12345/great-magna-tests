@@ -3,10 +3,9 @@ import logging
 from collections import defaultdict
 from typing import List
 
+from browserpages.common_actions import selenium_action
 from selenium.common.exceptions import JavascriptException
 from selenium.webdriver.remote.webdriver import WebDriver
-
-from browserpages.common_actions import selenium_action
 
 
 def replace_string_representations(dictionary: dict) -> dict:
@@ -61,8 +60,7 @@ def get_gtm_data_layer_properties(driver: WebDriver) -> dict:
 
 
 def get_gtm_data_layer_events(
-        driver: WebDriver, *, dedupe: bool = True,
-        ignore_other_gtm_fields: bool = True
+    driver: WebDriver, *, dedupe: bool = True, ignore_other_gtm_fields: bool = True
 ) -> List[dict]:
     """Get all GTM events registered in window.dataLayer object.
 
@@ -87,11 +85,7 @@ def get_gtm_data_layer_events(
         logging.debug(f"Before removing ignored GTM fields:\n{raw_events}")
         ignored_gtm_fields = ["gtm.uniqueEventId"]
         for ignored_field in ignored_gtm_fields:
-            [
-                item.pop(ignored_field)
-                for item in raw_events
-                if ignored_field in item
-            ]
+            [item.pop(ignored_field) for item in raw_events if ignored_field in item]
         logging.debug(f"After removing ignored GTM fields:\n{raw_events}")
     result = [replace_string_representations(raw_event) for raw_event in raw_events]
     assert result, f"No GTM events were found on {driver.current_url}"
@@ -180,7 +174,7 @@ def get_selector_and_on_what_action(raw_code: str) -> tuple:
     event_function_start = ", function"
     if ").on(" in raw_code.strip():
         selector_start = (
-                raw_code.index(selector_line_start) + len(selector_line_start) + 1
+            raw_code.index(selector_line_start) + len(selector_line_start) + 1
         )
         selector_end = raw_code.index(register_event_call) - 1
         selector = raw_code[selector_start:selector_end]
@@ -252,7 +246,7 @@ def get_gtm_events_from_raw_js(raw_code: str) -> dict:
 
 
 def get_gtm_event_definitions(
-        driver: WebDriver, tagging_package: str, *, event_group: str = None
+    driver: WebDriver, tagging_package: str, *, event_group: str = None
 ) -> dict:
     """Extracts details of all GTM events from a specific JS DIT tagging package.
     ATM. it supports both: dit.tagging.domestic & dit.tagging.domesticHeader packages
@@ -298,13 +292,9 @@ def trigger_js_event(driver: WebDriver, event: dict):
     on_what = event["on_what"]
     if on_what == "keypress":
         key = event["key"]
-        js = (
-            f"""$('{selector}').trigger({{type:"keypress", which: {key}}});"""
-        )  # fmt: off
+        js = f"""$('{selector}').trigger({{type:"keypress", which: {key}}});"""  # fmt: off
     elif on_what == "submit":
-        js = (
-            f"""$('{selector}').get(0).dispatchEvent(new Event("submit"));"""
-        )  # fmt: off
+        js = f"""$('{selector}').get(0).dispatchEvent(new Event("submit"));"""  # fmt: off
     elif on_what == "click":
         js = f"""$('{selector}').click();"""  # fmt: off
     else:
@@ -316,6 +306,6 @@ def trigger_js_event(driver: WebDriver, event: dict):
         f"'{selector}'"
     )
     with selenium_action(
-            driver, f"Failed to trigger '{on_what}' event for '{selector}'"
+        driver, f"Failed to trigger '{on_what}' event for '{selector}'"
     ):
         driver.execute_script(js)

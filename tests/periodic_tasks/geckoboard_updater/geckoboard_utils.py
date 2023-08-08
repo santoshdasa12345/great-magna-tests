@@ -115,7 +115,10 @@ def widget_text_for_service_build(build_results: dict) -> str:
                 **results["flake8"],
             )
         rows += row_template.format(
-            name=friendly_name, unit=unit, flake8=flake8, **results["Unit Tests"],
+            name=friendly_name,
+            unit=unit,
+            flake8=flake8,
+            **results["Unit Tests"],
         )
     return table_template.format(rows=rows).replace("\n", "").replace('"', "'")
 
@@ -192,8 +195,8 @@ def push_links_to_useful_content_test_jobs():
         for job, details in sorted_links_to_content_jobs.items()
     ]
 
-    most_recent_cms_page_status_report_link = last_useful_production_cms_page_status_report_link(
-        CIRCLE_CI_CLIENT
+    most_recent_cms_page_status_report_link = (
+        last_useful_production_cms_page_status_report_link(CIRCLE_CI_CLIENT)
     )
     if most_recent_cms_page_status_report_link:
         cms_page_status_report_link = [
@@ -235,7 +238,9 @@ def push_links_to_content_diff_reports():
 
 
 def push_great_magna_service_build_results():
-    last_service_build_results = last_great_magna_service_build_results(CIRCLE_CI_CLIENT)
+    last_service_build_results = last_great_magna_service_build_results(
+        CIRCLE_CI_CLIENT
+    )
     if not last_service_build_results:
         print(
             f"Couldn't find new service build results in CircleCI. Will keep the old ones in place"
@@ -312,7 +317,9 @@ def push_pa11y_test_results(datasets: GeckoboardDatasets):
 
 def push_circleci_test_results(datasets: GeckoboardDatasets):
     circle_ci_periodic_tests_results = last_tests_results_from_junit_artifacts(
-        CIRCLE_CI_CLIENT, "great-magna-tests", GREAT_MAGNA_PERIODIC_TESTS_JOB_NAME_MAPPINGS,
+        CIRCLE_CI_CLIENT,
+        "great-magna-tests",
+        GREAT_MAGNA_PERIODIC_TESTS_JOB_NAME_MAPPINGS,
     )
     load_tests_artifacts = last_load_test_artifacts(
         CIRCLE_CI_CLIENT,

@@ -5,11 +5,6 @@ from random import randrange
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Actor,
@@ -23,6 +18,11 @@ from browserpages.common_actions import (
     submit_form,
 )
 from browserpages.erp import consumer_other_changes_after_brexit
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Sales volumes"
 SERVICE = Service.ERP

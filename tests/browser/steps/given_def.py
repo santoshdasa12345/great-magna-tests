@@ -6,32 +6,30 @@ from behave import given
 from behave.runner import Context
 from browserpages.common_actions import generic_set_basic_auth_creds
 
-from steps.then_impl import (
-    should_be_on_page,
-)
+from steps.then_impl import should_be_on_page
 from steps.when_impl import (
+    clear_the_cookies,
     click_on_page_element,
-    set_small_screen,
-    visit_page,
-    domestic_open_random_advice_article,
-    domestic_open_random_market,
-    domestic_search_for_phrase_on_page,
-    domestic_search_result_has_more_than_one_page,
-    domestic_search_finder_should_see_page_number,
-    fas_searched_for_companies,
     contact_us_get_to_page_via,
     contact_us_navigate_through_options,
-    soo_find_and_open_random_marketplace,
-    generic_create_great_account,
-    soo_look_for_marketplaces_from_home_page,
+    domestic_open_random_advice_article,
+    domestic_open_random_market,
+    domestic_search_finder_should_see_page_number,
+    domestic_search_for_phrase_on_page,
+    domestic_search_result_has_more_than_one_page,
+    fas_searched_for_companies,
     generic_at_least_n_news_articles,
-    sso_actor_received_email_confirmation_code,
+    generic_create_great_account,
     generic_fill_out_and_submit_form,
     generic_get_in_touch,
-    registration_create_and_verify_account,
     profile_start_registration_as,
-    clear_the_cookies,
+    registration_create_and_verify_account,
+    set_small_screen,
     sign_in,
+    soo_find_and_open_random_marketplace,
+    soo_look_for_marketplaces_from_home_page,
+    sso_actor_received_email_confirmation_code,
+    visit_page,
 )
 
 
@@ -174,4 +172,3 @@ def given_actor_got_in_touch_with_us(
     generic_get_in_touch(context, actor_alias, page_name, custom_details_table=context.table)
 
 #####
-

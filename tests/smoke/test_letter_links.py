@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import allure
 import pytest
 import requests
 from rest_framework.status import (
@@ -7,7 +8,6 @@ from rest_framework.status import (
     HTTP_302_FOUND,
 )
 
-import allure
 from directory_tests_shared import URLs
 from tests.smoke.cms_api_helpers import get_and_assert, status_error
 

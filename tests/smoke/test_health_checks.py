@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import allure
 import pytest
 from rest_framework.status import (
     HTTP_200_OK,
@@ -7,7 +8,6 @@ from rest_framework.status import (
 )
 from retrying import retry
 
-import allure
 from directory_tests_shared import URLs
 from directory_tests_shared.clients import (
     BASIC_AUTHENTICATOR,

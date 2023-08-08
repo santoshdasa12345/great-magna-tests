@@ -4,11 +4,6 @@ import logging
 from types import ModuleType
 from typing import List
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType
 from browserpages.common_actions import (
     Selector,
@@ -23,6 +18,11 @@ from browserpages.domestic import (
     contact_us_triage_export_opportunities,
     contact_us_triage_great_account,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Great.gov.uk account and services support"
 SERVICE = Service.DOMESTIC

@@ -9,7 +9,6 @@ from directory_tests_shared.utils import basic_auth
 
 
 class ERPTasks(TaskSet):
-
     erp_generic_get_urls = [
         URLs.ERP_LANDING.relative,
         URLs.ERP_SAVE_FOR_LATER.relative,

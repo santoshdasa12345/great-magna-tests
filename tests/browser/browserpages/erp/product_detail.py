@@ -2,12 +2,12 @@
 """ERP - Product detail"""
 from typing import List
 
+from browserpages import common_selectors
+from browserpages.common_actions import check_for_sections, check_url
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from great_magna_tests_shared import URLs
 from great_magna_tests_shared.enums import PageType, Service
-from browserpages import common_selectors
-from browserpages.common_actions import check_for_sections, check_url
 
 NAME = "Product detail"
 SERVICE = Service.ERP

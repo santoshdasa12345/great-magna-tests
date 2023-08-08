@@ -145,6 +145,7 @@ class Service(Enum):
     TWITTER = "Twitter"
     VISIT_BRITAIN = "Visit Britain"
     WHERE_TO_EXPORT = "WhereToExport"
+
     def __str__(self):
         return self.value
 

@@ -13,7 +13,7 @@ WORKDIR /app
 RUN set -e; \
     /usr/local/bin/python -m pip install --upgrade pip ;\
     python -m pip install pip-tools ;\
-    python -m pip install -r /app/requirements_browser.txt ;
+    python -m pip install -r /app/requirements.txt ;
 
 ### 4. Expose port
 EXPOSE 8052

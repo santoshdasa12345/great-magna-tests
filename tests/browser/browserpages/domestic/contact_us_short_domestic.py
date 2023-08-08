@@ -6,11 +6,6 @@ from types import ModuleType
 from typing import Union
 from uuid import uuid4
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType
 from browserpages.common_actions import (
     Actor,
@@ -26,6 +21,11 @@ from browserpages.common_actions import (
     tick_checkboxes,
 )
 from browserpages.domestic import contact_us_short_domestic_thank_you
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Short contact form (Tell us how we can help)"
 NAMES = [
@@ -144,7 +144,7 @@ def fill_out(driver: WebDriver, details: dict):
     check_radio(driver, form_selectors, details)
     tick_checkboxes(driver, form_selectors, details)
     pick_option(driver, form_selectors, details)
-    #tick_captcha_checkbox(driver)
+    # tick_captcha_checkbox(driver)
 
 
 def submit(driver: WebDriver) -> Union[ModuleType, None]:

@@ -7,15 +7,6 @@ from random import choice
 from types import BuiltinFunctionType, ModuleType
 from typing import List, Tuple
 
-from retrying import retry
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.remote.webelement import WebElement
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
-from great_magna_tests_shared.exceptions import PageLoadTimeout
-from great_magna_tests_shared.utils import evaluate_comparison
 from browserpages import common_selectors
 from browserpages.common_actions import (
     Selector,
@@ -29,6 +20,15 @@ from browserpages.common_actions import (
     wait_for_page_load_after_action,
 )
 from browserpages.erp import product_detail
+from retrying import retry
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
+from great_magna_tests_shared.exceptions import PageLoadTimeout
+from great_magna_tests_shared.utils import evaluate_comparison
 
 NAME = "Product search"
 SERVICE = Service.ERP

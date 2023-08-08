@@ -5,16 +5,13 @@ from types import ModuleType
 from typing import List, Union
 from uuid import uuid4
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Actor,
     Selector,
     check_for_sections,
+    check_radio,
+    check_random_radio,
     check_url,
     fill_out_input_fields,
     fill_out_textarea_fields,
@@ -25,11 +22,13 @@ from browserpages.common_actions import (
     submit_form,
     tick_captcha_checkbox,
     tick_checkboxes,
-    check_random_radio,
-    check_radio,
-
 )
 from browserpages.common_autocomplete_callbacks import js_country_select
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "HPO Contact us"
 NAMES = [
@@ -50,14 +49,26 @@ PAGE_TITLE = ""
 SELECTORS = {
     "form": {
         "itself": Selector(By.CSS_SELECTOR, "#content form"),
-        "given name": Selector(By.CSS_SELECTOR, "#id_given_name", type=ElementType.INPUT),
-        "family name": Selector(By.CSS_SELECTOR, "#id_family_name", type=ElementType.INPUT),
+        "given name": Selector(
+            By.CSS_SELECTOR, "#id_given_name", type=ElementType.INPUT
+        ),
+        "family name": Selector(
+            By.CSS_SELECTOR, "#id_family_name", type=ElementType.INPUT
+        ),
         "job title": Selector(By.CSS_SELECTOR, "#id_job_title", type=ElementType.INPUT),
-        "work email": Selector(By.CSS_SELECTOR, "#id_email_address", type=ElementType.INPUT),
+        "work email": Selector(
+            By.CSS_SELECTOR, "#id_email_address", type=ElementType.INPUT
+        ),
         "phone": Selector(By.CSS_SELECTOR, "#id_phone_number", type=ElementType.INPUT),
-        "company name": Selector(By.CSS_SELECTOR, "#id_company_name", type=ElementType.INPUT),
-        "company website": Selector(By.CSS_SELECTOR, "#id_website_url", type=ElementType.INPUT),
-        "company address": Selector(By.CSS_SELECTOR, "#id_company_address", type=ElementType.INPUT),
+        "company name": Selector(
+            By.CSS_SELECTOR, "#id_company_name", type=ElementType.INPUT
+        ),
+        "company website": Selector(
+            By.CSS_SELECTOR, "#id_website_url", type=ElementType.INPUT
+        ),
+        "company address": Selector(
+            By.CSS_SELECTOR, "#id_company_address", type=ElementType.INPUT
+        ),
         "country": Selector(
             By.CSS_SELECTOR,
             "#js-country-select",
@@ -229,10 +240,10 @@ SELECTORS = {
             is_visible=False,
             alternative_visibility_check=True,
         ),
-        "industry": Selector(
-            By.CSS_SELECTOR, "#id_industry", type=ElementType.SELECT
+        "industry": Selector(By.CSS_SELECTOR, "#id_industry", type=ElementType.SELECT),
+        "tell us about your plans": Selector(
+            By.CSS_SELECTOR, "#id_your_plans", type=ElementType.TEXTAREA
         ),
-        "tell us about your plans": Selector(By.CSS_SELECTOR, "#id_your_plans", type=ElementType.TEXTAREA),
         # "comment": Selector(By.ID, "id_comment", type=ElementType.TEXTAREA),
         # "terms and conditions link": Selector(
         #     By.CSS_SELECTOR, "#id_terms_agreed-label a"
@@ -240,8 +251,9 @@ SELECTORS = {
         "how did you hear about us": Selector(
             By.CSS_SELECTOR, "#id_how_did_you_hear", type=ElementType.SELECT
         ),
-        "i would like to receive additional information by email" : Selector(
-            By.CSS_SELECTOR, "#id_email_contact_consent-label",
+        "i would like to receive additional information by email": Selector(
+            By.CSS_SELECTOR,
+            "#id_email_contact_consent-label",
             type=ElementType.CHECKBOX,
             is_visible=False,
             alternative_visibility_check=True,
@@ -249,7 +261,9 @@ SELECTORS = {
         "captcha": Selector(
             By.CSS_SELECTOR, "#form-container iframe", type=ElementType.IFRAME
         ),
-        "submit": Selector(By.CSS_SELECTOR, "#form-container > form > button", type=ElementType.SUBMIT),
+        "submit": Selector(
+            By.CSS_SELECTOR, "#form-container > form > button", type=ElementType.SUBMIT
+        ),
     },
 }
 SELECTORS.update(common_selectors.INVEST_HEADER)
@@ -290,7 +304,7 @@ def generate_form_details(actor: Actor, *, custom_details: dict = None) -> dict:
         "phone": "0123456789",
         "company name": actor.company_name or "Automated test - company name",
         "company website": "https://browser.tests.com",
-        "company address" : "Test whitehall place",
+        "company address": "Test whitehall place",
         "country": True,
         # "organisation size": None,
         "comment": "This form was submitted by Automated test",
@@ -300,13 +314,13 @@ def generate_form_details(actor: Actor, *, custom_details: dict = None) -> dict:
         # "rail": True,
         # "photonics": True,
         # "space": True,
-        "chemicals in the humber":True,
+        "chemicals in the humber": True,
         # "sustainable packaging": True,
-        "industry" : None,
+        "industry": None,
         "how can we help": True,
-        "tell us about your plans" : "Automated tests",
-        "how did you hear about us" : None,
-        "i would like to receive additional information by email":True,
+        "tell us about your plans": "Automated tests",
+        "how did you hear about us": None,
+        "i would like to receive additional information by email": True,
         # "terms and conditions": True,
     }
     if custom_details:
@@ -321,7 +335,7 @@ def fill_out(driver: WebDriver, details: dict):
     fill_out_textarea_fields(driver, form_selectors, details)
     pick_option(driver, form_selectors, details)
     tick_checkboxes(driver, form_selectors, details)
-    check_radio(driver,form_selectors,details)
+    check_radio(driver, form_selectors, details)
     # tick_captcha_checkbox(driver)
 
 

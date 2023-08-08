@@ -9,5 +9,5 @@ __all__ = [
     "costs_and_pricing",
     "funding_and_credit",
     "travel_plan",
-    "business_risk"
+    "business_risk",
 ]

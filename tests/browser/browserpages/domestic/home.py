@@ -6,11 +6,6 @@ import time
 from types import ModuleType
 from typing import List, Union
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType, common_selectors
 from browserpages.common_actions import (
     Actor,
@@ -29,6 +24,11 @@ from browserpages.common_actions import (
     wait_for_page_load_after_action,
 )
 from browserpages.domestic import actions as domestic_actions, markets_listing
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Home"
 SERVICE = Service.DOMESTIC
@@ -53,7 +53,10 @@ SELECTORS = {
         ),
         "select your sector": Selector(By.ID, "id_sector", type=ElementType.SELECT),
         "show markets": Selector(
-            By.ID, "sector-submit", type=ElementType.SUBMIT, next_page=markets_listing,
+            By.ID,
+            "sector-submit",
+            type=ElementType.SUBMIT,
+            next_page=markets_listing,
         ),
         "sector selector quick links": Selector(
             By.CSS_SELECTOR, "div.sector-selector-quick-links ul li a"
@@ -103,19 +106,21 @@ SELECTORS = {
     },
     "sign in required": {
         "learn to export": Selector(
-            By.CSS_SELECTOR, "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(1) > div > a > div > span"
+            By.CSS_SELECTOR,
+            "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(1) > div > a > div > span",
         ),
         "where to export": Selector(
-            By.CSS_SELECTOR, "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(2) > div > a > div > span"
+            By.CSS_SELECTOR,
+            "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(2) > div > a > div > span",
         ),
         "make an export plan": Selector(
             By.CSS_SELECTOR,
-            #"#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > div > a.card__link.card__link--focused > div"
-            #"#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > div > a.card__link.card__link--focused > div > h3"
-            #"#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > a > div > span",
-            "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > div > a.card__link.card__link--focused > div"
+            # "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > div > a.card__link.card__link--focused > div"
+            # "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > div > a.card__link.card__link--focused > div > h3"
+            # "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > a > div > span",
+            "#content > section.padding-bottom-15.padding-bottom-30-m.padding-top-45.padding-top-60-m > div > div > div:nth-child(3) > div > div > a.card__link.card__link--focused > div",
         ),
-    }
+    },
 }
 SELECTORS.update(common_selectors.DOMESTIC_HEADER)
 SELECTORS.update(common_selectors.DOMESTIC_HERO_WITH_LINK)

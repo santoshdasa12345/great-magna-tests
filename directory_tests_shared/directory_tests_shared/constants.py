@@ -8,11 +8,13 @@ from envparse import env
 # Constants used across all of the test suites
 #####################################################################
 FORMS_API_MAILBOXES = {
-    "DIT Enquiry unit": env.str("FORMS_API_SENDER_EMAIL_DIT_ENQUIRIES", default='test@test.com'),
-    "Events mailbox": env.str("FORMS_API_SENDER_EMAIL_EVENTS", default='test@test.com'),
-    "DSO mailbox": env.str("FORMS_API_SENDER_EMAIL_DSO", default='test@test.com'),
-    "Invest mailbox": env.str("FORMS_API_SENDER_EMAIL_INVEST", default='test@test.com'),
-    "Trade mailbox": env.str("FORMS_API_SENDER_EMAIL_TRADE", default='test@test.com'),
+    "DIT Enquiry unit": env.str(
+        "FORMS_API_SENDER_EMAIL_DIT_ENQUIRIES", default="test@test.com"
+    ),
+    "Events mailbox": env.str("FORMS_API_SENDER_EMAIL_EVENTS", default="test@test.com"),
+    "DSO mailbox": env.str("FORMS_API_SENDER_EMAIL_DSO", default="test@test.com"),
+    "Invest mailbox": env.str("FORMS_API_SENDER_EMAIL_INVEST", default="test@test.com"),
+    "Trade mailbox": env.str("FORMS_API_SENDER_EMAIL_TRADE", default="test@test.com"),
 }
 INVEST_CONTACT_CONFIRMATION_SUBJECT = env.str(
     "INVEST_CONTACT_CONFIRMATION_SUBJECT", default="Contact form user email subject"

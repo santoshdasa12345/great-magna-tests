@@ -5,8 +5,12 @@ from urllib.parse import urljoin
 from django.conf import settings
 from envparse import env
 
-GREAT_MAGNA_URL = env.str("GREAT_MAGNA_URL", default="https://great.dev.uktrade.digital/")
-GREAT_MAGNA_URL_LANDING = env.str("GREAT_MAGNA_URL_LANDING", default="https://great.dev.uktrade.digital/dashboard")
+GREAT_MAGNA_URL = env.str(
+    "GREAT_MAGNA_URL", default="https://great.dev.uktrade.digital/"
+)
+GREAT_MAGNA_URL_LANDING = env.str(
+    "GREAT_MAGNA_URL_LANDING", default="https://great.dev.uktrade.digital/dashboard"
+)
 # INVEST_ATLAS_URL = env.str("INVEST_ATLAS_URL",default="https://great.uat.uktrade.digital/international/")
 
 # GREAT_MAGNA_URL = env.str("GREAT_MAGNA_URL", default="https://great-magna.dev.uktrade.digital/")
@@ -78,7 +82,10 @@ BROWSERSTACK_EXECUTOR_URL = (
 )
 
 # SSO
-SSO_API_KEY = env.str("SSO_API_KEY", default="P6rjCi85RMen95D2G&4cS6QkkDNAOydjZS8oDUN@Hk^pbfH%JNMI%%26$a7p4QMM9&bs9bHu9xGSOn7a#iX*Ji9K1P4E5dwwgtLR")
+SSO_API_KEY = env.str(
+    "SSO_API_KEY",
+    default="P6rjCi85RMen95D2G&4cS6QkkDNAOydjZS8oDUN@Hk^pbfH%JNMI%%26$a7p4QMM9&bs9bHu9xGSOn7a#iX*Ji9K1P4E5dwwgtLR",
+)
 SSO_API_URL = env.str("SSO_API_URL")
 SSO_API_DEFAULT_TIMEOUT = env.int("SSO_API_DEFAULT_TIMEOUT", default=30)
 SSO_API_SENDER_ID = env.str("SSO_API_SENDER_ID", default="directory")
@@ -95,8 +102,8 @@ LOCUST_MIN_WAIT = env.int("LOCUST_MIN_WAIT", default=5)  # 100
 #####################################################################
 # Behave specific settings
 #####################################################################
-AUTO_RETRY = env.bool("AUTO_RETRY", default=False)#True
-AUTO_RETRY_MAX_ATTEMPTS = env.int("AUTO_RETRY_MAX_ATTEMPTS", default=1)#2
+AUTO_RETRY = env.bool("AUTO_RETRY", default=False)  # True
+AUTO_RETRY_MAX_ATTEMPTS = env.int("AUTO_RETRY_MAX_ATTEMPTS", default=1)  # 2
 
 #####################################################################
 # Functional tests - specific settings
@@ -116,10 +123,10 @@ BROWSER_TYPE = env.str("BROWSER_TYPE", default="desktop")
 BROWSER_VERSION = env.str("VERSION", default=None)
 BUILD_ID = env.str("CIRCLE_SHA1", default=datetime.isoformat(datetime.now()))
 HUB_URL = env.str("HUB_URL", default=None)
-TAKE_SCREENSHOTS = env.bool("TAKE_SCREENSHOTS", default=True)#default=False)
+TAKE_SCREENSHOTS = env.bool("TAKE_SCREENSHOTS", default=True)  # default=False)
 
 if BROWSER_ENVIRONMENT.lower() == "remote" and (
-        BROWSERSTACK_USER and BROWSERSTACK_PASS
+    BROWSERSTACK_USER and BROWSERSTACK_PASS
 ):
     HUB_URL = BROWSERSTACK_EXECUTOR_URL
 
@@ -148,7 +155,7 @@ settings.configure(
     DIRECTORY_CMS_API_CLIENT_BASE_URL=CMS_API_URL,
     DIRECTORY_CMS_API_CLIENT_CACHE_EXPIRE_SECONDS=CMS_API_CACHE_EXPIRE_SECONDS,
     DIRECTORY_CMS_API_CLIENT_DEFAULT_TIMEOUT=CMS_API_DEFAULT_TIMEOUT,
-    #DIRECTORY_CMS_API_CLIENT_SENDER_ID="Great-Magna",
+    # DIRECTORY_CMS_API_CLIENT_SENDER_ID="Great-Magna",
     DIRECTORY_CMS_API_CLIENT_SENDER_ID=CMS_API_SENDER_ID,
     DIRECTORY_CMS_API_CLIENT_SERVICE_NAME="EXPORT_READINESS",
     DIRECTORY_FORMS_API_BASE_URL=FORMS_API_URL,
@@ -157,8 +164,8 @@ settings.configure(
     DIRECTORY_FORMS_API_DEFAULT_TIMEOUT=CMS_API_DEFAULT_TIMEOUT,
     DIRECTORY_SSO_API_CLIENT_API_KEY=SSO_API_KEY,
     DIRECTORY_SSO_API_CLIENT_BASE_URL=SSO_API_URL,
-    #DIRECTORY_SSO_API_CLIENT_DEFAULT_TIMEOUT=30,
-    #DIRECTORY_SSO_API_CLIENT_SENDER_ID="Great-Magna",
+    # DIRECTORY_SSO_API_CLIENT_DEFAULT_TIMEOUT=30,
+    # DIRECTORY_SSO_API_CLIENT_SENDER_ID="Great-Magna",
     DIRECTORY_SSO_API_CLIENT_DEFAULT_TIMEOUT=CMS_API_DEFAULT_TIMEOUT,
     DIRECTORY_SSO_API_CLIENT_SENDER_ID=CMS_API_SENDER_ID,
     CACHES={

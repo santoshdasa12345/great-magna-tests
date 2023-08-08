@@ -5,11 +5,6 @@ from types import ModuleType
 from typing import Union
 from uuid import uuid4
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-
-from great_magna_tests_shared import URLs
-from great_magna_tests_shared.enums import PageType, Service
 from browserpages import ElementType
 from browserpages.common_actions import (
     Actor,
@@ -22,6 +17,11 @@ from browserpages.common_actions import (
     tick_captcha_checkbox,
     tick_checkboxes,
 )
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+
+from great_magna_tests_shared import URLs
+from great_magna_tests_shared.enums import PageType, Service
 
 NAME = "Thank you for your feedback"
 SERVICE = Service.DOMESTIC

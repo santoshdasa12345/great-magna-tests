@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+import allure
 import pytest
 from rest_framework.status import HTTP_200_OK, HTTP_301_MOVED_PERMANENTLY
 
-import allure
 from directory_tests_shared import URLs
 from directory_tests_shared.settings import BASICAUTH_PASS, BASICAUTH_USER
 from directory_tests_shared.utils import extract_attributes_by_css, extract_by_css

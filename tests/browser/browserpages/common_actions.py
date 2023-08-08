@@ -16,8 +16,11 @@ from types import FunctionType, ModuleType
 from typing import Dict, List, NamedTuple, Union
 from urllib.parse import urlparse
 
+import allure
 import requests
 from behave.runner import Context
+from browserpages import ElementType
+from PIL import Image
 from retrying import retry
 from selenium.common.exceptions import (
     ElementClickInterceptedException,
@@ -33,9 +36,11 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-import allure
 from great_magna_tests_shared import URLs
-from great_magna_tests_shared.exceptions import PageLoadTimeout, UnexpectedElementPresent
+from great_magna_tests_shared.exceptions import (
+    PageLoadTimeout,
+    UnexpectedElementPresent,
+)
 from great_magna_tests_shared.settings import (
     BARRED_USERS,
     BASICAUTH_PASS,
@@ -45,8 +50,6 @@ from great_magna_tests_shared.settings import (
     TEST_EMAIL_DOMAIN,
 )
 from great_magna_tests_shared.utils import access_was_denied, extract_attributes_by_css
-from browserpages import ElementType
-from PIL import Image
 
 ScenarioData = namedtuple("ScenarioData", ["actors"])
 
@@ -105,13 +108,13 @@ def go_to_url(driver: WebDriver, url: str, page_name: str):
 def check_url(driver: WebDriver, expected_url: str, *, exact_match: bool = True):
     """Check if current page URL matches the expected one."""
     with assertion_msg(
-            f"Expected page URL to be: '{expected_url}' but got '{driver.current_url}'"
+        f"Expected page URL to be: '{expected_url}' but got '{driver.current_url}'"
     ):
         if exact_match:
             assert driver.current_url == expected_url
         else:
             assert (driver.current_url in expected_url) or (
-                    expected_url in driver.current_url
+                expected_url in driver.current_url
             )
     logging.debug(f"Current page URL matches expected '{driver.current_url}'")
 
@@ -119,7 +122,7 @@ def check_url(driver: WebDriver, expected_url: str, *, exact_match: bool = True)
 def check_title(driver: WebDriver, expected_title: str, *, exact_match: bool = False):
     """Check if current page title matches the expected one."""
     with assertion_msg(
-            f"Expected page title to be: '{expected_title}' but got '{driver.title}' on {driver.current_url}"
+        f"Expected page title to be: '{expected_title}' but got '{driver.title}' on {driver.current_url}"
     ):
         if exact_match:
             assert expected_title.lower() == driver.title.lower()
@@ -131,7 +134,7 @@ def check_title(driver: WebDriver, expected_title: str, *, exact_match: bool = F
 
 
 def check_for_expected_sections_elements(
-        driver: WebDriver, sections: Dict[str, Selector]
+    driver: WebDriver, sections: Dict[str, Selector]
 ):
     """Check if all elements in page sections are visible."""
     for section in sections:
@@ -145,14 +148,14 @@ def check_for_expected_sections_elements(
                 logging.debug(f"Skipping '{element_name} as it's marked as invisible'")
                 continue
             with assertion_msg(
-                    f"It looks like '{element_name}' element in '{section}' section is not visible on {driver.current_url}"
+                f"It looks like '{element_name}' element in '{section}' section is not visible on {driver.current_url}"
             ):
                 assert element.is_displayed()
         logging.debug(f"All expected elements are visible on '{driver.current_url}'")
 
 
 def find_and_click_on_page_element(
-        driver: WebDriver, sections: dict, element_name: str, *, wait_for_it: bool = True
+    driver: WebDriver, sections: dict, element_name: str, *, wait_for_it: bool = True
 ):
     """Find page element in any page section selectors and click on it."""
     found_selector = False
@@ -204,8 +207,8 @@ def unauthenticated_actor(alias: str) -> Actor:
     """
     email = (
         f"test+{alias}{str(uuid.uuid4())}@{TEST_EMAIL_DOMAIN}".replace("-", "")
-            .replace(" ", "")
-            .lower()
+        .replace(" ", "")
+        .lower()
     )
     letters = "".join(random.choice(string.ascii_letters) for _ in range(10))
     digits = "".join(random.choice(string.digits) for _ in range(10))
@@ -419,9 +422,9 @@ def take_screenshot(driver: WebDriver, page_name: str = None):
 @contextmanager
 def assertion_msg(message: str, *args):
     """This will:
-        * print the custom assertion message
-        * print the traceback (stack trace)
-        * raise the original AssertionError exception
+    * print the custom assertion message
+    * print the traceback (stack trace)
+    * raise the original AssertionError exception
     """
     try:
         yield
@@ -475,15 +478,15 @@ def selenium_action(driver: WebDriver, message: str, screenshot: bool = True, *a
 
 
 def wait_for_element_visibility(
-        driver: WebDriver, element: WebElement, *, time_to_wait: int = 3
+    driver: WebDriver, element: WebElement, *, time_to_wait: int = 3
 ):
     """Wait until element is visible."""
     with selenium_action(
-            driver,
-            (
-                    f"({element.tag_name}) Element identified by '{element}' was not visible after waiting "
-                    f"for {time_to_wait} seconds"
-            ),
+        driver,
+        (
+            f"({element.tag_name}) Element identified by '{element}' was not visible after waiting "
+            f"for {time_to_wait} seconds"
+        ),
     ):
         WebDriverWait(driver, time_to_wait).until(
             expected_conditions.visibility_of(element)
@@ -491,16 +494,16 @@ def wait_for_element_visibility(
 
 
 def wait_for_visibility(
-        driver: WebDriver, selector: Selector, *, time_to_wait: int = 5
+    driver: WebDriver, selector: Selector, *, time_to_wait: int = 5
 ):
     """Wait until element is visible."""
     by_locator = (selector.by, selector.value)
     with selenium_action(
-            driver,
-            (
-                    f"Element identified by '{selector.value}' was not visible after waiting "
-                    f"for {time_to_wait} seconds"
-            ),
+        driver,
+        (
+            f"Element identified by '{selector.value}' was not visible after waiting "
+            f"for {time_to_wait} seconds"
+        ),
     ):
         WebDriverWait(driver, time_to_wait).until(
             expected_conditions.visibility_of_element_located(by_locator)
@@ -508,7 +511,7 @@ def wait_for_visibility(
 
 
 def check_if_element_is_not_present(
-        driver: WebDriver, selector: Selector, *, element_name: str = ""
+    driver: WebDriver, selector: Selector, *, element_name: str = ""
 ):
     """Find element by CSS selector or it's ID."""
     try:
@@ -517,7 +520,7 @@ def check_if_element_is_not_present(
     except NoSuchElementException:
         found = False
     with assertion_msg(
-            f"Expected not to find '{element_name}' element identified by '{selector.value}' on {driver.current_url}"
+        f"Expected not to find '{element_name}' element identified by '{selector.value}' on {driver.current_url}"
     ):
         assert not found
 
@@ -539,18 +542,18 @@ def is_element_present(driver: WebDriver, selector: Selector) -> bool:
 def check_if_element_is_visible(web_element: WebElement, element_name: str):
     """Check if provided web element is visible."""
     with assertion_msg(
-            f"Expected to see '{element_name}' element but it's not visible"
+        f"Expected to see '{element_name}' element but it's not visible"
     ):
         assert web_element.is_displayed()
 
 
 def check_if_element_is_not_visible(
-        driver: WebDriver,
-        selector: Selector,
-        *,
-        element_name: str = "",
-        wait_for_it: bool = True,
-        take_screenshot: bool = True,
+    driver: WebDriver,
+    selector: Selector,
+    *,
+    element_name: str = "",
+    wait_for_it: bool = True,
+    take_screenshot: bool = True,
 ):
     """Find element by CSS selector or it's ID."""
     try:
@@ -562,7 +565,7 @@ def check_if_element_is_not_visible(
             take_screenshot=take_screenshot,
         )
         with assertion_msg(
-                f"Expected not to see '{element_name}' element identified by '{selector.value}' on {driver.current_url}"
+            f"Expected not to see '{element_name}' element identified by '{selector.value}' on {driver.current_url}"
         ):
             assert not element.is_displayed()
     except NoSuchElementException:
@@ -573,19 +576,19 @@ def check_if_element_is_not_visible(
 def check_if_element_is_disabled(web_element: WebElement, element_name: str):
     """Check if provided web element is disabled."""
     with assertion_msg(
-            f"Expected '{element_name}' element to be disabled but it's not"
+        f"Expected '{element_name}' element to be disabled but it's not"
     ):
         assert not web_element.is_enabled()
     logging.debug(f"As expected '{element_name}' field is disabled.")
 
 
 def run_alternative_visibility_check(
-        driver: WebDriver,
-        element_name: str,
-        selector: Selector,
-        *,
-        element: WebElement = None,
-        take_screenshot: bool = True,
+    driver: WebDriver,
+    element_name: str,
+    selector: Selector,
+    *,
+    element: WebElement = None,
+    take_screenshot: bool = True,
 ):
     element = element or find_element(driver, selector)
     location = element.location
@@ -593,17 +596,17 @@ def run_alternative_visibility_check(
     if not all(location.values()) or not all(size.values()):
         take_screenshot(driver, f"{element_name}_is_not_visible")
     with assertion_msg(
-            f"It looks like '{element_name}' element identified by '{selector.by} →"
-            f" {selector.value}' selector is not visible on "
-            f"{driver.current_url} as it's location is outside viewport: "
-            f"{location}"
+        f"It looks like '{element_name}' element identified by '{selector.by} →"
+        f" {selector.value}' selector is not visible on "
+        f"{driver.current_url} as it's location is outside viewport: "
+        f"{location}"
     ):
         assert all(location.values())
     with assertion_msg(
-            f"It looks like '{element_name}' element identified by '{selector.by} →"
-            f" {selector.value}' selector is not visible on "
-            f"{driver.current_url} is it's size dimensions are zeroed: "
-            f"{size}"
+        f"It looks like '{element_name}' element identified by '{selector.by} →"
+        f" {selector.value}' selector is not visible on "
+        f"{driver.current_url} is it's size dimensions are zeroed: "
+        f"{size}"
     ):
         assert all(size.values())
     logging.debug(
@@ -613,19 +616,19 @@ def run_alternative_visibility_check(
 
 
 def find_element(
-        driver: WebDriver,
-        selector: Selector,
-        *,
-        element_name: str = "",
-        wait_for_it: bool = True,
-        take_screenshot: bool = True,
+    driver: WebDriver,
+    selector: Selector,
+    *,
+    element_name: str = "",
+    wait_for_it: bool = True,
+    take_screenshot: bool = True,
 ) -> WebElement:
     """Find element by CSS selector or it's ID."""
     with selenium_action(
-            driver,
-            f"Could not find element called '{element_name}' using selector "
-            f"'{selector.value}' on {driver.current_url}",
-            screenshot=take_screenshot,
+        driver,
+        f"Could not find element called '{element_name}' using selector "
+        f"'{selector.value}' on {driver.current_url}",
+        screenshot=take_screenshot,
     ):
         element = driver.find_element(by=selector.by, value=selector.value)
     if wait_for_it and selector.is_visible:
@@ -674,14 +677,14 @@ def check_hash_of_remote_file(expected_hash: str, file_url: str):
     assert response.status_code == 200
     file_hash = hashlib.md5(response.content).hexdigest()
     with assertion_msg(
-            f"Expected hash of file downloaded from {file_url} to be {expected_hash} but got {file_hash}"
+        f"Expected hash of file downloaded from {file_url} to be {expected_hash} but got {file_hash}"
     ):
         assert expected_hash == file_hash
 
 
 @contextmanager
 def scroll_to_element_if_not_visible(
-        driver: WebDriver, element: WebElement, *, section: str = None, name: str = None
+    driver: WebDriver, element: WebElement, *, section: str = None, name: str = None
 ):
     """Scroll to element only if it's not visible.
 
@@ -804,13 +807,13 @@ def scroll_to(driver: WebDriver, element: WebElement):
 
 
 def check_for_sections(
-        driver: WebDriver,
-        all_sections: dict,
-        sought_sections: List[str],
-        *,
-        desktop: bool = True,
-        mobile: bool = False,
-        horizontal: bool = False,
+    driver: WebDriver,
+    all_sections: dict,
+    sought_sections: List[str],
+    *,
+    desktop: bool = True,
+    mobile: bool = False,
+    horizontal: bool = False,
 ):
     print(sought_sections)
     print(all_sections)
@@ -827,14 +830,14 @@ def check_for_sections(
             )
         for key, selector in selectors.items():
             with selenium_action(
-                    driver,
-                    f"Could not find element: '{key} → {selector.by} → {selector.value}'"
-                    f" on {driver.current_url}",
+                driver,
+                f"Could not find element: '{key} → {selector.by} → {selector.value}'"
+                f" on {driver.current_url}",
             ):
                 element = driver.find_element(by=selector.by, value=selector.value)
             if selector.is_visible:
                 with scroll_to_element_if_not_visible(
-                        driver, element, section=name, name=key
+                    driver, element, section=name, name=key
                 ):
                     wait_for_element_visibility(driver, element)
                 logging.debug(f"'{key} → {selector.by} → {selector.value}' is visible")
@@ -873,7 +876,7 @@ def get_selectors(section: dict, element_type: ElementType) -> Dict[str, Selecto
 
 
 def find_elements_of_type(
-        driver: WebDriver, section: dict, element_type: ElementType
+    driver: WebDriver, section: dict, element_type: ElementType
 ) -> defaultdict:
     selectors = get_selectors(section, element_type)
     result = defaultdict()
@@ -931,7 +934,7 @@ def tick_captcha_checkbox(driver: WebDriver):
 
 
 def fill_out_input_fields(
-        driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
+    driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
 ):
     input_selectors = get_selectors(form_selectors, ElementType.INPUT)
     for key, selector in input_selectors.items():
@@ -962,7 +965,7 @@ def fill_out_input_fields(
 
 
 def fill_out_textarea_fields(
-        driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
+    driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
 ):
     textarea_selectors = get_selectors(form_selectors, ElementType.TEXTAREA)
     for key, selector in textarea_selectors.items():
@@ -978,7 +981,7 @@ def fill_out_textarea_fields(
 
 
 def check_form_choices(
-        driver: WebDriver, form_selectors: Dict[str, Selector], names: List[str]
+    driver: WebDriver, form_selectors: Dict[str, Selector], names: List[str]
 ):
     radio_selectors = get_selectors(form_selectors, ElementType.RADIO)
     for name in names:
@@ -990,7 +993,7 @@ def check_form_choices(
 
 
 def get_option_values(
-        driver: WebDriver, selector: Selector, *, remove_empty_values: bool = True
+    driver: WebDriver, selector: Selector, *, remove_empty_values: bool = True
 ) -> List[str]:
     error = f"'{selector.by}' not recognised. Only By.ID, By.CSS_SELECTOR are allowed"
     assert selector.by in (By.ID, By.CSS_SELECTOR), error
@@ -1009,7 +1012,7 @@ def get_option_values(
 
 
 def pick_option(
-        driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
+    driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
 ):
     select_selectors = get_selectors(form_selectors, ElementType.SELECT)
     for key, selector in select_selectors.items():
@@ -1034,7 +1037,7 @@ def pick_option(
 
 
 def check_radio(
-        driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
+    driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
 ):
     radio_selectors = get_selectors(form_selectors, ElementType.RADIO)
     for key, selector in radio_selectors.items():
@@ -1060,7 +1063,7 @@ def check_random_radio(driver: WebDriver, form_selectors: Dict[str, Selector]):
 
 
 def choose_one_form_option(
-        driver: WebDriver, radio_selectors: Dict[str, Selector], name: str
+    driver: WebDriver, radio_selectors: Dict[str, Selector], name: str
 ):
     form_details = defaultdict(bool)
     for key in radio_selectors.keys():
@@ -1070,7 +1073,7 @@ def choose_one_form_option(
 
 
 def choose_one_form_option_except(
-        driver: WebDriver, radio_selectors: Dict[str, Selector], ignored: List[str]
+    driver: WebDriver, radio_selectors: Dict[str, Selector], ignored: List[str]
 ) -> str:
     all_keys = list(radio_selectors.keys())
     without_ignored = list(set(all_keys) - set(ignored))
@@ -1084,10 +1087,10 @@ def choose_one_form_option_except(
 
 
 def submit_form(
-        driver: WebDriver,
-        form_selectors: Dict[str, Selector],
-        *,
-        wait_for_new_page_to_load: bool = True,
+    driver: WebDriver,
+    form_selectors: Dict[str, Selector],
+    *,
+    wait_for_new_page_to_load: bool = True,
 ) -> Union[ModuleType, None]:
     submit_selectors = get_selectors(form_selectors, ElementType.SUBMIT)
 
@@ -1117,11 +1120,11 @@ def submit_form(
 
 
 def pick_one_option_and_submit(
-        driver: WebDriver,
-        form_selectors: Dict[str, Selector],
-        name: str,
-        *,
-        submit_button_name: str = "submit",
+    driver: WebDriver,
+    form_selectors: Dict[str, Selector],
+    name: str,
+    *,
+    submit_button_name: str = "submit",
 ) -> Union[ModuleType, None]:
     radio_selectors = get_selectors(form_selectors, ElementType.RADIO)
     selector = radio_selectors[name.lower()]
@@ -1137,7 +1140,7 @@ def pick_one_option_and_submit(
 
 
 def tick_checkboxes(
-        driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
+    driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
 ):
     checkbox_selectors = get_selectors(form_selectors, ElementType.CHECKBOX)
     for key, selector in checkbox_selectors.items():
@@ -1161,7 +1164,7 @@ def tick_checkboxes(
 
 
 def tick_checkboxes_by_labels(
-        driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
+    driver: WebDriver, form_selectors: Dict[str, Selector], form_details: dict
 ):
     checkbox_selectors = get_selectors(form_selectors, ElementType.LABEL)
     for key, selector in checkbox_selectors.items():
@@ -1218,7 +1221,9 @@ def fill_out_email_address(driver: WebDriver, details: dict):
     email_address_selectors = SELECTORS["login"]
     password_selectors = SELECTORS["login"]
     fill_out_input_fields(driver, email_address_selectors, password_selectors, details)
-    fill_input_list = find_element(driver, find_selector_by_name(SELECTORS, "login button"))
+    fill_input_list = find_element(
+        driver, find_selector_by_name(SELECTORS, "login button")
+    )
     fill_input_list.click()
 
 
@@ -1257,6 +1262,7 @@ def generic_set_basic_auth_creds(driver: WebDriver, *, service_name: str = None)
 #     assertion_msg = f"Access is still denied after authentication attempt → {base_url}"
 #     with selenium_action(driver, assertion_msg):
 #         assert "ok" in driver.page_source
+
 
 def revisit_page_on_access_denied(driver: WebDriver, page: ModuleType, page_name: str):
     if access_was_denied(driver.page_source):

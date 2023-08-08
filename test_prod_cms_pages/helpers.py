@@ -275,7 +275,6 @@ def find_draft_urls(pages: List[dict]) -> List[Tuple[str, int]]:
         page_id = page["id"]
         draft_token = page["meta"]["draft_token"]
         if draft_token is not None:
-
             url = check_for_special_page_cases(page)
             url = check_for_special_urls_cases(url)
             if should_skip_url(url):

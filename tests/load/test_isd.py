@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
 
-from locust import HttpUser, TaskSet, between, task
-
 from directory_constants.expertise import (
     BUSINESS_SUPPORT,
     FINANCIAL,
@@ -11,6 +9,8 @@ from directory_constants.expertise import (
     MANAGEMENT_CONSULTING,
     PUBLICITY,
 )
+from locust import HttpUser, TaskSet, between, task
+
 from directory_tests_shared import URLs, settings
 from directory_tests_shared.constants import LOAD_TESTS_USER_AGENT
 from directory_tests_shared.utils import basic_auth, rare_word
