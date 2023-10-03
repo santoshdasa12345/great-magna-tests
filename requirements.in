@@ -25,7 +25,7 @@ xmltodict==0.13.0
 datadiff==2.1.0
 pillow==10.0.0
 selenium==4.11.2
-urllib3==2.0.4
+urllib3==2.0.6
 circleclient==0.1.6
 geckoboard.py==1.1.0
 jira==3.5.2

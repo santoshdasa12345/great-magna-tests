@@ -29,6 +29,8 @@ automat==22.10.0
     # via twisted
 backcall==0.2.0
     # via ipython
+backports-zoneinfo==0.2.1
+    # via django
 beautifulsoup4==4.12.2
     # via -r requirements.in
 behave==1.2.6
@@ -148,13 +150,17 @@ idna==3.4
     #   trio
 importlib-metadata==6.8.0
     # via flask
+importlib-resources==6.1.0
+    # via
+    #   jsonschema
+    #   jsonschema-specifications
 incremental==22.10.0
     # via twisted
 iniconfig==2.0.0
     # via pytest
 ipdb==0.13.13
     # via -r requirements.in
-ipython==8.14.0
+ipython==8.12.3
     # via ipdb
 isort==5.12.0
     # via -r requirements.in
@@ -229,6 +235,8 @@ pickleshare==0.7.5
     # via ipython
 pillow==10.0.0
     # via -r requirements.in
+pkgutil-resolve-name==1.3.10
+    # via jsonschema
 platformdirs==3.10.0
     # via
     #   black
@@ -361,7 +369,7 @@ typing-extensions==4.7.1
     #   jira
     #   locust
     #   twisted
-urllib3[socks]==2.0.4
+urllib3[socks]==2.0.6
     # via
     #   -r requirements.in
     #   requests
@@ -383,7 +391,9 @@ wsproto==1.2.0
 xmltodict==0.13.0
     # via -r requirements.in
 zipp==3.16.2
-    # via importlib-metadata
+    # via
+    #   importlib-metadata
+    #   importlib-resources
 zope-event==5.0
     # via gevent
 zope-interface==6.0
