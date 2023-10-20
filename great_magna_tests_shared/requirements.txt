@@ -369,7 +369,7 @@ typing-extensions==4.7.1
     #   jira
     #   locust
     #   twisted
-urllib3[socks]==2.0.4
+urllib3[socks]==2.0.7
     # via
     #   -r great_magna_tests_shared/requirements.in
     #   requests
