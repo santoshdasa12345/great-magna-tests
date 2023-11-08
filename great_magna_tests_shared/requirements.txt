@@ -29,8 +29,6 @@ automat==22.10.0
     # via twisted
 backcall==0.2.0
     # via ipython
-backports-zoneinfo==0.2.1
-    # via django
 beautifulsoup4==4.12.2
     # via -r great_magna_tests_shared/requirements.in
 behave==1.2.6
@@ -150,10 +148,6 @@ idna==3.4
     #   trio
 importlib-metadata==6.8.0
     # via flask
-importlib-resources==6.1.0
-    # via
-    #   jsonschema
-    #   jsonschema-specifications
 incremental==22.10.0
     # via twisted
 iniconfig==2.0.0
@@ -235,8 +229,6 @@ pickleshare==0.7.5
     # via ipython
 pillow==10.0.1
     # via -r great_magna_tests_shared/requirements.in
-pkgutil-resolve-name==1.3.10
-    # via jsonschema
 platformdirs==3.11.0
     # via
     #   black
@@ -382,7 +374,7 @@ w3lib==1.22.0
     # via directory-client-core
 wcwidth==0.2.8
     # via prompt-toolkit
-werkzeug==3.0.0
+werkzeug==3.0.1
     # via
     #   flask
     #   locust
@@ -391,9 +383,7 @@ wsproto==1.2.0
 xmltodict==0.13.0
     # via -r great_magna_tests_shared/requirements.in
 zipp==3.17.0
-    # via
-    #   importlib-metadata
-    #   importlib-resources
+    # via importlib-metadata
 zope-event==5.0
     # via gevent
 zope-interface==6.0
